@@ -1,5 +1,5 @@
 <!-- source: source/pages/benefits-agentic-ai-oncall.html -->
-<!-- week: 9 | original: The Top 5 Benefits of Agentic AI in On-call Engineering | Resolve AI Blog -->
+<!-- week: 9 | format: html | original: The Top 5 Benefits of Agentic AI in On-call Engineering | Resolve AI Blog -->
 
 As production systems become more complex, engineering teams face increasing challenges in maintaining reliability and responding to a growing volume of alerts and incidents. Agentic AI, a next-generation approach to automation, is revolutionizing how teams handle on-call responsibilities and incident resolution. Here are the top five ways agentic AI transforms incident response.
 

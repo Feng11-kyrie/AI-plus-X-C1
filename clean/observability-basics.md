@@ -1,5 +1,5 @@
 <!-- source: source/pages/observability-basics.html -->
-<!-- week: 9 | original: Traces & Spans: Observability Basics You Should Know | Last9 -->
+<!-- week: 9 | format: html | original: Traces & Spans: Observability Basics You Should Know | Last9 -->
 
 In modern software architecture, applications aren't just getting bigger—they're getting more distributed. With microservices, serverless functions, and containers running across multiple environments, understanding what's happening inside your systems can feel like trying to track a single raindrop in a storm.
 

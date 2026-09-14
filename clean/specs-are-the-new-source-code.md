@@ -1,5 +1,5 @@
 <!-- source: source/pages/specs-are-the-new-source-code.html -->
-<!-- week: 3 | original: The spec is dead, long live the spec! -->
+<!-- week: 3 | format: html | original: The spec is dead, long live the spec! -->
 
 Over my career, specs have gotten shorter and shorter. When I started at Microsoft, the worth of a PM was measured in the weight of their specs. Years later, at Tripadvisor, we mythologized the PM who brought a spec—scribbled on a napkin—to Product Review.
 
@@ -111,6 +111,8 @@ Let’s take a look at the steps in the process (follow along in the Loom video 
 7. Open a pull request (PR) on GitHub to ship these changes into the codebase (03:55)
 8. Wait for an engineer to review/approve the PR
 
+![](https://substackcdn.com/image/fetch/$s_!xqds!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F297f8c19-63ff-481f-8c6b-6e894b9c52fc_997x628.png)
+
 Zooming out, the true power of this setup comes into focus. Yes, this is a trivial example, but the point remains: a non-technical person can now go between Linear tickets, a codebase, and an engineer, all with a couple of prompts to Claude via GitHub Copilot.
 
 And again, the critical part of all of this isn’t the code itself: it’s the spec.
@@ -130,6 +132,8 @@ One day, you might even expect an AI agent to ship your ticket whilst you sip yo
 If you’re a PM and worried about what AI is going to do to your job, the key is to realize that the job itself is changing. But that’s also the case for everyone else. The great thing is that the core skills required for an excellent PM are even more valuable in this new world.
 
 As we predicted in a [previous post](https://hiringhumans.decimals.work/p/will-ai-kill-product-management-i), the companies that are working in this way will need more, not fewer PMs. And it turns out that prediction is working out rather well:
+
+![](https://substackcdn.com/image/fetch/$s_!ZQkP!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F802f97db-32c9-4971-aa7a-0412c60ccd24_1600x1368.jpeg)
 
 ## Long live the spec!
 

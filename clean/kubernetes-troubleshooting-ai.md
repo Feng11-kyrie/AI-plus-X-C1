@@ -1,5 +1,5 @@
 <!-- source: source/pages/kubernetes-troubleshooting-ai.html -->
-<!-- week: 9 | original: Kubernetes Troubleshooting in Resolve AI -->
+<!-- week: 9 | format: html | original: Kubernetes Troubleshooting in Resolve AI -->
 
 # Kubernetes Troubleshooting in Resolve AI
 
@@ -61,16 +61,13 @@ You're alerted about a pod crash. Instead of wrestling with `kubectl` or parsing
 
 It pieces together what led to the crash; be it resource contention, a CrashLoopBackOff loop, a container image misconfiguration, or external throttling.
 
-
 **2. Correlates Issues Across the Cluster**
 
 Using the knowledge graph, it checks for similar anomalies across pods, nodes, or namespaces, identifying whether the issue is isolated or part of a broader kubernetes cluster problem. It also checks for permissions issues, Docker registry errors, and endpoint misconfigurations that could be contributing factors.
 
-
 **3. Runs Automated Investigations**
 
 Agentic AI tests hypotheses like "Was it an OOMKilled error due to CPU or memory limits?" or "Is the pod failing due to a misconfigured startup command?" by executing automated runbooks and analyzing real-time kubernetes events. Resolve AI's AI agents don't just surface information. They actually execute workflows across your stack, pulling from observability data, GitHub deployment history, and infrastructure state to build a complete picture.
-
 
 **4. Provides Resolutions**
 

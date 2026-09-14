@@ -1,5 +1,5 @@
 <!-- source: source/pages/devin-coding-agents-101.html -->
-<!-- week: 3 | original: Coding Agents 101: The Art of Actually Getting Things Done -->
+<!-- week: 3 | format: html | original: Coding Agents 101: The Art of Actually Getting Things Done -->
 
 Cognition Team June 2025 15 minute read
 

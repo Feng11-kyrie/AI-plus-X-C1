@@ -1,5 +1,5 @@
 <!-- source: source/pages/mcp-introduction.html -->
-<!-- week: 2 | original: Model Context Protocol (MCP): A comprehensive introduction for developers -->
+<!-- week: 2 | format: html | original: Model Context Protocol (MCP): A comprehensive introduction for developers -->
 
 ## Executive summary
 

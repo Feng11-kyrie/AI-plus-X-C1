@@ -1,5 +1,5 @@
 <!-- source: source/pages/writing-effective-tools-for-agents.html -->
-<!-- week: 3 | original: Writing effective tools for AI agents—using AI agents \ Anthropic -->
+<!-- week: 3 | format: html | original: Writing effective tools for AI agents—using AI agents \ Anthropic -->
 
 The [Model Context Protocol (MCP)](https://modelcontextprotocol.io/docs/getting-started/intro) can empower LLM agents with potentially hundreds of tools to solve real-world tasks. But how do we make those tools maximally effective?
 
@@ -18,6 +18,8 @@ We conclude with key principles for writing high-quality tools we’ve identifie
 - Returning meaningful context from tools back to agents
 - Optimizing tool responses for token efficiency
 - Prompt-engineering tool descriptions and specs
+
+*Building an evaluation allows you to systematically measure the performance of your tools. You can use Claude Code to automatically optimize your tools against this evaluation.*
 
 ## What is a tool?
 
@@ -53,6 +55,8 @@ Test the tools yourself to identify any rough edges. Collect feedback from your 
 
 Next, you need to measure how well Claude uses your tools by running an evaluation. Start by generating lots of evaluation tasks, grounded in real world uses. We recommend collaborating with an agent to help analyze your results and determine how to improve your tools. See this process end-to-end in our [tool evaluation cookbook](https://platform.claude.com/cookbook/tool-evaluation-tool-evaluation).
 
+*Held-out test set performance of our internal Slack tools*
+
 **Generating evaluation tasks**
 
 With your early prototype, Claude Code can quickly explore your tools and create dozens of prompt and response pairs. Prompts should be inspired by real-world uses and be based on realistic data sources and services (for example, internal knowledge bases and microservices). We recommend you avoid overly simplistic or superficial “sandbox” environments that don’t stress-test your tools with sufficient complexity. Strong evaluation tasks might require multiple tool calls—potentially dozens.
@@ -82,6 +86,8 @@ In your evaluation agents’ system prompts, we recommend instructing agents to 
 If you’re running your evaluation with Claude, you can turn on [interleaved thinking](https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking#interleaved-thinking) for similar functionality “off-the-shelf”. This will help you probe why agents do or don’t call certain tools and highlight specific areas of improvement in tool descriptions and specs.
 
 As well as top-level accuracy, we recommend collecting other metrics like the total runtime of individual tool calls and tasks, the total number of tool calls, the total token consumption, and tool errors. Tracking tool calls can help reveal common workflows that agents pursue and offer some opportunities for tools to consolidate.
+
+*Held-out test set performance of our internal Asana tools*
 
 **Analyzing results**
 Agents are your helpful partners in spotting issues and providing feedback on everything from contradictory tool descriptions to inefficient tool implementations and confusing tool schemas. However, keep in mind that what agents omit in their feedback and responses can often be more important than what they include. LLMs don’t always [say what they mean](https://www.anthropic.com/research/tracing-thoughts-language-model).
@@ -157,6 +163,8 @@ Here’s an example of a detailed tool response (206 tokens):
 
 Here’s an example of a concise tool response (72 tokens):
 
+*Slack threads and thread replies are identified by unique `thread_ts` which are required to fetch thread replies. `thread_ts` and other IDs (`channel_id`, `user_id`) can be retrieved from a `“detailed”` tool response to enable further tool calls that require these. `“concise”` tool responses return only thread content and exclude IDs. In this example, we use ~⅓ of the tokens with `“concise”` tool responses.*
+
 Even your tool response structure—for example XML, JSON, or Markdown—can have an impact on evaluation performance: there is no one-size-fits-all solution. This is because LLMs are trained on next-token prediction and tend to perform better with formats that match their training data. The optimal response structure will vary widely by task and agent. We encourage you to select the best response structure based on your own evaluation.
 
 ### Optimizing tool responses for token efficiency
@@ -172,6 +180,8 @@ Here’s an example of a truncated tool response:
 Here’s an example of an unhelpful error response:
 
 Here’s an example of a helpful error response:
+
+*Tool truncation and error responses can steer agents towards more token-efficient tool-use behaviors (using filters or pagination) or give examples of correctly formatted tool inputs.*
 
 ### Prompt-engineering your tool descriptions
 

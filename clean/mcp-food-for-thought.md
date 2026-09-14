@@ -1,5 +1,5 @@
 <!-- source: source/pages/mcp-food-for-thought.html -->
-<!-- week: 2 | original: APIs don't make good MCP tools -->
+<!-- week: 2 | format: html | original: APIs don't make good MCP tools -->
 
 The [Model Context Protocol](https://modelcontextprotocol.io/overview) (MCP) is a pretty big deal these days. It’s become the de facto standard for giving LLMs access to tools that someone else wrote, which, of course, turns them into [agents](https://simonwillison.net/2025/May/22/tools-in-a-loop/). But writing tools for a new MCP server is hard, and so people often propose [auto-converting existing APIs into MCP tools](https://blog.christianposta.com/semantics-matter-exposing-openapi-as-mcp-tools/); typically using OpenAPI metadata ([1](https://jedisct1.github.io/openapi-mcp/), [2](https://www.gravitee.io/blog/turn-any-rest-api-into-mcp-server-inside-gravitee)).
 

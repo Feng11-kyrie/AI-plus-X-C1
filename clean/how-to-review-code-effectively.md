@@ -1,5 +1,5 @@
 <!-- source: source/pages/how-to-review-code-effectively.html -->
-<!-- week: 7 | original: How to review code effectively: A GitHub staff engineer’s philosophy - The GitHub Blog -->
+<!-- week: 7 | format: html | original: How to review code effectively: A GitHub staff engineer’s philosophy - The GitHub Blog -->
 
 As a staff engineer at GitHub, [code review](https://github.com/features/code-review) is one of my main focus areas in my day to day work. Over the past eight years, I’ve reviewed more than 7,000 pull requests. Why so many? Because code review is crucial to building good software and another set of eyes can often spot issues you would have otherwise missed.
 

@@ -1,5 +1,5 @@
 <!-- source: source/pages/ai-code-review-best-practices.html -->
-<!-- week: 7 | original: AI code review implementation and best practices -->
+<!-- week: 7 | format: html | original: AI code review implementation and best practices -->
 
 As artificial intelligence becomes increasingly integrated into software development workflows, [AI code review](https://graphite.com/guides/how-ai-code-review-works) has emerged as a useful tool for improving code quality and developer productivity. This technical guide explores the implementation of AI code review systems and outlines best practices for effectively leveraging these tools in your development process.
 

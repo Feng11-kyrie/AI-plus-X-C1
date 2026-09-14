@@ -1,5 +1,5 @@
 <!-- source: source/pages/multi-agent-systems-ai-native.html -->
-<!-- week: 9 | original: The role of multi agent systems in making software engineers AI-native -->
+<!-- week: 9 | format: html | original: The role of multi agent systems in making software engineers AI-native -->
 
 Generative AI has transformed [software development](https://resolve.ai/glossary/what-is-the-future-of-software-engineering) so dramatically that you can spin up entire services in hours, yet understanding what went wrong with those services still demands painstaking work across fragmented tools. From code generation to code review, coding agents handle the build side. But [production debugging](https://resolve.ai/glossary/what-is-debugging)? That's still manual. Take the following example:
 

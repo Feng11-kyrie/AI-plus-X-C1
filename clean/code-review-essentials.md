@@ -1,5 +1,5 @@
 <!-- source: source/pages/code-review-essentials.html -->
-<!-- week: 7 | original: Code Review Essentials for Software Teams » Blake Smith -->
+<!-- week: 7 | format: html | original: Code Review Essentials for Software Teams » Blake Smith -->
 
 Code Review is an essential part of any collaborative software
 project. Large software systems are usually written by more than one

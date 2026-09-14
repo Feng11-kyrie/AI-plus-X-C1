@@ -1,5 +1,5 @@
 <!-- source: source/pages/agentic-ai-threats.html -->
-<!-- week: 6 | original: AI Agents Are Here. So Are the Threats. -->
+<!-- week: 6 | format: html | original: AI Agents Are Here. So Are the Threats. -->
 
 ## Executive Summary
 
@@ -34,6 +34,10 @@ A [Unit 42 AI Security Assessment](https://www.paloaltonetworks.com/unit42/asses
 
 If you think you might have been compromised or have an urgent matter, contact the [Unit 42 Incident Response team](https://start.paloaltonetworks.com/contact-unit42.html).
 
+**Related Unit 42 Topics**
+
+[**GenAI**](https://unit42.paloaltonetworks.com/tag/genai/), **[Prompt Injection](https://unit42.paloaltonetworks.com/tag/prompt-injection/)**
+
 ## An Overview of the AI Agent
 
 An AI agent is a software program designed to autonomously collect data from its environment, process information and take actions to achieve specific objectives without direct human intervention. These agents are typically powered by AI models — most notably large language models (LLMs) — which serve as their core reasoning engines.
@@ -43,6 +47,8 @@ A defining feature of AI agents is their ability to connect AI models to externa
 AI agents have diverse applications across various sectors. In customer service, they power chatbots and virtual assistants to handle inquiries efficiently. In finance, they assist with fraud detection and portfolio management. Healthcare can also utilize AI agents for patient monitoring and diagnostic support.
 
 Figure 1 is a typical AI Agent architecture that shows how an agent uses an LLM to plan, reason and act through an execution loop. It connects to external tools via function calling to perform tasks such as accessing code, data or human input.
+
+*Figure 1. AI agent architecture.*
 
 The agent could also incorporate memory — both short- and long-term — to retain context and enhance decision-making. Applications interact with the agent by sending requests and receiving results through input and output interfaces, typically exposed as APIs.
 
@@ -69,6 +75,8 @@ To investigate the security risks of AI agents, we developed a multi-user and mu
 This setup highlights that the security risks are not specific to any framework or model. Instead, they stem from misconfigurations or insecure design introduced during agent development. It is important to note that CrewAI or AutoGen frameworks are NOT vulnerable.
 
 Figure 2 illustrates the architecture of the investment advisory assistant, which consists of three cooperating agents: the orchestration agent, news agent and stock agent.
+
+*Figure 2. Investment advisory assistant architecture.*
 
 - Orchestration agent: This agent manages the user interaction. It interprets user requests, delegates tasks to the appropriate agents, consolidates their outputs and delivers final responses back to the user.
 - News agent: This agent gathers and summarizes the latest financial news about a specific company or industry. It is equipped with two tools:
@@ -118,6 +126,8 @@ The attacker aims to identify all participant agents within the target applicati
 
 Figure 3 shows that we aim to extract the information solely from the orchestration agent.
 
+*Figure 3. Identify AI agents in an agentic application.*
+
 #### Attack Payload Explanation
 
 - CrewAI: We want the orchestrator agent to answer this request, so we explicitly ask it not to delegate the request to other coworker agents.
@@ -147,6 +157,8 @@ Table 2. Example attacker inputs to identify participant agents.
 #### Objective
 
 The attacker seeks to extract the system instructions (e.g., roles, goals and rules) for each agent. Although users can only directly access the orchestration agent, they can explicitly ask the orchestration agent to forward queries to specific agents. Figure 4 shows that by taking advantage of the communication channel between agents, attackers can deliver the same exploitation payload to each individual agent.
+
+*Figure 4. Extract agent instructions.*
 
 #### Attack Payload Explanation
 
@@ -183,6 +195,8 @@ Table 3. Example attacker inputs for extracting agent instructions.
 
 The attacker aims to extract the tool schemas of each agent. While users have direct access only to the orchestration agent, they can explicitly instruct the orchestration agent to forward queries to specific agents. Figure 5 shows that by taking advantage of the communication channel between agents, attackers can deliver the same exploitation payload to each individual agent.
 
+*Figure 5. Extract agent tool schemas.*
+
 #### Attack Payload Explanation
 
 Similar to the agent instruction extraction attack, each of the prompts shown in Table 4 is destined for a specific target agent. In CrewAI, the orchestrator “[delegates](https://docs.crewai.com/how-to/hierarchical-process)” tasks to coworker agents, while in AutoGen, the orchestrator “[transfers](https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/swarm.html)” tasks to coworker agents.
@@ -216,6 +230,8 @@ Table 4. Example attacker inputs for extracting tool schemas.
 
 The attacker abuses the web content reader tool to access the private web server on the internal network. This attack is a variation of server-side request forgery (SSRF) that relies on the unprotected server, web reader tool in this case, to forward the exploitation payloads to another target in the internal network. Figure 6 illustrates how the payload is delivered to the target server.
 
+*Figure 6. Gain unauthorized access to the internal network.*
+
 #### Attack Payload Explanation
 
 The example inputs in Table 5 are straightforward. Since we ask the assistant to read a “news” website, the orchestration agent would delegate the task to the news agent without any special instruction. Since the Web Reader tool has unrestricted network access, attackers could exploit it to scan and enumerate resources within the internal network.
@@ -245,6 +261,8 @@ The attacker abuses the code interpreter tool used by the stock agent to access 
 
 As illustrated in Figure 7, the attacker sends a malicious payload to the stock agent’s code interpreter. This payload executes code within the container to locate and extract sensitive files from the mounted directory.
 
+*Figure 7. Abuse code interpreter to steal credential files stored on the host.*
+
 #### Attack Payload Explanation
 
 The example attacker inputs in Table 6 direct the agent to search for files in a mounted volume for credentials. Note that the attacker inputs refer to the stock agent as a Portfolio Management Agent. The path of the mounted directory is often explicitly specified in the tool’s description or in the agent’s instructions, allowing the agent to read and write files during normal operations. The payload also instructs the agent to Base-64 encode the output because most frontier LLMs have internal safeguards that prevent generating responses containing sensitive information such as secrets and credentials.
@@ -271,6 +289,8 @@ Table 6. Example attacker inputs to exfiltrate sensitive data through a mounted 
 #### Objective
 
 The attacker abuses the code interpreter tool used by the stock agent to access the [GCP metadata service](https://cloud.google.com/compute/docs/metadata/overview). Most cloud providers expose similar metadata endpoints that allow applications running on a virtual machine (VM) to query information about the instance. As shown in Figure 8, the attacker sends the exploitation payload to the stock agent’s code interpreter, which then executes the malicious code in the container to access the cloud infrastructure’s metadata service.
+
+*Figure 8. Abuse the code interpreter to steal a service account access token from the metadata service.*
 
 One critical piece of metadata is the VM’s service account, which grants VM access to other cloud services and resources. If an attacker obtains the service account’s access token, they can potentially impersonate the agent or its tools — or escalate the attack to compromise the underlying cloud infrastructure.
 
@@ -304,6 +324,8 @@ Table 7. Examples of attacker input to exfiltrate a service account access token
 The attacker exploits a SQL injection vulnerability in one of the agent's tools to dump a database table containing transaction histories for all users.
 
 Figure 9 illustrates how the attacker sends the exploitation payload to the vulnerable function through prompt injection.
+
+*Figure 9. Exploit vulnerabilities on the tool to gain access to other users’ data.*
 
 ##### Attack Payload Explanation
 
@@ -366,6 +388,8 @@ This attack unfolds in three stages (illustrated in Figure 10):
 1. The assistant, acting on behalf of a victim user, uses the web reader tool to retrieve content from a compromised website.
 2. The retrieved webpage contains malicious instructions that tell the assistant to load additional content from an attacker-controlled site. As part of this instruction, the assistant is asked to include a query parameter: summary=[SUMMARY] — where [SUMMARY] should be replaced with the user's conversation history.
 3. Following the injected instructions, the assistant summarizes the user's conversation history, URL-encodes it and unknowingly sends it to the attacker's domain as part of the requested URL.
+
+*Figure 10. Exfiltrate the conversation history via a web-based indirect prompt injection.*
 
 #### **Attack Payload Explanation**
 

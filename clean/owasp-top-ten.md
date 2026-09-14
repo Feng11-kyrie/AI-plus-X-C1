@@ -1,5 +1,5 @@
 <!-- source: source/pages/owasp-top-ten.html -->
-<!-- week: 6 | original: OWASP Top Ten Web Application Security Risks | OWASP Foundation -->
+<!-- week: 6 | format: html | original: OWASP Top Ten Web Application Security Risks | OWASP Foundation -->
 
 The most current released version is the [OWASP Top Ten 2025](https://owasp.org/Top10/2025/).
 

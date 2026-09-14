@@ -1,5 +1,5 @@
 <!-- source: source/pages/claude-code-best-practices.html -->
-<!-- week: 4 | original: Claude Code overview - Claude Code Docs -->
+<!-- week: 4 | format: html | original: Claude Code overview - Claude Code Docs -->
 
 Claude Code is an AI-powered coding assistant that helps you build features, fix bugs, and automate development tasks. It understands your entire codebase and can work across multiple files and tools to get things done.
 
@@ -13,18 +13,40 @@ account. The Terminal CLI and VS Code also support
 third-party providers
 .
 
-- Terminal
-- VS Code
-- Desktop app
-- Web
-- JetBrains
+-
+
+   Terminal
+
+-
+
+   VS Code
+
+-
+
+   Desktop app
+
+-
+
+   Web
+
+-
+
+   JetBrains
 
 The full-featured CLI for working with Claude Code directly in your terminal. Edit files, run commands, and manage your entire project from the command line.
 To install Claude Code, use one of the following methods:
 
-- Native Install (Recommended)
-- Homebrew
-- WinGet
+-
+
+   Native Install (Recommended)
+
+-
+
+   Homebrew
+
+-
+
+   WinGet
 
 macOS, Linux, WSL:
 

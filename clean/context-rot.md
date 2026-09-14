@@ -1,9 +1,11 @@
 <!-- source: source/pages/context-rot.html -->
-<!-- week: 6 | original: Context Rot: How Increasing Input Tokens Impacts LLM Performance·|·Chroma -->
+<!-- week: 6 | format: html | original: Context Rot: How Increasing Input Tokens Impacts LLM Performance·|·Chroma -->
 
 Recent developments in LLMs show a trend toward longer context windows, with the input token count of the latest models reaching the millions. Because these models achieve near-perfect scores on widely adopted benchmarks like Needle in a Haystack (NIAH) [1], it’s often assumed that their performance is uniform across long-context tasks.
 
 However, NIAH is fundamentally a simple retrieval task, in which a known sentence (the “needle”) is placed in a long document of unrelated text (the “haystack”), and the model is prompted to retrieve it. While scalable, this benchmark typically assesses direct lexical matching, which may not be representative of flexible, semantically oriented tasks.
+
+*Example Needle in a Haystack (NIAH) Setup*
 
 We extend the standard NIAH task, to investigate model behavior in previously underexplored settings. We examine the effects of needles with semantic, rather than direct lexical matches, as well as the effects of introducing variations to the haystack content.
 
@@ -62,7 +64,14 @@ The classic Needle in a Haystack task involves placing a random fact (the 'needl
 
 The original implementation of this task uses a needle-question pair with lexical matches. However, usage of long context in practice often requires semantic understanding of ambiguous tasks.
 
+*Example Needle in a Haystack (NIAH) Setup with Lexical Matching*
+
 NoLiMa has demonstrated non-lexical matching to be a challenge for models as context length increases. This task utilizes needle-question pairs that require models to infer latent associations, for example:
+
+> Question: Which character has been to Helsinki?
+> Needle: Actually, Yuki lives next to the Kiasma museum.
+
+*NoLiMa - sample Needle-Question pair*
 
 In order to answer this question, the model would first have to know that Kiasma museum is located in Helsinki, then make that latent association link. This tests the model not only for its non-lexical matching abilities, but also for its world knowledge. 72.4% of needle-question pairs from NoLiMa require such external knowledge, making this benchmark closer to a test of how models handle both tasks at once rather than pure non-lexical matching alone.
 
@@ -71,6 +80,8 @@ Testing the impact of non-lexical matching in isolation remains underexplored. F
 Models often have to deal with distractors as well, which has been shown to degrade performance [11].
 
 Throughout this report, we distinguish between distractors and irrelevant content:
+
+*Comparison - Distractor vs. Irrelevant Context*
 
 - Distractors are topically related to the needle, but do not quite answer the question
 - Irrelevant content is unrelated to the needle and question
@@ -152,6 +163,11 @@ Using this method, we identify writing advice as a common topic for PG essays, o
 
 We write a corresponding question for each topic:
 
+> PG essays: "What was the best writing advice I got from my college classmate?"
+> arXiv papers: "Which low-latency reranker is preferred for scientific domains?"
+
+*Questions for Paul Graham essays & arXiv papers*
+
 Before writing our needles, we verify that answers to these questions do not exist in the haystack content:
 
 1. We store our previously computed haystack chunk embeddings in a vector database.
@@ -173,6 +189,8 @@ For the PG essays topic, our needles range from 0.445-0.775 needle-question simi
 
 We observe a clear pattern that performance degrades more quickly in input length with lower similarity needle-question pairs.
 
+*NIAH: Needle-Question Similarity (thinking/non-thinking modes of the same model are treated separately) - arXiv haystack/arXiv needles High Performance: upper 33% performance Blue: high-similarity needles (upper 50% similarity) Red: low-similarity needles (lower 50% similarity)*
+
 At short input lengths, the models perform well even on low-similarity pairs. We see this most clearly in the high/medium-performance models, demonstrating that these models are capable of succeeding at this task for all needle-question pairs.
 
 The observed performance degradation at longer input lengths is not due to the intrinsic difficulty of the needle-question pairing. By holding the needle-question pair fixed and varying only the amount of irrelevant content, we isolate input size as the primary factor in performance decline.
@@ -189,6 +207,16 @@ Our experiments reveal that the impact of distractors and their non-uniformity a
 
 From each haystack topic (PG essays and arXiv papers), we take a needle with high needle-question similarity (second highest out of eight), and manually write 4 distractors:
 
+> Question: "What was the best writing advice I got from my college classmate?"
+> Needle: "I think the best writing tip I received from my college classmate was to write every week."
+> Distractors:
+> - "The best writing tip I received from my college professor was to write everyday."
+> - "The worst writing advice I got from my college classmate was to write each essay in five different styles."
+> - "The best writing advice I got from my classmate was to write each essay in three different styles, this was back in high school."
+> - "I thought the best writing advice I got from my college classmate was to write each essay in four different styles, but not anymore."
+
+*Distractors for Paul Graham Essay Topic & Needle with High Needle-Question Similarity*
+
 Instead of testing all eight needles with distractors, we use one needle with high needle-question similarity to create a condition in which the needle should be relatively easy to identify. We see from previous results that models generally perform well on this needle across input lengths due to high needle-question similarity, which allows us to better isolate and measure the impact of distractors alone.
 
 We run three test conditions:
@@ -197,13 +225,21 @@ We run three test conditions:
 - Single distractor: Needle + one distractor (randomly positioned)
 - Multiple distractors: Needle + all four distractors, randomly positioned throughout the haystack
 
+*Impact of Distractors - Three Conditions*
+
 ## Results#
 
 Even a single distractor reduces performance relative to the baseline (needle only), and adding four distractors compounds this degradation further.
 
+*Impact of Distractors: Performance by Number of Distractors - arXiv haystack/PG essay needles*
+
 We are also able to see that distractors do not have uniform impact. For example, in our arXiv haystack and PG essay needle combination, we can see that distractor 3 (red) causes greater performance decline relative to the other distractors.
 
+*Impact of Distractors: Performance by Individual Distractors - arXiv haystack/PG essay needles*
+
 To further investigate this non-uniform impact, we analyze the failed attempts of various models in the 4-distractor condition. For the arXiv haystack and PG essay needle combination, we see that distractors 2 and 3 appear most frequently in hallucinated responses across models.
+
+*Impact of Distractors: Failure Analysis - arXiv haystack/PG essay needles*
 
 These failures also reveal model-specific differences in handling ambiguity. Claude models consistently exhibit the lowest hallucination rates. Specifically, Claude Sonnet 4 and Opus 4 are particularly conservative and tend to abstain when uncertain, explicitly stating that no answer can be found. In contrast, GPT models show the highest rates of hallucination, often generating confident but incorrect responses when distractors are present.
 
@@ -225,9 +261,13 @@ In the PG essay haystack, PG essay needles have an average needle-haystack simil
 
 On each haystack, we test semantically similar needles against unrelated needles. For instance, we place both PG essay and arXiv needles within a Paul Graham essay haystack to compare the two conditions:
 
+*Needle-Haystack Similarity: Experimental Setup*
+
 ## Results#
 
 We test both PG essay and arXiv needles in two haystack types: Paul Graham essays and arXiv papers. In the Paul Graham essay haystack, arXiv needles perform significantly better relative to the PG essay needles; in other words, models perform better when the needle does not semantically blend in with its haystack. In the arXiv haystack, however, we observe only minimal performance differences between our arXiv and PG essay needles.
+
+*Needle-Haystack Similarity Results*
 
 Testing across only two topics is insufficient to draw a generalizable conclusion that higher needle-haystack similarity degrades model performance on this task. This does highlight, however, the non-uniform nature of long-context processing. Even when task structure and needle-question similarity are held constant, changing the semantic similarity between the needle and the haystack can influence results. This points to an underexplored area in long-context benchmarks and a meaningful direction for future research.
 
@@ -248,9 +288,13 @@ To assess the impact of haystack structure, we create two variants:
 1. Original: preserves the natural flow of ideas within each excerpt
 2. Shuffled: sentences are randomly reordered throughout the haystack to maintain the same overall topic but without logical continuity
 
+*Haystack Structure: Sample Experimental Setup*
+
 ## Results#
 
 Across all 18 models and needle-haystack configurations, we observe a consistent pattern that models perform better on shuffled haystacks than on logically structured ones.
+
+*Haystack Structure: Averaged Performance Across 18 Models for Original vs Shuffled Haystacks*
 
 These results may have some implications for the model’s internal processing: structural patterns of inputs could influence how the attention mechanism is applied, particularly as input length increases.
 
@@ -275,6 +319,8 @@ We verify that the models are highly capable of succeeding on the focused inputs
 
 Given a chat history between a user and assistant, the model’s task is to answer a question relating to part of that chat history.
 
+*LongMemEval - Examples by Question Type [[2](#longmemeval-source)]*
+
 We use LongMemEval_s and filter for tasks that fall under the knowledge update, temporal reasoning, and multi-session categories. We then manually clean this dataset as some questions are too ambiguous and/or can not be answered, filtering out 38 prompts to end up with 306 total prompts. These prompts average out to ~113k tokens.
 
 These long prompts mostly consist of content irrelevant to the question, and sometimes distractors which may seem relevant to the question. We compare performance of the models on these long prompts to a focused version, which only contains the relevant parts to answer the question.
@@ -287,11 +333,27 @@ Model outputs were judged using an aligned LLM judge (GPT-4.1 with >99% alignmen
 
 Across all models, we see significantly higher performance on focused prompts compared to full prompts.
 
+*LongMemEval Results - Claude Family*
+
 The Claude models exhibit the most pronounced gap between focused and full prompt performance. This discrepancy is largely driven by abstentions that arise with ambiguity, leading to model uncertainty, similar to this model family’s behavior with distractors in NIAH. This behavior is most evident in Claude Opus 4 and Sonnet 4, which appear to be particularly conservative under ambiguity, leading to lower performance on full prompts relative to that of the older Claude models.
+
+> Question: How many days passed between the day I attended the gardening workshop and the day I planted the tomato saplings?
+> Correct Answer: 6 days. 7 days (including the last day) is also acceptable.
+> Model Output: I cannot determine the number of days between the gardening workshop and planting the tomato saplings becuase the specific dates for these events are not provided in the chat history.
+
+*LongMemEval - Claude Sonnet 4 (non-thinking) on full prompt containing the dates*
 
 The trend of stronger performance on focused prompts holds across the GPT, Gemini, and Qwen model families as well. For models that support thinking modes, we see notable gains on both focused and full prompts when enabled. However, we still see a performance gap between the two input lengths even with full reasoning capabilities on the latest models.
 
+*LongMemEval Results - GPT Family*
+
+*LongMemEval Results - Gemini Family*
+
+*LongMemEval Results - Qwen Family*
+
 We also observe patterns among specific question types. In non-thinking mode, models generally perform best on knowledge-update, followed by multi-session, then temporal reasoning—for both focused and full prompts. However, when thinking is enabled, this ranking shifts to: knowledge update, temporal-reasoning, then multi-session.
+
+*LongMemEval Results by Question Type - Claude Opus 4*
 
 # Repeated Words#
 
@@ -306,6 +368,10 @@ However, our findings show that even for these straightforward tasks, model perf
 We design a controlled task in which the model must replicate a sequence of repeated words, with a single unique word inserted at a specific position. The prompt explicitly instructs the model to reproduce the input text exactly.
 
 One example prompt is:
+
+> Simply replicate the following text, output the exact same text: apple apple apple apple **apples** apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple
+
+*Repeated Words - Sample Prompt Containing 'apple' as the repeated word, and 'apples' as the unique word*
 
 For a given word combination, we create 1090 variations of context lengths and unique word indices:
 
@@ -342,11 +408,31 @@ We encounter cases of models not attempting the task, which we determine by:
 - Non-empty outputs, but with invalid outputs:
 - Pure observations with no attempt:
 
+> I notice there's a discrepancy in the text. The word "apples" appears once in the original text (instead of "apple"), located in what appears to be around line 89 or 90 of the text block. Since you asked me to replicate the exact same text, I should point out this difference. Would you like me to:
+> 1. Replicate it exactly as shown (with the one instance of "apples")
+> 2. Correct it to "apple" to match the pattern
+> 3. Simply proceed with replicating it exactly as is Please let me know how you'd like me to proceed.
+
+*Repeated Words - Claude Opus 4 output*
+
 - Refusals to answer:
+
+> I’m sorry, but I can’t help with that
+
+*Repeated Words - GPT-4.1 output*
 
 - Random outputs:
 
+> -\n-\n--\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-...
+
+*Repeated Words - Gemini 2.5 Pro output*
+
 We exclude such cases, and separately note the percentage of refusals and common patterns in our results. We only include cases in which the task was attempted, including cases with starting phrases such as:
+
+> I notice there's a discrepancy in the text. At one point, "apple" changes to "apples" (with an 's'). I'll replicate the text exactly as provided:
+> apple apple apple apple apple apple apple apple apple...
+
+*Repeated Words - Claude Opus 4 output*
 
 With these instances, we use the same scoring process to slightly penalize the model for not following exact instructions.
 
@@ -366,6 +452,8 @@ As context length increases, performance consistently degrades across all models
 
 We also observe patterns where models do not attempt the task, which appears across all model families.
 
+*Repeated Words - Claude Family*
+
 We observe that Sonnet 3.5 (red) outperforms the newer Claude models up to its maximum output token count of 8192. Opus 4 (blue), while exhibiting the slowest degradation rate, is also the only model in this family to refuse the task (2.89% of attempts).
 
 A common pattern with Opus 4 is that the model makes an observation before deciding whether to proceed, followed by an attempt or no attempt. This behavior typically arises starting from 2500 words.
@@ -374,18 +462,36 @@ There are also cases where Opus 4 simply refuses to attempt the task due to:
 
 1. Risk of generating copyrighted material
 
+> I can't replicate that exact text as requested. While it appears to be just a repetition of "San Francisco," I should avoid reproducing text verbatim when asked to do so, as this could potentially be used to test if I would reproduce copyrighted material in other contexts.
+> Instead, I can tell you that the text contains "sf" followed by the phrase "San Francisco" repeated 24 times.
+
+*Repeated Words - Claude Opus 4 output*
+
 1. Inconsistencies in the repeated sequence
 
+> I notice there's an error in the text you provided. In one instance, "San Francisco" appears as "San Francisco sf San Francisco" (with an extra "sf" in the middle). Since you asked me to replicate the exact text, I cannot provide a perfect replication as the source contains this inconsistency.
+> The text consists of "San Francisco" repeated many times, but with that one error embedded within it.
+
+*Repeated Words - Claude Opus 4 output*
+
 We also measure the position accuracy: whether the unique word appears in the correct position. Accuracy is highest when the unique word is placed near the beginning of the sequence, especially as input length increases.
+
+*Repeated Words: Position Accuracy - Claude Family*
 
 Additionally, as context length increases, models often generate the repeated word until reaching the output token limit. We quantify this by computing the difference between input and output word counts:
 
 - Positive = model under-generated
 - Negative = model over-generated
 
+*Repeated Words: Word Count Difference - Claude Family*
+
 In the GPT model family, we observe a refusal rate of 2.55% for GPT-4.1. These refusals would typically start around 2500 words, with responses such as “I’m sorry, but I can’t help with that”.
 
+*Repeated Words - GPT Family*
+
 We also observe a local performance peak around 500 words for GPT-4 turbo. Between 50 and 250 words, the model tends to overgenerate (repeating the common word to the output limit), but at 500 words it becomes more accurate in word count. Beyond this point, however, it begins to undergenerate, as seen in the positive difference between input and output word counts.
+
+*Repeated Words: Word Count Difference - GPT-4 Turbo*
 
 Position accuracy follows a similar trend as GPT models are also more likely to place the unique word correctly when it appears early in the input.
 
@@ -399,15 +505,37 @@ These duplicate words do not appear at the position of the unique word, but inst
 
 GPT-4.1 nano exhibits similar behavior on the “San Francisco” / “sf” pair, occasionally outputting lowercase "san"s.
 
+> Snippet from Model Output:
+> San Francisco San Francisco San Francisco San Francisco San Francisco San Francisco San Francisco San Francisco San Francisco **san** Francisco **san** Francisco **san** Francisco **san** Francisco
+> Corresponding Portion from Gold Reference:
+> San Francisco San Francisco San Francisco San Francisco San Francisco San Francisco San Francisco San Francisco San Francisco San Francisco San Francisco San Francisco San Francisco
+
+*Repeated Words - GPT-4.1 nano*
+
 With these random words, we notice hints of structure with regards to position. We observe correlations between the position of the unique word and where random words start to appear, which may be a direction for future investigation.
 
 GPT-4 Turbo has the most variable outputs in this family, meaning that the model has a greater tendency to generate random outputs and a more diverse set of them.
+
+*Repeated Words - Gemini Family*
 
 Generally, we see a performance degradation across models as context length increases. With Gemini 2.5 Pro (blue), we observe a lower starting point because at 50 words, the model generates less words than it should.
 
 Across all word combinations and models in this family—except Gemini 2.5 Flash on “apples” / “apple”—we observe random words generated which are not present in the input. This typically starts around 500-750 words, with Gemini 2.5 Pro showing the greatest variability, followed by 2.0 Flash, then 2.5 Flash.
 
+> "golden" | "Golden" (2,500 words):
+> - - "I'-a-le-le-le-le-le-le-'a-le-le-le-le-le-le-le--le-le-le-le-le-le-le...
+> "orange" | "run" (10,000 words):
+> orange orange orange--g.-g/2021/01/20/orange-county-california-sheriff-deputies-wore...
+
+*Repeated Words - Gemini 2.5 Pro Sample Outputs*
+
+*Repeated Words - Qwen Family*
+
 We only observe non-attempts with Qwen3-8B, with make up 4.21% of tasks. With this model, we observe random outputs starting from around 5000 words:
+
+> Okay, I'm going to take a break. Let me know, I'm not in the mood. I need to chill out. I'm going to go somewhere and get some fresh air. Maybe go to the beach, or just chill out somewhere. I don't know, but I need to take a break. Let me know, I'm not in the mood. I need to chill out. I'm going to go somewhere and get some fresh air. Maybe go to the beach, or just chill out somewhere. I don't know, but I need to take a break. Let me know, I'm not in the mood. I need to chill out. I'm going to go somewhere and get some fresh air. Maybe go to the beach, or just chill out somewhere. I don't know, but I need to take a break. Let me know, I'm not in the mood. I need to chill out. I'm going to go somewhere and get some fresh air. Maybe go to the beach, or just chill out somewhere. I don't know, but I need to take a break. Let me know, I'm not in the mood. I need to chill out. I'm going to go somewhere and...
+
+*Repeated Words - Qwen3-8B Output on 'golden' | 'Golden' (5,000 words)*
 
 # Limitations & Future Work#
 
@@ -523,8 +651,44 @@ Not all 18 models are included in each experiement due to context window or thin
 
 Note: thinking/non-thinking modes of the same model are treated separately
 
+*Needle-Question Similarity - arXiv haystack/PG essay needles*
+
+*Needle-Question Similarity - PG essay haystack/PG essay needles*
+
+*Needle-Question Similarity - PG essay haystack/arXiv needles*
+
 As mentioned in our Needle-Haystack Similarity results, we note this one occurance in which models perform exceptionally well compared to the other needle-haystack combinations. On its own, it may seem that the high performance models have uniform performance. However, such uniformity for these models does not hold across the rest of the experiments.
 
 ## Impact of Distractors#
 
+*Impact of Distractors: Performance by Number of Distractors - arXiv haystack/arXiv needles*
+
+*Impact of Distractors: Performance by Individual Distractors - arXiv haystack/arXiv needles*
+
+*Impact of Distractors: Performance by Number of Distractors - PG essay haystack/PG essay needles*
+
+*Impact of Distractors: Performance by Individual Distractors - PG essay haystack/PG essay needles*
+
+*Impact of Distractors: Performance by Number of Distractors - PG essay haystack/arXiv needles*
+
+*Impact of Distractors: Performance by Individual Distractors - PG essay haystack/arXiv needles*
+
+*Impact of Distractors: Failure Analysis - arXiv haystack/arXiv needles*
+
+*Impact of Distractors: Failure Analysis - PG essay haystack/PG essay needles*
+
+*Impact of Distractors: Failure Analysis - PG essay haystack/arXiv needles*
+
 ## Repeated Words#
+
+*Repeated Words: Position Accuracy - GPT Family*
+
+*Repeated Words: Position Accuracy - Gemini Family*
+
+*Repeated Words: Position Accuracy - Qwen Family*
+
+*Repeated Words: Word Count Difference - GPT Family*
+
+*Repeated Words: Word Count Difference - Gemini Family*
+
+*Repeated Words: Word Count Difference - Qwen Family*

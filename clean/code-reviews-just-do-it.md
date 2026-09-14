@@ -1,5 +1,5 @@
 <!-- source: source/pages/code-reviews-just-do-it.html -->
-<!-- week: 7 | original: Code Reviews: Just Do It -->
+<!-- week: 7 | format: html | original: Code Reviews: Just Do It -->
 
 In [Humanizing Peer Reviews](https://web.archive.org/web/20060315135514/http://www.processimpact.com/articles/humanizing_reviews.html), Karl Wiegers starts with a powerful pronouncement:
 
@@ -29,6 +29,8 @@ professional development
 
 ## Related posts
 
+![Civilized Discourse Construction Kit](/content/images/size/w600/2025/02/discourse-logo-large.png)
+
 ### [Civilized Discourse Construction Kit](/civilized-discourse-construction-kit/)
 
 Occasionally, startups will ask me for advice. That’s a shame, because I am a terrible person to ask for advice. The conversation usually goes something like this:
@@ -37,9 +39,13 @@ We’d love to get your expert advice on our thing.
 
 I probably don’t use your thing. Even if I tried
 
+![How to Stop Sucking and Be Awesome Instead](/content/images/size/w600/2025/05/image-638.png)
+
 ### [How to Stop Sucking and Be Awesome Instead](/how-to-stop-sucking-and-be-awesome-instead/)
 
 I’ve been fortunate to have some measure of success in my life, primarily through this very blog over the last eight years, and in creating Stack Overflow and Stack Exchange over the last four years. With the birth of our twin girls, I’ve had a few months to
+
+![Books: Bits vs. Atoms](/content/images/size/w600/2025/05/imagining-language-carved-book-art.jpg)
 
 ### [Books: Bits vs. Atoms](/books-bits-vs-atoms/)
 
@@ -51,11 +57,15 @@ More specifically, so many beautiful ideas have been helplessly trapped in phys
  * They take up too much space.
  * They have to
 
+![The Vast and Endless Sea](/content/images/size/w600/2025/02/the-vast-and-endless-sea-inspirational-quote.jpg)
+
 ### [The Vast and Endless Sea](/the-vast-and-endless-sea/)
 
 After we created Stack Overflow, some people were convinced we had built a marginally better mousetrap for asking and answering questions. The inevitable speculation began: can we use your engine to build a Q&A site about {topic}? Our answer was Stack Exchange. Pay us $129 a month (and
 
 ## Recent Posts
+
+![map of the United States via rgmii.org showing all 3,143 counties by rural (gold) / metro (grey) and population](/content/images/size/w600/2026/02/rgmii-metro-vs-rural-counties-usa-2026-1.png)
 
 ### [Launching The Rural Guaranteed Minimum Income Initiative](/launching-the-rural-guaranteed-minimum-income-initiative/)
 
@@ -65,13 +75,19 @@ It's been a year since I invited Americans to join us in a pledge to Share the A
 
 2. Within the next five years, also contribute public dedications of time or
 
+![The Road Not Taken is Guaranteed Minimum Income](/content/images/size/w600/2025/03/IMG_7003-1.jpg)
+
 ### [The Road Not Taken is Guaranteed Minimum Income](/the-road-not-taken-is-guaranteed-minimum-income/)
 
 The dream is incomplete until we share it with our fellow Americans.
 
+![Let's Talk About The American Dream](/content/images/size/w600/2025/03/rebuildingamericandream25-page_v.2.jpg)
+
 ### [Let's Talk About The American Dream](/lets-talk-about-the-american-dream/)
 
 A few months ago I wrote about what it means to stay gold — to hold on to the best parts of ourselves, our communities, and the American Dream itself. But staying gold isn’t passive. It takes work. It takes action. It takes hard conversations that ask us to confront
+
+![Stay Gold, America](/content/images/size/w600/2025/02/share-landscape-1.png)
 
 ### [Stay Gold, America](/stay-gold-america/)
 

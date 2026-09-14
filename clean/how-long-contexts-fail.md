@@ -1,5 +1,5 @@
 <!-- source: source/pages/how-long-contexts-fail.html -->
-<!-- week: 3 | original: How Long Contexts Fail -->
+<!-- week: 3 | format: html | original: How Long Contexts Fail -->
 
 ![](/img/overload.jpg)
 

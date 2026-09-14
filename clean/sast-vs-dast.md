@@ -1,5 +1,5 @@
 <!-- source: source/pages/sast-vs-dast.html -->
-<!-- week: 6 | original: SAST vs. DAST vs. RASP: Comparing Application Security Testing Methods | Splunk -->
+<!-- week: 6 | format: html | original: SAST vs. DAST vs. RASP: Comparing Application Security Testing Methods | Splunk -->
 
 Global spending on information security is set to reach [$212 billion by 2025](https://www.gartner.com/en/newsroom/press-releases/2024-08-28-gartner-forecasts-global-information-security-spending-to-grow-15-percent-in-2025). This represents a growth of 15% from 2024. According to Gartner, the rise of [generative AI](/en_us/blog/learn/generative-ai.html) and cloud adoption are key reasons for this rapid increase. The analyst firm further predicts that GenAI will play a part in 17% of all [cyberattacks](/en_us/blog/learn/cybersecurity-attacks.html) by 2027.
 

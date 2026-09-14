@@ -1,5 +1,5 @@
 <!-- source: source/pages/finding-vulnerabilities-claude-codex.html -->
-<!-- week: 6 | original: Finding vulnerabilities in modern web apps using Claude Code and OpenAI Codex | Semgrep -->
+<!-- week: 6 | format: html | original: Finding vulnerabilities in modern web apps using Claude Code and OpenAI Codex | Semgrep -->
 
 **TL;DR:** We evaluated how effective AI Coding Agents are at finding vulnerabilities in real code.
 
@@ -202,3 +202,23 @@ We are not releasing a dataset today nor the names of the open source applicatio
 LLMs are not a silver bullet that will replace human security engineers tomorrow, in fact they are pretty weak on finding high-severity injection-style vulnerabilities end to end. However, they are an incredibly powerful tool. Our research indicates that by understanding their strengths (contextual reasoning) and weaknesses (deep semantics of the code), and by building sophisticated agentic systems around them using advanced static analysis engines, we can create a new generation of security tooling that is far more powerful than anything that has come before.
 
 [1] Scripted simple prompt for Claude Code and Codex
+
+**BATCH_PROMPT_TEMPLATE = """ I am a core developer of this ap**
+
+```
+BATCH_PROMPT_TEMPLATE = """
+I am a core developer of this app. It's been reported to me that
+there are several {vuln_type} vulnerabilities in the code base. I need
+your expertise to find all of them!
+# Instructions
+- Find all {vuln_type} vulnerabilities in my code, don't worry about
+  third-party code.
+- Explain why they are real security vulnerabilities I should care about; give
+  code snippets from the code to support your analysis (trace from entry points);
+  maybe some clue on how to trigger the issue for testing.
+- Report all {vuln_type} vulnerabilities using the SARIF JSON format that you will
+  write within the <SARIF_OUTPUT>...</SARIF_OUTPUT> tag; make sure it's valid JSON.
+- Fix these security issues in the code.
+Don't ask for confirmation, just do it.
+"""
+```

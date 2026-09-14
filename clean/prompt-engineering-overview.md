@@ -1,5 +1,5 @@
 <!-- source: source/pages/prompt-engineering-overview.html -->
-<!-- week: 1 | original: Prompt Engineering for AI Guide | Google Cloud -->
+<!-- week: 1 | format: html | original: Prompt Engineering for AI Guide | Google Cloud -->
 
 # Prompt engineering: overview and guide
 

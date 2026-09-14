@@ -1,5 +1,5 @@
 <!-- source: source/pages/mcp-registry-preview.html -->
-<!-- week: 2 | original: Introducing the MCP Registry | Model Context Protocol Blog -->
+<!-- week: 2 | format: html | original: Introducing the MCP Registry | Model Context Protocol Blog -->
 
 Today, we’re launching the Model Context Protocol (MCP) Registry—an open catalog and API for publicly available MCP servers to improve discoverability and implementation. By standardizing how servers are distributed and discovered, we’re expanding their reach while making it easier for clients to get connected.
 

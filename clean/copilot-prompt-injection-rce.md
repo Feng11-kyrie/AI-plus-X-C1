@@ -1,5 +1,5 @@
 <!-- source: source/pages/copilot-prompt-injection-rce.html -->
-<!-- week: 6 | original: GitHub Copilot: Remote Code Execution via Prompt Injection (CVE-2025-53773) · Embrace The Red -->
+<!-- week: 6 | format: html | original: GitHub Copilot: Remote Code Execution via Prompt Injection (CVE-2025-53773) · Embrace The Red -->
 
 This post is about an important, but also scary, prompt injection discovery that leads to full system compromise of the developer’s machine in [GitHub Copilot and VS Code](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-53773).
 
