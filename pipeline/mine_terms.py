@@ -17,7 +17,6 @@ import csv
 import json
 import re
 import sys
-import html
 from collections import Counter
 from pathlib import Path
 
@@ -40,21 +39,27 @@ https http www com org net html pdf github com
 ACRO_STOP = {"HTML", "HTTP", "URL", "CSS", "JS", "OK", "US", "AI", "ID", "UI", "PDF", "FAQ"}
 
 
-def visible_text(p: Path) -> str:
-    raw = p.read_text(encoding="utf-8", errors="replace")
-    raw = re.sub(r"<(script|style|nav|footer|header|noscript)\b.*?</\1>", " ", raw, flags=re.S | re.I)
-    raw = re.sub(r"<[^>]+>", " ", raw)
-    return re.sub(r"\s+", " ", html.unescape(raw))
-
 
 def main() -> None:
     units = json.loads((ROOT / "source/units.json").read_text(encoding="utf-8"))["units"]
-    pages = [u for u in units if u["kind"] == "local" and u.get("status") == "ok"
-             and u.get("format") == "html"]
 
-    corpus = "\n".join(visible_text(ROOT / u["local_path"]) for u in pages)
+    # 语料取 clean/ 下的清洗产物，而**不是**原始 HTML。
+    # 早期版本自己写了一套 visible_text() 直接读 HTML，于是：
+    #   1. 术语频次被导航栏与页脚文字污染（"Slides"/"Subscribe" 之类会被算进去）；
+    #   2. 出现了第三份「HTML→文本」实现，与 clean.py 的判定各自演化，
+    #      恰恰违反本项目在 pipeline/README.md 里写明的「单一判定来源」原则。
+    # 清洗产物是管线的既定中间结果，术语挖掘理应消费它。
+    corpus_parts, used = [], 0
+    for u in units:
+        if u["kind"] != "local" or u.get("status") != "ok":
+            continue
+        f = ROOT / "clean" / (Path(u["local_path"]).stem + ".md")
+        if f.exists():
+            corpus_parts.append(f.read_text(encoding="utf-8"))
+            used += 1
+    corpus = "\n".join(corpus_parts)
     total_words = len(corpus.split())
-    print(f"语料：{len(pages)} 篇可用 HTML，约 {total_words:,} 词\n", file=sys.stderr)
+    print(f"语料：{used} 篇 clean/ 产物（HTML+PDF），约 {total_words:,} 词\n", file=sys.stderr)
 
     # ---- 1. 缩写词 ----
     acro = Counter(re.findall(r"\b[A-Z][A-Z0-9]{1,7}\b", corpus))
