@@ -27,7 +27,7 @@
 | **可用条目** | **29** | HTML 26 + PDF 3，内容完整可翻译 |
 | **确认无效条目** | **5** | 全部为 HTML，详见第二节 |
 | 达到 80% 所需最少条目 | 27 | ceil(34 × 0.8) |
-| 可用英文正文字数（估） | ≈ 65,156 | 仅 HTML 可用条目（按清洗后正文计），PDF 未计 |
+| 可用英文正文字数（估） | ≈ 67,127 | 仅 HTML 可用条目（按清洗后正文计），PDF 未计 |
 
 > ✅ **可行性**：可用条目 29 条 ≥ 目标 27 条。全部译完可达 85.3%。
 
@@ -41,8 +41,8 @@
 
 | # | 周 | 标题 | 文件 | 原始字节 | 清洗后正文 | 失效模式 | 处置建议 |
 |---|---|---|---|---|---|---|---|
-| 1 | W1 | Prompt Engineering Guide | `prompt-engineering-guide.html` | 128476 | 543 字符 | SPA 导航壳：__NEXT_DATA__ 载荷为空，真实正文在未被抓取的子页面中 | 需补抓其指向的子页面，或将本页降级为索引 |
-| 2 | W4 | Good Context Good Code | `good-context-good-code.html` | 9278 | 77 字符 | 访问码 / 付费墙拦截：抓到的只是登录门页 | 需人工获取 / 登录访问，或声明缺口 |
+| 1 | W1 | Prompt Engineering Guide | `prompt-engineering-guide.html` | 128476 | 530 字符 | SPA 导航壳：__NEXT_DATA__ 载荷为空，真实正文在未被抓取的子页面中 | 需补抓其指向的子页面，或将本页降级为索引 |
+| 2 | W4 | Good Context Good Code | `good-context-good-code.html` | 9278 | 25 字符 | 访问码 / 付费墙拦截：抓到的只是登录门页 | 需人工获取 / 登录访问，或声明缺口 |
 | 3 | W4 | Peeking Under the Hood of Claude Code | `peeking-under-the-hood-of-claude-code.html` | 550 | 428 字符 | 体积过小，抓到的是占位页 | 需人工导出，或声明缺口 |
 | 4 | W5 | How Warp Uses Warp to Build Warp | `how-warp-uses-warp.html` | 15515 | 7 字符 | Notion JS 渲染页：正文需 JavaScript 才能生成，静态抓取只能拿到外壳 | 需人工获取 / 登录访问，或声明缺口 |
 | 5 | W7 | Lessons from Millions of AI Code Reviews | `lessons-from-ai-code-reviews.html` | 0 | 1 字符 | 文件 0 字节，抓取完全失败 | 重新抓取源站 |
@@ -107,7 +107,7 @@ Topics：Course logistics、What is an LLM actually、How to prompt effectively
 |---|---|---|---|---|
 | EXTERNAL | external/link | Deep Dive into LLMs | `https://www.youtube.com/watch?v=7xTGNNLPyMI` | — |
 | EXTERNAL | external/link | AI Prompt Engineering: A Deep Dive | `https://www.youtube.com/watch?v=T9aRN5JkmL8` | — |
-| **LOW** | local/html | Prompt Engineering Guide | `source/pages/prompt-engineering-guide.html` | 82 |
+| **LOW** | local/html | Prompt Engineering Guide | `source/pages/prompt-engineering-guide.html` | 79 |
 | OK | local/html | Prompt Engineering Overview | `source/pages/prompt-engineering-overview.html` | 3,678 |
 | OK | local/pdf | How OpenAI Uses Codex | `source/pdfs/how-openai-uses-codex.pdf` | — |
 
@@ -122,7 +122,7 @@ Topics：Tool use and function calling、MCP (Model Context Protocol)
 | OK | local/html | MCP Food-for-Thought | `source/pages/mcp-food-for-thought.html` | 728 |
 | OK | local/html | MCP Introduction | `source/pages/mcp-introduction.html` | 4,721 |
 | OK | local/html | MCP Registry | `source/pages/mcp-registry-preview.html` | 796 |
-| OK | local/html | MCP Server Authentication | `source/pages/mcp-server-authentication.html` | 1,701 |
+| OK | local/html | MCP Server Authentication | `source/pages/mcp-server-authentication.html` | 1,909 |
 
 ### Week 3：The AI IDE ／ AI IDE
 
@@ -134,8 +134,8 @@ Topics：Context management and code understanding、PRDs for agents、IDE integ
 | EXTERNAL | external/link | How FAANG Vibe Codes | `https://x.com/rohanpaul_ai/status/1959414096589422619` | — |
 | OK | local/html | Devin: Coding Agents 101 | `source/pages/devin-coding-agents-101.html` | 3,488 |
 | OK | local/html | How Long Contexts Fail | `source/pages/how-long-contexts-fail.html` | 1,579 |
-| OK | local/html | Specs Are the New Source Code | `source/pages/specs-are-the-new-source-code.html` | 1,912 |
-| OK | local/html | Writing Effective Tools for Agents | `source/pages/writing-effective-tools-for-agents.html` | 3,123 |
+| OK | local/html | Specs Are the New Source Code | `source/pages/specs-are-the-new-source-code.html` | 1,914 |
+| OK | local/html | Writing Effective Tools for Agents | `source/pages/writing-effective-tools-for-agents.html` | 3,254 |
 
 ### Week 4：Claude Code and Agentic Coding ／ Claude Code 与智能体编程
 
@@ -146,7 +146,7 @@ Topics：Claude Code architecture and internals、Agentic coding workflows、Con
 | EXTERNAL | external/link | Super Claude | `https://github.com/SuperClaude-Org/SuperClaude_Framework` | — |
 | EXTERNAL | external/link | Awesome Claude Agents | `https://github.com/vijaythecoder/awesome-claude-agents` | — |
 | OK | local/html | Claude Best Practices | `source/pages/claude-code-best-practices.html` | 1,487 |
-| **LOW** | local/html | Good Context Good Code | `source/pages/good-context-good-code.html` | 13 |
+| **LOW** | local/html | Good Context Good Code | `source/pages/good-context-good-code.html` | 4 |
 | **PLACEHOLDER** | local/html | Peeking Under the Hood of Claude Code | `source/pages/peeking-under-the-hood-of-claude-code.html` | 44 |
 | OK | local/pdf | How Anthropic Uses Claude Code | `source/pdfs/how-anthropic-uses-claude-code.pdf` | — |
 
@@ -167,10 +167,10 @@ Topics：Security testing (SAST vs DAST)、Prompt injection attacks、AI-assiste
 | 状态 | 类型 | 标题 | 本地路径 / 来源 | 字数 |
 |---|---|---|---|---|
 | EXTERNAL | external/link | Vulnerability Prompt Analysis with O3 | `https://github.com/SeanHeelan/o3_finds_cve-2025-37899/blob/master/system_prompt_uafs.prompt` | — |
-| OK | local/html | Agentic AI Threats: Identity Spoofing and Im | `source/pages/agentic-ai-threats.html` | 7,798 |
-| OK | local/html | Context Rot: Understanding Degradation in AI | `source/pages/context-rot.html` | 6,271 |
+| OK | local/html | Agentic AI Threats: Identity Spoofing and Im | `source/pages/agentic-ai-threats.html` | 7,901 |
+| OK | local/html | Context Rot: Understanding Degradation in AI | `source/pages/context-rot.html` | 7,602 |
 | OK | local/html | Copilot Remote Code Execution via Prompt Inj | `source/pages/copilot-prompt-injection-rce.html` | 1,240 |
-| OK | local/html | Finding Vulnerabilities in Modern Web Apps U | `source/pages/finding-vulnerabilities-claude-codex.html` | 3,650 |
+| OK | local/html | Finding Vulnerabilities in Modern Web Apps U | `source/pages/finding-vulnerabilities-claude-codex.html` | 3,789 |
 | OK | local/html | OWASP Top Ten: The Leading Web Application S | `source/pages/owasp-top-ten.html` | 2,311 |
 | OK | local/html | SAST vs DAST | `source/pages/sast-vs-dast.html` | 2,943 |
 
@@ -182,7 +182,7 @@ Topics：Code review best practices、AI-assisted code review、Automated review
 |---|---|---|---|---|
 | OK | local/html | AI Code Review Implementation Best Practices | `source/pages/ai-code-review-best-practices.html` | 1,901 |
 | OK | local/html | Code Review Essentials for Software Teams | `source/pages/code-review-essentials.html` | 2,040 |
-| OK | local/html | Code Reviews: Just Do It | `source/pages/code-reviews-just-do-it.html` | 953 |
+| OK | local/html | Code Reviews: Just Do It | `source/pages/code-reviews-just-do-it.html` | 1,010 |
 | OK | local/html | How to Review Code Effectively | `source/pages/how-to-review-code-effectively.html` | 3,278 |
 | **EMPTY** | local/html | Lessons from Millions of AI Code Reviews | `source/pages/lessons-from-ai-code-reviews.html` | — |
 | OK | local/pdf | AI-Assisted Assessment of Coding Practices i | `source/pdfs/ai-assisted-code-review-assessment.pdf` | — |
