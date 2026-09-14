@@ -15,7 +15,8 @@
 | 脚本 | 输入 | 输出 | 作用 |
 |---|---|---|---|
 | `parse_syllabus.py` | `source/index.html` | `source/syllabus.json` | 把课程主页解析成结构化的 10 周大纲 |
-| `inventory.py` | `syllabus.json`、`page_map.json` | `source/units.json`、`source/INVENTORY.md` | 清点资料、识别坏页、**自证覆盖度分母** |
+| `inventory.py` | `syllabus.json`、`page_map.json` | `source/units.json`、`source/INVENTORY.md` | 清点资料、识别失效条目、**自证覆盖度分母** |
+| `clean.py` | `units.json` + 页面 HTML | `clean/*.md`、`pipeline/work/chunks.json`、`reports/clean-comparison.md` | 剔除样板 → Markdown → 按标题分块 |
 | `mine_terms.py` | `units.json` + 页面 HTML | 控制台 / `reports/term-candidates.csv` | 从语料挖掘术语候选（频率证据） |
 | `glossary_tool.py` | `glossary/glossary.csv` | `glossary/glossary.md` | 校验术语表自身无矛盾 + 渲染人读版 |
 
@@ -24,9 +25,20 @@
 ```bash
 python3 pipeline/parse_syllabus.py    # 1. 大纲 → JSON
 python3 pipeline/inventory.py         # 2. 清点 → units.json + INVENTORY.md
-python3 pipeline/mine_terms.py        # 3. 挖掘术语候选（改术语表前跑）
-python3 pipeline/glossary_tool.py     # 4. 校验 + 渲染术语表
+python3 pipeline/clean.py             # 3. 清洗 + 分块（消费 units.json）
+python3 pipeline/mine_terms.py        # 4. 挖掘术语候选（改术语表前跑）
+python3 pipeline/glossary_tool.py     # 5. 校验 + 渲染术语表
 ```
+
+顺序有依赖：`clean.py` 消费 `inventory.py` 产出的 `units.json`。
+
+## 单一判定来源
+
+`clean.py` 导出 `extract_markdown()` 与 `MIN_CONTENT_CHARS`，`inventory.py` **从中导入**而不是自己再写一套。
+
+原因：清点用的"什么算正文"和清洗产物必须**同源**。两处各写一份判定逻辑，迟早会漂移，
+届时 `INVENTORY.md` 声称可用的篇目与 `clean/` 里实际产出的内容就会自相矛盾——
+而覆盖度数字正是建立在这个判定之上。
 
 ## 换一门课（可复用性验证）
 

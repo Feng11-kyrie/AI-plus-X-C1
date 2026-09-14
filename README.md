@@ -17,13 +17,13 @@
 | ① 资料获取与归档 | ✅ 完成 | 21MB 一手资料已归档至 `source/` |
 | ② 资料清点与缺口识别 | ✅ 完成 | `source/INVENTORY.md`（自动生成，含覆盖度分母自证） |
 | ③ 术语表建设 | ✅ 完成 | **170 条**（要求 ≥50），经校验器通过 |
-| ④ 清洗管线（HTML→Markdown） | ⬜ 未开始 | 计划 `pipeline/clean.py` |
+| ④ 清洗管线（HTML→Markdown） | ✅ 完成 | `pipeline/clean.py`：6.13MB HTML → 0.43MB MD，**发现 5 篇失效** |
 | ⑤ 翻译管线 | ⬜ 未开始 | 计划 `pipeline/translate.py` |
 | ⑥ 术语一致性自动校验 | ⬜ 未开始 | 计划 `pipeline/qc_terminology.py` + CI |
-| ⑦ 中文译稿产出 | ⬜ 未开始 | 目标 ≥80% 覆盖度 |
+| ⑦ 中文译稿产出 | ⬜ 未开始 | 目标 ≥80% 覆盖度（≥27 条） |
 | ⑧ 发布与复盘 | ⬜ 未开始 | 含 AAR、拿来说明 |
 
-**已交付**：`source/INVENTORY.md`、`glossary/glossary.csv`、`pipeline/` 三支可跑脚本
+**已交付**：`source/INVENTORY.md`、`glossary/glossary.csv`、`reports/clean-comparison.md`、`clean/`（26 篇英文底稿）、`pipeline/` 五支可跑脚本
 
 ---
 
@@ -38,11 +38,13 @@
 | 口径 | 数量 |
 |---|---|
 | 分母（本地 readings） | **34**（HTML 31 + PDF 3） |
-| 其中可用 | 32 |
-| **其中已损坏** | **2** |
+| 其中可用 | **29**（HTML 26 + PDF 3） |
+| **其中确认失效** | **5**（全部为 HTML） |
 | 达到 80% 所需 | ≥ 27 条 |
-| 可用英文正文规模 | ≈ 70,719 词（HTML 部分，PDF 未计） |
+| 可用英文正文规模 | ≈ 65,156 词（清洗后正文，PDF 未计） |
 | 大纲中的外部链接 | 10 条（**不计入分母**，理由见下） |
+
+**⚠️ 一个关键的可行性约束**：29/34 = **85.3%**，达标。但如果**只翻译 HTML 部分**，覆盖率仅 26/34 = **76.5%，低于目标**。因此 **3 份 PDF 必须纳入翻译范围**。
 
 **为什么外链不计入分母**：大纲另有 10 条指向 YouTube / GitHub / X / 第三方站点，它们的可获得性取决于对方站点与账号权限，不受本项目控制。计入分母会让覆盖率失去可比性。它们被列为**扩展范围**，在 `source/INVENTORY.md` 中完整登记。
 
@@ -52,14 +54,25 @@
 
 ## ⚠️ 已知缺口（如实声明，未做隐瞒）
 
+清洗管线**剔除了样板后**才发现：失效的不是 2 篇，而是 **5 篇**。原始缓存自带的 README 只承认了其中 1 篇。
+
+| # | 篇目 | 周 | 症状 | 失效模式 |
+|---|---|---|---|---|
+| 1 | `prompt-engineering-guide` | W1 | 128KB 但正文仅 548 字节 | **SPA 导航壳**：`__NEXT_DATA__` 载荷为空，真实正文在未被抓取的子页面 |
+| 2 | `good-context-good-code` | W4 | 9KB 但正文仅 77 字节 | **访问码/付费墙**：抓到的是登录门页 |
+| 3 | `peeking-under-the-hood-of-claude-code` | W4 | 550 字节 | **反爬占位页**（源站 Medium） |
+| 4 | `how-warp-uses-warp` | W5 | 15KB 但正文仅 7 字节 | **Notion JS 渲染页**：静态抓取只能拿到外壳 |
+| 5 | `lessons-from-ai-code-reviews` | W7 | **0 字节** | 抓取完全失败 |
+
+另有系统性缺失：
+
 | 缺口 | 影响 | 现状 |
 |---|---|---|
-| `lessons-from-ai-code-reviews.html` **0 字节** | W7 少 1 篇 | 抓取完全失败，待补抓 |
-| `peeking-under-the-hood-of-claude-code.html` **占位页** | W4 少 1 篇 | 源站为 Medium，反爬拦截 |
 | **讲义（Slides）完全缺失** | 10 周讲义均无 | 全部为 Google Slides/Drive，需 Google 账号，自动化不可行 |
 | **视频字幕完全缺失** | 3 个 YouTube 视频无字幕 | 需额外获取步骤，当前不纳入分母 |
 
 > 讲义与视频的完整链接清单（含每一周的 Google Slides URL）见 `source/INVENTORY.md` 第 2.1、2.2 节。
+> 逐篇失效明细见 **[`reports/clean-comparison.md`](reports/clean-comparison.md)**。
 
 ---
 
@@ -106,11 +119,14 @@ AI-plus-X-C1/
 │   ├── config/cs146s.json     ★ 源配置——换课程只改这个文件
 │   ├── parse_syllabus.py      解析 index.html → syllabus.json
 │   ├── inventory.py           清点与缺口报告生成
+│   ├── clean.py               HTML → Markdown 清洗 + 分块
 │   ├── mine_terms.py          从语料挖掘术语候选
 │   └── glossary_tool.py       术语表校验 + 渲染
 │
+├── clean/                     清洗后的英文 Markdown 底稿（26 篇，可人工抽检）
 ├── zh/                        中文译稿（待产出）
-├── reports/                   覆盖度报告、术语一致率报告、抽检报告（待产出）
+├── reports/                   清洗对比报告（已有）
+│                              + 覆盖度/术语一致率/抽检报告（待产出）
 ├── logs/ai-journal.md         AI 协作日志（待产出）
 └── notes/拿来说明/            至少 3 个"拿来说明"（待产出）
 ```
@@ -134,9 +150,13 @@ cd AI-plus-X-C1
 
 python3 pipeline/parse_syllabus.py   # 解析大纲 → source/syllabus.json
 python3 pipeline/inventory.py        # 生成清点与缺口报告
+python3 pipeline/clean.py            # HTML → Markdown 清洗 + 分块
 python3 pipeline/mine_terms.py       # 挖掘术语候选（可选，--csv 导出）
 python3 pipeline/glossary_tool.py    # 校验术语表并渲染
 ```
+
+> 注意执行顺序：`inventory.py` 产出 `units.json`，`clean.py` 消费它。
+> 全部脚本零依赖，只用 Python 3 标准库；复跑后 `git status` 应无差异（产物是确定性的）。
 
 术语表校验可以作为质量门禁单独运行（校验失败返回非零退出码）：
 
@@ -149,7 +169,7 @@ python3 pipeline/glossary_tool.py --check
 这是本管线的核心设计目标。**不需要改任何脚本代码**，只需：
 
 1. 新建 `pipeline/config/<新课代号>.json`，指向新课的 `index_html` / `pages_dir` / `pdfs_dir` / `page_map`；
-2. 其余四个脚本读取配置即可运行，产出新课的 `syllabus.json` / `units.json` / `INVENTORY.md` / 术语候选。
+2. 其余五个脚本读取配置即可运行，产出新课的 `syllabus.json` / `units.json` / `INVENTORY.md` / `clean/` / 术语候选。
 
 > 已用这套结构在 **CS146S** 上完整跑通。第二门课的复跑演示见 `reports/`（待产出）。
 
@@ -162,7 +182,8 @@ python3 pipeline/glossary_tool.py --check
 | `README.md` | `README.md`（本文件） | ✅ |
 | 资料包说明（来源/范围/流程/用法/缺口） | 本文件 + `source/INVENTORY.md` | ✅ |
 | 术语表 ≥50 条 | `glossary/glossary.csv`（170 条） | ✅ |
-| 可复跑的翻译管线 | `pipeline/` | 🚧 进行中 |
+| 可复跑的翻译管线 | `pipeline/`（5 支脚本，已跑通「获取→清点→清洗」） | 🚧 进行中 |
+| 清洗后英文底稿 | `clean/`（26 篇）+ `reports/clean-comparison.md` | ✅ |
 | 完整中文资料包 | `zh/` | ⬜ |
 | `*AI日志*` | `logs/ai-journal.md` | ⬜ |
 | `*AAR*`（七维复盘） | `AAR.md` | ⬜ |
