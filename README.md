@@ -17,13 +17,13 @@
 | ① 资料获取与归档 | ✅ 完成 | 21MB 一手资料已归档至 `source/` |
 | ② 资料清点与缺口识别 | ✅ 完成 | `source/INVENTORY.md`（自动生成，含覆盖度分母自证） |
 | ③ 术语表建设 | ✅ 完成 | **170 条**（要求 ≥50），经校验器通过 |
-| ④ 清洗管线（HTML→Markdown） | ✅ 完成 | `pipeline/clean.py`：6.13MB HTML → 0.43MB MD，**发现 5 篇失效** |
+| ④ 清洗管线（HTML/PDF→Markdown） | ✅ 完成 | `pipeline/clean.py`：20.8MB → 0.55MB，**29 条正文底稿 + 零内容丢失告警** |
 | ⑤ 翻译管线 | ⬜ 未开始 | 计划 `pipeline/translate.py` |
 | ⑥ 术语一致性自动校验 | ⬜ 未开始 | 计划 `pipeline/qc_terminology.py` + CI |
 | ⑦ 中文译稿产出 | ⬜ 未开始 | 目标 ≥80% 覆盖度（≥27 条） |
 | ⑧ 发布与复盘 | ⬜ 未开始 | 含 AAR、拿来说明 |
 
-**已交付**：`source/INVENTORY.md`、`glossary/glossary.csv`、`reports/clean-comparison.md`、`clean/`（26 篇英文底稿）、`pipeline/` 五支可跑脚本
+**已交付**：`source/INVENTORY.md`、`glossary/glossary.csv`、`reports/clean-comparison.md`、`clean/`（29 条英文底稿）、`pipeline/` 六支可跑脚本
 
 ---
 
@@ -41,7 +41,7 @@
 | 其中可用 | **29**（HTML 26 + PDF 3） |
 | **其中确认失效** | **5**（全部为 HTML） |
 | 达到 80% 所需 | ≥ 27 条 |
-| 可用英文正文规模 | ≈ 65,156 词（清洗后正文，PDF 未计） |
+| 可翻译正文规模 | ≈ **83,327 词**（含 3 份 PDF；仅 HTML 为 67,127 词） |
 | 大纲中的外部链接 | 10 条（**不计入分母**，理由见下） |
 
 **⚠️ 一个关键的可行性约束**：29/34 = **85.3%**，达标。但如果**只翻译 HTML 部分**，覆盖率仅 26/34 = **76.5%，低于目标**。因此 **3 份 PDF 必须纳入翻译范围**。
@@ -119,11 +119,12 @@ AI-plus-X-C1/
 │   ├── config/cs146s.json     ★ 源配置——换课程只改这个文件
 │   ├── parse_syllabus.py      解析 index.html → syllabus.json
 │   ├── inventory.py           清点与缺口报告生成
-│   ├── clean.py               HTML → Markdown 清洗 + 分块
+│   ├── clean.py               HTML/PDF → Markdown 清洗 + 分块
+│   ├── pdfkit_dump.js         PDF 文本提取（macOS PDFKit，经 osascript 调用）
 │   ├── mine_terms.py          从语料挖掘术语候选
 │   └── glossary_tool.py       术语表校验 + 渲染
 │
-├── clean/                     清洗后的英文 Markdown 底稿（26 篇，可人工抽检）
+├── clean/                     清洗后的英文 Markdown 底稿（29 条，可人工抽检）
 ├── zh/                        中文译稿（待产出）
 ├── reports/                   清洗对比报告（已有）
 │                              + 覆盖度/术语一致率/抽检报告（待产出）
@@ -182,8 +183,8 @@ python3 pipeline/glossary_tool.py --check
 | `README.md` | `README.md`（本文件） | ✅ |
 | 资料包说明（来源/范围/流程/用法/缺口） | 本文件 + `source/INVENTORY.md` | ✅ |
 | 术语表 ≥50 条 | `glossary/glossary.csv`（170 条） | ✅ |
-| 可复跑的翻译管线 | `pipeline/`（5 支脚本，已跑通「获取→清点→清洗」） | 🚧 进行中 |
-| 清洗后英文底稿 | `clean/`（26 篇）+ `reports/clean-comparison.md` | ✅ |
+| 可复跑的翻译管线 | `pipeline/`（6 支脚本，已跑通「获取→清点→清洗」） | 🚧 进行中 |
+| 清洗后英文底稿 | `clean/`（29 条）+ `reports/clean-comparison.md` | ✅ |
 | 完整中文资料包 | `zh/` | ⬜ |
 | `*AI日志*` | `logs/ai-journal.md` | ⬜ |
 | `*AAR*`（七维复盘） | `AAR.md` | ⬜ |

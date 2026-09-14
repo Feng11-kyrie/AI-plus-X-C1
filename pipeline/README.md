@@ -16,8 +16,9 @@
 |---|---|---|---|
 | `parse_syllabus.py` | `source/index.html` | `source/syllabus.json` | 把课程主页解析成结构化的 10 周大纲 |
 | `inventory.py` | `syllabus.json`、`page_map.json` | `source/units.json`、`source/INVENTORY.md` | 清点资料、识别失效条目、**自证覆盖度分母** |
-| `clean.py` | `units.json` + 页面 HTML | `clean/*.md`、`pipeline/work/chunks.json`、`reports/clean-comparison.md` | 剔除样板 → Markdown → 按标题分块 |
-| `mine_terms.py` | `units.json` + 页面 HTML | 控制台 / `reports/term-candidates.csv` | 从语料挖掘术语候选（频率证据） |
+| `clean.py` | `units.json` + 原始文件 | `clean/*.md`、`pipeline/work/chunks.json`、`reports/clean-comparison.md` | 剔除样板 → Markdown → 完整性校验 → 分块 |
+| `pdfkit_dump.js` | PDF 文件 | Markdown 文本 | 经 `osascript` 调用 macOS 原生 PDFKit 提取 PDF 文本（由 `clean.py` 调用） |
+| `mine_terms.py` | `clean/*.md` | 控制台 / `reports/term-candidates.csv` | 从清洗产物挖掘术语候选（频率证据） |
 | `glossary_tool.py` | `glossary/glossary.csv` | `glossary/glossary.md` | 校验术语表自身无矛盾 + 渲染人读版 |
 
 ## 执行顺序
@@ -25,12 +26,13 @@
 ```bash
 python3 pipeline/parse_syllabus.py    # 1. 大纲 → JSON
 python3 pipeline/inventory.py         # 2. 清点 → units.json + INVENTORY.md
-python3 pipeline/clean.py             # 3. 清洗 + 分块（消费 units.json）
+python3 pipeline/clean.py             # 3. 清洗 + 校验 + 分块（消费 units.json）
 python3 pipeline/mine_terms.py        # 4. 挖掘术语候选（改术语表前跑）
 python3 pipeline/glossary_tool.py     # 5. 校验 + 渲染术语表
 ```
 
-顺序有依赖：`clean.py` 消费 `inventory.py` 产出的 `units.json`。
+顺序有依赖：`clean.py` 消费 `inventory.py` 产出的 `units.json`；
+`mine_terms.py` 消费 `clean.py` 产出的 `clean/*.md`。
 
 ## 单一判定来源
 
@@ -39,6 +41,46 @@ python3 pipeline/glossary_tool.py     # 5. 校验 + 渲染术语表
 原因：清点用的"什么算正文"和清洗产物必须**同源**。两处各写一份判定逻辑，迟早会漂移，
 届时 `INVENTORY.md` 声称可用的篇目与 `clean/` 里实际产出的内容就会自相矛盾——
 而覆盖度数字正是建立在这个判定之上。
+
+同理，`mine_terms.py` 早期自带第三份 `visible_text()` 直接读原始 HTML，
+导致术语频次被导航文字污染，也违反了同一条原则。现已改为消费 `clean/*.md`。
+
+## 完整性校验（防静默丢内容）
+
+`clean.py` 对每条比对三个层次的元素数量：
+
+| 层次 | 含义 |
+|---|---|
+| `raw` | 整个原始文件（含样板） |
+| `main` | 剔除样板、选定正文容器之后 |
+| `md` | 最终 Markdown |
+
+- `raw → main` 的差距 → **样板剔除误伤正文**
+- `main → md` 的差距 → **渲染器漏渲染**
+- **留存率**（正文容器文字量 → Markdown 纯文字量）是主判据，低于 90% 报警
+- 代码块单独严判：丢了围栏就会被当散文翻译，而代码必须逐字保留
+
+这套校验不是装饰。它在开发中实际抓到了 4 个 bug：
+
+| # | Bug | 症状 | 靠什么发现 |
+|---|---|---|---|
+| 1 | `<figure>` 被整棵剔除 | 3 篇丢 10,735 字符（最多 19.1%） | 元素计数（raw vs main） |
+| 2 | `_list()` 兜底分支扁平化块级子元素 | 17 个代码块丢失围栏 | 代码块计数（main vs md） |
+| 3 | 单行表格被整表丢弃 | `agentic-ai-threats` 丢 5,608 字符 | 表格计数 |
+| 4 | 代码块藏在表格单元格里被压成纯文本 | 1 个代码块失效 | 代码块计数 |
+
+前 3 个在**体积指标下完全不可见**——文件大小正常、看着也正常，只能靠元素级校验发现。
+
+## 平台限制（必须说明）
+
+PDF 提取依赖 **macOS 原生 PDFKit**（经 `osascript` 调用），因此：
+
+- ✅ macOS：开箱可用，无需安装任何东西
+- ❌ 其它平台：`extract_pdf()` 会返回明确的错误说明并记录进报告，
+  **不会静默产出空文件**
+
+这是本项目"零第三方依赖"原则的代价。若要跨平台，需引入 `pypdf` 之类的库——
+但那会破坏「clone 下来就能跑」这一目标，因此当前选择明确报错而非静默降级。
 
 ## 换一门课（可复用性验证）
 
