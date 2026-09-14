@@ -19,8 +19,8 @@ id,term_en,term_zh,category,policy,forbidden_zh,notes,freq_in_corpus
 18,Temperature,温度,core-llm,translate,温度值|随机度,采样参数,0
 19,Embedding,嵌入,core-llm,translate,向量化|嵌入向量,0
 20,Vector Database,向量数据库,core-llm,translate,矢量数据库|向量库,0
-21,Inference,推理,core-llm,translate,推断|推演,注意与 reasoning 区分,0
-22,Reasoning,推理能力,core-llm,translate,推理|思考能力,与 Inference 区分：reasoning 指模型思考,0
+21,Inference,推理,core-llm,translate,推断|推演|模型推导,模型前向计算/服务；与 Reasoning（推理能力）区分,0
+22,Reasoning,推理能力,core-llm,translate,思考链|推论|思维过程,模型内部思考过程；与 Inference（推理）区分,0
 23,Training,训练,core-llm,translate,培训|训练过程,0
 24,Benchmark,基准测试,core-llm,translate,基准|测评|跑分,0
 25,Model Card,模型卡,core-llm,translate,模型卡片|模型说明卡,0
@@ -124,8 +124,8 @@ id,term_en,term_zh,category,policy,forbidden_zh,notes,freq_in_corpus
 123,Site Reliability Engineering (SRE),站点可靠性工程（SRE）,sre,acronym,网站可靠性工程|可靠性工程 SRE,69
 124,Observability,可观测性,sre,translate,可观察性|监控能力,0
 125,Telemetry,遥测,sre,translate,远程测量|遥测数据,0
-126,Tracing,链路追踪,sre,translate,跟踪|追踪链路|链路跟踪,0
-127,Trace,追踪链路,sre,translate,轨迹|跟踪记录,0
+126,Tracing,链路追踪,sre,translate,跟踪|链路跟踪|追踪体系,0
+127,Trace,追踪记录,sre,translate,轨迹|调用链快照,分布式追踪中的单条 Trace,0
 128,Span,Span,sre,keep_en,跨度|片段|区段,分布式追踪中保留英文,0
 129,Metric,指标,sre,translate,度量|度量值|监控指标,0
 130,Log,日志,sre,translate,记录|日志文件|Log 记录,0
