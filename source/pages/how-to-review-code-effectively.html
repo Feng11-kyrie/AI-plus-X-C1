@@ -1,0 +1,1077 @@
+<!doctype html>
+<html lang="en-US" class="mt-0">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<link rel="icon" type="image/x-icon" href="https://github.githubassets.com/favicon.ico">
+	<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO Premium plugin v27.2 (Yoast SEO v27.2) - https://yoast.com/product/yoast-seo-premium-wordpress/ -->
+	<title>How to review code effectively: A GitHub staff engineer’s philosophy - The GitHub Blog</title>
+	<meta name="description" content="GitHub Staff Engineer Sarah Vessels discusses her philosophy of code review, what separates good code review from bad, her strategy for finding and reviewing code, and how to get the most from reviews of her own code." />
+	<link rel="canonical" href="https://github.blog/developer-skills/github/how-to-review-code-effectively-a-github-staff-engineers-philosophy/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="How to review code effectively: A GitHub staff engineer’s philosophy" />
+	<meta property="og:description" content="GitHub Staff Engineer Sarah Vessels discusses her philosophy of code review, what separates good code review from bad, her strategy for finding and reviewing code, and how to get the most from reviews of her own code." />
+	<meta property="og:url" content="https://github.blog/developer-skills/github/how-to-review-code-effectively-a-github-staff-engineers-philosophy/" />
+	<meta property="og:site_name" content="The GitHub Blog" />
+	<meta property="article:published_time" content="2024-07-23T16:00:05+00:00" />
+	<meta property="article:modified_time" content="2024-07-23T19:54:41+00:00" />
+	<meta property="og:image" content="https://github.blog/wp-content/uploads/2024/05/Collaboration-LightMode-2-1.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:type" content="image/png" />
+	<meta name="author" content="Sarah Vessels" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="Sarah Vessels" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="16 minutes" />
+<script type='application/ld+json'>{"@context":"https:\/\/schema.org","headline":"How to review code effectively: A GitHub staff engineer\u2019s philosophy","author":{"@type":"Person","name":"Sarah Vessels"},"datePublished":"2024-07-23T09:00:05-07:00","abstract":"GitHub Staff Engineer Sarah Vessels discusses her philosophy of code review, what separates good code review from bad, her strategy for finding and reviewing code, and how to get the most from reviews of her own code.","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/github.blog\/developer-skills\/github\/how-to-review-code-effectively-a-github-staff-engineers-philosophy\/"},"image":"https:\/\/github.blog\/wp-content\/uploads\/2024\/05\/Collaboration-LightMode-2-1.png?resize=150%2C150","@type":"TechArticle"}</script>
+<script type='application/ld+json'>{"@context":"https:\/\/schema.org","headline":"How to review code effectively: A GitHub staff engineer\u2019s philosophy","author":{"@type":"Person","name":"Sarah Vessels"},"datePublished":"2024-07-23T09:00:05-07:00","abstract":"GitHub Staff Engineer Sarah Vessels discusses her philosophy of code review, what separates good code review from bad, her strategy for finding and reviewing code, and how to get the most from reviews of her own code.","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/github.blog\/developer-skills\/github\/how-to-review-code-effectively-a-github-staff-engineers-philosophy\/"},"image":"https:\/\/github.blog\/wp-content\/uploads\/2024\/05\/Collaboration-LightMode-2-1.png?resize=150%2C150","@type":"BlogPosting"}</script>
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://github.blog/developer-skills/github/how-to-review-code-effectively-a-github-staff-engineers-philosophy/#article","isPartOf":{"@id":"https://github.blog/developer-skills/github/how-to-review-code-effectively-a-github-staff-engineers-philosophy/"},"author":[{"@id":"https://github.blog/#/schema/person/31b2d15caaccaa263d9e8e4eff4d9dbb"}],"headline":"How to review code effectively: A GitHub staff engineer’s philosophy","datePublished":"2024-07-23T16:00:05+00:00","dateModified":"2024-07-23T19:54:41+00:00","mainEntityOfPage":{"@id":"https://github.blog/developer-skills/github/how-to-review-code-effectively-a-github-staff-engineers-philosophy/"},"wordCount":3657,"image":{"@id":"https://github.blog/developer-skills/github/how-to-review-code-effectively-a-github-staff-engineers-philosophy/#primaryimage"},"thumbnailUrl":"https://github.blog/wp-content/uploads/2024/05/Collaboration-LightMode-2-1.png?fit=1200%2C630","keywords":["code review"],"articleSection":["Developer skills","GitHub"],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://github.blog/developer-skills/github/how-to-review-code-effectively-a-github-staff-engineers-philosophy/","url":"https://github.blog/developer-skills/github/how-to-review-code-effectively-a-github-staff-engineers-philosophy/","name":"How to review code effectively: A GitHub staff engineer’s philosophy - The GitHub Blog","isPartOf":{"@id":"https://github.blog/#website"},"primaryImageOfPage":{"@id":"https://github.blog/developer-skills/github/how-to-review-code-effectively-a-github-staff-engineers-philosophy/#primaryimage"},"image":{"@id":"https://github.blog/developer-skills/github/how-to-review-code-effectively-a-github-staff-engineers-philosophy/#primaryimage"},"thumbnailUrl":"https://github.blog/wp-content/uploads/2024/05/Collaboration-LightMode-2-1.png?fit=1200%2C630","datePublished":"2024-07-23T16:00:05+00:00","dateModified":"2024-07-23T19:54:41+00:00","author":{"@id":"https://github.blog/#/schema/person/31b2d15caaccaa263d9e8e4eff4d9dbb"},"description":"GitHub Staff Engineer Sarah Vessels discusses her philosophy of code review, what separates good code review from bad, her strategy for finding and reviewing code, and how to get the most from reviews of her own code.","breadcrumb":{"@id":"https://github.blog/developer-skills/github/how-to-review-code-effectively-a-github-staff-engineers-philosophy/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://github.blog/developer-skills/github/how-to-review-code-effectively-a-github-staff-engineers-philosophy/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://github.blog/developer-skills/github/how-to-review-code-effectively-a-github-staff-engineers-philosophy/#primaryimage","url":"https://github.blog/wp-content/uploads/2024/05/Collaboration-LightMode-2-1.png?fit=1200%2C630","contentUrl":"https://github.blog/wp-content/uploads/2024/05/Collaboration-LightMode-2-1.png?fit=1200%2C630","width":1200,"height":630},{"@type":"BreadcrumbList","@id":"https://github.blog/developer-skills/github/how-to-review-code-effectively-a-github-staff-engineers-philosophy/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://github.blog/"},{"@type":"ListItem","position":2,"name":"Developer skills","item":"https://github.blog/developer-skills/"},{"@type":"ListItem","position":3,"name":"GitHub","item":"https://github.blog/developer-skills/github/"},{"@type":"ListItem","position":4,"name":"How to review code effectively: A GitHub staff engineer’s philosophy"}]},{"@type":"WebSite","@id":"https://github.blog/#website","url":"https://github.blog/","name":"The GitHub Blog","description":"Updates, ideas, and inspiration from GitHub to help developers build and design software.","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://github.blog/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":"Person","@id":"https://github.blog/#/schema/person/31b2d15caaccaa263d9e8e4eff4d9dbb","name":"Sarah Vessels","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://secure.gravatar.com/avatar/43e9cb0355694d499c4f0880eff12eb0be529fd9fd2be2a2998008d8f1e8993c?s=96&d=mm&r=gf6bc95281f0c5c5bd518601907d3bb2e","url":"https://secure.gravatar.com/avatar/43e9cb0355694d499c4f0880eff12eb0be529fd9fd2be2a2998008d8f1e8993c?s=96&d=mm&r=g","contentUrl":"https://secure.gravatar.com/avatar/43e9cb0355694d499c4f0880eff12eb0be529fd9fd2be2a2998008d8f1e8993c?s=96&d=mm&r=g","caption":"Sarah Vessels"},"description":"Staff Software Engineer, GitHub","sameAs":["http://sarahvessels.com/"],"jobTitle":"Staff Software Engineer","worksFor":"GitHub","url":"https://github.blog/author/cheshire137/"}]}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel='dns-prefetch' href='//ghcc.githubassets.com' />
+<link rel='dns-prefetch' href='//js.monitor.azure.com' />
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<link rel='dns-prefetch' href='//analytics.githubassets.com' />
+<link rel='dns-prefetch' href='//stats.wp.com' />
+<link rel='dns-prefetch' href='//v0.wordpress.com' />
+<link rel="alternate" type="application/rss+xml" title="The GitHub Blog &raquo; Feed" href="https://github.blog/feed/" />
+<link rel="alternate" type="application/rss+xml" title="The GitHub Blog &raquo; Comments Feed" href="https://github.blog/comments/feed/" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://github.blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fgithub.blog%2Fdeveloper-skills%2Fgithub%2Fhow-to-review-code-effectively-a-github-staff-engineers-philosophy%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://github.blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fgithub.blog%2Fdeveloper-skills%2Fgithub%2Fhow-to-review-code-effectively-a-github-staff-engineers-philosophy%2F&#038;format=xml" />
+<style id='wp-img-auto-sizes-contain-inline-css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id='wp-block-library-inline-css'>
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}.has-text-align-center{text-align:center}.has-text-align-left{text-align:left}.has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-wrap:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=wp-block-library-inline-css */
+</style>
+<style id='github-typography-presets-inline-css'>
+.is-typography-preset-h1{font-size:var(--base-size-36, 36px);font-weight:700;line-height:1.25;margin-block-end:20px;margin-block-start:0;}.is-typography-preset-h2{font-size:var(--base-size-32, 32px);font-weight:700;line-height:1.25;margin-block-end:20px;margin-block-start:40px;}.is-typography-preset-h3{font-size:var(--base-size-28, 28px);font-weight:700;line-height:1.25;margin-block-end:12px;margin-block-start:20px;}.is-typography-preset-h4{font-size:var(--base-size-24, 24px);font-weight:700;line-height:1.25;margin-block-end:12px;margin-block-start:20px;}.is-typography-preset-h5{font-size:var(--base-size-20, 20px);font-weight:700;line-height:1.25;margin-block-end:12px;margin-block-start:20px;}.is-typography-preset-h6{font-size:var(--base-size-18, 18px);font-weight:700;line-height:1.25;margin-block-end:0;margin-block-start:20px;}.is-typography-preset-display{font:var(--text-display-shorthand);}.is-typography-preset-title-large{font:var(--text-title-shorthand-large);}.is-typography-preset-title-medium{font:var(--text-title-shorthand-medium);}.is-typography-preset-title-small{font:var(--text-title-shorthand-small);}.is-typography-preset-subtitle{font:var(--text-subtitle-shorthand);}.is-typography-preset-body-large{font:var(--text-body-shorthand-large);}.is-typography-preset-body-medium{font:var(--text-body-shorthand-medium);}.is-typography-preset-body-small{font:var(--text-body-shorthand-small);}
+/*# sourceURL=github-typography-presets-inline-css */
+</style>
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: var(--base-size-20, 1.25rem);--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: var(--base-size-40, 2.5rem);--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: var(--base-size-80, 5rem);--wp--preset--spacing--4: var(--base-size-4, 0.25rem);--wp--preset--spacing--6: var(--base-size-6, 0.375rem);--wp--preset--spacing--8: var(--base-size-8, 0.5rem);--wp--preset--spacing--2: var(--base-size-2, 0.125rem);--wp--preset--spacing--12: var(--base-size-12, 0.75rem);--wp--preset--spacing--16: var(--base-size-16, 1rem);--wp--preset--spacing--24: var(--base-size-24, 1.5rem);--wp--preset--spacing--28: var(--base-size-28, 1.75rem);--wp--preset--spacing--32: var(--base-size-32, 2rem);--wp--preset--spacing--36: var(--base-size-36, 2.25rem);--wp--preset--spacing--44: var(--base-size-44, 2.75rem);--wp--preset--spacing--48: var(--base-size-48, 3rem);--wp--preset--spacing--64: var(--base-size-64, 4rem);--wp--preset--spacing--96: var(--base-size-96, 6rem);--wp--preset--spacing--112: var(--base-size-112, 7rem);--wp--preset--spacing--128: var(--base-size-128, 8rem);--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);--wp--custom--typography--presets--0--name: Like h1;--wp--custom--typography--presets--0--slug: h1;--wp--custom--typography--presets--0--font-size: var(--base-size-36, 36px);--wp--custom--typography--presets--0--font-weight: 700;--wp--custom--typography--presets--0--line-height: 1.25;--wp--custom--typography--presets--0--margin-block-end: 20px;--wp--custom--typography--presets--0--margin-block-start: 0;--wp--custom--typography--presets--1--name: Like h2;--wp--custom--typography--presets--1--slug: h2;--wp--custom--typography--presets--1--font-size: var(--base-size-32, 32px);--wp--custom--typography--presets--1--font-weight: 700;--wp--custom--typography--presets--1--line-height: 1.25;--wp--custom--typography--presets--1--margin-block-end: 20px;--wp--custom--typography--presets--1--margin-block-start: 40px;--wp--custom--typography--presets--2--name: Like h3;--wp--custom--typography--presets--2--slug: h3;--wp--custom--typography--presets--2--font-size: var(--base-size-28, 28px);--wp--custom--typography--presets--2--font-weight: 700;--wp--custom--typography--presets--2--line-height: 1.25;--wp--custom--typography--presets--2--margin-block-end: 12px;--wp--custom--typography--presets--2--margin-block-start: 20px;--wp--custom--typography--presets--3--name: Like h4;--wp--custom--typography--presets--3--slug: h4;--wp--custom--typography--presets--3--font-size: var(--base-size-24, 24px);--wp--custom--typography--presets--3--font-weight: 700;--wp--custom--typography--presets--3--line-height: 1.25;--wp--custom--typography--presets--3--margin-block-end: 12px;--wp--custom--typography--presets--3--margin-block-start: 20px;--wp--custom--typography--presets--4--name: Like h5;--wp--custom--typography--presets--4--slug: h5;--wp--custom--typography--presets--4--font-size: var(--base-size-20, 20px);--wp--custom--typography--presets--4--font-weight: 700;--wp--custom--typography--presets--4--line-height: 1.25;--wp--custom--typography--presets--4--margin-block-end: 12px;--wp--custom--typography--presets--4--margin-block-start: 20px;--wp--custom--typography--presets--5--name: Like h6;--wp--custom--typography--presets--5--slug: h6;--wp--custom--typography--presets--5--font-size: var(--base-size-18, 18px);--wp--custom--typography--presets--5--font-weight: 700;--wp--custom--typography--presets--5--line-height: 1.25;--wp--custom--typography--presets--5--margin-block-end: 0;--wp--custom--typography--presets--5--margin-block-start: 20px;--wp--custom--typography--presets--6--name: Display;--wp--custom--typography--presets--6--slug: display;--wp--custom--typography--presets--6--font: var(--text-display-shorthand);--wp--custom--typography--presets--7--name: Title Large;--wp--custom--typography--presets--7--slug: title-large;--wp--custom--typography--presets--7--font: var(--text-title-shorthand-large);--wp--custom--typography--presets--8--name: Title Medium;--wp--custom--typography--presets--8--slug: title-medium;--wp--custom--typography--presets--8--font: var(--text-title-shorthand-medium);--wp--custom--typography--presets--9--name: Title Small;--wp--custom--typography--presets--9--slug: title-small;--wp--custom--typography--presets--9--font: var(--text-title-shorthand-small);--wp--custom--typography--presets--10--name: Subtitle;--wp--custom--typography--presets--10--slug: subtitle;--wp--custom--typography--presets--10--font: var(--text-subtitle-shorthand);--wp--custom--typography--presets--11--name: Body Large;--wp--custom--typography--presets--11--slug: body-large;--wp--custom--typography--presets--11--font: var(--text-body-shorthand-large);--wp--custom--typography--presets--12--name: Body Medium;--wp--custom--typography--presets--12--slug: body-medium;--wp--custom--typography--presets--12--font: var(--text-body-shorthand-medium);--wp--custom--typography--presets--13--name: Body Small;--wp--custom--typography--presets--13--slug: body-small;--wp--custom--typography--presets--13--font: var(--text-body-shorthand-small);}:root { --wp--style--global--content-size: calc(1280px - var(--p-responsive-blog) * 2);--wp--style--global--wide-size: calc(1280px - var(--p-responsive-blog) * 2); }:where(body) { margin: 0; }.wp-site-blocks { padding-top: var(--wp--style--root--padding-top); padding-bottom: var(--wp--style--root--padding-bottom); }.has-global-padding { padding-right: var(--wp--style--root--padding-right); padding-left: var(--wp--style--root--padding-left); }.has-global-padding > .alignfull { margin-right: calc(var(--wp--style--root--padding-right) * -1); margin-left: calc(var(--wp--style--root--padding-left) * -1); }.has-global-padding :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) { padding-right: 0; padding-left: 0; }.has-global-padding :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) > .alignfull { margin-left: 0; margin-right: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 24px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 24px; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 24px;}:root :where(.is-layout-grid){gap: 24px;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{font-family: var(--brand-fontStack-sansSerif, sans-serif);--wp--style--root--padding-top: 0px;--wp--style--root--padding-right: var(--p-responsive-blog);--wp--style--root--padding-bottom: 0px;--wp--style--root--padding-left: var(--p-responsive-blog);}a:where(:not(.wp-element-button)){text-decoration: underline;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='all-css-8' href='https://github.blog/_static/??-eJyNjEEOwjAMBD+EcRuphAviLW1qEktxGtWOgN8TuMCR6+zO4L1C2IpRMay5RS6KHQmVBixzJJxVyRSD9kEYbnt/g9oz07GzA/4ELJGQYmRLbQE3uBFC4rziymqfQuaYbNkef6hfSdkINOxc7e1d5TJ6Pw0n56fzC96WRQM=' type='text/css' media='all' />
+<link rel='stylesheet' id='highlightjs-css-css' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css?ver=11.4.0' media='all' />
+<link rel="https://api.w.org/" href="https://github.blog/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://github.blog/wp-json/wp/v2/posts/78805" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://github.blog/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.9.4" />
+<link rel='shortlink' href='https://wp.me/pamS32-kv3' />
+<!-- Stream WordPress user activity plugin v4.1.2 -->
+	<style>img#wpstats{display:none}</style>
+		<link rel="llms-sitemap" href="https://github.blog/llms.txt" />
+<meta name="ha-url" content="https://collector.githubapp.com/github-blog/collect"><link rel="preload" href="https://github.blog/wp-content/themes/github-2021/dist/fonts/mona-sans.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="https://github.blog/wp-content/themes/github-2021/dist/fonts/MonaspaceNeon-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="icon" href="https://github.blog/wp-content/uploads/2019/01/cropped-github-favicon-512.png?fit=32%2C32" sizes="32x32" />
+<link rel="icon" href="https://github.blog/wp-content/uploads/2019/01/cropped-github-favicon-512.png?fit=192%2C192" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://github.blog/wp-content/uploads/2019/01/cropped-github-favicon-512.png?fit=180%2C180" />
+<meta name="msapplication-TileImage" content="https://github.blog/wp-content/uploads/2019/01/cropped-github-favicon-512.png?fit=270%2C270" />
+<style id='wp-style-engine-github-typography-presets-inline-css'>
+.is-typography-preset-h1{font-size:var(--base-size-36, 36px);font-weight:700;line-height:1.25;margin-block-end:20px;margin-block-start:0;}.is-typography-preset-h2{font-size:var(--base-size-32, 32px);font-weight:700;line-height:1.25;margin-block-end:20px;margin-block-start:40px;}.is-typography-preset-h3{font-size:var(--base-size-28, 28px);font-weight:700;line-height:1.25;margin-block-end:12px;margin-block-start:20px;}.is-typography-preset-h4{font-size:var(--base-size-24, 24px);font-weight:700;line-height:1.25;margin-block-end:12px;margin-block-start:20px;}.is-typography-preset-h5{font-size:var(--base-size-20, 20px);font-weight:700;line-height:1.25;margin-block-end:12px;margin-block-start:20px;}.is-typography-preset-h6{font-size:var(--base-size-18, 18px);font-weight:700;line-height:1.25;margin-block-end:0;margin-block-start:20px;}.is-typography-preset-display{font:var(--text-display-shorthand);}.is-typography-preset-title-large{font:var(--text-title-shorthand-large);}.is-typography-preset-title-medium{font:var(--text-title-shorthand-medium);}.is-typography-preset-title-small{font:var(--text-title-shorthand-small);}.is-typography-preset-subtitle{font:var(--text-subtitle-shorthand);}.is-typography-preset-body-large{font:var(--text-body-shorthand-large);}.is-typography-preset-body-medium{font:var(--text-body-shorthand-medium);}.is-typography-preset-body-small{font:var(--text-body-shorthand-small);}
+/*# sourceURL=wp-style-engine-github-typography-presets-inline-css */
+</style>
+
+</head>
+<body class="wp-singular post-template-default single single-post postid-78805 single-format-standard wp-embed-responsive wp-theme-github-2021 wp-child-theme-github-2021-child font-mktg no-sidebar" data-color-mode="light" data-light-theme="light" data-dark-theme="dark">
+		<div data-color-mode="dark" data-light-theme="light" data-dark-theme="dark_dimmed" class="pt-header pt-lg-0">
+		<header id="header" class="header position-fixed position-lg-static pb-lg-header z-4 top-0 left-0 right-0 d-flex flex-column flex-items-stretch color-bg-default">
+						<a href="#start-of-content" class="p-3 color-bg-accent-emphasis color-fg-on-emphasis show-on-focus">
+				Skip to content			</a>
+							<a href="#sidebar" id="skip-to-sidebar" class="p-3 color-bg-accent-emphasis color-fg-on-emphasis show-on-focus">
+					Skip to sidebar				</a>
+						<div class="position-relative container-xl width-full mx-auto p-responsive-blog">
+				<div class="d-flex flex-items-center flex-justify-between pt-3 pb-3 color-fg-default">
+					
+<a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub homepage" class="Header-link position-relative d-flex flex-items-center color-fg-default">
+	<svg aria-hidden="true" role="img" class="octicon octicon-mark-github d-block" viewBox="0 0 98 96" width="32" height="32" fill="currentColor"><g clip-path="url(#a)"><path d="M41.44 69.385C28.807 67.853 19.906 58.762 19.906 46.99c0-4.785 1.723-9.953 4.594-13.398-1.244-3.158-1.053-9.858.383-12.633 3.828-.479 8.996 1.531 12.058 4.307 3.637-1.149 7.465-1.723 12.155-1.723 4.69 0 8.517.574 11.963 1.627 2.966-2.68 8.23-4.69 12.058-4.211 1.34 2.584 1.531 9.283.287 12.537 3.063 3.637 4.69 8.518 4.69 13.494 0 11.772-8.9 20.672-21.725 22.3 3.254 2.104 5.455 6.698 5.455 11.962v9.953c0 2.871 2.393 4.498 5.264 3.35C84.41 87.95 98 70.629 98 49.19 98 22.107 75.988 0 48.904 0 21.82 0 0 22.107 0 49.191c0 21.246 13.494 38.856 31.678 45.46 2.584.956 5.072-.766 5.072-3.35v-7.657c-1.34.575-3.063.958-4.594.958-6.316 0-10.049-3.446-12.728-9.858-1.053-2.584-2.201-4.115-4.403-4.402-1.148-.096-1.53-.574-1.53-1.149 0-1.148 1.913-2.01 3.827-2.01 2.776 0 5.168 1.723 7.657 5.264 1.914 2.776 3.923 4.02 6.316 4.02 2.392 0 3.924-.861 6.125-3.063 1.627-1.627 2.871-3.062 4.02-4.02z" fill="#fff"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h98v96H0z"/></clipPath></defs></svg>
+</a>
+<span class="d-inline-block ml-2 f1-mktg f2-md-mktg" style="opacity: 0.3;">/</span>
+<a class="d-inline-block Header-link font-weight-semibold ml-2 f2 color-fg-default" href="https://github.blog/">
+	Blog</a>
+					
+<nav class="d-none d-lg-block" aria-label="Secondary navigation">
+	<ul id="secondary-navigation" class="secondary-navigation flex-items-center flex-nowrap list-style-none ml-4" aria-hidden="false"><li id="menu-item-78809"><a href="https://github.blog/changelog/" class="position-relative d-flex flex-items-center flex-start no-wrap py-2 px-4 f4 lh-condensed-ultra Link--secondary color-fg-default text-medium"><span class="menu-item-label">Changelog</span></a></li>
+<li id="menu-item-78810"><a href="https://docs.github.com/" class="position-relative d-flex flex-items-center flex-start no-wrap py-2 px-4 f4 lh-condensed-ultra Link--secondary color-fg-default text-medium"><span class="menu-item-label">Docs</span><svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-down position-absolute right-0 d-block ml-1" role="presentation"><path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"></path></svg></a></li>
+<li id="menu-item-78811"><a href="https://github.com/customer-stories" class="position-relative d-flex flex-items-center flex-start no-wrap py-2 px-4 f4 lh-condensed-ultra Link--secondary color-fg-default text-medium"><span class="menu-item-label">Customer stories</span><svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-down position-absolute right-0 d-block ml-1" role="presentation"><path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"></path></svg></a></li>
+</ul></nav>
+					
+<div class="d-none d-lg-flex flex-1">
+	<form id="desktop-search" class="desktop-search position-relative ml-lg-4 flex-1" action="https://github.blog" method="get" aria-hidden="true" aria-label="Search form" role="search">
+		<div class="position-relative d-flex flex-1 height-full color-bg-transparent" data-color-mode="light" data-light-theme="light" data-dark-theme="dark" >
+			<input aria-label="Search the blog" type="search" class="p-2 pl-3 pr-6 border-0 rounded-2 flex-1" placeholder="Search the blog…" value="" name="s" id="search-input">
+			<button type="submit" class="position-absolute right-0 z-3 d-flex flex-items-center flex-justify-center flex-self-center mr-2 p-2 border-0 rounded-2 color-bg-transparent color-fg-subtle" aria-label="Search">
+				<svg viewBox="0 0 16 16" width="20" height="20" class="octicon octicon-search" role="presentation"><path fill-rule="evenodd" d="M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z"></path></svg>
+			</button>
+		</div>
+	</form>
+	<button aria-label="Toggle search" class="flex-self-center ml-auto p-2 border-0 color-bg-transparent color-fg-default rounded-3 js-toggle" aria-controls="desktop-search" aria-expanded="false" >
+		<svg viewBox="0 0 24 24" width="24" height="24" class="octicon octicon-search" role="presentation"><path d="M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2ZM3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0Z"></path></svg>
+		<svg viewBox="2 2 20 20" width="24" height="24" class="octicon octicon-x" role="presentation"><path d="M5.72 5.72a.75.75 0 0 1 1.06 0L12 10.94l5.22-5.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L13.06 12l5.22 5.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L12 13.06l-5.22 5.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L10.94 12 5.72 6.78a.75.75 0 0 1 0-1.06Z"></path></svg>
+	</button>
+
+		<a		class="Button Button--size-medium Button--primary ml-3"
+		href="https://github.com/features/copilot?utm_source=blog-tap-nav&#038;utm_medium=blog&#038;utm_campaign=universe25"				target="_blank"		data-analytics-click="Blog, click on button, text: Use Copilot for free; ref_location:top nav;"					>
+		<span class="Button__text">
+		<span class="Text Text--200 Text--antialiased Text--weight-semibold Button--label Button--label-medium Button--label-primary">
+			Try GitHub Copilot		</span>
+		</span>
+
+			</a>
+		<a		class="Button Button--size-medium Button--secondary ml-3"
+		href="https://github.com/events/universe/recap?utm_source=k2k-blog-tap-nav&#038;utm_medium=blog&#038;utm_campaign=universe25"				target="_blank"		data-analytics-click="Blog, click on button, text: See what&#039;s new; ref_location:top nav;"					>
+		<span class="Button__text">
+		<span class="Text Text--200 Text--antialiased Text--weight-semibold Button--label Button--label-medium Button--label-secondary">
+			See what&#039;s new		</span>
+		</span>
+
+			</a>
+	</div>
+					
+<div class="d-flex d-lg-none flex-items-center flex-1 mr-n2">
+	<button aria-label="Toggle search" class="ml-auto p-2 border-0 color-bg-transparent color-fg-default rounded-3 js-toggle" aria-controls="mobile-search" aria-expanded="false" >
+		<svg viewBox="0 0 24 24" width="24" height="24" class="octicon octicon-search" role="presentation"><path d="M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2ZM3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0Z"></path></svg>
+		<svg viewBox="2 2 20 20" width="24" height="24" class="octicon octicon-x" role="presentation"><path d="M5.72 5.72a.75.75 0 0 1 1.06 0L12 10.94l5.22-5.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L13.06 12l5.22 5.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L12 13.06l-5.22 5.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L10.94 12 5.72 6.78a.75.75 0 0 1 0-1.06Z"></path></svg>
+	</button>
+	<button class="mobile-nav-focus-trap js-mobile-nav-focus-trap" data-target="#mobile-menu" data-focus-order="last"></button>
+	<button id="mobile-menu-toggle"  aria-label="Toggle menu" class="ml-2 p-2 border-0 color-bg-transparent color-fg-default rounded-3 js-toggle" aria-controls="mobile-menu" aria-expanded="false" data-trap-focus="#header">
+		<svg viewBox="0 0 16 16" width="24" height="24" class="octicon octicon-three-bars" role="presentation"><path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z"></path></svg>
+		<svg viewBox="2 2 20 20" width="24" height="24" class="octicon octicon-x " role="presentation"><path d="M5.72 5.72a.75.75 0 0 1 1.06 0L12 10.94l5.22-5.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L13.06 12l5.22 5.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L12 13.06l-5.22 5.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L10.94 12 5.72 6.78a.75.75 0 0 1 0-1.06Z"></path></svg>
+	</button>
+</div>
+				</div>
+			</div>
+							<div class="position-relative pb-lg-navigation" data-sticky-navigation=".sticky-navigation">
+					
+<nav aria-label="Primary navigation" class="sticky-navigation position-absolute z-4 top-0 left-0 d-none d-lg-block width-full color-border-subtle color-bg-default">
+	<div class="position-relative container-xl width-full mx-auto p-responsive-blog">
+		<ul id="primary-navigation" class="primary-navigation position-relative d-flex flex-row flex-nowrap flex-grow-0 flex-justify-between list-style-none"><li id="menu-item-78814"><a href="https://github.blog/ai-and-ml/" class="position-relative d-flex flex-items-center flex-start no-wrap py-3 f4-mktg text-bold js-toggle" aria-controls="primary-78814-dropdown" aria-expanded="false" aria-haspopup="true" role="button">AI &amp; ML<svg viewBox="0 0 16 16" width="16" height="16" class="octicon d-block ml-1 color-fg-muted" role="presentation"><path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path></svg></a>
+<ul class="dropdown d-flex flex-wrap width-full position-absolute left-0 list-style-none mt-2 rounded-3 z-3 overflow-hidden color-border-subtle" aria-label="AI &amp; ML sub-menu" aria-hidden="true" data-color-mode="light" data-dark-theme="dark" data-light-theme="light" id="primary-78814-dropdown" tabindex="-1">
+	<li id="menu-item-78863" class="flex-1 p-5 py-xl-7 px-xl-7"><div class="col-9 mb-4 mb-lg-7"><a href="https://github.blog/ai-and-ml/" class="d-flex flex-items-center flex-start f3 lh-condensed color-fg-default text-bold">AI &amp; ML<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right ml-1" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a><p class="mt-1 my-0 f4 color-fg-muted">Learn about artificial intelligence and machine learning across the GitHub ecosystem and the wider industry.</p></div>
+	<ul class="d-flex flex-wrap list-style-none" aria-label="AI &amp; ML sub-menu">
+		<li id="menu-item-78815" class="col-6 d-block f4 color-fg-default color-border-subtle pr-4 pr-lg-8 border-right"><a href="https://github.blog/ai-and-ml/generative-ai/" class="d-block f4 color-fg-default text-bold">Generative AI</a><p class="mb-0 f5 color-fg-muted">Learn how to build with generative AI.</p></li>
+		<li id="menu-item-78816" class="col-6 d-block f4 color-fg-default color-border-subtle pl-4 pl-lg-8"><a href="https://github.blog/ai-and-ml/github-copilot/" class="d-block f4 color-fg-default text-bold">GitHub Copilot</a><p class="mb-0 f5 color-fg-muted">Change how you work with GitHub Copilot.</p></li>
+		<li id="menu-item-78817" class="col-6 d-block f4 color-fg-default color-border-subtle pr-4 pr-lg-8 border-right pt-2 pt-lg-4"><a href="https://github.blog/ai-and-ml/llms/" class="d-block f4 color-fg-default text-bold">LLMs</a><p class="mb-0 f5 color-fg-muted">Everything developers need to know about LLMs.</p></li>
+		<li id="menu-item-78818" class="col-6 d-block f4 color-fg-default color-border-subtle pl-4 pl-lg-8 pt-2 pt-lg-4"><a href="https://github.blog/ai-and-ml/machine-learning/" class="d-block f4 color-fg-default text-bold">Machine learning</a><p class="mb-0 f5 color-fg-muted">Machine learning tips, tricks, and best practices.</p></li>
+	</ul>
+</li>
+	<li id="menu-item-78864" class="p-5 py-xl-7 px-xl-8 col-4 color-bg-subtle post-card"><div class="d-block position-relative mb-3 rounded-2 tease-thumbnail overflow-hidden"><img width="800" height="425" src="https://github.blog/wp-content/uploads/2024/06/AI-DarkMode-4.png?resize=800%2C425" class="tease-thumbnail__img d-block width-full height-auto aspect-ratio-1032-548 object-fit-cover" alt="" decoding="async" fetchpriority="high" srcset="https://github.blog/wp-content/uploads/2024/06/AI-DarkMode-4.png?w=300 300w, https://github.blog/wp-content/uploads/2024/06/AI-DarkMode-4.png?w=800 800w, https://github.blog/wp-content/uploads/2024/06/AI-DarkMode-4.png?w=400 400w, https://github.blog/wp-content/uploads/2024/06/AI-DarkMode-4.png?w=1032 1032w, https://github.blog/wp-content/uploads/2024/06/AI-DarkMode-4.png?w=516 516w" sizes="(max-width: 800px) 100vw, 800px" /></div><a href="https://github.blog/ai-and-ml/generative-ai/how-ai-code-generation-works/" class="d-block mb-2 f3 lh-condensed color-fg-default text-bold post-card__link">How AI code generation works</a><p class="mb-3 f5 color-fg-muted">Explore the capabilities and benefits of AI code generation and how it can improve your developer experience.</p><span class="Link d-inline-flex flex-items-center" role="presentation">Learn more<svg xmlns="http://www.w3.org/2000/svg" class="octicon d-block ml-1" viewBox="0 0 12 12" width="12" height="12"><path d="M4.7 10c-.2 0-.4-.1-.5-.2-.3-.3-.3-.8 0-1.1L6.9 6 4.2 3.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0l3.3 3.2c.3.3.3.8 0 1.1L5.3 9.7c-.2.2-.4.3-.6.3Z"></path></svg></span></li>
+</ul>
+</li>
+<li id="menu-item-78819"><a href="https://github.blog/developer-skills/" class="position-relative d-flex flex-items-center flex-start no-wrap py-3 f4-mktg text-bold js-toggle" aria-controls="primary-78819-dropdown" aria-expanded="false" aria-haspopup="true" role="button">Developer skills<svg viewBox="0 0 16 16" width="16" height="16" class="octicon d-block ml-1 color-fg-muted" role="presentation"><path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path></svg></a>
+<ul class="dropdown d-flex flex-wrap width-full position-absolute left-0 list-style-none mt-2 rounded-3 z-3 overflow-hidden color-border-subtle" aria-label="Developer skills sub-menu" aria-hidden="true" data-color-mode="light" data-dark-theme="dark" data-light-theme="light" id="primary-78819-dropdown" tabindex="-1">
+	<li id="menu-item-78865" class="flex-1 p-5 py-xl-7 px-xl-7"><div class="col-9 mb-4 mb-lg-7"><a href="https://github.blog/developer-skills/" class="d-flex flex-items-center flex-start f3 lh-condensed color-fg-default text-bold">Developer skills<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right ml-1" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a><p class="mt-1 my-0 f4 color-fg-muted">Resources for developers to grow in their skills and careers.</p></div>
+	<ul class="d-flex flex-wrap list-style-none" aria-label="Developer skills sub-menu">
+		<li id="menu-item-78820" class="col-6 d-block f4 color-fg-default color-border-subtle pr-4 pr-lg-8 border-right"><a href="https://github.blog/developer-skills/application-development/" class="d-block f4 color-fg-default text-bold">Application development</a><p class="mb-0 f5 color-fg-muted">Insights and best practices for building apps.</p></li>
+		<li id="menu-item-78821" class="col-6 d-block f4 color-fg-default color-border-subtle pl-4 pl-lg-8"><a href="https://github.blog/developer-skills/career-growth/" class="d-block f4 color-fg-default text-bold">Career growth</a><p class="mb-0 f5 color-fg-muted">Tips &amp; tricks to grow as a professional developer.</p></li>
+		<li id="menu-item-78822" class="col-6 d-block f4 color-fg-default color-border-subtle pr-4 pr-lg-8 border-right pt-2 pt-lg-4"><a href="https://github.blog/developer-skills/github/" class="d-block f4 color-fg-default text-bold">GitHub</a><p class="mb-0 f5 color-fg-muted">Improve how you use GitHub at work.</p></li>
+		<li id="menu-item-78823" class="col-6 d-block f4 color-fg-default color-border-subtle pl-4 pl-lg-8 pt-2 pt-lg-4"><a href="https://github.blog/developer-skills/github-education/" class="d-block f4 color-fg-default text-bold">GitHub Education</a><p class="mb-0 f5 color-fg-muted">Learn how to move into your first professional role.</p></li>
+		<li id="menu-item-78824" class="col-6 d-block f4 color-fg-default color-border-subtle pr-4 pr-lg-8 border-right pt-2 pt-lg-4"><a href="https://github.blog/developer-skills/programming-languages-and-frameworks/" class="d-block f4 color-fg-default text-bold">Programming languages &amp; frameworks</a><p class="mb-0 f5 color-fg-muted">Stay current on what’s new (or new again).</p></li>
+	</ul>
+</li>
+	<li id="menu-item-78866" class="p-5 py-xl-7 px-xl-8 col-4 color-bg-subtle post-card"><div class="d-block position-relative mb-3 rounded-2 tease-thumbnail overflow-hidden"><img width="800" height="425" src="https://github.blog/wp-content/uploads/2024/05/Enterprise-DarkMode-3.png?resize=800%2C425" class="tease-thumbnail__img d-block width-full height-auto aspect-ratio-1032-548 object-fit-cover" alt="" decoding="async" srcset="https://github.blog/wp-content/uploads/2024/05/Enterprise-DarkMode-3.png?w=300 300w, https://github.blog/wp-content/uploads/2024/05/Enterprise-DarkMode-3.png?w=800 800w, https://github.blog/wp-content/uploads/2024/05/Enterprise-DarkMode-3.png?w=400 400w, https://github.blog/wp-content/uploads/2024/05/Enterprise-DarkMode-3.png?w=1032 1032w, https://github.blog/wp-content/uploads/2024/05/Enterprise-DarkMode-3.png?w=516 516w" sizes="(max-width: 800px) 100vw, 800px" /></div><a href="https://docs.github.com/en/get-started" class="d-block mb-2 f3 lh-condensed color-fg-default text-bold post-card__link">Get started with GitHub documentation</a><p class="mb-3 f5 color-fg-muted">Learn how to start building, shipping, and maintaining software with GitHub.</p><span class="Link d-inline-flex flex-items-center" role="presentation">Learn more<svg xmlns="http://www.w3.org/2000/svg" class="octicon d-block ml-1" viewBox="0 0 12 12" width="12" height="12"><path d="M4.7 10c-.2 0-.4-.1-.5-.2-.3-.3-.3-.8 0-1.1L6.9 6 4.2 3.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0l3.3 3.2c.3.3.3.8 0 1.1L5.3 9.7c-.2.2-.4.3-.6.3Z"></path></svg></span></li>
+</ul>
+</li>
+<li id="menu-item-78825"><a href="https://github.blog/engineering/" class="position-relative d-flex flex-items-center flex-start no-wrap py-3 f4-mktg text-bold js-toggle" aria-controls="primary-78825-dropdown" aria-expanded="false" aria-haspopup="true" role="button">Engineering<svg viewBox="0 0 16 16" width="16" height="16" class="octicon d-block ml-1 color-fg-muted" role="presentation"><path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path></svg></a>
+<ul class="dropdown d-flex flex-wrap width-full position-absolute left-0 list-style-none mt-2 rounded-3 z-3 overflow-hidden color-border-subtle" aria-label="Engineering sub-menu" aria-hidden="true" data-color-mode="light" data-dark-theme="dark" data-light-theme="light" id="primary-78825-dropdown" tabindex="-1">
+	<li id="menu-item-78867" class="flex-1 p-5 py-xl-7 px-xl-7"><div class="col-9 mb-4 mb-lg-7"><a href="https://github.blog/engineering/" class="d-flex flex-items-center flex-start f3 lh-condensed color-fg-default text-bold">Engineering<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right ml-1" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a><p class="mt-1 my-0 f4 color-fg-muted">Get an inside look at how we’re building the home for all developers.</p></div>
+	<ul class="d-flex flex-wrap list-style-none" aria-label="Engineering sub-menu">
+		<li id="menu-item-78827" class="col-6 d-block f4 color-fg-default color-border-subtle pr-4 pr-lg-8 border-right"><a href="https://github.blog/engineering/architecture-optimization/" class="d-block f4 color-fg-default text-bold">Architecture &amp; optimization</a><p class="mb-0 f5 color-fg-muted">Discover how we deliver a performant and highly available experience across the GitHub platform.</p></li>
+		<li id="menu-item-78828" class="col-6 d-block f4 color-fg-default color-border-subtle pl-4 pl-lg-8"><a href="https://github.blog/engineering/engineering-principles/" class="d-block f4 color-fg-default text-bold">Engineering principles</a><p class="mb-0 f5 color-fg-muted">Explore best practices for building software at scale with a majority remote team.</p></li>
+		<li id="menu-item-78829" class="col-6 d-block f4 color-fg-default color-border-subtle pr-4 pr-lg-8 border-right pt-2 pt-lg-4"><a href="https://github.blog/engineering/infrastructure/" class="d-block f4 color-fg-default text-bold">Infrastructure</a><p class="mb-0 f5 color-fg-muted">Get a glimpse at the technology underlying the world’s leading AI-powered developer platform.</p></li>
+		<li id="menu-item-78830" class="col-6 d-block f4 color-fg-default color-border-subtle pl-4 pl-lg-8 pt-2 pt-lg-4"><a href="https://github.blog/engineering/platform-security/" class="d-block f4 color-fg-default text-bold">Platform security</a><p class="mb-0 f5 color-fg-muted">Learn how we build security into everything we do across the developer lifecycle.</p></li>
+		<li id="menu-item-78858" class="col-6 d-block f4 color-fg-default color-border-subtle pr-4 pr-lg-8 border-right pt-2 pt-lg-4"><a href="https://github.blog/engineering/user-experience/" class="d-block f4 color-fg-default text-bold">User experience</a><p class="mb-0 f5 color-fg-muted">Find out what goes into making GitHub the home for all developers.</p></li>
+	</ul>
+</li>
+	<li id="menu-item-78868" class="p-5 py-xl-7 px-xl-8 col-4 color-bg-subtle post-card"><div class="d-block position-relative mb-3 rounded-2 tease-thumbnail overflow-hidden"><img width="800" height="425" src="https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.42.45 AM.png?resize=800%2C425" class="tease-thumbnail__img d-block width-full height-auto aspect-ratio-1032-548 object-fit-cover" alt="" decoding="async" srcset="https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.42.45 AM.png?w=800 800w, https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.42.45 AM.png?w=400 400w, https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.42.45 AM.png?w=1032 1032w, https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.42.45 AM.png?w=516 516w" sizes="(max-width: 800px) 100vw, 800px" /></div><a href="https://github.blog/engineering/how-we-use-github-to-be-more-productive-collaborative-and-secure/" class="d-block mb-2 f3 lh-condensed color-fg-default text-bold post-card__link">How we use GitHub to be more productive, collaborative, and secure</a><p class="mb-3 f5 color-fg-muted">Our engineering and security teams do some incredible work. Let’s take a look at how we use GitHub to be more productive, build collaboratively, and shift security left.</p><span class="Link d-inline-flex flex-items-center" role="presentation">Learn more<svg xmlns="http://www.w3.org/2000/svg" class="octicon d-block ml-1" viewBox="0 0 12 12" width="12" height="12"><path d="M4.7 10c-.2 0-.4-.1-.5-.2-.3-.3-.3-.8 0-1.1L6.9 6 4.2 3.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0l3.3 3.2c.3.3.3.8 0 1.1L5.3 9.7c-.2.2-.4.3-.6.3Z"></path></svg></span></li>
+</ul>
+</li>
+<li id="menu-item-78832"><a href="https://github.blog/enterprise-software/" class="position-relative d-flex flex-items-center flex-start no-wrap py-3 f4-mktg text-bold js-toggle" aria-controls="primary-78832-dropdown" aria-expanded="false" aria-haspopup="true" role="button">Enterprise software<svg viewBox="0 0 16 16" width="16" height="16" class="octicon d-block ml-1 color-fg-muted" role="presentation"><path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path></svg></a>
+<ul class="dropdown d-flex flex-wrap width-full position-absolute left-0 list-style-none mt-2 rounded-3 z-3 overflow-hidden color-border-subtle" aria-label="Enterprise software sub-menu" aria-hidden="true" data-color-mode="light" data-dark-theme="dark" data-light-theme="light" id="primary-78832-dropdown" tabindex="-1">
+	<li id="menu-item-78869" class="flex-1 p-5 py-xl-7 px-xl-7"><div class="col-9 mb-4 mb-lg-7"><a href="https://github.blog/enterprise-software/" class="d-flex flex-items-center flex-start f3 lh-condensed color-fg-default text-bold">Enterprise software<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right ml-1" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a><p class="mt-1 my-0 f4 color-fg-muted">Explore how to write, build, and deploy enterprise software at scale.</p></div>
+	<ul class="d-flex flex-wrap list-style-none" aria-label="Enterprise software sub-menu">
+		<li id="menu-item-78833" class="col-6 d-block f4 color-fg-default color-border-subtle pr-4 pr-lg-8 border-right"><a href="https://github.blog/enterprise-software/automation/" class="d-block f4 color-fg-default text-bold">Automation</a><p class="mb-0 f5 color-fg-muted">Automating your way to faster and more secure ships.</p></li>
+		<li id="menu-item-78834" class="col-6 d-block f4 color-fg-default color-border-subtle pl-4 pl-lg-8"><a href="https://github.blog/enterprise-software/ci-cd/" class="d-block f4 color-fg-default text-bold">CI/CD</a><p class="mb-0 f5 color-fg-muted">Guides on continuous integration and delivery.</p></li>
+		<li id="menu-item-78835" class="col-6 d-block f4 color-fg-default color-border-subtle pr-4 pr-lg-8 border-right pt-2 pt-lg-4"><a href="https://github.blog/enterprise-software/collaboration/" class="d-block f4 color-fg-default text-bold">Collaboration</a><p class="mb-0 f5 color-fg-muted">Tips, tools, and tricks to improve developer collaboration.</p></li>
+		<li id="menu-item-78836" class="col-6 d-block f4 color-fg-default color-border-subtle pl-4 pl-lg-8 pt-2 pt-lg-4"><a href="https://github.blog/enterprise-software/devops/" class="d-block f4 color-fg-default text-bold">DevOps</a><p class="mb-0 f5 color-fg-muted">DevOps resources for enterprise engineering teams.</p></li>
+		<li id="menu-item-78837" class="col-6 d-block f4 color-fg-default color-border-subtle pr-4 pr-lg-8 border-right pt-2 pt-lg-4"><a href="https://github.blog/enterprise-software/devsecops/" class="d-block f4 color-fg-default text-bold">DevSecOps</a><p class="mb-0 f5 color-fg-muted">How to integrate security into the SDLC.</p></li>
+		<li id="menu-item-78838" class="col-6 d-block f4 color-fg-default color-border-subtle pl-4 pl-lg-8 pt-2 pt-lg-4"><a href="https://github.blog/enterprise-software/governance-and-compliance/" class="d-block f4 color-fg-default text-bold">Governance &amp; compliance</a><p class="mb-0 f5 color-fg-muted">Ensuring your builds stay clean.</p></li>
+	</ul>
+</li>
+	<li id="menu-item-78870" class="p-5 py-xl-7 px-xl-8 col-4 color-bg-subtle post-card"><div class="d-block position-relative mb-3 rounded-2 tease-thumbnail overflow-hidden"><img width="800" height="425" src="https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.43.47 AM.png?resize=800%2C425" class="tease-thumbnail__img d-block width-full height-auto aspect-ratio-1032-548 object-fit-cover" alt="" decoding="async" srcset="https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.43.47 AM.png?w=800 800w, https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.43.47 AM.png?w=400 400w, https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.43.47 AM.png?w=1032 1032w, https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.43.47 AM.png?w=516 516w" sizes="(max-width: 800px) 100vw, 800px" /></div><a href="https://github.com/resources/whitepapers/gartner-magic-quadrant-and-critical-capabilities-for-ai-code-assistants" class="d-block mb-2 f3 lh-condensed color-fg-default text-bold post-card__link">GitHub recognized as a Leader in the Gartner® Magic Quadrant™ for AI Code Assistants</a><p class="mb-3 f5 color-fg-muted">Learn why Gartner positioned GitHub as a Leader for the second year in a row.</p><span class="Link d-inline-flex flex-items-center" role="presentation">Learn more<svg xmlns="http://www.w3.org/2000/svg" class="octicon d-block ml-1" viewBox="0 0 12 12" width="12" height="12"><path d="M4.7 10c-.2 0-.4-.1-.5-.2-.3-.3-.3-.8 0-1.1L6.9 6 4.2 3.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0l3.3 3.2c.3.3.3.8 0 1.1L5.3 9.7c-.2.2-.4.3-.6.3Z"></path></svg></span></li>
+</ul>
+</li>
+<li id="menu-item-78840"><a href="https://github.blog/news-insights/" class="position-relative d-flex flex-items-center flex-start no-wrap py-3 f4-mktg text-bold js-toggle" aria-controls="primary-78840-dropdown" aria-expanded="false" aria-haspopup="true" role="button">News &amp; insights<svg viewBox="0 0 16 16" width="16" height="16" class="octicon d-block ml-1 color-fg-muted" role="presentation"><path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path></svg></a>
+<ul class="dropdown d-flex flex-wrap width-full position-absolute left-0 list-style-none mt-2 rounded-3 z-3 overflow-hidden color-border-subtle" aria-label="News &amp; insights sub-menu" aria-hidden="true" data-color-mode="light" data-dark-theme="dark" data-light-theme="light" id="primary-78840-dropdown" tabindex="-1">
+	<li id="menu-item-78871" class="flex-1 p-5 py-xl-7 px-xl-7"><div class="col-9 mb-4 mb-lg-7"><a href="https://github.blog/news-insights/" class="d-flex flex-items-center flex-start f3 lh-condensed color-fg-default text-bold">News &amp; insights<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right ml-1" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a><p class="mt-1 my-0 f4 color-fg-muted">Keep up with what’s new and notable from inside GitHub.</p></div>
+	<ul class="d-flex flex-wrap list-style-none" aria-label="News &amp; insights sub-menu">
+		<li id="menu-item-78841" class="col-6 d-block f4 color-fg-default color-border-subtle pr-4 pr-lg-8 border-right"><a href="https://github.blog/news-insights/company-news/" class="d-block f4 color-fg-default text-bold">Company news</a><p class="mb-0 f5 color-fg-muted">An inside look at news and product updates from GitHub.</p></li>
+		<li id="menu-item-78844" class="col-6 d-block f4 color-fg-default color-border-subtle pl-4 pl-lg-8"><a href="https://github.blog/news-insights/product-news/" class="d-block f4 color-fg-default text-bold">Product</a><p class="mb-0 f5 color-fg-muted">The latest on GitHub’s platform, products, and tools.</p></li>
+		<li id="menu-item-78842" class="col-6 d-block f4 color-fg-default color-border-subtle pr-4 pr-lg-8 border-right pt-2 pt-lg-4"><a href="https://github.blog/news-insights/octoverse/" class="d-block f4 color-fg-default text-bold">Octoverse</a><p class="mb-0 f5 color-fg-muted">Insights into the state of open source on GitHub.</p></li>
+		<li id="menu-item-78843" class="col-6 d-block f4 color-fg-default color-border-subtle pl-4 pl-lg-8 pt-2 pt-lg-4"><a href="https://github.blog/news-insights/policy-news-and-insights/" class="d-block f4 color-fg-default text-bold">Policy</a><p class="mb-0 f5 color-fg-muted">The latest policy and regulatory changes in software.</p></li>
+		<li id="menu-item-78845" class="col-6 d-block f4 color-fg-default color-border-subtle pr-4 pr-lg-8 border-right pt-2 pt-lg-4"><a href="https://github.blog/news-insights/research/" class="d-block f4 color-fg-default text-bold">Research</a><p class="mb-0 f5 color-fg-muted">Data-driven insights around the developer ecosystem.</p></li>
+		<li id="menu-item-78847" class="col-6 d-block f4 color-fg-default color-border-subtle pl-4 pl-lg-8 pt-2 pt-lg-4"><a href="https://github.blog/news-insights/the-library/" class="d-block f4 color-fg-default text-bold">The library</a><p class="mb-0 f5 color-fg-muted">Older news and updates from GitHub.</p></li>
+	</ul>
+</li>
+	<li id="menu-item-78872" class="p-5 py-xl-7 px-xl-8 col-4 color-bg-subtle post-card"><div class="d-block position-relative mb-3 rounded-2 tease-thumbnail overflow-hidden"><img width="800" height="425" src="https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.44.23 AM.png?resize=800%2C425" class="tease-thumbnail__img d-block width-full height-auto aspect-ratio-1032-548 object-fit-cover" alt="" decoding="async" srcset="https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.44.23 AM.png?w=300 300w, https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.44.23 AM.png?w=800 800w, https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.44.23 AM.png?w=400 400w, https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.44.23 AM.png?w=1032 1032w, https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.44.23 AM.png?w=516 516w" sizes="(max-width: 800px) 100vw, 800px" /></div><a href="https://github.blog/ai-and-ml/llms/unlocking-the-power-of-unstructured-data-with-rag/" class="d-block mb-2 f3 lh-condensed color-fg-default text-bold post-card__link">Unlocking the power of unstructured data with RAG</a><p class="mb-3 f5 color-fg-muted">Learn how to use retrieval-augmented generation (RAG) to capture more insights.</p><span class="Link d-inline-flex flex-items-center" role="presentation">Learn more<svg xmlns="http://www.w3.org/2000/svg" class="octicon d-block ml-1" viewBox="0 0 12 12" width="12" height="12"><path d="M4.7 10c-.2 0-.4-.1-.5-.2-.3-.3-.3-.8 0-1.1L6.9 6 4.2 3.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0l3.3 3.2c.3.3.3.8 0 1.1L5.3 9.7c-.2.2-.4.3-.6.3Z"></path></svg></span></li>
+</ul>
+</li>
+<li id="menu-item-78848"><a href="https://github.blog/open-source/" class="position-relative d-flex flex-items-center flex-start no-wrap py-3 f4-mktg text-bold js-toggle" aria-controls="primary-78848-dropdown" aria-expanded="false" aria-haspopup="true" role="button">Open Source<svg viewBox="0 0 16 16" width="16" height="16" class="octicon d-block ml-1 color-fg-muted" role="presentation"><path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path></svg></a>
+<ul class="dropdown d-flex flex-wrap width-full position-absolute left-0 list-style-none mt-2 rounded-3 z-3 overflow-hidden color-border-subtle" aria-label="Open Source sub-menu" aria-hidden="true" data-color-mode="light" data-dark-theme="dark" data-light-theme="light" id="primary-78848-dropdown" tabindex="-1">
+	<li id="menu-item-78873" class="flex-1 p-5 py-xl-7 px-xl-7"><div class="col-9 mb-4 mb-lg-7"><a href="https://github.blog/open-source/" class="d-flex flex-items-center flex-start f3 lh-condensed color-fg-default text-bold">Open Source<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right ml-1" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a><p class="mt-1 my-0 f4 color-fg-muted">Everything open source on GitHub.</p></div>
+	<ul class="d-flex flex-wrap list-style-none" aria-label="Open Source sub-menu">
+		<li id="menu-item-78851" class="col-6 d-block f4 color-fg-default color-border-subtle pr-4 pr-lg-8 border-right"><a href="https://github.blog/open-source/git/" class="d-block f4 color-fg-default text-bold">Git</a><p class="mb-0 f5 color-fg-muted">The latest Git updates.</p></li>
+		<li id="menu-item-78853" class="col-6 d-block f4 color-fg-default color-border-subtle pl-4 pl-lg-8"><a href="https://github.blog/open-source/maintainers/" class="d-block f4 color-fg-default text-bold">Maintainers</a><p class="mb-0 f5 color-fg-muted">Spotlighting open source maintainers.</p></li>
+		<li id="menu-item-78854" class="col-6 d-block f4 color-fg-default color-border-subtle pr-4 pr-lg-8 border-right pt-2 pt-lg-4"><a href="https://github.blog/open-source/social-impact/" class="d-block f4 color-fg-default text-bold">Social impact</a><p class="mb-0 f5 color-fg-muted">How open source is driving positive change.</p></li>
+		<li id="menu-item-78850" class="col-6 d-block f4 color-fg-default color-border-subtle pl-4 pl-lg-8 pt-2 pt-lg-4"><a href="https://github.blog/open-source/gaming/" class="d-block f4 color-fg-default text-bold">Gaming</a><p class="mb-0 f5 color-fg-muted">Explore open source games on GitHub.</p></li>
+	</ul>
+</li>
+	<li id="menu-item-78874" class="p-5 py-xl-7 px-xl-8 col-4 color-bg-subtle post-card"><div class="d-block position-relative mb-3 rounded-2 tease-thumbnail overflow-hidden"><img width="800" height="425" src="https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.46.23 AM.png?resize=800%2C425" class="tease-thumbnail__img d-block width-full height-auto aspect-ratio-1032-548 object-fit-cover" alt="" decoding="async" srcset="https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.46.23 AM.png?w=800 800w, https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.46.23 AM.png?w=400 400w, https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.46.23 AM.png?w=1032 1032w, https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.46.23 AM.png?w=516 516w" sizes="(max-width: 800px) 100vw, 800px" /></div><a href="https://resources.github.com/software-development/innersource/" class="d-block mb-2 f3 lh-condensed color-fg-default text-bold post-card__link">An introduction to innersource</a><p class="mb-3 f5 color-fg-muted">Organizations worldwide are incorporating open source methodologies into the way they build and ship their own software.</p><span class="Link d-inline-flex flex-items-center" role="presentation">Learn more<svg xmlns="http://www.w3.org/2000/svg" class="octicon d-block ml-1" viewBox="0 0 12 12" width="12" height="12"><path d="M4.7 10c-.2 0-.4-.1-.5-.2-.3-.3-.3-.8 0-1.1L6.9 6 4.2 3.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0l3.3 3.2c.3.3.3.8 0 1.1L5.3 9.7c-.2.2-.4.3-.6.3Z"></path></svg></span></li>
+</ul>
+</li>
+<li id="menu-item-78859"><a href="https://github.blog/security/" class="position-relative d-flex flex-items-center flex-start no-wrap py-3 f4-mktg text-bold js-toggle" aria-controls="primary-78859-dropdown" aria-expanded="false" aria-haspopup="true" role="button">Security<svg viewBox="0 0 16 16" width="16" height="16" class="octicon d-block ml-1 color-fg-muted" role="presentation"><path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path></svg></a>
+<ul class="dropdown d-flex flex-wrap width-full position-absolute left-0 list-style-none mt-2 rounded-3 z-3 overflow-hidden color-border-subtle" aria-label="Security sub-menu" aria-hidden="true" data-color-mode="light" data-dark-theme="dark" data-light-theme="light" id="primary-78859-dropdown" tabindex="-1">
+	<li id="menu-item-78875" class="flex-1 p-5 py-xl-7 px-xl-7"><div class="col-9 mb-4 mb-lg-7"><a href="https://github.blog/security/" class="d-flex flex-items-center flex-start f3 lh-condensed color-fg-default text-bold">Security<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right ml-1" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a><p class="mt-1 my-0 f4 color-fg-muted">Stay up to date on everything security.</p></div>
+	<ul class="d-flex flex-wrap list-style-none" aria-label="Security sub-menu">
+		<li id="menu-item-78860" class="col-6 d-block f4 color-fg-default color-border-subtle pr-4 pr-lg-8 border-right"><a href="https://github.blog/security/application-security/" class="d-block f4 color-fg-default text-bold">Application security</a><p class="mb-0 f5 color-fg-muted">Application security, explained.</p></li>
+		<li id="menu-item-78861" class="col-6 d-block f4 color-fg-default color-border-subtle pl-4 pl-lg-8"><a href="https://github.blog/security/supply-chain-security/" class="d-block f4 color-fg-default text-bold">Supply chain security</a><p class="mb-0 f5 color-fg-muted">Demystifying supply chain security.</p></li>
+		<li id="menu-item-78855" class="col-6 d-block f4 color-fg-default color-border-subtle pr-4 pr-lg-8 border-right pt-2 pt-lg-4"><a href="https://github.blog/security/vulnerability-research/" class="d-block f4 color-fg-default text-bold">Vulnerability research</a><p class="mb-0 f5 color-fg-muted">Updates from the GitHub Security Lab.</p></li>
+		<li id="menu-item-78862" class="col-6 d-block f4 color-fg-default color-border-subtle pl-4 pl-lg-8 pt-2 pt-lg-4"><a href="https://github.blog/security/web-application-security/" class="d-block f4 color-fg-default text-bold">Web application security</a><p class="mb-0 f5 color-fg-muted">Helpful tips on securing web applications.</p></li>
+	</ul>
+</li>
+	<li id="menu-item-78876" class="p-5 py-xl-7 px-xl-8 col-4 color-bg-subtle post-card"><div class="d-block position-relative mb-3 rounded-2 tease-thumbnail overflow-hidden"><img width="800" height="425" src="https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.47.04 AM.png?resize=800%2C425" class="tease-thumbnail__img d-block width-full height-auto aspect-ratio-1032-548 object-fit-cover" alt="" decoding="async" srcset="https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.47.04 AM.png?w=800 800w, https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.47.04 AM.png?w=400 400w, https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.47.04 AM.png?w=1032 1032w, https://github.blog/wp-content/uploads/2024/07/Screenshot-2024-07-23-at-8.47.04 AM.png?w=516 516w" sizes="(max-width: 800px) 100vw, 800px" /></div><a href="https://resources.github.com/security/the-enterprise-guide-to-ai-powered-devsecops/" class="d-block mb-2 f3 lh-condensed color-fg-default text-bold post-card__link">The enterprise guide to AI-powered DevSecOps</a><p class="mb-3 f5 color-fg-muted">Learn about core challenges in DevSecOps, and how you can start addressing them with AI and automation.</p><span class="Link d-inline-flex flex-items-center" role="presentation">Learn more<svg xmlns="http://www.w3.org/2000/svg" class="octicon d-block ml-1" viewBox="0 0 12 12" width="12" height="12"><path d="M4.7 10c-.2 0-.4-.1-.5-.2-.3-.3-.3-.8 0-1.1L6.9 6 4.2 3.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0l3.3 3.2c.3.3.3.8 0 1.1L5.3 9.7c-.2.2-.4.3-.6.3Z"></path></svg></span></li>
+</ul>
+</li>
+</ul>	</div>
+</nav>
+				</div>
+						
+<form id="mobile-search" role="search" method="get" class="mobile-search" action="https://github.blog"  aria-hidden="true" aria-label="Search form">
+	<div class="d-flex flex-1 p-3 color-bg-inset">
+		<div class="d-flex flex-1 position-relative color-bg-transparent" data-color-mode="light" data-light-theme="light" data-dark-theme="dark" >
+			<svg height="20" class="d-flex position-absolute z-3 octicon height-full ml-2 color-fg-subtle" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="20" role="img"><path fill-rule="evenodd" d="M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z"></path></svg>
+			<input aria-label="Search the blog" type="search" class="pl-6 search-field form-control p-2 flex-1" placeholder="Search the blog…" value="" name="s" id="search-input">
+		</div>
+
+			<button		class="Button Button--size-medium Button--secondary ml-2"
+				type="submit"									>
+		<span class="Button__text">
+		<span class="Text Text--200 Text--antialiased Text--weight-semibold Button--label Button--label-medium Button--label-secondary">
+			Search		</span>
+		</span>
+
+			</button>
+		</div>
+</form>
+			
+<nav id="mobile-menu" class="mobile-menu position-relative overflow-y-auto flex-1 width-full rounded-top-3" aria-label="Navigation menu" aria-hidden="true" data-color-mode="light" data-light-theme="light" data-dark-theme="dark_dimmed">
+	<div class="p-5">
+				<h2 class="mb-5 text-bold color-fg-subtle">Categories</h2>
+			<ul id="menu-new-primary-navigation" class="list-style-none"><li class="mb-5"><a href="https://github.blog/ai-and-ml/" class="d-flex flex-items-center flex-justify-between lh-condensed-ultra text-bold color-fg-default js-toggle" aria-controls="primary-mobile-78814-dropdown" aria-expanded="false" aria-haspopup="true" role="button">AI &amp; ML<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right d-block color-fg-subtle" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a>
+<ul aria-hidden="true" aria-label="AI &amp; ML sub-menu" class="dropdown overflow-y-auto position-absolute top-0 left-0 right-0 bottom-0 flex-wrap p-5 list-style-none rounded-3 z-3 color-bg-default color-border-subtle" id="primary-mobile-78814-dropdown">
+	<li class="mb-5"><div class="mb-4"><button type="button" class="d-flex flex-items-center mb-4 p-0 border-0 text-semibold color-bg-transparent color-fg-subtle" aria-controls="primary-mobile-78814-dropdown" aria-expanded="true"><svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-left mr-1"><path d="M9.78 12.78a.75.75 0 0 1-1.06 0L4.47 8.53a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L6.06 8l3.72 3.72a.75.75 0 0 1 0 1.06Z"></path></svg>Back</button><a href="https://github.blog/ai-and-ml/" class="d-flex flex-items-center flex-justify-start lh-condensed-ultra text-bold color-fg-default">AI &amp; ML<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right ml-1" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a><p class="mt-2 mb-0 color-fg-muted">Learn about artificial intelligence and machine learning across the GitHub ecosystem and the wider industry.</p></div>
+	<ul class="border-top list-style-none">
+		<li class="mt-4"><a href="https://github.blog/ai-and-ml/generative-ai/" class="text-bold lh-condensed-ultra color-fg-default">Generative AI</a><p class="mb-0 f5 color-fg-muted">Learn how to build with generative AI.</p></li>
+		<li class="mt-4"><a href="https://github.blog/ai-and-ml/github-copilot/" class="text-bold lh-condensed-ultra color-fg-default">GitHub Copilot</a><p class="mb-0 f5 color-fg-muted">Change how you work with GitHub Copilot.</p></li>
+		<li class="mt-4"><a href="https://github.blog/ai-and-ml/llms/" class="text-bold lh-condensed-ultra color-fg-default">LLMs</a><p class="mb-0 f5 color-fg-muted">Everything developers need to know about LLMs.</p></li>
+		<li class="mt-4"><a href="https://github.blog/ai-and-ml/machine-learning/" class="text-bold lh-condensed-ultra color-fg-default">Machine learning</a><p class="mb-0 f5 color-fg-muted">Machine learning tips, tricks, and best practices.</p></li>
+	</ul>
+</li>
+	<li class="d-none"><div class="mb-4"><a href="https://github.blog/ai-and-ml/generative-ai/how-ai-code-generation-works/" class="d-flex flex-items-center flex-justify-start lh-condensed-ultra text-bold color-fg-default">How AI code generation works</a><p class="mb-3 f5 color-fg-muted">Explore the capabilities and benefits of AI code generation and how it can improve your developer experience.</p><a href="https://github.blog/ai-and-ml/generative-ai/how-ai-code-generation-works/" target="" class="Link d-inline-flex flex-items-center">Learn more<svg xmlns="http://www.w3.org/2000/svg" class="octicon d-block ml-1" viewBox="0 0 12 12" width="12" height="12"><path d="M4.7 10c-.2 0-.4-.1-.5-.2-.3-.3-.3-.8 0-1.1L6.9 6 4.2 3.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0l3.3 3.2c.3.3.3.8 0 1.1L5.3 9.7c-.2.2-.4.3-.6.3Z"></path></svg></a></div></li>
+</ul>
+</li>
+<li class="mb-5"><a href="https://github.blog/developer-skills/" class="d-flex flex-items-center flex-justify-between lh-condensed-ultra text-bold color-fg-default js-toggle" aria-controls="primary-mobile-78819-dropdown" aria-expanded="false" aria-haspopup="true" role="button">Developer skills<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right d-block color-fg-subtle" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a>
+<ul aria-hidden="true" aria-label="Developer skills sub-menu" class="dropdown overflow-y-auto position-absolute top-0 left-0 right-0 bottom-0 flex-wrap p-5 list-style-none rounded-3 z-3 color-bg-default color-border-subtle" id="primary-mobile-78819-dropdown">
+	<li class="mb-5"><div class="mb-4"><button type="button" class="d-flex flex-items-center mb-4 p-0 border-0 text-semibold color-bg-transparent color-fg-subtle" aria-controls="primary-mobile-78819-dropdown" aria-expanded="true"><svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-left mr-1"><path d="M9.78 12.78a.75.75 0 0 1-1.06 0L4.47 8.53a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L6.06 8l3.72 3.72a.75.75 0 0 1 0 1.06Z"></path></svg>Back</button><a href="https://github.blog/developer-skills/" class="d-flex flex-items-center flex-justify-start lh-condensed-ultra text-bold color-fg-default">Developer skills<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right ml-1" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a><p class="mt-2 mb-0 color-fg-muted">Resources for developers to grow in their skills and careers.</p></div>
+	<ul class="border-top list-style-none">
+		<li class="mt-4"><a href="https://github.blog/developer-skills/application-development/" class="text-bold lh-condensed-ultra color-fg-default">Application development</a><p class="mb-0 f5 color-fg-muted">Insights and best practices for building apps.</p></li>
+		<li class="mt-4"><a href="https://github.blog/developer-skills/career-growth/" class="text-bold lh-condensed-ultra color-fg-default">Career growth</a><p class="mb-0 f5 color-fg-muted">Tips &amp; tricks to grow as a professional developer.</p></li>
+		<li class="mt-4"><a href="https://github.blog/developer-skills/github/" class="text-bold lh-condensed-ultra color-fg-default">GitHub</a><p class="mb-0 f5 color-fg-muted">Improve how you use GitHub at work.</p></li>
+		<li class="mt-4"><a href="https://github.blog/developer-skills/github-education/" class="text-bold lh-condensed-ultra color-fg-default">GitHub Education</a><p class="mb-0 f5 color-fg-muted">Learn how to move into your first professional role.</p></li>
+		<li class="mt-4"><a href="https://github.blog/developer-skills/programming-languages-and-frameworks/" class="text-bold lh-condensed-ultra color-fg-default">Programming languages &amp; frameworks</a><p class="mb-0 f5 color-fg-muted">Stay current on what’s new (or new again).</p></li>
+	</ul>
+</li>
+	<li class="d-none"><div class="mb-4"><a href="https://docs.github.com/en/get-started" class="d-flex flex-items-center flex-justify-start lh-condensed-ultra text-bold color-fg-default">Get started with GitHub documentation</a><p class="mb-3 f5 color-fg-muted">Learn how to start building, shipping, and maintaining software with GitHub.</p><a href="https://docs.github.com/en/get-started" target="" class="Link d-inline-flex flex-items-center">Learn more<svg xmlns="http://www.w3.org/2000/svg" class="octicon d-block ml-1" viewBox="0 0 12 12" width="12" height="12"><path d="M4.7 10c-.2 0-.4-.1-.5-.2-.3-.3-.3-.8 0-1.1L6.9 6 4.2 3.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0l3.3 3.2c.3.3.3.8 0 1.1L5.3 9.7c-.2.2-.4.3-.6.3Z"></path></svg></a></div></li>
+</ul>
+</li>
+<li class="mb-5"><a href="https://github.blog/engineering/" class="d-flex flex-items-center flex-justify-between lh-condensed-ultra text-bold color-fg-default js-toggle" aria-controls="primary-mobile-78825-dropdown" aria-expanded="false" aria-haspopup="true" role="button">Engineering<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right d-block color-fg-subtle" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a>
+<ul aria-hidden="true" aria-label="Engineering sub-menu" class="dropdown overflow-y-auto position-absolute top-0 left-0 right-0 bottom-0 flex-wrap p-5 list-style-none rounded-3 z-3 color-bg-default color-border-subtle" id="primary-mobile-78825-dropdown">
+	<li class="mb-5"><div class="mb-4"><button type="button" class="d-flex flex-items-center mb-4 p-0 border-0 text-semibold color-bg-transparent color-fg-subtle" aria-controls="primary-mobile-78825-dropdown" aria-expanded="true"><svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-left mr-1"><path d="M9.78 12.78a.75.75 0 0 1-1.06 0L4.47 8.53a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L6.06 8l3.72 3.72a.75.75 0 0 1 0 1.06Z"></path></svg>Back</button><a href="https://github.blog/engineering/" class="d-flex flex-items-center flex-justify-start lh-condensed-ultra text-bold color-fg-default">Engineering<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right ml-1" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a><p class="mt-2 mb-0 color-fg-muted">Get an inside look at how we’re building the home for all developers.</p></div>
+	<ul class="border-top list-style-none">
+		<li class="mt-4"><a href="https://github.blog/engineering/architecture-optimization/" class="text-bold lh-condensed-ultra color-fg-default">Architecture &amp; optimization</a><p class="mb-0 f5 color-fg-muted">Discover how we deliver a performant and highly available experience across the GitHub platform.</p></li>
+		<li class="mt-4"><a href="https://github.blog/engineering/engineering-principles/" class="text-bold lh-condensed-ultra color-fg-default">Engineering principles</a><p class="mb-0 f5 color-fg-muted">Explore best practices for building software at scale with a majority remote team.</p></li>
+		<li class="mt-4"><a href="https://github.blog/engineering/infrastructure/" class="text-bold lh-condensed-ultra color-fg-default">Infrastructure</a><p class="mb-0 f5 color-fg-muted">Get a glimpse at the technology underlying the world’s leading AI-powered developer platform.</p></li>
+		<li class="mt-4"><a href="https://github.blog/engineering/platform-security/" class="text-bold lh-condensed-ultra color-fg-default">Platform security</a><p class="mb-0 f5 color-fg-muted">Learn how we build security into everything we do across the developer lifecycle.</p></li>
+		<li class="mt-4"><a href="https://github.blog/engineering/user-experience/" class="text-bold lh-condensed-ultra color-fg-default">User experience</a><p class="mb-0 f5 color-fg-muted">Find out what goes into making GitHub the home for all developers.</p></li>
+	</ul>
+</li>
+	<li class="d-none"><div class="mb-4"><a href="https://github.blog/engineering/how-we-use-github-to-be-more-productive-collaborative-and-secure/" class="d-flex flex-items-center flex-justify-start lh-condensed-ultra text-bold color-fg-default">How we use GitHub to be more productive, collaborative, and secure</a><p class="mb-3 f5 color-fg-muted">Our engineering and security teams do some incredible work. Let’s take a look at how we use GitHub to be more productive, build collaboratively, and shift security left.</p><a href="https://github.blog/engineering/how-we-use-github-to-be-more-productive-collaborative-and-secure/" target="" class="Link d-inline-flex flex-items-center">Learn more<svg xmlns="http://www.w3.org/2000/svg" class="octicon d-block ml-1" viewBox="0 0 12 12" width="12" height="12"><path d="M4.7 10c-.2 0-.4-.1-.5-.2-.3-.3-.3-.8 0-1.1L6.9 6 4.2 3.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0l3.3 3.2c.3.3.3.8 0 1.1L5.3 9.7c-.2.2-.4.3-.6.3Z"></path></svg></a></div></li>
+</ul>
+</li>
+<li class="mb-5"><a href="https://github.blog/enterprise-software/" class="d-flex flex-items-center flex-justify-between lh-condensed-ultra text-bold color-fg-default js-toggle" aria-controls="primary-mobile-78832-dropdown" aria-expanded="false" aria-haspopup="true" role="button">Enterprise software<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right d-block color-fg-subtle" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a>
+<ul aria-hidden="true" aria-label="Enterprise software sub-menu" class="dropdown overflow-y-auto position-absolute top-0 left-0 right-0 bottom-0 flex-wrap p-5 list-style-none rounded-3 z-3 color-bg-default color-border-subtle" id="primary-mobile-78832-dropdown">
+	<li class="mb-5"><div class="mb-4"><button type="button" class="d-flex flex-items-center mb-4 p-0 border-0 text-semibold color-bg-transparent color-fg-subtle" aria-controls="primary-mobile-78832-dropdown" aria-expanded="true"><svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-left mr-1"><path d="M9.78 12.78a.75.75 0 0 1-1.06 0L4.47 8.53a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L6.06 8l3.72 3.72a.75.75 0 0 1 0 1.06Z"></path></svg>Back</button><a href="https://github.blog/enterprise-software/" class="d-flex flex-items-center flex-justify-start lh-condensed-ultra text-bold color-fg-default">Enterprise software<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right ml-1" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a><p class="mt-2 mb-0 color-fg-muted">Explore how to write, build, and deploy enterprise software at scale.</p></div>
+	<ul class="border-top list-style-none">
+		<li class="mt-4"><a href="https://github.blog/enterprise-software/automation/" class="text-bold lh-condensed-ultra color-fg-default">Automation</a><p class="mb-0 f5 color-fg-muted">Automating your way to faster and more secure ships.</p></li>
+		<li class="mt-4"><a href="https://github.blog/enterprise-software/ci-cd/" class="text-bold lh-condensed-ultra color-fg-default">CI/CD</a><p class="mb-0 f5 color-fg-muted">Guides on continuous integration and delivery.</p></li>
+		<li class="mt-4"><a href="https://github.blog/enterprise-software/collaboration/" class="text-bold lh-condensed-ultra color-fg-default">Collaboration</a><p class="mb-0 f5 color-fg-muted">Tips, tools, and tricks to improve developer collaboration.</p></li>
+		<li class="mt-4"><a href="https://github.blog/enterprise-software/devops/" class="text-bold lh-condensed-ultra color-fg-default">DevOps</a><p class="mb-0 f5 color-fg-muted">DevOps resources for enterprise engineering teams.</p></li>
+		<li class="mt-4"><a href="https://github.blog/enterprise-software/devsecops/" class="text-bold lh-condensed-ultra color-fg-default">DevSecOps</a><p class="mb-0 f5 color-fg-muted">How to integrate security into the SDLC.</p></li>
+		<li class="mt-4"><a href="https://github.blog/enterprise-software/governance-and-compliance/" class="text-bold lh-condensed-ultra color-fg-default">Governance &amp; compliance</a><p class="mb-0 f5 color-fg-muted">Ensuring your builds stay clean.</p></li>
+	</ul>
+</li>
+	<li class="d-none"><div class="mb-4"><a href="https://github.com/resources/whitepapers/gartner-magic-quadrant-and-critical-capabilities-for-ai-code-assistants" class="d-flex flex-items-center flex-justify-start lh-condensed-ultra text-bold color-fg-default">GitHub recognized as a Leader in the Gartner® Magic Quadrant™ for AI Code Assistants</a><p class="mb-3 f5 color-fg-muted">Learn why Gartner positioned GitHub as a Leader for the second year in a row.</p><a href="https://github.com/resources/whitepapers/gartner-magic-quadrant-and-critical-capabilities-for-ai-code-assistants" target="" class="Link d-inline-flex flex-items-center">Learn more<svg xmlns="http://www.w3.org/2000/svg" class="octicon d-block ml-1" viewBox="0 0 12 12" width="12" height="12"><path d="M4.7 10c-.2 0-.4-.1-.5-.2-.3-.3-.3-.8 0-1.1L6.9 6 4.2 3.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0l3.3 3.2c.3.3.3.8 0 1.1L5.3 9.7c-.2.2-.4.3-.6.3Z"></path></svg></a></div></li>
+</ul>
+</li>
+<li class="mb-5"><a href="https://github.blog/news-insights/" class="d-flex flex-items-center flex-justify-between lh-condensed-ultra text-bold color-fg-default js-toggle" aria-controls="primary-mobile-78840-dropdown" aria-expanded="false" aria-haspopup="true" role="button">News &amp; insights<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right d-block color-fg-subtle" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a>
+<ul aria-hidden="true" aria-label="News &amp; insights sub-menu" class="dropdown overflow-y-auto position-absolute top-0 left-0 right-0 bottom-0 flex-wrap p-5 list-style-none rounded-3 z-3 color-bg-default color-border-subtle" id="primary-mobile-78840-dropdown">
+	<li class="mb-5"><div class="mb-4"><button type="button" class="d-flex flex-items-center mb-4 p-0 border-0 text-semibold color-bg-transparent color-fg-subtle" aria-controls="primary-mobile-78840-dropdown" aria-expanded="true"><svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-left mr-1"><path d="M9.78 12.78a.75.75 0 0 1-1.06 0L4.47 8.53a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L6.06 8l3.72 3.72a.75.75 0 0 1 0 1.06Z"></path></svg>Back</button><a href="https://github.blog/news-insights/" class="d-flex flex-items-center flex-justify-start lh-condensed-ultra text-bold color-fg-default">News &amp; insights<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right ml-1" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a><p class="mt-2 mb-0 color-fg-muted">Keep up with what’s new and notable from inside GitHub.</p></div>
+	<ul class="border-top list-style-none">
+		<li class="mt-4"><a href="https://github.blog/news-insights/company-news/" class="text-bold lh-condensed-ultra color-fg-default">Company news</a><p class="mb-0 f5 color-fg-muted">An inside look at news and product updates from GitHub.</p></li>
+		<li class="mt-4"><a href="https://github.blog/news-insights/product-news/" class="text-bold lh-condensed-ultra color-fg-default">Product</a><p class="mb-0 f5 color-fg-muted">The latest on GitHub’s platform, products, and tools.</p></li>
+		<li class="mt-4"><a href="https://github.blog/news-insights/octoverse/" class="text-bold lh-condensed-ultra color-fg-default">Octoverse</a><p class="mb-0 f5 color-fg-muted">Insights into the state of open source on GitHub.</p></li>
+		<li class="mt-4"><a href="https://github.blog/news-insights/policy-news-and-insights/" class="text-bold lh-condensed-ultra color-fg-default">Policy</a><p class="mb-0 f5 color-fg-muted">The latest policy and regulatory changes in software.</p></li>
+		<li class="mt-4"><a href="https://github.blog/news-insights/research/" class="text-bold lh-condensed-ultra color-fg-default">Research</a><p class="mb-0 f5 color-fg-muted">Data-driven insights around the developer ecosystem.</p></li>
+		<li class="mt-4"><a href="https://github.blog/news-insights/the-library/" class="text-bold lh-condensed-ultra color-fg-default">The library</a><p class="mb-0 f5 color-fg-muted">Older news and updates from GitHub.</p></li>
+	</ul>
+</li>
+	<li class="d-none"><div class="mb-4"><a href="https://github.blog/ai-and-ml/llms/unlocking-the-power-of-unstructured-data-with-rag/" class="d-flex flex-items-center flex-justify-start lh-condensed-ultra text-bold color-fg-default">Unlocking the power of unstructured data with RAG</a><p class="mb-3 f5 color-fg-muted">Learn how to use retrieval-augmented generation (RAG) to capture more insights.</p><a href="https://github.blog/ai-and-ml/llms/unlocking-the-power-of-unstructured-data-with-rag/" target="" class="Link d-inline-flex flex-items-center">Learn more<svg xmlns="http://www.w3.org/2000/svg" class="octicon d-block ml-1" viewBox="0 0 12 12" width="12" height="12"><path d="M4.7 10c-.2 0-.4-.1-.5-.2-.3-.3-.3-.8 0-1.1L6.9 6 4.2 3.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0l3.3 3.2c.3.3.3.8 0 1.1L5.3 9.7c-.2.2-.4.3-.6.3Z"></path></svg></a></div></li>
+</ul>
+</li>
+<li class="mb-5"><a href="https://github.blog/open-source/" class="d-flex flex-items-center flex-justify-between lh-condensed-ultra text-bold color-fg-default js-toggle" aria-controls="primary-mobile-78848-dropdown" aria-expanded="false" aria-haspopup="true" role="button">Open Source<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right d-block color-fg-subtle" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a>
+<ul aria-hidden="true" aria-label="Open Source sub-menu" class="dropdown overflow-y-auto position-absolute top-0 left-0 right-0 bottom-0 flex-wrap p-5 list-style-none rounded-3 z-3 color-bg-default color-border-subtle" id="primary-mobile-78848-dropdown">
+	<li class="mb-5"><div class="mb-4"><button type="button" class="d-flex flex-items-center mb-4 p-0 border-0 text-semibold color-bg-transparent color-fg-subtle" aria-controls="primary-mobile-78848-dropdown" aria-expanded="true"><svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-left mr-1"><path d="M9.78 12.78a.75.75 0 0 1-1.06 0L4.47 8.53a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L6.06 8l3.72 3.72a.75.75 0 0 1 0 1.06Z"></path></svg>Back</button><a href="https://github.blog/open-source/" class="d-flex flex-items-center flex-justify-start lh-condensed-ultra text-bold color-fg-default">Open Source<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right ml-1" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a><p class="mt-2 mb-0 color-fg-muted">Everything open source on GitHub.</p></div>
+	<ul class="border-top list-style-none">
+		<li class="mt-4"><a href="https://github.blog/open-source/git/" class="text-bold lh-condensed-ultra color-fg-default">Git</a><p class="mb-0 f5 color-fg-muted">The latest Git updates.</p></li>
+		<li class="mt-4"><a href="https://github.blog/open-source/maintainers/" class="text-bold lh-condensed-ultra color-fg-default">Maintainers</a><p class="mb-0 f5 color-fg-muted">Spotlighting open source maintainers.</p></li>
+		<li class="mt-4"><a href="https://github.blog/open-source/social-impact/" class="text-bold lh-condensed-ultra color-fg-default">Social impact</a><p class="mb-0 f5 color-fg-muted">How open source is driving positive change.</p></li>
+		<li class="mt-4"><a href="https://github.blog/open-source/gaming/" class="text-bold lh-condensed-ultra color-fg-default">Gaming</a><p class="mb-0 f5 color-fg-muted">Explore open source games on GitHub.</p></li>
+	</ul>
+</li>
+	<li class="d-none"><div class="mb-4"><a href="https://resources.github.com/software-development/innersource/" class="d-flex flex-items-center flex-justify-start lh-condensed-ultra text-bold color-fg-default">An introduction to innersource</a><p class="mb-3 f5 color-fg-muted">Organizations worldwide are incorporating open source methodologies into the way they build and ship their own software.</p><a href="https://resources.github.com/software-development/innersource/" target="" class="Link d-inline-flex flex-items-center">Learn more<svg xmlns="http://www.w3.org/2000/svg" class="octicon d-block ml-1" viewBox="0 0 12 12" width="12" height="12"><path d="M4.7 10c-.2 0-.4-.1-.5-.2-.3-.3-.3-.8 0-1.1L6.9 6 4.2 3.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0l3.3 3.2c.3.3.3.8 0 1.1L5.3 9.7c-.2.2-.4.3-.6.3Z"></path></svg></a></div></li>
+</ul>
+</li>
+<li class="mb-5"><a href="https://github.blog/security/" class="d-flex flex-items-center flex-justify-between lh-condensed-ultra text-bold color-fg-default js-toggle" aria-controls="primary-mobile-78859-dropdown" aria-expanded="false" aria-haspopup="true" role="button">Security<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right d-block color-fg-subtle" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a>
+<ul aria-hidden="true" aria-label="Security sub-menu" class="dropdown overflow-y-auto position-absolute top-0 left-0 right-0 bottom-0 flex-wrap p-5 list-style-none rounded-3 z-3 color-bg-default color-border-subtle" id="primary-mobile-78859-dropdown">
+	<li class="mb-5"><div class="mb-4"><button type="button" class="d-flex flex-items-center mb-4 p-0 border-0 text-semibold color-bg-transparent color-fg-subtle" aria-controls="primary-mobile-78859-dropdown" aria-expanded="true"><svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-left mr-1"><path d="M9.78 12.78a.75.75 0 0 1-1.06 0L4.47 8.53a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L6.06 8l3.72 3.72a.75.75 0 0 1 0 1.06Z"></path></svg>Back</button><a href="https://github.blog/security/" class="d-flex flex-items-center flex-justify-start lh-condensed-ultra text-bold color-fg-default">Security<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-chevron-right ml-1" role="presentation"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></a><p class="mt-2 mb-0 color-fg-muted">Stay up to date on everything security.</p></div>
+	<ul class="border-top list-style-none">
+		<li class="mt-4"><a href="https://github.blog/security/application-security/" class="text-bold lh-condensed-ultra color-fg-default">Application security</a><p class="mb-0 f5 color-fg-muted">Application security, explained.</p></li>
+		<li class="mt-4"><a href="https://github.blog/security/supply-chain-security/" class="text-bold lh-condensed-ultra color-fg-default">Supply chain security</a><p class="mb-0 f5 color-fg-muted">Demystifying supply chain security.</p></li>
+		<li class="mt-4"><a href="https://github.blog/security/vulnerability-research/" class="text-bold lh-condensed-ultra color-fg-default">Vulnerability research</a><p class="mb-0 f5 color-fg-muted">Updates from the GitHub Security Lab.</p></li>
+		<li class="mt-4"><a href="https://github.blog/security/web-application-security/" class="text-bold lh-condensed-ultra color-fg-default">Web application security</a><p class="mb-0 f5 color-fg-muted">Helpful tips on securing web applications.</p></li>
+	</ul>
+</li>
+	<li class="d-none"><div class="mb-4"><a href="https://resources.github.com/security/the-enterprise-guide-to-ai-powered-devsecops/" class="d-flex flex-items-center flex-justify-start lh-condensed-ultra text-bold color-fg-default">The enterprise guide to AI-powered DevSecOps</a><p class="mb-3 f5 color-fg-muted">Learn about core challenges in DevSecOps, and how you can start addressing them with AI and automation.</p><a href="https://resources.github.com/security/the-enterprise-guide-to-ai-powered-devsecops/" target="" class="Link d-inline-flex flex-items-center">Learn more<svg xmlns="http://www.w3.org/2000/svg" class="octicon d-block ml-1" viewBox="0 0 12 12" width="12" height="12"><path d="M4.7 10c-.2 0-.4-.1-.5-.2-.3-.3-.3-.8 0-1.1L6.9 6 4.2 3.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0l3.3 3.2c.3.3.3.8 0 1.1L5.3 9.7c-.2.2-.4.3-.6.3Z"></path></svg></a></div></li>
+</ul>
+</li>
+</ul>				<ul id="menu-secondary-navigation" class="pt-5 border-top list-style-none"><li class="mb-5"><a href="https://github.blog/changelog/" class="d-flex flex-items-center flex-justify-between lh-condensed-ultra text-bold color-fg-default">Changelog</a></li>
+<li class="mb-5"><a href="https://docs.github.com/" class="d-flex flex-items-center flex-justify-between lh-condensed-ultra text-bold color-fg-default">Docs<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-link-external d-block color-fg-subtle" role="presentation"><path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"></path></svg></a></li>
+<li class="mb-5"><a href="https://github.com/customer-stories" class="d-flex flex-items-center flex-justify-between lh-condensed-ultra text-bold color-fg-default">Customer stories<svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-link-external d-block color-fg-subtle" role="presentation"><path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"></path></svg></a></li>
+</ul>	<a		class="Button Button--size-medium Button--secondary Button--block my-3"
+		href="https://github.com/events/universe/recap?utm_source=k2k-blog-tap-nav&#038;utm_medium=blog&#038;utm_campaign=universe25"				target="_blank"		data-analytics-click="Blog, click on button, text: See what&#039;s new; ref_location:top nav;"					>
+		<span class="Button__text">
+		<span class="Text Text--200 Text--antialiased Text--weight-semibold Button--label Button--label-medium Button--label-secondary">
+			See what&#039;s new		</span>
+		</span>
+
+			</a>
+		<a		class="Button Button--size-medium Button--primary Button--block"
+		href="https://github.com/features/copilot?utm_source=blog-tap-nav&#038;utm_medium=blog&#038;utm_campaign=universe25"				target="_blank"		data-analytics-click="Blog, click on button, text: Use Copilot for free; ref_location:top nav;"					>
+		<span class="Button__text">
+		<span class="Text Text--200 Text--antialiased Text--weight-semibold Button--label Button--label-medium Button--label-primary">
+			Try GitHub Copilot		</span>
+		</span>
+
+			</a>
+		</div>
+	<button class="mobile-nav-focus-trap js-mobile-nav-focus-trap" data-target="#mobile-menu-toggle" data-focus-order="target"></button>
+</nav>
+		</header>
+	</div>
+	<main id="start-of-content">
+<header class="position-relative" data-color-mode="dark" data-light-theme="light" data-dark-theme="dark_dimmed">
+	<div class="container-xl p-responsive-blog">
+		<div class="gutter-spacious">
+			<div class="col-12 offset-lg-1 col-lg-10 col-xl-8 py-5 py-md-6 ">
+				<div class="f5 mb-5 mb-md-8"><span><span><a class="Link--primary" href="https://github.blog/">Home</a></span> <span class="mx-2 opacity-5">/</span> <span><a class="Link--primary" href="https://github.blog/developer-skills/">Developer skills</a></span> <span class="mx-2 opacity-5">/</span> <span><a class="Link--primary" href="https://github.blog/developer-skills/github/">GitHub</a></span></span></div>				<h1 class="h3-mktg lh-condensed mb-3 color-fg-default">How to review code effectively: A GitHub staff engineer’s philosophy</h1>				<div class="f4-mktg color-fg-muted">
+					<p>GitHub Staff Engineer Sarah Vessels discusses her philosophy of code review, what separates good code review from bad, her strategy for finding and reviewing code, and how to get the most from reviews of her own code.</p>
+				</div>
+			</div>
+							<div class="offset-lg-1 col-lg-10">
+					<div class="position-relative overflow-hidden rounded-2 z-1">
+													<svg aria-hidden="true" width="1032" height="548" class=" d-block width-full height-auto" role="presentation"></svg>
+							<img width="1200" height="630" src="https://github.blog/wp-content/uploads/2024/05/Collaboration-LightMode-2-1.png?resize=1200%2C630" class="d-block cover-image wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://github.blog/wp-content/uploads/2024/05/Collaboration-LightMode-2-1.png?w=1200 1200w, https://github.blog/wp-content/uploads/2024/05/Collaboration-LightMode-2-1.png?w=300 300w, https://github.blog/wp-content/uploads/2024/05/Collaboration-LightMode-2-1.png?w=768 768w, https://github.blog/wp-content/uploads/2024/05/Collaboration-LightMode-2-1.png?w=1024 1024w" sizes="auto, (max-width: 1200px) 100vw, 1200px" />											</div>
+				</div>
+					</div>
+	</div>
+			<div class="position-absolute bottom-0 width-full" style="background:#fff; height:80px;"></div>
+	</header>
+<section class="container-xl mx-auto p-responsive-blog mt-4">
+	<div class="gutter-spacious">
+		<div class="col-12 offset-lg-1 col-lg-10">
+			<div class="d-lg-flex flex-justify-between flex-items-center">
+				<div class="mb-4 mb-lg-0">
+	<div class="mb-1">
+		<div class="d-flex flex-items-center mb-6px">
+		<span>
+					<span class="text-bold">
+				<a href="https://github.blog/author/cheshire137/" title="Posts by Sarah Vessels" class="author url fn Link--primary no-wrap position-relative z-2" rel="author">Sarah Vessels</a><span class="mx-2">·</span><a target="_blank" href="https://github.com/cheshire137" class="Link--primary" aria-label="GitHub profile of cheshire137">@cheshire137</a>			</span>
+							</span>
+</div>
+	</div>
+	<div data-color-mode="auto" data-light-theme="light_tritanopia" class="d-flex flex-column flex-md-row text-mono color-fg-muted">
+		<time datetime="2024-07-23" class="d-block">
+			July 23, 2024		</time>
+
+							<div class="d-flex flex-items-center mt-2 mt-md-0">
+				<span class="d-none d-md-block mx-3">|</span>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="mr-2">
+					<path fill="currentcolor" d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm7-3.25v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5a.75.75 0 0 1 1.5 0Z"></path>
+				</svg>
+				16 minutes			</div>
+			</div>
+</div>
+				<ul class="list-style-none d-flex flex-items-center">
+	<li>
+		<span class="text-semibold">
+			Share:		</span>
+	</li>
+	<li class="ml-3">
+		<a href="https://x.com/share?text=How%20to%20review%20code%20effectively%3A%20A%20GitHub%20staff%20engineer%E2%80%99s%20philosophy&#038;url=https%3A%2F%2Fgithub.blog%2Fdeveloper-skills%2Fgithub%2Fhow-to-review-code-effectively-a-github-staff-engineers-philosophy%2F" target="_blank" rel="noopener noreferrer" class="d-flex flex-justify-center flex-items-center border circle px-2 py-2" aria-label="Share on X">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" width="10" height="10">
+				<path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="currentColor" />
+			</svg>
+		</a>
+	</li>
+	<li class="ml-3">
+		<a href="https://www.facebook.com/sharer/sharer.php?t=How%20to%20review%20code%20effectively%3A%20A%20GitHub%20staff%20engineer%E2%80%99s%20philosophy&#038;u=https%3A%2F%2Fgithub.blog%2Fdeveloper-skills%2Fgithub%2Fhow-to-review-code-effectively-a-github-staff-engineers-philosophy%2F" target="_blank" rel="noopener noreferrer" class="d-flex flex-justify-center flex-items-center border circle px-2 py-2" aria-label="Share on Facebook">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.3 15.4" width="10" height="10">
+				<path d="M14.5 0H.8a.88.88 0 0 0-.8.9v13.6a.88.88 0 0 0 .8.9h7.3v-6h-2V7.1h2V5.4a2.87 2.87 0 0 1 2.5-3.1h.5a10.87 10.87 0 0 1 1.8.1v2.1h-1.3c-1 0-1.1.5-1.1 1.1v1.5h2.3l-.3 2.3h-2v5.9h3.9a.88.88 0 0 0 .9-.8V.8a.86.86 0 0 0-.8-.8z" fill="currentColor" />
+			</svg>
+		</a>
+	</li>
+	<li class="ml-3">
+		<a href="https://www.linkedin.com/shareArticle?title=How%20to%20review%20code%20effectively%3A%20A%20GitHub%20staff%20engineer%E2%80%99s%20philosophy&#038;url=https%3A%2F%2Fgithub.blog%2Fdeveloper-skills%2Fgithub%2Fhow-to-review-code-effectively-a-github-staff-engineers-philosophy%2F" target="_blank" rel="noopener noreferrer" class="d-flex flex-justify-center flex-items-center border circle px-2 py-2" aria-label="Share on LinkedIn">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 18" width="10" height="10">
+				<path d="M3.94 2A2 2 0 1 1 2 0a2 2 0 0 1 1.94 2zM4 5.48H0V18h4zm6.32 0H6.34V18h3.94v-6.57c0-3.66 4.77-4 4.77 0V18H19v-7.93c0-6.17-7.06-5.94-8.72-2.91z" fill="currentColor" />
+			</svg>
+		</a>
+	</li>
+</ul>
+			</div>
+			<div class="indigo-separator mt-4"></div>
+		</div>
+	</div>
+</section>
+	<div class="container-xl mx-auto p-responsive-blog mt-4 mt-md-7 mb-7 mb-md-9">
+		<div class="d-flex flex-wrap flex-justify-center gutter-spacious">
+			<section class="col-12 col-md-8 col-lg-7 post__content is-layout-constrained post-78805 post type-post status-publish format-standard has-post-thumbnail hentry category-developer-skills category-github tag-code-review">
+	<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><p>As a staff engineer at GitHub, <a href="https://github.com/features/code-review">code review</a> is one of my main focus areas in my day to day work. Over the past eight years, I&rsquo;ve reviewed more than 7,000 pull requests. Why so many? Because code review is crucial to building good software and another set of eyes can often spot issues you would have otherwise missed.</p>
+<p>I see code review as one of the most important aspects of my job. In fact, whenever I see that a teammate has a pull request ready for code review, I prefer to drop whatever branch I&rsquo;m working on to review their proposed changes instead. After all, their pull request has already passed the continuous integration (CI) gauntlet and met the bar for their own judgment of &ldquo;done,&rdquo; so it&rsquo;s probably closer to being shippable than my own in-progress work. I&rsquo;d rather get their code over the finish line than churn an unknown amount of time more to finish my code.</p>
+<p>The sooner I provide feedback &mdash; &ldquo;This can be nil and cause an error,&rdquo; &ldquo;This looks like an n+1 query,&rdquo; &ldquo;It would be great to have a method signature on this&rdquo; &mdash; the faster that feedback can be addressed and the bug squashed or feature shipped.</p>
+<p>I&rsquo;d like to share how I approach code review in hopes that we can all ship better code.</p>
+<h2 id="what-is-code-review" id="what-is-code-review" ><a class="heading-link" href="#what-is-code-review">What is code review?<span class="heading-hash pl-2 text-italic text-bold" aria-hidden="true"></span></a></h2>
+<p>Strictly speaking, code reviews&mdash;via <a href="https://docs.github.com/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews">pull request reviews</a> on GitHub&mdash;allow collaborators to comment on the changes proposed in pull requests, indicate their approval of the changes, or request further changes before the pull request is merged.</p>
+<p>I see a pull request as the beginning of conversation. I read it as the author saying &ldquo;I think this improves on what we have today.&rdquo; Code review is a great opportunity to shape the product&rsquo;s implementation. As a code reviewer, my job is to go back and forth in discussion with the author to improve their code by asking questions, questioning assumptions, and generally serving as a second set of eyes.</p>
+<aside class="p-4 p-md-6 post-aside--large"><p class="h5-mktg gh-aside-title">Why review code? It&#039;s good for your career</p><p>I&rsquo;ve learned a great deal from other reviewers&rsquo; perspectives on my own code, and after repeated positive feedback thanking me for timely code reviews, I know that my code review comments have likewise helped level up my teammates. Put simply, code review has impact, and getting a promotion requires showing your impact.</p>
+<p>Code reviews are impactful because they help exchange knowledge and increase shipping velocity. They are nice, linkable artifacts that peers and managers can use to show how helpful and knowledgeable you are. They can highlight good communication skills, particularly if there&rsquo;s a complex or controversial change needed. So, making your case well in a code review can not only guide the product&rsquo;s future and help stave off incidents, it can be good for your career.</p>
+</aside>
+</p><h2 id="fine-tune-your-code-review-process" id="fine-tune-your-code-review-process" ><a class="heading-link" href="#fine-tune-your-code-review-process">Fine-tune your code review process<span class="heading-hash pl-2 text-italic text-bold" aria-hidden="true"></span></a></h2>
+<h3 id="how-to-find-pull-requests-for-review" id="how-to-find-pull-requests-for-review" ><a class="heading-link" href="#how-to-find-pull-requests-for-review">How to find pull requests for review<span class="heading-hash pl-2 text-italic text-bold" aria-hidden="true"></span></a></h3>
+<p>I live in my <a href="https://github.com/notifications?query=is:unread">GitHub notifications inbox</a>. It&rsquo;s one of just a few tabs I pin in my browser, so it&rsquo;s always available. Any time I&rsquo;m waiting on CI, I&rsquo;m in between tasks, starting my day, or generally have a spare moment, I like to check my inbox. I find most of the pull requests I review there. Teams at GitHub tend to have a particular Slack channel they treat as home base, and that&rsquo;s a good place to share ready-for-review pull requests&mdash;it&rsquo;s one of the other main ways I discover pull requests.</p>
+<p>I also have good luck using the <a href="https://slack.github.com/">GitHub Slack integration</a> to subscribe a Slack channel to new pull requests relevant to my team. To filter which pull requests show up in Slack, I use a label specific to the team, then a &lsquo;subscribe&rsquo; command in Slack like <code>/github subscribe your/repo pulls +label:"your-team-label"</code>.</p>
+<aside class="post-aside--small float-sm-right col-sm-5 col-md-6 col-lg-5 my-5 my-sm-2 ml-sm-4 ml-lg-6"><p class="h6-mktg gh-aside-title">Tip</p><p>
+You can repeat the <code>team-review-requested:</code> qualifier in your query to get pull requests for review across many different code owners.</p>
+</aside>
+<p>I like to search for outstanding pull requests that may need review with queries like <code>is:open archived:false is:pr org:github -is:draft team-review-requested:github/relevant-codeowner-team</code>. With that query, I find <a href="https://docs.github.com/search-github/searching-on-github/searching-issues-and-pull-requests#search-by-open-or-closed-state">open</a>, <a href="https://docs.github.com/en/search-github/searching-on-github/searching-issues-and-pull-requests#search-based-on-whether-a-repository-is-archived">unarchived</a> <a href="https://docs.github.com/en/search-github/searching-on-github/searching-issues-and-pull-requests#search-only-issues-or-pull-requests">pull requests</a> <a href="https://docs.github.com/en/search-github/searching-on-github/searching-issues-and-pull-requests#search-within-a-users-or-organizations-repositories">within the GitHub organization</a> that are not <a href="https://docs.github.com/search-github/searching-on-github/searching-issues-and-pull-requests#search-for-draft-pull-requests">drafts</a> and have <a href="https://docs.github.com/search-github/searching-on-github/searching-issues-and-pull-requests#search-by-pull-request-review-status-and-reviewer">relevant codeowner teams as a requested reviewer</a>. I usually will omit the <a href="https://docs.github.com/search-github/searching-on-github/searching-issues-and-pull-requests#search-by-pull-request-review-status-and-reviewer"><code>review:required</code></a> search qualifier because I&rsquo;m interested in reviewing a pull request even if a teammate has already reviewed it. After all, reviewing code not only helps the author, it helps me stay up to date with changes affecting code I&rsquo;m responsible for.</p>
+<h3 id="use-reviewer-teams-to-manage-notifications" id="use-reviewer-teams-to-manage-notifications" ><a class="heading-link" href="#use-reviewer-teams-to-manage-notifications">Use reviewer teams to manage notifications<span class="heading-hash pl-2 text-italic text-bold" aria-hidden="true"></span></a></h3>
+<p>You don&rsquo;t want code changes to ping such a large team that everyone on the team assumes reviewing the change isn&rsquo;t their <a href="https://en.wikipedia.org/wiki/Diffusion_of_responsibility">responsibility</a>. That can result in pull requests that either languish unreviewed or get merged before they should, because key reviewers missed them in a deluge of notifications. Both of these scenarios affect the quality of the product.</p>
+<p>I recommend honing the number of <a href="https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners">code owner</a> teams you&rsquo;re on, if you&rsquo;re able, to keep your notifications manageable. That way, pull requests that land in your inbox aren&rsquo;t just noise, they&rsquo;re actually something you feel you should review. While big, catch-all code owner teams can be okay as a fallback option, they aren&rsquo;t great as a first-line default for automatic review requests. Keep your repository&rsquo;s CODEOWNERS file well organized, with well-defined code boundaries to go along with it, to limit notifications and help reviewers avoid notification fatigue.</p>
+<p>Another way of limiting team-based notifications is to create a first responders team and then use automation to add and remove team members based on a schedule. This can let your team focus on their day-to-day code base, while scheduled first responders get notified of pull requests in your team&rsquo;s service areas. Using the <a href="https://developer.pagerduty.com/api-reference/3f03afb2c84a4-get-a-schedule">PagerDuty API</a>, for example, you can determine who is a first responder on a given day. You can then use the <a href="https://docs.github.com/rest/using-the-rest-api/libraries-for-the-rest-api?apiVersion=2022-11-28#official-github-libraries">Octokit library</a> to add and remove team members.</p>
+<h3 id="standardize-code-reviews-across-teams-with-automation" id="standardize-code-reviews-across-teams-with-automation" ><a class="heading-link" href="#standardize-code-reviews-across-teams-with-automation">Standardize code reviews across teams with automation<span class="heading-hash pl-2 text-italic text-bold" aria-hidden="true"></span></a></h3>
+<p>Repository-level configuration and automation, such as using a <a href="https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#codeowners-file-location">CODEOWNERS file</a> and <a href="https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule">branch protection rules</a>, can be helpful to enforce review process standards across teams. Other standards, such as what&rsquo;s worth commenting on in a pull request, have to be maintained by us humans. Document how code reviews work within your team to make sure anyone providing a code review or submitting a pull request knows how to get their pull requests reviewed, the expected turnaround time for review, and what automation is in use to facilitate review.</p>
+<p>Some teams use a project board to keep track of which pull requests come in for review; I&rsquo;ve seen this work well for a team that manages a shared API, an area often modified by those outside the team. Other teams depend on GitHub notifications alone, which I&rsquo;ve seen work well when code ownership is tightly scoped and the team is disciplined about reviewing pull requests as they come in.</p>
+<p>If you follow a process unique to your specific team, automation can help communicate expectations with those outside your team. For example, if many other teams depend on your team&rsquo;s reviews, you can use a bot to automatically leave a comment on any pull request where your team&rsquo;s review is requested, to tell the author when they can expect to hear from you.</p>
+<h2 id="what-makes-a-code-review-good-or-bad" id="what-makes-a-code-review-good-or-bad" ><a class="heading-link" href="#what-makes-a-code-review-good-or-bad">What makes a code review good or bad?<span class="heading-hash pl-2 text-italic text-bold" aria-hidden="true"></span></a></h2>
+<p>Good code reviews add clarity and push code toward a better state than where it started.</p>
+<p>As a reviewer, clarity in communication is key. You&rsquo;ll want to make clear which of your comments are personal preference and which are blockers for approval. Provide an example of the approach you&rsquo;re suggesting to elevate your code review and make your meaning even clearer. If you can provide an example from the same repository as the pull request, even better&mdash;that further supports your suggestion by encouraging consistent implementations.</p>
+<p>By contrast, poor code reviews lack clarity. For example, a blanket approval or rejection without any comments can leave the pull request author wondering if the review was thorough. Even just reiterating your understanding of the pull request author&rsquo;s intention with your approval can surface whether you and the author have the same understanding.</p>
+<p>A code review that is unclear about when its suggestions should be implemented can also be a poor experience for the author. It&rsquo;s fine to note that existing, unchanged code should be refactored, or an additional case should be handled, but it&rsquo;s important to specify whether those are precursors to approval. If the pull request is okay to land without your suggestions, make sure to say so. It may be safer to keep a small diff and ship those changes separately, as separate pull requests.</p>
+<p><strong>Here&rsquo;s a code review comment that displays specificity and clearly communicates suggested implementations:</strong></p>
+<p><em>&ldquo;I see your new method matches the existing style in this file, taking [X] parameters. Having that many parameters hurts readability and implies the function is doing too much. What do you think about refactoring this method and the existing ones in a later pull request to reduce how many parameters they take?&rdquo;</em></p>
+<p><strong>What this comment does well:</strong></p>
+<ul>
+<li>Provides specific details.</li>
+<li>References specific code or issues.</li>
+<li>Suggests a resolution to the problem.</li>
+<li>Cites evidence or provides an explanation</li>
+</ul>
+<p><strong>On the other end of the spectrum, here are some examples of review comments that could be better:</strong></p>
+<p><em>&ldquo;I don&rsquo;t like this.&rdquo; </em> &ndash; What doesn&rsquo;t the reviewer like? Do they have an alternative in mind that they could explicitly state?</p>
+<p><strong>Possible improvements:</strong></p>
+<ul>
+<li>&ldquo;This line is doing a lot, could we simplify it to improve readability?&rdquo;</li>
+
+<li>&ldquo;I think this will have performance problems because of an n+1 query.&rdquo;</li>
+
+<li>&ldquo;Could we use the [preferred framework]&rsquo;s solution for this instead of writing a custom implementation?&rdquo;</li>
+</ul>
+<p><em>&ldquo;This won&rsquo;t work.&rdquo;</em> &ndash; Why won&rsquo;t the changes work?</p>
+<p><strong>Possible improvements:</strong></p>
+<ul>
+<li>&ldquo;This won&rsquo;t work because [X], see this relevant issue: [issue link].&rdquo;</li>
+<li>&ldquo;This was tried before in [pull request link] and it didn&rsquo;t work because of [X].&rdquo;</li>
+<li>&ldquo;If you run into problems with [X], you could try [alternative approach] instead.&rdquo;</li>
+</ul>
+<p><em>&ldquo;I think this fixes a bug.&rdquo;</em> &ndash; I love the callout, but is there any additional context, such as an issue link, that could make this more clear?</p>
+<p><strong>Possible improvements:</strong></p>
+<ul>
+<li>&ldquo;I think this fixes [issue link].&rdquo;</li>
+<li>&ldquo;Is this fixing the bug from [issue link]?&rdquo;</li>
+<li>&ldquo;This looks like the bug we ran into with [link to failing build]. Thanks for the fix!&rdquo;</li>
+</ul>
+<h2 id="how-to-give-a-good-code-review" id="how-to-give-a-good-code-review" ><a class="heading-link" href="#how-to-give-a-good-code-review">How to give a good code review<span class="heading-hash pl-2 text-italic text-bold" aria-hidden="true"></span></a></h2>
+<h3 id="ask-questions" id="ask-questions" ><a class="heading-link" href="#ask-questions">Ask questions<span class="heading-hash pl-2 text-italic text-bold" aria-hidden="true"></span></a></h3>
+<p>I think of the pull request author as the person with the most context on the changes their pull request is making. I can point out problems I see based on my history&mdash;my experience working in a Ruby on Rails monolith, in TypeScript, or with a database that gets a lot of traffic&mdash;but I trust the author&rsquo;s answers to my questions. I treat their understanding of the particulars as better than mine.</p>
+<aside class="post-aside--small float-sm-right col-sm-5 col-md-6 col-lg-5 my-5 my-sm-2 ml-sm-4 ml-lg-6"><p class="h6-mktg gh-aside-title">Tip</p><p>
+If you&rsquo;re new to a code base or team, ask questions in code reviews to learn about the tech stack and what internal tools and libraries are available. Every pull request you review is a chance to find out why the author preferred one approach to another.</p>
+</aside>
+<p>I also love to ask questions that involve the assumptions made in the code. What is the shape of the data they&rsquo;re working with? Does data exist that doesn&rsquo;t match that shape? Does the code respond to that well? Is the code resource intensive? Will it perform well? As a reviewer, my favorite response is for the author to provide an automated test that verifies the behavior in those scenarios. My second favorite response is empirical data, such as a query from our data warehouse or a Datadog graph that shows why those scenarios aren&rsquo;t a problem.</p>
+<p>As a pull request author, I appreciate receiving questions. When someone asks a question, it makes space for me to explain why I&rsquo;m confident about my change, citing issues, queries, or graphs as necessary. It also lets me share my knowledge and experience with others. The author not only sees my responses, but also other reviewers and future readers who may be tracking down context on a past decision.</p>
+<h3 id="offer-affirmations" id="offer-affirmations" ><a class="heading-link" href="#offer-affirmations">Offer affirmations<span class="heading-hash pl-2 text-italic text-bold" aria-hidden="true"></span></a></h3>
+<p>Beyond asking questions, it&rsquo;s good practice to comment on the parts of the pull request that you agree with. These comments can highlight that you read and understood what was being changed, or that you verified some assumption in the code. Here are a few examples:</p>
+<ul>
+<li>&ldquo;Looks like this matches the pattern used in other classes in this module.&rdquo;</li>
+<li>&ldquo;Thanks for adding a test for this!&rdquo;</li>
+<li>&ldquo;This is much more readable than before.&rdquo;</li>
+</ul>
+<p>It&rsquo;s also just nice being on the receiving end of such comments, in my experience. Receiving a code review can sometimes feel draining. When I&rsquo;m fielding questions and suggestions from several parties, it can be a good boost to get a few comments that don&rsquo;t ask anything of me and instead support and acknowledge the work I&rsquo;ve already put in.</p>
+<h3 id="be-aware-of-biases-and-assumptions" id="be-aware-of-biases-and-assumptions" ><a class="heading-link" href="#be-aware-of-biases-and-assumptions">Be aware of biases and assumptions<span class="heading-hash pl-2 text-italic text-bold" aria-hidden="true"></span></a></h3>
+<p>It&rsquo;s easy to let your biases about the reviewer, or the area of code they&rsquo;re changing, affect your review. You get used to someone working in an area or having some level of seniority and assume they know what they&rsquo;re doing&mdash;but <em>everyone</em> makes mistakes. Your eyes on their changes, your questions checking their assumptions or validating your own, can catch a problem before it&rsquo;s deployed.</p>
+<p>I&rsquo;m big on writing tests because they take some of the bias out. When you write a test to check that code works properly, <a href="https://www.youtube.com/watch?v=NIKAsGC1Iy8">you don&rsquo;t have to take the author&rsquo;s word for it</a>, you just look at whether the test passed&mdash;provided you get the test right, of course. &#128517;</p>
+<p>I&rsquo;m also big on junior developers asking senior developers questions in code review, even if they think their question is silly or has an obvious answer. If it&rsquo;s not obvious to you, that&rsquo;s valid. It won&rsquo;t be obvious to someone else either! Ask the question, make the space for the author to write down their answer, and preserve that bit of education for those who come later.</p>
+<h3 id="to-approve-or-not" id="to-approve-or-not" ><a class="heading-link" href="#to-approve-or-not">To approve or not<span class="heading-hash pl-2 text-italic text-bold" aria-hidden="true"></span></a></h3>
+<p>I see my review as a blocking gate that can stop another person from improving our product, so I withhold approval conscientiously. I will often have personal preferences and suggest optional changes I&rsquo;d like to see the author make, but I won&rsquo;t withhold an approval based on those alone. If I have suggestions for someone&rsquo;s pull request, but their pull request as it is won&rsquo;t break production, negatively impact users, or otherwise cause problems, I will approve with those comments. The author can choose to address my feedback before they merge their pull request, or they can follow up in another branch.</p>
+<aside class="post-aside--small float-sm-right col-sm-5 col-md-6 col-lg-5 my-5 my-sm-2 ml-sm-4 ml-lg-6"><p class="h6-mktg gh-aside-title">Tip</p><p>
+Use <a href="https://github.com/flippercloud/flipper">feature flags</a> and make your pull requests small. The less scary your change is, the faster it can be reversed in production, the easier it will be for me to approve it!</p>
+</aside>
+<p>Keep in mind the importance of your suggestion when you&rsquo;re reviewing code. Is it worth delaying the ship to get your suggestion addressed? Is it worth the whole cycle of the author seeing your feedback, making the suggested changes, waiting for CI, a re-review, deployment and finally merging? If a suggestion&rsquo;s absence isn&rsquo;t going to make someone&rsquo;s day worse, let the author decide if or when to make the suggested change.</p>
+<p>The <a href="https://docs.github.com/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review">&lsquo;Request changes&rsquo; option</a> stops a pull request from being merged until the reviewer comes back and approves it. I very rarely use it, as it usually feels too heavy-handed. I trust my team to know when to approve a pull request, so a teammate&rsquo;s approval is fine in place of mine. Likewise, I trust the pull request author to respect my feedback and consider it, not just blindly merging because someone else approved but I didn&rsquo;t. About the only time I&rsquo;ll choose the &lsquo;Request changes&rsquo; option is when I think there is an immediate security issue and I&rsquo;m worried they won&rsquo;t see my concern before merging.</p>
+<aside class="p-4 p-md-6 post-aside--large"><p class="h5-mktg gh-aside-title">Why code reviews matter when using AI coding tools</p><p>
+AI coding tools often include various safeguards against incorrect or insecure code, but don&rsquo;t be lulled into a false sense of security. As the human reviewer at the helm, you are the last line of defense and should review all code with an equal level of diligence.</p>
+</aside>
+<h2 id="how-to-get-the-most-out-of-code-reviews" id="how-to-get-the-most-out-of-code-reviews" ><a class="heading-link" href="#how-to-get-the-most-out-of-code-reviews">How to get the most out of code reviews<span class="heading-hash pl-2 text-italic text-bold" aria-hidden="true"></span></a></h2>
+<h3 id="review-your-own-code" id="review-your-own-code" ><a class="heading-link" href="#review-your-own-code">Review your own code<span class="heading-hash pl-2 text-italic text-bold" aria-hidden="true"></span></a></h3>
+<p>GitHub Senior Software Engineer <a href="https://github.com/paulcsmith">Paul Smith</a> taught me to review my own pull request before asking others to do so, and I would advise you to do the same. Take a first pass and leave comments inline on non-obvious changes or ones you would ask about if you saw them in someone else&rsquo;s pull request. A self-review can also help determine if a pull request is too big and would benefit from being <a href="https://github.blog/2020-05-21-github-protips-tips-tricks-hacks-and-secrets-from-sarah-vessels/">split up</a>.</p>
+<p><strong>Shout-out:</strong> if you care about keeping your pull requests small, you can make use of <a href="https://github.com/lerebear/sizeup-action">lerebear/sizeup-action</a> to automatically apply a label to pull requests indicating their complexity and size.</p>
+<h3 id="be-welcoming-of-post-merge-reviews" id="be-welcoming-of-post-merge-reviews" ><a class="heading-link" href="#be-welcoming-of-post-merge-reviews">Be welcoming of post-merge reviews<span class="heading-hash pl-2 text-italic text-bold" aria-hidden="true"></span></a></h3>
+<p>If I happen to merge a pull request before someone gets a chance to review it, I still welcome their review. If my pull request broke something or had unintended consequences, commenting as much on the pull request leaves that breadcrumb trail to help future readers track down what happened!</p>
+<p>If I receive a review on a merged pull request, I&rsquo;ll address the feedback like I would have before the pull request landed. Maybe that&rsquo;ll be a comment to explain my perspective, maybe it&rsquo;ll be additional pull requests to iterate on the code I originally shipped. Maybe it&rsquo;ll be opening new issues to capture additional work to be done.</p>
+<h3 id="use-draft-pull-requests" id="use-draft-pull-requests" ><a class="heading-link" href="#use-draft-pull-requests">Use draft pull requests<span class="heading-hash pl-2 text-italic text-bold" aria-hidden="true"></span></a></h3>
+<p>When you create a new pull request, you have the option to set the pull request as a draft. I lean heavily on <a href="https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request">the draft stage</a> to indicate whether or not I want reviews. For example, if a required CI build is failing or I&rsquo;m just not finished yet, I&rsquo;ll keep it as a draft. I tend to expect the same from others&rsquo; pull requests: if it&rsquo;s a draft, I assume the author isn&rsquo;t ready for reviews. If it&rsquo;s marked as ready for review, I assume that getting enough approvals is all that&rsquo;s preventing them from deploying the pull request.</p>
+<p>The draft status implies that a pull request is not finished, so I move pull requests back to draft when resolving merge conflicts or addressing reviewer feedback. If I have to modify the code, I&rsquo;ll mark my pull request as a draft first so as not to overwhelm people who have already reviewed it. When I move it back to &lsquo;ready&rsquo;, it sends a GitHub notification to those reviewers so they can look at it again.</p>
+<h3 id="be-gracious" id="be-gracious" ><a class="heading-link" href="#be-gracious">Be gracious<span class="heading-hash pl-2 text-italic text-bold" aria-hidden="true"></span></a></h3>
+<p>The expression, &ldquo;You can catch more flies with honey than vinegar,&rdquo; comes to mind. I want reviews on my pull requests, so I like to reply to comments on my pull requests&mdash;especially if I disagree with the reviewer. Even if I don&rsquo;t write a reply to a review comment, I&rsquo;ll often react with a &#128077; to indicate I agree or a <g-emoji fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png?v8" alias="heart">&#10084;</g-emoji> to say thank you.</p>
+<p>I want reviewers to trust that their suggestions won&rsquo;t be forgotten, so I keep them in the loop via comments. If I agree with their suggestion&mdash;to go further refactoring existing code, for example&mdash;I may say as much while also pushing back about making that change in the current pull request. When I address their feedback in a later pull request, I come back to provide a link and let the reviewer know their feedback didn&rsquo;t go unheard.</p>
+<p>I&rsquo;ll also tag them in later pull requests where I implement the suggested changes and include a note saying &ldquo;This addresses @so-and-so&rsquo;s feedback from &lt;previous pull request URL&gt;.&rdquo; This both provides context for other readers and acts as a shout-out to the original reviewer, giving them credit for the idea.</p>
+<p>When you follow through on a promise to address feedback in a later branch, that helps build trust with your reviewer, which can help them feel comfortable approving your future pull requests because they know that you won&rsquo;t leave something incomplete.</p>
+<h2 id="wrap-up" id="wrap-up" ><a class="heading-link" href="#wrap-up">Wrap-up<span class="heading-hash pl-2 text-italic text-bold" aria-hidden="true"></span></a></h2>
+<p>Code review&rsquo;s importance for product quality can&rsquo;t be overstated, especially in the age of AI code generation. Many times in my career, a bug has been caught or an incident avoided simply by having that second set of eyes. Code review is well worth the time investment, whether spent in daily reviews, in ironing out processes, or in building automation to support it. It&rsquo;s faster and less painful for developers to review pull requests thoroughly now than to deal with a problem later that&rsquo;s already shipped to production.</p>
+<p>Thank you for caring enough about code quality to read my philosophy on code review. Have you checked <a href="https://github.com/search?q=review-requested:@me+is:open+archived:false&amp;type=pullrequests">your review queue</a> lately? Maybe now is a good time to put these ideas into action.</p>
+<div class="post-content-cta"><p>If you want to learn more about how to use pull request reviews on GitHub, check out the post on GitHub Community by Staff DevOps Architect <a href="https://github.com/mickeygousset">Mickey Gousset</a> and Staff DevOps Architect <a href="https://github.com/joshjohanning">Joshua Johanning</a> discussing <a href="https://github.com/orgs/community/discussions/130771">5 Tips for Reviewing a Pull Request</a>.</p>
+</div>
+</body></html>
+	
+<section class="my-6 my-md-8 mt-md-0">
+	<hr class="post-tags-separator border-0 mt-0 mb-2" />
+	<div class="d-flex flex-shrink-0 flex-items-start">
+		<h2 class="text-mono f4-mktg py-1 mr-3 flex-shrink-0">Tags:</h2>
+		<ul class="d-flex flex-wrap px-0 my-0 list-style-none post-tags">
+							<li class="my-0">
+					<a href="https://github.blog/tag/code-review/" class="d-block border py-2 px-3 f5 lh-condensed-ultra text-semibold Link--primary" rel="tag">
+						code review					</a>
+				</li>
+					</ul>
+	</div>
+</section>
+	<div class="mt-8 mb-8 mb-md-0">
+	<h2 class="h5-mktg">
+		Written by	</h2>
+	<div class="gradient-separator mt-3 mb-4"></div>
+			<article class="author-bio mb-5 mb-md-4">
+	<div class="author-bio__content">
+					<div class="author-bio__avatar">
+				<picture>
+					<source srcset="https://avatars.githubusercontent.com/u/82317?v=4&#038;s=200" width="120" height="120" media="(min-width: 768px)" />
+					<img class="d-block circle" src="https://avatars.githubusercontent.com/u/82317?v=4&#038;s=200" alt="Sarah Vessels" width="80" height="80" loading="lazy" decoding="async" >
+				</picture>
+			</div>
+				<header class="author-bio__header">
+			<h3 class="f3-mktg text-bold mb-1">
+				<a href="https://github.blog/author/cheshire137/" class="Link--primary color-fg-default">Sarah Vessels</a>
+			</h3>
+							<p class="mb-0 f4 lh-condensed">
+					<a href="https://github.com/cheshire137" target="_blank">@cheshire137</a>
+				</p>
+					</header>
+					<div class="author-bio__bio f4 lh-default">
+				<p>Staff Software Engineer, GitHub</p>
+			</div>
+			</div>
+</article>
+	</div>
+</section>
+
+<aside id="sidebar" class="col-12 col-md-4 col-lg-3 post__sidebar" aria-label="Sidebar">
+	
+<section aria-label="Tags">
+	<ul class="d-none d-md-flex flex-items-start flex-wrap list-style-none mt-4 mt-md-0 mb-6 mb-md-8 post-tags">
+					<li class="my-0">
+				<a href="https://github.blog/tag/code-review/" class="d-block border py-2 px-3 f5 lh-condensed-ultra text-semibold Link--primary" rel="tag">
+					code review				</a>
+			</li>
+			</ul>
+</section>
+	<div class="position-sticky top-md-scroll">
+		<div class="d-none d-md-block">
+			<nav aria-labelledby="table-of-contents-title" class="mb-8 table-of-contents">
+	<h2 id="table-of-contents-title" class="h5-mktg aside-heading pb-3 border-bottom color-border-muted mb-3">Table of Contents</h2>
+	<ul class="list-style-none table-of-contents">
+					<li class="position-relative mt-2">
+				<a class="d-block f5-mktg text-semibold Link--primary px-3 py-2 rounded-3" href="#what-is-code-review">
+					<div class="mb-2px">What is code review?</div>
+				</a>
+			</li>
+					<li class="position-relative mt-2">
+				<a class="d-block f5-mktg text-semibold Link--primary px-3 py-2 rounded-3" href="#fine-tune-your-code-review-process">
+					<div class="mb-2px">Fine-tune your code review process</div>
+				</a>
+			</li>
+					<li class="position-relative mt-2">
+				<a class="d-block f5-mktg text-semibold Link--primary px-3 py-2 rounded-3" href="#what-makes-a-code-review-good-or-bad">
+					<div class="mb-2px">What makes a code review good or bad?</div>
+				</a>
+			</li>
+					<li class="position-relative mt-2">
+				<a class="d-block f5-mktg text-semibold Link--primary px-3 py-2 rounded-3" href="#how-to-give-a-good-code-review">
+					<div class="mb-2px">How to give a good code review</div>
+				</a>
+			</li>
+					<li class="position-relative mt-2">
+				<a class="d-block f5-mktg text-semibold Link--primary px-3 py-2 rounded-3" href="#how-to-get-the-most-out-of-code-reviews">
+					<div class="mb-2px">How to get the most out of code reviews</div>
+				</a>
+			</li>
+					<li class="position-relative mt-2">
+				<a class="d-block f5-mktg text-semibold Link--primary px-3 py-2 rounded-3" href="#wrap-up">
+					<div class="mb-2px">Wrap-up</div>
+				</a>
+			</li>
+			</ul>
+</nav>
+		</div>
+		<section aria-labelledby="code-review-related-posts-title" class="mb-7 mb-md-8 mt-7 mt-md-0"><h2 class="h5-mktg aside-heading pb-3 border-bottom color-fg-muted color-border-muted" id="code-review-related-posts-title">More on <a href="https://github.blog/tag/code-review/" class="Link--primary">code review</a></h2><article class="py-4 d-flex flex-column"><div class="col-12  tease-text"><h3 class="h6-mktg mb-12px"><a href="https://github.blog/ai-and-ml/github-copilot/how-to-use-github-copilot-to-level-up-your-code-reviews-and-pull-requests/" class="Link--primary">How to use GitHub Copilot to level up your code reviews and pull requests</a></h3><div class="f4-mktg color-fg-muted"><p>Discover practical ways GitHub Copilot streamlines code reviews, pull requests, and daily engineering tasks with real prompts, examples, and workflow tips from our engineering team.</p>
+</div><div class="d-flex flex-items-center mb-6px">
+		<span>
+					<span class="text-bold">
+				<a href="https://github.blog/author/melissapastore/" title="Posts by Melissa Pastore" class="author url fn Link--primary no-wrap position-relative z-2" rel="author">Melissa Pastore</a>			</span>
+							</span>
+</div>
+</div></article><article class="py-4 d-flex flex-column border-top"><div class="col-12  tease-text"><h3 class="h6-mktg mb-12px"><a href="https://github.blog/ai-and-ml/generative-ai/code-review-in-the-age-of-ai-why-developers-will-always-own-the-merge-button/" class="Link--primary">Code review in the age of AI: Why developers will always own the merge button</a></h3><div class="f4-mktg color-fg-muted"><p>When it comes to merging code, developers will always make the final decision. But we’re rethinking how tools like GitHub Copilot can help. </p>
+</div><div class="d-flex flex-items-center mb-6px">
+		<span>
+					<span class="text-bold">
+				<a href="https://github.blog/author/eshwer/" title="Posts by Elle Shwer" class="author url fn Link--primary no-wrap position-relative z-2" rel="author">Elle Shwer</a>			</span>
+							</span>
+</div>
+</div></article></section>	</div>
+</aside>
+		</div>
+	</div>
+	<section class="container-xl p-responsive-blog mx-auto mt-12 mb-8">
+	<h2 class="h5-mktg mb-4 mb-lg-7 pb-3 border-bottom color-border-subtle">
+		Related posts	</h2>
+	<div class="post-columns post-columns--3-3">
+	<article class="color-border-muted post-card">
+	<div class="d-flex flex-column">
+		<div class="d-block col-12 position-relative rounded-2 mb-3 overflow-hidden tease-thumbnail" target="_self">
+			<svg aria-hidden="true" width="1032" height="548" class="width-full height-auto d-block" role="presentation"></svg>
+			<img width="400" height="212" src="https://github.blog/wp-content/uploads/2026/03/GIT850_THUMB_GFB_A-1.png?resize=400%2C212" class="d-block cover-image tease-thumbnail__img wp-post-image" alt="Header image with the words &#039;Beginner security tools&#039;" decoding="async" loading="lazy" srcset="https://github.blog/wp-content/uploads/2026/03/GIT850_THUMB_GFB_A-1.png?w=800 800w, https://github.blog/wp-content/uploads/2026/03/GIT850_THUMB_GFB_A-1.png?w=400 400w, https://github.blog/wp-content/uploads/2026/03/GIT850_THUMB_GFB_A-1.png?w=1032 1032w, https://github.blog/wp-content/uploads/2026/03/GIT850_THUMB_GFB_A-1.png?w=516 516w, https://github.blog/wp-content/uploads/2026/03/GIT850_THUMB_GFB_A-1.png?zoom=3&amp;resize=400%2C212 1200w" sizes="auto, (max-width: 400px) 100vw, 400px" />			<button class="js-facade position-absolute top-0 left-0 width-full height-full d-flex flex-items-center flex-justify-center color-fg-default border-0 p-0 color-bg-transparent" aria-label="Play video">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="88" height="88" fill="#fff">
+	<path d="M9.5 15.584V8.416a.5.5 0 0 1 .77-.42l5.576 3.583a.5.5 0 0 1 0 .842l-5.576 3.584a.5.5 0 0 1-.77-.42Z"></path>
+	<path d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12Zm11-9.5A9.5 9.5 0 0 0 2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5Z"></path>
+	</svg>
+</button>
+<template><iframe class="cover-image" loading="lazy" title="Getting started with GitHub security | GitHub for Beginners" width="500" height="281" src="https://www.youtube.com/embed/zhxXaFzzJYA?feature=oembed&#038;autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template>		</div>
+		<div class="mb-1"><a href="https://github.blog/developer-skills/" class="first-post-category f5-mktg text-gradient-purple-coral text-bold pb-1 position-relative z-2">Developer skills</a></div>		<div class="position-relative">
+			<h3 class="h6-mktg mb-2">
+				<a class="Link--primary post-card__link" href="https://github.blog/developer-skills/github/github-for-beginners-getting-started-with-github-security/" target="_self">
+					GitHub for Beginners: Getting started with GitHub security				</a>
+			</h3>
+			<div class="f4-mktg color-fg-muted">
+				<p>Learn how to secure your projects and keep them safe with GitHub Advanced Security.</p>
+			</div>
+		</div>
+		<footer>
+			<div class="d-flex flex-items-center mb-6px">
+		<span>
+					<span class="text-bold">
+				<a href="https://github.blog/author/ladykerr/" title="Posts by Kedasha Kerr" class="author url fn Link--primary no-wrap position-relative z-2" rel="author">Kedasha Kerr</a>			</span>
+							</span>
+</div>
+		</footer>
+	</div>
+</article>
+<article class="color-border-muted post-card">
+	<div class="d-flex flex-column">
+		<div class="d-block col-12 position-relative rounded-2 mb-3 overflow-hidden tease-thumbnail" target="_self">
+			<svg aria-hidden="true" width="1032" height="548" class="width-full height-auto d-block" role="presentation"></svg>
+			<img width="400" height="212" src="https://github.blog/wp-content/uploads/2026/01/generic-copilot-logo-github.png?resize=400%2C212" class="d-block cover-image tease-thumbnail__img wp-post-image" alt="Copilot hovering beside a cluster of geometric cubes in a decorative scene." decoding="async" loading="lazy" srcset="https://github.blog/wp-content/uploads/2026/01/generic-copilot-logo-github.png?w=1600 1600w, https://github.blog/wp-content/uploads/2026/01/generic-copilot-logo-github.png?w=800 800w, https://github.blog/wp-content/uploads/2026/01/generic-copilot-logo-github.png?w=400 400w, https://github.blog/wp-content/uploads/2026/01/generic-copilot-logo-github.png?w=1032 1032w, https://github.blog/wp-content/uploads/2026/01/generic-copilot-logo-github.png?w=516 516w, https://github.blog/wp-content/uploads/2026/01/generic-copilot-logo-github.png?zoom=3&amp;resize=400%2C212 1200w" sizes="auto, (max-width: 400px) 100vw, 400px" />					</div>
+		<div class="mb-1"><a href="https://github.blog/ai-and-ml/" class="first-post-category f5-mktg text-gradient-purple-coral text-bold pb-1 position-relative z-2">AI &amp; ML</a></div>		<div class="">
+			<h3 class="h6-mktg mb-2">
+				<a class="Link--primary post-card__link" href="https://github.blog/ai-and-ml/github-copilot/building-ai-powered-github-issue-triage-with-the-copilot-sdk/" target="_self">
+					Building AI-powered GitHub issue triage with the Copilot SDK				</a>
+			</h3>
+			<div class="f4-mktg color-fg-muted">
+				<p>Learn how to integrate the Copilot SDK into a React Native app to generate AI-powered issue summaries, with production patterns for graceful degradation and caching.</p>
+			</div>
+		</div>
+		<footer>
+			<div class="d-flex flex-items-center mb-6px">
+		<span>
+					<span class="text-bold">
+				<a href="https://github.blog/author/andreagriffiths11/" title="Posts by Andrea Griffiths" class="author url fn Link--primary no-wrap position-relative z-2" rel="author">Andrea Griffiths</a>			</span>
+							</span>
+</div>
+		</footer>
+	</div>
+</article>
+<article class="color-border-muted post-card">
+	<div class="d-flex flex-column">
+		<div class="d-block col-12 position-relative rounded-2 mb-3 overflow-hidden tease-thumbnail" target="_self">
+			<svg aria-hidden="true" width="1032" height="548" class="width-full height-auto d-block" role="presentation"></svg>
+			<img width="400" height="212" src="https://github.blog/wp-content/uploads/2026/03/GIT829_THUMB_GFB_A.png?resize=400%2C212" class="d-block cover-image tease-thumbnail__img wp-post-image" alt="Decorative header image with the words &#039;Intro to GitHub Actions&#039;" decoding="async" loading="lazy" srcset="https://github.blog/wp-content/uploads/2026/03/GIT829_THUMB_GFB_A.png?w=800 800w, https://github.blog/wp-content/uploads/2026/03/GIT829_THUMB_GFB_A.png?w=400 400w, https://github.blog/wp-content/uploads/2026/03/GIT829_THUMB_GFB_A.png?w=1032 1032w, https://github.blog/wp-content/uploads/2026/03/GIT829_THUMB_GFB_A.png?w=516 516w, https://github.blog/wp-content/uploads/2026/03/GIT829_THUMB_GFB_A.png?zoom=3&amp;resize=400%2C212 1200w" sizes="auto, (max-width: 400px) 100vw, 400px" />			<button class="js-facade position-absolute top-0 left-0 width-full height-full d-flex flex-items-center flex-justify-center color-fg-default border-0 p-0 color-bg-transparent" aria-label="Play video">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="88" height="88" fill="#fff">
+	<path d="M9.5 15.584V8.416a.5.5 0 0 1 .77-.42l5.576 3.583a.5.5 0 0 1 0 .842l-5.576 3.584a.5.5 0 0 1-.77-.42Z"></path>
+	<path d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12Zm11-9.5A9.5 9.5 0 0 0 2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5Z"></path>
+	</svg>
+</button>
+<template><iframe class="cover-image" loading="lazy" title="How to use GitHub Actions | GitHub for Beginners" width="500" height="281" src="https://www.youtube.com/embed/BQrohJ3PT7I?feature=oembed&#038;autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template>		</div>
+		<div class="mb-1"><a href="https://github.blog/developer-skills/" class="first-post-category f5-mktg text-gradient-purple-coral text-bold pb-1 position-relative z-2">Developer skills</a></div>		<div class="position-relative">
+			<h3 class="h6-mktg mb-2">
+				<a class="Link--primary post-card__link" href="https://github.blog/developer-skills/github/github-for-beginners-getting-started-with-github-actions/" target="_self">
+					GitHub for Beginners: Getting started with GitHub Actions				</a>
+			</h3>
+			<div class="f4-mktg color-fg-muted">
+				<p>Set up your first GitHub Actions workflow in this how-to guide.</p>
+			</div>
+		</div>
+		<footer>
+			<div class="d-flex flex-items-center mb-6px">
+		<span>
+					<span class="text-bold">
+				<a href="https://github.blog/author/ladykerr/" title="Posts by Kedasha Kerr" class="author url fn Link--primary no-wrap position-relative z-2" rel="author">Kedasha Kerr</a>			</span>
+							</span>
+</div>
+		</footer>
+	</div>
+</article>
+</div>
+</section>
+<aside class="container-xl p-responsive-blog mx-auto mb-12">
+	<h2 class="h5-mktg border-bottom pb-3">
+		Explore more from GitHub	</h2>
+	<div class="d-flex flex-wrap ml-md-n4">
+		<div class="col-12 col-md-6 col-lg-3 d-flex mt-4 mt-lg-6 pl-md-4">
+	<div class="rounded-3 color-bg-subtle d-flex flex-column flex-items-start width-full p-5 f4-mktg color-fg-muted">
+		<img src="https://github.blog/wp-content/uploads/2024/07/Icon-Circle.svg" width="44" height="44" class="width-auto d-block mb-3" alt="Docs"/>		<h3 class="f3-mktg text-bold color-fg-default mb-3">
+			Docs		</h3>
+		<div class="mb-auto">
+			<p>Everything you need to master GitHub, all in one place.</p>
+		</div>
+					<div class="mt-7">
+				<a data-analytics-click="Blog, click on module, text: Go to Docs; ref_location:bottom recirculation;" href="https://docs.github.com/" class="text-semibold arrow-target-mktg Link--primary" target="_blank" aria-label="Go to Docs">
+					Go to Docs											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-link-external ml-1"><path fill-rule="evenodd" d="M10.604 1h4.146a.25.25 0 01.25.25v4.146a.25.25 0 01-.427.177L13.03 4.03 9.28 7.78a.75.75 0 01-1.06-1.06l3.75-3.75-1.543-1.543A.25.25 0 0110.604 1zM3.75 2A1.75 1.75 0 002 3.75v8.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 12.25v-3.5a.75.75 0 00-1.5 0v3.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-8.5a.25.25 0 01.25-.25h3.5a.75.75 0 000-1.5h-3.5z"></path></svg>
+									</a>
+			</div>
+			</div>
+</div>
+<div class="col-12 col-md-6 col-lg-3 d-flex mt-4 mt-lg-6 pl-md-4">
+	<div class="rounded-3 color-bg-subtle d-flex flex-column flex-items-start width-full p-5 f4-mktg color-fg-muted">
+		<img src="https://github.blog/wp-content/uploads/2024/07/recirculation-github-icon.svg" width="44" height="44" class="width-auto d-block mb-3" alt="GitHub"/>		<h3 class="f3-mktg text-bold color-fg-default mb-3">
+			GitHub		</h3>
+		<div class="mb-auto">
+			<p>Build what&#8217;s next on GitHub, the place for anyone from anywhere to build anything.</p>
+		</div>
+					<div class="mt-7">
+				<a data-analytics-click="Blog, click on module, text: Start building; ref_location:bottom recirculation;" href="https://github.com/" class="text-semibold arrow-target-mktg Link--primary" target="_blank" aria-label="Start building">
+					Start building											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-link-external ml-1"><path fill-rule="evenodd" d="M10.604 1h4.146a.25.25 0 01.25.25v4.146a.25.25 0 01-.427.177L13.03 4.03 9.28 7.78a.75.75 0 01-1.06-1.06l3.75-3.75-1.543-1.543A.25.25 0 0110.604 1zM3.75 2A1.75 1.75 0 002 3.75v8.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 12.25v-3.5a.75.75 0 00-1.5 0v3.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-8.5a.25.25 0 01.25-.25h3.5a.75.75 0 000-1.5h-3.5z"></path></svg>
+									</a>
+			</div>
+			</div>
+</div>
+<div class="col-12 col-md-6 col-lg-3 d-flex mt-4 mt-lg-6 pl-md-4">
+	<div class="rounded-3 color-bg-subtle d-flex flex-column flex-items-start width-full p-5 f4-mktg color-fg-muted">
+		<img src="https://github.blog/wp-content/uploads/2024/07/Icon_da43dc.svg" width="44" height="44" class="width-auto d-block mb-3" alt="Customer stories"/>		<h3 class="f3-mktg text-bold color-fg-default mb-3">
+			Customer stories		</h3>
+		<div class="mb-auto">
+			<p>Meet the companies and engineering teams that build with GitHub.</p>
+		</div>
+					<div class="mt-7">
+				<a data-analytics-click="Blog, click on module, text: Learn more; ref_location:bottom recirculation;" href="https://github.com/customer-stories" class="text-semibold arrow-target-mktg Link--primary" target="_blank" aria-label="Learn more">
+					Learn more											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-link-external ml-1"><path fill-rule="evenodd" d="M10.604 1h4.146a.25.25 0 01.25.25v4.146a.25.25 0 01-.427.177L13.03 4.03 9.28 7.78a.75.75 0 01-1.06-1.06l3.75-3.75-1.543-1.543A.25.25 0 0110.604 1zM3.75 2A1.75 1.75 0 002 3.75v8.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 12.25v-3.5a.75.75 0 00-1.5 0v3.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-8.5a.25.25 0 01.25-.25h3.5a.75.75 0 000-1.5h-3.5z"></path></svg>
+									</a>
+			</div>
+			</div>
+</div>
+<div class="col-12 col-md-6 col-lg-3 d-flex mt-4 mt-lg-6 pl-md-4">
+	<div class="rounded-3 color-bg-subtle d-flex flex-column flex-items-start width-full p-5 f4-mktg color-fg-muted">
+		<img src="https://github.blog/wp-content/uploads/2024/04/Icon.svg" width="44" height="44" class="width-auto d-block mb-3" alt="GitHub Universe 2024"/>		<h3 class="f3-mktg text-bold color-fg-default mb-3">
+			GitHub Universe 2024		</h3>
+		<div class="mb-auto">
+			<p>Get tickets to the 10th anniversary of our global developer event on AI, DevEx, and security.</p>
+		</div>
+					<div class="mt-7">
+				<a data-analytics-click="Blog, click on module, text: Get tickets; ref_location:bottom recirculation;" href="https://githubuniverse.com/?utm_source=Blog&#038;utm_medium=GitHub&#038;utm_campaign=blog-module" class="text-semibold arrow-target-mktg Link--primary" target="_blank" aria-label="Get tickets">
+					Get tickets											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-link-external ml-1"><path fill-rule="evenodd" d="M10.604 1h4.146a.25.25 0 01.25.25v4.146a.25.25 0 01-.427.177L13.03 4.03 9.28 7.78a.75.75 0 01-1.06-1.06l3.75-3.75-1.543-1.543A.25.25 0 0110.604 1zM3.75 2A1.75 1.75 0 002 3.75v8.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 12.25v-3.5a.75.75 0 00-1.5 0v3.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-8.5a.25.25 0 01.25-.25h3.5a.75.75 0 000-1.5h-3.5z"></path></svg>
+									</a>
+			</div>
+			</div>
+</div>
+	</div>
+</aside>
+<div class="py-6 py-lg-8 color-bg-subtle" data-color-mode="dark" data-light-theme="light" data-dark-theme="dark">
+	<div class="container-xl p-responsive-blog">
+		<section id="newsletter" class="newsletter rounded-2">
+	<div class="color-bg-subtle rounded-2">
+		<div class="d-flex flex-row flex-wrap gutter-spacious py-5 px-4 py-md-6 px-md-5">
+			<div class="newsletter-content col-12 col-lg-6 col-xl-7">
+				<h2 class="h4-mktg color-fg-default">We do newsletters, too</h2><p class="f3-mktg color-fg-muted mt-2 mb-3">Discover tips, technical guides, and best practices in our biweekly newsletter just for devs.</p>			</div>
+			<div class="col-12 col-lg-6 col-xl-5">
+				<label for="newsletter_emailAddress" class="">Your email address</label>
+				<form method="post" action="https://s88570519.t.eloqua.com/e/f2?elqFormName=copynewsletter-signup-form-637872624660309567&elqSiteID=88570519" class="js-form-validator newsletter-form">
+					<div class="newsletter-form d-md-flex flex-row mt-0 mb-3 rounded-2 required form-group">
+						<div class="m-0 width-full newsletter-input-container">
+							<span aria-hidden="true" class="required-indicator">*</span>
+							<label for="newsletter_emailAddress" class="screen-reader-text">Your email address</label>
+							<input type="email" required id="newsletter_emailAddress" name="emailAddress" placeholder="Your email address" class="required js-validity-check d-block width-full height-md-full f4-mktg newsletter-field rounded-2" />
+						</div>
+																								<input type="hidden" name="classification" value="Practitioner">
+						<button type="submit" class="js-form-validator-submit newsletter-submit flex-shrink-0 arrow-target-mktg d-none d-md-flex flex-row f3-mktg flex-items-center text-semibold rounded-2">
+							<span>Subscribe</span>
+							<svg xmlns="http://www.w3.org/2000/svg" class="octicon arrow-symbol-mktg" width="24" height="24" viewBox="0 0 16 16" fill="none"><path fill="currentColor" d="M7.28033 3.21967C6.98744 2.92678 6.51256 2.92678 6.21967 3.21967C5.92678 3.51256 5.92678 3.98744 6.21967 4.28033L7.28033 3.21967ZM11 8L11.5303 8.53033C11.8232 8.23744 11.8232 7.76256 11.5303 7.46967L11 8ZM6.21967 11.7197C5.92678 12.0126 5.92678 12.4874 6.21967 12.7803C6.51256 13.0732 6.98744 13.0732 7.28033 12.7803L6.21967 11.7197ZM6.21967 4.28033L10.4697 8.53033L11.5303 7.46967L7.28033 3.21967L6.21967 4.28033ZM10.4697 7.46967L6.21967 11.7197L7.28033 12.7803L11.5303 8.53033L10.4697 7.46967Z"></path><path class="octicon-chevrow-stem" stroke="currentColor" d="M1.75 8H11" stroke-width="1.5" stroke-linecap="round"></path></svg>
+						</button>
+					</div>
+					<div class="form-checkbox color-fg-muted f6-mktg m-0 mt-2 form-group">
+						<label class="text-normal">
+							<input id="optincheckbox" name="marketingEmailOptIn1" type="checkbox" value="True">
+							Yes please, I’d like GitHub and affiliates to use my information for personalized communications, targeted advertising and campaign effectiveness. See the <a href="https://github.com/site/privacy" target="blank">GitHub Privacy Statement</a> for more details.						</label>
+					</div>
+					<button type="submit" class="js-form-validator-submit newsletter-submit flex-shrink-0 arrow-target-mktg mt-3 d-flex d-md-none flex-row f3-mktg flex-items-center text-semibold rounded-2">
+						<span>Subscribe</span>
+						<svg xmlns="http://www.w3.org/2000/svg" class="octicon arrow-symbol-mktg" width="24" height="24" viewBox="0 0 16 16" fill="none"><path fill="currentColor" d="M7.28033 3.21967C6.98744 2.92678 6.51256 2.92678 6.21967 3.21967C5.92678 3.51256 5.92678 3.98744 6.21967 4.28033L7.28033 3.21967ZM11 8L11.5303 8.53033C11.8232 8.23744 11.8232 7.76256 11.5303 7.46967L11 8ZM6.21967 11.7197C5.92678 12.0126 5.92678 12.4874 6.21967 12.7803C6.51256 13.0732 6.98744 13.0732 7.28033 12.7803L6.21967 11.7197ZM6.21967 4.28033L10.4697 8.53033L11.5303 7.46967L7.28033 3.21967L6.21967 4.28033ZM10.4697 7.46967L6.21967 11.7197L7.28033 12.7803L11.5303 8.53033L10.4697 7.46967Z"></path><path class="octicon-chevrow-stem" stroke="currentColor" d="M1.75 8H11" stroke-width="1.5" stroke-linecap="round"></path></svg>
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+	</div>
+</div>
+</main>
+<div data-color-mode="dark" data-light-theme="light" data-dark-theme="dark">
+	<footer class="footer pt-6">
+		<h2 class="sr-only">Site-wide Links</h2>
+		
+<div class="container-xl p-responsive-blog">
+	<div class="d-flex flex-wrap py-5 mb-5">
+
+		<div class="col-12 col-lg-4 mb-5">
+			<a href="https://github.com/" data-ga-click="Resources, go to home, resources footer" class="color-fg-default" aria-label="Go to GitHub homepage">
+				<svg height="30" class="octicon octicon-logo-github" viewBox="0 0 45 16" version="1.1" width="84" aria-hidden="true">
+					<path fill-rule="evenodd" d="M18.53 12.03h-.02c.009 0 .015.01.024.011h.006l-.01-.01zm.004.011c-.093.001-.327.05-.574.05-.78 0-1.05-.36-1.05-.83V8.13h1.59c.09 0 .16-.08.16-.19v-1.7c0-.09-.08-.17-.16-.17h-1.59V3.96c0-.08-.05-.13-.14-.13h-2.16c-.09 0-.14.05-.14.13v2.17s-1.09.27-1.16.28c-.08.02-.13.09-.13.17v1.36c0 .11.08.19.17.19h1.11v3.28c0 2.44 1.7 2.69 2.86 2.69.53 0 1.17-.17 1.27-.22.06-.02.09-.09.09-.16v-1.5a.177.177 0 00-.146-.18zM42.23 9.84c0-1.81-.73-2.05-1.5-1.97-.6.04-1.08.34-1.08.34v3.52s.49.34 1.22.36c1.03.03 1.36-.34 1.36-2.25zm2.43-.16c0 3.43-1.11 4.41-3.05 4.41-1.64 0-2.52-.83-2.52-.83s-.04.46-.09.52c-.03.06-.08.08-.14.08h-1.48c-.1 0-.19-.08-.19-.17l.02-11.11c0-.09.08-.17.17-.17h2.13c.09 0 .17.08.17.17v3.77s.82-.53 2.02-.53l-.01-.02c1.2 0 2.97.45 2.97 3.88zm-8.72-3.61h-2.1c-.11 0-.17.08-.17.19v5.44s-.55.39-1.3.39-.97-.34-.97-1.09V6.25c0-.09-.08-.17-.17-.17h-2.14c-.09 0-.17.08-.17.17v5.11c0 2.2 1.23 2.75 2.92 2.75 1.39 0 2.52-.77 2.52-.77s.05.39.08.45c.02.05.09.09.16.09h1.34c.11 0 .17-.08.17-.17l.02-7.47c0-.09-.08-.17-.19-.17zm-23.7-.01h-2.13c-.09 0-.17.09-.17.2v7.34c0 .2.13.27.3.27h1.92c.2 0 .25-.09.25-.27V6.23c0-.09-.08-.17-.17-.17zm-1.05-3.38c-.77 0-1.38.61-1.38 1.38 0 .77.61 1.38 1.38 1.38.75 0 1.36-.61 1.36-1.38 0-.77-.61-1.38-1.36-1.38zm16.49-.25h-2.11c-.09 0-.17.08-.17.17v4.09h-3.31V2.6c0-.09-.08-.17-.17-.17h-2.13c-.09 0-.17.08-.17.17v11.11c0 .09.09.17.17.17h2.13c.09 0 .17-.08.17-.17V8.96h3.31l-.02 4.75c0 .09.08.17.17.17h2.13c.09 0 .17-.08.17-.17V2.6c0-.09-.08-.17-.17-.17zM8.81 7.35v5.74c0 .04-.01.11-.06.13 0 0-1.25.89-3.31.89-2.49 0-5.44-.78-5.44-5.92S2.58 1.99 5.1 2c2.18 0 3.06.49 3.2.58.04.05.06.09.06.14L7.94 4.5c0 .09-.09.2-.2.17-.36-.11-.9-.33-2.17-.33-1.47 0-3.05.42-3.05 3.73s1.5 3.7 2.58 3.7c.92 0 1.25-.11 1.25-.11v-2.3H4.88c-.11 0-.19-.08-.19-.17V7.35c0-.09.08-.17.19-.17h3.74c.11 0 .19.08.19.17z"></path>
+				</svg>
+			</a>
+		</div>
+
+		<nav aria-labelledby="product-menu" class="col-6 col-sm-3 col-lg-2 mb-6 mb-md-2 pr-3 pr-lg-0 pl-lg-4"><h3 id="product-menu" class="h5 mb-3 text-mono color-text-tertiary text-normal">Product</h3><ul class="list-style-none text-gray f5"><li class="lh-condensed mb-3"><a href="https://github.com/features" data-ga-click="Site Foundation Components, go to Features, site foundation components footer" class="Link--secondary">Features</a></li><li class="lh-condensed mb-3"><a href="https://github.com/security" data-ga-click="Site Foundation Components, go to Security, site foundation components footer" class="Link--secondary">Security</a></li><li class="lh-condensed mb-3"><a href="https://github.com/enterprise" data-ga-click="Site Foundation Components, go to Enterprise, site foundation components footer" class="Link--secondary">Enterprise</a></li><li class="lh-condensed mb-3"><a href="https://github.com/customer-stories?type=enterprise" data-ga-click="Site Foundation Components, go to Customer Stories, site foundation components footer" class="Link--secondary">Customer Stories</a></li><li class="lh-condensed mb-3"><a href="https://github.com/pricing" data-ga-click="Site Foundation Components, go to Pricing, site foundation components footer" class="Link--secondary">Pricing</a></li><li class="lh-condensed mb-3"><a href="https://resources.github.com/" data-ga-click="Site Foundation Components, go to Resources, site foundation components footer" class="Link--secondary">Resources</a></li></ul></nav><nav aria-labelledby="platform-menu" class="col-6 col-sm-3 col-lg-2 mb-6 mb-md-2 pr-3 pr-lg-0 pl-lg-4"><h3 id="platform-menu" class="h5 mb-3 text-mono color-text-tertiary text-normal">Platform</h3><ul class="list-style-none text-gray f5"><li class="lh-condensed mb-3"><a href="https://developer.github.com/" data-ga-click="Site Foundation Components, go to Developer API, site foundation components footer" class="Link--secondary">Developer API</a></li><li class="lh-condensed mb-3"><a href="https://partner.github.com/" data-ga-click="Site Foundation Components, go to Partners, site foundation components footer" class="Link--secondary">Partners</a></li><li class="lh-condensed mb-3"><a href="https://atom.io/" data-ga-click="Site Foundation Components, go to Atom, site foundation components footer" class="Link--secondary">Atom</a></li><li class="lh-condensed mb-3"><a href="https://www.electronjs.org/" data-ga-click="Site Foundation Components, go to Electron, site foundation components footer" class="Link--secondary">Electron</a></li><li class="lh-condensed mb-3"><a href="https://desktop.github.com/" data-ga-click="Site Foundation Components, go to GitHub Desktop, site foundation components footer" class="Link--secondary">GitHub Desktop</a></li></ul></nav><nav aria-labelledby="support-menu" class="col-6 col-sm-3 col-lg-2 mb-6 mb-md-2 pr-3 pr-lg-0 pl-lg-4"><h3 id="support-menu" class="h5 mb-3 text-mono color-text-tertiary text-normal">Support</h3><ul class="list-style-none text-gray f5"><li class="lh-condensed mb-3"><a href="https://docs.github.com/" data-ga-click="Site Foundation Components, go to Docs, site foundation components footer" class="Link--secondary">Docs</a></li><li class="lh-condensed mb-3"><a href="https://github.community/" data-ga-click="Site Foundation Components, go to Community Forum, site foundation components footer" class="Link--secondary">Community Forum</a></li><li class="lh-condensed mb-3"><a href="https://services.github.com/" data-ga-click="Site Foundation Components, go to Training, site foundation components footer" class="Link--secondary">Training</a></li><li class="lh-condensed mb-3"><a href="https://www.githubstatus.com/" data-ga-click="Site Foundation Components, go to Status, site foundation components footer" class="Link--secondary">Status</a></li><li class="lh-condensed mb-3"><a href="https://support.github.com/" data-ga-click="Site Foundation Components, go to Contact, site foundation components footer" class="Link--secondary">Contact</a></li></ul></nav><nav aria-labelledby="company-menu" class="col-6 col-sm-3 col-lg-2 mb-6 mb-md-2 pr-3 pr-lg-0 pl-lg-4"><h3 id="company-menu" class="h5 mb-3 text-mono color-text-tertiary text-normal">Company</h3><ul class="list-style-none text-gray f5"><li class="lh-condensed mb-3"><a href="https://github.com/about" data-ga-click="Site Foundation Components, go to About, site foundation components footer" class="Link--secondary">About</a></li><li class="lh-condensed mb-3"><a href="https://github.blog/" data-ga-click="Site Foundation Components, go to Blog, site foundation components footer" class="Link--secondary">Blog</a></li><li class="lh-condensed mb-3"><a href="https://github.com/about/careers" data-ga-click="Site Foundation Components, go to Careers, site foundation components footer" class="Link--secondary">Careers</a></li><li class="lh-condensed mb-3"><a href="https://github.com/about/press" data-ga-click="Site Foundation Components, go to Press, site foundation components footer" class="Link--secondary">Press</a></li><li class="lh-condensed mb-3"><a href="https://shop.github.com/" data-ga-click="Site Foundation Components, go to Shop, site foundation components footer" class="Link--secondary">Shop</a></li></ul></nav>
+	</div>
+</div>
+		
+<div class="color-bg-subtle">
+	<div class="container-xl p-responsive-blog f6 py-4 d-sm-flex flex-justify-between flex-items-center">
+
+	<ul class="list-style-none d-flex flex-wrap text-gray mb-3">
+			<li class="mr-3">&copy; 2026 GitHub, Inc.</li>
+
+			<li class="mr-3">
+				<a href="https://docs.github.com/en/github/site-policy/github-terms-of-service" data-ga-click="Site Foundation Components, go to terms, site foundation components footer" class="Link--secondary">Terms</a>
+			</li>
+
+			<li class="mr-3">
+				<a href="https://docs.github.com/en/github/site-policy/github-privacy-statement" data-ga-click="Site Foundation Components, go to privacy, site foundation components footer" class="Link--secondary">Privacy</a>
+			</li>
+
+				<li class="mr-3">
+		<button type="button" class="btn-link Link--secondary" onClick="_ghcc.showPreferences()">Manage Cookies</button>
+	</li>
+	<li class="mr-3">
+		<button type="button" class="btn-link Link--secondary" onClick="_ghcc.showPreferences()">Do not share my personal information</button>
+	</li>
+	
+		</ul>
+
+		<ul class="list-style-none d-flex flex-items-center mb-sm-0 lh-condensed-ultra">
+			<li class="mr-3 flex-self-start focusable-svg">
+				<a href="https://www.linkedin.com/company/github" data-ga-click="Blog, go to Linkedin, resources footer" style="color: #959da5;">
+					<svg focusable="false" tabindex="-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 18" class="d-block" height="18">
+						<title>LinkedIn icon</title>
+						<path d="M3.94 2A2 2 0 1 1 2 0a2 2 0 0 1 1.94 2zM4 5.48H0V18h4zm6.32 0H6.34V18h3.94v-6.57c0-3.66 4.77-4 4.77 0V18H19v-7.93c0-6.17-7.06-5.94-8.72-2.91z" fill="currentColor"></path>
+					</svg>
+
+					<span class="sr-only">GitHub on LinkedIn</span>
+				</a>
+			</li>
+			<li class="mr-3 focusable-svg">
+				<a href="https://www.instagram.com/github/" data-ga-click="Blog, go to Instagram, resources footer" style="color: #959da5;">
+					<svg focusable="false" tabindex="-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 169.063 169.063" class="d-block" height="18">
+						<title>Instagram icon</title>
+						<g>
+							<path d="M122.406,0H46.654C20.929,0,0,20.93,0,46.655v75.752c0,25.726,20.929,46.655,46.654,46.655h75.752
+								c25.727,0,46.656-20.93,46.656-46.655V46.655C169.063,20.93,148.133,0,122.406,0z M154.063,122.407
+								c0,17.455-14.201,31.655-31.656,31.655H46.654C29.2,154.063,15,139.862,15,122.407V46.655C15,29.201,29.2,15,46.654,15h75.752
+								c17.455,0,31.656,14.201,31.656,31.655V122.407z" fill="currentColor"/>
+							<path d="M84.531,40.97c-24.021,0-43.563,19.542-43.563,43.563c0,24.02,19.542,43.561,43.563,43.561s43.563-19.541,43.563-43.561
+								C128.094,60.512,108.552,40.97,84.531,40.97z M84.531,113.093c-15.749,0-28.563-12.812-28.563-28.561
+								c0-15.75,12.813-28.563,28.563-28.563s28.563,12.813,28.563,28.563C113.094,100.281,100.28,113.093,84.531,113.093z" fill="currentColor"/>
+							<path d="M129.921,28.251c-2.89,0-5.729,1.17-7.77,3.22c-2.051,2.04-3.23,4.88-3.23,7.78c0,2.891,1.18,5.73,3.23,7.78
+								c2.04,2.04,4.88,3.22,7.77,3.22c2.9,0,5.73-1.18,7.78-3.22c2.05-2.05,3.22-4.89,3.22-7.78c0-2.9-1.17-5.74-3.22-7.78
+								C135.661,29.421,132.821,28.251,129.921,28.251z" fill="currentColor"/>
+						</g>
+					</svg>
+
+					<span class="sr-only">GitHub on Instagram</span>
+				</a>
+			</li>
+			<li class="mr-3 focusable-svg">
+				<a href="https://www.youtube.com/github" data-ga-click="Blog, go to YouTube, resources footer" style="color: #959da5;">
+					<svg focusable="false" tabindex="-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.17 13.6" class="d-block" height="16">
+						<title>YouTube icon</title>
+						<path d="M18.77 2.13A2.4 2.4 0 0 0 17.09.42C15.59 0 9.58 0 9.58 0a57.55 57.55 0 0 0-7.5.4A2.49 2.49 0 0 0 .39 2.13 26.27 26.27 0 0 0 0 6.8a26.15 26.15 0 0 0 .39 4.67 2.43 2.43 0 0 0 1.69 1.71c1.52.42 7.5.42 7.5.42a57.69 57.69 0 0 0 7.51-.4 2.4 2.4 0 0 0 1.68-1.71 25.63 25.63 0 0 0 .4-4.67 24 24 0 0 0-.4-4.69zM7.67 9.71V3.89l5 2.91z" fill="currentColor"></path>
+					</svg>
+
+					<span class="sr-only">GitHub on YouTube</span>
+				</a>
+			</li>
+			<li class="mr-3 focusable-svg">
+				<a href="https://twitter.com/github" data-ga-click="Blog, go to X, resources footer" style="color: #959da5;">
+					<svg focusable="false" tabindex="-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" class="d-block" height="18">
+						<title>X icon</title>
+						<path xmlns="http://www.w3.org/2000/svg" d="M714.163 519.284 1160.89 0h-105.86L667.137 450.887 357.328 0H0l468.492 681.821L0 1226.37h105.866l409.625-476.152 327.181 476.152H1200L714.137 519.284h.026ZM569.165 687.828l-47.468-67.894-377.686-540.24h162.604l304.797 435.991 47.468 67.894 396.2 566.721H892.476L569.165 687.854v-.026Z" fill="currentColor"></path>
+					</svg>
+
+					<span class="sr-only">GitHub on X</span>
+				</a>
+			</li>
+			<li class="mr-3 flex-self-start focusable-svg">
+				<a href="https://www.tiktok.com/@github" data-ga-click="Blog, go to TikTok, resources footer" style="color: #959da5;">
+					<svg focusable="false" tabindex="-1" aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="d-block" height="18">
+						<title>TikTok icon</title>
+						<path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="currentColor"/>
+					</svg>
+
+					<span class="sr-only">GitHub on TikTok</span>
+				</a>
+			</li>
+			<li class="mr-3 flex-self-start focusable-svg">
+				<a href="https://www.twitch.tv/github" data-ga-click="Blog, go to Twitch, resources footer" style="color: #959da5;">
+					<svg focusable="false" tabindex="-1" aria-hidden="true" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="d-block" height="18">
+						<title>Twitch icon</title>
+						<path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z" fill="currentColor"/>
+					</svg>
+					<span class="sr-only">GitHub on Twitch</span>
+				</a>
+			</li>
+			<li class="focusable-svg">
+				<a href="https://github.com/github" data-ga-click="Blog, go to github's org, resources footer" style="color: #959da5;">
+					<svg focusable="false" tabindex="-1" aria-hidden="true" height="20" class="octicon octicon-mark-github d-block" alt="" viewBox="0 0 98 96" fill="none" version="1.1" width="20" aria-hidden="true"><g clip-path="url(#a)">
+						<title>GitHub icon</title>
+						<path fill-rule="evenodd" d="M41.44 69.385C28.807 67.853 19.906 58.762 19.906 46.99c0-4.785 1.723-9.953 4.594-13.398-1.244-3.158-1.053-9.858.383-12.633 3.828-.479 8.996 1.531 12.058 4.307 3.637-1.149 7.465-1.723 12.155-1.723 4.69 0 8.517.574 11.963 1.627 2.966-2.68 8.23-4.69 12.058-4.211 1.34 2.584 1.531 9.283.287 12.537 3.063 3.637 4.69 8.518 4.69 13.494 0 11.772-8.9 20.672-21.725 22.3 3.254 2.104 5.455 6.698 5.455 11.962v9.953c0 2.871 2.393 4.498 5.264 3.35C84.41 87.95 98 70.629 98 49.19 98 22.107 75.988 0 48.904 0 21.82 0 0 22.107 0 49.191c0 21.246 13.494 38.856 31.678 45.46 2.584.956 5.072-.766 5.072-3.35v-7.657c-1.34.575-3.063.958-4.594.958-6.316 0-10.049-3.446-12.728-9.858-1.053-2.584-2.201-4.115-4.403-4.402-1.148-.096-1.53-.574-1.53-1.149 0-1.148 1.913-2.01 3.827-2.01 2.776 0 5.168 1.723 7.657 5.264 1.914 2.776 3.923 4.02 6.316 4.02 2.392 0 3.924-.861 6.125-3.063 1.627-1.627 2.871-3.062 4.02-4.02z"/></g><defs><clipPath id="a"><path d="M0 0h98v96H0z"/></clipPath></defs>
+					</svg>
+					<span class="sr-only">GitHub’s organization on GitHub</span>
+				</a>
+			</li>
+		</ul>
+
+
+
+	</div>
+</div>
+	</footer>
+</div>
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/github-2021-child/*","/wp-content/themes/github-2021/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<div id="ghcc" style="position: sticky; bottom: 0; z-index: 99999;"></div><script src="https://ghcc.githubassets.com/ghcc.min.js" id="github_cookie_consent-js"></script>
+<script src="https://js.monitor.azure.com/scripts/c/ms.analytics-web-4.js" id="github_microsoft_analytics-js"></script>
+<script type="text/javascript" src="https://github.blog/_static/??-eJx9jdEOwiAMRX9I1o1k4ovxWzYgUAZlkZL5+VYTjU++9px7CseubCX2xLDnHpAahCinuqF/kSZELeQU3xe7IQVw2BhSgz/OkNoJfsocffESRo59VXrUk7IRs/u2MobIa318hkg2dycTYW8nyrM2FCQxbuU6GTOPZ23mS3oCirlGLA==" ></script><script src="https://github.blog/wp-includes/js/dist/i18n.min.js?ver=c26c3dc7bed366793375" id="wp-i18n-js"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+</script>
+<script type="text/javascript" src="https://github.blog/wp-includes/js/dist/url.min.js?m=1774626885g" ></script><script src="https://github.blog/wp-includes/js/dist/api-fetch.min.js?ver=3a4d9af2b423048b0dee" id="wp-api-fetch-js"></script>
+<script id="wp-api-fetch-js-after">
+wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://github.blog/wp-json/" ) );
+wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "8bf3909dd4" );
+wp.apiFetch.use( wp.apiFetch.nonceMiddleware );
+wp.apiFetch.use( wp.apiFetch.mediaUploadMiddleware );
+wp.apiFetch.nonceEndpoint = "https://github.blog/wp-admin/admin-ajax.php?action=rest-nonce";
+//# sourceURL=wp-api-fetch-js-after
+</script>
+<script type="text/javascript" src="https://github.blog/wp-content/themes/github-2021/dist/js/site-script.js?m=1775062758g" ></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js?ver=11.4.0" id="highlightjs-js"></script>
+<script id="highlightjs-js-after">
+hljs.highlightAll()
+//# sourceURL=highlightjs-js-after
+</script>
+<script integrity="sha256-kAnFXX7lCXF9K2o4g5q1lKyk167yRq6C4TiXWtbgvQw=" crossorigin="anonymous" src="https://analytics.githubassets.com/v1.1.0/hydro-marketing.min.js?ver=6.9.4" id="hydro-analytics-js"></script>
+<script id="jetpack-stats-js-before">
+_stq = window._stq || [];
+_stq.push([ "view", {"v":"ext","blog":"153214340","post":"78805","tz":"-7","srv":"github.blog","hp":"vip","j":"1:15.5-beta"} ]);
+_stq.push([ "clickTrackerInit", "153214340", "78805" ]);
+//# sourceURL=jetpack-stats-js-before
+</script>
+<script src="https://stats.wp.com/e-202614.js" id="jetpack-stats-js" defer data-wp-strategy="defer"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://github.blog/wp-includes/js/wp-emoji-release.min.js?ver=6.9.4"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=https://github.blog/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

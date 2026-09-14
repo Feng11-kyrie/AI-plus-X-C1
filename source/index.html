@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CS146S: The Modern Software Developer - Stanford University (Offline Cache)</title>
+  <style>
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #f8f8f8;
+    }
+    a { color: #8c1515; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ===== Header ===== */
+    .site-header {
+      background: #8c1515;
+      color: #fff;
+      padding: 28px 32px 20px;
+    }
+    .site-header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .site-header .subtitle {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin-top: 4px;
+    }
+    .offline-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 12px;
+      margin-left: 10px;
+      vertical-align: middle;
+      font-weight: 500;
+    }
+
+    /* ===== Nav Tabs ===== */
+    .nav-tabs {
+      background: #fff;
+      border-bottom: 2px solid #e0e0e0;
+      padding: 0 32px;
+      display: flex;
+      gap: 0;
+    }
+    .nav-tab {
+      padding: 14px 20px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #555;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: color 0.15s, border-color 0.15s;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+    .nav-tab:hover { color: #8c1515; }
+    .nav-tab.active { color: #8c1515; border-bottom-color: #8c1515; }
+
+    /* ===== Main Layout ===== */
+    .main-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ===== Overview ===== */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 24px 0;
+    }
+    @media (max-width: 600px) { .overview-grid { grid-template-columns: 1fr; } }
+    .info-card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .info-card h3 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #8c1515;
+      margin-bottom: 8px;
+    }
+    .info-card p { font-size: 0.95rem; color: #333; }
+    .course-description {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .course-description h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #1a1a1a;
+      border-bottom: 2px solid #8c1515;
+      padding-bottom: 8px;
+    }
+    .course-description p { margin-bottom: 12px; color: #333; }
+
+    /* ===== Team ===== */
+    .team-section { margin-top: 32px; }
+    .team-section h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #1a1a1a;
+      border-bottom: 2px solid #8c1515;
+      padding-bottom: 8px;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .team-card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+    .team-card .name { font-weight: 600; font-size: 1rem; color: #1a1a1a; }
+    .team-card .role {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #8c1515;
+      margin-top: 4px;
+    }
+
+    /* ===== Syllabus ===== */
+    .week-card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .week-header {
+      background: #f5f5f5;
+      padding: 16px 20px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #1a1a1a;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .week-body { padding: 20px; }
+    .week-section { margin-bottom: 16px; }
+    .week-section:last-child { margin-bottom: 0; }
+    .week-section h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #8c1515;
+      margin-bottom: 8px;
+    }
+    .week-section ul { list-style: none; padding: 0; }
+    .week-section ul li {
+      padding: 3px 0;
+      font-size: 0.95rem;
+    }
+    .week-section ul li::before {
+      content: "•";
+      color: #8c1515;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+    .link-local {
+      color: #8c1515;
+      font-weight: 500;
+    }
+    .link-local::before {
+      content: "📄 ";
+      font-size: 0.85em;
+    }
+    .link-pdf::before {
+      content: "📕 ";
+      font-size: 0.85em;
+    }
+    .link-video {
+      color: #c00;
+    }
+    .link-video::before {
+      content: "▶ ";
+      font-size: 0.85em;
+    }
+    .link-slides {
+      color: #1a73e8;
+    }
+    .link-slides::before {
+      content: "🖥 ";
+      font-size: 0.85em;
+    }
+    .link-github {
+      color: #333;
+    }
+    .link-github::before {
+      content: "⚙ ";
+      font-size: 0.85em;
+    }
+    .link-gdrive {
+      color: #0f9d58;
+    }
+    .link-gdrive::before {
+      content: "📁 ";
+      font-size: 0.85em;
+    }
+    .lecture-row {
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin: 6px 0;
+      font-size: 0.9rem;
+    }
+    .lecture-row .date { font-weight: 600; color: #555; }
+    .lecture-row .topic { color: #1a1a1a; }
+
+    /* ===== FAQ ===== */
+    .faq-item {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .faq-item h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+    .faq-item p { color: #444; font-size: 0.95rem; }
+
+    /* ===== Footer ===== */
+    .site-footer {
+      text-align: center;
+      padding: 24px;
+      color: #888;
+      font-size: 0.85rem;
+      border-top: 1px solid #e0e0e0;
+      margin-top: 40px;
+    }
+
+    /* ===== Offline Notice ===== */
+    .offline-notice {
+      background: #fff8e1;
+      border: 1px solid #ffc107;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 24px;
+      font-size: 0.9rem;
+      color: #5d4037;
+    }
+    .offline-notice strong { color: #e65100; }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <h1>CS146S: The Modern Software Developer <span class="offline-badge">OFFLINE CACHE</span></h1>
+  <div class="subtitle">Stanford University &bull; Fall 2025 &bull; Instructor: Mihail Eric</div>
+</header>
+
+<!-- Navigation -->
+<nav class="nav-tabs">
+  <button class="nav-tab active" onclick="showTab('overview')">Overview</button>
+  <button class="nav-tab" onclick="showTab('syllabus')">Syllabus</button>
+  <button class="nav-tab" onclick="showTab('faq')">FAQ</button>
+</nav>
+
+<!-- Main Content -->
+<main class="main-content">
+
+  <!-- Offline Notice -->
+  <div class="offline-notice">
+    <strong>Offline Cache</strong> — This is a locally saved version of <a href="https://themodernsoftware.dev/" target="_blank">themodernsoftware.dev</a> captured on April 2, 2026.
+    Article pages are saved in the <code>pages/</code> folder. PDF documents are in the <code>pdfs/</code> folder.
+    Video links (YouTube) and Google Slides remain as external links.
+  </div>
+
+  <!-- ===== OVERVIEW TAB ===== -->
+  <div id="tab-overview" class="tab-panel active">
+
+    <div class="course-description">
+      <h2>Course Description</h2>
+      <p>In the last few years, large language models have introduced a revolutionary new paradigm in software development. The traditional software development lifecycle is being transformed by AI automation at every stage, raising the question: how should the next generation of software engineers leverage these advances to 10x their productivity and prepare for their careers?</p>
+      <p>This course demonstrates that modern AI tooling will not only enhance developer productivity but also democratize software engineering for a broader audience. We'll show that software development has evolved from 0-1 code creation to an iterative workflow of plan, generate with AI, modify, and repeat. Students will master both the theory behind traditional software engineering challenges and the cutting-edge AI-powered tools solving them today.</p>
+      <p>Through hands-on engineering tasks and talks from industry pioneers building these revolutionary tools, you'll gain practical experience with AI-assisted development, automated testing, intelligent documentation, and security vulnerability detection. By the end of this course, you'll have a crisp understanding of how to integrate state-of-the-art LLM models into complex development workflows and avoid common pitfalls.</p>
+    </div>
+
+    <div class="overview-grid">
+      <div class="info-card">
+        <h3>Units</h3>
+        <p>3 units</p>
+      </div>
+      <div class="info-card">
+        <h3>Prerequisites</h3>
+        <p>CS111 equivalent programming experience. CS221/229 recommended.</p>
+      </div>
+      <div class="info-card">
+        <h3>Format</h3>
+        <p>Weekly lectures, hands-on coding sessions, and guest speakers from industry. Final project showcasing modern development practices.</p>
+      </div>
+      <div class="info-card">
+        <h3>Goals</h3>
+        <p>Master modern development tools, understand AI-assisted coding, learn automated testing and deployment, explore emerging software trends.</p>
+      </div>
+      <div class="info-card">
+        <h3>Classroom</h3>
+        <p>420-041</p>
+      </div>
+      <div class="info-card">
+        <h3>Office Hours</h3>
+        <p><strong>Mihail Eric:</strong> Friday 12:00–12:30 PM<br>
+           <strong>Febie Lin:</strong> Wednesday 9:00–11:00 AM (Huang Basement)</p>
+      </div>
+    </div>
+
+    <div class="info-card" style="margin-bottom:20px;">
+      <h3>Assignment Deadlines</h3>
+      <p><a href="https://docs.google.com/spreadsheets/d/1-485SLHw_zn7A-UXiz88Dgjy_qUGx87Am6HUwQrKsN8/edit?gid=0#gid=0" target="_blank">Calendar (Google Sheets)</a></p>
+    </div>
+
+    <div class="team-section">
+      <h2>Team</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="name"><a href="https://www.mihaileric.com/" target="_blank">Mihail Eric</a></div>
+          <div class="role">Instructor</div>
+        </div>
+        <div class="team-card">
+          <div class="name"><a href="https://www.linkedin.com/in/febielin/" target="_blank">Febie Lin</a></div>
+          <div class="role">TA</div>
+        </div>
+        <div class="team-card">
+          <div class="name"><a href="https://www.linkedin.com/in/brentju/" target="_blank">Brent Ju</a></div>
+          <div class="role">TA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SYLLABUS TAB ===== -->
+  <div id="tab-syllabus" class="tab-panel">
+    <h2 style="font-size:1.6rem;font-weight:700;margin-bottom:24px;border-bottom:2px solid #8c1515;padding-bottom:8px;">Course Schedule</h2>
+
+    <!-- Week 1 -->
+    <div class="week-card">
+      <div class="week-header">Week 1: Introduction to Coding LLMs and AI Development</div>
+      <div class="week-body">
+        <div class="week-section">
+          <h4>Topics</h4>
+          <ul>
+            <li>Course logistics</li>
+            <li>What is an LLM actually</li>
+            <li>How to prompt effectively</li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Reading</h4>
+          <ul>
+            <li><a class="link-video" href="https://www.youtube.com/watch?v=7xTGNNLPyMI" target="_blank">Deep Dive into LLMs</a></li>
+            <li><a class="link-local" href="pages/prompt-engineering-overview.html">Prompt Engineering Overview</a></li>
+            <li><a class="link-local" href="pages/prompt-engineering-guide.html">Prompt Engineering Guide</a></li>
+            <li><a class="link-video" href="https://www.youtube.com/watch?v=T9aRN5JkmL8" target="_blank">AI Prompt Engineering: A Deep Dive</a></li>
+            <li><a class="link-pdf" href="pdfs/how-openai-uses-codex.pdf">How OpenAI Uses Codex</a></li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Assignment</h4>
+          <ul>
+            <li><a class="link-github" href="https://github.com/mihail911/modern-software-dev-assignments/tree/master/week1" target="_blank">LLM Prompting Playground</a></li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Lectures</h4>
+          <div class="lecture-row"><span class="date">Mon 9/22:</span> <span class="topic">Introduction and how an LLM is made</span> — <a class="link-slides" href="https://docs.google.com/presentation/d/1zT2Ofy88cajLTLkd7TcuSM4BCELvF9qQdHmlz33i4t0/edit?usp=sharing" target="_blank">Slides</a></div>
+          <div class="lecture-row"><span class="date">Fri 9/26:</span> <span class="topic">Power prompting for LLMs</span> — <a class="link-slides" href="https://docs.google.com/presentation/d/1MIhw8p6TLGdbQ9TcxhXSs5BaPf5d_h77QY70RHNfeGs/edit?usp=drive_link" target="_blank">Slides</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 2 -->
+    <div class="week-card">
+      <div class="week-header">Week 2: The Anatomy of Coding Agents</div>
+      <div class="week-body">
+        <div class="week-section">
+          <h4>Topics</h4>
+          <ul>
+            <li>Tool use and function calling</li>
+            <li>MCP (Model Context Protocol)</li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Reading</h4>
+          <ul>
+            <li><a class="link-local" href="pages/mcp-introduction.html">MCP Introduction</a></li>
+            <li><a class="link-github" href="https://github.com/modelcontextprotocol/servers" target="_blank">Sample MCP Server Implementations</a></li>
+            <li><a class="link-local" href="pages/mcp-server-authentication.html">MCP Server Authentication</a></li>
+            <li><a class="link-github" href="https://github.com/modelcontextprotocol/typescript-sdk/tree/main?tab=readme-ov-file#server" target="_blank">MCP Server SDK</a></li>
+            <li><a class="link-local" href="pages/mcp-registry-preview.html">MCP Registry</a></li>
+            <li><a class="link-local" href="pages/mcp-food-for-thought.html">MCP Food-for-Thought</a></li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Assignment</h4>
+          <ul>
+            <li><a class="link-github" href="https://github.com/mihail911/modern-software-dev-assignments/tree/master/week2" target="_blank">First Steps in the AI IDE</a></li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Lectures</h4>
+          <div class="lecture-row"><span class="date">Mon 9/29:</span> <span class="topic">Building a coding agent from scratch</span> — <a class="link-slides" href="https://docs.google.com/presentation/d/11CP26VhsjnZOmi9YFgLlonzdib9BLyAlgc4cEvC5Fps/edit?usp=sharing" target="_blank">Slides</a>, <a class="link-gdrive" href="https://drive.google.com/file/d/1YtpKFVG13DHyQ2i3HOtwyVJOV90nWeL2/view?usp=drive_link" target="_blank">Completed Exercise</a></div>
+          <div class="lecture-row"><span class="date">Fri 10/3:</span> <span class="topic">Building a custom MCP server</span> — <a class="link-slides" href="https://docs.google.com/presentation/d/1zSC2ra77XOUrJeyS85houg1DU7z9hq5Y4ebagTch-5o/edit?usp=drive_link" target="_blank">Slides</a>, <a class="link-gdrive" href="https://drive.google.com/file/d/1J6lgZWcxPzpCpjujJSnW1aAkCYF6Yxv3/view?usp=drive_link" target="_blank">Completed Exercise</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 3 -->
+    <div class="week-card">
+      <div class="week-header">Week 3: The AI IDE</div>
+      <div class="week-body">
+        <div class="week-section">
+          <h4>Topics</h4>
+          <ul>
+            <li>Context management and code understanding</li>
+            <li>PRDs for agents</li>
+            <li>IDE integrations and extensions</li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Reading</h4>
+          <ul>
+            <li><a class="link-local" href="pages/specs-are-the-new-source-code.html">Specs Are the New Source Code</a></li>
+            <li><a class="link-local" href="pages/how-long-contexts-fail.html">How Long Contexts Fail</a></li>
+            <li><a class="link-local" href="pages/devin-coding-agents-101.html">Devin: Coding Agents 101</a></li>
+            <li><a class="link-github" href="https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/ace-fca.md" target="_blank">Getting AI to Work In Complex Codebases</a></li>
+            <li><a href="https://x.com/rohanpaul_ai/status/1959414096589422619" target="_blank">How FAANG Vibe Codes</a></li>
+            <li><a class="link-local" href="pages/writing-effective-tools-for-agents.html">Writing Effective Tools for Agents</a></li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Assignment</h4>
+          <ul>
+            <li><a class="link-github" href="https://github.com/mihail911/modern-software-dev-assignments/blob/master/week3/assignment.md" target="_blank">Build a Custom MCP Server</a></li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Lectures</h4>
+          <div class="lecture-row"><span class="date">Mon 10/6:</span> <span class="topic">The AI IDE deep dive</span> — <a class="link-slides" href="https://docs.google.com/presentation/d/11pQNCde_mmRnImBat0Zymnp8TCS_cT_1up7zbcj6Sjg/edit?usp=sharing" target="_blank">Slides</a></div>
+          <div class="lecture-row"><span class="date">Fri 10/10:</span> <span class="topic">Guest: Silas Alberti (<a href="https://cognition.ai/" target="_blank">Cognition</a>)</span> — <a class="link-slides" href="https://docs.google.com/presentation/d/1i0pRttHf72lgz8C-n7DSegcLBgncYZe_ppU7dB9zhUA/edit?usp=sharing" target="_blank">Slides</a></div>
+          <div class="lecture-row"><span class="date">Resources:</span> <a class="link-gdrive" href="https://drive.google.com/file/d/1MZ0Qx68Vzw4x5x_XcV8XiPLp7fFDe1LJ/view?usp=drive_link" target="_blank">Design Doc Template</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 4 -->
+    <div class="week-card">
+      <div class="week-header">Week 4: Claude Code and Agentic Coding</div>
+      <div class="week-body">
+        <div class="week-section">
+          <h4>Topics</h4>
+          <ul>
+            <li>Claude Code architecture and internals</li>
+            <li>Agentic coding workflows</li>
+            <li>Context engineering for agents</li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Reading</h4>
+          <ul>
+            <li><a class="link-pdf" href="pdfs/how-anthropic-uses-claude-code.pdf">How Anthropic Uses Claude Code</a></li>
+            <li><a class="link-local" href="pages/claude-code-best-practices.html">Claude Best Practices</a></li>
+            <li><a class="link-github" href="https://github.com/vijaythecoder/awesome-claude-agents" target="_blank">Awesome Claude Agents</a></li>
+            <li><a class="link-github" href="https://github.com/SuperClaude-Org/SuperClaude_Framework" target="_blank">Super Claude</a></li>
+            <li><a class="link-local" href="pages/good-context-good-code.html">Good Context Good Code</a></li>
+            <li><a class="link-local" href="pages/peeking-under-the-hood-of-claude-code.html">Peeking Under the Hood of Claude Code</a></li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Assignment</h4>
+          <ul>
+            <li><a class="link-github" href="https://github.com/mihail911/modern-software-dev-assignments/blob/master/week4/assignment.md" target="_blank">Coding with Claude Code</a></li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Lectures</h4>
+          <div class="lecture-row"><span class="date">Mon 10/13:</span> <span class="topic">Claude Code deep dive</span> — <a class="link-slides" href="https://docs.google.com/presentation/d/19mgkwAnJDc7JuJy0zhhoY0ZC15DiNpxL8kchPDnRkRQ/edit?usp=sharing" target="_blank">Slides</a></div>
+          <div class="lecture-row"><span class="date">Fri 10/17:</span> <span class="topic">Guest: Boris Cherney (<a href="https://www.anthropic.com/claude-code" target="_blank">Claude Code</a>)</span> — <a class="link-slides" href="https://docs.google.com/presentation/d/1bv7Zozn6z45CAh-IyX99dMPMyXCHC7zj95UfwErBYQ8/edit?usp=sharing" target="_blank">Slides</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 5 -->
+    <div class="week-card">
+      <div class="week-header">Week 5: Warp and the AI Terminal</div>
+      <div class="week-body">
+        <div class="week-section">
+          <h4>Topics</h4>
+          <ul>
+            <li>AI-native terminal development</li>
+            <li>Agentic development workflows</li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Reading</h4>
+          <ul>
+            <li><a class="link-local" href="pages/warp-vs-claude-code.html">Warp vs Claude Code</a></li>
+            <li><a class="link-local" href="pages/how-warp-uses-warp.html">How Warp Uses Warp to Build Warp</a></li>
+            <li><a href="https://www.warp.dev/university?slug=university" target="_blank">Warp University</a></li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Assignment</h4>
+          <ul>
+            <li><a class="link-github" href="https://github.com/mihail911/modern-software-dev-assignments/tree/master/week5" target="_blank">Agentic Development with Warp</a></li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Lectures</h4>
+          <div class="lecture-row"><span class="date">Mon 10/20:</span> <span class="topic">Warp and the AI terminal</span> — <a class="link-slides" href="https://docs.google.com/presentation/d/1Djd4eBLBbRkma8rFnJAWMT0ptct_UGB8hipmoqFVkxQ/edit?usp=sharing" target="_blank">Slides</a></div>
+          <div class="lecture-row"><span class="date">Fri 10/24:</span> <span class="topic">Guest: Zach Lloyd (<a href="https://www.warp.dev/" target="_blank">Warp</a>)</span> — <a class="link-slides" href="https://www.figma.com/slides/kwbcmtqTFQMfUhiMH8BiEx/Warp---Stanford--Copy-?node-id=9-116&t=oBWBCk8mjg2l2NR5-1" target="_blank">Slides (Figma)</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 6 -->
+    <div class="week-card">
+      <div class="week-header">Week 6: AI Security and Vulnerability Detection</div>
+      <div class="week-body">
+        <div class="week-section">
+          <h4>Topics</h4>
+          <ul>
+            <li>Security testing (SAST vs DAST)</li>
+            <li>Prompt injection attacks</li>
+            <li>AI-assisted vulnerability detection</li>
+            <li>OWASP Top 10</li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Reading</h4>
+          <ul>
+            <li><a class="link-local" href="pages/sast-vs-dast.html">SAST vs DAST</a></li>
+            <li><a class="link-local" href="pages/copilot-prompt-injection-rce.html">Copilot Remote Code Execution via Prompt Injection</a></li>
+            <li><a class="link-local" href="pages/finding-vulnerabilities-claude-codex.html">Finding Vulnerabilities in Modern Web Apps Using Claude Code and OpenAI Codex</a></li>
+            <li><a class="link-local" href="pages/agentic-ai-threats.html">Agentic AI Threats: Identity Spoofing and Impersonation Risks</a></li>
+            <li><a class="link-local" href="pages/owasp-top-ten.html">OWASP Top Ten: The Leading Web Application Security Risks</a></li>
+            <li><a class="link-local" href="pages/context-rot.html">Context Rot: Understanding Degradation in AI Context Windows</a></li>
+            <li><a class="link-github" href="https://github.com/SeanHeelan/o3_finds_cve-2025-37899/blob/master/system_prompt_uafs.prompt" target="_blank">Vulnerability Prompt Analysis with O3</a></li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Assignment</h4>
+          <ul>
+            <li><a class="link-github" href="https://github.com/mihail911/modern-software-dev-assignments/blob/master/week6/assignment.md" target="_blank">Writing Secure AI Code</a></li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Lectures</h4>
+          <div class="lecture-row"><span class="date">Mon 10/27:</span> <span class="topic">AI security deep dive</span> — <a class="link-slides" href="https://docs.google.com/presentation/d/1C05bCLasMDigBbkwdWbiz4WrXibzi6ua4hQQbTod_8c/edit?usp=sharing" target="_blank">Slides</a></div>
+          <div class="lecture-row"><span class="date">Fri 10/31:</span> <span class="topic">Guest: Isaac Evans (<a href="https://semgrep.dev/" target="_blank">Semgrep</a>)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 7 -->
+    <div class="week-card">
+      <div class="week-header">Week 7: AI-Powered Code Review</div>
+      <div class="week-body">
+        <div class="week-section">
+          <h4>Topics</h4>
+          <ul>
+            <li>Code review best practices</li>
+            <li>AI-assisted code review</li>
+            <li>Automated review tooling</li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Reading</h4>
+          <ul>
+            <li><a class="link-local" href="pages/code-reviews-just-do-it.html">Code Reviews: Just Do It</a></li>
+            <li><a class="link-local" href="pages/how-to-review-code-effectively.html">How to Review Code Effectively</a></li>
+            <li><a class="link-pdf" href="pdfs/ai-assisted-code-review-assessment.pdf">AI-Assisted Assessment of Coding Practices in Modern Code Review</a></li>
+            <li><a class="link-local" href="pages/ai-code-review-best-practices.html">AI Code Review Implementation Best Practices</a></li>
+            <li><a class="link-local" href="pages/code-review-essentials.html">Code Review Essentials for Software Teams</a></li>
+            <li><a class="link-local" href="pages/lessons-from-ai-code-reviews.html">Lessons from Millions of AI Code Reviews</a></li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Assignment</h4>
+          <ul>
+            <li><a class="link-github" href="https://github.com/mihail911/modern-software-dev-assignments/tree/master/week7" target="_blank">Code Review Reps</a></li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Lectures</h4>
+          <div class="lecture-row"><span class="date">Mon 11/3:</span> <span class="topic">AI code review deep dive</span> — <a class="link-slides" href="https://docs.google.com/presentation/d/1Mfe-auWAsg9URCujneKnHr0AbO8O-_U4QXBVOlO4qp0/edit?usp=sharing" target="_blank">Slides</a></div>
+          <div class="lecture-row"><span class="date">Fri 11/7:</span> <span class="topic">Guest: Tomas Reimers (<a href="https://graphite.dev/" target="_blank">Graphite</a>)</span> — <a class="link-slides" href="https://docs.google.com/presentation/d/1NkPzpuSQt6Esbnr2-EnxM9007TL6ebSPFwITyVY-QxU/edit?usp=sharing" target="_blank">Slides</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 8 -->
+    <div class="week-card">
+      <div class="week-header">Week 8: Full-Stack AI Development and Deployment</div>
+      <div class="week-body">
+        <div class="week-section">
+          <h4>Topics</h4>
+          <ul>
+            <li>Multi-stack web application development</li>
+            <li>AI-assisted deployment pipelines</li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Assignment</h4>
+          <ul>
+            <li><a class="link-github" href="https://github.com/mihail911/modern-software-dev-assignments/tree/master/week8" target="_blank">Multi-stack Web App Builds</a></li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Lectures</h4>
+          <div class="lecture-row"><span class="date">Mon 11/10:</span> <span class="topic">Full-stack AI development</span> — <a class="link-slides" href="https://docs.google.com/presentation/d/1DWbxgR-uynKJxBR7E9E/edit?usp=sharing" target="_blank">Slides</a></div>
+          <div class="lecture-row"><span class="date">Fri 11/14:</span> <span class="topic">Guest: Gaspar Garcia (<a href="https://vercel.com/" target="_blank">Vercel</a>)</span> — <a class="link-slides" href="https://docs.google.com/presentation/d/1hwF-RIkOJ_OFy17BKhzFyCtxSS7Pcf7p/view?usp=drive_link" target="_blank">Slides</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 9 -->
+    <div class="week-card">
+      <div class="week-header">Week 9: SRE, Observability, and Agentic On-Call</div>
+      <div class="week-body">
+        <div class="week-section">
+          <h4>Topics</h4>
+          <ul>
+            <li>Site Reliability Engineering fundamentals</li>
+            <li>Observability and monitoring</li>
+            <li>AI agents in on-call engineering</li>
+            <li>Multi-agent systems</li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Reading</h4>
+          <ul>
+            <li><a class="link-local" href="pages/sre-introduction.html">Introduction to Site Reliability Engineering</a></li>
+            <li><a class="link-local" href="pages/observability-basics.html">Observability Basics You Should Know</a></li>
+            <li><a class="link-local" href="pages/kubernetes-troubleshooting-ai.html">Kubernetes Troubleshooting with AI</a></li>
+            <li><a class="link-local" href="pages/benefits-agentic-ai-oncall.html">Your New Autonomous Teammate / Benefits of Agentic AI in On-call Engineering</a></li>
+            <li><a class="link-local" href="pages/multi-agent-systems-ai-native.html">Role of Multi Agent Systems in Making Software Engineers AI-native</a></li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Lectures</h4>
+          <div class="lecture-row"><span class="date">Mon 11/17:</span> <span class="topic">SRE and AI observability</span> — <a class="link-slides" href="https://docs.google.com/presentation/d/1DWbxgR-uynKJxBR7E9E/edit?usp=sharing" target="_blank">Slides</a></div>
+          <div class="lecture-row"><span class="date">Fri 11/21:</span> <span class="topic">Guests: Mayank Agarwal &amp; Milind Ganjoo (<a href="https://resolve.ai/" target="_blank">Resolve</a>)</span> — <a class="link-slides" href="https://docs.google.com/presentation/d/11WnEbMGc9kny_WBpMN10I8oP8XsiQOnM/view?usp=sharing" target="_blank">Slides</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 10 -->
+    <div class="week-card">
+      <div class="week-header">Week 10: The Future of AI in Software Engineering</div>
+      <div class="week-body">
+        <div class="week-section">
+          <h4>Topics</h4>
+          <ul>
+            <li>Future trends in AI-assisted development</li>
+            <li>Industry perspectives and career implications</li>
+            <li>Final project presentations</li>
+          </ul>
+        </div>
+        <div class="week-section">
+          <h4>Lectures</h4>
+          <div class="lecture-row"><span class="date">Mon 12/1:</span> <span class="topic">Guest: Martin Casado (<a href="https://a16z.com/" target="_blank">a16z</a>)</span></div>
+          <div class="lecture-row"><span class="date">Fri 12/5:</span> <span class="topic">Final project presentations</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end syllabus tab -->
+
+  <!-- ===== FAQ TAB ===== -->
+  <div id="tab-faq" class="tab-panel">
+    <h2 style="font-size:1.6rem;font-weight:700;margin-bottom:24px;border-bottom:2px solid #8c1515;padding-bottom:8px;">Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <h3>Who is this course for?</h3>
+      <p>This course is designed for students with programming experience (CS111 equivalent) who want to learn how to leverage modern AI tools to dramatically improve their software development productivity. CS221/229 is recommended but not required.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What will I build in this course?</h3>
+      <p>Students will complete weekly hands-on assignments covering LLM prompting, MCP server development, AI IDE usage, Claude Code workflows, security analysis, code review automation, and full-stack web applications. The course culminates in a final project showcasing modern development practices.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What tools will we use?</h3>
+      <p>The course covers a range of AI development tools including Claude Code, Warp terminal, Cursor/Windsurf IDEs, Semgrep, Graphite, and Vercel. We'll also work with the Model Context Protocol (MCP) and various LLM APIs.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How are grades determined?</h3>
+      <p>Grades are based on weekly assignments, participation in class discussions, and the final project. See the <a href="https://docs.google.com/spreadsheets/d/1-485SLHw_zn7A-UXiz88Dgjy_qUGx87Am6HUwQrKsN8/edit?gid=0#gid=0" target="_blank">assignment calendar</a> for specific deadlines.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Are lectures recorded?</h3>
+      <p>Please check with the course staff for recording availability. Slides for each lecture are linked in the syllabus above.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I contact the teaching team?</h3>
+      <p><strong>Mihail Eric:</strong> Office hours Friday 12:00–12:30 PM<br>
+         <strong>Febie Lin:</strong> Office hours Wednesday 9:00–11:00 AM (Huang Basement)<br>
+         <strong>Brent Ju:</strong> See course Slack/Ed for contact info.</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <p>CS146S: The Modern Software Developer &bull; Stanford University &bull; Fall 2025</p>
+  <p style="margin-top:4px;">Offline cache generated April 2, 2026 from <a href="https://themodernsoftware.dev/" target="_blank">themodernsoftware.dev</a></p>
+  <p style="margin-top:8px; font-size:0.8rem; color:#aaa;">
+    Legend: 
+    <span style="color:#8c1515">📄 Local page</span> &bull;
+    <span style="color:#c00">▶ Video (external)</span> &bull;
+    <span style="color:#1a73e8">🖥 Slides (external)</span> &bull;
+    <span style="color:#333">⚙ GitHub (external)</span> &bull;
+    <span style="color:#0f9d58">📁 Google Drive (external)</span> &bull;
+    📕 PDF (local)
+  </p>
+</footer>
+
+<script>
+function showTab(name) {
+  // Hide all panels
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  // Show selected
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>

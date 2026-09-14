@@ -1,0 +1,483 @@
+{
+  "course": "CS146S: The Modern Software Developer",
+  "institution": "Stanford University",
+  "term": "Fall 2025",
+  "instructor": "Mihail Eric",
+  "source_url": "https://themodernsoftware.dev/",
+  "source_html": "index.html",
+  "weeks": [
+    {
+      "week": 1,
+      "title": "Introduction to Coding LLMs and AI Development",
+      "topics": [
+        "Course logistics",
+        "What is an LLM actually",
+        "How to prompt effectively"
+      ],
+      "readings": [
+        {
+          "text": "Deep Dive into LLMs",
+          "url": "https://www.youtube.com/watch?v=7xTGNNLPyMI"
+        },
+        {
+          "text": "Prompt Engineering Overview",
+          "url": "pages/prompt-engineering-overview.html"
+        },
+        {
+          "text": "Prompt Engineering Guide",
+          "url": "pages/prompt-engineering-guide.html"
+        },
+        {
+          "text": "AI Prompt Engineering: A Deep Dive",
+          "url": "https://www.youtube.com/watch?v=T9aRN5JkmL8"
+        },
+        {
+          "text": "How OpenAI Uses Codex",
+          "url": "pdfs/how-openai-uses-codex.pdf"
+        }
+      ],
+      "lectures": [
+        {
+          "text": "Slides",
+          "url": "https://docs.google.com/presentation/d/1zT2Ofy88cajLTLkd7TcuSM4BCELvF9qQdHmlz33i4t0/edit?usp=sharing"
+        },
+        {
+          "text": "Slides",
+          "url": "https://docs.google.com/presentation/d/1MIhw8p6TLGdbQ9TcxhXSs5BaPf5d_h77QY70RHNfeGs/edit?usp=drive_link"
+        }
+      ],
+      "assignments": [
+        {
+          "text": "LLM Prompting Playground",
+          "url": "https://github.com/mihail911/modern-software-dev-assignments/tree/master/week1"
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "title": "The Anatomy of Coding Agents",
+      "topics": [
+        "Tool use and function calling",
+        "MCP (Model Context Protocol)"
+      ],
+      "readings": [
+        {
+          "text": "MCP Introduction",
+          "url": "pages/mcp-introduction.html"
+        },
+        {
+          "text": "Sample MCP Server Implementations",
+          "url": "https://github.com/modelcontextprotocol/servers"
+        },
+        {
+          "text": "MCP Server Authentication",
+          "url": "pages/mcp-server-authentication.html"
+        },
+        {
+          "text": "MCP Server SDK",
+          "url": "https://github.com/modelcontextprotocol/typescript-sdk/tree/main?tab=readme-ov-file#server"
+        },
+        {
+          "text": "MCP Registry",
+          "url": "pages/mcp-registry-preview.html"
+        },
+        {
+          "text": "MCP Food-for-Thought",
+          "url": "pages/mcp-food-for-thought.html"
+        }
+      ],
+      "lectures": [
+        {
+          "text": "Slides",
+          "url": "https://docs.google.com/presentation/d/11CP26VhsjnZOmi9YFgLlonzdib9BLyAlgc4cEvC5Fps/edit?usp=sharing"
+        },
+        {
+          "text": "Completed Exercise",
+          "url": "https://drive.google.com/file/d/1YtpKFVG13DHyQ2i3HOtwyVJOV90nWeL2/view?usp=drive_link"
+        },
+        {
+          "text": "Slides",
+          "url": "https://docs.google.com/presentation/d/1zSC2ra77XOUrJeyS85houg1DU7z9hq5Y4ebagTch-5o/edit?usp=drive_link"
+        },
+        {
+          "text": "Completed Exercise",
+          "url": "https://drive.google.com/file/d/1J6lgZWcxPzpCpjujJSnW1aAkCYF6Yxv3/view?usp=drive_link"
+        }
+      ],
+      "assignments": [
+        {
+          "text": "First Steps in the AI IDE",
+          "url": "https://github.com/mihail911/modern-software-dev-assignments/tree/master/week2"
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "title": "The AI IDE",
+      "topics": [
+        "Context management and code understanding",
+        "PRDs for agents",
+        "IDE integrations and extensions"
+      ],
+      "readings": [
+        {
+          "text": "Specs Are the New Source Code",
+          "url": "pages/specs-are-the-new-source-code.html"
+        },
+        {
+          "text": "How Long Contexts Fail",
+          "url": "pages/how-long-contexts-fail.html"
+        },
+        {
+          "text": "Devin: Coding Agents 101",
+          "url": "pages/devin-coding-agents-101.html"
+        },
+        {
+          "text": "Getting AI to Work In Complex Codebases",
+          "url": "https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/ace-fca.md"
+        },
+        {
+          "text": "How FAANG Vibe Codes",
+          "url": "https://x.com/rohanpaul_ai/status/1959414096589422619"
+        },
+        {
+          "text": "Writing Effective Tools for Agents",
+          "url": "pages/writing-effective-tools-for-agents.html"
+        }
+      ],
+      "lectures": [
+        {
+          "text": "Slides",
+          "url": "https://docs.google.com/presentation/d/11pQNCde_mmRnImBat0Zymnp8TCS_cT_1up7zbcj6Sjg/edit?usp=sharing"
+        },
+        {
+          "text": "Cognition",
+          "url": "https://cognition.ai/"
+        },
+        {
+          "text": "Slides",
+          "url": "https://docs.google.com/presentation/d/1i0pRttHf72lgz8C-n7DSegcLBgncYZe_ppU7dB9zhUA/edit?usp=sharing"
+        },
+        {
+          "text": "Design Doc Template",
+          "url": "https://drive.google.com/file/d/1MZ0Qx68Vzw4x5x_XcV8XiPLp7fFDe1LJ/view?usp=drive_link"
+        }
+      ],
+      "assignments": [
+        {
+          "text": "Build a Custom MCP Server",
+          "url": "https://github.com/mihail911/modern-software-dev-assignments/blob/master/week3/assignment.md"
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "title": "Claude Code and Agentic Coding",
+      "topics": [
+        "Claude Code architecture and internals",
+        "Agentic coding workflows",
+        "Context engineering for agents"
+      ],
+      "readings": [
+        {
+          "text": "How Anthropic Uses Claude Code",
+          "url": "pdfs/how-anthropic-uses-claude-code.pdf"
+        },
+        {
+          "text": "Claude Best Practices",
+          "url": "pages/claude-code-best-practices.html"
+        },
+        {
+          "text": "Awesome Claude Agents",
+          "url": "https://github.com/vijaythecoder/awesome-claude-agents"
+        },
+        {
+          "text": "Super Claude",
+          "url": "https://github.com/SuperClaude-Org/SuperClaude_Framework"
+        },
+        {
+          "text": "Good Context Good Code",
+          "url": "pages/good-context-good-code.html"
+        },
+        {
+          "text": "Peeking Under the Hood of Claude Code",
+          "url": "pages/peeking-under-the-hood-of-claude-code.html"
+        }
+      ],
+      "lectures": [
+        {
+          "text": "Slides",
+          "url": "https://docs.google.com/presentation/d/19mgkwAnJDc7JuJy0zhhoY0ZC15DiNpxL8kchPDnRkRQ/edit?usp=sharing"
+        },
+        {
+          "text": "Claude Code",
+          "url": "https://www.anthropic.com/claude-code"
+        },
+        {
+          "text": "Slides",
+          "url": "https://docs.google.com/presentation/d/1bv7Zozn6z45CAh-IyX99dMPMyXCHC7zj95UfwErBYQ8/edit?usp=sharing"
+        }
+      ],
+      "assignments": [
+        {
+          "text": "Coding with Claude Code",
+          "url": "https://github.com/mihail911/modern-software-dev-assignments/blob/master/week4/assignment.md"
+        }
+      ]
+    },
+    {
+      "week": 5,
+      "title": "Warp and the AI Terminal",
+      "topics": [
+        "AI-native terminal development",
+        "Agentic development workflows"
+      ],
+      "readings": [
+        {
+          "text": "Warp vs Claude Code",
+          "url": "pages/warp-vs-claude-code.html"
+        },
+        {
+          "text": "How Warp Uses Warp to Build Warp",
+          "url": "pages/how-warp-uses-warp.html"
+        },
+        {
+          "text": "Warp University",
+          "url": "https://www.warp.dev/university?slug=university"
+        }
+      ],
+      "lectures": [
+        {
+          "text": "Slides",
+          "url": "https://docs.google.com/presentation/d/1Djd4eBLBbRkma8rFnJAWMT0ptct_UGB8hipmoqFVkxQ/edit?usp=sharing"
+        },
+        {
+          "text": "Warp",
+          "url": "https://www.warp.dev/"
+        },
+        {
+          "text": "Slides (Figma)",
+          "url": "https://www.figma.com/slides/kwbcmtqTFQMfUhiMH8BiEx/Warp---Stanford--Copy-?node-id=9-116&t=oBWBCk8mjg2l2NR5-1"
+        }
+      ],
+      "assignments": [
+        {
+          "text": "Agentic Development with Warp",
+          "url": "https://github.com/mihail911/modern-software-dev-assignments/tree/master/week5"
+        }
+      ]
+    },
+    {
+      "week": 6,
+      "title": "AI Security and Vulnerability Detection",
+      "topics": [
+        "Security testing (SAST vs DAST)",
+        "Prompt injection attacks",
+        "AI-assisted vulnerability detection",
+        "OWASP Top 10"
+      ],
+      "readings": [
+        {
+          "text": "SAST vs DAST",
+          "url": "pages/sast-vs-dast.html"
+        },
+        {
+          "text": "Copilot Remote Code Execution via Prompt Injection",
+          "url": "pages/copilot-prompt-injection-rce.html"
+        },
+        {
+          "text": "Finding Vulnerabilities in Modern Web Apps Using Claude Code and OpenAI Codex",
+          "url": "pages/finding-vulnerabilities-claude-codex.html"
+        },
+        {
+          "text": "Agentic AI Threats: Identity Spoofing and Impersonation Risks",
+          "url": "pages/agentic-ai-threats.html"
+        },
+        {
+          "text": "OWASP Top Ten: The Leading Web Application Security Risks",
+          "url": "pages/owasp-top-ten.html"
+        },
+        {
+          "text": "Context Rot: Understanding Degradation in AI Context Windows",
+          "url": "pages/context-rot.html"
+        },
+        {
+          "text": "Vulnerability Prompt Analysis with O3",
+          "url": "https://github.com/SeanHeelan/o3_finds_cve-2025-37899/blob/master/system_prompt_uafs.prompt"
+        }
+      ],
+      "lectures": [
+        {
+          "text": "Slides",
+          "url": "https://docs.google.com/presentation/d/1C05bCLasMDigBbkwdWbiz4WrXibzi6ua4hQQbTod_8c/edit?usp=sharing"
+        },
+        {
+          "text": "Semgrep",
+          "url": "https://semgrep.dev/"
+        }
+      ],
+      "assignments": [
+        {
+          "text": "Writing Secure AI Code",
+          "url": "https://github.com/mihail911/modern-software-dev-assignments/blob/master/week6/assignment.md"
+        }
+      ]
+    },
+    {
+      "week": 7,
+      "title": "AI-Powered Code Review",
+      "topics": [
+        "Code review best practices",
+        "AI-assisted code review",
+        "Automated review tooling"
+      ],
+      "readings": [
+        {
+          "text": "Code Reviews: Just Do It",
+          "url": "pages/code-reviews-just-do-it.html"
+        },
+        {
+          "text": "How to Review Code Effectively",
+          "url": "pages/how-to-review-code-effectively.html"
+        },
+        {
+          "text": "AI-Assisted Assessment of Coding Practices in Modern Code Review",
+          "url": "pdfs/ai-assisted-code-review-assessment.pdf"
+        },
+        {
+          "text": "AI Code Review Implementation Best Practices",
+          "url": "pages/ai-code-review-best-practices.html"
+        },
+        {
+          "text": "Code Review Essentials for Software Teams",
+          "url": "pages/code-review-essentials.html"
+        },
+        {
+          "text": "Lessons from Millions of AI Code Reviews",
+          "url": "pages/lessons-from-ai-code-reviews.html"
+        }
+      ],
+      "lectures": [
+        {
+          "text": "Slides",
+          "url": "https://docs.google.com/presentation/d/1Mfe-auWAsg9URCujneKnHr0AbO8O-_U4QXBVOlO4qp0/edit?usp=sharing"
+        },
+        {
+          "text": "Graphite",
+          "url": "https://graphite.dev/"
+        },
+        {
+          "text": "Slides",
+          "url": "https://docs.google.com/presentation/d/1NkPzpuSQt6Esbnr2-EnxM9007TL6ebSPFwITyVY-QxU/edit?usp=sharing"
+        }
+      ],
+      "assignments": [
+        {
+          "text": "Code Review Reps",
+          "url": "https://github.com/mihail911/modern-software-dev-assignments/tree/master/week7"
+        }
+      ]
+    },
+    {
+      "week": 8,
+      "title": "Full-Stack AI Development and Deployment",
+      "topics": [
+        "Multi-stack web application development",
+        "AI-assisted deployment pipelines"
+      ],
+      "readings": [],
+      "lectures": [
+        {
+          "text": "Slides",
+          "url": "https://docs.google.com/presentation/d/1DWbxgR-uynKJxBR7E9E/edit?usp=sharing"
+        },
+        {
+          "text": "Vercel",
+          "url": "https://vercel.com/"
+        },
+        {
+          "text": "Slides",
+          "url": "https://docs.google.com/presentation/d/1hwF-RIkOJ_OFy17BKhzFyCtxSS7Pcf7p/view?usp=drive_link"
+        }
+      ],
+      "assignments": [
+        {
+          "text": "Multi-stack Web App Builds",
+          "url": "https://github.com/mihail911/modern-software-dev-assignments/tree/master/week8"
+        }
+      ]
+    },
+    {
+      "week": 9,
+      "title": "SRE, Observability, and Agentic On-Call",
+      "topics": [
+        "Site Reliability Engineering fundamentals",
+        "Observability and monitoring",
+        "AI agents in on-call engineering",
+        "Multi-agent systems"
+      ],
+      "readings": [
+        {
+          "text": "Introduction to Site Reliability Engineering",
+          "url": "pages/sre-introduction.html"
+        },
+        {
+          "text": "Observability Basics You Should Know",
+          "url": "pages/observability-basics.html"
+        },
+        {
+          "text": "Kubernetes Troubleshooting with AI",
+          "url": "pages/kubernetes-troubleshooting-ai.html"
+        },
+        {
+          "text": "Your New Autonomous Teammate / Benefits of Agentic AI in On-call Engineering",
+          "url": "pages/benefits-agentic-ai-oncall.html"
+        },
+        {
+          "text": "Role of Multi Agent Systems in Making Software Engineers AI-native",
+          "url": "pages/multi-agent-systems-ai-native.html"
+        }
+      ],
+      "lectures": [
+        {
+          "text": "Slides",
+          "url": "https://docs.google.com/presentation/d/1DWbxgR-uynKJxBR7E9E/edit?usp=sharing"
+        },
+        {
+          "text": "Resolve",
+          "url": "https://resolve.ai/"
+        },
+        {
+          "text": "Slides",
+          "url": "https://docs.google.com/presentation/d/11WnEbMGc9kny_WBpMN10I8oP8XsiQOnM/view?usp=sharing"
+        }
+      ],
+      "assignments": []
+    },
+    {
+      "week": 10,
+      "title": "The Future of AI in Software Engineering",
+      "topics": [
+        "Future trends in AI-assisted development",
+        "Industry perspectives and career implications",
+        "Final project presentations"
+      ],
+      "readings": [],
+      "lectures": [
+        {
+          "text": "a16z",
+          "url": "https://a16z.com/"
+        },
+        {
+          "text": "assignment calendar",
+          "url": "https://docs.google.com/spreadsheets/d/1-485SLHw_zn7A-UXiz88Dgjy_qUGx87Am6HUwQrKsN8/edit?gid=0#gid=0"
+        },
+        {
+          "text": "themodernsoftware.dev",
+          "url": "https://themodernsoftware.dev/"
+        }
+      ],
+      "assignments": []
+    }
+  ]
+}

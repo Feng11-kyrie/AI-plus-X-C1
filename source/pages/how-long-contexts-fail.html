@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>How Long Contexts Fail</title><!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="How Long Contexts Fail" />
+<meta name="author" content="Drew Breunig" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Taking care of your context is the key to building successful agents. Just because there’s a 1 million token context window doesn’t mean you should fill it." />
+<meta property="og:description" content="Taking care of your context is the key to building successful agents. Just because there’s a 1 million token context window doesn’t mean you should fill it." />
+<link rel="canonical" href="https://www.dbreunig.com/2025/06/22/how-contexts-fail-and-how-to-fix-them.html" />
+<meta property="og:url" content="https://www.dbreunig.com/2025/06/22/how-contexts-fail-and-how-to-fix-them.html" />
+<meta property="og:site_name" content="Drew Breunig" />
+<meta property="og:image" content="https://www.dbreunig.com/img/overload.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-06-22T16:19:00-07:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://www.dbreunig.com/img/overload.jpg" />
+<meta property="twitter:title" content="How Long Contexts Fail" />
+<meta name="twitter:site" content="@dbreunig" />
+<meta name="twitter:creator" content="@Drew Breunig" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Drew Breunig"},"dateModified":"2026-03-04T18:11:17-08:00","datePublished":"2025-06-22T16:19:00-07:00","description":"Taking care of your context is the key to building successful agents. Just because there’s a 1 million token context window doesn’t mean you should fill it.","headline":"How Long Contexts Fail","image":"https://www.dbreunig.com/img/overload.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.dbreunig.com/2025/06/22/how-contexts-fail-and-how-to-fix-them.html"},"url":"https://www.dbreunig.com/2025/06/22/how-contexts-fail-and-how-to-fix-them.html"}</script>
+<!-- End Jekyll SEO tag -->
+<meta property="og:image" content="/img/overload.jpg">
+    <link rel="stylesheet" href="/assets/custom.css">
+    <link rel="stylesheet" href="/assets/default.css"><link type="application/atom+xml" rel="alternate" href="https://www.dbreunig.com/feed.xml" title="Drew Breunig" /><link rel="alternate" type="text/markdown" href="/2025/06/22/how-contexts-fail-and-how-to-fix-them.md" title="How Long Contexts Fail (Markdown)" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicon/site.webmanifest">
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+
+    <script defer src="/_vercel/insights/script.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0FG4TW2FHS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0FG4TW2FHS');
+</script>
+</head>
+  <body><header role="banner">
+
+  <div><a class="site-title" rel="author" href="/">dbreunig.com</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div>
+    <a href=/contact.html>Contact</a>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <p class="post-meta">
+    <time class="dt-published" datetime="2025-06-22T16:19:00-07:00" itemprop="datePublished">Jun 22, 2025
+    </time></p>
+  
+  <div id="tags" style="display: flex; flex-wrap: wrap; align-items: center; column-gap: 0.3em; row-gap: 0.3em; margin-bottom: 1em;">
+    
+      <div class="post-tag">AGENTS</div>
+    
+      <div class="post-tag">LLM</div>
+    
+      <div class="post-tag">AI</div>
+    
+      <div class="post-tag">PROMPTING</div>
+    
+      <div class="post-tag">CONTEXT MANAGEMENT</div>
+    
+  </div>
+
+  <h1 class="post-title p-name" itemprop="name headline">How Long Contexts Fail</h1>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><img src="/img/overload.jpg" alt="" /></p>
+
+<h3 id="managing-your-context-is-the-key-to-successful-agents">Managing Your Context is the Key to Successful Agents</h3>
+
+<p>As frontier model context windows continue to grow<sup id="fnref:longcontext"><a href="#fn:longcontext" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>, with many supporting up to 1 million tokens, I see many excited discussions about how long context windows will unlock the agents of our dreams. After all, with a large enough window, you can simply throw <em>everything</em> into a prompt you might need – tools, documents, instructions, and more – and let the model take care of the rest.</p>
+
+<p>Long contexts kneecapped RAG enthusiasm (no need to find the best doc when you can fit it all in the prompt!), enabled MCP hype (connect to every tool and models can do any job!), and fueled enthusiasm for agents<sup id="fnref:googledocs"><a href="#fn:googledocs" class="footnote" rel="footnote" role="doc-noteref">2</a></sup>.</p>
+
+<p>But in reality, longer contexts do not generate better responses. Overloading your context can cause your agents and applications to fail in suprising ways. Contexts can become poisoned, distracting, confusing, or conflicting. This is especially problematic for agents, which rely on context to gather information, synthesize findings, and coordinate actions.</p>
+
+<p>Let’s run through the ways contexts can get out of hand, then review methods to mitigate or entirely avoid context fails.</p>
+
+<div class="sidenote">
+
+<h2>Context Fails</h2>
+
+<ul>
+<li><a href="#context-poisoning">Context Poisoning: When a hallucination makes it into the context</a></li>
+<li><a href="#context-distraction">Context Distraction: When the context overwhelms the training</a></li>
+<li><a href="#context-confusion">Context Confusion: When superfluous context influences the response</a></li>
+<li><a href="#context-clash">Context Clash: When parts of the context disagree</a></li>
+</ul>
+
+</div>
+
+<hr />
+
+<h3 id="context-poisoning">Context Poisoning</h3>
+
+<p><em>Context Poisoning is when a hallucination or other error makes it into the context, where it is repeatedly referenced.</em></p>
+
+<p>The Deep Mind team called out context poisoning in the <a href="https://storage.googleapis.com/deepmind-media/gemini/gemini_v2_5_report.pdf">Gemini 2.5 technical report</a>, which <a href="https://www.dbreunig.com/2025/06/17/an-agentic-case-study-playing-pokémon-with-gemini.html">we broke down last week</a>. When playing Pokémon, the Gemini agent would occasionally hallucinate while playing, poisoning its context:</p>
+
+<blockquote>
+  <p>An especially egregious form of this issue can take place with “context poisoning” – where many parts of the context (goals, summary) are “poisoned” with misinformation about the game state, which can often take a very long time to undo. As a result, the model can become fixated on achieving impossible or irrelevant goals.</p>
+</blockquote>
+
+<p>If the “goals” section of its context was poisoned, the agent would develop nonsensical strategies and repeat behaviors in pursuit of a goal that cannot be met.</p>
+
+<h3 id="context-distraction">Context Distraction</h3>
+
+<p><em>Context Distraction is when a context grows so long that the model over-focuses on the context, neglecting what it learned during training.</em></p>
+
+<p>As context grows during an agentic workflow—as the model gathers more information and builds up history—this accumulated context can become distracting rather than helpful. The Pokémon-playing Gemini agent demonstrated this problem clearly:</p>
+
+<blockquote>
+  <p>While Gemini 2.5 Pro supports 1M+ token context, making effective use of it for agents presents
+a new research frontier. In this agentic setup, it was observed that as the context grew significantly beyond 100k tokens, the agent showed a tendency toward favoring repeating actions from its vast history rather than synthesizing novel plans. This phenomenon, albeit anecdotal, highlights an important distinction between long-context for retrieval and long-context for multi-step, generative reasoning.</p>
+</blockquote>
+
+<p>Instead of using its training to develop new strategies, the agent became fixated on repeating past actions from its extensive context history.</p>
+
+<p>For smaller models, the distraction ceiling is much lower. A <a href="https://www.databricks.com/blog/long-context-rag-performance-llms">Databricks study</a> found that model correctness began to fall around 32k for Llama 3.1 405b and earlier for smaller models.</p>
+
+<p>If models start to misbehave long before their context windows are filled, what’s the point of super large context windows? In a nutshell: summarization<sup id="fnref:summarization"><a href="#fn:summarization" class="footnote" rel="footnote" role="doc-noteref">3</a></sup> and fact retrieval. If you’re not doing either of those, be wary of your chosen model’s distraction ceiling.</p>
+
+<h3 id="context-confusion">Context Confusion</h3>
+
+<p><em>Context Confusion is when superfluous content in the context is used by the model to generate a low-quality response.</em></p>
+
+<p>For a minute there, it really seemed like <em>everyone</em> was going to ship an <a href="https://www.dbreunig.com/2025/03/18/mcps-are-apis-for-llms.html">MCP</a>. The dream of a powerful model, connected to <em>all</em> your services and <em>stuff</em>, doing all your mundane tasks felt within reach. Just throw all the tool descriptions into the prompt and hit go. <a href="https://www.dbreunig.com/2025/05/07/claude-s-system-prompt-chatbots-are-more-than-just-models.html">Claude’s system prompt</a> showed us the way, as it’s mostly tool definitions or instructions for using tools.</p>
+
+<p>But even if <a href="https://www.dbreunig.com/2025/06/16/drawbridges-go-up.html">consolidation and competition don’t slow MCPs</a>, <em>Context Confusion</em> will. It turns out there can be such a thing as too many tools.</p>
+
+<p>The <a href="https://gorilla.cs.berkeley.edu/leaderboard.html">Berkeley Function-Calling Leaderboard</a> is a tool-use benchmark that evaluates the ability of models to effectively use tools to respond to prompts. Now on its 3rd version, the leaderboard shows that <em>every</em> model performs worse when provided with more than one tool<sup id="fnref:live"><a href="#fn:live" class="footnote" rel="footnote" role="doc-noteref">4</a></sup>. Further, the Berkeley team, “designed scenarios where none of the provided functions are relevant…we expect the model’s output to be no function call.” Yet, all models will occasionally call tools that aren’t relevant.</p>
+
+<p>Browsing the function-calling leaderboard, you can see the problem get worse as the models get smaller:</p>
+
+<p><img src="/img/gemma_irrelevance.png" alt="" /></p>
+
+<p>A striking example of context confusion can be seen in a <a href="https://arxiv.org/pdf/2411.15399?">recent paper</a> which evaluated small model performance on the <a href="https://arxiv.org/abs/2404.15500">GeoEngine benchmark</a>, a trial that features <em>46 different tools</em>. When the team gave a quantized (compressed) Llama 3.1 8b a query with all 46 tools it failed, even though the context was well within the 16k context window. But when they only gave the model 19 tools, it succeeded.</p>
+
+<p>The problem is: if you put something in the context <em>the model has to pay attention to it.</em> It may be irrelevant information or needless tool definitions, but the model <em>will</em> take it into account. Large models, especially reasoning models, are getting better at ignoring or discarding superfluous context, but we continually see worthless information trip up agents. Longer contexts let us stuff in more info, but this ability comes with downsides.</p>
+
+<h3 id="context-clash">Context Clash</h3>
+
+<p><em>Context Clash is when you accrue new information and tools in your context that conflicts with other information in the context.</em></p>
+
+<p>This is a more problematic version of <em>Context Confusion</em>: the bad context here isn’t irrelevant, it directly conflicts with other information in the prompt.</p>
+
+<p>A Microsoft and Salesforce team documented this brilliantly in a <a href="https://arxiv.org/pdf/2505.06120">recent paper</a>. The team took prompts from multiple benchmarks and ‘sharded’ their information across multiple prompts. Think of it this way: sometimes, you might sit down and type paragraphs into ChatGPT or Claude before you hit enter, considering every necessary detail. Other times, you might start with a simple prompt, then add further details when the chatbot’s answer isn’t satisfactory. The Microsoft/Salesforce team modified benchmark prompts to look like these multistep exchanges:</p>
+
+<p><img src="/img/sharded_prompt.png" alt="" /></p>
+
+<p>All the information from the prompt on the left side is contained within the several messages on the right side, which would be played out in multiple chat rounds.</p>
+
+<p>The sharded prompts yielded dramatically worse results, with an average drop of 39%. And the team tested a range of models – OpenAI’s vaunted o3’s score dropped from 98.1 to 64.1.</p>
+
+<p>What’s going on? Why are models performing worse if information is gathered in stages rather than all at once?</p>
+
+<p>The answer is <em>Context Confusion</em>: the assembled context, containing the entirety of the chat exchange, contains early attempts by the model to answer the challenge <em>before it has all the information</em>. These incorrect answers remain present in the context and influence the model when it generates its final answer. The team writes:</p>
+
+<blockquote>
+  <p>We find that LLMs often make assumptions in early turns and prematurely attempt to generate final solutions, on which they overly rely. In simpler terms, we discover that when LLMs take a wrong turn in a conversation, they get lost and do not recover.</p>
+</blockquote>
+
+<p>This does not bode well for agent builders. Agents assemble context from documents, tool calls, and from other models tasked with subproblems. All of this context, pulled from diverse sources, has the potential to disagree with itself. Further, when you connect to MCP tools you didn’t create there’s a greater chance their descriptions and instructions clash with the rest of your prompt.</p>
+
+<hr />
+
+<p>The arrival of million-token context windows felt transformative. The ability to throw everything an agent might need into the prompt inspired visions of superintelligent assistants that could access any document, connect to every tool, and maintain perfect memory.</p>
+
+<p>But as we’ve seen, bigger contexts create new failure modes. Context poisoning embeds errors that compound over time. Context distraction causes agents to lean heavily on their context and repeat past actions rather than push forward. Context confusion leads to irrelevant tool or document usage. Context clash creates internal contradictions that derail reasoning.</p>
+
+<p>These failures hit agents hardest because agents operate in exactly the scenarios where contexts balloon: gathering information from multiple sources, making sequential tool calls, engaging in multi-turn reasoning, and accumulating extensive histories.</p>
+
+<p>Fortunately, there are solutions! In an upcoming post we’ll cover techniques for mitigating or avoding these issues, from methods for dynamically loading tools to spinning up context quarantines.</p>
+
+<p><strong>Read the follow up article, “<a href="/2025/06/26/how-to-fix-your-context.html">How to Fix Your Context</a>“</strong></p>
+
+<hr />
+
+<form action="https://buttondown.com/api/emails/embed-subscribe/dbreunig" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/dbreunig', 'popupwindow')" class="embeddable-buttondown-form">
+  <label for="bd-email">Enter your email to receive the occasional update.</label>
+  <div class="form-input">
+    <input type="email" name="email" id="bd-email" placeholder="your@email.com" />
+    <input type="submit" value="Subscribe" />
+  </div>
+</form>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:longcontext">
+      <p>Gemini 2.5 and GPT-4.1 have 1 million token context windows, large enough to throw <a href="https://en.wikipedia.org/wiki/Infinite_Jest">Infinite Jest</a> in there, with plenty of room to spare. <a href="#fnref:longcontext" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:googledocs">
+      <p>The “<a href="https://ai.google.dev/gemini-api/docs/long-context#long-form-text">Long form text</a>” section in the Gemini docs sum up this optmism nicely. <a href="#fnref:googledocs" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:summarization">
+      <p>In fact, in the Databricks study cited above, a frequent way models would fail when given long contexts is they’d return summarizations of the provided context, while ignoring any instructions contained within the prompt. <a href="#fnref:summarization" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:live">
+      <p>If you’re on the leaderboard, pay attention to the, “Live (AST)” columns. <a href="https://gorilla.cs.berkeley.edu/blogs/12_bfcl_v2_live.html">These metrics use real-world tool definitions contributed to the product by enterprise</a>, “avoiding the drawbacks of dataset contamination and biased benchmarks.” <a href="#fnref:live" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+  <!-- <div id="translations" class="sidenote">
+  <h2>BETA: Translations</h2>
+  <p>I'm testing out using LLMs to rewrite articles for different contexts and audiences. The following content has not
+    been exhaustively reviewed and is presented as a proof-of-concept. <a href="/contact">Reach out</a> if you spot
+    something egregious or want to know more.</p>
+  <ul>
+    
+  </ul>
+</div> -->
+  
+  <a class="u-url" href="/2025/06/22/how-contexts-fail-and-how-to-fix-them.html" hidden></a>
+</article>
+      </div>
+    </main><footer>
+    <p>2026, <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>, <a href=/contact.html>Contact</a></p>
+</footer></body>
+  <style>
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh;
+  }
+  main {
+    flex: 1;
+  }
+  </style>
+
+</html>

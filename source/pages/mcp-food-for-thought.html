@@ -1,0 +1,1056 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>APIs don&#39;t make good MCP tools</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.152.2">
+        <link rel="icon" href="/favicon.ico">
+
+        
+            <meta name="author" content="Reilly Wood">
+        
+        
+            
+                <meta name="description" content="My personal blog. Mostly computer and urbanism stuff.">
+            
+        
+
+        
+  <meta itemprop="name" content="APIs don&#39;t make good MCP tools">
+  <meta itemprop="description" content="The Model Context Protocol (MCP) is a pretty big deal these days. It’s become the de facto standard for giving LLMs access to tools that someone else wrote, which, of course, turns them into agents. But writing tools for a new MCP server is hard, and so people often propose auto-converting existing APIs into MCP tools; typically using OpenAPI metadata (1, 2).
+In my experience, this can work but it doesn’t work well. Here are a few reasons why:
+Agents don’t do well with large numbers of tools Infamously, VS Code has a hard limit of 128 tools - but many models struggle with accurate tool calling well before that number. Also, each tool and its description takes up valuable context window space.
+Most web APIs weren’t designed with these constraints in mind! It’s fine to have umpteen APIs for a single product area when those APIs are called from code, but if each of those APIs is mapped to an MCP tool the results might not be great.
+MCP tools designed from the ground up are typically much more flexible than individual web APIs, with each tool being able to do the work of several individual APIs.
+APIs can blow through context windows quickly Imagine an API that returns 100 records at a time, and each record is very wide (say, 50 fields). Sending those results to an agent as-is will use up a lot of tokens; even if a query can be satisfied with only a few fields, every field ends up in the context window.
+APIs are typically paginated by the number of records, but records can vary a lot in size. One record might contain a large text field that takes up 100,000 tokens, while another might contain 10. Putting these API results directly into an agent’s context window is a gamble; sometimes it works, sometimes it will blow up.
+The format of the data can also be an issue. Most web APIs these days return JSON, but JSON is a very token-inefficient format. Take this:
+[ { &#34;firstName&#34;: &#34;Alice&#34;, &#34;lastName&#34;: &#34;Johnson&#34;, &#34;age&#34;: 28 }, { &#34;firstName&#34;: &#34;Bob&#34;, &#34;lastName&#34;: &#34;Smith&#34;, &#34;age&#34;: 35 } ] Compare to the same data in CSV format:
+firstName,lastName,age Alice,Johnson,28 Bob,Smith,35 The CSV data is much more succinct - it uses up half as many tokens per record. Typically CSV, TSV, or YAML (for nested data) are better choices than JSON.
+None of these issues are insurmountable. You could imagine automatically adding tool arguments that let agents project fields, automatically truncating or summarizing large results, and automatically converting JSON results to CSV (or YAML for nested data). But most servers I’ve seen do none of those things.
+APIs don’t make the most of agents’ unique capabilities APIs return structured data for programmatic consumption. That’s often what agents want from tool calls… but agents can also handle other, more free-form instructions.
+For example an ask_question tool could perform a RAG query over some documentation, then return information in plain text that is used to inform the next tool call - skipping structured data entirely.
+Or, a call to a search_cities tool could return a structured list of cities and a suggestion of what to call next:
+city_name,population,country,region Tokyo,37194000,Japan,Asia Delhi,32941000,India,Asia Shanghai,28517000,China,Asia Suggestion: To get more specific information (weather, attractions, demographics), try calling get_city_details with the city_name parameter. That sort of layering and tool chaining can be very effective in MCP servers, and it’s something you’ll miss out on completely if auto-converting APIs to tools.
+If an agent needs to call an API, it could just do that Agents like Claude Code are remarkably capable of writing&#43;executing code these days, including scripts that call web APIs. Some people take this so far as to argue that MCP isn’t needed at all!
+I disagree with that conclusion, but I do think we should skate to where the puck is going. Sandboxing of agents is improving rapidly, and if it’s easy&#43;safe for an agent to call APIs directly then we might as well do that and cut out the middleman.
+Conclusion Agents are fundamentally different from the typical consumers of APIs. It’s possible to automatically create MCP tools from existing APIs, but doing that is unlikely to work well. Agents do best when given tools that are designed for their unique capabilities and limitations.">
+  <meta itemprop="datePublished" content="2025-08-05T20:15:49-07:00">
+  <meta itemprop="dateModified" content="2025-08-05T20:15:49-07:00">
+  <meta itemprop="wordCount" content="717">
+  <meta itemprop="keywords" content="MCP,LLMs,Model Context Protocol,Software">
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700|Inconsolata:400,700">
+        
+        
+        
+        
+        
+        
+        
+        <link rel="stylesheet" href="/css/bundle.min.css">
+
+        
+        
+        <link rel="stylesheet" href="/css/icomoon.css">
+        <meta property="og:url" content="https://www.reillywood.com/blog/apis-dont-make-good-mcp-tools/">
+  <meta property="og:site_name" content="Reilly Wood">
+  <meta property="og:title" content="APIs don&#39;t make good MCP tools">
+  <meta property="og:description" content="The Model Context Protocol (MCP) is a pretty big deal these days. It’s become the de facto standard for giving LLMs access to tools that someone else wrote, which, of course, turns them into agents. But writing tools for a new MCP server is hard, and so people often propose auto-converting existing APIs into MCP tools; typically using OpenAPI metadata (1, 2).
+In my experience, this can work but it doesn’t work well. Here are a few reasons why:
+Agents don’t do well with large numbers of tools Infamously, VS Code has a hard limit of 128 tools - but many models struggle with accurate tool calling well before that number. Also, each tool and its description takes up valuable context window space.
+Most web APIs weren’t designed with these constraints in mind! It’s fine to have umpteen APIs for a single product area when those APIs are called from code, but if each of those APIs is mapped to an MCP tool the results might not be great.
+MCP tools designed from the ground up are typically much more flexible than individual web APIs, with each tool being able to do the work of several individual APIs.
+APIs can blow through context windows quickly Imagine an API that returns 100 records at a time, and each record is very wide (say, 50 fields). Sending those results to an agent as-is will use up a lot of tokens; even if a query can be satisfied with only a few fields, every field ends up in the context window.
+APIs are typically paginated by the number of records, but records can vary a lot in size. One record might contain a large text field that takes up 100,000 tokens, while another might contain 10. Putting these API results directly into an agent’s context window is a gamble; sometimes it works, sometimes it will blow up.
+The format of the data can also be an issue. Most web APIs these days return JSON, but JSON is a very token-inefficient format. Take this:
+[ { &#34;firstName&#34;: &#34;Alice&#34;, &#34;lastName&#34;: &#34;Johnson&#34;, &#34;age&#34;: 28 }, { &#34;firstName&#34;: &#34;Bob&#34;, &#34;lastName&#34;: &#34;Smith&#34;, &#34;age&#34;: 35 } ] Compare to the same data in CSV format:
+firstName,lastName,age Alice,Johnson,28 Bob,Smith,35 The CSV data is much more succinct - it uses up half as many tokens per record. Typically CSV, TSV, or YAML (for nested data) are better choices than JSON.
+None of these issues are insurmountable. You could imagine automatically adding tool arguments that let agents project fields, automatically truncating or summarizing large results, and automatically converting JSON results to CSV (or YAML for nested data). But most servers I’ve seen do none of those things.
+APIs don’t make the most of agents’ unique capabilities APIs return structured data for programmatic consumption. That’s often what agents want from tool calls… but agents can also handle other, more free-form instructions.
+For example an ask_question tool could perform a RAG query over some documentation, then return information in plain text that is used to inform the next tool call - skipping structured data entirely.
+Or, a call to a search_cities tool could return a structured list of cities and a suggestion of what to call next:
+city_name,population,country,region Tokyo,37194000,Japan,Asia Delhi,32941000,India,Asia Shanghai,28517000,China,Asia Suggestion: To get more specific information (weather, attractions, demographics), try calling get_city_details with the city_name parameter. That sort of layering and tool chaining can be very effective in MCP servers, and it’s something you’ll miss out on completely if auto-converting APIs to tools.
+If an agent needs to call an API, it could just do that Agents like Claude Code are remarkably capable of writing&#43;executing code these days, including scripts that call web APIs. Some people take this so far as to argue that MCP isn’t needed at all!
+I disagree with that conclusion, but I do think we should skate to where the puck is going. Sandboxing of agents is improving rapidly, and if it’s easy&#43;safe for an agent to call APIs directly then we might as well do that and cut out the middleman.
+Conclusion Agents are fundamentally different from the typical consumers of APIs. It’s possible to automatically create MCP tools from existing APIs, but doing that is unlikely to work well. Agents do best when given tools that are designed for their unique capabilities and limitations.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2025-08-05T20:15:49-07:00">
+    <meta property="article:modified_time" content="2025-08-05T20:15:49-07:00">
+
+        
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="APIs don&#39;t make good MCP tools">
+  <meta name="twitter:description" content="The Model Context Protocol (MCP) is a pretty big deal these days. It’s become the de facto standard for giving LLMs access to tools that someone else wrote, which, of course, turns them into agents. But writing tools for a new MCP server is hard, and so people often propose auto-converting existing APIs into MCP tools; typically using OpenAPI metadata (1, 2).
+In my experience, this can work but it doesn’t work well. Here are a few reasons why:
+Agents don’t do well with large numbers of tools Infamously, VS Code has a hard limit of 128 tools - but many models struggle with accurate tool calling well before that number. Also, each tool and its description takes up valuable context window space.
+Most web APIs weren’t designed with these constraints in mind! It’s fine to have umpteen APIs for a single product area when those APIs are called from code, but if each of those APIs is mapped to an MCP tool the results might not be great.
+MCP tools designed from the ground up are typically much more flexible than individual web APIs, with each tool being able to do the work of several individual APIs.
+APIs can blow through context windows quickly Imagine an API that returns 100 records at a time, and each record is very wide (say, 50 fields). Sending those results to an agent as-is will use up a lot of tokens; even if a query can be satisfied with only a few fields, every field ends up in the context window.
+APIs are typically paginated by the number of records, but records can vary a lot in size. One record might contain a large text field that takes up 100,000 tokens, while another might contain 10. Putting these API results directly into an agent’s context window is a gamble; sometimes it works, sometimes it will blow up.
+The format of the data can also be an issue. Most web APIs these days return JSON, but JSON is a very token-inefficient format. Take this:
+[ { &#34;firstName&#34;: &#34;Alice&#34;, &#34;lastName&#34;: &#34;Johnson&#34;, &#34;age&#34;: 28 }, { &#34;firstName&#34;: &#34;Bob&#34;, &#34;lastName&#34;: &#34;Smith&#34;, &#34;age&#34;: 35 } ] Compare to the same data in CSV format:
+firstName,lastName,age Alice,Johnson,28 Bob,Smith,35 The CSV data is much more succinct - it uses up half as many tokens per record. Typically CSV, TSV, or YAML (for nested data) are better choices than JSON.
+None of these issues are insurmountable. You could imagine automatically adding tool arguments that let agents project fields, automatically truncating or summarizing large results, and automatically converting JSON results to CSV (or YAML for nested data). But most servers I’ve seen do none of those things.
+APIs don’t make the most of agents’ unique capabilities APIs return structured data for programmatic consumption. That’s often what agents want from tool calls… but agents can also handle other, more free-form instructions.
+For example an ask_question tool could perform a RAG query over some documentation, then return information in plain text that is used to inform the next tool call - skipping structured data entirely.
+Or, a call to a search_cities tool could return a structured list of cities and a suggestion of what to call next:
+city_name,population,country,region Tokyo,37194000,Japan,Asia Delhi,32941000,India,Asia Shanghai,28517000,China,Asia Suggestion: To get more specific information (weather, attractions, demographics), try calling get_city_details with the city_name parameter. That sort of layering and tool chaining can be very effective in MCP servers, and it’s something you’ll miss out on completely if auto-converting APIs to tools.
+If an agent needs to call an API, it could just do that Agents like Claude Code are remarkably capable of writing&#43;executing code these days, including scripts that call web APIs. Some people take this so far as to argue that MCP isn’t needed at all!
+I disagree with that conclusion, but I do think we should skate to where the puck is going. Sandboxing of agents is improving rapidly, and if it’s easy&#43;safe for an agent to call APIs directly then we might as well do that and cut out the middleman.
+Conclusion Agents are fundamentally different from the typical consumers of APIs. It’s possible to automatically create MCP tools from existing APIs, but doing that is unlikely to work well. Agents do best when given tools that are designed for their unique capabilities and limitations.">
+
+    </head>
+    <body class="bg-gray-100 dark:bg-solarized-base02 pt-12 font-main">
+
+    
+    <div id="wrapper" class="py-5 md:px-16 xl:py-10 max-w-7xl">
+
+    
+<header class="w-full z-50 fixed top-0 left-0 bg-white dark:bg-solarized-base03 border-b border-gray-border  flex justify-between"
+    id="navbar-header">
+
+    <div class="px-6 flex sm:border-r border-gray-border">
+        <h1 class="font-sans font-extrabold text-xxs tracking-widest uppercase self-center dark:text-solarized-base1 hover:text-solarized-blue">
+            <a href="/">Reilly Wood</a>
+        </h1>
+    </div>
+
+    <nav class="links pl-2 flex-1 text-xxs self-center hidden sm:block">
+        <span class="flex">
+            <ul class="self-center leading-none">
+                
+                <li class="relative border-l first:border-0 inline-block mr-3 border-gray-border">
+                    <a class="table ml-3 font-sans uppercase tracking-widest text-gray-subtitle dark:text-solarized-base1 hover:text-solarized-blue" href="/">
+                        <i class="table-cell align-middle text-sm icon-home">&nbsp;</i><span class="table-cell align-middle">Home</span>
+                    </a>
+                    
+                </li>
+
+                
+                <li class="relative border-l first:border-0 inline-block mr-3 border-gray-border">
+                    <a class="table ml-3 font-sans uppercase tracking-widest text-gray-subtitle dark:text-solarized-base1 hover:text-solarized-blue" href="/about/">
+                        <i class="table-cell align-middle text-sm icon-id-card-o">&nbsp;</i><span class="table-cell align-middle">About</span>
+                    </a>
+                    
+                    
+                    
+                </li>
+
+                
+                <li class="relative border-l first:border-0 inline-block mr-3 border-gray-border">
+                    <a class="table ml-3 font-sans uppercase tracking-widest text-gray-subtitle dark:text-solarized-base1 hover:text-solarized-blue" href="/projects/">
+                        <i class="table-cell align-middle text-sm icon-laptop">&nbsp;</i><span class="table-cell align-middle">Projects</span>
+                    </a>
+                    
+                </li>
+
+                
+            </ul>
+        </span>
+    </nav>
+    <nav class="">
+        <span class="flex">
+            <span class="border-l border-gray-border search hidden md:flex" id="search-pane">
+                <a class="icon-search text-gray-icons p-5 cursor-pointer float-left self-center hover:text-solarized-blue" ></a>
+                <div class="self-center" id="search-form-container">
+                    <form id="search-form" class="float-left self-center max-w-0 overflow-hidden whitespace-no-wrap" method="get" action="//duckduckgo.com/">
+                        <input id="search-input"
+                            class="outline-hidden border border-gray-border bg-gray-background dark:bg-solarized-base02 dark:text-solarized-base2 pl-3 p-1 " type="text"
+                            name="q" placeholder="Search" />
+                        <input type="hidden" name="sites" value="reillywood.com">
+                    </form>
+                </div>
+            </span>
+            <span class="menu flex border-l border-gray-border self-center h-full xl:hidden">
+                <a id="menuToggler" class="icon-bars text-gray-icons p-5" href="#menu"></a>
+            </span>
+        </span>
+    </nav>
+</header>
+
+    
+    <div id="main">
+        
+        <article class="post rounded-xs border-t border-b md:border-l md:border-r mb-10 border-gray-border bg-white dark:bg-solarized-base03">
+  <header class="flex flex-col sm:flex-row border-b border-gray-border uppercase font-sans tracking-widest">
+    <div class="self-center title min-w-full sm:min-w-0 grow text-center sm:text-left p-2 pb-1 sm:p-4 md:pl-8">
+        <h2 class="sm:text-2xl font-black dark:text-solarized-base1 tracking-widest hover:text-solarized-blue"><a href="/blog/apis-dont-make-good-mcp-tools/">APIs don&#39;t make good MCP tools</a></h2>
+        
+    </div>
+    <div class="meta sm:border-l border-gray-border min-w-full sm:min-w-0 text-center flex flex-col justify-center p-2 sm:p-4 text-xs">
+        
+        <time class="published font-bold text-gray-subtitle dark:text-solarized-base0 sm:text-gray-header sm:mb-4"
+            datetime='2025-08-05'>
+            August 5, 2025</time>
+        
+            <p class="text-gray-subtitle dark:text-solarized-base01 hidden sm:block" title="that's Hugo's guess, anyway. idk how fast you read">
+                4 minute read
+            </p>
+        
+    </div>
+</header>
+
+
+  
+
+  <div id="content" class="px-6 xl:px-8 pt-6 pb-4 text-gray-content leading-relaxed dark:text-solarized-base2">
+    <p>The <a href="https://modelcontextprotocol.io/overview">Model Context Protocol</a> (MCP) is a pretty big deal these days. It&rsquo;s become the de facto standard for giving LLMs access to tools that someone else wrote, which, of course, turns them into <a href="https://simonwillison.net/2025/May/22/tools-in-a-loop/">agents</a>. But writing tools for a new MCP server is hard, and so people often propose <a href="https://blog.christianposta.com/semantics-matter-exposing-openapi-as-mcp-tools/">auto-converting existing APIs into MCP tools</a>; typically using OpenAPI metadata (<a href="https://jedisct1.github.io/openapi-mcp/">1</a>, <a href="https://www.gravitee.io/blog/turn-any-rest-api-into-mcp-server-inside-gravitee">2</a>).</p>
+<p>In my experience, this can work but it doesn&rsquo;t work <em>well</em>. Here are a few reasons why:</p>
+<h2 id="agents-dont-do-well-with-large-numbers-of-tools">Agents don&rsquo;t do well with large numbers of tools</h2>
+<p>Infamously, <a href="https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode">VS Code has a hard limit of 128 tools</a> - but <a href="https://arxiv.org/abs/2411.15399">many models struggle with accurate tool calling well before that number</a>. Also, each tool and its description takes up valuable context window space.</p>
+<p>Most web APIs weren&rsquo;t designed with these constraints in mind! It&rsquo;s fine to have umpteen APIs for a single product area when those APIs are called from code, but if each of those APIs is mapped to an MCP tool the results might not be great.</p>
+<p>MCP tools designed from the ground up are typically <a href="https://engineering.block.xyz/blog/blocks-playbook-for-designing-mcp-servers">much more flexible than individual web APIs</a>, with each tool being able to do the work of several individual APIs.</p>
+<h2 id="apis-can-blow-through-context-windows-quickly">APIs can blow through context windows quickly</h2>
+<p>Imagine an API that returns 100 records at a time, and each record is very wide (say, 50 fields). Sending those results to an agent as-is will use up a lot of tokens; even if a query can be satisfied with only a few fields, every field ends up in the context window.</p>
+<p>APIs are typically paginated by the number of records, but records can vary a <em>lot</em> in size. One record might contain a large text field that takes up 100,000 <a href="https://learn.microsoft.com/en-us/dotnet/ai/conceptual/understanding-tokens">tokens</a>, while another might contain 10. Putting these API results directly into an agent&rsquo;s context window is a gamble; sometimes it works, sometimes it will blow up.</p>
+<p>The format of the data can also be an issue. Most web APIs these days return JSON, but JSON is a very token-inefficient format. Take this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;firstName&#34;</span><span class="p">:</span> <span class="s2">&#34;Alice&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;lastName&#34;</span><span class="p">:</span> <span class="s2">&#34;Johnson&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;age&#34;</span><span class="p">:</span> <span class="mi">28</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;firstName&#34;</span><span class="p">:</span> <span class="s2">&#34;Bob&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;lastName&#34;</span><span class="p">:</span> <span class="s2">&#34;Smith&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;age&#34;</span><span class="p">:</span> <span class="mi">35</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><p>Compare to the same data in CSV format:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csv" data-lang="csv"><span class="line"><span class="cl"><span class="s">firstName</span><span class="p">,</span><span class="s">lastName</span><span class="p">,</span><span class="s">age</span><span class="p">
+</span></span></span><span class="line"><span class="cl"><span class="p"></span><span class="s">Alice</span><span class="p">,</span><span class="s">Johnson</span><span class="p">,</span><span class="s">28</span><span class="p">
+</span></span></span><span class="line"><span class="cl"><span class="p"></span><span class="s">Bob</span><span class="p">,</span><span class="s">Smith</span><span class="p">,</span><span class="s">35</span><span class="p">
+</span></span></span></code></pre></div><p>The CSV data is <em>much</em> more succinct - it uses up half as many tokens per record. <a href="https://david-gilbertson.medium.com/llm-output-formats-why-json-costs-more-than-tsv-ebaf590bd541">Typically CSV, TSV, or YAML (for nested data) are better choices than JSON</a>.</p>
+<p>None of these issues are insurmountable. You could imagine automatically adding tool arguments that let agents <a href="https://en.wikipedia.org/wiki/Projection_(relational_algebra)">project</a> fields, automatically truncating or summarizing large results, and automatically converting JSON results to CSV (or YAML for nested data). But most servers I&rsquo;ve seen do none of those things.</p>
+<h2 id="apis-dont-make-the-most-of-agents-unique-capabilities">APIs don&rsquo;t make the most of agents&rsquo; unique capabilities</h2>
+<p>APIs return structured data for programmatic consumption. That&rsquo;s often what agents want from tool calls&hellip; but agents can <em>also</em> handle other, more free-form instructions.</p>
+<p>For example an <code>ask_question</code> tool could perform a RAG query over some documentation, then return information in plain text that is used to inform the next tool call - skipping structured data entirely.</p>
+<p>Or, a call to a <code>search_cities</code> tool could return a structured list of cities <em>and</em> a suggestion of what to call next:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csv" data-lang="csv"><span class="line"><span class="cl"><span class="s">city_name</span><span class="p">,</span><span class="s">population</span><span class="p">,</span><span class="s">country</span><span class="p">,</span><span class="s">region</span><span class="p">
+</span></span></span><span class="line"><span class="cl"><span class="p"></span><span class="s">Tokyo</span><span class="p">,</span><span class="s">37194000</span><span class="p">,</span><span class="s">Japan</span><span class="p">,</span><span class="s">Asia</span><span class="p">
+</span></span></span><span class="line"><span class="cl"><span class="p"></span><span class="s">Delhi</span><span class="p">,</span><span class="s">32941000</span><span class="p">,</span><span class="s">India</span><span class="p">,</span><span class="s">Asia</span><span class="p">
+</span></span></span><span class="line"><span class="cl"><span class="p"></span><span class="s">Shanghai</span><span class="p">,</span><span class="s">28517000</span><span class="p">,</span><span class="s">China</span><span class="p">,</span><span class="s">Asia</span><span class="p">
+</span></span></span><span class="line"><span class="cl"><span class="p">
+</span></span></span><span class="line"><span class="cl"><span class="p"></span><span class="s">Suggestion: To get more specific information (weather</span><span class="p">,</span><span class="s"> attractions</span><span class="p">,</span><span class="s"> demographics)</span><span class="p">,</span><span class="s"> try calling get_city_details with the city_name parameter.</span><span class="p">
+</span></span></span></code></pre></div><p>That sort of layering and tool chaining <a href="https://engineering.block.xyz/blog/build-mcp-tools-like-ogres-with-layers">can be very effective</a> in MCP servers, and it&rsquo;s something you&rsquo;ll miss out on completely if auto-converting APIs to tools.</p>
+<h2 id="if-an-agent-needs-to-call-an-api-it-could-just-do-that">If an agent needs to call an API, it could just do that</h2>
+<p>Agents like Claude Code are remarkably capable of writing+executing code these days, including scripts that call web APIs. Some people take this so far as to <a href="https://lucumr.pocoo.org/2025/7/3/tools/">argue that MCP isn&rsquo;t needed at all</a>!</p>
+<p>I disagree with that conclusion, but I do think we should skate to where the puck is going. <a href="https://github.com/openai/codex">Sandboxing of agents is improving rapidly</a>, and if it&rsquo;s easy+safe for an agent to call APIs directly then we might as well do that and cut out the middleman.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Agents are fundamentally different from the typical consumers of APIs. It&rsquo;s possible to automatically create MCP tools from existing APIs, but doing that is unlikely to work <em>well</em>. Agents do best when given tools that are designed for their unique capabilities and limitations.</p>
+
+  </div>
+  <footer class="px-6 xl:px-8 pb-6 xl:pb-8 text-gray-content leading-relaxed dark:text-solarized-base0">
+    <ul class="categories font-sans text-center text-xxs text-gray-subtitle uppercase tracking-wider">
+    
+        
+
+        
+        
+            <span class="hidden md:inline">
+                
+                
+                    
+
+                    
+                        Categories:
+                    
+                
+            </span>
+        
+    
+
+    <li class="inline-block px-3 leading-loose"><a href='/categories/mcp'>MCP</a></li><li class="inline-block px-3 leading-loose"><a href='/categories/llms'>LLMs</a></li><li class="inline-block px-3 leading-loose"><a href='/categories/model-context-protocol'>Model Context Protocol</a></li><li class="inline-block px-3 leading-loose"><a href='/categories/software'>Software</a></li></ul>
+
+</footer>
+</article>
+<ul class="actions pagination -mt-3 mx-8 mb-5 md:mx-0 text-center md:text-left ">
+    
+        <li class="block mb-2 md:inline-block md:mr-2">
+                <a href="/blog/land-value/"
+                class="button bg-white w-full dark:bg-solarized-base03 dark:text-solarized-base00">
+                <i class="icon-long-arrow-left text-gray-icons dark:text-solarized-base00"></i>
+                Land Values and Affordability</a></li>
+    
+
+    
+        <li class="block md:inline-block md:mr-2"><a href="/blog/tool-calls-are-expensive-and-finite/"
+                class="button bg-white w-full dark:bg-solarized-base03 dark:text-solarized-base00">
+                Tool Calls Are Expensive And Finite
+                <i class="icon-long-arrow-right text-gray-icons dark:text-solarized-base00"></i>
+        </a></li>
+    
+</ul>
+
+
+    </div>
+    
+
+
+
+<section id="intro" class="text-center mb-2 sm:mb-3 uppercase w-full xl:w-72 ">
+  
+  
+  
+  <a href='/'><img src="/img/main/headshot-2025.jpg" class="rounded-full inline transition hover:rotate-[-5deg]"
+      width="100" alt="headshot" title="sup?" /></a>
+  
+  
+  
+  <header>
+    <h2
+      class="mt-2 mb-2 text-2xl tracking-widest font-black font-sans dark:text-solarized-base1 hover:text-solarized-blue">
+      <a href='/'>
+        Cities &amp; Code
+      </a>
+    </h2>
+    <p id="sidebar-paragraph" class="mx-2 dark:text-solarized-base0 font-sans tracking-widest text-xs"></p>
+    <script>
+      
+      let blurbs = [
+        "Whoa, I can type anything and it will show up here?",
+      ]
+      let blurbElement = document.querySelector("#sidebar-paragraph");
+      blurbElement.textContent = blurbs[Math.floor(Math.random()*blurbs.length)];
+    </script>
+  </header>
+  
+  <ul class="icons mt-3 dark:text-solarized-base0">
+    <li>
+      <a href='/index.xml' type="application/rss+xml"
+        target="_blank" title="RSS" class="icon-rss"></a>
+    </li>
+    
+  <li><a href="//github.com/rgwood" target="_blank" title="GitHub" class="icon-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/reilly-wood-912a31a" target="_blank" title="LinkedIn" class="icon-linkedin-square"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li>
+  <a href="//bsky.app/profile/reillywood.com" target="_blank" title="Bluesky">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 11.388c-.906-1.761-3.372-5.044-5.665-6.662c-2.197-1.55-3.034-1.283-3.583-1.033C2.116 3.978 2 4.955 2 5.528c0 .575.315 4.709.52 5.4c.68 2.28 3.094 3.05 5.32 2.803c-3.26.483-6.157 1.67-2.36 5.898c4.178 4.325 5.726-.927 6.52-3.59c.794 2.663 1.708 7.726 6.444 3.59c3.556-3.59.977-5.415-2.283-5.898c2.225.247 4.64-.523 5.319-2.803c.205-.69.52-4.825.52-5.399c0-.575-.116-1.55-.752-1.838c-.549-.248-1.386-.517-3.583 1.033c-2.293 1.621-4.76 4.904-5.665 6.664"/></svg>
+  </a>
+  </li>
+
+
+
+  <li>
+  <a href="//bsky.app/profile/grids.reillywood.com" target="_blank" title="Bluesky">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 11.388c-.906-1.761-3.372-5.044-5.665-6.662c-2.197-1.55-3.034-1.283-3.583-1.033C2.116 3.978 2 4.955 2 5.528c0 .575.315 4.709.52 5.4c.68 2.28 3.094 3.05 5.32 2.803c-3.26.483-6.157 1.67-2.36 5.898c4.178 4.325 5.726-.927 6.52-3.59c.794 2.663 1.708 7.726 6.444 3.59c3.556-3.59.977-5.415-2.283-5.898c2.225.247 4.64-.523 5.319-2.803c.205-.69.52-4.825.52-5.399c0-.575-.116-1.55-.752-1.838c-.549-.248-1.386-.517-3.583 1.033c-2.293 1.621-4.76 4.904-5.665 6.664"/></svg>
+  </a>
+  </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </ul>
+</section>
+
+<section id="etc" class="xl:w-72 border-t border-gray-border mx-4 md:mx-0">
+
+  
+  <section id="recent-posts">
+    <div class="mini-posts pt-2 mb-5">
+      <header>
+        <h3
+          class="mb-3 tracking-wider text-center font-sans font-extrabold uppercase xl:text-left dark:text-solarized-base00">
+          Recent Posts</h3>
+      </header>
+      <div class="posts-container">
+        
+
+        
+        
+        
+
+        
+        <a href="/blog/year-end-2025/" class="button rounded-sm block bg-white dark:bg-solarized-base03 px-4 py-2 mb-2">
+          <h3 class="mb-0 dark:text-solarized-base00 font-sans font-extrabold uppercase">
+            
+            
+            
+            
+            
+              
+              
+            
+              
+                
+              
+              
+            
+              
+                
+              
+              
+            
+              
+              
+            
+              
+              
+            
+<span class="dark:opacity-60">💻 </span>2025 Retrospective
+          </h3>
+          
+          <time class="published text-gray-subtitle dark:text-solarized-base00 text-xxs"
+            datetime='2025-12-28'>
+            December 28, 2025
+          </time>
+        </a>
+        
+        <a href="/blog/whats-mcp-good-for/" class="button rounded-sm block bg-white dark:bg-solarized-base03 px-4 py-2 mb-2">
+          <h3 class="mb-0 dark:text-solarized-base00 font-sans font-extrabold uppercase">
+            
+            
+            
+            
+            
+              
+                
+              
+              
+            
+              
+                
+              
+              
+            
+              
+                
+              
+              
+            
+              
+              
+            
+              
+              
+            
+<span class="dark:opacity-60">💻 </span>What&#39;s MCP good for, anyway?
+          </h3>
+          
+          <time class="published text-gray-subtitle dark:text-solarized-base00 text-xxs"
+            datetime='2025-12-26'>
+            December 26, 2025
+          </time>
+        </a>
+        
+        <a href="/blog/tool-calls-are-expensive-and-finite/" class="button rounded-sm block bg-white dark:bg-solarized-base03 px-4 py-2 mb-2">
+          <h3 class="mb-0 dark:text-solarized-base00 font-sans font-extrabold uppercase">
+            
+            
+            
+            
+            
+              
+                
+              
+              
+            
+              
+                
+              
+              
+            
+              
+                
+              
+              
+            
+<span class="dark:opacity-60">💻 </span>Tool Calls Are Expensive And Finite
+          </h3>
+          
+          <time class="published text-gray-subtitle dark:text-solarized-base00 text-xxs"
+            datetime='2025-09-18'>
+            September 18, 2025
+          </time>
+        </a>
+        
+        <a href="/blog/apis-dont-make-good-mcp-tools/" class="button rounded-sm block bg-white dark:bg-solarized-base03 px-4 py-2 mb-2">
+          <h3 class="mb-0 dark:text-solarized-base00 font-sans font-extrabold uppercase">
+            
+            
+            
+            
+            
+              
+                
+              
+              
+            
+              
+                
+              
+              
+            
+              
+              
+            
+              
+                
+              
+              
+            
+<span class="dark:opacity-60">💻 </span>APIs don&#39;t make good MCP tools
+          </h3>
+          
+          <time class="published text-gray-subtitle dark:text-solarized-base00 text-xxs"
+            datetime='2025-08-05'>
+            August 5, 2025
+          </time>
+        </a>
+        
+        <a href="/blog/land-value/" class="button rounded-sm block bg-white dark:bg-solarized-base03 px-4 py-2 mb-2">
+          <h3 class="mb-0 dark:text-solarized-base00 font-sans font-extrabold uppercase">
+            
+            
+            
+            
+            
+              
+              
+                
+              
+            
+              
+              
+                
+              
+            
+              
+              
+            
+<span class="dark:opacity-60">🏗️ </span>Land Values and Affordability
+          </h3>
+          
+          <time class="published text-gray-subtitle dark:text-solarized-base00 text-xxs"
+            datetime='2025-06-26'>
+            June 26, 2025
+          </time>
+        </a>
+        
+        <a href="/blog/dmca-fun/" class="button rounded-sm block bg-white dark:bg-solarized-base03 px-4 py-2 mb-2">
+          <h3 class="mb-0 dark:text-solarized-base00 font-sans font-extrabold uppercase">
+            
+            
+            
+            
+            
+              
+              
+            
+              
+              
+            
+<span class="dark:opacity-60">📝 </span>My encounter with evil SEO
+          </h3>
+          
+          <time class="published text-gray-subtitle dark:text-solarized-base00 text-xxs"
+            datetime='2025-06-16'>
+            June 16, 2025
+          </time>
+        </a>
+        
+      </div>
+
+      
+      <a href="/blog/page/2/"
+        class="button dark:bg-solarized-base03 dark:text-solarized-base00">View more posts</a>
+      
+    </div>
+  </section>
+
+  
+  
+  
+  
+  <section id="categories" class="py-5 border-t border-gray-border">
+    <header class="mb-3 dark:text-solarized-base00">
+      <h3 class="font-sans my-0 font-extrabold uppercase tracking-[0.1em]">
+        Top Categories
+      </h3>
+    </header>
+
+    
+    <article >
+      <header class="mb-1 rounded-sm px-2 pb-1">
+        <a href="/categories/software/" class="dark:text-solarized-base00">
+          
+          Software
+          
+        </a>
+        
+        <span style="float:right; margin-top: 0.3rem;"
+          class="text-gray-header bg-gray-border border rounded-full px-2 justify-center 
+          items-center text-xs font-medium dark:border-solarized-base01 dark:bg-solarized-base03 dark:text-solarized-base1">
+          42
+        </span>
+      </header>
+    </article>
+    
+    <article >
+      <header class="mb-1 rounded-sm px-2 pb-1">
+        <a href="/categories/urban-planning/" class="dark:text-solarized-base00">
+          
+          Urban Planning
+          
+        </a>
+        
+        <span style="float:right; margin-top: 0.3rem;"
+          class="text-gray-header bg-gray-border border rounded-full px-2 justify-center 
+          items-center text-xs font-medium dark:border-solarized-base01 dark:bg-solarized-base03 dark:text-solarized-base1">
+          11
+        </span>
+      </header>
+    </article>
+    
+    <article >
+      <header class="mb-1 rounded-sm px-2 pb-1">
+        <a href="/categories/recently/" class="dark:text-solarized-base00">
+          
+          Recently
+          
+        </a>
+        
+        <span style="float:right; margin-top: 0.3rem;"
+          class="text-gray-header bg-gray-border border rounded-full px-2 justify-center 
+          items-center text-xs font-medium dark:border-solarized-base01 dark:bg-solarized-base03 dark:text-solarized-base1">
+          10
+        </span>
+      </header>
+    </article>
+    
+    <article >
+      <header class="mb-1 rounded-sm px-2 pb-1">
+        <a href="/categories/rust/" class="dark:text-solarized-base00">
+          
+          Rust
+          
+        </a>
+        
+        <span style="float:right; margin-top: 0.3rem;"
+          class="text-gray-header bg-gray-border border rounded-full px-2 justify-center 
+          items-center text-xs font-medium dark:border-solarized-base01 dark:bg-solarized-base03 dark:text-solarized-base1">
+          9
+        </span>
+      </header>
+    </article>
+    
+    <article >
+      <header class="mb-1 rounded-sm px-2 pb-1">
+        <a href="/categories/web/" class="dark:text-solarized-base00">
+          
+          Web
+          
+        </a>
+        
+        <span style="float:right; margin-top: 0.3rem;"
+          class="text-gray-header bg-gray-border border rounded-full px-2 justify-center 
+          items-center text-xs font-medium dark:border-solarized-base01 dark:bg-solarized-base03 dark:text-solarized-base1">
+          9
+        </span>
+      </header>
+    </article>
+    
+    <article >
+      <header class="mb-1 rounded-sm px-2 pb-1">
+        <a href="/categories/databases/" class="dark:text-solarized-base00">
+          
+          Databases
+          
+        </a>
+        
+        <span style="float:right; margin-top: 0.3rem;"
+          class="text-gray-header bg-gray-border border rounded-full px-2 justify-center 
+          items-center text-xs font-medium dark:border-solarized-base01 dark:bg-solarized-base03 dark:text-solarized-base1">
+          8
+        </span>
+      </header>
+    </article>
+    
+    <article >
+      <header class="mb-1 rounded-sm px-2 pb-1">
+        <a href="/categories/llms/" class="dark:text-solarized-base00">
+          
+          LLMs
+          
+        </a>
+        
+        <span style="float:right; margin-top: 0.3rem;"
+          class="text-gray-header bg-gray-border border rounded-full px-2 justify-center 
+          items-center text-xs font-medium dark:border-solarized-base01 dark:bg-solarized-base03 dark:text-solarized-base1">
+          8
+        </span>
+      </header>
+    </article>
+    
+    <article >
+      <header class="mb-1 rounded-sm px-2 pb-1">
+        <a href="/categories/nushell/" class="dark:text-solarized-base00">
+          
+          Nushell
+          
+        </a>
+        
+        <span style="float:right; margin-top: 0.3rem;"
+          class="text-gray-header bg-gray-border border rounded-full px-2 justify-center 
+          items-center text-xs font-medium dark:border-solarized-base01 dark:bg-solarized-base03 dark:text-solarized-base1">
+          7
+        </span>
+      </header>
+    </article>
+    
+
+    <a href="/categories/" class="button mt-2 dark:bg-solarized-base03 dark:text-solarized-base00">View all categories</a>
+
+  </section>
+  
+
+  
+  <section id="footer"
+    class="border-t border-gray-border pt-5 flex justify-around">
+    <a href="http://www.geocities.com"><img class="self-center" src="/img/main/geocities.gif"/></a>
+    <a href="http://www.oldversion.com/windows/netscape-3-04"><img class="self-center" src="/img/main/netscape.gif"/></a>
+    <a href="https://www.microsoft.com/store/productId/9MSMLRH6LZF3"><img class="self-center" src="/img/main/notepad.gif"/></a>
+  </section>
+
+</section>
+
+</div>
+
+<section id="menu" class="bg-white dark:bg-solarized-base03">
+
+        
+            <section class="p-6 border-b border-gray-border">
+                <form id="search" method="get" action="//duckduckgo.com/" class="relative flex border border-gray-border focus-within:border-teal-hover">
+                    <div class="flex flex-row bg-gray-background dark:bg-solarized-base02">
+                            <i class="icon-search self-center mx-2 text-gray-icons"></i>
+                    </div>
+                    <input type="text" name="q" placeholder="Search" 
+                    class="w-full outline-hidden bg-gray-background p-1 border-gray-border dark:bg-solarized-base02 dark:text-solarized-base2 "/>
+                    <input type="hidden" name="sites" value="reillywood.com">
+                </form>
+            </section>
+    
+        
+            <section class="p-6 border-b border-gray-border">
+                <ul class="links">
+                    
+                        <li class="py-4 border-t border-gray-border dark:text-solarized-base0 first:border-0 first:pt-0 last:pb-0">
+                            <a href="/">
+                                <h4>
+                                    <i class="icon-home">&nbsp;</i>Home
+                                </h4>
+                            </a>
+                        </li>
+                    
+                        <li class="py-4 border-t border-gray-border dark:text-solarized-base0 first:border-0 first:pt-0 last:pb-0">
+                            <a href="/about/">
+                                <h4>
+                                    <i class="icon-id-card-o">&nbsp;</i>About
+                                </h4>
+                            </a>
+                        </li>
+                    
+                        <li class="py-4 border-t border-gray-border dark:text-solarized-base0 first:border-0 first:pt-0 last:pb-0">
+                            <a href="/projects/">
+                                <h4>
+                                    <i class="icon-laptop">&nbsp;</i>Projects
+                                </h4>
+                            </a>
+                        </li>
+                    
+                </ul>
+            </section>
+    
+        
+            <section id="recent-posts" class="p-6">
+                <div class="mini-posts">
+                    <header class="mb-3 dark:text-solarized-base00">
+                        <h3 class="font-sans font-extrabold uppercase">Recent Posts</h3>
+                    </header>
+                    
+    
+                    
+    
+                            <a href="/blog/year-end-2025/" 
+                            class="button block bg-white dark:bg-solarized-base02 px-4 py-3 mb-3">
+                              <h3 class="mb-1 font-extrabold dark:text-solarized-base00">
+                                2025 Retrospective
+                              </h3>
+                              
+                              <time class="published text-gray-subtitle dark:text-solarized-base00 text-xxs"
+                                datetime='2025-12-28'>
+                                December 28, 2025
+                              </time>
+                            </a>
+                    
+    
+                            <a href="/blog/whats-mcp-good-for/" 
+                            class="button block bg-white dark:bg-solarized-base02 px-4 py-3 mb-3">
+                              <h3 class="mb-1 font-extrabold dark:text-solarized-base00">
+                                What&#39;s MCP good for, anyway?
+                              </h3>
+                              
+                              <time class="published text-gray-subtitle dark:text-solarized-base00 text-xxs"
+                                datetime='2025-12-26'>
+                                December 26, 2025
+                              </time>
+                            </a>
+                    
+    
+                            <a href="/blog/tool-calls-are-expensive-and-finite/" 
+                            class="button block bg-white dark:bg-solarized-base02 px-4 py-3 mb-3">
+                              <h3 class="mb-1 font-extrabold dark:text-solarized-base00">
+                                Tool Calls Are Expensive And Finite
+                              </h3>
+                              
+                              <time class="published text-gray-subtitle dark:text-solarized-base00 text-xxs"
+                                datetime='2025-09-18'>
+                                September 18, 2025
+                              </time>
+                            </a>
+                    
+    
+                            <a href="/blog/apis-dont-make-good-mcp-tools/" 
+                            class="button block bg-white dark:bg-solarized-base02 px-4 py-3 mb-3">
+                              <h3 class="mb-1 font-extrabold dark:text-solarized-base00">
+                                APIs don&#39;t make good MCP tools
+                              </h3>
+                              
+                              <time class="published text-gray-subtitle dark:text-solarized-base00 text-xxs"
+                                datetime='2025-08-05'>
+                                August 5, 2025
+                              </time>
+                            </a>
+                    
+    
+                            <a href="/blog/land-value/" 
+                            class="button block bg-white dark:bg-solarized-base02 px-4 py-3 mb-3">
+                              <h3 class="mb-1 font-extrabold dark:text-solarized-base00">
+                                Land Values and Affordability
+                              </h3>
+                              
+                              <time class="published text-gray-subtitle dark:text-solarized-base00 text-xxs"
+                                datetime='2025-06-26'>
+                                June 26, 2025
+                              </time>
+                            </a>
+                    
+    
+                            <a href="/blog/dmca-fun/" 
+                            class="button block bg-white dark:bg-solarized-base02 px-4 py-3 mb-3">
+                              <h3 class="mb-1 font-extrabold dark:text-solarized-base00">
+                                My encounter with evil SEO
+                              </h3>
+                              
+                              <time class="published text-gray-subtitle dark:text-solarized-base00 text-xxs"
+                                datetime='2025-06-16'>
+                                June 16, 2025
+                              </time>
+                            </a>
+                    
+    
+                    
+                        <a href=
+                            
+                                "/blog/page/2/"
+                            
+                            class="button dark:bg-solarized-base02 dark:text-solarized-base00">View more posts</a>
+                    
+                </div>
+            </section>
+    
+        
+            
+    </section>
+    
+
+
+
+
+
+
+<script src="/js/bundle.min.js"></script>
+
+
+
+
+
+<script src="/js/flickity.bundle.min.js"></script>
+
+<script>
+    let carousels = document.querySelectorAll(".carousel");
+    for (let carousel of carousels) {
+        let flickity = new Flickity(carousel,
+            {
+                fullscreen: true,
+                lazyLoad: 2,
+                groupCells: false,
+                imagesLoaded: true,
+                initialIndex: '.is-initial-select',
+                dragThreshold: 10,
+                
+                arrowShape: 'M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z',
+                arrowViewBox: '0 0 448 512',
+                arrowViewBoxWidth: 448
+            });
+        
+        flickity.on('lazyLoad', function (event, cellElement) {
+            cellElement.classList.add('lazyload-finished');
+        });
+
+        flickity.on('staticClick', function (event, pointer, cellElement, cellIndex) {
+            
+            if (!cellElement) {
+                flickity.exitFullscreen();
+                return;
+            }
+
+            
+            if (pointer.target.tagName == 'FIGCAPTION') {
+                return;
+            }
+
+            
+            if (pointer.target.tagName != 'IMG') {
+                flickity.exitFullscreen();
+                return;
+            }
+
+            if (flickity.selectedElements.includes(cellElement)) {
+                flickity.toggleFullscreen();
+                flickity.selectCell(cellIndex, false, true);
+            } else {
+                flickity.selectCell(cellIndex);
+                flickity.viewFullscreen();
+            }
+        });
+
+        flickity.on('settle', clearAndResetIdle);
+    }
+
+    const timeToIdleInMs = 3000;
+    let idleIncrement = 0,
+        isIdle = false;
+    setInterval(() => {
+        idleIncrement++;
+        if (idleIncrement === 2) {
+            isIdle = true;
+            document.documentElement.classList.add('idle');
+        }
+    }, timeToIdleInMs / 2);
+
+    function clearAndResetIdle() {
+        
+        if (isIdle) {
+            document.documentElement.classList.remove('idle');
+        }
+        idleIncrement = 0;
+        isIdle = false;
+    };
+
+    document.addEventListener('mousemove', clearAndResetIdle);
+    document.addEventListener('touchmove', clearAndResetIdle);
+    document.addEventListener('click', clearAndResetIdle);
+</script>
+
+<script>
+    
+    
+    new fairyDustCursor();
+
+    
+    let now = new Date();
+    let currentMonth = now.getMonth() + 1;
+    let currentDay = now.getDate();
+    if (currentMonth == 12 && currentDay <= 25) {
+        new snowyAnimatedBackground();
+    }
+
+</script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"0a8821a45a6447d4838fe13a35dadfdd","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SAST vs. DAST vs. RASP: Comparing Application Security Testing Methods | Splunk</title>
+    <link rel="canonical" href="https://www.splunk.com/en_us/blog/learn/sast-vs-dast.html">
+    <meta name="description" content="Building secure apps is the only way forward. Learn about security testing solutions SAST, DAST, and RASP, as they offer multi-layered protection for applications">
+    <meta property="og:title" content="SAST vs. DAST vs. RASP: Comparing Application Security Testing Methods | Splunk">
+    <meta property="og:description" content="Building secure apps is the only way forward. Learn about security testing solutions SAST, DAST, and RASP, as they offer multi-layered protection for applications">
+    <meta property="og:url" content="https://www.splunk.com/en_us/blog/learn/sast-vs-dast.html">
+    <meta property="og:image" content="https://www.splunk.com/content/dam/splunk-blogs/images/media_19f1c2d66b4204ea1a065c59848fe4e478113de12.avif?width=1200&#x26;format=pjpg&#x26;optimize=medium">
+    <meta property="og:image:secure_url" content="https://www.splunk.com/content/dam/splunk-blogs/images/media_19f1c2d66b4204ea1a065c59848fe4e478113de12.avif?width=1200&#x26;format=pjpg&#x26;optimize=medium">
+    <meta property="og:image:alt" content="Common Static Aplication Security Testing methods">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SAST vs. DAST vs. RASP: Comparing Application Security Testing Methods | Splunk">
+    <meta name="twitter:description" content="Building secure apps is the only way forward. Learn about security testing solutions SAST, DAST, and RASP, as they offer multi-layered protection for applications">
+    <meta name="twitter:image" content="https://www.splunk.com/content/dam/splunk-blogs/images/media_19f1c2d66b4204ea1a065c59848fe4e478113de12.avif?width=1200&#x26;format=pjpg&#x26;optimize=medium">
+    <meta name="google-site-verification" content="FkgQj_Q2EMJDeZ-2L2s3ZUkxjg4IBuH3r22EhfJgsgw">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Splunk">
+    <meta name="msapplication-tileimage" content="/icons/mstile-144x144.png">
+    <meta name="msapplication-square70x70logo" content="/icons/mstile-70x70.png">
+    <meta name="msapplication-square150x150logo" content="/icons/mstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/icons/mstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/icons/mstile-310x310.png">
+    <meta name="application-name" content="Splunk">
+    <meta name="msapplication-tilecolor" content="#FFFFFF">
+    <meta name="robots" content="index,follow">
+    <meta name="footer" content="/en_us/blog/fragments/footer">
+    <meta name="header" content="/en_us/blog/fragments/header">
+    <meta name="sub-nav" content="/en_us/blog/fragments/sub-nav">
+    <meta property="og:locale" content="en_US">
+    <meta name="template" content="Article">
+    <meta name="author" content="Shanika Wickramasinghe">
+    <meta name="author-url" content="/en_us/blog/author/shanika-wickramasinghe">
+    <meta name="category" content="Learn">
+    <meta name="published" content="December 18, 2024">
+    <meta name="read-time" content="12 Minute Read">
+    <script>
+// akam-sw.js install script version 1.3.6
+"serviceWorker"in navigator&&"find"in[]&&function(){var e=new Promise(function(e){"complete"===document.readyState||!1?e():(window.addEventListener("load",function(){e()}),setTimeout(function(){"complete"!==document.readyState&&e()},1e4))}),n=window.akamServiceWorkerInvoked,r="1.3.6";if(n)aka3pmLog("akam-setup already invoked");else{window.akamServiceWorkerInvoked=!0,window.aka3pmLog=function(){window.akamServiceWorkerDebug&&console.log.apply(console,arguments)};function o(e){(window.BOOMR_mq=window.BOOMR_mq||[]).push(["addVar",{"sm.sw.s":e,"sm.sw.v":r}])}var i="/akam-sw.js",a=new Map;navigator.serviceWorker.addEventListener("message",function(e){var n,r,o=e.data;if(o.isAka3pm)if(o.command){var i=(n=o.command,(r=a.get(n))&&r.length>0?r.shift():null);i&&i(e.data.response)}else if(o.commandToClient)switch(o.commandToClient){case"enableDebug":window.akamServiceWorkerDebug||(window.akamServiceWorkerDebug=!0,aka3pmLog("Setup script debug enabled via service worker message"),v());break;case"boomerangMQ":o.payload&&(window.BOOMR_mq=window.BOOMR_mq||[]).push(o.payload)}aka3pmLog("akam-sw message: "+JSON.stringify(e.data))});var t=function(e){return new Promise(function(n){var r,o;r=e.command,o=n,a.has(r)||a.set(r,[]),a.get(r).push(o),navigator.serviceWorker.controller&&(e.isAka3pm=!0,navigator.serviceWorker.controller.postMessage(e))})},c=function(e){return t({command:"navTiming",navTiming:e})},s=null,m={},d=function(){var e=i;return s&&(e+="?othersw="+encodeURIComponent(s)),function(e,n){return new Promise(function(r,i){aka3pmLog("Registering service worker with URL: "+e),navigator.serviceWorker.register(e,n).then(function(e){aka3pmLog("ServiceWorker registration successful with scope: ",e.scope),r(e),o(1)}).catch(function(e){aka3pmLog("ServiceWorker registration failed: ",e),o(0),i(e)})})}(e,m)},g=navigator.serviceWorker.__proto__.register;if(navigator.serviceWorker.__proto__.register=function(n,r){return n.includes(i)?g.call(this,n,r):(aka3pmLog("Overriding registration of service worker for: "+n),s=new URL(n,window.location.href),m=r,navigator.serviceWorker.controller?new Promise(function(n,r){var o=navigator.serviceWorker.controller.scriptURL;if(o.includes(i)){var a=encodeURIComponent(s);o.includes(a)?(aka3pmLog("Cancelling registration as we already integrate other SW: "+s),navigator.serviceWorker.getRegistration().then(function(e){n(e)})):e.then(function(){aka3pmLog("Unregistering existing 3pm service worker"),navigator.serviceWorker.getRegistration().then(function(e){e.unregister().then(function(){return d()}).then(function(e){n(e)}).catch(function(e){r(e)})})})}else aka3pmLog("Cancelling registration as we already have akam-sw.js installed"),navigator.serviceWorker.getRegistration().then(function(e){n(e)})}):g.call(this,n,r))},navigator.serviceWorker.controller){var u=navigator.serviceWorker.controller.scriptURL;u.includes("/akam-sw.js")||u.includes("/akam-sw-preprod.js")||u.includes("/threepm-sw.js")||(aka3pmLog("Detected existing service worker. Removing and re-adding inside akam-sw.js"),s=new URL(u,window.location.href),e.then(function(){navigator.serviceWorker.getRegistration().then(function(e){m={scope:e.scope},e.unregister(),d()})}))}else e.then(function(){window.akamServiceWorkerPreprod&&(i="/akam-sw-preprod.js"),d()});if(window.performance){var w=window.performance.timing,l=w.responseEnd-w.responseStart;c(l)}e.then(function(){t({command:"pageLoad"})});var k=!1;function v(){window.akamServiceWorkerDebug&&!k&&(k=!0,aka3pmLog("Initializing debug functions at window scope"),window.aka3pmInjectSwPolicy=function(e){return t({command:"updatePolicy",policy:e})},window.aka3pmDisableInjectedPolicy=function(){return t({command:"disableInjectedPolicy"})},window.aka3pmDeleteInjectedPolicy=function(){return t({command:"deleteInjectedPolicy"})},window.aka3pmGetStateAsync=function(){return t({command:"getState"})},window.aka3pmDumpState=function(){aka3pmGetStateAsync().then(function(e){aka3pmLog(JSON.stringify(e,null,"\t"))})},window.aka3pmInjectTiming=function(e){return c(e)},window.aka3pmUpdatePolicyFromNetwork=function(){return t({command:"pullPolicyFromNetwork"})})}v()}}();</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.splunk.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "http://www.splunk.com/en_us/search.html?query={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="encoding" content="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <script nonce="cRu2mLEKgFnNVMl9pROgJujc" src="/scripts/aem.js" type="module"></script>
+    <script nonce="cRu2mLEKgFnNVMl9pROgJujc" src="/scripts/scripts.js" type="module"></script>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/icons/apple-touch-icon-152x152.png">
+    <link rel="icon" type="image/png" href="/icons/favicon-196x196.png" sizes="196x196">
+    <link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/icons/favicon-128.png" sizes="128x128">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  
+<script>(window.BOOMR_mq=window.BOOMR_mq||[]).push(["addVar",{"rua.upush":"false","rua.cpush":"true","rua.upre":"false","rua.cpre":"true","rua.uprl":"false","rua.cprl":"false","rua.cprf":"false","rua.trans":"SJ-41a97368-65a0-4375-9e53-1eb5470930d6","rua.cook":"false","rua.ims":"false","rua.ufprl":"false","rua.cfprl":"true","rua.isuxp":"false","rua.texp":"norulematch","rua.ceh":"false","rua.ueh":"false","rua.ieh.st":"0"}]);</script>
+                              <script>!function(e){var n="https://s.go-mpulse.net/boomerang/";if("False"=="True")e.BOOMR_config=e.BOOMR_config||{},e.BOOMR_config.PageParams=e.BOOMR_config.PageParams||{},e.BOOMR_config.PageParams.pci=!0,n="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="M7Q82-FTRNS-TEZ4E-UCSZ2-NQJ9C",function(){function e(){if(!o){var e=document.createElement("script");e.id="boomr-scr-as",e.src=window.BOOMR.url,e.async=!0,i.parentNode.appendChild(e),o=!0}}function t(e){o=!0;var n,t,a,r,d=document,O=window;if(window.BOOMR.snippetMethod=e?"if":"i",t=function(e,n){var t=d.createElement("script");t.id=n||"boomr-if-as",t.src=window.BOOMR.url,BOOMR_lstart=(new Date).getTime(),e=e||d.body,e.appendChild(t)},!window.addEventListener&&window.attachEvent&&navigator.userAgent.match(/MSIE [67]\./))return window.BOOMR.snippetMethod="s",void t(i.parentNode,"boomr-async");a=document.createElement("IFRAME"),a.src="about:blank",a.title="",a.role="presentation",a.loading="eager",r=(a.frameElement||a).style,r.width=0,r.height=0,r.border=0,r.display="none",i.parentNode.appendChild(a);try{O=a.contentWindow,d=O.document.open()}catch(_){n=document.domain,a.src="javascript:var d=document.open();d.domain='"+n+"';void(0);",O=a.contentWindow,d=O.document.open()}if(n)d._boomrl=function(){this.domain=n,t()},d.write("<bo"+"dy onload='document._boomrl();'>");else if(O._boomrl=function(){t()},O.addEventListener)O.addEventListener("load",O._boomrl,!1);else if(O.attachEvent)O.attachEvent("onload",O._boomrl);d.close()}function a(e){window.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!window.BOOMR||!window.BOOMR.version&&!window.BOOMR.snippetExecuted){window.BOOMR=window.BOOMR||{},window.BOOMR.snippetStart=(new Date).getTime(),window.BOOMR.snippetExecuted=!0,window.BOOMR.snippetVersion=12,window.BOOMR.url=n+"M7Q82-FTRNS-TEZ4E-UCSZ2-NQJ9C";var i=document.currentScript||document.getElementsByTagName("script")[0],o=!1,r=document.createElement("link");if(r.relList&&"function"==typeof r.relList.supports&&r.relList.supports("preload")&&"as"in r)window.BOOMR.snippetMethod="p",r.href=window.BOOMR.url,r.rel="preload",r.as="script",r.addEventListener("load",e),r.addEventListener("error",function(){t(!0)}),setTimeout(function(){if(!o)t(!0)},3e3),BOOMR_lstart=(new Date).getTime(),i.parentNode.appendChild(r);else t(!1);if(window.addEventListener)window.addEventListener("load",a,!1);else if(window.attachEvent)window.attachEvent("onload",a)}}(),"".length>0)if(e&&"performance"in e&&e.performance&&"function"==typeof e.performance.setResourceTimingBufferSize)e.performance.setResourceTimingBufferSize();!function(){if(BOOMR=e.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var n="true"=="true"?1:0,t="",a="ey4mvgacccura2opcu7q-f-1f823fd23-clientnsv4-s.akamaihd.net",i="false"=="true"?2:1,o={"ak.v":"39","ak.cp":"640520","ak.ai":parseInt("418654",10),"ak.ol":"0","ak.cr":18,"ak.ipv":4,"ak.proto":"http/1.1","ak.rid":"cd1ab52","ak.r":47449,"ak.a2":n,"ak.m":"a","ak.n":"essl","ak.bpcip":"38.56.202.0","ak.cport":46543,"ak.gh":"2.17.42.144","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.0rtt.ed":"","ak.csrc":"-","ak.acc":"bbr","ak.t":"1775179071","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==y4YJmDdusfuuMPxEr6hEQzKb9KlxF/bnlqFTkQglMUDdSFLfufS5zR3SuLIv2eF2on9CXdVzyxuWrqWdWquw+G6PlXR3lcUKRn/43hU5ey/gNzVMJAPkBSNEGx9d2nN5sVkFYUZdZFacCkEz313bq8Xw2wEH/hMiH0lvJhMU2tuGbRLV9DtaiBZ3I6V8iLnnJYu9QOoUoh1ahp71b7zFHDh1lZ5Hrq8Or51l1L6ZMypXIdMjURjv75zUOzNDCVRe0l3Kr11o+wUULQvbZZvDIi30LMsQMzmbc2eBcdwQoJ/uJefqqL79YP4PYk8LdRbz5GD7dCV6gUNW+KJHFI3EQNUnD8Hog4qMpiW9Jn6+8XKtQqz2BU6QhDp/yx++yruoXr2z1XeBk2dI7hNcAxKqWmjSYQ0AWSWwQ9qUmZdz4Y8=","ak.pv":"321","ak.dpoabenc":"","ak.tf":i};if(""!==t)o["ak.ruds"]=t;var r={i:!1,av:function(n){var t="http.initiator";if(n&&(!n[t]||"spa_hard"===n[t]))o["ak.feo"]=void 0!==e.aFeoApplied?1:0,BOOMR.addVar(o)},rv:function(){var e=["ak.bpcip","ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.0rtt.ed","ak.r","ak.acc","ak.t","ak.tf"];BOOMR.removeVar(e)}};BOOMR.plugins.AK={akVars:o,akDNSPreFetchDomain:a,init:function(){if(!r.i){var e=BOOMR.subscribe;e("before_beacon",r.av,null,null),e("onbeacon",r.rv,null,null),r.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script></head>
+  <body>
+    <header></header>
+    <main>
+      <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0">SAST vs. DAST vs. RASP: Comparing Application Security Testing Methods</h1>
+      <a href="https://www.splunk.com/en_us/blog/learn.html" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0" class="article-hero-category">Learn</a> <time style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0" class="article-hero-date" datetime="December 18, 2024">December 18, 2024</time> <a href="/en_us/blog/author/shanika-wickramasinghe.html" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0" class="article-hero-author">Shanika Wickramasinghe </a>
+      <div>
+        <p>Global spending on information security is set to reach <a href="https://www.gartner.com/en/newsroom/press-releases/2024-08-28-gartner-forecasts-global-information-security-spending-to-grow-15-percent-in-2025">$212 billion by 2025</a>. This represents a growth of 15% from 2024. According to Gartner, the rise of <a href="/en_us/blog/learn/generative-ai.html">generative AI</a> and cloud adoption are key reasons for this rapid increase. The analyst firm further predicts that GenAI will play a part in 17% of all <a href="/en_us/blog/learn/cybersecurity-attacks.html">cyberattacks</a> by 2027.</p>
+        <p>Businesses need advanced security strategies that go beyond traditional methods to counter these growing threats. This is why business owners need to be aware of security solutions like SAST, DAST, and RASP, as they offer multi-layered protection for applications.</p>
+        <p><em>(Related reading:</em> <em><a href="/en_us/blog/learn/application-security-requirements.html">application security explained</a></em> <em>&#x26;</em> <em><a href="/en_us/blog/learn/software-testing.html">common software testing methods</a>.)</em></p>
+        <h2 id="what-is-sast">What is SAST?</h2>
+        <p>Static Application Security Testing (SAST) is a <a href="https://en.wikipedia.org/wiki/White-box_testing">white-box</a> security testing method. SAST <a href="/en_us/blog/learn/static-code-analysis.html">uses an application’s static source code</a> or binaries to identify vulnerabilities. This means SAST tools operate on the application's code when the application is not running.</p>
+        <p>Developers use SAST to detect various security risks, such as: <a href="/en_us/blog/learn/cross-site-scripting-xss-attacks.html">cross-site scripting (XSS)</a>, insecure deserialization, buffer overflows, and <a href="/en_us/blog/learn/owasp-top-10.html">other OWASP vulnerabilities</a> in the code. Since SAST alone cannot identify run-time-specific vulnerabilities, developers have to often combine SAST with other testing methods to achieve comprehensive security.</p>
+        <p>SAST is a major component of the <a href="/en_us/blog/learn/software-development-lifecycle-sdlc.html">software development lifecycle</a> because it detects vulnerabilities early. The earlier you catch them, the least costly they are to fix. As SAST tools can be executed during the development phase, developers are now able to write code and test it even a thousand times (!!) before releasing the product to the market.</p>
+        <p>SAST can be integrated into the <a href="/en_us/blog/learn/ci-cd-devops-pipeline.html">CI/CD pipeline</a>, and when done so, it is referred to as “Secure DevOps” or “<a href="/en_us/blog/learn/devsecops-concepts-principles.html">DevSecOps</a>.” SAST is widely scalable through automation. The ability to Implement automated tests covering SAST techniques makes it an efficient solution for addressing code-level risks quickly.</p>
+        <h2 id="what-is-dast">What is DAST?</h2>
+        <p>Dynamic Application Security Testing is a <a href="https://en.wikipedia.org/wiki/Black-box_testing">black-box</a> testing method. <a href="https://en.wikipedia.org/wiki/Dynamic_application_security_testing">The term "Dynamic"</a> in DAST suggests that this method evaluates the security of an application <em>while the application is running</em>. Unlike SAST, DAST does not require access to the application’s source code. Instead, it :</p>
+        <ol>
+          <li>Simulates the actions of an external attacker.</li>
+          <li>Tests the application from the outside to <a href="/en_us/blog/learn/vulnerability-types.html">identify vulnerabilities</a> that only emerge during runtime.</li>
+        </ol>
+        <p>DAST has the capability to identify various security flaws like denial-of-service (DoS) vulnerabilities and insecure server configurations. By mimicking real-world attack scenarios, DAST tools assess how the application responds to these simulated threats. With this approach, developers can identify weaknesses that static testing methods like SAST might miss.</p>
+        <p>Typically, developers perform DAST during the later stages of the software development lifecycle, often just before deployment. By testing applications in their live environments, DAST provides a clear overview of runtime security and supports better-performing applications that can withstand potential attacks.</p>
+        <h2 id="how-does-sast-work">How does SAST work?</h2>
+        <p>Developers use <a href="https://en.wikipedia.org/wiki/List_of_tools_for_static_code_analysis">SAST tools</a> to apply predefined rules and other detection methods — such as pattern matching and data flow analysis — to identify coding errors and other vulnerabilities. They integrate these tools into their IDEs or CI/CD pipelines to automate scans during the coding and testing phases.</p>
+        <h3 id="common-sast-methods">Common SAST methods</h3>
+        <p>Here are some methods used in SAST.</p>
+        <p>
+          <picture>
+            <source type="image/webp" srcset="/content/dam/splunk-blogs/images/media_14bcb87a7461de3b7ba525cf6cf4c9c17338a9433.avif?width=2000&#x26;format=webply&#x26;optimize=medium" media="(min-width: 600px)">
+            <source type="image/webp" srcset="/content/dam/splunk-blogs/images/media_14bcb87a7461de3b7ba525cf6cf4c9c17338a9433.avif?width=750&#x26;format=webply&#x26;optimize=medium">
+            <source type="image/avif" srcset="/content/dam/splunk-blogs/images/media_14bcb87a7461de3b7ba525cf6cf4c9c17338a9433.avif?width=2000&#x26;format=avif&#x26;optimize=medium" media="(min-width: 600px)">
+            <img loading="lazy" alt="Common Static Aplication Security Testing methods" src="/content/dam/splunk-blogs/images/media_14bcb87a7461de3b7ba525cf6cf4c9c17338a9433/common-static-aplication-security-testing-methods.avif?width=750&#x26;format=avif&#x26;optimize=medium" width="1695" height="1306">
+          </picture>
+        </p>
+        <p><strong>Pattern matching</strong> scans the codebase for known patterns of insecure coding practices. For example, the use of weak cryptographic algorithms or insecure API calls.</p>
+        <p><strong>Data flow C</strong> tracks how data flows through the application. This can identify vulnerabilities like <a href="/en_us/blog/learn/sql-injection.html">SQL injection</a> or buffer overflows by tracing untrusted input paths to sensitive operations.</p>
+        <p><strong>Control flow analysis</strong> can analyze the application's control structures. For example, loops and conditionals to uncover logical flaws or potential vulnerabilities like race conditions.</p>
+        <p><strong>Custom rule creation.</strong> Many tools allow developers to create custom rules to have coding best practices. Here are some examples of these custom rules:</p>
+        <ul>
+          <li>Flag any use of unsanitized input in SQL queries.</li>
+          <li>Identify code that outputs user-provided data to the browser without proper escaping.</li>
+          <li>Highlight the use of vulnerable or deprecated functions, such as <strong><code>eval()</code></strong> in JavaScript or <strong><code>strcpy()</code></strong> in C.</li>
+          <li>Detect occurrences of hardcoded API keys and passwords in the source code and mark any instance where input validation is missing for user-provided data.</li>
+        </ul>
+        <p><strong>Dependency scanning.</strong> Some SAST tools analyze third-party libraries and frameworks used in the application to identify vulnerabilities in dependencies.</p>
+        <p><strong>Semantic analysis.</strong> By interpreting the meaning of the code rather than just its structure, SAST tools can detect insecure configurations or misuse of APIs.</p>
+        <p><strong>Machine learning models:</strong> Advanced SAST tools incorporate machine learning algorithms to recognize previously unknown vulnerabilities by analyzing patterns across large datasets.</p>
+        <h3 id="performance-considerations-when-using-sast-tools">Performance considerations when using SAST tools</h3>
+        <p>SAST tools often require <a href="/en_us/blog/learn/cpu-vs-gpu.html">significant CPU</a> and memory resources. This can be a major issue when analyzing large codebases. A full scan of a million lines of code might consume several gigabytes of RAM.</p>
+        <p>The time required for SAST scans can vary dramatically based on the size of the codebase, ranging from a few minutes for small projects to several hours for enterprise applications. This can impact:</p>
+        <ul>
+          <li>Build pipeline timelines</li>
+          <li><a href="/en_us/blog/learn/dpe-developer-productivity-engineering.html">Developer productivity</a></li>
+        </ul>
+        <p>Consider using modern SAST tools that support incremental scanning, allowing you to analyze only the changed code instead of the entire codebase.</p>
+        <p>Additionally, performance tuning through rule selection and scope definition is crucial. Poorly configured SAST tools can unnecessarily analyze non-critical code paths, wasting time and resources without providing security benefits.</p>
+        <h2 id="how-does-dast-work">How does DAST work?</h2>
+        <p>DAST tools simulate real-world attacks — for example, sending various forms of malicious data into input fields to see how the application processes it — to identify vulnerabilities and weaknesses in the application’s behavior and responses.</p>
+        <h3 id="steps-in-dast">Steps in DAST</h3>
+        <p>The process typically involves the following steps.</p>
+        <p>
+          <picture>
+            <source type="image/webp" srcset="/content/dam/splunk-blogs/images/media_1aece54bbf699307808799045108b90d64c19ee54.avif?width=2000&#x26;format=webply&#x26;optimize=medium" media="(min-width: 600px)">
+            <source type="image/webp" srcset="/content/dam/splunk-blogs/images/media_1aece54bbf699307808799045108b90d64c19ee54.avif?width=750&#x26;format=webply&#x26;optimize=medium">
+            <source type="image/avif" srcset="/content/dam/splunk-blogs/images/media_1aece54bbf699307808799045108b90d64c19ee54.avif?width=2000&#x26;format=avif&#x26;optimize=medium" media="(min-width: 600px)">
+            <img loading="lazy" alt="Dynamic Application Security Testing Steps" src="/content/dam/splunk-blogs/images/media_1aece54bbf699307808799045108b90d64c19ee54/dynamic-application-security-testing-steps.avif?width=750&#x26;format=avif&#x26;optimize=medium" width="2025" height="1489">
+          </picture>
+        </p>
+        <p><strong>Step 1: Scanning.</strong> Scan the web application to discover entry points (such as URLs, forms, and APIs). This step maps out the application’s structure and identifies <a href="/en_us/blog/learn/attack-surfaces.html">potential attack surfaces</a>.</p>
+        <p><strong>Step 2: Attack simulation.</strong> Simulate malicious activities by sending crafted requests to the application. These requests test for vulnerabilities like cross-site scripting and cross-site request forgery by attempting to exploit the entry points.</p>
+        <p><strong>Step 3: Vulnerability detection.</strong> Analyze the application’s responses to identify security weaknesses. It evaluates whether the application behaves as expected under attack. For example, malicious data can be injected to detect an SQL injection flaw.</p>
+        <p><strong>Step 4: Reporting.</strong> Generate reports with detected vulnerabilities and recommendations for remediation. Developers can use the results in the reports to fix the identified issues.</p>
+        <p>Modern DAST solutions can incorporate advanced features such as AI-driven analysis and <a href="/en_us/blog/learn/real-time-data.html">real-time data integration</a>. They automatically create test sets. Dynamically adapt to the application’s structure and minimize false positives using machine learning algorithms.</p>
+        <h3 id="performance-considerations-when-using-dast-tools">Performance considerations when using DAST tools</h3>
+        <p>Here are certain performance bottlenecks when using DAST tools that you need to keep in mind.</p>
+        <ul>
+          <li><strong>DAST tools actively interact with the running application</strong>, temporarily increasing CPU and memory usage on both the application and web servers.</li>
+          <li><strong>The high volume of concurrent requests</strong> generated during DAST scanning can consume significant network bandwidth.</li>
+          <li><strong>DAST scanners often bypass or invalidate application caches</strong> by generating unique requests, reducing the effectiveness of caching mechanisms.</li>
+          <li><strong>The creation and management of multiple test sessions</strong> by DAST tools can increase memory usage on application servers.</li>
+        </ul>
+        <p>To avoid such issues or reduce their impact as much as possible, follow the practices below.</p>
+        <ul>
+          <li>Schedule DAST scans during off-peak hours when application usage is minimal.</li>
+          <li>Conduct scans in a staging or pre-production environment that mirrors the production setup.</li>
+          <li>Use throttling features in DAST tools to control the number of simultaneous requests.</li>
+          <li>Increase application server thread pools during scanning periods.</li>
+          <li>Configure separate caching policies for DAST scanner IPs.</li>
+          <li>Implement automatic scan suspension if performance thresholds are exceeded.</li>
+        </ul>
+        <h2 id="sast-vs-dast-key-differences">SAST vs. DAST: key differences</h2>
+        <p>This table summarizes the difference between SAST and DAST.</p>
+        <div class="table no-header">
+          <div>
+            <div><strong>Criteria</strong></div>
+            <div><strong>SAST</strong></div>
+            <div><strong>DAST</strong></div>
+          </div>
+          <div>
+            <div>Type of testing</div>
+            <div>White-box testing. Tests the application from the inside out with access to the source code.</div>
+            <div>Black-box testing. Tests the application from the outside without access to the source code.</div>
+          </div>
+          <div>
+            <div>Software types supported</div>
+            <div>Supports various types of software, including web applications, web services, and thick clients.</div>
+            <div>Supports web applications and web services but does not typically support other software types.</div>
+          </div>
+          <div>
+            <div>Stage in SDLC</div>
+            <div>Performed early in the software development life cycle.</div>
+            <div>Conducted later in the SDLC, often during or after deployment.</div>
+          </div>
+          <div>
+            <div>Vulnerabilities detected</div>
+            <div>Identifies coding flaws, such as: SQL injection, cross-site scripting (XSS), buffer overflows, etc.</div>
+            <div>Detects runtime issues, such as server configuration errors, denial-of-service vulnerabilities, and application-level flaws.</div>
+          </div>
+          <div>
+            <div>Cost of fixing vulnerabilities</div>
+            <div>Less expensive since issues are identified early in the SDLC.</div>
+            <div>More expensive as vulnerabilities are found later, often requiring emergency fixes in order to deploy on time.</div>
+          </div>
+          <div>
+            <div>Runtime and environment issues</div>
+            <div>Cannot detect runtime-specific or environment-related vulnerabilities.</div>
+            <div>Can identify vulnerabilities that appear only during runtime or due to environmental factors.</div>
+          </div>
+          <div>
+            <div>Depth vs. breadth</div>
+            <div>Provides deep insights into code-level vulnerabilities.</div>
+            <div>Offers a broad view of the application's external security risks.</div>
+          </div>
+          <div>
+            <div>Integration with tools</div>
+            <div>Integrates with IDEs and CI/CD pipelines for automated static analysis.</div>
+            <div>Integrates with CI/CD pipelines for continuous runtime testing.</div>
+          </div>
+          <div>
+            <div>False positives and negatives</div>
+            <div>Higher chance of false positives due to in-depth code analysis.</div>
+            <div>Lower false positives but higher risk of false negatives due to limited internal visibility.</div>
+          </div>
+          <div>
+            <div>Technology dependency</div>
+            <div>Relies on <a href="/en_us/blog/learn/programming-languages.html">programming languages</a> and frameworks; requires compatibility with the tool.</div>
+            <div>Independent of application frameworks as they interact with the application externally.</div>
+          </div>
+        </div>
+        <h2 id="pros-and-cons-of-sast-and-dast">Pros and cons of SAST and DAST</h2>
+        <h3 id="pros-of-sast">Pros of SAST</h3>
+        <ul>
+          <li>Identifies security vulnerabilities early in the software development life cycle.</li>
+          <li>Analyzes the codebase, including basic functions and complex branches.</li>
+          <li>Operates directly on the source code without requiring the application to run.</li>
+          <li>Provides real-time feedback with comprehensive insights, such as the exact location of vulnerabilities.</li>
+          <li>Generates exportable reports that can be tracked using dashboards.</li>
+          <li>Supports automation so that it is faster and more efficient than manual code reviews.</li>
+        </ul>
+        <h3 id="cons-of-sast">Cons of SAST</h3>
+        <ul>
+          <li>Often generates a large number of false positives. Therefore, it may require manual reviews.</li>
+          <li>Cannot identify runtime or environment-specific vulnerabilities, such as configuration errors.</li>
+          <li>Requires tools specific to each programming language so that maintenance is complex.</li>
+          <li>Struggles with understanding external libraries, APIs, and REST endpoints.</li>
+        </ul>
+        <h3 id="pros-of-dast">Pros of DAST</h3>
+        <ul>
+          <li>Identifies vulnerabilities that only appear during application execution.</li>
+          <li>Operates externally and no access to source code is required. This is effective for testing third-party applications or compiled code.</li>
+          <li>Simulates actual attack scenarios and identifies risks missed by SAST.</li>
+          <li>Works independently of the application's programming language.</li>
+          <li>Evaluates the entire application and system. This includes memory consumption, resource usage, and third-party interfaces.</li>
+        </ul>
+        <h3 id="cons-of-dast">Cons of DAST</h3>
+        <ul>
+          <li>Focus only on the outer layers of the application, which may miss vulnerabilities in deeper layers.</li>
+          <li>Applied later in the SDLC so that fixes are more expensive and time-consuming.</li>
+          <li>Miss certain vulnerabilities that SAST tools can identify through source code analysis. As an example, consider a web application that uses an insecure random number generator (e.g., <strong><code>Math.random()</code></strong> in JavaScript) to create session tokens. DAST may miss this flaw because it only tests runtime behavior. (But SAST can detect it.)</li>
+          <li>Require custom infrastructure for large projects and multiple instances of the application to run in parallel and therefore resource intensive.</li>
+        </ul>
+        <h2 id="when-should-i-use-sast-vs-dast">When should I use SAST vs. DAST?</h2>
+        <p>SAST and DAST play complementary roles in securing SDLC. Understanding when to use each helps to have comprehensive security coverage.</p>
+        <h3 id="when-to-use-sast">When to use SAST</h3>
+        <p><strong>During early development phases.</strong> Developers use SAST to identify vulnerabilities like SQL injection and hardcoded credentials early in the SDLC. By catching these issues before deployment, they reduce the cost and complexity of fixing them.</p>
+        <p>Eg:- A SAST tool scans Python code and flags a vulnerability where hardcoded API keys are embedded in the source code. Developers refactor the code to use environment variables to securely store and retrieve the keys.</p>
+        <p><strong>For code reviews.</strong> SAST integrates into version control systems. Allows developers to scan their code before committing it. This makes sure that only secure code enters the repository.</p>
+        <p>Example: A SAST tool can detect a vulnerability where a file path is constructed directly from user input without validation, exposing the application to path traversal attacks. Developers fix the issue by sanitizing the input and using secure library functions to handle file paths.</p>
+        <p><strong>In continuous integration/continuous deployment pipelines.</strong> SAST runs automated scans during the CI/CD process. It offers real-time feedback to developers.</p>
+        <h3 id="when-to-use-dast">When to use DAST</h3>
+        <p><strong>Pre-production testing.</strong> Developers use DAST to identify runtime vulnerabilities (eg:- insecure configurations, authentication flaws, insufficient access controls) in a staging or QA environment.</p>
+        <p>Example: A DAST tool can detect a database misconfiguration that exposes sensitive data. Then developers can secure the configuration before deployment.</p>
+        <p><strong>In post-deployment monitoring.</strong> DAST tools continue to scan deployed applications for vulnerabilities caused by changes in the environment or emerging threats. This guarantees that the application remains secure over time.</p>
+        <p><strong>Testing third-party integrations.</strong> DAST can mimic an external attacker's perspective to identify vulnerabilities in third-party APIs or interconnected systems.</p>
+        <p>For example: A DAST tool tests a web application and discovers a vulnerability in a third-party payment API where credit card details are being transmitted over an unencrypted HTTP connection. Developers resolve the issue by enforcing HTTPS for all API communications.</p>
+        <h2 id="which-is-more-effective-sast-or-dast">Which is more effective: SAST or DAST?</h2>
+        <p>The effectiveness of SAST or DAST depends on:</p>
+        <ul>
+          <li>The SDLC stage</li>
+          <li>The type of vulnerabilities being addressed</li>
+        </ul>
+        <p>SAST works best in early development, primarily to identify vulnerabilities in the source code, reduce costs, and promote secure coding practices. In contrast, DAST focuses on runtime vulnerabilities in pre-production or deployed applications. It offers insights into issues like misconfigurations and insecure integrations.</p>
+        <h3 id="take-a-hybrid-approach">Take a hybrid approach</h3>
+        <p>Instead of choosing one over the other, <strong>combining SAST and DAST creates a multi-layered security strategy that addresses vulnerabilities in both static code and runtime environments</strong>. SAST can be integrated into early development stages to detect and fix code-level issues before the application is compiled. Once the application is running in a test environment, DAST can identify runtime vulnerabilities and evaluate the application’s behavior under attack conditions.</p>
+        <p>Automating both SAST and DAST scans within a CI/CD pipeline provides continuous feedback and accelerates the development process without compromising security.</p>
+        <p>For agile or DevOps environments, adding tools like IAST or RASP can further enhance security. By correlating results from both SAST and DAST, organizations can achieve more comprehensive and <a href="/en_us/blog/learn/vulnerability-management.html">effective vulnerability management</a>.</p>
+        <h3 id="use-rasp-as-an-alternative-to-sast-and-dast">Use RASP as an alternative to SAST and DAST</h3>
+        <p>Runtime Application Self-Protection (RASP) is an advanced security solution installed directly on <a href="/en_us/blog/learn/computer-servers.html">the server</a> where the application runs.</p>
+        <p>RASP embeds itself into the application's runtime environment. This integration allows RASP to analyze the app's logic and data. While analyzing, it can:</p>
+        <ol>
+          <li>Detect abnormal behaviors as they happen.</li>
+          <li>Block malicious activities instantly.</li>
+        </ol>
+        <p>A key difference is that RASP doesn't just alert on potential issues — it actively prevents attacks by isolating and resolving threats without relying on external tools.</p>
+        <p>RASP offers a dynamic alternative to SAST and DAST. Unlike SAST, which analyzes static code, and DAST, which simulates external attacks, RASP operates in real time. It monitors the application’s behavior during execution and responds to live threats by terminating sessions or alerting defenders.</p>
+        <p>RASP is particularly effective in protecting applications against vulnerabilities that bypass network defenses or are missed during development.</p>
+        <p>However, overconfidence in RASP can lead organizations to neglect secure coding practices. Also, RASP may impact application performance because it operates directly within the application's runtime environment. RASP cannot replace the need to fix underlying flaws, but it provides continuous protection while remediation is underway.</p>
+        <p>As <a href="https://www.gartner.com/peer-community/post/talking-about-app-security-use-rast-tool-substitute-security-control-valuable-add-it-not-valuable-at">one RASP user</a> comments:</p>
+        <div class="quote simple">
+          <div>
+            <div>“The decision to use a RASP tool should be based on a thorough assessment of the application's specific requirements and risk profile.”</div>
+          </div>
+        </div>
+        <h2 id="the-future-is-appsec-testing-with-sast-dast-and-rasp">The future is AppSec testing with SAST, DAST, and RASP</h2>
+        <p>The future of application testing lies in combining SAST, DAST, and RASP to create a comprehensive security strategy. As security challenges grow, integrating these tools into CI/CD pipelines and automating their processes will become essential.</p>
+        <p>Advances in AI and machine learning will make testing more efficient as it helps to reduce false positives and improve threat detection.</p>
+        <h3 id="financial-and-finserv-industries">Financial and FinServ industries</h3>
+        <p>In the financial sector, AI-powered tools will transform how vulnerabilities are detected and mitigated. SAST and DAST will continue to identify coding flaws and runtime issues during development and pre-production.</p>
+        <p>But you won’t stop there: RASP will take it further by using AI to <a href="/en_us/blog/learn/continuous-monitoring.html">monitor live transactions</a>. For instance, RASP could detect unusual patterns (Eg:- an attacker attempts to exploit a vulnerability in real time) and block these activities while notifying the security team.</p>
+        <h3 id="iot-edge-and-connected-devices">IoT, edge, and connected devices</h3>
+        <p>When it comes to IoT, the combination of these tools will play an important role in securing connected devices. Here’s how:</p>
+        <ul>
+          <li>SAST can confirm that the firmware is free from vulnerabilities during development.</li>
+          <li>DAST can test the security of communication protocols between devices.</li>
+          <li>RASP, meanwhile, monitors deployed devices and detects and prevents unauthorized access attempts or data leaks caused by emerging threats.</li>
+        </ul>
+        <p>Likewise, using multiple methods will help IoT ecosystems remain resilient. As explained in our many examples, SAST, DAST, and RASP together promise a future where applications are built and deployed with stronger, more proactive security measures.</p>
+        <h2 id="resilient-security-starts-with-proactive-testing">Resilient security starts with proactive testing</h2>
+        <p>Combining SAST, DAST, and RASP together can provide robust security that covers the entire software development lifecycle.</p>
+        <p>By integrating these methods into CI/CD pipelines and using advances in AI, organizations can respond proactively to emerging threats. Together, these methods offer a holistic approach to secure modern applications from security vulnerabilities.</p>
+        <div class="fragment">
+          <div>
+            <div><a href="/en_us/blog/fragments/disclaimer-with-divider">/en_us/blog/fragments/disclaimer-with-divider</a></div>
+          </div>
+        </div>
+        <div class="sidebar">
+          <div>
+            <div><a href="/en_us/blog/fragments/top-50-security-threats">/en_us/blog/fragments/top-50-security-threats</a></div>
+          </div>
+        </div>
+        <div class="section-metadata">
+          <div>
+            <div>Style</div>
+            <div>two-column</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="author-bio-list">
+          <div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="article-list paginated mode-paginated" data-curated="article-index" data-article-list-ssr="true">
+          <div data-ssr-config="true" hidden>
+            <div>Title</div>
+            <div>Related Articles</div>
+          </div>
+          <div data-ssr-config="true" hidden>
+            <div>Filter</div>
+            <div>Category</div>
+          </div>
+          <div data-ssr-config="true" hidden>
+            <div>Blog Limit</div>
+            <div>3</div>
+          </div>
+          <div data-ssr-config="true" hidden>
+            <div>Category</div>
+            <div>learn</div>
+          </div>
+          <div data-ssr-config="true" hidden>
+            <div>Sort Category Shuffle Order</div>
+            <div>true</div>
+          </div>
+        <h3 class="article-list-title">Related Articles</h3><div class="article-list-grid"><div class="article-list-card"><div class="article-card-image"><picture><source media="(min-width: 900px)" type="image/webp" srcset="https://www.splunk.com/content/dam/splunk-blogs/images/media_134f9a1eaa778415e17526c148554b4276eed0186.avif?width=400&format=webp&optimize=medium"><source type="image/webp" srcset="https://www.splunk.com/content/dam/splunk-blogs/images/media_134f9a1eaa778415e17526c148554b4276eed0186.avif?width=300&format=webp&optimize=medium"><source media="(min-width: 900px)" srcset="https://www.splunk.com/content/dam/splunk-blogs/images/media_134f9a1eaa778415e17526c148554b4276eed0186.avif?width=400&format=avif&optimize=medium"><img loading="eager" alt="What Is Authorization?" src="https://www.splunk.com/content/dam/splunk-blogs/images/media_134f9a1eaa778415e17526c148554b4276eed0186/what-is-authorization.avif?width=300&format=avif&optimize=medium"></picture></div><div class="article-card-content"><div class="article-card-meta"><a class="article-card-category" href="/en_us/blog/learn.html">Learn</a><div class="article-card-read-time">6 Minute Read</div></div><h3 class="article-card-title"><a href="/en_us/blog/learn/authorization.html">What Is Authorization?</a></h3><div class="article-card-description">Authorization is the process of deciding what actions, parts of a website, or application a given user can access after they have been authenticated.</div></div></div><div class="article-list-card"><div class="article-card-image"><picture><source media="(min-width: 900px)" type="image/webp" srcset="https://www.splunk.com/content/dam/splunk-blogs/images/media_121111357b189a731cd5a2ddf84369cef208cf003.webp?width=400&format=webp&optimize=medium"><source type="image/webp" srcset="https://www.splunk.com/content/dam/splunk-blogs/images/media_121111357b189a731cd5a2ddf84369cef208cf003.webp?width=300&format=webp&optimize=medium"><source media="(min-width: 900px)" srcset="https://www.splunk.com/content/dam/splunk-blogs/images/media_121111357b189a731cd5a2ddf84369cef208cf003.webp?width=400&format=webp&optimize=medium"><img loading="lazy" alt="Introduction to Reinforcement Learning" src="https://www.splunk.com/content/dam/splunk-blogs/images/media_121111357b189a731cd5a2ddf84369cef208cf003/introduction-to-reinforcement-learning.webp?width=300&format=webp&optimize=medium"></picture></div><div class="article-card-content"><div class="article-card-meta"><a class="article-card-category" href="/en_us/blog/learn.html">Learn</a><div class="article-card-read-time">4 Minute Read</div></div><h3 class="article-card-title"><a href="/en_us/blog/learn/reinforcement-learning.html">Introduction to Reinforcement Learning</a></h3><div class="article-card-description">Reinforcement learning is at the core of some of the most prominent AI breakthroughs in the last decade. Learn how it works here.</div></div></div><div class="article-list-card"><div class="article-card-image"><picture><source media="(min-width: 900px)" type="image/webp" srcset="https://www.splunk.com/content/dam/splunk-blogs/images/media_1dc11993783afa9f01679a410d89741f51f147679.avif?width=400&format=webp&optimize=medium"><source type="image/webp" srcset="https://www.splunk.com/content/dam/splunk-blogs/images/media_1dc11993783afa9f01679a410d89741f51f147679.avif?width=300&format=webp&optimize=medium"><source media="(min-width: 900px)" srcset="https://www.splunk.com/content/dam/splunk-blogs/images/media_1dc11993783afa9f01679a410d89741f51f147679.avif?width=400&format=avif&optimize=medium"><img loading="lazy" alt="Data Observability: The Complete Introduction" src="https://www.splunk.com/content/dam/splunk-blogs/images/media_1dc11993783afa9f01679a410d89741f51f147679/data-observability-the-complete-introduction.avif?width=300&format=avif&optimize=medium"></picture></div><div class="article-card-content"><div class="article-card-meta"><a class="article-card-category" href="/en_us/blog/learn.html">Learn</a><div class="article-card-read-time">8 Minute Read</div></div><h3 class="article-card-title"><a href="/en_us/blog/learn/data-observability.html">Data Observability: The Complete Introduction</a></h3><div class="article-card-description">Get the complete story on data observability here: what itis, the 5 pillars, benefits &amp; implementing — and best of all, ALL the things you can do with it.</div></div></div></div></div>
+      </div>
+      <div>
+        <div class="fragment">
+          <div>
+            <div><a href="/en_us/blog/fragments/about-splunk">/en_us/blog/fragments/about-splunk</a></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="fragment">
+          <div>
+            <div><a href="/en_us/blog/fragments/subscribe-footer">/en_us/blog/fragments/subscribe-footer</a></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
+</html>

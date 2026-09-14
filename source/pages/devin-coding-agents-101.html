@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Coding Agents 101: The Art of Actually Getting Things Done</title>
+		<meta name="description" content="Coding Agents 101: The Art of Actually Getting Things Done" />
+		<meta name="og:title" content="Coding Agents 101: The Art of Actually Getting Things Done" />
+		<meta name="og:description" content="Coding Agents 101: The Art of Actually Getting Things Done" />
+		<meta name="og:image" content="/agents101/images/share.png" />
+		<meta name="og:image:type" content="image/png" />
+		<meta name="og:image:width" content="1200" />
+		<meta name="og:image:height" content="630" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:image" content="/agents101/images/share.png" />
+		<link rel="icon" type="image/x-icon" href="/agents101/favicon.ico" />
+		<meta name="og:type" content="website" />
+
+		<!-- Google Tag Manager -->
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || [];
+				w[l].push({ 'gtm.start': new Date().getTime(), 'event': 'gtm.js' });
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s),
+					dl = l != 'dataLayer' ? '&l=' + l : '';
+				j.async = true;
+				j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+				f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-KH5W49RR');
+		</script>
+		<!-- End Google Tag Manager -->
+
+		<script src="https://unpkg.com/@phosphor-icons/web"></script>
+		<script type="module" crossorigin src="/agents101/assets/index-D5RPxvUK.js"></script>
+		<link rel="stylesheet" crossorigin href="/agents101/assets/index-QFM7_6XA.css">
+	</head>
+	<body>
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KH5W49RR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+		<div id="main-container">
+			<header id="header">
+				<div id="header-logo">
+					<a href="https://devin.ai" target="_blank" rel="noopener noreferrer">
+						<svg viewBox="0 0 20 23">
+							<path
+								d="M13.6729 10.4022C14.1316 10.1373 14.7019 10.1373 15.1616 10.4022L16.3503 11.0885C16.3886 11.1104 16.4291 11.1258 16.4707 11.1378C16.4795 11.14 16.4882 11.1433 16.497 11.1455C16.5375 11.1553 16.5791 11.1608 16.6207 11.1619C16.6229 11.1619 16.6251 11.1619 16.6262 11.1619C16.6305 11.1619 16.6349 11.1608 16.6393 11.1597C16.6776 11.1597 16.7159 11.1542 16.7531 11.1444C16.7597 11.1433 16.7663 11.1422 16.7728 11.14C16.8133 11.1291 16.8517 11.1126 16.89 11.0918C16.8933 11.0896 16.8976 11.0896 16.902 11.0875L19.2795 9.71478C19.4503 9.61627 19.5553 9.43456 19.5553 9.23752V6.49218C19.5553 6.29515 19.4503 6.11344 19.2795 6.01492L16.902 4.64225C16.7313 4.54373 16.5222 4.54373 16.3514 4.64225L13.9739 6.01492C13.9739 6.01492 13.9674 6.02039 13.9641 6.02258C13.928 6.04447 13.894 6.07074 13.8634 6.1003C13.859 6.10468 13.8546 6.11015 13.8502 6.11453C13.824 6.14299 13.7999 6.17364 13.7802 6.20648C13.7769 6.21195 13.7725 6.21633 13.7703 6.2218C13.7495 6.25793 13.7342 6.29624 13.7222 6.33674C13.72 6.3455 13.7178 6.35426 13.7156 6.36301C13.7058 6.40461 13.6981 6.4473 13.6981 6.49218V7.86485C13.6981 8.39465 13.4124 8.88833 12.9538 9.15433C12.4951 9.41923 11.9248 9.41923 11.4651 9.15433L10.2764 8.46799C10.238 8.4461 10.1975 8.43078 10.156 8.41874C10.1472 8.41655 10.1384 8.41326 10.1297 8.41107C10.0892 8.40122 10.0476 8.39575 10.006 8.39465C9.99943 8.39465 9.99395 8.39465 9.98738 8.39465C9.94798 8.39465 9.90967 8.40013 9.87245 8.40998C9.86588 8.41107 9.86041 8.41217 9.85384 8.41436C9.81334 8.4253 9.77394 8.44172 9.73672 8.46252C9.73344 8.46471 9.72906 8.46471 9.72577 8.4669L7.34829 9.83957C7.17753 9.93809 7.07245 10.1198 7.07245 10.3168V13.0622C7.07245 13.2592 7.17753 13.4409 7.34829 13.5394L9.72577 14.9121C9.72577 14.9121 9.73344 14.9143 9.73672 14.9165C9.77394 14.9373 9.81334 14.9537 9.85384 14.9646C9.86041 14.9668 9.86698 14.9668 9.87355 14.969C9.91076 14.9778 9.94907 14.9833 9.98738 14.9844C9.99176 14.9844 9.99614 14.9865 10.0005 14.9865C10.0027 14.9865 10.0049 14.9865 10.006 14.9865C10.0476 14.9865 10.0881 14.98 10.1297 14.9701C10.1384 14.9679 10.1472 14.9657 10.156 14.9625C10.1975 14.9504 10.238 14.9351 10.2764 14.9132L11.4651 14.2269C11.9237 13.962 12.494 13.962 12.9538 14.2269C13.4124 14.4918 13.6981 14.9854 13.6981 15.5152V16.8879C13.6981 16.9328 13.7047 16.9755 13.7156 17.0171C13.7178 17.0258 13.72 17.0346 13.7222 17.0434C13.7342 17.0839 13.7495 17.1222 13.7703 17.1583C13.7736 17.1638 13.7769 17.1681 13.7802 17.1736C13.7999 17.2065 13.824 17.2371 13.8502 17.2656C13.8546 17.2699 13.859 17.2754 13.8634 17.2798C13.8929 17.3094 13.9269 17.3345 13.9641 17.3575C13.9674 17.3597 13.9696 17.363 13.9739 17.3652L16.3514 18.7379C16.4368 18.7871 16.532 18.8112 16.6273 18.8112C16.7225 18.8112 16.8177 18.786 16.9031 18.7379L19.2806 17.3652C19.4513 17.2667 19.5564 17.085 19.5564 16.8879V14.1426C19.5564 13.9455 19.4513 13.7638 19.2806 13.6653L16.9031 12.2926C16.9031 12.2926 16.8954 12.2905 16.8922 12.2883C16.8549 12.2675 16.8155 12.2511 16.775 12.2401C16.7685 12.2379 16.763 12.2379 16.7564 12.2357C16.7181 12.227 16.6798 12.2215 16.6404 12.2204C16.6349 12.2204 16.6284 12.2204 16.6229 12.2204C16.5813 12.2204 16.5397 12.227 16.4992 12.2368C16.4904 12.239 16.4828 12.2412 16.474 12.2445C16.4324 12.2565 16.3919 12.2718 16.3536 12.2937L15.1649 12.9801C14.7062 13.245 14.1359 13.245 13.6773 12.9801C13.2187 12.7152 12.933 12.2215 12.933 11.6906C12.933 11.1597 13.2187 10.6671 13.6773 10.4022H13.6729Z"
+								fill="#2D2D2D"
+							/>
+							<path
+								d="M0.722649 9.71717L3.10013 11.0898C3.18551 11.1391 3.28074 11.1632 3.37597 11.1632C3.4712 11.1632 3.56643 11.138 3.65181 11.0898L6.0293 9.71717C6.0293 9.71717 6.03586 9.7117 6.03915 9.70951C6.07527 9.68761 6.1092 9.66134 6.13985 9.63179C6.14423 9.62741 6.14861 9.62194 6.15299 9.61756C6.17926 9.5891 6.20334 9.55845 6.22304 9.52561C6.22633 9.52013 6.2307 9.51576 6.23289 9.51028C6.25369 9.47416 6.26902 9.43585 6.28106 9.39535C6.28325 9.38659 6.28544 9.37783 6.28762 9.36907C6.29748 9.32748 6.30514 9.28479 6.30514 9.23991V7.86724C6.30514 7.33743 6.59083 6.84375 7.04947 6.57885C7.50811 6.31395 8.0784 6.31395 8.53813 6.57885L9.72688 7.26519C9.76519 7.28708 9.80569 7.30241 9.84728 7.31445C9.85604 7.31664 9.8648 7.31992 9.87355 7.32211C9.91405 7.33196 9.95565 7.33743 9.99724 7.33853C9.99943 7.33853 10.0016 7.33853 10.0027 7.33853C10.0071 7.33853 10.0115 7.33634 10.0159 7.33634C10.0542 7.33634 10.0925 7.33087 10.1297 7.32101C10.1363 7.31992 10.1428 7.31883 10.1494 7.31664C10.1899 7.30569 10.2293 7.28927 10.2665 7.26847C10.2698 7.26628 10.2742 7.26628 10.2775 7.26409L12.6549 5.89142C12.8257 5.79291 12.9308 5.6112 12.9308 5.41416V2.66882C12.9308 2.47178 12.8257 2.29008 12.6549 2.19156L10.2753 0.819982C10.1045 0.721464 9.89545 0.721464 9.72469 0.819982L7.3472 2.19265C7.3472 2.19265 7.34064 2.19813 7.33735 2.20032C7.30123 2.22221 7.2673 2.24848 7.23665 2.27803C7.23227 2.28241 7.22789 2.28789 7.22351 2.29226C7.19724 2.32073 7.17316 2.35137 7.15346 2.38421C7.15017 2.38969 7.1458 2.39407 7.14361 2.39954C7.12281 2.43566 7.10748 2.47397 7.09544 2.51448C7.09325 2.52323 7.09106 2.53199 7.08888 2.54075C7.07902 2.58234 7.07136 2.62503 7.07136 2.66991V4.04258C7.07136 4.57239 6.78567 5.06607 6.32703 5.33206C5.86839 5.59697 5.2981 5.59697 4.83837 5.33206L3.64962 4.64573C3.61131 4.62384 3.57081 4.60851 3.52922 4.59647C3.52046 4.59428 3.5117 4.591 3.50295 4.58881C3.46245 4.57896 3.42085 4.57348 3.37926 4.57239C3.37269 4.57239 3.36722 4.57239 3.36065 4.57239C3.32124 4.57239 3.28293 4.57786 3.24571 4.58771C3.23915 4.58881 3.23367 4.5899 3.22711 4.59209C3.18661 4.60304 3.1472 4.61946 3.10998 4.64026C3.1067 4.64244 3.10232 4.64244 3.09904 4.64463L0.722649 6.0184C0.55189 6.11692 0.446808 6.29863 0.446808 6.49566V9.241C0.446808 9.43804 0.55189 9.61975 0.722649 9.71826V9.71717Z"
+								fill="#2D2D2D"
+							/>
+							<path
+								d="M12.6528 17.4939L10.2753 16.1212C10.2753 16.1212 10.2676 16.119 10.2643 16.1168C10.2271 16.096 10.1877 16.0796 10.1472 16.0687C10.1406 16.0665 10.1341 16.0665 10.1275 16.0643C10.0892 16.0555 10.0509 16.05 10.0126 16.0489C10.006 16.0489 10.0005 16.0489 9.99396 16.0489C9.95236 16.0489 9.91077 16.0555 9.87027 16.0654C9.86151 16.0676 9.85385 16.0697 9.84509 16.073C9.8035 16.0851 9.763 16.1004 9.72469 16.1223L8.53594 16.8086C8.0773 17.0735 7.50702 17.0735 7.04838 16.8086C6.58974 16.5437 6.30404 16.05 6.30404 15.5191V14.1465C6.30404 14.1016 6.29748 14.0589 6.28653 14.0173C6.28434 14.0086 6.28215 13.9998 6.27996 13.991C6.26792 13.9505 6.2526 13.9122 6.2318 13.8761C6.22852 13.8706 6.22523 13.8662 6.22195 13.8608C6.20224 13.8279 6.17816 13.7973 6.15189 13.7688C6.14751 13.7644 6.14314 13.759 6.13876 13.7546C6.1092 13.725 6.07527 13.6999 6.03805 13.6769C6.03477 13.6747 6.03258 13.6714 6.0282 13.6692L3.65072 12.2965C3.47996 12.198 3.27089 12.198 3.10013 12.2965L0.722649 13.6692C0.55189 13.7677 0.446808 13.9494 0.446808 14.1465V16.8918C0.446808 17.0889 0.55189 17.2706 0.722649 17.3691L3.10013 18.7418C3.10013 18.7418 3.10779 18.745 3.11108 18.7461C3.14829 18.7669 3.18661 18.7833 3.22711 18.7943C3.23367 18.7965 3.24024 18.7976 3.24681 18.7987C3.28403 18.8074 3.32234 18.8129 3.36065 18.814C3.36503 18.814 3.36941 18.8162 3.37488 18.8162C3.37707 18.8162 3.37926 18.8162 3.38145 18.8162C3.42304 18.8162 3.46354 18.8096 3.50404 18.7998C3.5128 18.7976 3.52156 18.7954 3.53031 18.7921C3.57191 18.7801 3.61241 18.7647 3.65072 18.7428L4.83946 18.0565C5.2981 17.7916 5.86839 17.7916 6.32812 18.0565C6.78676 18.3214 7.07246 18.8151 7.07246 19.3449V20.7176C7.07246 20.7624 7.07902 20.8051 7.08997 20.8467C7.09216 20.8555 7.09435 20.8642 7.09654 20.873C7.10858 20.9135 7.1239 20.9518 7.1447 20.9879C7.14798 20.9934 7.15127 20.9978 7.15455 21.0033C7.17425 21.0361 7.19834 21.0668 7.22461 21.0952C7.22899 21.0996 7.23336 21.1051 7.23774 21.1094C7.2673 21.139 7.30123 21.1642 7.33845 21.1872C7.34173 21.1894 7.34392 21.1926 7.3483 21.1948L9.72578 22.5675C9.81116 22.6168 9.90639 22.6408 10.0016 22.6408C10.0969 22.6408 10.1921 22.6157 10.2775 22.5675L12.6549 21.1948C12.8257 21.0963 12.9308 20.9146 12.9308 20.7176V17.9722C12.9308 17.7752 12.8257 17.5935 12.6549 17.495L12.6528 17.4939Z"
+								fill="#2D2D2D"
+							/>
+						</svg>
+
+						<span>guide to coding agents</span>
+					</a>
+				</div>
+
+				<div id="header-button">
+					<div id="header-button__inner">
+						<div id="header-button__inner-inner"></div>
+					</div>
+				</div>
+			</header>
+
+			<nav id="toc">
+				<div id="toc-background"></div>
+
+				<div id="toc-inner">
+					<ul>
+						<li>
+							<a href="#introduction">Intro</a>
+						</li>
+						<li>Getting Started</li>
+						<li>
+							<a href="#practicing-basics">Prompting Basics</a>
+						</li>
+						<li>
+							<a href="#quick-wins">Workflows</a>
+						</li>
+						<li>Intermediate</li>
+						<li>
+							<a href="#larger-tickets">Larger Tasks</a>
+						</li>
+						<li>Advanced</li>
+						<li>
+							<a href="#automating-workflows">Automation</a>
+						</li>
+						<li>
+							<a href="#customization">Customization</a>
+						</li>
+						<li>Practical Considerations</li>
+						<li>
+							<a href="#limitations">Limitations</a>
+						</li>
+						<li>
+							<a href="#managing-time">Managing Costs</a>
+						</li>
+						<li>
+							<a href="#security">Security</a>
+						</li>
+
+						<li>
+							<a href="#transformation">Conclusion</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+			<main class="content">
+				<section id="introduction" class="header">
+					<p class="caption">Cognition Team <span></span> June 2025 <span></span> 15 minute read</p>
+					<h1>Coding Agents 101: The Art of Actually Getting Things Done</h1>
+					<p class="ta-center">The year is 2025. <b>Coding agents aren't magic, but they're about the closest thing we have.</b> We've noticed some engineers, in particular at the senior-to-staff level, finding success faster than others. Here we share some top lessons sourced from the experience of our customers and ourselves.</p>
+					<div class="about-header">About this guide:</div>
+					<div class="about-item border-box">
+						<h2>Product-agnostic</h2>
+						<p>We discuss tips that will help you be successful with any coding agent.</p>
+					</div>
+					<div class="about-item border-box">
+						<h2>Tactical</h2>
+						<p>We offer our favorite bits of actionable advice.</p>
+					</div>
+					<div class="about-item border-box">
+						<h2>Technical</h2>
+						<p>While coding agents can be valuable to many, this guide is written with engineers in mind.</p>
+					</div>
+				</section>
+				<section id="introduction-2">
+					<p>
+						Developer tooling has been rapidly evolving. Ten years ago, it was autocomplete and intellisense, capable of suggesting method names and carrying out programmatic refactors. Four years ago, it was copilots and tab complete, capable of writing the next couple lines of code for you. Two years ago, it was generative chatbots, capable of assisting your development and generating entire files for you. Today, it is autonomous agents, capable of taking initial descriptions to final pull requests with little human intervention. We've focused on realizing this vision over the past two years by building Devin. Now, interest in autonomous agents is reaching new heights, especially with recent releases of similar products <span class="footnote"><span class="footnote__number">[1]</span><span class="footnote__tooltip"> Other than Devin, some recent releases include Codex by OpenAI and Jules by Google. Some local agents like Cursor and Claude Code can be run in parallel workspaces to replicate a similar effect.</span></span>. These agents can appear in many forms, including web apps, mobile apps, and integrations within popular tools like Slack, GitHub, Linear, and Jira.
+					</p>
+				</section>
+				<section id="introduction-3">
+					<p class="lead">While a human paired with an AI assistant can achieve more than any AI alone, an autonomous agent's ability to handle tasks end to end allows for a new level of multi-tasking, turning every engineer into an engineering manager.</p>
+				</section>
+				<section id="introduction-4">
+					<p>Adapting to working effectively alongside these new AI colleagues can take some time. Interestingly, we've observed that senior-to-staff level engineers tend to adopt and become proficient with these tools the fastest. Ultimately, these tools will become commonplace across all levels of engineering. Based on our experience and customer feedback, we want to share key insights and lessons learned to help everyone successfully integrate these tools into their workflows.</p>
+				</section>
+
+				<section id="practicing-basics" class="header">
+					<p class="caption">(Getting Started)</p>
+					<h2>Prompting Basics</h2>
+					<p class="ta-center">These fundamental guidelines will help you effectively interact with coding agents in 2025. If you take nothing else away, you should at least remember these.</p>
+				</section>
+				<section id="practicing-basics-1">
+					<h3 id="say-how-you-want-things-done">Say <em>how</em> you want things done, not just what</h3>
+					<p>Think of the agent as a junior coding partner whose decision-making can be unreliable. Simple tasks can be described directly, but for more complex tasks, clearly outline your preferred approach from the outset. Providing the agent with the overall architecture and logic upfront not only boosts its chances of success but also reduces your time reviewing code, as you will already be familiar with the intended method.</p>
+					<div class="example border-box">
+						<h4>Example:</h4>
+						<p>Instead of "add unit tests," specify the functionality to test, identify important edge cases, and clarify what needs mocking, if anything.</p>
+					</div>
+				</section>
+				<section id="practicing-basics-2">
+					<h3 id="tell-the-agent-where-to-start">Tell the agent where to start</h3>
+					<p>Think about where you'd start if you were handling the task yourself. Even if you don't know specific file or function names, mention the repository, relevant documentation, and key components involved. Clearly indicating these elements minimizes wasted effort and confusion.</p>
+					<div class="example border-box">
+						<h4>Example:</h4>
+						<p>"Please add support for Google models to our code. You should look at the latest docs [here](link) and create a new implementation file in the model groups directory"</p>
+					</div>
+				</section>
+				<section id="practicing-basics-3">
+					<h3 id="practice-defensive-prompting">Practice defensive prompting</h3>
+					<p>Imagine giving the same prompt to a new intern. Where would confusion or errors likely arise? Anticipate these points and proactively clarify your instructions to avoid ambiguity.</p>
+					<div class="example border-box">
+						<h4>Example:</h4>
+						<p>"Please fix the C++ bindings for our search module to pass the new unit tests. Be careful, you will probably need to recompile the bindings each time you change the code before you test."</p>
+					</div>
+				</section>
+				<section id="practicing-basics-4">
+					<h3 id="give-access-to-ci-tests-types-and-linters">Give access to CI, tests, types, and linters</h3>
+					<p>Much of the magic of agents comes from their ability to fix their own mistakes and iterate against error messages. Providing strong feedback loops through tools like type checkers, linters, and unit tests greatly enhances their performance. Consider typed Python over plain Python, or TypeScript over JavaScript. Teach your agent how to run common checks and tests, ensuring it has all necessary packages and access rights. If the agent can interact with a browser, provide clear instructions on running your front-end development environment.</p>
+					<div class="example border-box">
+						<h4>Example:</h4>
+						<p>Our team transitioned from mostly untyped Python SDKs to exclusively typed SDKs (this is also a good task ideally for coding agents).</p>
+					</div>
+				</section>
+				<section id="practicing-basics-5">
+					<h3 id="leverage-your-expertise">Leverage your expertise</h3>
+					<p>Everything above becomes easier when you're familiar with your codebase. Even simple tasks benefit from your ability to verify logic and results. Human oversight remains essential—ultimately, you hold responsibility for the final correctness of the code. Ownership and verification will continue to be critical responsibilities for human engineers, even as these tools become increasingly sophisticated.</p>
+				</section>
+
+				<section id="quick-wins" class="header">
+					<p class="caption">(Getting Started)</p>
+					<h2>Using Agents in your Workflow</h2>
+					<picture>
+						<source media="(min-width: 1441px)" srcset="/agents101/images/quick-wins-x2.webp" type="image/webp">
+						<source media="(min-width: 1441px)" srcset="/agents101/images/quick-wins-x2.png">
+						<source srcset="/agents101/images/quick-wins.webp" type="image/webp">
+						<img src="/agents101/images/quick-wins.png" alt="Quick wins diagram" class="inline-image">
+					</picture>
+					<p class="ta-center">Once you've got the basics of talking to an agent down, it's time to bring these AI helpers into your daily workflow. Here are some practical ways to make agents part of your routine:</p>
+				</section>
+				<section id="quick-wins-1">
+					<h3 id="take-on-new-tasks-immediately">Take on new tasks immediately</h3>
+					<p>Imagine a teammate messaging you, "Hey, could we build X quickly?" or "We need to tweak Y." Instead of letting it interrupt your flow, just send a quick prompt to an autonomous agent to investigate or make the change. This frees you to stay focused on your main tasks. Got an interesting side project idea? Need to quickly prototype something, scrape data, or reproduce research? Delegate to your agent and circle back later.</p>
+					<div class="example border-box">
+						<h4>Example:</h4>
+						<p>Many teams simply tag @Devin on Slack when discussing bug fixes or minor feature updates.</p>
+					</div>
+				</section>
+				<section id="quick-wins-2">
+					<h3 id="code-on-the-go">Code on the go</h3>
+					<p>Picture yourself commuting or traveling when an urgent bug pops up, or you realize you might have left a mistake in your code. No worries! Autonomous agents often support mobile access, letting you address these issues instantly. Whether through Slack's mobile app or a dedicated mobile app, many agents let you resolve problems on the go, even if your wifi is sketchy.</p>
+					<div class="example border-box">
+						<h4>Example:</h4>
+						<p>Having this optionality has made our own team much more productive on car rides and flights.</p>
+					</div>
+				</section>
+				<section id="quick-wins-3">
+					<h3 id="hand-off-your-chores">Hand off your chores</h3>
+					<p>Stuck bisecting for old commits or updating documentation for a new feature? Hand these repetitive tasks off to your agent. You'll save precious time and stay focused on more creative and impactful work.</p>
+					<div class="example border-box">
+						<h4>Example:</h4>
+						<p>In our team, it is common for an engineer to ship a change and then have an agent update all the relevant docs & user-facing copy.</p>
+					</div>
+				</section>
+				<section id="quick-wins-4">
+					<h3 id="skip-the-analysis-paralysis">Skip the analysis paralysis</h3>
+					<p>Stuck deciding if a refactor will actually simplify your code? Can't choose between two architectural approaches? Have your agent implement both options. With concrete examples to compare, decision-making becomes straightforward, and you won't hurt any feelings by discarding a solution.</p>
+					<div class="example border-box">
+						<h4>Example:</h4>
+						<p>When choosing between Lexical and Slate for text boxes, we had agents implement each. Slate won out for delivering the better end result.</p>
+					</div>
+				</section>
+				<section id="quick-wins-5">
+					<h3 id="set-up-preview-deployments">Set up preview deployments</h3>
+					<p>Set your CI/CD pipeline to automatically create preview deployments with each new PR, giving you an instant live URL. This is particularly handy when reviewing frontend tasks completed by AI agents.</p>
+					<div class="example border-box">
+						<h4>Example:</h4>
+						<p>Vercel is a deployment platform that makes preview deployments super easy.</p>
+					</div>
+				</section>
+
+				<section id="larger-tickets" class="header">
+					<p class="caption">(Intermediate)</p>
+					<h2>Delegating Larger Tickets</h2>
+					<picture>
+						<source media="(min-width: 1441px)" srcset="/agents101/images/larger-tickets-1-x2.webp" type="image/webp">
+						<source media="(min-width: 1441px)" srcset="/agents101/images/larger-tickets-1-x2.png">
+						<source srcset="/agents101/images/larger-tickets-1.webp" type="image/webp">
+						<img src="/agents101/images/larger-tickets-1.png" alt="Larger tickets workflow" class="inline-image">
+					</picture>
+					<picture>
+					  <!-- WebP version for large screens -->
+					  <source srcset="/agents101/images/larger-tickets-2-x2.webp" media="(min-width: 1441px)" type="image/webp">
+					  <!-- PNG fallback for large screens -->
+					  <source srcset="/agents101/images/larger-tickets-2-x2.png" media="(min-width: 1441px)">
+
+					  <!-- WebP version for smaller screens -->
+					  <!-- <source srcset="/images/larger-tickets-2.webp" type="image/webp"> -->
+					  <!-- Fallback PNG image -->
+					  <img src="/agents101/images/larger-tickets-2.png" alt="Larger tickets workflow" class="inline-image">
+					</picture>
+				</section>
+				<section id="larger-tickets-1">
+					<p>As the size and complexity of your pull requests grow beyond just a few files, handling them in a single pass becomes challenging. Yet, mastering how to delegate medium-to-large tasks (typically 1-6 hours of work) is where autonomous agents give the highest ROI. Rather than saving just a few minutes, you can reclaim hours of productivity. Smaller tasks might work effortlessly, but stretching the capabilities of agents to handle larger tasks brings the biggest returns.</p>
+				</section>
+				<section id="larger-tickets-2">
+					<h3 id="automate-your-first-drafts">Automate your first drafts</h3>
+					<p>For substantial tasks, using an autonomous agent to create an initial draft of your PR can kickstart progress and dramatically cut down your workload. Success here depends on clearly communicating your desired approach upfront. Think of yourself as the architect guiding junior developers. Clear, detailed instructions help avoid spending unnecessary time correcting fundamental misunderstandings in the agent's code.</p>
+				</section>
+				<section id="larger-tickets-3">
+					<div class="table">
+						<table>
+							<thead>
+								<tr>
+									<th>Domain</th>
+									<th>Drafting</th>
+									<th>Refining</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Journalism</td>
+									<td>Journalist collects initial information, writes first draft of article</td>
+									<td>The editor reviews drafts, fact checks, polishes, and finalizes for publication.</td>
+								</tr>
+								<tr>
+									<td>Restaurant</td>
+									<td>Line cooks prep ingredients and make preliminary dishes.</td>
+									<td>The sous chef adds seasonings and adjusts the dish to taste better, before it is sent to diners.</td>
+								</tr>
+								<tr>
+									<td>Coding</td>
+									<td>Autonomous agents get started on tasks based on initial plans and creating first draft solutions</td>
+									<td>Human developer reviews the draft PRs, gives feedback, and adds manual refinements before merging</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+				<section id="larger-tickets-4">
+					<p>🛑 Remember, large tasks aren't completely hands-free (yet). Expect multiple feedback cycles for more challenging assignments, and anticipate some manual refinements for polish. A realistic goal is around 80% time savings, not complete automation, with your expertise remaining vital for verification and final quality assurance.</p>
+				</section>
+				<section id="larger-tickets-5">
+					<h3 id="co-develop-a-prd">Co-develop a PRD</h3>
+					<p>For tasks that are complex or vaguely defined, collaborating with your autonomous agent to create a detailed plan can be highly effective. It's perfectly okay if you initially don't know every nuance or requirement. Start by prompting your agent to explore discovery questions, like "How does our authentication system function?" or "Which services might be impacted?" You can also ask the agent to identify specific relevant code targets for you to confirm early on.</p>
+					<p>Certain agents, such as Devin and Claude Code, offer dedicated planning modes that focus on reading and exploring existing code rather than immediately modifying it. If you'd prefer deeper preparation before delegating a task, specialized codebase search tools like <a href="http://deepwiki.com" target="_blank" rel="noopener noreferrer">deepwiki.com</a> and Devin Search can quickly provide insights into your codebase, helping streamline the process.</p>
+				</section>
+				<section id="larger-tickets-6">
+					<h3 id="set-checkpoints">Set checkpoints</h3>
+					<p>For multi-part tasks, especially those involving multiple codebases, establish clear checkpoints along the way:</p>
+					<p class="workflow">Plan → Implement chunk → Test → Fix → Checkpoint review → Next chunk</p>
+					<p>Explicitly request pauses after each significant phase, particularly for complex features built across multiple layers (e.g., database, backend, frontend). Use these checkpoints to ensure implementation aligns with your expectations, clarify doubts (ex. "Explain the auth process and confirm its security"), and correct course early to avoid cascading issues.</p>
+				</section>
+				<section id="larger-tickets-7">
+					<div class="example border-box">
+						<h4>Example:</h4>
+						<p>"I want you to implement this feature that will span our database, backend, and multiple frontend interfaces. Please first plan out the database schema changes needed, and let me know when that is done so I can apply the migration." -> "Now please implement the backend changes and add tests to make sure XYZ works. Let me know when that is done" -> "Now implement the changes in both our web and mobile interfaces to call the new backend endpoint"</p>
+					</div>
+				</section>
+				<section id="larger-tickets-8">
+					<h3 id="teach-it-to-verify-its-own-work">Teach it to verify its own work</h3>
+					<p>When giving feedback, go beyond simply pointing out issues ("This function isn't working"). Clearly articulate your testing process to enable the agent to independently verify future tasks. For testing patterns you'll frequently repeat, integrate these into your agent's permanent knowledge base (See <a href="#customization-3">Add to your agent's knowledge base</a>).</p>
+					<div class="example border-box">
+						<h4>Example:</h4>
+						<p>In Devin, we actively prompt users to save essential testing procedures to the agent's ongoing memory, streamlining future interactions.</p>
+					</div>
+				</section>
+				<section id="larger-tickets-12">
+					<h3 id="increase-test-coverage-in-ai-hot-spots">Increase test coverage in AI hot spots</h3>
+					<p>Currently, agents aren't fully capable of interactively testing all scenarios thoroughly. Enhancing test coverage in areas heavily modified by AI ensures greater confidence in the agent's output. Solid tests mean that code that appears correct can be confidently merged without worry.</p>
+					<div class="example border-box">
+						<h4>Example:</h4>
+						<p>Our team strengthened unit tests in a critical section of our codebase before entrusting our AI to translate the implementation from Python to C.</p>
+					</div>
+				</section>
+
+				<section id="automating-workflows" class="header">
+					<p class="caption">(Advanced)</p>
+					<h2>Automating Workflows</h2>
+					<picture>
+						<source media="(min-width: 1441px)" srcset="/agents101/images/automating-workflows-x3.webp" type="image/webp">
+						<source media="(min-width: 1441px)" srcset="/agents101/images/automating-workflows-x3.png">
+						<source srcset="/agents101/images/automating-workflows.webp" type="image/webp">
+						<img src="/agents101/images/automating-workflows.png" alt="Workflow automation" class="inline-image">
+					</picture>
+					<p class="ta-center">Agents can respond to incoming events much faster than humans, and they're a lot more willing to do boring, repetitive work, than their human counterparts.</p>
+				</section>
+				<section id="automating-workflows-1">
+					<h3 id="create-shortcuts-for-your-most-repetitive-work">Create Shortcuts for Your Most Repetitive Work</h3>
+					<p>Engineering teams frequently encounter repetitive, routine tasks. These are perfect candidates for automation with agents. Common examples include:</p>
+
+					<div class="border-box">
+						<ul>
+							<li>feature flag removal</li>
+							<li>dependency upgrades</li>
+							<li>fixing and adding tests on new feature PRs</li>
+						</ul>
+					</div>
+				</section>
+				<section id="automating-workflows-2">
+					<p>
+						To set this up efficiently, an experienced engineer typically creates a robust, reusable prompt template <span class="footnote"><span class="footnote__number">[2]</span> <span class="footnote__tooltip"> In Devin, these are called playbooks</span></span> that can run repeatedly for these scenarios.
+					</p>
+					<div class="example border-box">
+						<h4>Example:</h4>
+						<p>One of our customers automatically triggers three agents dedicated to writing unit tests whenever new features are developed.</p>
+					</div>
+				</section>
+				<section id="automating-workflows-3">
+					<h3 id="intelligent-code-review-enforcement">Intelligent Code Review & Enforcement</h3>
+					<p>
+						While specialized tools for fast code review exist <span class="footnote"><span class="footnote__number">[3]</span> <span class="footnote__tooltip"> Such as Greptile and CodeRabbit </span></span>, autonomous agents can be an interesting option to deliver more accurate insights, particularly if they've already indexed the functionality of your repositories.
+					</p>
+					<div class="example border-box">
+						<h4>Example:</h4>
+						<p>At Cognition, we like to maintain a list of the most common mistakes engineers make and we commit this list to the codebase. Then, instead of writing classical lint rules to catch these (which is often not possible), we have an agent run on every new PRs to check for these mistakes.</p>
+					</div>
+				</section>
+				<section id="automating-workflows-4">
+					<h3 id="hook-into-incidents-and-alerts">Hook into incidents and alerts</h3>
+					<p>You can also set up autonomous agents to trigger automatically in response to specific events. For example, Devin provides an accessible API, and other agents can be integrated into custom workflows via CLI commands. These setups work especially well alongside MCPs to ingest third-party error logs.</p>
+					<p>⚠️When it comes to triaging issues in production services, AI's debugging skills are not that great. Instead of asking the AI to fix bugs end-to-end as they come up, it is often more practical to ask the AI to just flag the most suspicious errors, changes, etc.</p>
+				</section>
+
+				<section id="customization" class="header">
+					<p class="caption">(Advanced)</p>
+					<h2>Customization & Improving Performance</h2>
+				</section>
+				<section id="customization-1">
+					<h3 id="environment-setup">Environment Setup</h3>
+					<p>Nothing slows down an agent faster than an incomplete or mismatched environment. To keep things running smoothly, align your agent's setup exactly with your team's. This includes language versions, package dependencies, and automated checks. For example, pre-commit should be installed in the agent's environment and environment configurations (secrets, language versions, virtual environments, browser logins) should be sourced automatically using tools like .envrc or custom configuration of .bashrc</p>
+					<div class="example border-box">
+						<h4>Example:</h4>
+						<p>We set up our agent's browser with pre-authenticated logins, removing the hassle of manual authentication and making testing much easier.</p>
+					</div>
+				</section>
+				<section id="customization-2">
+					<h3 id="build-custom-cli-tools-and-mcps">Build Custom CLI Tools and MCPs</h3>
+					<p>
+						MCPs are widely available and are quick to set up and experiment with connecting your agent to external tools <span class="footnote"><span class="footnote__number">[4]</span> <span class="footnote__tooltip">In Devin, MCPs are still in beta as we're figuring out the best way to support them. Please contact us for access!</span></span>. But many people overlook setting up simple CLI scripts for your agents. As a simple example, you could give your agent a script to pull information about a linear ticket given a ticket ID. You might also want to give your agent a tool to perform common parts of a workflow reliably, such as a script for restarting the local development environment.
+					</p>
+					<div class="example border-box">
+						<h4>Example:</h4>
+						<p>We have a customer who has had a lot of success with creating a CLI tool that surfaces only the first failing test in a test suite. The CLI prompts the agent to focus on only that test with detailed error information, and this CLI leads the agent to have higher success and faster completion rates on long tasks.</p>
+					</div>
+				</section>
+				<section id="customization-3">
+					<h3 id="add-to-your-agents-knowledge-base">Add to your agent's knowledge base</h3>
+					<p>If your agent makes some common mistakes, it's a great time to codify your feedback in the agent's knowledge base. In Devin, there is a dedicated knowledge management system. Many products offer .rules files, .md files for the agent to permanently ingest. Don't just give it guidelines on the framework you're using, but also tell it about the overall architecture of your project. Tell it what type of testing is common for different kinds of tasks, how to run important commands and which tools you recommend using.</p>
+					<div class="example border-box">
+						<h4>Example:</h4>
+						<p>We give our agent knowledge about the specific procedure it should follow when adding a new service route. The information includes every place it needs to add boilerplate in the frontend and backend. As a result, these tasks are now easily delegated to our AI.</p>
+					</div>
+				</section>
+
+				<section id="limitations" class="header">
+					<p class="caption">Practical Considerations</p>
+					<h2>Limitations of Autonomous Agents</h2>
+				</section>
+				<section id="limitations-1">
+					<h3 id="limited-debugging-skills">Limited debugging skills</h3>
+					<p>Bugs reports can be deceptively simple. But many bugs often require not only access to databases and logs, but also a level of debugging that is greater than most AI agents today. If using AI to aid in debugging, we recommend asking for a list of probable root causes rather than trying to debug and fix everything itself. Then, a human can decide based on their own experience which one is the real root cause. But once the cause is known, agents can still be quite helpful at implementing the fix.</p>
+				</section>
+				<section id="limitations-2">
+					<h3 id="poor-fine-grained-visual-reasoning">Poor fine-grained visual reasoning</h3>
+					<p>Generally models today don't have great visual reasoning capabilities at the level of details needed to match screenshots of designs or Figma mockups. They are most reliable on visuals that can be described at the level of code (ex. giving it code from Figma). If you want it to match your visual style, you should use a good design system with reusable components.</p>
+				</section>
+				<section id="limitations-3">
+					<h3 id="knowledge-cutoffs">Knowledge Cutoffs</h3>
+					<p>Whenever you want to work with a new library, you should explicitly point it to the latest docs. Otherwise, most agents will assume the old patterns from these libraries due to knowledge cutoffs in the pretrained base models. A good agent can overcome this if you point it to docs, but you must be mindful of this (remember, the agent doesn't even know that there are new versions of these libraries).</p>
+				</section>
+
+				<section id="managing-time" class="header">
+					<p class="caption">Practical Considerations</p>
+					<h2>Managing Time and Minimizing Losses</h2>
+					<p class="ta-center">Not all times you use an agent will result in success. In 2025, there is some real variance in the outcomes of these agents. Part of the job involves learning how to use agents in such a way to maximize the chance of running into successful outcomes while minimizing wasted time and tokens.</p>
+				</section>
+				<section id="managing-time-1">
+					<h3 id="be-willing-to-cut-your-losses-earlier">Be willing to cut your losses earlier</h3>
+					<p>A common mistake for people who are new to using agents is that they commit to making an interaction successful, even when an agent's work is veering off track. If you ever find yourself thinking "it's ignoring my instructions" or "this thing is going in circles", you should be ok discontinuing that conversation or manually taking over. Sending more messages is more likely a sign of the inherent complexity of your task being higher than the agent's capabilities rather than some simple mistake that can be corrected.</p>
+				</section>
+				<section id="managing-time-2">
+					<h3 id="diversifying-your-experiments">Diversifying your experiments</h3>
+					<p>If you're new to working with agents, we recommend diversifying your bets at the start. Try a range of different prompts and ideas. Double down on the types of tasks you see the agents naturally performing well on - and cut your losses on the ones they don't. Don't feel a need to force your agents to find success every time.</p>
+				</section>
+				<section id="managing-time-3">
+					<h3 id="start-fresh-when-you-arent-making-progress">Start fresh when you aren't making progress</h3>
+					<p>Starting over is the right answer a lot more often with agents than with humans. If you've given an agent a task and it is struggling to address feedback or correct course, starting fresh with a new agent and all of the instructions up front can often get to success much faster. The ability of an agent to correct a messed-up environment is much worse than its ability to spit out fresh code from scratch.</p>
+				</section>
+
+				<section id="security" class="header">
+					<p class="caption">Practical Considerations</p>
+					<h2>Security and Permissioning</h2>
+				</section>
+				<section id="security">
+					<h3 id="create-accounts-for-your-agent">Create accounts for your agent</h3>
+					<p>A throwaway email is helpful for safe testing of sites. Create custom IAM roles for your agent if it needs to access cloud resources.</p>
+					<h3 id="give-it-a-development-staging-environment">Give it a development / staging environment</h3>
+					<p>Ideally the agent uses the same testing setup as the engineers on your team. We suggest avoiding giving access to production services entirely. When using remote agents, you can run fully isolated test environments on the agent's remote machine.</p>
+				</section>
+				<section id="security-1">
+					<h3 id="readonly-api-keys">Readonly API keys</h3>
+					<p>Where possible, give it readonly access. We find it is still helpful for humans to manually run any script that interacts with outside services.</p>
+				</section>
+
+				<section id="transformation" class="header">
+					<p class="caption">Practical Considerations</p>
+					<h2>Big Changes Ahead</h2>
+					<p>We firmly believe that software engineers aren't going anywhere. Even as coding agents become smarter and more capable, deep technical expertise and intimate knowledge of your codebase remain invaluable. True ownership of your projects, your systems, and your code is more critical now than ever. On our team today, engineers are expected to oversee multiple systems while still maintaining deep understanding and thoughtful judgment. As automation amplifies your impact, the ability to juggle parallel tasks won't just become possible; It'll become essential. We're excited to share the insights we've gathered while preparing our own organization for this shift, so you and your team can also thrive in the evolving world of software development.</p>
+				</section>
+			</main>
+		</div>
+	</body>
+</html>

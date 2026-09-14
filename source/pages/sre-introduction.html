@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-WVF23W3');</script>
+    <meta charset="utf-8">
+    <meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport">
+    <title>Google SRE - IT Service Management: Automate Operations</title>
+      <meta name="description" content="SRE's approach to IT Service Management, Use software engineers to design scalable and reliable systems. Innovation and improve product development.">
+    <meta name="referrer" content="no-referrer" />
+    <link rel="canonical" href="https://sre.google/sre-book/introduction/">
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://lh3.googleusercontent.com/Yf2DCX8RKda6r4Jml9DLMByS2zQCBFs3kQpvBfN8UgIh4YVWIYSYIQOoTxJriyuM26cT5PDjyEb5aynDQ0Xyz46yHKnfg8JlUbDW">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700|Material+Icons">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://lh3.googleusercontent.com/Yf2DCX8RKda6r4Jml9DLMByS2zQCBFs3kQpvBfN8UgIh4YVWIYSYIQOoTxJriyuM26cT5PDjyEb5aynDQ0Xyz46yHKnfg8JlUbDW">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://lh3.googleusercontent.com/Yf2DCX8RKda6r4Jml9DLMByS2zQCBFs3kQpvBfN8UgIh4YVWIYSYIQOoTxJriyuM26cT5PDjyEb5aynDQ0Xyz46yHKnfg8JlUbDW">
+    <link rel="shortcut icon" href="https://lh3.googleusercontent.com/Yf2DCX8RKda6r4Jml9DLMByS2zQCBFs3kQpvBfN8UgIh4YVWIYSYIQOoTxJriyuM26cT5PDjyEb5aynDQ0Xyz46yHKnfg8JlUbDW">
+    <link href="/sre-book/static/css/index.min.css?cache=6c30b59" rel="stylesheet">
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-75468017-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/sre-book/introduction/"
+      },
+      "headline": "Introduction",
+      "description": "This systems administrator, or sysadmin, approach involves assembling existing software components and deploying them to work together to produce a service.",
+        "author": [
+            {
+              "@type": "Person",
+              "name": "Benjamin Treynor Sloss"
+            }
+        ],
+      "publisher": {
+        "@type": "Organization",
+        "name": "Google SRE",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://lh3.googleusercontent.com/C3_YVnTdc7xzTDekhsGeZ2hEYUnAlp47Au-9C50vi5r44rfpJAgiycs1g6AFKWqIpw6KVPrZWLse1VUqgOqYht-RxV1iowdB0_IABUd966aDsDWW-65m"
+        }
+      }
+    }
+  </script>
+    <script src="/sre-book/static/js/detect.min.js?cache=4cb778b"></script>
+  </head>
+
+  <body>
+    <noscript><iframe class="no-script-iframe" src="https://www.googletagmanager.com/ns.html?id=GTM-WVF23W3"></iframe></noscript>
+    <main>
+  <div ng-controller= "HeaderCtrl as headerCtrl">
+    <div id="curtain" class="menu-closed"></div>
+      <div class="header clearfix">
+        <a id="burger-menu" class="expand"></a>
+        <h2 class="chapter-title">
+                Chapter 1 - Introduction
+        </h2>
+      </div>
+      <div id="overlay-element" class="expands">
+        <div class="logo">
+          <a href="https://www.google.com"><img src="https://lh3.googleusercontent.com/YoVRtLOHMSRYQZ3OhFL8RIamcjFYbmQXX4oAQx02MRqqY9zlKNvsuZpS73khXiOqTH3qrFW27VrERJJIHTjPk-tAh46q8-Fd4w6qlw" alt="Google"></a>
+        </div>
+        <ol id="drop-down" class="dropdown-content hide">
+          <li><a class="menu-buttons" href="/sre-book/table-of-contents/">Table of Contents</a></li>
+            <li>
+              <a href="/sre-book/foreword/" class="menu-buttons">
+                  Foreword
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/preface/" class="menu-buttons">
+                  Preface
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/part-I-introduction/" class="menu-buttons">
+                  Part I - Introduction
+              </a>
+            </li>
+            <li class="active">
+              <a href="/sre-book/introduction/" class="menu-buttons">
+                  1. Introduction
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/production-environment/" class="menu-buttons">
+                  2. The Production Environment at Google, from the Viewpoint of an SRE
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/part-II-principles/" class="menu-buttons">
+                  Part II - Principles
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/embracing-risk/" class="menu-buttons">
+                  3. Embracing Risk
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/service-level-objectives/" class="menu-buttons">
+                  4. Service Level Objectives
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/eliminating-toil/" class="menu-buttons">
+                  5. Eliminating Toil
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/monitoring-distributed-systems/" class="menu-buttons">
+                  6. Monitoring Distributed Systems
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/automation-at-google/" class="menu-buttons">
+                  7. The Evolution of Automation at Google
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/release-engineering/" class="menu-buttons">
+                  8. Release Engineering
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/simplicity/" class="menu-buttons">
+                  9. Simplicity
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/part-III-practices/" class="menu-buttons">
+                  Part III - Practices
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/practical-alerting/" class="menu-buttons">
+                  10. Practical Alerting
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/being-on-call/" class="menu-buttons">
+                  11. Being On-Call
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/effective-troubleshooting/" class="menu-buttons">
+                  12. Effective Troubleshooting
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/emergency-response/" class="menu-buttons">
+                  13. Emergency Response
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/managing-incidents/" class="menu-buttons">
+                  14. Managing Incidents
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/postmortem-culture/" class="menu-buttons">
+                  15. Postmortem Culture: Learning from Failure
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/tracking-outages/" class="menu-buttons">
+                  16. Tracking Outages
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/testing-reliability/" class="menu-buttons">
+                  17. Testing for Reliability
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/software-engineering-in-sre/" class="menu-buttons">
+                  18. Software Engineering in SRE
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/load-balancing-frontend/" class="menu-buttons">
+                  19. Load Balancing at the Frontend
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/load-balancing-datacenter/" class="menu-buttons">
+                  20. Load Balancing in the Datacenter
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/handling-overload/" class="menu-buttons">
+                  21. Handling Overload
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/addressing-cascading-failures/" class="menu-buttons">
+                  22. Addressing Cascading Failures
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/managing-critical-state/" class="menu-buttons">
+                  23. Managing Critical State: Distributed Consensus for Reliability
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/distributed-periodic-scheduling/" class="menu-buttons">
+                  24. Distributed Periodic Scheduling with Cron
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/data-processing-pipelines/" class="menu-buttons">
+                  25. Data Processing Pipelines
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/data-integrity/" class="menu-buttons">
+                  26. Data Integrity: What You Read Is What You Wrote
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/reliable-product-launches/" class="menu-buttons">
+                  27. Reliable Product Launches at Scale
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/part-IV-management/" class="menu-buttons">
+                  Part IV - Management
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/accelerating-sre-on-call/" class="menu-buttons">
+                  28. Accelerating SREs to On-Call and Beyond
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/dealing-with-interrupts/" class="menu-buttons">
+                  29. Dealing with Interrupts
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/operational-overload/" class="menu-buttons">
+                  30. Embedding an SRE to Recover from Operational Overload
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/communication-and-collaboration/" class="menu-buttons">
+                  31. Communication and Collaboration in SRE
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/evolving-sre-engagement-model/" class="menu-buttons">
+                  32. The Evolving SRE Engagement Model
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/part-V-conclusions/" class="menu-buttons">
+                  Part V - Conclusions
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/lessons-learned/" class="menu-buttons">
+                  33. Lessons Learned from Other Industries
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/conclusion/" class="menu-buttons">
+                  34. Conclusion
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/availability-table/" class="menu-buttons">
+                  Appendix A. Availability Table
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/service-best-practices/" class="menu-buttons">
+                  Appendix B. A Collection of Best Practices for Production Services
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/incident-document/" class="menu-buttons">
+                  Appendix C. Example Incident State Document
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/example-postmortem/" class="menu-buttons">
+                  Appendix D. Example Postmortem
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/launch-checklist/" class="menu-buttons">
+                  Appendix E. Launch Coordination Checklist
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/production-meeting/" class="menu-buttons">
+                  Appendix F. Example Production Meeting Minutes
+              </a>
+            </li>
+            <li>
+              <a href="/sre-book/bibliography/" class="menu-buttons">
+                  Bibliography
+              </a>
+            </li>
+        </ol>
+      </div>
+    </div>
+
+  <div id="maia-main">
+    <div class="content" id="content">
+      <section data-type="chapter" id="chapter_btreynor-intro">
+  <h2 class="heading jumptargets">Introduction</h2>
+  <p class="byline author">Written by Benjamin Treynor Sloss<sup><a class="jumptarget" data-type="noteref" id="id-2opuzSjFr-marker" href="#id-2opuzSjFr">6</a></sup><br>Edited by Betsy Beyer</p>
+  <blockquote data-type="epigraph">
+    <p class="quote">Hope is not a strategy.</p>
+    <p data-type="attribution" class="quote-author">Traditional SRE saying</p>
+  </blockquote>
+  <p>It is a truth universally acknowledged that systems do not run themselves. How, then, <em>should</em> a systemâparticularly a complex computing system that operates at a large scaleâbe run?</p>
+  <section data-type="sect1" id="the-sysadmin-approach-to-service-management">
+    <h1 class="heading jumptargets">The Sysadmin Approach to Service Management</h1>
+    <p>Historically, companies have employed systems administrators to run complex computing systems.</p>
+    <p>This systems administrator, or sysadmin, approach involves assembling existing software components and deploying them to work together to produce a service. <span class="keep-together">Sysadmins</span> are then tasked with running the service and responding to events and updates as they occur. As the system grows in complexity and traffic volume, generating a corresponding increase in events and updates, the sysadmin team grows to absorb the additional work. Because the sysadmin role requires a markedly different skill set than that required of a productâs developers, developers and sysadmins are divided into discrete teams: "development" and "operations" or "ops."</p>
+    <p>The sysadmin model of service management has several advantages. For companies deciding how to run and staff a service, this approach is relatively easy to implement: as a familiar industry paradigm, there are many examples from which to learn and emulate. A relevant talent pool is already widely available. An array of existing tools, software components (off the shelf or otherwise), and integration companies are available to help run those assembled systems, so a novice sysadmin team doesnât have to <span class="keep-together">reinvent</span> the wheel and design a system from scratch.</p>
+    <p>The sysadmin approach and the accompanying development/ops split has a number of disadvantages and pitfalls. These fall broadly into two categories: direct costs and indirect costs.</p>
+    <p>Direct costs are neither subtle nor ambiguous. Running a service with a team that relies on manual intervention for both change management and event handling becomes expensive as the service and/or traffic to the service grows, because the size of the team necessarily scales with the load generated by the system.</p>
+    <p>The indirect costs of the development/ops split can be subtle, but are often more expensive to the organization than the direct costs. These costs arise from the fact that the two teams are quite different in background, skill set, and incentives. They use different vocabulary to describe situations; they carry different assumptions about both risk and possibilities for technical solutions; they have different assumptions about the target level of product stability. The split between the groups can easily become one of not just incentives, but also communication, goals, and eventually, trust and respect. This outcome is a pathology.</p>
+    <p>Traditional operations teams and their counterparts in product development thus often end up in conflict, most visibly over how quickly software can be released to production. At their core, the development teams want to launch new features and see them adopted by users. At <em>their</em> core, the ops teams want to make sure the service doesnât break while they are holding the pager. Because most outages are caused by some kind of changeâa new configuration, a new feature launch, or a new type of user trafficâthe two teamsâ goals are fundamentally in tension.</p>
+    <p>Both groups understand that it is unacceptable to state their interests in the baldest possible terms ("We want to launch anything, any time, without hindrance" versus "We wonât want to ever change anything in the system once it works"). And because their vocabulary and risk assumptions differ, both groups often resort to a familiar form of trench warfare to advance their interests. The ops team attempts to safeguard the running system against the risk of change by introducing launch and change gates. For example, launch reviews may contain an explicit check for <em>every</em> problem that has <em>ever</em> caused an outage in the pastâthat could be an arbitrarily long list, with not all elements providing equal value. The dev team quickly learns how to respond. They have fewer "launches" and more "flag flips," "incremental updates," or "cherrypicks." They adopt tactics such as sharding the product so that fewer features are subject to the launch review.</p>
+  </section>
+  <section data-type="sect1" id="googles-approach-to-service-management-site-reliability-engineering-Pasncl">
+    <h1 class="heading jumptargets">Googleâs Approach to Service Management: <span class="keep-together">Site Reliability Engineering</span></h1>
+    <p>Conflict isnât an inevitable part of offering a software service. Google has chosen to run our systems with a different approach: our <a href="https://sre.google/sre-book/software-engineering-in-sre/">Site Reliability Engineering teams</a> focus on hiring software engineers to run our products and to <a href="https://sre.google/sre-book/distributed-periodic-scheduling/">create systems to accomplish the work</a> that would otherwise be performed, often manually, by <span class="keep-together">sysadmins</span>.</p>
+    <p>What exactly is Site Reliability Engineering, as it has come to be defined at Google? My explanation is simple: SRE is what happens when you ask a software engineer to design an operations team. When I joined Google in 2003 and was tasked with running a "Production Team" of seven engineers, my entire life up to that point had been software engineering. So I designed and managed the group the way <em>I</em> would want it to work if I worked as an SRE myself. That group has since matured to become Googleâs present-day SRE team, which remains true to its origins as envisioned by a lifelong software engineer.</p>
+    <p>A primary building block of Googleâs approach to service management is the composition of each SRE team. As a whole, SREs can be broken down into two main categories.</p>
+    <p>50â60% are Google Software Engineers, or more precisely, people who have been hired via the standard procedure for Google Software
+    Engineers. The other 40â50% are candidates who were very close to the Google Software Engineering qualifications (i.e., 85â99% of the skill set required), and who <em>in addition</em> had a set of technical skills that is useful to SRE but is rare for most software engineers. By far, UNIX system internals and networking (Layer 1 to Layer 3) expertise are the two most common types of alternate technical skills we seek.</p>
+    <p>Common to all SREs is the belief in and aptitude for developing software systems to solve complex problems. Within SRE, we track the career progress of both groups closely, and have to date found no practical difference in performance between engineers from the two tracks. In fact, the somewhat diverse background of the SRE team frequently results in clever, high-quality systems that are clearly the product of the synthesis of several skill sets.</p>
+    <p>The result of our approach to hiring for SRE is that we end up with a team of people who (a) will quickly become bored by performing tasks by hand, and (b) have the skill set necessary to write software to replace their previously manual work, even when the solution is complicated. SREs also end up sharing academic and intellectual background with the rest of the development organization. Therefore, SRE is fundamentally doing work that has historically been done by an operations team, but using engineers with software expertise, and banking on the fact that these engineers are inherently both predisposed to, and have the ability to, design and <a href="https://sre.google/sre-book/automation-at-google/">implement automation</a> with software to replace human labor.</p>
+    <p>By design, it is crucial that SRE teams are focused on engineering. Without constant engineering, operations load increases and teams will need more people just to keep pace with the workload. Eventually, a traditional ops-focused group scales linearly with service size: if the products supported by the service succeed, the operational load will grow with traffic. That means hiring more people to do the same tasks over and over again.</p>
+    <p>To avoid this fate, the team tasked with managing a service needs to code or it will drown. Therefore, Google places <em>a 50% cap on the aggregate "ops" work for all SREs</em>âtickets, on-call, manual tasks, etc. This cap ensures that the SRE team has enough time in their schedule to make the service stable and operable. This cap is an upper bound; over time, left to their own devices, the SRE team should end up with very little operational load and almost entirely engage in development tasks, because the service basically runs and repairs itself: we want systems that are <em>automatic</em>, not just <em>automated</em>. In practice, scale and new features keep SREs on their toes.</p>
+    <p>Googleâs rule of thumb is that an SRE team must spend the remaining 50% of its time actually doing development. So how do we enforce that threshold? In the first place, we have to measure how SRE time is spent. With that measurement in hand, we ensure that the teams consistently spending less than 50% of their time on development work change their practices. Often this means shifting some of the operations burden back to the development team, or adding staff to the team without assigning that team additional operational responsibilities. Consciously maintaining this balance between ops and development work allows us to ensure that SREs have the bandwidth to engage in creative, autonomous engineering, while still retaining the wisdom gleaned from the operations side of running a service.</p>
+    <p>Weâve found that Google SREâs approach to running large-scale systems has many advantages. Because SREs are directly modifying code in their pursuit of making Googleâs systems run themselves, SRE teams are characterized by both rapid innovation and a large acceptance of change. Such teams are relatively inexpensiveâsupporting the same service with an ops-oriented team would require a significantly larger number of people. Instead, the number of SREs needed to run, maintain, and improve a system scales sublinearly with the size of the system. Finally, not only does SRE circumvent the dysfunctionality of the dev/ops split, but this structure also improves our product development teams: easy transfers between product development and SRE teams cross-train the entire group, and improve skills of developers who otherwise may have difficulty learning how to build a million-core distributed system.</p>
+    <p>Despite these net gains, <a href="https://sre.google/workbook/engagement-model/">the SRE model</a> is characterized by its own distinct set of challenges. One continual challenge Google faces is hiring SREs: not only does SRE <span class="keep-together">compete</span> for the same candidates as the product development hiring pipeline, but the fact that we set the hiring bar so high in terms of both coding and <a href="https://sre.google/sre-book/release-engineering/">system engineering</a> skills means that our hiring pool is necessarily small. As our discipline is relatively new and unique, not much industry information exists on <a href="../../sre-book/part-IV-management/">how to build and manage an SRE team</a> (although hopefully this book will make strides in that direction!). And once an SRE team is in place, their potentially unorthodox approaches to service management require strong management support. For example, the decision to stop releases for the remainder of the quarter once an error budget is depleted might not be embraced by a product development team unless mandated by their management.</p>
+    <aside data-type="sidebar" class="highlight" id="devops-or-sre-8OS8HmcX">
+      <h1 class="heading jumptargets">DevOps or SRE?</h1>
+      <p>The term âDevOpsâ emerged in industry in late 2008 and as of this writing (early 2016) is still in a state of flux. Its core principlesâinvolvement of the IT function in each phase of a systemâs design and development, heavy reliance on automation versus human effort, the application of engineering practices and tools to operations tasksâare consistent with many of <a href="../../sre-book/part-II-principles/">SREâs principles and practices</a>. One could view DevOps as a generalization of several core SRE principles to a wider range of organizations, management structures, and personnel. One could equivalently view SRE as a specific implementation of DevOps with some idiosyncratic extensions.</p>
+    </aside>
+  </section>
+  <section data-type="sect1" id="tenets-of-sre-OKseie">
+    <h1 class="heading jumptargets">Tenets of SRE</h1>
+    <p>While the nuances of workflows, priorities, and day-to-day operations vary from SRE team to SRE team, all share a set of basic responsibilities for the service(s) they support, and adhere to the same core tenets. In general, an SRE team is responsible for the <em>availability, latency, performance, efficiency, change management, monitoring, emergency response, and capacity planning</em> of their service(s). We have codified rules of engagement and principles for how SRE teams interact with their environmentânot only the <a href="https://sre.google/sre-book/production-environment/">production environment</a>, but also the product development teams, the testing teams, the users, and so on. Those rules and work practices help us to maintain our focus on engineering work, as opposed to operations work.</p>
+    <p>The following section discusses each of the core tenets of Google SRE.</p>
+    <section data-type="sect2" id="ensuring-a-durable-focus-on-engineering-2ksLtair">
+      <h2 class="subheaders jumptargets">Ensuring a Durable Focus on Engineering</h2>
+      <p>As already discussed, Google caps operational work for SREs at 50% of their time. Their remaining time should be spent using their coding skills on project work. In practice, this is accomplished by monitoring the amount of operational work being done by SREs, and redirecting <a href="https://sre.google/sre-book/dealing-with-interrupts/">excess operational work</a> to the product development teams: reassigning bugs and tickets to development managers, [re]integrating developers into on-call pager rotations, and so on. The redirection ends when the operational load drops back to 50% or lower. This also provides an effective feedback mechanism, guiding developers to build systems that donât need manual intervention. This approach works well when the entire organizationâSRE and development alikeâunderstands why the safety valve mechanism exists, and supports the goal of having no overflow events because the product doesnât generate enough operational load to require it.</p>
+      <p>When they are focused on operations work, on average, SREs should receive a maximum of two events per 8â12-hour on-call shift. This target volume gives the on-call engineer enough time to handle the event accurately and quickly, clean up and restore normal service, and then conduct a postmortem. If more than two events occur regularly per on-call shift, problems canât be investigated thoroughly and engineers are sufficiently overwhelmed to prevent them from learning from these events. A scenario of pager fatigue also wonât improve with scale. Conversely, if on-call SREs consistently receive fewer than one event per shift, keeping them on point is a waste of their time.</p>
+      <p>Postmortems should be written for all significant incidents, regardless of whether or not they paged; postmortems that did not trigger a page are even more valuable, as they likely point to clear monitoring gaps. This investigation should establish what happened in detail, find all root causes of the event, and assign actions to correct the problem or improve how it is addressed next time. Google operates under a <em>blame-free postmortem culture</em>, with the goal of exposing faults and applying engineering to fix these faults, rather than avoiding or minimizing them.</p>
+    </section>
+    <section data-type="sect2" id="pursuing-maximum-change-velocity-without-violating-a-services-slo-pWsJh2iL">
+      <h2 class="subheaders jumptargets">Pursuing Maximum Change Velocity Without Violating a Serviceâs SLO</h2>
+      <p>Product development and SRE teams can enjoy a <a href="https://sre.google/workbook/engagement-model/">productive working relationship</a> by eliminating the structural conflict in their respective goals. The structural conflict is between pace of innovation and product stability, and as described earlier, this conflict often is expressed indirectly. In SRE we bring this conflict to the fore, and then resolve it with the introduction of an <em>error budget</em>.</p>
+      <p>The error budget stems from the observation that <em>100% is the wrong reliability target for basically everything</em> (pacemakers and anti-lock brakes being notable exceptions). In general, for any software service or system, 100% is not the right reliability target because no user can tell the difference between a system being 100% available and 99.999% available. There are many other systems in the path between user and service (their laptop, their home WiFi, their ISP, the power gridâ¦) and those systems collectively are far less than 99.999% available. Thus, the marginal difference between 99.999% and 100% gets lost in the noise of other unavailability, and the user receives no benefit from the enormous effort required to add that last 0.001% of availability.</p>
+      <p>If 100% is the wrong reliability target for a system, what, then, is the right reliability target for the system? This actually isnât a technical question at allâitâs a product question, which should take the following considerations into account:</p>
+      <ul>
+        <li>What level of availability will the users be happy with, given how they use the product?</li>
+        <li>What alternatives are available to users who are dissatisfied with the productâs availability?</li>
+        <li>What happens to usersâ usage of the product at different availability levels?</li>
+      </ul>
+      <p>The business or the product must establish the systemâs availability target. Once that target is established, the error budget is one minus the availability target. A service thatâs 99.99% available is 0.01% unavailable. That permitted 0.01% unavailability is the serviceâs <em>error budget</em>. We can spend the budget on anything we want, as long as we donât overspend it.</p>
+      <p>So how do we want to spend the error budget? The development team wants to launch features and attract new users. Ideally, we would spend all of our error budget taking risks with things we launch in order to launch them quickly. This basic premise describes the whole model of error budgets. As soon as SRE activities are conceptualized in this framework, freeing up the error budget through tactics such as phased rollouts and 1% experiments can optimize for quicker launches.</p>
+      <p>The use of an error budget resolves the structural conflict of incentives between development and SRE. SREâs goal is no longer "zero outages"; rather, SREs and product developers aim to spend the error budget getting maximum feature velocity. This change makes all the difference. An outage is no longer a "bad" thingâit is an expected part of the process of innovation, and an occurrence that both development and SRE teams manage rather than fear.</p>
+    </section>
+    <section data-type="sect2" id="monitoring-o8sQTGi1">
+      <h2 class="subheaders jumptargets">Monitoring</h2>
+      <p>Monitoring is one of the primary means by which service owners keep track of a systemâs health and availability. As such, monitoring strategy should be constructed thoughtfully. A classic and common approach to monitoring is to watch for a specific value or condition, and then to trigger an email alert when that value is exceeded or that condition occurs. However, this type of email alerting is not an effective solution: a system that requires a human to read an email and decide whether or not some type of action needs to be taken in response is fundamentally flawed. Monitoring should never require a human to interpret any part of the alerting domain. Instead, software should do the interpreting, and humans should be notified only when they need to take action.</p>
+      <p class="pagebreak-before">There are three kinds of valid monitoring output:</p>
+      <dl class="desc-list">
+        <dt class="subheaders jumptargets" id="alerts">Alerts</dt>
+        <dd>Signify that a human needs to take action immediately in response to something that is either happening or about to happen, in order to improve the situation.</dd>
+        <dt class="subheaders jumptargets" id="tickets">Tickets</dt>
+        <dd>Signify that a human needs to take action, but not immediately. The system cannot automatically handle the situation, but if a human takes action in a few days, no damage will result.</dd>
+        <dt class="subheaders jumptargets" id="logging">Logging</dt>
+        <dd>No one needs to look at this information, but it is recorded for diagnostic or forensic purposes. The expectation is that no one reads logs unless something else prompts them to do so.</dd>
+      </dl>
+    </section>
+    <section data-type="sect2" id="emergency-response-g0sKcpiL">
+      <h2 class="subheaders jumptargets">Emergency Response</h2>
+      <p>Reliability is a function of mean time to failure (MTTF) and mean time to repair (MTTR) <a data-type="xref" href="/sre-book/bibliography#Sch15">[Sch15]</a>. The most relevant metric in evaluating the effectiveness of emergency response is how quickly the response team can bring the system back to healthâthat is, the MTTR.</p>
+      <p>Humans add latency. Even if a given system experiences more <em>actual</em> failures, a system that can avoid emergencies that require human intervention will have higher availability than a system that requires hands-on intervention. When humans are necessary, we have found that thinking through and recording the best practices ahead of time in a "playbook" produces roughly a 3x improvement in MTTR as compared to the strategy of "winging it." The hero jack-of-all-trades on-call engineer does work, but the practiced on-call engineer armed with a playbook works much better. While no playbook, no matter how comprehensive it may be, is a substitute for smart engineers able to think on the fly, clear and thorough <a href="https://sre.google/sre-book/effective-troubleshooting/">troubleshooting steps and tips</a> are valuable when responding to a high-stakes or time-sensitive page. Thus, Google SRE relies on on-call playbooks, in addition to exercises such as the "Wheel of Misfortune,"<sup><a class="jumptarget" data-type="noteref" id="id-MJbubFnIjcqiN-marker" href="#id-MJbubFnIjcqiN">7</a></sup> to prepare engineers to react to on-call events.</p>
+    </section>
+    <section data-type="sect2" id="change-management-q8sdiQiA">
+      <h2 class="subheaders jumptargets">Change Management</h2>
+      <p>SRE has found that roughly 70% of outages are due to changes in a live system. Best practices in this domain use automation to accomplish the following:</p>
+      <ul class="pagebreak-before">
+        <li>Implementing progressive rollouts</li>
+        <li>Quickly and accurately detecting problems</li>
+        <li>Rolling back changes safely when problems arise</li>
+      </ul>
+      <p>This trio of practices effectively minimizes the aggregate number of users and operations exposed to bad changes. By removing humans from the loop, these practices avoid the normal problems of fatigue, familiarity/contempt, and inattention to highly repetitive tasks. As a result, both release velocity and safety increase.</p>
+    </section>
+    <section data-type="sect2" id="demand-forecasting-and-capacity-planning-1LseuQiN">
+      <h2 class="subheaders jumptargets">Demand Forecasting and Capacity Planning</h2>
+      <p>Demand forecasting and capacity planning can be viewed as ensuring that there is sufficient capacity and redundancy to serve projected future demand with the required availability. Thereâs nothing particularly special about these concepts, except that a surprising number of services and teams donât take the steps necessary to ensure that the required capacity is in place by the time it is needed. Capacity planning should take both organic growth (which stems from natural product adoption and usage by customers) and inorganic growth (which results from events like feature launches, marketing campaigns, or other business-driven changes) into account.</p>
+      <p>Several steps are mandatory in capacity planning:</p>
+      <ul>
+        <li>An accurate organic demand forecast, which extends beyond the lead time required for acquiring capacity</li>
+        <li>An accurate incorporation of inorganic demand sources into the demand <span class="keep-together">forecast</span></li>
+        <li>Regular load testing of the system to correlate raw capacity(servers, disks, and so on) to service capacity</li>
+      </ul>
+      <p>Because capacity is critical to availability, it naturally follows that the SRE team must be in charge of capacity planning, which means they also must be in charge of provisioning.</p>
+    </section>
+    <section data-type="sect2" id="provisioning-YmsyU7iA">
+      <h2 class="subheaders jumptargets">Provisioning</h2>
+      <p>Provisioning combines both change management and capacity planning. In our experience, provisioning must be conducted quickly and only when necessary, as capacity is expensive. This exercise must also be done correctly or capacity doesnât work when needed. Adding new capacity often involves spinning up a new instance or location, making significant modification to existing systems (configuration files, load balancers, networking), and validating that the new capacity performs and delivers correct results. Thus, it is a riskier operation than load shifting, which is often done multiple times per hour, and must be treated with a corresponding degree of extra caution.</p>
+    </section>
+    <section data-type="sect2" id="efficiency-and-performance-vJsbCDiW">
+      <h2 class="subheaders jumptargets">Efficiency and Performance</h2>
+      <p>Efficient use of resources is important any time a service cares about money. Because SRE ultimately controls provisioning, it must also be involved in any work on utilization, as utilization is a function of how a given service works and how it is provisioned. It follows that paying close attention to the provisioning strategy for a service, and therefore its utilization, provides a very, very big lever on the serviceâs total costs.</p>
+      <p>Resource use is a function of demand (load), capacity, and software efficiency. SREs predict demand, provision capacity, and can modify the software. These three factors are a large part (though not the entirety) of a serviceâs efficiency.</p>
+      <p>Software systems become slower as load is added to them. A slowdown in a service equates to a loss of capacity. At some point, a slowing system stops serving, which corresponds to infinite slowness. SREs provision to meet a capacity target <em>at a specific response speed</em>, and thus are keenly interested in a serviceâs performance. SREs and product developers will (and should) monitor and modify a service to improve its performance, thus adding capacity and improving efficiency.<sup><a class="jumptarget" data-type="noteref" id="id-a82uNIKtnCgiL-marker" href="#id-a82uNIKtnCgiL">8</a></sup></p>
+    </section>
+  </section>
+  <section data-type="sect1" id="the-end-of-the-beginning-XQsDud">
+    <h1 class="heading jumptargets">The End of the Beginning</h1>
+    <p>Site Reliability Engineering represents a significant break from existing industry best practices for managing large, complicated services. Motivated originally by familiarityâ"as a software engineer, this is how I would want to invest my time to accomplish a set of repetitive tasks"âit has become much more: a set of principles, a set of practices, a set of incentives, and a field of endeavor within the larger software engineering discipline. The rest of the book explores the SRE Way in detail.</p>
+  </section>
+  <div data-type="footnotes" class="footnotes"><p data-type="footnote" id="id-2opuzSjFr"><sup><a class="jumptargets" href="#id-2opuzSjFr-marker">6</a></sup>Vice President, Google Engineering, founder of Google SRE</p><p data-type="footnote" id="id-MJbubFnIjcqiN"><sup><a class="jumptargets" href="#id-MJbubFnIjcqiN-marker">7</a></sup>See <a data-type="xref" href="/sre-book/accelerating-sre-on-call#xref_training_disaster-rpg">Disaster Role Playing</a>.</p><p data-type="footnote" id="id-a82uNIKtnCgiL"><sup><a class="jumptargets" href="#id-a82uNIKtnCgiL-marker">8</a></sup>For further discussion of how this collaboration can work in practice, see <a data-type="xref" href="/sre-book/operational-overload#xref_comms-collab_production-meetings">Communications: Production Meetings</a>.</p></div>
+</section>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="maia-aux">
+      <div class="previous">
+          <a href="/sre-book/part-I-introduction/">
+            <p class="footer-caption">Previous</p>
+            <p class="chapter-link">
+                Part I - Introduction
+            </p>
+          </a>
+      </div>
+      <div class="next">
+          <a href="/sre-book/production-environment/">
+            <p class="footer-caption">Next</p>
+            <p class="chapter-link">
+                Chapter 2 - The Production Environment at Google, from the Viewpoint of an SRE
+            </p>
+          </a>
+      </div>
+        <p class="footer-link">Copyright Â© 2017 Google, Inc. Published by O'Reilly Media, Inc. Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener noreferrer" target="_blank">CC BY-NC-ND 4.0</a></p>
+    </div>
+  </div>
+    </main>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-touch.min.js"></script>
+    <script src="/sre-book/static/js/index.min.js?cache=5b7f90b"></script>
+
+  </body>
+</html>
