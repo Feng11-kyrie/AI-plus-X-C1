@@ -30,9 +30,11 @@
       "local_path": "source/pages/prompt-engineering-guide.html",
       "bytes": 128476,
       "page_title": "Prompting Techniques | Prompt Engineering Guide",
-      "words_est": 374,
-      "status": "ok",
-      "format": "html"
+      "words_est": 82,
+      "content_chars": 543,
+      "format": "html",
+      "status": "low_content",
+      "reason": "SPA 导航壳：__NEXT_DATA__ 载荷为空，真实正文在未被抓取的子页面中"
     },
     {
       "week": 1,
@@ -44,9 +46,11 @@
       "local_path": "source/pages/prompt-engineering-overview.html",
       "bytes": 2005200,
       "page_title": "Prompt Engineering for AI Guide | Google Cloud",
-      "words_est": 3521,
+      "words_est": 3678,
+      "content_chars": 24901,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 1,
@@ -59,7 +63,9 @@
       "bytes": 8040907,
       "status": "ok",
       "format": "pdf",
-      "words_est": null
+      "words_est": null,
+      "content_chars": null,
+      "reason": "PDF 未逐页校验，按可用计"
     },
     {
       "week": 2,
@@ -91,9 +97,11 @@
       "local_path": "source/pages/mcp-food-for-thought.html",
       "bytes": 55505,
       "page_title": "APIs don't make good MCP tools",
-      "words_est": 905,
+      "words_est": 728,
+      "content_chars": 5325,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 2,
@@ -105,9 +113,11 @@
       "local_path": "source/pages/mcp-introduction.html",
       "bytes": 378139,
       "page_title": "Model Context Protocol (MCP): A comprehensive introduction for developers",
-      "words_est": 4816,
+      "words_est": 4721,
+      "content_chars": 31217,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 2,
@@ -119,9 +129,11 @@
       "local_path": "source/pages/mcp-registry-preview.html",
       "bytes": 27301,
       "page_title": "Introducing the MCP Registry | Model Context Protocol Blog",
-      "words_est": 818,
+      "words_est": 796,
+      "content_chars": 6674,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 2,
@@ -133,9 +145,11 @@
       "local_path": "source/pages/mcp-server-authentication.html",
       "bytes": 189963,
       "page_title": "Build a Remote MCP server Â· Cloudflare Agents docs",
-      "words_est": 2015,
+      "words_est": 1701,
+      "content_chars": 12597,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 3,
@@ -167,9 +181,11 @@
       "local_path": "source/pages/devin-coding-agents-101.html",
       "bytes": 42766,
       "page_title": "Coding Agents 101: The Art of Actually Getting Things Done",
-      "words_est": 3411,
+      "words_est": 3488,
+      "content_chars": 22156,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 3,
@@ -181,9 +197,11 @@
       "local_path": "source/pages/how-long-contexts-fail.html",
       "bytes": 19141,
       "page_title": "How Long Contexts Fail",
-      "words_est": 1649,
+      "words_est": 1579,
+      "content_chars": 10978,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 3,
@@ -195,9 +213,11 @@
       "local_path": "source/pages/specs-are-the-new-source-code.html",
       "bytes": 217592,
       "page_title": "The spec is dead, long live the spec!",
-      "words_est": 2163,
+      "words_est": 1912,
+      "content_chars": 12567,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 3,
@@ -209,9 +229,11 @@
       "local_path": "source/pages/writing-effective-tools-for-agents.html",
       "bytes": 203466,
       "page_title": "Writing effective tools for AI agents—using AI agents \\ Anthropic",
-      "words_est": 3347,
+      "words_est": 3123,
+      "content_chars": 22063,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 4,
@@ -243,9 +265,11 @@
       "local_path": "source/pages/claude-code-best-practices.html",
       "bytes": 832025,
       "page_title": "Claude Code overview - Claude Code Docs",
-      "words_est": 1566,
+      "words_est": 1487,
+      "content_chars": 9494,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 4,
@@ -257,9 +281,11 @@
       "local_path": "source/pages/good-context-good-code.html",
       "bytes": 9278,
       "page_title": "StockApp Engineering",
-      "words_est": 15,
-      "status": "ok",
-      "format": "html"
+      "words_est": 13,
+      "content_chars": 77,
+      "format": "html",
+      "status": "low_content",
+      "reason": "访问码 / 付费墙拦截：抓到的只是登录门页"
     },
     {
       "week": 4,
@@ -271,9 +297,11 @@
       "local_path": "source/pages/peeking-under-the-hood-of-claude-code.html",
       "bytes": 550,
       "page_title": "Peeking Under the Hood of Claude Code",
-      "words_est": 43,
+      "words_est": 44,
+      "content_chars": 428,
+      "format": "html",
       "status": "placeholder",
-      "format": "html"
+      "reason": "体积过小，抓到的是占位页"
     },
     {
       "week": 4,
@@ -286,7 +314,9 @@
       "bytes": 6218838,
       "status": "ok",
       "format": "pdf",
-      "words_est": null
+      "words_est": null,
+      "content_chars": null,
+      "reason": "PDF 未逐页校验，按可用计"
     },
     {
       "week": 5,
@@ -308,9 +338,11 @@
       "local_path": "source/pages/how-warp-uses-warp.html",
       "bytes": 15515,
       "page_title": "Notion",
-      "words_est": 15,
-      "status": "ok",
-      "format": "html"
+      "words_est": 1,
+      "content_chars": 7,
+      "format": "html",
+      "status": "low_content",
+      "reason": "Notion JS 渲染页：正文需 JavaScript 才能生成，静态抓取只能拿到外壳"
     },
     {
       "week": 5,
@@ -322,9 +354,11 @@
       "local_path": "source/pages/warp-vs-claude-code.html",
       "bytes": 452468,
       "page_title": "Getting started with Warp and Oz | Warp",
-      "words_est": 768,
+      "words_est": 615,
+      "content_chars": 5145,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 6,
@@ -346,9 +380,11 @@
       "local_path": "source/pages/agentic-ai-threats.html",
       "bytes": 392315,
       "page_title": "AI Agents Are Here. So Are the Threats.",
-      "words_est": 7569,
+      "words_est": 7798,
+      "content_chars": 54739,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 6,
@@ -360,9 +396,11 @@
       "local_path": "source/pages/context-rot.html",
       "bytes": 271776,
       "page_title": "Context Rot: How Increasing Input Tokens Impacts LLM Performance·|·Chroma",
-      "words_est": 7566,
+      "words_est": 6271,
+      "content_chars": 42732,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 6,
@@ -374,9 +412,11 @@
       "local_path": "source/pages/copilot-prompt-injection-rce.html",
       "bytes": 21637,
       "page_title": "GitHub Copilot: Remote Code Execution via Prompt Injection (CVE-2025-53773) · Embrace The Red",
-      "words_est": 1225,
+      "words_est": 1240,
+      "content_chars": 8355,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 6,
@@ -388,9 +428,11 @@
       "local_path": "source/pages/finding-vulnerabilities-claude-codex.html",
       "bytes": 114856,
       "page_title": "Finding vulnerabilities in modern web apps using Claude Code and OpenAI Codex | Semgrep",
-      "words_est": 4042,
+      "words_est": 3650,
+      "content_chars": 24600,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 6,
@@ -402,9 +444,11 @@
       "local_path": "source/pages/owasp-top-ten.html",
       "bytes": 71432,
       "page_title": "OWASP Top Ten Web Application Security Risks | OWASP Foundation",
-      "words_est": 2535,
+      "words_est": 2311,
+      "content_chars": 16363,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 6,
@@ -416,9 +460,11 @@
       "local_path": "source/pages/sast-vs-dast.html",
       "bytes": 50594,
       "page_title": "SAST vs. DAST vs. RASP: Comparing Application Security Testing Methods | Splunk",
-      "words_est": 3024,
+      "words_est": 2943,
+      "content_chars": 22088,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 7,
@@ -430,9 +476,11 @@
       "local_path": "source/pages/ai-code-review-best-practices.html",
       "bytes": 182519,
       "page_title": "AI code review implementation and best practices",
-      "words_est": 2015,
+      "words_est": 1901,
+      "content_chars": 13619,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 7,
@@ -444,9 +492,11 @@
       "local_path": "source/pages/code-review-essentials.html",
       "bytes": 14972,
       "page_title": "Code Review Essentials for Software Teams » Blake Smith",
-      "words_est": 2053,
+      "words_est": 2040,
+      "content_chars": 11842,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 7,
@@ -458,9 +508,11 @@
       "local_path": "source/pages/code-reviews-just-do-it.html",
       "bytes": 48437,
       "page_title": "Code Reviews: Just Do It",
-      "words_est": 949,
+      "words_est": 953,
+      "content_chars": 6267,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 7,
@@ -472,9 +524,11 @@
       "local_path": "source/pages/how-to-review-code-effectively.html",
       "bytes": 198143,
       "page_title": "How to review code effectively: A GitHub staff engineer’s philosophy - The GitHub Blog",
-      "words_est": 3865,
+      "words_est": 3278,
+      "content_chars": 21895,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 7,
@@ -487,8 +541,10 @@
       "bytes": 0,
       "page_title": "",
       "words_est": 0,
+      "content_chars": 1,
+      "format": "html",
       "status": "empty",
-      "format": "html"
+      "reason": "文件 0 字节，抓取完全失败"
     },
     {
       "week": 7,
@@ -501,7 +557,9 @@
       "bytes": 986515,
       "status": "ok",
       "format": "pdf",
-      "words_est": null
+      "words_est": null,
+      "content_chars": null,
+      "reason": "PDF 未逐页校验，按可用计"
     },
     {
       "week": 9,
@@ -513,9 +571,11 @@
       "local_path": "source/pages/benefits-agentic-ai-oncall.html",
       "bytes": 142300,
       "page_title": "The Top 5 Benefits of Agentic AI in On-call Engineering | Resolve AI Blog",
-      "words_est": 1001,
+      "words_est": 760,
+      "content_chars": 5530,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 9,
@@ -527,9 +587,11 @@
       "local_path": "source/pages/kubernetes-troubleshooting-ai.html",
       "bytes": 147708,
       "page_title": "Kubernetes Troubleshooting in Resolve AI",
-      "words_est": 1421,
+      "words_est": 1221,
+      "content_chars": 9223,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 9,
@@ -541,9 +603,11 @@
       "local_path": "source/pages/multi-agent-systems-ai-native.html",
       "bytes": 169917,
       "page_title": "The role of multi agent systems in making software engineers AI-native",
-      "words_est": 2026,
+      "words_est": 1439,
+      "content_chars": 10783,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 9,
@@ -555,9 +619,11 @@
       "local_path": "source/pages/observability-basics.html",
       "bytes": 133614,
       "page_title": "Traces & Spans: Observability Basics You Should Know | Last9",
-      "words_est": 1848,
+      "words_est": 1699,
+      "content_chars": 11885,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     },
     {
       "week": 9,
@@ -569,9 +635,11 @@
       "local_path": "source/pages/sre-introduction.html",
       "bytes": 44520,
       "page_title": "Google SRE - IT Service Management: Automate Operations",
-      "words_est": 4197,
+      "words_est": 3824,
+      "content_chars": 24977,
+      "format": "html",
       "status": "ok",
-      "format": "html"
+      "reason": ""
     }
   ]
 }
