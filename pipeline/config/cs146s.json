@@ -1,0 +1,34 @@
+{
+  "source_id": "cs146s",
+  "title": "CS146S: The Modern Software Developer",
+  "institution": "Stanford University",
+  "term": "Fall 2025",
+  "instructor": "Mihail Eric",
+  "source_url": "https://themodernsoftware.dev/",
+  "cached_on": "2026-04-02",
+
+  "paths": {
+    "raw_dir": "source",
+    "index_html": "source/index.html",
+    "pages_dir": "source/pages",
+    "pdfs_dir": "source/pdfs",
+    "page_map": "source/page_map.json",
+    "units_json": "source/units.json",
+    "glossary": "glossary/glossary.csv",
+    "clean_dir": "pipeline/work/clean",
+    "zh_dir": "zh"
+  },
+
+  "translation": {
+    "source_lang": "en",
+    "target_lang": "zh-Hans",
+    "chunk_by": "heading",
+    "max_chunk_chars": 4000,
+    "preserve": ["code", "headings", "links", "lists", "tables"]
+  },
+
+  "coverage": {
+    "scope": "pages + pdfs",
+    "target_ratio": 0.8
+  }
+}
