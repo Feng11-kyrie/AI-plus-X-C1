@@ -1,0 +1,4693 @@
+candidate,count,type
+MCP,325,acronym
+SAST,72,acronym
+SRE,69,acronym
+OWASP,64,acronym
+LLM,59,acronym
+API,57,acronym
+DAST,56,acronym
+GPT,33,acronym
+PG,30,acronym
+SQL,26,acronym
+CI,25,acronym
+RASP,24,acronym
+JSON,21,acronym
+DELEGATE,20,acronym
+PY,20,acronym
+APP,20,acronym
+CLI,19,acronym
+NIAH,19,acronym
+VS,17,acronym
+SUMMARY,16,acronym
+CD,15,acronym
+THIS,14,acronym
+TASK,14,acronym
+SDK,13,acronym
+IDOR,13,acronym
+PR,12,acronym
+TPR,11,acronym
+XSS,11,acronym
+BOLA,8,acronym
+NOT,8,acronym
+DO,8,acronym
+CWE,8,acronym
+RAG,7,acronym
+PM,7,acronym
+SDLC,7,acronym
+CSV,6,acronym
+FPR,6,acronym
+ML,5,acronym
+RPC,5,acronym
+IDE,5,acronym
+RCE,5,acronym
+SSRF,5,acronym
+VM,5,acronym
+CPU,5,acronym
+YOLO,5,acronym
+SARIF,5,acronym
+MTTR,5,acronym
+SCA,4,acronym
+AIRS,4,acronym
+GCP,4,acronym
+OR,4,acronym
+CVE,4,acronym
+CEO,4,acronym
+AAPL,3,acronym
+KV,3,acronym
+ROI,3,acronym
+CLAUDE,3,acronym
+SASE,3,acronym
+L6,3,acronym
+PPTX,3,acronym
+MSCI,3,acronym
+Claude,143,capitalized_phrase
+Prompt,94,capitalized_phrase
+Claude Code,62,capitalized_phrase
+Example,60,capitalized_phrase
+Context,58,capitalized_phrase
+Google,55,capitalized_phrase
+Security,46,capitalized_phrase
+OWASP Top,46,capitalized_phrase
+Agents,45,capitalized_phrase
+Resolve,38,capitalized_phrase
+Francisco,36,capitalized_phrase
+San Francisco,32,capitalized_phrase
+Engineering,31,capitalized_phrase
+Agentic,31,capitalized_phrase
+Research,30,capitalized_phrase
+Gemini,30,capitalized_phrase
+Python,30,capitalized_phrase
+Instead,30,capitalized_phrase
+Please,30,capitalized_phrase
+Distractors,28,capitalized_phrase
+Resolve AI,28,capitalized_phrase
+Repeated,26,capitalized_phrase
+However,25,capitalized_phrase
+CrewAI,25,capitalized_phrase
+Repeated Words,25,capitalized_phrase
+Product,24,capitalized_phrase
+Attack,23,capitalized_phrase
+OpenAI,22,capitalized_phrase
+Create,22,capitalized_phrase
+Registry,22,capitalized_phrase
+Terminal,22,capitalized_phrase
+Copilot,22,capitalized_phrase
+Threat,22,capitalized_phrase
+AutoGen,21,capitalized_phrase
+Figure,21,capitalized_phrase
+Attacker,21,capitalized_phrase
+Semgrep,21,capitalized_phrase
+Management,20,capitalized_phrase
+Performance,20,capitalized_phrase
+DELEGATE,20,capitalized_phrase
+Anthropic,19,capitalized_phrase
+Kubernetes,19,capitalized_phrase
+Prompting,18,capitalized_phrase
+Related,18,capitalized_phrase
+Payload,18,capitalized_phrase
+Agentic AI,18,capitalized_phrase
+Attack Payload,18,capitalized_phrase
+Engineer,17,capitalized_phrase
+Service,17,capitalized_phrase
+Access,17,capitalized_phrase
+Review,17,capitalized_phrase
+Impact,17,capitalized_phrase
+Assistant,16,capitalized_phrase
+Application,16,capitalized_phrase
+SUMMARY,16,capitalized_phrase
+Family,16,capitalized_phrase
+AI SRE,16,capitalized_phrase
+Coding,15,capitalized_phrase
+Protocol,15,capitalized_phrase
+Desktop,15,capitalized_phrase
+Together,15,capitalized_phrase
+Common,15,capitalized_phrase
+GPT-4.1,15,capitalized_phrase
+Software,15,capitalized_phrase
+LongMemEval,15,capitalized_phrase
+Graphite,15,capitalized_phrase
+VS Code,15,capitalized_phrase
+Questions,14,capitalized_phrase
+Privacy,14,capitalized_phrase
+Needle,14,capitalized_phrase
+Production,14,capitalized_phrase
+Introduction,13,capitalized_phrase
+Models,13,capitalized_phrase
+Advanced,13,capitalized_phrase
+Scenario,13,capitalized_phrase
+Developers,13,capitalized_phrase
+Cloudflare,13,capitalized_phrase
+Getting,13,capitalized_phrase
+Sonnet,13,capitalized_phrase
+Testing,13,capitalized_phrase
+Similarity,13,capitalized_phrase
+Injection,12,capitalized_phrase
+ChatGPT,12,capitalized_phrase
+Provide,12,capitalized_phrase
+Tactic,12,capitalized_phrase
+AI-powered,12,capitalized_phrase
+Server,12,capitalized_phrase
+Secure,12,capitalized_phrase
+Stytch,12,capitalized_phrase
+Subscribe,12,capitalized_phrase
+Beyond,12,capitalized_phrase
+Haystack,12,capitalized_phrase
+Results,12,capitalized_phrase
+Golden,12,capitalized_phrase
+DevOps,12,capitalized_phrase
+OpenTelemetry,12,capitalized_phrase
+Traces,12,capitalized_phrase
+Model Context,12,capitalized_phrase
+Design,11,capitalized_phrase
+Instructions,11,capitalized_phrase
+Action,11,capitalized_phrase
+Contact,11,capitalized_phrase
+Putting,11,capitalized_phrase
+Conclusion,11,capitalized_phrase
+Search,11,capitalized_phrase
+Protection,11,capitalized_phrase
+Portfolio,11,capitalized_phrase
+Code Review,11,capitalized_phrase
+Portfolio Management,11,capitalized_phrase
+Portfolio Management Agent,11,capitalized_phrase
+Question,10,capitalized_phrase
+Experiment,10,capitalized_phrase
+Because,10,capitalized_phrase
+Building,10,capitalized_phrase
+Remote,10,capitalized_phrase
+Without,10,capitalized_phrase
+Troubleshooting,10,capitalized_phrase
+Observability,10,capitalized_phrase
+Prisma,10,capitalized_phrase
+Response,10,capitalized_phrase
+Networks,10,capitalized_phrase
+Mitigations,10,capitalized_phrase
+AI-native,10,capitalized_phrase
+Google Cloud,10,capitalized_phrase
+Tactic Prompt,10,capitalized_phrase
+MCP Registry,10,capitalized_phrase
+Tactic Prompt Example,10,capitalized_phrase
+Model Context Protocol,10,capitalized_phrase
+Palo Alto Networks,10,capitalized_phrase
+San Francisco San Francisco,10,capitalized_phrase
+Language,9,capitalized_phrase
+Explain,9,capitalized_phrase
+Translation,9,capitalized_phrase
+JavaScript,9,capitalized_phrase
+Documentation,9,capitalized_phrase
+Windows,9,capitalized_phrase
+Mitigation,9,capitalized_phrase
+Analysis,9,capitalized_phrase
+Attackers,9,capitalized_phrase
+Objective,9,capitalized_phrase
+Explanation,9,capitalized_phrase
+Setting,9,capitalized_phrase
+Victim,9,capitalized_phrase
+Relevant,9,capitalized_phrase
+Framework,9,capitalized_phrase
+Across,9,capitalized_phrase
+Needle-Question,9,capitalized_phrase
+Tracing,9,capitalized_phrase
+Palo Alto,9,capitalized_phrase
+All Together,9,capitalized_phrase
+Scene Attacker,9,capitalized_phrase
+Victim Assistant,9,capitalized_phrase
+Framework CrewAI,9,capitalized_phrase
+Attack Payload Explanation,9,capitalized_phrase
+Attack Payload Framework,9,capitalized_phrase
+Attack Payload Framework CrewAI,9,capitalized_phrase
+Prompts,8,capitalized_phrase
+Benefits,8,capitalized_phrase
+Integration,8,capitalized_phrase
+Resources,8,capitalized_phrase
+Request,8,capitalized_phrase
+Whether,8,capitalized_phrase
+LangChain,8,capitalized_phrase
+Inspector,8,capitalized_phrase
+TypeScript,8,capitalized_phrase
+Developer,8,capitalized_phrase
+Linear,8,capitalized_phrase
+Engineers,8,capitalized_phrase
+French,8,capitalized_phrase
+Threats,8,capitalized_phrase
+Transfer,8,capitalized_phrase
+Graham,8,capitalized_phrase
+Scenario Instructions,8,capitalized_phrase
+Example Prompt,8,capitalized_phrase
+Claude Sonnet,8,capitalized_phrase
+Threat Research,8,capitalized_phrase
+AutoGen Attacker,8,capitalized_phrase
+Mitigations Prompt,8,capitalized_phrase
+Paul Graham,8,capitalized_phrase
+Claude Opus,8,capitalized_phrase
+Scene Attacker End,8,capitalized_phrase
+CrewAI AutoGen Attacker,8,capitalized_phrase
+Settings,7,capitalized_phrase
+Knowledge,7,capitalized_phrase
+Understanding,7,capitalized_phrase
+Spanish,7,capitalized_phrase
+Define,7,capitalized_phrase
+Output,7,capitalized_phrase
+Custom,7,capitalized_phrase
+Authorization,7,capitalized_phrase
+Explore,7,capitalized_phrase
+Community,7,capitalized_phrase
+Thanks,7,capitalized_phrase
+Microsoft,7,capitalized_phrase
+Automate,7,capitalized_phrase
+Translations,7,capitalized_phrase
+Martinez,7,capitalized_phrase
+Project,7,capitalized_phrase
+Quickstart,7,capitalized_phrase
+Download,7,capitalized_phrase
+Incident,7,capitalized_phrase
+Database,7,capitalized_phrase
+Malicious,7,capitalized_phrase
+Content,7,capitalized_phrase
+Vulnerability,7,capitalized_phrase
+Number,7,capitalized_phrase
+Appendix,7,capitalized_phrase
+Chinese,7,capitalized_phrase
+German,7,capitalized_phrase
+Hebrew,7,capitalized_phrase
+FinServ,7,capitalized_phrase
+Monitoring,7,capitalized_phrase
+Reliability,7,capitalized_phrase
+Golden Gate,7,capitalized_phrase
+Graphite Agent,7,capitalized_phrase
+San Francisco San,7,capitalized_phrase
+Francisco San Francisco,7,capitalized_phrase
+Examples,6,capitalized_phrase
+Generation,6,capitalized_phrase
+Reasoning,6,capitalized_phrase
+Sentiment,6,capitalized_phrase
+Answering,6,capitalized_phrase
+Science,6,capitalized_phrase
+Vertex,6,capitalized_phrase
+Additionally,6,capitalized_phrase
+Specify,6,capitalized_phrase
+Images,6,capitalized_phrase
+Consider,6,capitalized_phrase
+Identify,6,capitalized_phrase
+Platform,6,capitalized_phrase
+Cursor,6,capitalized_phrase
+Unlike,6,capitalized_phrase
+Connect,6,capitalized_phrase
+Dynamic,6,capitalized_phrase
+Customer,6,capitalized_phrase
+Policy,6,capitalized_phrase
+Practical,6,capitalized_phrase
+Confusion,6,capitalized_phrase
+Computer,6,capitalized_phrase
+JetBrains,6,capitalized_phrase
+Command,6,capitalized_phrase
+Malware,6,capitalized_phrase
+Repository,6,capitalized_phrase
+Structure,6,capitalized_phrase
+Configure,6,capitalized_phrase
+Technology,6,capitalized_phrase
+Bharat,6,capitalized_phrase
+AI Agents,6,capitalized_phrase
+Claude Desktop,6,capitalized_phrase
+MCP Inspector,6,capitalized_phrase
+OAuth App,6,capitalized_phrase
+Context Confusion,6,capitalized_phrase
+Ravi Mehta,6,capitalized_phrase
+Security Testing,6,capitalized_phrase
+Needle-Question Similarity,6,capitalized_phrase
+OpenAI Codex,6,capitalized_phrase
+AI Coding,6,capitalized_phrase
+Threat Research March,6,capitalized_phrase
+AI Coding Agents,6,capitalized_phrase
+Techniques,5,capitalized_phrase
+Zero-shot,5,capitalized_phrase
+Generate,5,capitalized_phrase
+Automatic,5,capitalized_phrase
+Dataset,5,capitalized_phrase
+Adding,5,capitalized_phrase
+Domain,5,capitalized_phrase
+Services,5,capitalized_phrase
+Updated,5,capitalized_phrase
+Writing,5,capitalized_phrase
+Multiple,5,capitalized_phrase
+Optimize,5,capitalized_phrase
+Debugging,5,capitalized_phrase
+Reference,5,capitalized_phrase
+Choose,5,capitalized_phrase
+Effective,5,capitalized_phrase
+Imagine,5,capitalized_phrase
+December,5,capitalized_phrase
+JSON-RPC,5,capitalized_phrase
+Autonomous,5,capitalized_phrase
+Authentication,5,capitalized_phrase
+Discover,5,capitalized_phrase
+Return,5,capitalized_phrase
+Single,5,capitalized_phrase
+Company,5,capitalized_phrase
+Approach,5,capitalized_phrase
+Implement,5,capitalized_phrase
+Nothing,5,capitalized_phrase
+Execution,5,capitalized_phrase
+Running,5,capitalized_phrase
+Traditional,5,capitalized_phrase
+Overview,5,capitalized_phrase
+Install,5,capitalized_phrase
+Actions,5,capitalized_phrase
+Modern,5,capitalized_phrase
+Products,5,capitalized_phrase
+Runtime,5,capitalized_phrase
+Metadata-Flavor,5,capitalized_phrase
+Enterprise,5,capitalized_phrase
+Cortex,5,capitalized_phrase
+NoLiMa,5,capitalized_phrase
+Needle-Haystack,5,capitalized_phrase
+Failure,5,capitalized_phrase
+Accuracy,5,capitalized_phrase
+Position,5,capitalized_phrase
+Difference,5,capitalized_phrase
+Completed,5,capitalized_phrase
+Twitter,5,capitalized_phrase
+Japanese,5,capitalized_phrase
+Korean,5,capitalized_phrase
+Carlos,5,capitalized_phrase
+Translated,5,capitalized_phrase
+Splunk,5,capitalized_phrase
+Provides,5,capitalized_phrase
+Implementing,5,capitalized_phrase
+Reviews,5,capitalized_phrase
+American,5,capitalized_phrase
+Distributed,5,capitalized_phrase
+Prompt Injection,5,capitalized_phrase
+MCP Server,5,capitalized_phrase
+Danny Martinez,5,capitalized_phrase
+Needle-Haystack Similarity,5,capitalized_phrase
+LongMemEval Results,5,capitalized_phrase
+Word Count,5,capitalized_phrase
+Computer Science,5,capitalized_phrase
+SQL Injection,5,capitalized_phrase
+Completed Translations,5,capitalized_phrase
+Word Count Difference,5,capitalized_phrase
+Basics,4,capitalized_phrase
+Workflows,4,capitalized_phrase
+Optimizing,4,capitalized_phrase
+Generating,4,capitalized_phrase
+Classification,4,capitalized_phrase
+Evaluate,4,capitalized_phrase
+Information,4,capitalized_phrase
+English,4,capitalized_phrase
+Several,4,capitalized_phrase
+Different,4,capitalized_phrase
+Summarize,4,capitalized_phrase
+Translate,4,capitalized_phrase
+Formulate,4,capitalized_phrase
+Change,4,capitalized_phrase
+August,4,capitalized_phrase
+Client,4,capitalized_phrase
+Plugins,4,capitalized_phrase
+Similarly,4,capitalized_phrase
+Articles,4,capitalized_phrase
+Careers,4,capitalized_phrase
+Changelog,4,capitalized_phrase
+Technical,4,capitalized_phrase
+Introducing,4,capitalized_phrase
+Increase,4,capitalized_phrase
+Environment,4,capitalized_phrase
+Considerations,4,capitalized_phrase
+Managing,4,capitalized_phrase
+Schedule,4,capitalized_phrase
+Tracking,4,capitalized_phrase
+Through,4,capitalized_phrase
+Control,4,capitalized_phrase
+PowerShell,4,capitalized_phrase
+Therefore,4,capitalized_phrase
+Sample,4,capitalized_phrase
+Extracting,4,capitalized_phrase
+Exploiting,4,capitalized_phrase
+Benign,4,capitalized_phrase
+IMPORTANT,4,capitalized_phrase
+Populate,4,capitalized_phrase
+America,4,capitalized_phrase
+Process,4,capitalized_phrase
+Contents,4,capitalized_phrase
+Supply,4,capitalized_phrase
+Persistent,4,capitalized_phrase
+Popular,4,capitalized_phrase
+Original,4,capitalized_phrase
+Individual,4,capitalized_phrase
+Bridge,4,capitalized_phrase
+Reduction,4,capitalized_phrase
+AppSec,4,capitalized_phrase
+Events,4,capitalized_phrase
+PY-APP-002,4,capitalized_phrase
+Positives,4,capitalized_phrase
+Previous,4,capitalized_phrase
+Companies,4,capitalized_phrase
+Portuguese,4,capitalized_phrase
+Italian,4,capitalized_phrase
+Contribution,4,capitalized_phrase
+Researcher,4,capitalized_phrase
+Accelerating,4,capitalized_phrase
+Velocity,4,capitalized_phrase
+Spiros,4,capitalized_phrase
+Founder,4,capitalized_phrase
+Angeli,4,capitalized_phrase
+Square,4,capitalized_phrase
+Prompt Engineering,4,capitalized_phrase
+Question Answering,4,capitalized_phrase
+Vertex AI,4,capitalized_phrase
+Google Drive,4,capitalized_phrase
+Cloudflare Access,4,capitalized_phrase
+Incident Response,4,capitalized_phrase
+Sentiment Research,4,capitalized_phrase
+Application Security,4,capitalized_phrase
+Haystack Structure,4,capitalized_phrase
+Individual Distractors,4,capitalized_phrase
+Failure Analysis,4,capitalized_phrase
+Claude Family,4,capitalized_phrase
+GPT Family,4,capitalized_phrase
+Gemini Family,4,capitalized_phrase
+Qwen Family,4,capitalized_phrase
+Position Accuracy,4,capitalized_phrase
+AI Production,4,capitalized_phrase
+Research Engineer,4,capitalized_phrase
+Instructions Example Prompt,4,capitalized_phrase
+Scenario Instructions Example,4,capitalized_phrase
+Sentiment Research Agent,4,capitalized_phrase
+Golden Gate Bridge,4,capitalized_phrase
+AI Production Engineer,4,capitalized_phrase
+Scenario Instructions Example Prompt,4,capitalized_phrase
+Designing,3,capitalized_phrase
+Function,3,capitalized_phrase
+Applications,3,capitalized_phrase
+Fine-tuning,3,capitalized_phrase
+Evaluation,3,capitalized_phrase
+Dialogue,3,capitalized_phrase
+Extract,3,capitalized_phrase
+Closed,3,capitalized_phrase
+Indirect,3,capitalized_phrase
+Summarization,3,capitalized_phrase
+Collection,3,capitalized_phrase
+Additional,3,capitalized_phrase
+Providing,3,capitalized_phrase
+Direct,3,capitalized_phrase
+Another,3,capitalized_phrase
+Combines,3,capitalized_phrase
+Specific,3,capitalized_phrase
+According,3,capitalized_phrase
+Remove,3,capitalized_phrase
+Objectives,3,capitalized_phrase
+Demonstrate,3,capitalized_phrase
+Quantify,3,capitalized_phrase
+Adjust,3,capitalized_phrase
+Answer,3,capitalized_phrase
+Practices,3,capitalized_phrase
+Reduced,3,capitalized_phrase
+Increased,3,capitalized_phrase
+Generative,3,capitalized_phrase
+Easily,3,capitalized_phrase
+Continue,3,capitalized_phrase
+OpenAPI,3,capitalized_phrase
+Sending,3,capitalized_phrase
+Values,3,capitalized_phrase
+Affordability,3,capitalized_phrase
+Expensive,3,capitalized_phrase
+Finite,3,capitalized_phrase
+September,3,capitalized_phrase
+Comparing,3,capitalized_phrase
+Frameworks,3,capitalized_phrase
+Continuous,3,capitalized_phrase
+Standard,3,capitalized_phrase
+Moreover,3,capitalized_phrase
+Invoke,3,capitalized_phrase
+Clearly,3,capitalized_phrase
+Real-world,3,capitalized_phrase
+AI-driven,3,capitalized_phrase
+Connected,3,capitalized_phrase
+Prevention,3,capitalized_phrase
+Pricing,3,capitalized_phrase
+Issues,3,capitalized_phrase
+Maintainer,3,capitalized_phrase
+Report,3,capitalized_phrase
+Choosing,3,capitalized_phrase
+Requires,3,capitalized_phrase
+Durable,3,capitalized_phrase
+Deploy,3,capitalized_phrase
+GitLab,3,capitalized_phrase
+Wrangler,3,capitalized_phrase
+Worker,3,capitalized_phrase
+GitHubHandler,3,capitalized_phrase
+Actually,3,capitalized_phrase
+Remember,3,capitalized_phrase
+Customization,3,capitalized_phrase
+Double,3,capitalized_phrase
+Ideally,3,capitalized_phrase
+Changes,3,capitalized_phrase
+Contexts,3,capitalized_phrase
+Poisoning,3,capitalized_phrase
+Distraction,3,capitalized_phrase
+Salesforce,3,capitalized_phrase
+Andrew,3,capitalized_phrase
+AI-assisted,3,capitalized_phrase
+Extension,3,capitalized_phrase
+Published,3,capitalized_phrase
+Namespacing,3,capitalized_phrase
+Analyzing,3,capitalized_phrase
+Analyze,3,capitalized_phrase
+Simply,3,capitalized_phrase
+Written,3,capitalized_phrase
+Daniel,3,capitalized_phrase
+Christian,3,capitalized_phrase
+Native,3,capitalized_phrase
+CLAUDE.md,3,capitalized_phrase
+Center,3,capitalized_phrase
+Assessment,3,capitalized_phrase
+Poorly,3,capitalized_phrase
+Enforce,3,capitalized_phrase
+Static,3,capitalized_phrase
+Nasdaq,3,capitalized_phrase
+Description,3,capitalized_phrase
+Although,3,capitalized_phrase
+Unauthorized,3,capitalized_phrase
+Network,3,capitalized_phrase
+Exfiltration,3,capitalized_phrase
+Shannon,3,capitalized_phrase
+Transactions,3,capitalized_phrase
+Special,3,capitalized_phrase
+Protect,3,capitalized_phrase
+Profile,3,capitalized_phrase
+Infrastructure,3,capitalized_phrase
+Fuzzing,3,capitalized_phrase
+Statement,3,capitalized_phrase
+Firewalls,3,capitalized_phrase
+Proactive,3,capitalized_phrase
+Intelligence,3,capitalized_phrase
+Increasing,3,capitalized_phrase
+Chroma,3,capitalized_phrase
+Latent,3,capitalized_phrase
+Irrelevant,3,capitalized_phrase
+MiniLM-L6-v2,3,capitalized_phrase
+Shuffled,3,capitalized_phrase
+Correct,3,capitalized_phrase
+GPT-3.5,3,capitalized_phrase
+Positive,3,capitalized_phrase
+Qwen3-8B,3,capitalized_phrase
+Future,3,capitalized_phrase
+References,3,capitalized_phrase
+Missing,3,capitalized_phrase
+Hugging,3,capitalized_phrase
+Traversal,3,capitalized_phrase
+Struggle,3,capitalized_phrase
+PY-APP-006,3,capitalized_phrase
+PY-APP-007,3,capitalized_phrase
+LLM-driven,3,capitalized_phrase
+Release,3,capitalized_phrase
+Efforts,3,capitalized_phrase
+Indonesian,3,capitalized_phrase
+Torsten,3,capitalized_phrase
+Gigler,3,capitalized_phrase
+Tobias,3,capitalized_phrase
+Glemser,3,capitalized_phrase
+Reinhardt,3,capitalized_phrase
+Michael,3,capitalized_phrase
+Takanori,3,capitalized_phrase
+Gerardo,3,capitalized_phrase
+Mancini,3,capitalized_phrase
+Rodrigo,3,capitalized_phrase
+Sponsors,3,capitalized_phrase
+Chapter,3,capitalized_phrase
+Global,3,capitalized_phrase
+Social,3,capitalized_phrase
+Supports,3,capitalized_phrase
+Identifies,3,capitalized_phrase
+Cannot,3,capitalized_phrase
+Category,3,capitalized_phrase
+Minute,3,capitalized_phrase
+Measuring,3,capitalized_phrase
+Frequently,3,capitalized_phrase
+Document,3,capitalized_phrase
+Accept,3,capitalized_phrase
+Balancing,3,capitalized_phrase
+Counter,3,capitalized_phrase
+Possible,3,capitalized_phrase
+Datadog,3,capitalized_phrase
+On-call,3,capitalized_phrase
+Machines,3,capitalized_phrase
+Resolve.ai,3,capitalized_phrase
+Fireside,3,capitalized_phrase
+Affirm,3,capitalized_phrase
+Stanford,3,capitalized_phrase
+Context Engineering,3,capitalized_phrase
+Image Generation,3,capitalized_phrase
+Generative AI,3,capitalized_phrase
+Context Protocol,3,capitalized_phrase
+Land Values,3,capitalized_phrase
+Large Language,3,capitalized_phrase
+Registry Maintainer,3,capitalized_phrase
+Remote MCP,3,capitalized_phrase
+Coding Agents,3,capitalized_phrase
+Practical Considerations,3,capitalized_phrase
+Context Poisoning,3,capitalized_phrase
+Context Distraction,3,capitalized_phrase
+Context Clash,3,capitalized_phrase
+Run Claude,3,capitalized_phrase
+AI Security,3,capitalized_phrase
+Input DELEGATE,3,capitalized_phrase
+View Transactions,3,capitalized_phrase
+Threat Brief,3,capitalized_phrase
+Hugging Face,3,capitalized_phrase
+Remote Code,3,capitalized_phrase
+Path Traversal,3,capitalized_phrase
+Tobias Glemser,3,capitalized_phrase
+Dr. Ingo,3,capitalized_phrase
+Ralf Reinhardt,3,capitalized_phrase
+Project Sponsors,3,capitalized_phrase
+Minute Read,3,capitalized_phrase
+Understanding AI,3,capitalized_phrase
+Implementing AI,3,capitalized_phrase
+Popular AI,3,capitalized_phrase
+Blake Smith,3,capitalized_phrase
+American Dream,3,capitalized_phrase
+On-call Engineering,3,capitalized_phrase
+Service Privacy,3,capitalized_phrase
+Policy Back,3,capitalized_phrase
+Guide Learn,3,capitalized_phrase
+Companies Optimize,3,capitalized_phrase
+Prod Hear,3,capitalized_phrase
+SoFi. Technology,3,capitalized_phrase
+Production Ready,3,capitalized_phrase
+Accelerating Engineering,3,capitalized_phrase
+Kubernetes Troubleshooting,3,capitalized_phrase
+Site Reliability,3,capitalized_phrase
+Google Software,3,capitalized_phrase
+Google SRE,3,capitalized_phrase
+Large Language Models,3,capitalized_phrase
+AI Security Assessment,3,capitalized_phrase
+Golden Gate Park,3,capitalized_phrase
+Hugging Face. Link,3,capitalized_phrase
+Dr. Ingo Hanke,3,capitalized_phrase
+Implementing AI Code,3,capitalized_phrase
+Service Privacy Policy,3,capitalized_phrase
+AI SRE Buyer,3,capitalized_phrase
+Prod Hear AI,3,capitalized_phrase
+Production Ready AI,3,capitalized_phrase
+Accelerating Engineering Velocity,3,capitalized_phrase
+Site Reliability Engineering,3,capitalized_phrase
+AutoGen Attacker Input DELEGATE,3,capitalized_phrase
+Implementing AI Code Review,3,capitalized_phrase
+Service Privacy Policy Back,3,capitalized_phrase
+Production Ready AI SRE,3,capitalized_phrase
+PROMPTING,2,capitalized_phrase
+General,2,capitalized_phrase
+Multimodal,2,capitalized_phrase
+Calling,2,capitalized_phrase
+Guides,2,capitalized_phrase
+GPT-4o,2,capitalized_phrase
+Synthetic,2,capitalized_phrase
+Datasets,2,capitalized_phrase
+Few-Shot,2,capitalized_phrase
+Snippet,2,capitalized_phrase
+Infinite,2,capitalized_phrase
+Hallucination,2,capitalized_phrase
+Adversarial,2,capitalized_phrase
+Mistral,2,capitalized_phrase
+Mixtral,2,capitalized_phrase
+Findings,2,capitalized_phrase
+Thought,2,capitalized_phrase
+Creative,2,capitalized_phrase
+Respond,2,capitalized_phrase
+Open-Ended,2,capitalized_phrase
+France,2,capitalized_phrase
+Choice,2,capitalized_phrase
+Present,2,capitalized_phrase
+Potter,2,capitalized_phrase
+Tolkien,2,capitalized_phrase
+Rowling,2,capitalized_phrase
+Stephen,2,capitalized_phrase
+Hypothetical,2,capitalized_phrase
+Opinion-Based,2,capitalized_phrase
+Completion,2,capitalized_phrase
+Optimization,2,capitalized_phrase
+NullPointerException,2,capitalized_phrase
+Photorealistic,2,capitalized_phrase
+Artistic,2,capitalized_phrase
+Abstract,2,capitalized_phrase
+Editing,2,capitalized_phrase
+Strategies,2,capitalized_phrase
+Developing,2,capitalized_phrase
+Compose,2,capitalized_phrase
+Background,2,capitalized_phrase
+Include,2,capitalized_phrase
+Celsius,2,capitalized_phrase
+Elephant,2,capitalized_phrase
+Elliot,2,capitalized_phrase
+Develop,2,capitalized_phrase
+Rephrase,2,capitalized_phrase
+Leverage,2,capitalized_phrase
+Encourage,2,capitalized_phrase
+Improved,2,capitalized_phrase
+Solution,2,capitalized_phrase
+Johnson,2,capitalized_phrase
+Typically,2,capitalized_phrase
+Suggestion,2,capitalized_phrase
+Sandboxing,2,capitalized_phrase
+Retrospective,2,capitalized_phrase
+Executive,2,capitalized_phrase
+OAuth-based,2,capitalized_phrase
+Consistency,2,capitalized_phrase
+Retrieves,2,capitalized_phrase
+Integrations,2,capitalized_phrase
+Medium,2,capitalized_phrase
+Interaction,2,capitalized_phrase
+Essentially,2,capitalized_phrase
+Available,2,capitalized_phrase
+Result,2,capitalized_phrase
+Registration,2,capitalized_phrase
+Discovery,2,capitalized_phrase
+Support,2,capitalized_phrase
+Creating,2,capitalized_phrase
+Servers,2,capitalized_phrase
+Accessing,2,capitalized_phrase
+Public,2,capitalized_phrase
+Discussion,2,capitalized_phrase
+PulseMCP,2,capitalized_phrase
+Streamable,2,capitalized_phrase
+Stateful,2,capitalized_phrase
+McpAgent,2,capitalized_phrase
+Object,2,capitalized_phrase
+Playground,2,capitalized_phrase
+During,2,capitalized_phrase
+Starting,2,capitalized_phrase
+Update,2,capitalized_phrase
+Navigate,2,capitalized_phrase
+Homepage,2,capitalized_phrase
+Customize,2,capitalized_phrase
+Things,2,capitalized_phrase
+Cognition,2,capitalized_phrase
+Started,2,capitalized_phrase
+Simple,2,capitalized_phrase
+Everything,2,capitalized_phrase
+Picture,2,capitalized_phrase
+Having,2,capitalized_phrase
+Lexical,2,capitalized_phrase
+Tickets,2,capitalized_phrase
+Success,2,capitalized_phrase
+Explicitly,2,capitalized_phrase
+Automating,2,capitalized_phrase
+Intelligent,2,capitalized_phrase
+Limitations,2,capitalized_phrase
+Limited,2,capitalized_phrase
+Generally,2,capitalized_phrase
+Databricks,2,capitalized_phrase
+Berkeley,2,capitalized_phrase
+Further,2,capitalized_phrase
+Fortunately,2,capitalized_phrase
+Prototypes,2,capitalized_phrase
+Feature,2,capitalized_phrase
+Quality,2,capitalized_phrase
+Suddenly,2,capitalized_phrase
+AI-first,2,capitalized_phrase
+Comments,2,capitalized_phrase
+Substack,2,capitalized_phrase
+Returning,2,capitalized_phrase
+Prompt-engineering,2,capitalized_phrase
+Occasionally,2,capitalized_phrase
+Extensions,2,capitalized_phrase
+Held-out,2,capitalized_phrase
+Strong,2,capitalized_phrase
+Principles,2,capitalized_phrase
+ResponseFormat,2,capitalized_phrase
+Markdown,2,capitalized_phrase
+Verified,2,capitalized_phrase
+Looking,2,capitalized_phrase
+Applied,2,capitalized_phrase
+Delivered,2,capitalized_phrase
+Platforms,2,capitalized_phrase
+Chrome,2,capitalized_phrase
+Visual,2,capitalized_phrase
+Studio,2,capitalized_phrase
+Homebrew,2,capitalized_phrase
+WinGet,2,capitalized_phrase
+Anthropic.ClaudeCode,2,capitalized_phrase
+Palette,2,capitalized_phrase
+Discord,2,capitalized_phrase
+Powered,2,capitalized_phrase
+Supported,2,capitalized_phrase
+Session,2,capitalized_phrase
+Window,2,capitalized_phrase
+Features,2,capitalized_phrase
+Development,2,capitalized_phrase
+Switch,2,capitalized_phrase
+Seamless,2,capitalized_phrase
+Multi-model,2,capitalized_phrase
+Topics,2,capitalized_phrase
+Resource,2,capitalized_phrase
+Investment,2,capitalized_phrase
+SerperDevTool,2,capitalized_phrase
+ScrapeWebsiteTool,2,capitalized_phrase
+Identifying,2,capitalized_phrase
+Extracts,2,capitalized_phrase
+Exfiltrating,2,capitalized_phrase
+Accesses,2,capitalized_phrase
+Similar,2,capitalized_phrase
+Sensitive,2,capitalized_phrase
+Volume,2,capitalized_phrase
+Metadata,2,capitalized_phrase
+Exfiltrate,2,capitalized_phrase
+Exploit,2,capitalized_phrase
+URL-encoded,2,capitalized_phrase
+SPECIAL,2,capitalized_phrase
+INSTRUCTIONS,2,capitalized_phrase
+Securing,2,capitalized_phrase
+Defining,2,capitalized_phrase
+Filtering,2,capitalized_phrase
+Memory,2,capitalized_phrase
+Scanning,2,capitalized_phrase
+Alliance,2,capitalized_phrase
+Hierarchical,2,capitalized_phrase
+Stealer,2,capitalized_phrase
+Exposing,2,capitalized_phrase
+Escalation,2,capitalized_phrase
+Southeast,2,capitalized_phrase
+Current,2,capitalized_phrase
+Bypass,2,capitalized_phrase
+Industrial,2,capitalized_phrase
+SD-WAN,2,capitalized_phrase
+Browser,2,capitalized_phrase
+AI-Driven,2,capitalized_phrase
+Operations,2,capitalized_phrase
+Managed,2,capitalized_phrase
+Library,2,capitalized_phrase
+Tokens,2,capitalized_phrase
+Impacts,2,capitalized_phrase
+Updates,2,capitalized_phrase
+Package,2,capitalized_phrase
+Qwen3-32B,2,capitalized_phrase
+Recent,2,capitalized_phrase
+Contributions,2,capitalized_phrase
+AbsenceBench,2,capitalized_phrase
+Matching,2,capitalized_phrase
+Helsinki,2,capitalized_phrase
+Kiasma,2,capitalized_phrase
+Furthermore,2,capitalized_phrase
+Manually,2,capitalized_phrase
+Conversely,2,capitalized_phrase
+Experimental,2,capitalized_phrase
+Haystacks,2,capitalized_phrase
+Focused,2,capitalized_phrase
+Levenshtein,2,capitalized_phrase
+Unique,2,capitalized_phrase
+Between,2,capitalized_phrase
+Vodrahalli,2,capitalized_phrase
+Efficient,2,capitalized_phrase
+Advances,2,capitalized_phrase
+Embedding,2,capitalized_phrase
+Status,2,capitalized_phrase
+Follow,2,capitalized_phrase
+CVE-2025-53773,2,capitalized_phrase
+Embrace,2,capitalized_phrase
+Walkthrough,2,capitalized_phrase
+Finally,2,capitalized_phrase
+Markus,2,capitalized_phrase
+Finding,2,capitalized_phrase
+Guardrails,2,capitalized_phrase
+Vulnerabilities,2,capitalized_phrase
+Non-Determinism,2,capitalized_phrase
+AI-based,2,capitalized_phrase
+Problem,2,capitalized_phrase
+CyberGym,2,capitalized_phrase
+SecVulEval,2,capitalized_phrase
+PY-APP-003,2,capitalized_phrase
+PY-APP-008,2,capitalized_phrase
+Real-World,2,capitalized_phrase
+PROMPT,2,capitalized_phrase
+Repeating,2,capitalized_phrase
+Foundation,2,capitalized_phrase
+Thomas,2,capitalized_phrase
+Herzog,2,capitalized_phrase
+Estrin,2,capitalized_phrase
+Hiroshi,2,capitalized_phrase
+Hyungkeun,2,capitalized_phrase
+Guillaume,2,capitalized_phrase
+JZDLin,2,capitalized_phrase
+Canedo,2,capitalized_phrase
+Ludovic,2,capitalized_phrase
+Gioria,2,capitalized_phrase
+Arabic,2,capitalized_phrase
+Benjamin,2,capitalized_phrase
+Antonio,2,capitalized_phrase
+Olivier,2,capitalized_phrase
+Jendrian,2,capitalized_phrase
+Michele,2,capitalized_phrase
+Perego,2,capitalized_phrase
+Giuseppe,2,capitalized_phrase
+Schiaffella,2,capitalized_phrase
+Alessio,2,capitalized_phrase
+Loredana,2,capitalized_phrase
+Simone,2,capitalized_phrase
+Onofri,2,capitalized_phrase
+Brazilian,2,capitalized_phrase
+Marcelo,2,capitalized_phrase
+Correa,2,capitalized_phrase
+Fabien,2,capitalized_phrase
+Spychiger,2,capitalized_phrase
+Felipe,2,capitalized_phrase
+Calderon,2,capitalized_phrase
+Manuel,2,capitalized_phrase
+Sanchez,2,capitalized_phrase
+Guasch,2,capitalized_phrase
+Ukrainian,2,capitalized_phrase
+Vietnamese,2,capitalized_phrase
+Nguyen,2,capitalized_phrase
+Tooling,2,capitalized_phrase
+Humans,2,capitalized_phrase
+Contributor,2,capitalized_phrase
+Primary,2,capitalized_phrase
+Industry,2,capitalized_phrase
+Financial,2,capitalized_phrase
+Version,2,capitalized_phrase
+Methods,2,capitalized_phrase
+Gartner,2,capitalized_phrase
+Simulates,2,capitalized_phrase
+Detect,2,capitalized_phrase
+Dependency,2,capitalized_phrase
+Offers,2,capitalized_phrase
+Integrates,2,capitalized_phrase
+Operates,2,capitalized_phrase
+Allows,2,capitalized_phrase
+Likewise,2,capitalized_phrase
+Reinforcement,2,capitalized_phrase
+Learning,2,capitalized_phrase
+Complete,2,capitalized_phrase
+Automation,2,capitalized_phrase
+SonarQube,2,capitalized_phrase
+DeepCode,2,capitalized_phrase
+Establish,2,capitalized_phrase
+Understand,2,capitalized_phrase
+Challenge,2,capitalized_phrase
+Supplement,2,capitalized_phrase
+Regular,2,capitalized_phrase
+Essentials,2,capitalized_phrase
+Overflow,2,capitalized_phrase
+Exchange,2,capitalized_phrase
+Guaranteed,2,capitalized_phrase
+Minimum,2,capitalized_phrase
+Income,2,capitalized_phrase
+Americans,2,capitalized_phrase
+Within,2,capitalized_phrase
+CODEOWNERS,2,capitalized_phrase
+Architect,2,capitalized_phrase
+Beginners,2,capitalized_phrase
+Eliminating,2,capitalized_phrase
+Investigations,2,capitalized_phrase
+Collaboration,2,capitalized_phrase
+Resolution,2,capitalized_phrase
+Wakefield,2,capitalized_phrase
+CrashLoopBackOff,2,capitalized_phrase
+OOMKilled,2,capitalized_phrase
+Alerts,2,capitalized_phrase
+Telemetry,2,capitalized_phrase
+Prometheus,2,capitalized_phrase
+AI-Native,2,capitalized_phrase
+Systems,2,capitalized_phrase
+Correlation,2,capitalized_phrase
+Xanthos,2,capitalized_phrase
+Insight,2,capitalized_phrase
+VMware,2,capitalized_phrase
+Omnition,2,capitalized_phrase
+DeepMind,2,capitalized_phrase
+Khandelwal,2,capitalized_phrase
+WorldQuant,2,capitalized_phrase
+Moveworks,2,capitalized_phrase
+Capital,2,capitalized_phrase
+University,2,capitalized_phrase
+Artificial,2,capitalized_phrase
+B.Tech,2,capitalized_phrase
+Honors,2,capitalized_phrase
+Bombay,2,capitalized_phrase
+Anjali,2,capitalized_phrase
+Implementation,2,capitalized_phrase
+Attributes,2,capitalized_phrase
+Decide,2,capitalized_phrase
+Open-source,2,capitalized_phrase
+Grafana,2,capitalized_phrase
+Processing,2,capitalized_phrase
+NodeTracerProvider,2,capitalized_phrase
+SimpleSpanProcessor,2,capitalized_phrase
+OTLPTraceExporter,2,capitalized_phrase
+SpanStatusCode,2,capitalized_phrase
+Metrics,2,capitalized_phrase
+Handling,2,capitalized_phrase
+Patterns,2,capitalized_phrase
+Anti-Patterns,2,capitalized_phrase
+Logging,2,capitalized_phrase
+Viewpoint,2,capitalized_phrase
+On-Call,2,capitalized_phrase
+Emergency,2,capitalized_phrase
+Postmortem,2,capitalized_phrase
+Overload,2,capitalized_phrase
+Signify,2,capitalized_phrase
+Demand,2,capitalized_phrase
+Capacity,2,capitalized_phrase
+Provisioning,2,capitalized_phrase
+Prompting Techniques,2,capitalized_phrase
+Prompting Prompt,2,capitalized_phrase
+Prompt Engineer,2,capitalized_phrase
+Function Calling,2,capitalized_phrase
+LLMs LLM,2,capitalized_phrase
+Creative Writing,2,capitalized_phrase
+Summarization Provide,2,capitalized_phrase
+Translation Specify,2,capitalized_phrase
+Dialogue Design,2,capitalized_phrase
+Open-Ended Questions,2,capitalized_phrase
+Specific Questions,2,capitalized_phrase
+Multiple Choice,2,capitalized_phrase
+Questions Present,2,capitalized_phrase
+Harry Potter,2,capitalized_phrase
+J.R.R. Tolkien,2,capitalized_phrase
+J.K. Rowling,2,capitalized_phrase
+Stephen King,2,capitalized_phrase
+Hypothetical Questions,2,capitalized_phrase
+Opinion-Based Questions,2,capitalized_phrase
+Code Completion,2,capitalized_phrase
+Code Translation,2,capitalized_phrase
+Code Optimization,2,capitalized_phrase
+Code Debugging,2,capitalized_phrase
+Photorealistic Images,2,capitalized_phrase
+Artistic Images,2,capitalized_phrase
+Abstract Images,2,capitalized_phrase
+Image Editing,2,capitalized_phrase
+Example Include,2,capitalized_phrase
+Example Provide,2,capitalized_phrase
+Tactic Action,2,capitalized_phrase
+Example Encourage,2,capitalized_phrase
+Retrospective December,2,capitalized_phrase
+Tool Calls,2,capitalized_phrase
+Affordability June,2,capitalized_phrase
+SEO June,2,capitalized_phrase
+Autonomous Agents,2,capitalized_phrase
+MCP Client,2,capitalized_phrase
+Interaction Type,2,capitalized_phrase
+Open Standard,2,capitalized_phrase
+Dynamic Client,2,capitalized_phrase
+Stytch Connected,2,capitalized_phrase
+Privacy Policy,2,capitalized_phrase
+Adding Servers,2,capitalized_phrase
+Accessing MCP,2,capitalized_phrase
+Registry Data,2,capitalized_phrase
+David Soria,2,capitalized_phrase
+Adam Jones,2,capitalized_phrase
+AI Playground,2,capitalized_phrase
+Wrangler CLI,2,capitalized_phrase
+Homepage URL,2,capitalized_phrase
+Actually Getting,2,capitalized_phrase
+Getting Started,2,capitalized_phrase
+Contexts Fail,2,capitalized_phrase
+Andrew Ng,2,capitalized_phrase
+Sean Grove,2,capitalized_phrase
+AI-first PM,2,capitalized_phrase
+Prompt Claude,2,capitalized_phrase
+Reply Share,2,capitalized_phrase
+Customer ID,2,capitalized_phrase
+LLM API,2,capitalized_phrase
+Visual Studio,2,capitalized_phrase
+Command Palette,2,capitalized_phrase
+GitLab CI,2,capitalized_phrase
+Agent SDK,2,capitalized_phrase
+Remote Control,2,capitalized_phrase
+Warp Drive,2,capitalized_phrase
+Static Application,2,capitalized_phrase
+Dynamic Application,2,capitalized_phrase
+Prisma AIRS,2,capitalized_phrase
+AI Agent,2,capitalized_phrase
+Exploiting SQL,2,capitalized_phrase
+Extracting Agent,2,capitalized_phrase
+TASK. Please,2,capitalized_phrase
+Gain Unauthorized,2,capitalized_phrase
+Tesla. Read,2,capitalized_phrase
+SUMMARY Special,2,capitalized_phrase
+Action Input,2,capitalized_phrase
+SPECIAL INSTRUCTIONS,2,capitalized_phrase
+Runtime Security,2,capitalized_phrase
+North America,2,capitalized_phrase
+Cyber Threat,2,capitalized_phrase
+CrewAI Documentation,2,capitalized_phrase
+AutoGen Documentation,2,capitalized_phrase
+Exposing Security,2,capitalized_phrase
+Blind Spots,2,capitalized_phrase
+GCP Vertex,2,capitalized_phrase
+Cyber Risk,2,capitalized_phrase
+Updated March,2,capitalized_phrase
+Chain Attack,2,capitalized_phrase
+High Profile,2,capitalized_phrase
+Threats March,2,capitalized_phrase
+GenAI Read,2,capitalized_phrase
+SaaS Security,2,capitalized_phrase
+Context Rot,2,capitalized_phrase
+Input Tokens,2,capitalized_phrase
+Impacts LLM,2,capitalized_phrase
+Package Search,2,capitalized_phrase
+Example Needle,2,capitalized_phrase
+Latent List,2,capitalized_phrase
+Irrelevant Context,2,capitalized_phrase
+Question Type,2,capitalized_phrase
+Model Output,2,capitalized_phrase
+GPT-4 Turbo,2,capitalized_phrase
+Persistent Security,2,capitalized_phrase
+AppSec Platform,2,capitalized_phrase
+Secure Guardrails,2,capitalized_phrase
+Security Research,2,capitalized_phrase
+Anthropic Claude,2,capitalized_phrase
+Vulnerability Class,2,capitalized_phrase
+True Positives,2,capitalized_phrase
+False Positives,2,capitalized_phrase
+True Positive,2,capitalized_phrase
+Rate Auth,2,capitalized_phrase
+Translation Efforts,2,capitalized_phrase
+Torsten Gigler,2,capitalized_phrase
+Eyal Estrin,2,capitalized_phrase
+Hyungkeun Park,2,capitalized_phrase
+Guillaume Lopes,2,capitalized_phrase
+Gerardo Canedo,2,capitalized_phrase
+Ludovic Petit,2,capitalized_phrase
+Kai Jendrian,2,capitalized_phrase
+Paolo Perego,2,capitalized_phrase
+Paco Schiaffella,2,capitalized_phrase
+Loredana Mancini,2,capitalized_phrase
+Simone Onofri,2,capitalized_phrase
+Brazilian Portuguese,2,capitalized_phrase
+Jorge Correa,2,capitalized_phrase
+Fabien Spychiger,2,capitalized_phrase
+Juan Carlos,2,capitalized_phrase
+Contribution Scenario,2,capitalized_phrase
+Previous Version,2,capitalized_phrase
+Comparing Application,2,capitalized_phrase
+Conclusion Frequently,2,capitalized_phrase
+While AI,2,capitalized_phrase
+Software Teams,2,capitalized_phrase
+Pull Request,2,capitalized_phrase
+Stack Overflow,2,capitalized_phrase
+Stack Exchange,2,capitalized_phrase
+Staff DevOps,2,capitalized_phrase
+Copilot SDK,2,capitalized_phrase
+Blog Technology,2,capitalized_phrase
+Download Mitch,2,capitalized_phrase
+Wakefield Product,2,capitalized_phrase
+Researcher Mitch,2,capitalized_phrase
+Product Researcher,2,capitalized_phrase
+Content AI,2,capitalized_phrase
+Related Post,2,capitalized_phrase
+Fireside Chat,2,capitalized_phrase
+Troubleshooting Struggle,2,capitalized_phrase
+AI Changes,2,capitalized_phrase
+Action. Engineers,2,capitalized_phrase
+Download Spiros,2,capitalized_phrase
+Xanthos Founder,2,capitalized_phrase
+CEO Spiros,2,capitalized_phrase
+Log Insight,2,capitalized_phrase
+Splunk. Gabor,2,capitalized_phrase
+Angeli Research,2,capitalized_phrase
+Engineer Gabor,2,capitalized_phrase
+Google DeepMind,2,capitalized_phrase
+Square Assistant,2,capitalized_phrase
+Bharat Khandelwal,2,capitalized_phrase
+Tower Research,2,capitalized_phrase
+Stanford University,2,capitalized_phrase
+Artificial Intelligence,2,capitalized_phrase
+IIT Bombay,2,capitalized_phrase
+Observability Basics,2,capitalized_phrase
+Anjali Udasi,2,capitalized_phrase
+SpanStatusCode. ERROR,2,capitalized_phrase
+Service Level,2,capitalized_phrase
+Emergency Response,2,capitalized_phrase
+Load Balancing,2,capitalized_phrase
+Service Management,2,capitalized_phrase
+AI Agents Context,2,capitalized_phrase
+Specific Questions Design,2,capitalized_phrase
+Multiple Choice Questions,2,capitalized_phrase
+Hypothetical Questions Craft,2,capitalized_phrase
+Opinion-Based Questions Design,2,capitalized_phrase
+Code Translation Specify,2,capitalized_phrase
+Code Optimization Prompt,2,capitalized_phrase
+Code Debugging Provide,2,capitalized_phrase
+Artistic Images Design,2,capitalized_phrase
+Abstract Images Formulate,2,capitalized_phrase
+Image Editing Provide,2,capitalized_phrase
+Tactic Action Try,2,capitalized_phrase
+Dynamic Client Registration,2,capitalized_phrase
+Accessing MCP Registry,2,capitalized_phrase
+David Soria Parra,2,capitalized_phrase
+Actually Getting Things,2,capitalized_phrase
+Claude Code Docs,2,capitalized_phrase
+Static Application Security,2,capitalized_phrase
+Dynamic Application Security,2,capitalized_phrase
+AI Runtime Security,2,capitalized_phrase
+AI Access Security,2,capitalized_phrase
+Gain Unauthorized Access,2,capitalized_phrase
+View Transactions Tool,2,capitalized_phrase
+Cyber Threat Alliance,2,capitalized_phrase
+Exposing Security Blind,2,capitalized_phrase
+GCP Vertex AI,2,capitalized_phrase
+Cyber Risk Related,2,capitalized_phrase
+High Profile Threats,2,capitalized_phrase
+Tokens Impacts LLM,2,capitalized_phrase
+GPT Family Repeated,2,capitalized_phrase
+Gemini Family Repeated,2,capitalized_phrase
+Remote Code Execution,2,capitalized_phrase
+Anthropic Claude Code,2,capitalized_phrase
+Vulnerability Class True,2,capitalized_phrase
+Positives False Positives,2,capitalized_phrase
+True Positive Rate,2,capitalized_phrase
+Juan Carlos Calderon,2,capitalized_phrase
+Comparing Application Security,2,capitalized_phrase
+Code Review Essentials,2,capitalized_phrase
+Staff DevOps Architect,2,capitalized_phrase
+Download Mitch Wakefield,2,capitalized_phrase
+Product Researcher Mitch,2,capitalized_phrase
+Download Spiros Xanthos,2,capitalized_phrase
+Splunk. Gabor Angeli,2,capitalized_phrase
+Research Engineer Gabor,2,capitalized_phrase
+Bharat Khandelwal Research,2,capitalized_phrase
+Resolve AI Bharat,2,capitalized_phrase
+Tower Research Capital,2,capitalized_phrase
+Service Level Objectives,2,capitalized_phrase
+Google Software Engineers,2,capitalized_phrase
+AI Agents Context Engineering,2,capitalized_phrase
+Multiple Choice Questions Present,2,capitalized_phrase
+Tactic Prompt Example Include,2,capitalized_phrase
+Tactic Prompt Example Provide,2,capitalized_phrase
+Tactic Prompt Example Encourage,2,capitalized_phrase
+Accessing MCP Registry Data,2,capitalized_phrase
+Static Application Security Testing,2,capitalized_phrase
+Dynamic Application Security Testing,2,capitalized_phrase
+Exposing Security Blind Spots,2,capitalized_phrase
+High Profile Threats March,2,capitalized_phrase
+GPT Family Repeated Words,2,capitalized_phrase
+Gemini Family Repeated Words,2,capitalized_phrase
+Vulnerability Class True Positives,2,capitalized_phrase
+False Positives True Positive,2,capitalized_phrase
+Comparing Application Security Testing,2,capitalized_phrase
+Download Mitch Wakefield Product,2,capitalized_phrase
+Download Spiros Xanthos Founder,2,capitalized_phrase
+Splunk. Gabor Angeli Research,2,capitalized_phrase
+Bharat Khandelwal Research Engineer,2,capitalized_phrase
+Enroll,1,capitalized_phrase
+Elements,1,capitalized_phrase
+Few-shot,1,capitalized_phrase
+Chain-of-Thought,1,capitalized_phrase
+Self-Consistency,1,capitalized_phrase
+Chaining,1,capitalized_phrase
+Thoughts,1,capitalized_phrase
+Retrieval,1,capitalized_phrase
+Augmented,1,capitalized_phrase
+Tool-use,1,capitalized_phrase
+Active-Prompt,1,capitalized_phrase
+Directional,1,capitalized_phrase
+Stimulus,1,capitalized_phrase
+Program-Aided,1,capitalized_phrase
+Reflexion,1,capitalized_phrase
+Components,1,capitalized_phrase
+Caching,1,capitalized_phrase
+Tackling,1,capitalized_phrase
+Generated,1,capitalized_phrase
+Diversity,1,capitalized_phrase
+Graduate,1,capitalized_phrase
+Diagram,1,capitalized_phrase
+Creativity,1,capitalized_phrase
+Rhymes,1,capitalized_phrase
+Primes,1,capitalized_phrase
+Interdisciplinary,1,capitalized_phrase
+Inventing,1,capitalized_phrase
+Extraction,1,capitalized_phrase
+Person,1,capitalized_phrase
+Alphabet,1,capitalized_phrase
+Mathematics,1,capitalized_phrase
+Evaluating,1,capitalized_phrase
+Composite,1,capitalized_phrase
+Functions,1,capitalized_phrase
+Numbers,1,capitalized_phrase
+Physical,1,capitalized_phrase
+Concept,1,capitalized_phrase
+Truthfulness,1,capitalized_phrase
+Identification,1,capitalized_phrase
+Leaking,1,capitalized_phrase
+Jailbreaking,1,capitalized_phrase
+Grok-1,1,capitalized_phrase
+Misuses,1,capitalized_phrase
+Factuality,1,capitalized_phrase
+Biases,1,capitalized_phrase
+Faithfulness,1,capitalized_phrase
+In-Context,1,capitalized_phrase
+Recall,1,capitalized_phrase
+Reduces,1,capitalized_phrase
+ThoughtSculpt,1,capitalized_phrase
+Infini-Attention,1,capitalized_phrase
+LM-Guided,1,capitalized_phrase
+Trustworthiness,1,capitalized_phrase
+Tokenization,1,capitalized_phrase
+Papers,1,capitalized_phrase
+Notebooks,1,capitalized_phrase
+Readings,1,capitalized_phrase
+Mastering,1,capitalized_phrase
+Multi-turn,1,capitalized_phrase
+Iterate,1,capitalized_phrase
+Well-crafted,1,capitalized_phrase
+Enhanced,1,capitalized_phrase
+Rapidly,1,capitalized_phrase
+Garden,1,capitalized_phrase
+Jumpstart,1,capitalized_phrase
+Training,1,capitalized_phrase
+Infamously,1,capitalized_phrase
+Compare,1,capitalized_phrase
+Shanghai,1,capitalized_phrase
+Projects,1,capitalized_phrase
+Author,1,capitalized_phrase
+McGinley-Stempel,1,capitalized_phrase
+Source,1,capitalized_phrase
+Valuable,1,capitalized_phrase
+MCP-compatible,1,capitalized_phrase
+Friction,1,capitalized_phrase
+Interoperability,1,capitalized_phrase
+Two-Way,1,capitalized_phrase
+Client-Server,1,capitalized_phrase
+Embedded,1,capitalized_phrase
+Exposes,1,capitalized_phrase
+Deploying,1,capitalized_phrase
+Manual,1,capitalized_phrase
+Plugin-specific,1,capitalized_phrase
+Varies,1,capitalized_phrase
+Ad-hoc,1,capitalized_phrase
+Single-shot,1,capitalized_phrase
+Framework-dependent,1,capitalized_phrase
+Particularly,1,capitalized_phrase
+Depending,1,capitalized_phrase
+ListToolsResultSchema,1,capitalized_phrase
+Chooses,1,capitalized_phrase
+CallToolResultSchema,1,capitalized_phrase
+Inject,1,capitalized_phrase
+Handle,1,capitalized_phrase
+MCP-connected,1,capitalized_phrase
+Endpoint,1,capitalized_phrase
+Clients,1,capitalized_phrase
+Scalable,1,capitalized_phrase
+Multi-User,1,capitalized_phrase
+Enabling,1,capitalized_phrase
+LinkedIn,1,capitalized_phrase
+Facebook,1,capitalized_phrase
+Detecting,1,capitalized_phrase
+Portal,1,capitalized_phrase
+Fingerprinting,1,capitalized_phrase
+Active,1,capitalized_phrase
+Fine-grained,1,capitalized_phrase
+Firebase,1,capitalized_phrase
+Cognito,1,capitalized_phrase
+Fingerprint,1,capitalized_phrase
+Private,1,capitalized_phrase
+Community-driven,1,capitalized_phrase
+Requests,1,capitalized_phrase
+February,1,capitalized_phrase
+Justin,1,capitalized_phrase
+Spahr-Summers,1,capitalized_phrase
+Antanavicius,1,capitalized_phrase
+Hancock,1,capitalized_phrase
+Padilla,1,capitalized_phrase
+Radoslav,1,capitalized_phrase
+Dimitrov,1,capitalized_phrase
+Stacklok,1,capitalized_phrase
+Avinash,1,capitalized_phrase
+Sridhar,1,capitalized_phrase
+Connor,1,capitalized_phrase
+Verhagen,1,capitalized_phrase
+Preeti,1,capitalized_phrase
+Dewani,1,capitalized_phrase
+Porwal,1,capitalized_phrase
+Jonathan,1,capitalized_phrase
+Hefner,1,capitalized_phrase
+Objects,1,capitalized_phrase
+Stateless,1,capitalized_phrase
+WebStandardStreamableHTTPServerTransport,1,capitalized_phrase
+AGENTS.md,1,capitalized_phrase
+Opening,1,capitalized_phrase
+Select,1,capitalized_phrase
+Restart,1,capitalized_phrase
+Third-party,1,capitalized_phrase
+WorkOS,1,capitalized_phrase
+OAuthProvider,1,capitalized_phrase
+Warning,1,capitalized_phrase
+Submit,1,capitalized_phrase
+Product-agnostic,1,capitalized_phrase
+Tactical,1,capitalized_phrase
+Adapting,1,capitalized_phrase
+Interestingly,1,capitalized_phrase
+Ultimately,1,capitalized_phrase
+Practice,1,capitalized_phrase
+Anticipate,1,capitalized_phrase
+Ownership,1,capitalized_phrase
+Workflow,1,capitalized_phrase
+Delegate,1,capitalized_phrase
+Vercel,1,capitalized_phrase
+Intermediate,1,capitalized_phrase
+Delegating,1,capitalized_phrase
+Larger,1,capitalized_phrase
+Rather,1,capitalized_phrase
+Smaller,1,capitalized_phrase
+Drafting,1,capitalized_phrase
+Refining,1,capitalized_phrase
+Journalism,1,capitalized_phrase
+Journalist,1,capitalized_phrase
+Restaurant,1,capitalized_phrase
+Expect,1,capitalized_phrase
+Co-develop,1,capitalized_phrase
+Certain,1,capitalized_phrase
+Checkpoint,1,capitalized_phrase
+Currently,1,capitalized_phrase
+Enhancing,1,capitalized_phrase
+Shortcuts,1,capitalized_phrase
+Repetitive,1,capitalized_phrase
+Enforcement,1,capitalized_phrase
+Greptile,1,capitalized_phrase
+CodeRabbit,1,capitalized_phrase
+Improving,1,capitalized_phrase
+Cutoffs,1,capitalized_phrase
+Whenever,1,capitalized_phrase
+Otherwise,1,capitalized_phrase
+Minimizing,1,capitalized_phrase
+Losses,1,capitalized_phrase
+Diversifying,1,capitalized_phrase
+Permissioning,1,capitalized_phrase
+Readonly,1,capitalized_phrase
+AGENTS,1,capitalized_phrase
+CONTEXT,1,capitalized_phrase
+MANAGEMENT,1,capitalized_phrase
+Successful,1,capitalized_phrase
+Overloading,1,capitalized_phrase
+Function-Calling,1,capitalized_phrase
+Leaderboard,1,capitalized_phrase
+Browsing,1,capitalized_phrase
+GeoEngine,1,capitalized_phrase
+Longer,1,capitalized_phrase
+Tripadvisor,1,capitalized_phrase
+Competency,1,capitalized_phrase
+Toolkit,1,capitalized_phrase
+Specification,1,capitalized_phrase
+Delivery,1,capitalized_phrase
+Flawless,1,capitalized_phrase
+Faster,1,capitalized_phrase
+Lovable,1,capitalized_phrase
+Replit,1,capitalized_phrase
+Spec-driven,1,capitalized_phrase
+Clarify,1,capitalized_phrase
+Zooming,1,capitalized_phrase
+Gatekeeping,1,capitalized_phrase
+William,1,capitalized_phrase
+Gibson,1,capitalized_phrase
+Restacks,1,capitalized_phrase
+Gluecharm,1,capitalized_phrase
+Probably,1,capitalized_phrase
+Chaudhary,1,capitalized_phrase
+Latest,1,capitalized_phrase
+Discussions,1,capitalized_phrase
+Collaborate,1,capitalized_phrase
+Working,1,capitalized_phrase
+LLM-friendly,1,capitalized_phrase
+Wrapping,1,capitalized_phrase
+Collect,1,capitalized_phrase
+Attach,1,capitalized_phrase
+Prepare,1,capitalized_phrase
+Determine,1,capitalized_phrase
+Instructing,1,capitalized_phrase
+Observe,1,capitalized_phrase
+Collaborating,1,capitalized_phrase
+Careful,1,capitalized_phrase
+Effects,1,capitalized_phrase
+Fields,1,capitalized_phrase
+GraphQL,1,capitalized_phrase
+DETAILED,1,capitalized_phrase
+CONCISE,1,capitalized_phrase
+SWE-bench,1,capitalized_phrase
+Lastly,1,capitalized_phrase
+Acknowledgements,1,capitalized_phrase
+Aizawa,1,capitalized_phrase
+Zachary,1,capitalized_phrase
+Witten,1,capitalized_phrase
+Al-Sheikh,1,capitalized_phrase
+Maggie,1,capitalized_phrase
+Theodora,1,capitalized_phrase
+Santiago,1,capitalized_phrase
+Marketing,1,capitalized_phrase
+Vorwerck,1,capitalized_phrase
+Alexander,1,capitalized_phrase
+Bricken,1,capitalized_phrase
+Navigation,1,capitalized_phrase
+Deployment,1,capitalized_phrase
+Administration,1,capitalized_phrase
+Configuration,1,capitalized_phrase
+Extend,1,capitalized_phrase
+Permission,1,capitalized_phrase
+Console,1,capitalized_phrase
+Recommended,1,capitalized_phrase
+Cmd+Shift+X,1,capitalized_phrase
+Ctrl+Shift+X,1,capitalized_phrase
+Cmd+Shift+P,1,capitalized_phrase
+Ctrl+Shift+P,1,capitalized_phrase
+Silicon,1,capitalized_phrase
+IntelliJ,1,capitalized_phrase
+PyCharm,1,capitalized_phrase
+WebStorm,1,capitalized_phrase
+Marketplace,1,capitalized_phrase
+Describe,1,capitalized_phrase
+Anthropic-managed,1,capitalized_phrase
+Sessions,1,capitalized_phrase
+Message,1,capitalized_phrase
+Dispatch,1,capitalized_phrase
+Telegram,1,capitalized_phrase
+Channels,1,capitalized_phrase
+Responses,1,capitalized_phrase
+StockApp,1,capitalized_phrase
+Notion,1,capitalized_phrase
+Migrate,1,capitalized_phrase
+Keyboard,1,capitalized_phrase
+Classic,1,capitalized_phrase
+Blocks,1,capitalized_phrase
+Warpify,1,capitalized_phrase
+Built-in,1,capitalized_phrase
+Worktrees,1,capitalized_phrase
+GitBook,1,capitalized_phrase
+Modality,1,capitalized_phrase
+Compatible,1,capitalized_phrase
+Triggers,1,capitalized_phrase
+Schedules,1,capitalized_phrase
+Parallelism,1,capitalized_phrase
+Shared,1,capitalized_phrase
+Retention,1,capitalized_phrase
+Categories,1,capitalized_phrase
+Summary,1,capitalized_phrase
+Misconfigured,1,capitalized_phrase
+Sanitize,1,capitalized_phrase
+Composition,1,capitalized_phrase
+Unsecured,1,capitalized_phrase
+Credential,1,capitalized_phrase
+Combine,1,capitalized_phrase
+Meanwhile,1,capitalized_phrase
+Healthcare,1,capitalized_phrase
+Including,1,capitalized_phrase
+Intent,1,capitalized_phrase
+Identity,1,capitalized_phrase
+Unexpected,1,capitalized_phrase
+Simulated,1,capitalized_phrase
+Attacks,1,capitalized_phrase
+Orchestration,1,capitalized_phrase
+Recommend,1,capitalized_phrase
+Display,1,capitalized_phrase
+Reveals,1,capitalized_phrase
+Gaining,1,capitalized_phrase
+Fetches,1,capitalized_phrase
+Participant,1,capitalized_phrase
+Schemas,1,capitalized_phrase
+Internal,1,capitalized_phrase
+Reader,1,capitalized_phrase
+Mounted,1,capitalized_phrase
+Base-64,1,capitalized_phrase
+Shannon-entropy,1,capitalized_phrase
+Account,1,capitalized_phrase
+Compute,1,capitalized_phrase
+Engine,1,capitalized_phrase
+TransactionByID,1,capitalized_phrase
+Conversation,1,capitalized_phrase
+History,1,capitalized_phrase
+Following,1,capitalized_phrase
+URL-encodes,1,capitalized_phrase
+Assuming,1,capitalized_phrase
+Hardening,1,capitalized_phrase
+Constraining,1,capitalized_phrase
+Sanitization,1,capitalized_phrase
+Boundary,1,capitalized_phrase
+Executor,1,capitalized_phrase
+Restrict,1,capitalized_phrase
+Disable,1,capitalized_phrase
+General-purpose,1,capitalized_phrase
+Organizations,1,capitalized_phrase
+Assess,1,capitalized_phrase
+UNIT42,1,capitalized_phrase
+Europe,1,capitalized_phrase
+Middle,1,capitalized_phrase
+Australia,1,capitalized_phrase
+Advisory,1,capitalized_phrase
+Gremlin,1,capitalized_phrase
+Underground,1,capitalized_phrase
+Really,1,capitalized_phrase
+Shopping,1,capitalized_phrase
+Retail,1,capitalized_phrase
+Widespread,1,capitalized_phrase
+Weaponizing,1,capitalized_phrase
+Protectors,1,capitalized_phrase
+TeamPCP,1,capitalized_phrase
+Multi-Stage,1,capitalized_phrase
+CVE-2025-55182,1,capitalized_phrase
+Infostealer,1,capitalized_phrase
+Groups,1,capitalized_phrase
+Converging,1,capitalized_phrase
+Interests,1,capitalized_phrase
+Clusters,1,capitalized_phrase
+Targeting,1,capitalized_phrase
+Government,1,capitalized_phrase
+CL-STA-1048,1,capitalized_phrase
+CL-STA-1049,1,capitalized_phrase
+Stately,1,capitalized_phrase
+Taurus,1,capitalized_phrase
+Recruiting,1,capitalized_phrase
+Scheme,1,capitalized_phrase
+Impersonating,1,capitalized_phrase
+Talent,1,capitalized_phrase
+Acquisition,1,capitalized_phrase
+Phishing,1,capitalized_phrase
+Broken,1,capitalized_phrase
+Fragile,1,capitalized_phrase
+Evasion,1,capitalized_phrase
+Suspected,1,capitalized_phrase
+China-Based,1,capitalized_phrase
+Espionage,1,capitalized_phrase
+Operation,1,capitalized_phrase
+Against,1,capitalized_phrase
+Military,1,capitalized_phrase
+Targets,1,capitalized_phrase
+AppleChris,1,capitalized_phrase
+Backdoor,1,capitalized_phrase
+Auditing,1,capitalized_phrase
+Gatekeepers,1,capitalized_phrase
+Judges,1,capitalized_phrase
+Controls,1,capitalized_phrase
+Invalid,1,capitalized_phrase
+AI-Powered,1,capitalized_phrase
+WildFire,1,capitalized_phrase
+Medical,1,capitalized_phrase
+Next-Generation,1,capitalized_phrase
+Hardware,1,capitalized_phrase
+Strata,1,capitalized_phrase
+Manager,1,capitalized_phrase
+PAN-OS,1,capitalized_phrase
+Panorama,1,capitalized_phrase
+Acceleration,1,capitalized_phrase
+Digital,1,capitalized_phrase
+Experience,1,capitalized_phrase
+Isolation,1,capitalized_phrase
+Posture,1,capitalized_phrase
+Xpanse,1,capitalized_phrase
+Detection,1,capitalized_phrase
+Assessments,1,capitalized_phrase
+Transform,1,capitalized_phrase
+Strategy,1,capitalized_phrase
+Corporate,1,capitalized_phrase
+Responsibility,1,capitalized_phrase
+Customers,1,capitalized_phrase
+Investor,1,capitalized_phrase
+Relations,1,capitalized_phrase
+Location,1,capitalized_phrase
+Newsroom,1,capitalized_phrase
+Communities,1,capitalized_phrase
+Cyberpedia,1,capitalized_phrase
+Manage,1,capitalized_phrase
+Preferences,1,capitalized_phrase
+Certifications,1,capitalized_phrase
+Sitemap,1,capitalized_phrase
+Personal,1,capitalized_phrase
+Default,1,capitalized_phrase
+Heading,1,capitalized_phrase
+Seekbar,1,capitalized_phrase
+Troynikov,1,capitalized_phrase
+Interested,1,capitalized_phrase
+Hiring,1,capitalized_phrase
+Variants,1,capitalized_phrase
+Multi-round,1,capitalized_phrase
+Various,1,capitalized_phrase
+Graphwalks,1,capitalized_phrase
+Needle-question,1,capitalized_phrase
+Throughout,1,capitalized_phrase
+Comparison,1,capitalized_phrase
+Distractor,1,capitalized_phrase
+Taking,1,capitalized_phrase
+Baseline,1,capitalized_phrase
+Needle-haystack,1,capitalized_phrase
+Details,1,capitalized_phrase
+HDBSCAN,1,capitalized_phrase
+Needles,1,capitalized_phrase
+Repeat,1,capitalized_phrase
+Conditions,1,capitalized_phrase
+Specifically,1,capitalized_phrase
+Intuitively,1,capitalized_phrase
+PG-essay,1,capitalized_phrase
+Surprisingly,1,capitalized_phrase
+Shuffling,1,capitalized_phrase
+Averaged,1,capitalized_phrase
+Containing,1,capitalized_phrase
+Scores,1,capitalized_phrase
+Non-empty,1,capitalized_phrase
+Replicate,1,capitalized_phrase
+Refusals,1,capitalized_phrase
+Random,1,capitalized_phrase
+Normalized,1,capitalized_phrase
+Presence,1,capitalized_phrase
+Incorrect,1,capitalized_phrase
+Inconsistencies,1,capitalized_phrase
+Negative,1,capitalized_phrase
+Corresponding,1,capitalized_phrase
+Portion,1,capitalized_phrase
+Outputs,1,capitalized_phrase
+Investigating,1,capitalized_phrase
+Footnotes,1,capitalized_phrase
+Deepmind,1,capitalized_phrase
+Kamradt,1,capitalized_phrase
+Pressure,1,capitalized_phrase
+Benchmarking,1,capitalized_phrase
+Assistants,1,capitalized_phrase
+Long-Term,1,capitalized_phrase
+Interactive,1,capitalized_phrase
+Georgiev,1,capitalized_phrase
+Burnell,1,capitalized_phrase
+Gulati,1,capitalized_phrase
+Tanzer,1,capitalized_phrase
+Vincent,1,capitalized_phrase
+Unlocking,1,capitalized_phrase
+Hallman,1,capitalized_phrase
+Pokrass,1,capitalized_phrase
+Goucher,1,capitalized_phrase
+Ganesh,1,capitalized_phrase
+McKinzie,1,capitalized_phrase
+Modarressi,1,capitalized_phrase
+Deilamsalehy,1,capitalized_phrase
+Dernoncourt,1,capitalized_phrase
+Long-Context,1,capitalized_phrase
+Literal,1,capitalized_phrase
+Shrivastava,1,capitalized_phrase
+Holtzman,1,capitalized_phrase
+Ontanon,1,capitalized_phrase
+Tripuraneni,1,capitalized_phrase
+Shivanna,1,capitalized_phrase
+Dikkala,1,capitalized_phrase
+Kazemi,1,capitalized_phrase
+Fatemi,1,capitalized_phrase
+Michelangelo,1,capitalized_phrase
+Evaluations,1,capitalized_phrase
+Queries,1,capitalized_phrase
+Scales,1,capitalized_phrase
+Distracted,1,capitalized_phrase
+Quesnelle,1,capitalized_phrase
+Shippole,1,capitalized_phrase
+McInnes,1,capitalized_phrase
+Melville,1,capitalized_phrase
+Uniform,1,capitalized_phrase
+Manifold,1,capitalized_phrase
+Approximation,1,capitalized_phrase
+Projection,1,capitalized_phrase
+Dimension,1,capitalized_phrase
+Campello,1,capitalized_phrase
+Moulavi,1,capitalized_phrase
+Sander,1,capitalized_phrase
+Density-Based,1,capitalized_phrase
+Clustering,1,capitalized_phrase
+Density,1,capitalized_phrase
+Estimates,1,capitalized_phrase
+Motoda,1,capitalized_phrase
+Mining,1,capitalized_phrase
+Lecture,1,capitalized_phrase
+Springer,1,capitalized_phrase
+Berlin,1,capitalized_phrase
+Heidelberg,1,capitalized_phrase
+Cleaned,1,capitalized_phrase
+Tested,1,capitalized_phrase
+Alibaba,1,capitalized_phrase
+Qwen3-235B-A22B,1,capitalized_phrase
+YouTube,1,capitalized_phrase
+Explained,1,capitalized_phrase
+Folder,1,capitalized_phrase
+Joining,1,capitalized_phrase
+Workstation,1,capitalized_phrase
+Botnet,1,capitalized_phrase
+ZombAIs,1,capitalized_phrase
+ZombAI,1,capitalized_phrase
+Invisible,1,capitalized_phrase
+Unicode,1,capitalized_phrase
+Recommendations,1,capitalized_phrase
+Recently,1,capitalized_phrase
+Responsible,1,capitalized_phrase
+Disclosure,1,capitalized_phrase
+Tuesday,1,capitalized_phrase
+Vervier,1,capitalized_phrase
+Marzuk,1,capitalized_phrase
+Cheers,1,capitalized_phrase
+Arbitrary,1,capitalized_phrase
+Write-Up,1,capitalized_phrase
+Secrets,1,capitalized_phrase
+Solutions,1,capitalized_phrase
+Open-Source,1,capitalized_phrase
+Prevent,1,capitalized_phrase
+Fintech,1,capitalized_phrase
+Mitigate,1,capitalized_phrase
+Calculator,1,capitalized_phrase
+Studies,1,capitalized_phrase
+Edition,1,capitalized_phrase
+Partners,1,capitalized_phrase
+Become,1,capitalized_phrase
+Romain,1,capitalized_phrase
+Gaucher,1,capitalized_phrase
+Vasilii,1,capitalized_phrase
+Ermilov,1,capitalized_phrase
+Gibler,1,capitalized_phrase
+Grasps,1,capitalized_phrase
+Chokes,1,capitalized_phrase
+Insecure,1,capitalized_phrase
+Detailed,1,capitalized_phrase
+Hunting,1,capitalized_phrase
+LLM-based,1,capitalized_phrase
+Benchmarks,1,capitalized_phrase
+Realism,1,capitalized_phrase
+Kinnaird,1,capitalized_phrase
+McQuade,1,capitalized_phrase
+WebGoat,1,capitalized_phrase
+JuiceShop,1,capitalized_phrase
+Benchmark,1,capitalized_phrase
+Internet,1,capitalized_phrase
+Sometimes,1,capitalized_phrase
+SearchService.java,1,capitalized_phrase
+ZeroPath,1,capitalized_phrase
+Memorization,1,capitalized_phrase
+Eyeballvul,1,capitalized_phrase
+EyeballVul,1,capitalized_phrase
+Chauvin,1,capitalized_phrase
+Django,1,capitalized_phrase
+FastAPI,1,capitalized_phrase
+Focusing,1,capitalized_phrase
+Exploratory,1,capitalized_phrase
+Exploring,1,capitalized_phrase
+Commits,1,capitalized_phrase
+PY-APP-001,1,capitalized_phrase
+PY-APP-004,1,capitalized_phrase
+PY-APP-005,1,capitalized_phrase
+PY-APP-009,1,capitalized_phrase
+PY-APP-010,1,capitalized_phrase
+PY-APP-011,1,capitalized_phrase
+Overall,1,capitalized_phrase
+Second,1,capitalized_phrase
+Incomplete,1,capitalized_phrase
+Coverage,1,capitalized_phrase
+Repeatability,1,capitalized_phrase
+LLM-heavy,1,capitalized_phrase
+Heelan,1,capitalized_phrase
+Unfortunately,1,capitalized_phrase
+Scripted,1,capitalized_phrase
+Khimani,1,capitalized_phrase
+Braden,1,capitalized_phrase
+Accelerate,1,capitalized_phrase
+Remediation,1,capitalized_phrase
+Autofix,1,capitalized_phrase
+Nabeel,1,capitalized_phrase
+Globally,1,capitalized_phrase
+Historic,1,capitalized_phrase
+Italiano,1,capitalized_phrase
+Brasil,1,capitalized_phrase
+Dresen,1,capitalized_phrase
+Alexios,1,capitalized_phrase
+Louisa,1,capitalized_phrase
+Koegel,1,capitalized_phrase
+Sebastian,1,capitalized_phrase
+Klipper,1,capitalized_phrase
+Liebau,1,capitalized_phrase
+Martin,1,capitalized_phrase
+Riedel,1,capitalized_phrase
+Schaefer,1,capitalized_phrase
+Hevroni,1,capitalized_phrase
+Akitsugu,1,capitalized_phrase
+Albert,1,capitalized_phrase
+TAZAWA,1,capitalized_phrase
+Hideko,1,capitalized_phrase
+IGARASHI,1,capitalized_phrase
+TOKUMARU,1,capitalized_phrase
+KATSUMI,1,capitalized_phrase
+Riotaro,1,capitalized_phrase
+Robert,1,capitalized_phrase
+DRACEA,1,capitalized_phrase
+Satoru,1,capitalized_phrase
+TAKAHASHI,1,capitalized_phrase
+Shoichi,1,capitalized_phrase
+NAKATA,1,capitalized_phrase
+NAKANOWATARI,1,capitalized_phrase
+Tomohiro,1,capitalized_phrase
+YongSeok,1,capitalized_phrase
+Changryum,1,capitalized_phrase
+Johnny,1,capitalized_phrase
+Sangwon,1,capitalized_phrase
+Youngha,1,capitalized_phrase
+Sangyoung,1,capitalized_phrase
+MinWook,1,capitalized_phrase
+Handong,1,capitalized_phrase
+Anabela,1,capitalized_phrase
+Nogueira,1,capitalized_phrase
+Samouco,1,capitalized_phrase
+Kembolle,1,capitalized_phrase
+Oliveira,1,capitalized_phrase
+Ricardo,1,capitalized_phrase
+Mourato,1,capitalized_phrase
+Domingues,1,capitalized_phrase
+Magano,1,capitalized_phrase
+Russian,1,capitalized_phrase
+Oleksii,1,capitalized_phrase
+Skachkov,1,capitalized_phrase
+Kochurkin,1,capitalized_phrase
+KvanTTT,1,capitalized_phrase
+Ivashchenko,1,capitalized_phrase
+GerardoMCanedo,1,capitalized_phrase
+Cristian,1,capitalized_phrase
+Borghello,1,capitalized_phrase
+Candidate,1,capitalized_phrase
+Azerbaijanian,1,capitalized_phrase
+Rashad,1,capitalized_phrase
+Aliyev,1,capitalized_phrase
+Others,1,capitalized_phrase
+Mohannad,1,capitalized_phrase
+Shahat,1,capitalized_phrase
+SecurityArk,1,capitalized_phrase
+Abdulellah,1,capitalized_phrase
+Alsaheel,1,capitalized_phrase
+Khalifa,1,capitalized_phrase
+Alshamsi,1,capitalized_phrase
+Mohammed,1,capitalized_phrase
+Aldossary,1,capitalized_phrase
+CSIRT.CZ,1,capitalized_phrase
+CZ.NIC,1,capitalized_phrase
+Zavodsky,1,capitalized_phrase
+Vaclav,1,capitalized_phrase
+Klimes,1,capitalized_phrase
+Zuzana,1,capitalized_phrase
+Duracinska,1,capitalized_phrase
+Michal,1,capitalized_phrase
+Prokop,1,capitalized_phrase
+Edvard,1,capitalized_phrase
+Rejthar,1,capitalized_phrase
+Abgrall,1,capitalized_phrase
+Jocelyn,1,capitalized_phrase
+Aubert,1,capitalized_phrase
+Damien,1,capitalized_phrase
+Azambour,1,capitalized_phrase
+Barthelemy,1,capitalized_phrase
+Moulay,1,capitalized_phrase
+Abdsamad,1,capitalized_phrase
+Belghiti,1,capitalized_phrase
+Gregory,1,capitalized_phrase
+Etienne,1,capitalized_phrase
+Capgras,1,capitalized_phrase
+Julien,1,capitalized_phrase
+Cayssol,1,capitalized_phrase
+Fontes,1,capitalized_phrase
+Travieso,1,capitalized_phrase
+Nicolas,1,capitalized_phrase
+Lasserre,1,capitalized_phrase
+Antoine,1,capitalized_phrase
+Laureau,1,capitalized_phrase
+Gilles,1,capitalized_phrase
+Morain,1,capitalized_phrase
+Christophe,1,capitalized_phrase
+Perret,1,capitalized_phrase
+Michel,1,capitalized_phrase
+Prunet,1,capitalized_phrase
+Revollat,1,capitalized_phrase
+Aymeric,1,capitalized_phrase
+Tabourin,1,capitalized_phrase
+Yitzhak,1,capitalized_phrase
+Saporito,1,capitalized_phrase
+Matteo,1,capitalized_phrase
+Meucci,1,capitalized_phrase
+Alessandro,1,capitalized_phrase
+Spezie,1,capitalized_phrase
+Cesare,1,capitalized_phrase
+Gianluca,1,capitalized_phrase
+Grasso,1,capitalized_phrase
+Ospina,1,capitalized_phrase
+Petracca,1,capitalized_phrase
+Trotta,1,capitalized_phrase
+Francesco,1,capitalized_phrase
+Lancini,1,capitalized_phrase
+Stefano,1,capitalized_phrase
+Zanero,1,capitalized_phrase
+Giovanni,1,capitalized_phrase
+Schmid,1,capitalized_phrase
+Falcomata,1,capitalized_phrase
+Chia-Lung,1,capitalized_phrase
+Reviewed,1,capitalized_phrase
+Tokumaru,1,capitalized_phrase
+Nakanowatari,1,capitalized_phrase
+Marcio,1,capitalized_phrase
+Machry,1,capitalized_phrase
+Evangelista,1,capitalized_phrase
+Torres,1,capitalized_phrase
+Revoredo,1,capitalized_phrase
+Vieira,1,capitalized_phrase
+Ramalho,1,capitalized_phrase
+Risonho,1,capitalized_phrase
+Gularte,1,capitalized_phrase
+Alberto,1,capitalized_phrase
+Johnatan,1,capitalized_phrase
+Stanley,1,capitalized_phrase
+Maximiliano,1,capitalized_phrase
+Alonzo,1,capitalized_phrase
+Montero,1,capitalized_phrase
+Guillermo,1,capitalized_phrase
+Skrilec,1,capitalized_phrase
+Zipitria,1,capitalized_phrase
+Rafael,1,capitalized_phrase
+Rodriguez,1,capitalized_phrase
+Hector,1,capitalized_phrase
+Aguirre,1,capitalized_phrase
+Carhuatocto,1,capitalized_phrase
+Rivero,1,capitalized_phrase
+Allendes,1,capitalized_phrase
+Miranda,1,capitalized_phrase
+Mauricio,1,capitalized_phrase
+Papaleo,1,capitalized_phrase
+Mayada,1,capitalized_phrase
+Bahamonde,1,capitalized_phrase
+Massanet,1,capitalized_phrase
+Ramiro,1,capitalized_phrase
+Pulgar,1,capitalized_phrase
+Alonso,1,capitalized_phrase
+Guerrero,1,capitalized_phrase
+Salazar,1,capitalized_phrase
+Kateryna,1,capitalized_phrase
+Ovechenko,1,capitalized_phrase
+Paharenko,1,capitalized_phrase
+Yevgeniya,1,capitalized_phrase
+Maskayeva,1,capitalized_phrase
+Sergiy,1,capitalized_phrase
+Shabashkevich,1,capitalized_phrase
+Bohdan,1,capitalized_phrase
+Serednytsky,1,capitalized_phrase
+Cabezas,1,capitalized_phrase
+Molina,1,capitalized_phrase
+Coronado,1,capitalized_phrase
+Marcos,1,capitalized_phrase
+Vicente,1,capitalized_phrase
+Aguilera,1,capitalized_phrase
+Heriyanto,1,capitalized_phrase
+Lathifah,1,capitalized_phrase
+Sundara,1,capitalized_phrase
+Akhmad,1,capitalized_phrase
+Massimo,1,capitalized_phrase
+Biagiotti,1,capitalized_phrase
+Edoardo,1,capitalized_phrase
+Viscosi,1,capitalized_phrase
+Salvatore,1,capitalized_phrase
+Fiorillo,1,capitalized_phrase
+Roberto,1,capitalized_phrase
+Battistoni,1,capitalized_phrase
+Lucilla,1,capitalized_phrase
+Giacomo,1,capitalized_phrase
+Valentino,1,capitalized_phrase
+Squilloni,1,capitalized_phrase
+Masayuki,1,capitalized_phrase
+Hisada,1,capitalized_phrase
+Yoshimasa,1,capitalized_phrase
+Kawamoto,1,capitalized_phrase
+Ryusuke,1,capitalized_phrase
+Sakamoto,1,capitalized_phrase
+Keisuke,1,capitalized_phrase
+Umemoto,1,capitalized_phrase
+Takashi,1,capitalized_phrase
+Phuong,1,capitalized_phrase
+Warrior,1,capitalized_phrase
+Autodesk,1,capitalized_phrase
+Aspect,1,capitalized_phrase
+Unverified,1,capitalized_phrase
+Upload,1,capitalized_phrase
+OWASPTop10Data,1,capitalized_phrase
+Template,1,capitalized_phrase
+Period,1,capitalized_phrase
+Geographic,1,capitalized_phrase
+Region,1,capitalized_phrase
+Survey,1,capitalized_phrase
+Making,1,capitalized_phrase
+Flagship,1,capitalized_phrase
+Builder,1,capitalized_phrase
+Defender,1,capitalized_phrase
+Downloads,1,capitalized_phrase
+Leaders,1,capitalized_phrase
+Smithline,1,capitalized_phrase
+Upcoming,1,capitalized_phrase
+Opinions,1,capitalized_phrase
+Shanika,1,capitalized_phrase
+Wickramasinghe,1,capitalized_phrase
+Businesses,1,capitalized_phrase
+DevSecOps,1,capitalized_phrase
+Pattern,1,capitalized_phrase
+Highlight,1,capitalized_phrase
+Semantic,1,capitalized_phrase
+Machine,1,capitalized_phrase
+Simulate,1,capitalized_phrase
+Reporting,1,capitalized_phrase
+Dynamically,1,capitalized_phrase
+Conduct,1,capitalized_phrase
+Criteria,1,capitalized_phrase
+White-box,1,capitalized_phrase
+Black-box,1,capitalized_phrase
+Performed,1,capitalized_phrase
+Conducted,1,capitalized_phrase
+Detects,1,capitalized_phrase
+Higher,1,capitalized_phrase
+Relies,1,capitalized_phrase
+Independent,1,capitalized_phrase
+Analyzes,1,capitalized_phrase
+Generates,1,capitalized_phrase
+Struggles,1,capitalized_phrase
+Evaluates,1,capitalized_phrase
+Math.random,1,capitalized_phrase
+Require,1,capitalized_phrase
+Pre-production,1,capitalized_phrase
+Self-Protection,1,capitalized_phrase
+Resilient,1,capitalized_phrase
+Combining,1,capitalized_phrase
+Filter,1,capitalized_phrase
+Shuffle,1,capitalized_phrase
+Series,1,capitalized_phrase
+Monorepos,1,capitalized_phrase
+Foster,1,capitalized_phrase
+Architecture,1,capitalized_phrase
+Focuses,1,capitalized_phrase
+Introduce,1,capitalized_phrase
+Domain-specific,1,capitalized_phrase
+Human-in-the-loop,1,capitalized_phrase
+Prioritize,1,capitalized_phrase
+Replace,1,capitalized_phrase
+Unnecessary,1,capitalized_phrase
+Decline,1,capitalized_phrase
+Subjective,1,capitalized_phrase
+Restructure,1,capitalized_phrase
+Discuss,1,capitalized_phrase
+Periodically,1,capitalized_phrase
+Updating,1,capitalized_phrase
+Sharing,1,capitalized_phrase
+Security-first,1,capitalized_phrase
+Verify,1,capitalized_phrase
+AI-generated,1,capitalized_phrase
+Contextual,1,capitalized_phrase
+Agent-comment.png,1,capitalized_phrase
+Codacy,1,capitalized_phrase
+Enterprise-grade,1,capitalized_phrase
+Address,1,capitalized_phrase
+Cloud-based,1,capitalized_phrase
+Initially,1,capitalized_phrase
+Regularly,1,capitalized_phrase
+Existing,1,capitalized_phrase
+Ensures,1,capitalized_phrase
+Catches,1,capitalized_phrase
+Keeping,1,capitalized_phrase
+Members,1,capitalized_phrase
+Everyone,1,capitalized_phrase
+Executing,1,capitalized_phrase
+Asking,1,capitalized_phrase
+Reworked,1,capitalized_phrase
+Reviewers,1,capitalized_phrase
+Giving,1,capitalized_phrase
+Constructive,1,capitalized_phrase
+Feedback,1,capitalized_phrase
+Statements,1,capitalized_phrase
+Programmers,1,capitalized_phrase
+Points,1,capitalized_phrase
+Principal,1,capitalized_phrase
+Sprout,1,capitalized_phrase
+Humanizing,1,capitalized_phrase
+Wiegers,1,capitalized_phrase
+Vertigo,1,capitalized_phrase
+McConnell,1,capitalized_phrase
+Insurance,1,capitalized_phrase
+Propulsion,1,capitalized_phrase
+Laboratories,1,capitalized_phrase
+Civilized,1,capitalized_phrase
+Discourse,1,capitalized_phrase
+Construction,1,capitalized_phrase
+Sucking,1,capitalized_phrase
+Awesome,1,capitalized_phrase
+Endless,1,capitalized_phrase
+Launching,1,capitalized_phrase
+Initiative,1,capitalized_phrase
+Vessels,1,capitalized_phrase
+Strictly,1,capitalized_phrase
+Fine-tune,1,capitalized_phrase
+PagerDuty,1,capitalized_phrase
+Octokit,1,capitalized_phrase
+Standardize,1,capitalized_phrase
+Repository-level,1,capitalized_phrase
+Suggests,1,capitalized_phrase
+Receiving,1,capitalized_phrase
+Senior,1,capitalized_phrase
+Shout-out,1,capitalized_phrase
+Wrap-up,1,capitalized_phrase
+Mickey,1,capitalized_phrase
+Gousset,1,capitalized_phrase
+Joshua,1,capitalized_phrase
+Johanning,1,capitalized_phrase
+Reviewing,1,capitalized_phrase
+Melissa,1,capitalized_phrase
+Pastore,1,capitalized_phrase
+Universe,1,capitalized_phrase
+Fatigue,1,capitalized_phrase
+Maintaining,1,capitalized_phrase
+Consistent,1,capitalized_phrase
+Comprehensive,1,capitalized_phrase
+Evidence,1,capitalized_phrase
+Investigation,1,capitalized_phrase
+Takeaways,1,capitalized_phrase
+ImagePullBackOff,1,capitalized_phrase
+Ephemeral,1,capitalized_phrase
+Sifting,1,capitalized_phrase
+Always-On,1,capitalized_phrase
+Expertise,1,capitalized_phrase
+Graphs,1,capitalized_phrase
+Clarity,1,capitalized_phrase
+Noise-Free,1,capitalized_phrase
+Reconstructs,1,capitalized_phrase
+Timeline,1,capitalized_phrase
+Correlates,1,capitalized_phrase
+Cluster,1,capitalized_phrase
+Docker,1,capitalized_phrase
+Automated,1,capitalized_phrase
+Resolutions,1,capitalized_phrase
+K8sGPT,1,capitalized_phrase
+Cross-reference,1,capitalized_phrase
+Correlate,1,capitalized_phrase
+AI-Assisted,1,capitalized_phrase
+AI-led,1,capitalized_phrase
+Natural,1,capitalized_phrase
+System,1,capitalized_phrase
+Single-pass,1,capitalized_phrase
+Cognitive,1,capitalized_phrase
+Sequential,1,capitalized_phrase
+Multi-Agent,1,capitalized_phrase
+Tool-augmented,1,capitalized_phrase
+Decisions,1,capitalized_phrase
+Orchestrating,1,capitalized_phrase
+DeepResearch,1,capitalized_phrase
+Zscaler,1,capitalized_phrase
+Coinbase,1,capitalized_phrase
+Essential,1,capitalized_phrase
+Concepts,1,capitalized_phrase
+Gateway,1,capitalized_phrase
+Formatting,1,capitalized_phrase
+Professionals,1,capitalized_phrase
+Visualize,1,capitalized_phrase
+Improve,1,capitalized_phrase
+Reduce,1,capitalized_phrase
+Propagation,1,capitalized_phrase
+Timing,1,capitalized_phrase
+Notable,1,capitalized_phrase
+Connections,1,capitalized_phrase
+Sampling,1,capitalized_phrase
+Head-based,1,capitalized_phrase
+Tail-based,1,capitalized_phrase
+Priority,1,capitalized_phrase
+Always,1,capitalized_phrase
+Libraries,1,capitalized_phrase
+Toolbox,1,capitalized_phrase
+All-in-one,1,capitalized_phrase
+Cost-effective,1,capitalized_phrase
+Jaeger,1,capitalized_phrase
+Self-hosted,1,capitalized_phrase
+Zipkin,1,capitalized_phrase
+Collector,1,capitalized_phrase
+Node.js,1,capitalized_phrase
+Initialize,1,capitalized_phrase
+Wondering,1,capitalized_phrase
+Contains,1,capitalized_phrase
+Exemplar,1,capitalized_phrase
+Exception,1,capitalized_phrase
+Record,1,capitalized_phrase
+Meaningful,1,capitalized_phrase
+Proper,1,capitalized_phrase
+Ensure,1,capitalized_phrase
+Useful,1,capitalized_phrase
+Over-instrumentation,1,capitalized_phrase
+Failing,1,capitalized_phrase
+Inconsistent,1,capitalized_phrase
+Ignoring,1,capitalized_phrase
+Business,1,capitalized_phrase
+Measure,1,capitalized_phrase
+Helping,1,capitalized_phrase
+OPENTELEMETRY,1,capitalized_phrase
+PROMETHEUS,1,capitalized_phrase
+DATADOG,1,capitalized_phrase
+OTHERS,1,capitalized_phrase
+STANDARDS,1,capitalized_phrase
+Vendor,1,capitalized_phrase
+Performer,1,capitalized_phrase
+Usability,1,capitalized_phrase
+Highest,1,capitalized_phrase
+Adoption,1,capitalized_phrase
+Foreword,1,capitalized_phrase
+Preface,1,capitalized_phrase
+Embracing,1,capitalized_phrase
+Evolution,1,capitalized_phrase
+Simplicity,1,capitalized_phrase
+Alerting,1,capitalized_phrase
+Incidents,1,capitalized_phrase
+Culture,1,capitalized_phrase
+Outages,1,capitalized_phrase
+Frontend,1,capitalized_phrase
+Datacenter,1,capitalized_phrase
+Addressing,1,capitalized_phrase
+Cascading,1,capitalized_phrase
+Failures,1,capitalized_phrase
+Critical,1,capitalized_phrase
+Consensus,1,capitalized_phrase
+Periodic,1,capitalized_phrase
+Scheduling,1,capitalized_phrase
+Pipelines,1,capitalized_phrase
+Integrity,1,capitalized_phrase
+Reliable,1,capitalized_phrase
+Launches,1,capitalized_phrase
+Dealing,1,capitalized_phrase
+Interrupts,1,capitalized_phrase
+Recover,1,capitalized_phrase
+Operational,1,capitalized_phrase
+Communication,1,capitalized_phrase
+Evolving,1,capitalized_phrase
+Engagement,1,capitalized_phrase
+Conclusions,1,capitalized_phrase
+Lessons,1,capitalized_phrase
+Learned,1,capitalized_phrase
+Industries,1,capitalized_phrase
+Availability,1,capitalized_phrase
+Launch,1,capitalized_phrase
+Coordination,1,capitalized_phrase
+Checklist,1,capitalized_phrase
+Meeting,1,capitalized_phrase
+Minutes,1,capitalized_phrase
+Bibliography,1,capitalized_phrase
+Treynor,1,capitalized_phrase
+Edited,1,capitalized_phrase
+Sysadmin,1,capitalized_phrase
+Historically,1,capitalized_phrase
+Sysadmins,1,capitalized_phrase
+Conflict,1,capitalized_phrase
+Eventually,1,capitalized_phrase
+Consciously,1,capitalized_phrase
+Despite,1,capitalized_phrase
+Tenets,1,capitalized_phrase
+Ensuring,1,capitalized_phrase
+Postmortems,1,capitalized_phrase
+Pursuing,1,capitalized_phrase
+Maximum,1,capitalized_phrase
+Violating,1,capitalized_phrase
+Misfortune,1,capitalized_phrase
+Quickly,1,capitalized_phrase
+Rolling,1,capitalized_phrase
+Forecasting,1,capitalized_phrase
+Planning,1,capitalized_phrase
+Efficiency,1,capitalized_phrase
+Beginning,1,capitalized_phrase
+Motivated,1,capitalized_phrase
+President,1,capitalized_phrase
+Disaster,1,capitalized_phrase
+Playing,1,capitalized_phrase
+Communications,1,capitalized_phrase
+Meetings,1,capitalized_phrase
+Copyright,1,capitalized_phrase
+Reilly,1,capitalized_phrase
+Licensed,1,capitalized_phrase
+BY-NC-ND,1,capitalized_phrase
+Introduction LLM,1,capitalized_phrase
+Settings Basics,1,capitalized_phrase
+Elements General,1,capitalized_phrase
+Designing Prompts,1,capitalized_phrase
+Prompts Prompting,1,capitalized_phrase
+Techniques Zero-shot,1,capitalized_phrase
+Prompting Few-shot,1,capitalized_phrase
+Prompting Chain-of-Thought,1,capitalized_phrase
+Prompting Meta,1,capitalized_phrase
+Prompting Self-Consistency,1,capitalized_phrase
+Generate Knowledge,1,capitalized_phrase
+Chaining Tree,1,capitalized_phrase
+Thoughts Retrieval,1,capitalized_phrase
+Augmented Generation,1,capitalized_phrase
+Automatic Reasoning,1,capitalized_phrase
+Tool-use Automatic,1,capitalized_phrase
+Active-Prompt Directional,1,capitalized_phrase
+Stimulus Prompting,1,capitalized_phrase
+Program-Aided Language,1,capitalized_phrase
+Models ReAct,1,capitalized_phrase
+Reflexion Multimodal,1,capitalized_phrase
+CoT Graph,1,capitalized_phrase
+Prompting AI,1,capitalized_phrase
+Agents Introduction,1,capitalized_phrase
+Agents Agent,1,capitalized_phrase
+Components AI,1,capitalized_phrase
+Deep Dive,1,capitalized_phrase
+Deep Agents,1,capitalized_phrase
+Guides Optimizing,1,capitalized_phrase
+Prompts OpenAI,1,capitalized_phrase
+Deep Research,1,capitalized_phrase
+Reasoning LLMs,1,capitalized_phrase
+Guide Applications,1,capitalized_phrase
+Fine-tuning GPT-4o,1,capitalized_phrase
+Context Caching,1,capitalized_phrase
+LLMs Generating,1,capitalized_phrase
+Data Generating,1,capitalized_phrase
+Synthetic Dataset,1,capitalized_phrase
+RAG Tackling,1,capitalized_phrase
+Generated Datasets,1,capitalized_phrase
+Diversity Generating,1,capitalized_phrase
+Code Graduate,1,capitalized_phrase
+Job Classification,1,capitalized_phrase
+Case Study,1,capitalized_phrase
+Prompt Function,1,capitalized_phrase
+Prompt Hub,1,capitalized_phrase
+Classification Sentiment,1,capitalized_phrase
+Classification Few-Shot,1,capitalized_phrase
+Sentiment Classification,1,capitalized_phrase
+Coding Generate,1,capitalized_phrase
+Code Snippet,1,capitalized_phrase
+Generate MySQL,1,capitalized_phrase
+Query Draw,1,capitalized_phrase
+TiKZ Diagram,1,capitalized_phrase
+Creativity Rhymes,1,capitalized_phrase
+Infinite Primes,1,capitalized_phrase
+Interdisciplinary Inventing,1,capitalized_phrase
+Evaluation Evaluate,1,capitalized_phrase
+Dialogue Information,1,capitalized_phrase
+Extraction Extract,1,capitalized_phrase
+Model Names,1,capitalized_phrase
+Alphabet Mathematics,1,capitalized_phrase
+Evaluating Composite,1,capitalized_phrase
+Functions Adding,1,capitalized_phrase
+Odd Numbers,1,capitalized_phrase
+Closed Domain,1,capitalized_phrase
+Open Domain,1,capitalized_phrase
+Science Question,1,capitalized_phrase
+Answering Reasoning,1,capitalized_phrase
+Indirect Reasoning,1,capitalized_phrase
+Physical Reasoning,1,capitalized_phrase
+Text Summarization,1,capitalized_phrase
+Concept Truthfulness,1,capitalized_phrase
+Hallucination Identification,1,capitalized_phrase
+Adversarial Prompting,1,capitalized_phrase
+Prompt Leaking,1,capitalized_phrase
+Jailbreaking Models,1,capitalized_phrase
+ChatGPT Claude,1,capitalized_phrase
+Code Llama,1,capitalized_phrase
+Flan Gemini,1,capitalized_phrase
+Gemini Advanced,1,capitalized_phrase
+Pro Gemma,1,capitalized_phrase
+GPT-4 Grok-1,1,capitalized_phrase
+Kimi K2.5,1,capitalized_phrase
+LLaMA Llama,1,capitalized_phrase
+Mistral Large,1,capitalized_phrase
+Mixtral Mixtral,1,capitalized_phrase
+OLMo Phi-2,1,capitalized_phrase
+Sora LLM,1,capitalized_phrase
+Collection Risks,1,capitalized_phrase
+Misuses Adversarial,1,capitalized_phrase
+Prompting Factuality,1,capitalized_phrase
+Biases LLM,1,capitalized_phrase
+Research Findings,1,capitalized_phrase
+LLM Agents,1,capitalized_phrase
+Reasoning RAG,1,capitalized_phrase
+Faithfulness LLM,1,capitalized_phrase
+In-Context Recall,1,capitalized_phrase
+RAG Reduces,1,capitalized_phrase
+Hallucination Synthetic,1,capitalized_phrase
+Data ThoughtSculpt,1,capitalized_phrase
+Infini-Attention LM-Guided,1,capitalized_phrase
+CoT Trustworthiness,1,capitalized_phrase
+Papers Tools,1,capitalized_phrase
+Notebooks Datasets,1,capitalized_phrase
+Additional Readings,1,capitalized_phrase
+Services English,1,capitalized_phrase
+Light Prompting,1,capitalized_phrase
+Techniques Copy,1,capitalized_phrase
+LLMs. While,1,capitalized_phrase
+LLMs. Examples,1,capitalized_phrase
+Prompts Zero-shot,1,capitalized_phrase
+"Prompting 
+ Prompt",1,capitalized_phrase
+AI Guide,1,capitalized_phrase
+Last Updated,1,capitalized_phrase
+Prompt Design,1,capitalized_phrase
+Thought Prompts,1,capitalized_phrase
+Zero-shot CoT,1,capitalized_phrase
+Prompts Combines,1,capitalized_phrase
+Text Generation,1,capitalized_phrase
+Code Generation,1,capitalized_phrase
+Set Clear,1,capitalized_phrase
+Provide Context,1,capitalized_phrase
+Background Information,1,capitalized_phrase
+Leverage Chain,1,capitalized_phrase
+Thought Prompting,1,capitalized_phrase
+Related Google,1,capitalized_phrase
+LLMs. AI,1,capitalized_phrase
+APIs Easily,1,capitalized_phrase
+APIs. Solution,1,capitalized_phrase
+Model Garden,1,capitalized_phrase
+APIs. APIs,1,capitalized_phrase
+Typically CSV,1,capitalized_phrase
+Asia Delhi,1,capitalized_phrase
+Asia Shanghai,1,capitalized_phrase
+Asia Suggestion,1,capitalized_phrase
+Conclusion Agents,1,capitalized_phrase
+Affordability Tool,1,capitalized_phrase
+Reed McGinley-Stempel,1,capitalized_phrase
+API. Much,1,capitalized_phrase
+Protocol MCP,1,capitalized_phrase
+Rapid Tool,1,capitalized_phrase
+MCP-compatible AI,1,capitalized_phrase
+Reduced Friction,1,capitalized_phrase
+Because MCP,1,capitalized_phrase
+API. Teams,1,capitalized_phrase
+Service B,1,capitalized_phrase
+Two-Way Context,1,capitalized_phrase
+Example JSON-RPC,1,capitalized_phrase
+Deploying MCP,1,capitalized_phrase
+Comparing MCP,1,capitalized_phrase
+MCP Custom,1,capitalized_phrase
+Integrations ChatGPT,1,capitalized_phrase
+Plugins LangChain,1,capitalized_phrase
+Frameworks Integration,1,capitalized_phrase
+Speed Integration,1,capitalized_phrase
+Authentication Authentication,1,capitalized_phrase
+Manual API,1,capitalized_phrase
+Plugin-specific OAuth,1,capitalized_phrase
+Framework-dependent Let,1,capitalized_phrase
+Custom Integrations,1,capitalized_phrase
+API Key,1,capitalized_phrase
+ChatGPT Plugins,1,capitalized_phrase
+OpenAI Plugins,1,capitalized_phrase
+Bing Chat,1,capitalized_phrase
+LLM Tool,1,capitalized_phrase
+Discover Available,1,capitalized_phrase
+LLM Chooses,1,capitalized_phrase
+User X,1,capitalized_phrase
+MCP. OAuth,1,capitalized_phrase
+Automatic Endpoint,1,capitalized_phrase
+Secure Authorization,1,capitalized_phrase
+Token Management,1,capitalized_phrase
+Secure Multi-User,1,capitalized_phrase
+Building AI-powered,1,capitalized_phrase
+Creating AI-driven,1,capitalized_phrase
+Developing AI,1,capitalized_phrase
+Enabling AI-powered,1,capitalized_phrase
+Conclusion Model,1,capitalized_phrase
+LinkedIn X,1,capitalized_phrase
+Facebook Related,1,capitalized_phrase
+Articles Product,1,capitalized_phrase
+Detecting AI,1,capitalized_phrase
+Stytch Start,1,capitalized_phrase
+Admin Portal,1,capitalized_phrase
+Connected Apps,1,capitalized_phrase
+Risk Prevention,1,capitalized_phrase
+Fingerprinting Active,1,capitalized_phrase
+Auth0 Stytch,1,capitalized_phrase
+Firebase Stytch,1,capitalized_phrase
+Cognito Stytch,1,capitalized_phrase
+Fingerprint Company,1,capitalized_phrase
+Careers Contact,1,capitalized_phrase
+Resources Pricing,1,capitalized_phrase
+Docs Changelog,1,capitalized_phrase
+Blog Community,1,capitalized_phrase
+Stytch. All,1,capitalized_phrase
+Protocol Blog,1,capitalized_phrase
+Every MCP,1,capitalized_phrase
+Pull Requests,1,capitalized_phrase
+Justin Spahr-Summers,1,capitalized_phrase
+Tadas Antanavicius,1,capitalized_phrase
+Alex Hancock,1,capitalized_phrase
+Toby Padilla,1,capitalized_phrase
+Radoslav Dimitrov,1,capitalized_phrase
+Avinash Sridhar,1,capitalized_phrase
+Connor Peet,1,capitalized_phrase
+Joel Verhagen,1,capitalized_phrase
+Preeti Dewani,1,capitalized_phrase
+Avish Porwal,1,capitalized_phrase
+Jonathan Hefner,1,capitalized_phrase
+Cloudflare Agents,1,capitalized_phrase
+Tags MCP,1,capitalized_phrase
+Approach Stateful,1,capitalized_phrase
+Requires Durable,1,capitalized_phrase
+McpAgent Yes,1,capitalized_phrase
+Yes Stateful,1,capitalized_phrase
+Raw WebStandardStreamableHTTPServerTransport,1,capitalized_phrase
+Durable Object,1,capitalized_phrase
+Agents SDK,1,capitalized_phrase
+Cloudflare. Open,1,capitalized_phrase
+Cloudflare APIs,1,capitalized_phrase
+Select List,1,capitalized_phrase
+Restart Claude,1,capitalized_phrase
+Add Authentication,1,capitalized_phrase
+Secure MCP,1,capitalized_phrase
+Third-party OAuth,1,capitalized_phrase
+OAuth Settings,1,capitalized_phrase
+Quick OAuth,1,capitalized_phrase
+Click Connect,1,capitalized_phrase
+List Tools,1,capitalized_phrase
+Worker. Submit,1,capitalized_phrase
+KV ID,1,capitalized_phrase
+GitHub. Next,1,capitalized_phrase
+MCP Tools,1,capitalized_phrase
+Authorization Customize,1,capitalized_phrase
+Cognition Team,1,capitalized_phrase
+Technical While,1,capitalized_phrase
+Devin. Now,1,capitalized_phrase
+Jira. While,1,capitalized_phrase
+Prompting Basics,1,capitalized_phrase
+JavaScript. Teach,1,capitalized_phrase
+Python SDKs,1,capitalized_phrase
+Workflow Once,1,capitalized_phrase
+Delegating Larger,1,capitalized_phrase
+ROI. Rather,1,capitalized_phrase
+Domain Drafting,1,capitalized_phrase
+Refining Journalism,1,capitalized_phrase
+Restaurant Line,1,capitalized_phrase
+Coding Autonomous,1,capitalized_phrase
+Devin Search,1,capitalized_phrase
+See Add,1,capitalized_phrase
+Automating Workflows,1,capitalized_phrase
+Create Shortcuts,1,capitalized_phrase
+Repetitive Work,1,capitalized_phrase
+Intelligent Code,1,capitalized_phrase
+Enforcement While,1,capitalized_phrase
+Improving Performance,1,capitalized_phrase
+Environment Setup,1,capitalized_phrase
+Build Custom,1,capitalized_phrase
+CLI Tools,1,capitalized_phrase
+MCPs MCPs,1,capitalized_phrase
+AI. Practical,1,capitalized_phrase
+Considerations Limitations,1,capitalized_phrase
+Knowledge Cutoffs,1,capitalized_phrase
+Managing Time,1,capitalized_phrase
+Minimizing Losses,1,capitalized_phrase
+Permissioning Create,1,capitalized_phrase
+Readonly API,1,capitalized_phrase
+Big Changes,1,capitalized_phrase
+AGENTS LLM,1,capitalized_phrase
+AI PROMPTING,1,capitalized_phrase
+CONTEXT MANAGEMENT,1,capitalized_phrase
+Successful Agents,1,capitalized_phrase
+Context Fails,1,capitalized_phrase
+While Gemini,1,capitalized_phrase
+Function-Calling Leaderboard,1,capitalized_phrase
+Infinite Jest,1,capitalized_phrase
+Product Subscribe,1,capitalized_phrase
+Product Review,1,capitalized_phrase
+UX. PMs,1,capitalized_phrase
+Product Competency,1,capitalized_phrase
+Feature Specification,1,capitalized_phrase
+Product Execution,1,capitalized_phrase
+Product Delivery,1,capitalized_phrase
+Product Quality,1,capitalized_phrase
+Building Faster,1,capitalized_phrase
+Linear IDE,1,capitalized_phrase
+Pro Model,1,capitalized_phrase
+Linear MCP,1,capitalized_phrase
+Copilot Let,1,capitalized_phrase
+PR Zooming,1,capitalized_phrase
+William Gibson,1,capitalized_phrase
+AI. Today,1,capitalized_phrase
+Danny Discussion,1,capitalized_phrase
+Comments Restacks,1,capitalized_phrase
+Mar Jul,1,capitalized_phrase
+Gluecharm. Specs,1,capitalized_phrase
+Harsh Chaudhary,1,capitalized_phrase
+Top Latest,1,capitalized_phrase
+Anthropic Writing,1,capitalized_phrase
+Published Sep,1,capitalized_phrase
+MCP SDK,1,capitalized_phrase
+Anthropic API,1,capitalized_phrase
+Acme Corp,1,capitalized_phrase
+Customer Sarah,1,capitalized_phrase
+CoT. Read,1,capitalized_phrase
+SWE-bench Verified,1,capitalized_phrase
+Developer Guide,1,capitalized_phrase
+Acknowledgements Written,1,capitalized_phrase
+Ken Aizawa,1,capitalized_phrase
+Barry Zhang,1,capitalized_phrase
+Zachary Witten,1,capitalized_phrase
+Daniel Jiang,1,capitalized_phrase
+Sami Al-Sheikh,1,capitalized_phrase
+Matt Bell,1,capitalized_phrase
+Maggie Vo,1,capitalized_phrase
+Theodora Chu,1,capitalized_phrase
+John Welsh,1,capitalized_phrase
+Product Engineering,1,capitalized_phrase
+Santiago Seira,1,capitalized_phrase
+Molly Vorwerck,1,capitalized_phrase
+Drew Roper,1,capitalized_phrase
+Applied AI,1,capitalized_phrase
+Christian Ryan,1,capitalized_phrase
+Alexander Bricken,1,capitalized_phrase
+"Anthropic 
+ Claude",1,capitalized_phrase
+Docs Skip,1,capitalized_phrase
+English Search,1,capitalized_phrase
+K Ask,1,capitalized_phrase
+AI Search,1,capitalized_phrase
+Navigation Getting,1,capitalized_phrase
+Deployment Administration,1,capitalized_phrase
+Configuration Reference,1,capitalized_phrase
+Resources Getting,1,capitalized_phrase
+Overview Quickstart,1,capitalized_phrase
+Changelog Core,1,capitalized_phrase
+Extend Claude,1,capitalized_phrase
+Code Explore,1,capitalized_phrase
+Code Store,1,capitalized_phrase
+Overview Remote,1,capitalized_phrase
+Control Claude,1,capitalized_phrase
+Code JetBrains,1,capitalized_phrase
+IDEs Code,1,capitalized_phrase
+CD Claude,1,capitalized_phrase
+Anthropic Console,1,capitalized_phrase
+Terminal VS,1,capitalized_phrase
+Code Desktop,1,capitalized_phrase
+Web JetBrains,1,capitalized_phrase
+Native Install,1,capitalized_phrase
+Homebrew WinGet,1,capitalized_phrase
+Windows PowerShell,1,capitalized_phrase
+Windows CMD,1,capitalized_phrase
+PS C,1,capitalized_phrase
+PowerShell. Windows,1,capitalized_phrase
+Anthropic.ClaudeCode WinGet,1,capitalized_phrase
+Apple Silicon,1,capitalized_phrase
+Windows ARM64,1,capitalized_phrase
+IntelliJ IDEA,1,capitalized_phrase
+JetBrains IDEs,1,capitalized_phrase
+JetBrains Marketplace,1,capitalized_phrase
+CLI Claude,1,capitalized_phrase
+CLI. Desktop,1,capitalized_phrase
+Message Dispatch,1,capitalized_phrase
+Channels Start,1,capitalized_phrase
+Automate PR,1,capitalized_phrase
+Slack Debug,1,capitalized_phrase
+Chrome Build,1,capitalized_phrase
+StockApp Engineering,1,capitalized_phrase
+"Notion 
+ Getting",1,capitalized_phrase
+Introducing Oz,1,capitalized_phrase
+Warp Getting,1,capitalized_phrase
+Oz Quickstart,1,capitalized_phrase
+Warp Supported,1,capitalized_phrase
+Terminal Classic,1,capitalized_phrase
+Code Code,1,capitalized_phrase
+Git Worktrees,1,capitalized_phrase
+SSH Knowledge,1,capitalized_phrase
+Team Admin,1,capitalized_phrase
+Panel Session,1,capitalized_phrase
+Agentic Development,1,capitalized_phrase
+Warp Warp,1,capitalized_phrase
+Agent Modality,1,capitalized_phrase
+Codex. Deep,1,capitalized_phrase
+Oz Cloud,1,capitalized_phrase
+Zero Data,1,capitalized_phrase
+Quickstart Guide,1,capitalized_phrase
+Local Agents,1,capitalized_phrase
+Warp Cloud,1,capitalized_phrase
+Agents Overview,1,capitalized_phrase
+Oz Platform,1,capitalized_phrase
+Next Quickstart,1,capitalized_phrase
+Warp Oz,1,capitalized_phrase
+Threats. Threat,1,capitalized_phrase
+Research Center,1,capitalized_phrase
+Malware Malware,1,capitalized_phrase
+Related Products,1,capitalized_phrase
+Prisma SASE,1,capitalized_phrase
+Secure Access,1,capitalized_phrase
+Service Edge,1,capitalized_phrase
+Assessment Unit,1,capitalized_phrase
+Jay Chen,1,capitalized_phrase
+Royce Lu,1,capitalized_phrase
+Malware Threat,1,capitalized_phrase
+Research Tags,1,capitalized_phrase
+AI BOLA,1,capitalized_phrase
+GenAI Prompt,1,capitalized_phrase
+Share Executive,1,capitalized_phrase
+Summary Agentic,1,capitalized_phrase
+Key Findings,1,capitalized_phrase
+Software Composition,1,capitalized_phrase
+AI Runtime,1,capitalized_phrase
+AI Access,1,capitalized_phrase
+Related Unit,1,capitalized_phrase
+Topics GenAI,1,capitalized_phrase
+APIs. Security,1,capitalized_phrase
+OWASP Agentic,1,capitalized_phrase
+AI Threats,1,capitalized_phrase
+Unexpected RCE,1,capitalized_phrase
+Simulated Attacks,1,capitalized_phrase
+Networks Show,1,capitalized_phrase
+Networks Display,1,capitalized_phrase
+Attack Scenario,1,capitalized_phrase
+Description Threats,1,capitalized_phrase
+Mitigations Identifying,1,capitalized_phrase
+Identifying Participant,1,capitalized_phrase
+Agents Objective,1,capitalized_phrase
+Identify AI,1,capitalized_phrase
+Explanation CrewAI,1,capitalized_phrase
+Instructions Objective,1,capitalized_phrase
+Tool Schemas,1,capitalized_phrase
+Explanation Similar,1,capitalized_phrase
+Internal Network,1,capitalized_phrase
+Web Reader,1,capitalized_phrase
+Input Please,1,capitalized_phrase
+Sensitive Data,1,capitalized_phrase
+Mounted Volume,1,capitalized_phrase
+Service Account,1,capitalized_phrase
+Access Token,1,capitalized_phrase
+Metadata Service,1,capitalized_phrase
+Google Compute,1,capitalized_phrase
+Google Transfer,1,capitalized_phrase
+Google Protection,1,capitalized_phrase
+Application Database,1,capitalized_phrase
+Exfiltrate Database,1,capitalized_phrase
+Table Objective,1,capitalized_phrase
+Exploiting BOLA,1,capitalized_phrase
+Access Unauthorized,1,capitalized_phrase
+User Data,1,capitalized_phrase
+ID. Different,1,capitalized_phrase
+Input Show,1,capitalized_phrase
+Mitigations Tool,1,capitalized_phrase
+Indirect Prompt,1,capitalized_phrase
+Conversation History,1,capitalized_phrase
+Exfiltration Objective,1,capitalized_phrase
+URL. Figure,1,capitalized_phrase
+AutoGen Malicious,1,capitalized_phrase
+URL. Populate,1,capitalized_phrase
+Mitigation Securing,1,capitalized_phrase
+Prompt Hardening,1,capitalized_phrase
+Content Filtering,1,capitalized_phrase
+Networks AI,1,capitalized_phrase
+Malicious URLs,1,capitalized_phrase
+Tool Input,1,capitalized_phrase
+Sanitization Tools,1,capitalized_phrase
+Tool Vulnerability,1,capitalized_phrase
+Scanning All,1,capitalized_phrase
+Code Executor,1,capitalized_phrase
+Sandboxing Code,1,capitalized_phrase
+Apply CPU,1,capitalized_phrase
+Conclusion Agentic,1,capitalized_phrase
+Securing AI,1,capitalized_phrase
+Networks Prisma,1,capitalized_phrase
+Toll Free,1,capitalized_phrase
+Middle East,1,capitalized_phrase
+Additional Resources,1,capitalized_phrase
+Stock Advisory,1,capitalized_phrase
+Repository SerperDevTool,1,capitalized_phrase
+Repository ScrapeWebsiteTool,1,capitalized_phrase
+Repository Hierarchical,1,capitalized_phrase
+Repository Swarm,1,capitalized_phrase
+Documentation OWASP,1,capitalized_phrase
+OWASP OWASP,1,capitalized_phrase
+OWASP Nasdaq,1,capitalized_phrase
+Nasdaq Updated,1,capitalized_phrase
+PM PDT,1,capitalized_phrase
+Tags Agentic,1,capitalized_phrase
+AI AI,1,capitalized_phrase
+BOLA GenAI,1,capitalized_phrase
+Center Next,1,capitalized_phrase
+Gremlin Stealer,1,capitalized_phrase
+Underground Forum,1,capitalized_phrase
+Contents Related,1,capitalized_phrase
+Articles Double,1,capitalized_phrase
+AI Threat,1,capitalized_phrase
+Really Shopping,1,capitalized_phrase
+Retail Fraud,1,capitalized_phrase
+Related Malware,1,capitalized_phrase
+Resources High,1,capitalized_phrase
+Profile Threats,1,capitalized_phrase
+Widespread Impact,1,capitalized_phrase
+Axios Supply,1,capitalized_phrase
+JavaScript Supply,1,capitalized_phrase
+Multi-Stage Supply,1,capitalized_phrase
+Security Infrastructure,1,capitalized_phrase
+Infostealer Read,1,capitalized_phrase
+Double Agents,1,capitalized_phrase
+AI Agentic,1,capitalized_phrase
+AI Data,1,capitalized_phrase
+GCP Read,1,capitalized_phrase
+APK DDoS,1,capitalized_phrase
+Threat Actor,1,capitalized_phrase
+Groups March,1,capitalized_phrase
+Converging Interests,1,capitalized_phrase
+Threat Clusters,1,capitalized_phrase
+Southeast Asian,1,capitalized_phrase
+Government CL-STA-1048,1,capitalized_phrase
+CL-STA-1049 Stately,1,capitalized_phrase
+Taurus Read,1,capitalized_phrase
+Recruiting Scheme,1,capitalized_phrase
+Impersonating Palo,1,capitalized_phrase
+Alto Networks,1,capitalized_phrase
+Talent Acquisition,1,capitalized_phrase
+Team Email,1,capitalized_phrase
+Lure Phishing,1,capitalized_phrase
+Current State,1,capitalized_phrase
+Prompt Fuzzing,1,capitalized_phrase
+Finds LLMs,1,capitalized_phrase
+Still Fragile,1,capitalized_phrase
+Across Open,1,capitalized_phrase
+Closed Models,1,capitalized_phrase
+Evasion GenAI,1,capitalized_phrase
+LLM Read,1,capitalized_phrase
+Suspected China-Based,1,capitalized_phrase
+Espionage Operation,1,capitalized_phrase
+Against Military,1,capitalized_phrase
+Southeast Asia,1,capitalized_phrase
+Advanced Persistent,1,capitalized_phrase
+Threat AppleChris,1,capitalized_phrase
+Backdoor Read,1,capitalized_phrase
+AI Judges,1,capitalized_phrase
+Bypass Security,1,capitalized_phrase
+Controls AI,1,capitalized_phrase
+Fuzzing LLM,1,capitalized_phrase
+Privacy Statement,1,capitalized_phrase
+Google Privacy,1,capitalized_phrase
+Networks Privacy,1,capitalized_phrase
+Use. Sign,1,capitalized_phrase
+Services AI-Powered,1,capitalized_phrase
+Network Security,1,capitalized_phrase
+Platform Secure,1,capitalized_phrase
+Design Prisma,1,capitalized_phrase
+AIRS AI,1,capitalized_phrase
+Access Security,1,capitalized_phrase
+Cloud Delivered,1,capitalized_phrase
+Security Services,1,capitalized_phrase
+Advanced Threat,1,capitalized_phrase
+Prevention Advanced,1,capitalized_phrase
+URL Filtering,1,capitalized_phrase
+Advanced WildFire,1,capitalized_phrase
+Advanced DNS,1,capitalized_phrase
+Security Enterprise,1,capitalized_phrase
+Data Loss,1,capitalized_phrase
+Prevention Enterprise,1,capitalized_phrase
+IoT Security,1,capitalized_phrase
+Medical IoT,1,capitalized_phrase
+Security Industrial,1,capitalized_phrase
+OT Security,1,capitalized_phrase
+Next-Generation Firewalls,1,capitalized_phrase
+Hardware Firewalls,1,capitalized_phrase
+Software Firewalls,1,capitalized_phrase
+Strata Cloud,1,capitalized_phrase
+Manager SD-WAN,1,capitalized_phrase
+NGFW PAN-OS,1,capitalized_phrase
+Panorama Secure,1,capitalized_phrase
+Access Service,1,capitalized_phrase
+Edge Prisma,1,capitalized_phrase
+SASE Application,1,capitalized_phrase
+Acceleration Autonomous,1,capitalized_phrase
+Digital Experience,1,capitalized_phrase
+Management Enterprise,1,capitalized_phrase
+DLP Prisma,1,capitalized_phrase
+Access Prisma,1,capitalized_phrase
+Browser Prisma,1,capitalized_phrase
+SD-WAN Remote,1,capitalized_phrase
+Browser Isolation,1,capitalized_phrase
+AI-Driven Security,1,capitalized_phrase
+Operations Platform,1,capitalized_phrase
+Cloud Security,1,capitalized_phrase
+Cortex Cloud,1,capitalized_phrase
+Cloud Posture,1,capitalized_phrase
+Security Cloud,1,capitalized_phrase
+Prisma Cloud,1,capitalized_phrase
+AI-Driven SOC,1,capitalized_phrase
+Cortex XSIAM,1,capitalized_phrase
+Cortex XDR,1,capitalized_phrase
+Cortex XSOAR,1,capitalized_phrase
+Cortex Xpanse,1,capitalized_phrase
+Managed Detection,1,capitalized_phrase
+Response Managed,1,capitalized_phrase
+XSIAM Threat,1,capitalized_phrase
+Services Proactive,1,capitalized_phrase
+Assessments Incident,1,capitalized_phrase
+Response Transform,1,capitalized_phrase
+Strategy Discover,1,capitalized_phrase
+Threat Intelligence,1,capitalized_phrase
+Us Careers,1,capitalized_phrase
+Contact Us,1,capitalized_phrase
+Corporate Responsibility,1,capitalized_phrase
+Customers Investor,1,capitalized_phrase
+Relations Location,1,capitalized_phrase
+Newsroom Popular,1,capitalized_phrase
+Links Blog,1,capitalized_phrase
+Communities Content,1,capitalized_phrase
+Library Cyberpedia,1,capitalized_phrase
+Event Center,1,capitalized_phrase
+Manage Email,1,capitalized_phrase
+Preferences Products,1,capitalized_phrase
+A-Z Product,1,capitalized_phrase
+Certifications Report,1,capitalized_phrase
+Vulnerability Sitemap,1,capitalized_phrase
+Tech Docs,1,capitalized_phrase
+Personal Information,1,capitalized_phrase
+Default Heading,1,capitalized_phrase
+Seekbar Volume,1,capitalized_phrase
+Chroma Products,1,capitalized_phrase
+Sync Database,1,capitalized_phrase
+Agent Docs,1,capitalized_phrase
+Enterprise Pricing,1,capitalized_phrase
+Research Resources,1,capitalized_phrase
+Changelog Updates,1,capitalized_phrase
+Task Recent,1,capitalized_phrase
+Hiring Introduction,1,capitalized_phrase
+Related Work,1,capitalized_phrase
+Haystack Extension,1,capitalized_phrase
+Lexical Matching,1,capitalized_phrase
+High Performance,1,capitalized_phrase
+Essay Topic,1,capitalized_phrase
+High Needle-Question,1,capitalized_phrase
+Similarity Instead,1,capitalized_phrase
+Experimental Setup,1,capitalized_phrase
+Results Testing,1,capitalized_phrase
+Sample Experimental,1,capitalized_phrase
+Setup Results,1,capitalized_phrase
+Averaged Performance,1,capitalized_phrase
+Shuffled Haystacks,1,capitalized_phrase
+Correct Answer,1,capitalized_phrase
+Sample Prompt,1,capitalized_phrase
+Normalized Levenshtein,1,capitalized_phrase
+Golden Golden,1,capitalized_phrase
+Gate Gate,1,capitalized_phrase
+Francisco Corresponding,1,capitalized_phrase
+Gold Reference,1,capitalized_phrase
+Pro Sample,1,capitalized_phrase
+Outputs Repeated,1,capitalized_phrase
+Qwen3-8B Output,1,capitalized_phrase
+Future Work,1,capitalized_phrase
+Kiran Vodrahalli,1,capitalized_phrase
+Google Deepmind,1,capitalized_phrase
+Pressure Testing,1,capitalized_phrase
+Benchmarking Chat,1,capitalized_phrase
+Long-Term Interactive,1,capitalized_phrase
+Gemini Team,1,capitalized_phrase
+Introducing GPT-4.1,1,capitalized_phrase
+API. Link,1,capitalized_phrase
+Meta AI,1,capitalized_phrase
+Long-Context Evaluation,1,capitalized_phrase
+Beyond Literal,1,capitalized_phrase
+H. Y,1,capitalized_phrase
+Language Models,1,capitalized_phrase
+Long Context,1,capitalized_phrase
+Evaluations Beyond,1,capitalized_phrase
+Latent Structure,1,capitalized_phrase
+Efficient Context,1,capitalized_phrase
+Window Extension,1,capitalized_phrase
+Uniform Manifold,1,capitalized_phrase
+Dimension Reduction,1,capitalized_phrase
+R. J,1,capitalized_phrase
+G. B,1,capitalized_phrase
+Density-Based Clustering,1,capitalized_phrase
+Hierarchical Density,1,capitalized_phrase
+V. S,1,capitalized_phrase
+Knowledge Discovery,1,capitalized_phrase
+Data Mining,1,capitalized_phrase
+Lecture Notes,1,capitalized_phrase
+Heidelberg. Link,1,capitalized_phrase
+Cleaned LongMemEval,1,capitalized_phrase
+Models Tested,1,capitalized_phrase
+Claude Haiku,1,capitalized_phrase
+GPT-4.1 GPT-4.1,1,capitalized_phrase
+GPT-4o GPT-4,1,capitalized_phrase
+Turbo GPT-3.5,1,capitalized_phrase
+Turbo Google,1,capitalized_phrase
+Pro Gemini,1,capitalized_phrase
+Flash Gemini,1,capitalized_phrase
+Flash Alibaba,1,capitalized_phrase
+Qwen3-235B-A22B Qwen3-32B,1,capitalized_phrase
+Qwen3-8B Embedding,1,capitalized_phrase
+MiniLM-L6-v2 Needle-Question,1,capitalized_phrase
+Product Database,1,capitalized_phrase
+Sync Enterprise,1,capitalized_phrase
+MCP Docs,1,capitalized_phrase
+Status Contact,1,capitalized_phrase
+X YouTube,1,capitalized_phrase
+Changelog Careers,1,capitalized_phrase
+Legal Privacy,1,capitalized_phrase
+Terms Security,1,capitalized_phrase
+Background Research,1,capitalized_phrase
+Agent Mode,1,capitalized_phrase
+YOLO Mode,1,capitalized_phrase
+Linux. Exploit,1,capitalized_phrase
+Chain Explained,1,capitalized_phrase
+Video Walkthrough,1,capitalized_phrase
+Short Demos,1,capitalized_phrase
+AI Virus,1,capitalized_phrase
+Responsible Disclosure,1,capitalized_phrase
+August Patch,1,capitalized_phrase
+Markus Vervier,1,capitalized_phrase
+Ari Marzuk,1,capitalized_phrase
+Cheers. References,1,capitalized_phrase
+AI Bugs,1,capitalized_phrase
+Amp Code,1,capitalized_phrase
+Arbitrary Command,1,capitalized_phrase
+Fixed Copilot,1,capitalized_phrase
+Settings CVE-2025-53773,1,capitalized_phrase
+Execution Vulnerability,1,capitalized_phrase
+Write-Up Persistent,1,capitalized_phrase
+Security Newer,1,capitalized_phrase
+"Older 
+ Finding",1,capitalized_phrase
+Semgrep Multimodal,1,capitalized_phrase
+Products Semgrep,1,capitalized_phrase
+Code Find,1,capitalized_phrase
+Semgrep Supply,1,capitalized_phrase
+Chain Find,1,capitalized_phrase
+Semgrep Secrets,1,capitalized_phrase
+Semgrep Assistant,1,capitalized_phrase
+AI Semgrep,1,capitalized_phrase
+Semgrep Workflows,1,capitalized_phrase
+Product Updates,1,capitalized_phrase
+Solutions Secure,1,capitalized_phrase
+Vibe Coding,1,capitalized_phrase
+Open-Source Malware,1,capitalized_phrase
+Protection Protect,1,capitalized_phrase
+Fintech Mitigate,1,capitalized_phrase
+Cloud Increase,1,capitalized_phrase
+Resources Docs,1,capitalized_phrase
+Semgrep ROI,1,capitalized_phrase
+Calculator See,1,capitalized_phrase
+Community Slack,1,capitalized_phrase
+Events Join,1,capitalized_phrase
+Semgrep Event,1,capitalized_phrase
+Case Studies,1,capitalized_phrase
+Semgrep Video,1,capitalized_phrase
+Library View,1,capitalized_phrase
+Community Edition,1,capitalized_phrase
+Careers Join,1,capitalized_phrase
+Partners Become,1,capitalized_phrase
+Pricing Sign,1,capitalized_phrase
+Romain Gaucher,1,capitalized_phrase
+Vasilii Ermilov,1,capitalized_phrase
+Clint Gibler,1,capitalized_phrase
+Share TL,1,capitalized_phrase
+Agents Find,1,capitalized_phrase
+Real Vulnerabilities,1,capitalized_phrase
+AI Grasps,1,capitalized_phrase
+Insecure Direct,1,capitalized_phrase
+Object Reference,1,capitalized_phrase
+XSS. OpenAI,1,capitalized_phrase
+TPR. Non-Determinism,1,capitalized_phrase
+Real Struggle,1,capitalized_phrase
+SSRF. Detailed,1,capitalized_phrase
+AI SAST,1,capitalized_phrase
+UTC Sept,1,capitalized_phrase
+Open Research,1,capitalized_phrase
+AI-based Vulnerability,1,capitalized_phrase
+Usual SAST,1,capitalized_phrase
+Kinnaird McQuade,1,capitalized_phrase
+OWASP Benchmark,1,capitalized_phrase
+CVE Memorization,1,capitalized_phrase
+C++. While,1,capitalized_phrase
+Blog Post,1,capitalized_phrase
+Auth Bypass,1,capitalized_phrase
+XSS. Exploratory,1,capitalized_phrase
+App ID,1,capitalized_phrase
+Real-World Apps,1,capitalized_phrase
+Found Both,1,capitalized_phrase
+Many IDOR,1,capitalized_phrase
+JSON. Claude,1,capitalized_phrase
+Same Code,1,capitalized_phrase
+Same AI,1,capitalized_phrase
+Different Bugs,1,capitalized_phrase
+Every Time,1,capitalized_phrase
+Non-Determinism Problem,1,capitalized_phrase
+Incomplete Coverage,1,capitalized_phrase
+Increased Cost,1,capitalized_phrase
+Questions Let,1,capitalized_phrase
+PY-APP-007. Across,1,capitalized_phrase
+Sean Heelan,1,capitalized_phrase
+Future Release,1,capitalized_phrase
+Conclusion LLMs,1,capitalized_phrase
+SARIF JSON,1,capitalized_phrase
+Isaac Evans,1,capitalized_phrase
+Introducing Semgrep,1,capitalized_phrase
+Custom Workflows,1,capitalized_phrase
+Vivek Khimani,1,capitalized_phrase
+Braden Riggs,1,capitalized_phrase
+Automate Remediation,1,capitalized_phrase
+Semgrep Autofix,1,capitalized_phrase
+Nabeel Saeed,1,capitalized_phrase
+Katie Kent,1,capitalized_phrase
+OWASP Foundation,1,capitalized_phrase
+German V1.0,1,capitalized_phrase
+Christian Dresen,1,capitalized_phrase
+Alexios Fakos,1,capitalized_phrase
+Louisa Frick,1,capitalized_phrase
+Dr. Frank,1,capitalized_phrase
+Dr. Thomas,1,capitalized_phrase
+Dr. Markus,1,capitalized_phrase
+Sebastian Klipper,1,capitalized_phrase
+Jens Liebau,1,capitalized_phrase
+Martin Riedel,1,capitalized_phrase
+Michael Schaefer,1,capitalized_phrase
+Omer Levi,1,capitalized_phrase
+Akitsugu ITO,1,capitalized_phrase
+Albert Hsieh,1,capitalized_phrase
+Chie TAZAWA,1,capitalized_phrase
+Hideko IGARASHI,1,capitalized_phrase
+Hiroshi TOKUMARU,1,capitalized_phrase
+Naoto KATSUMI,1,capitalized_phrase
+Riotaro OKADA,1,capitalized_phrase
+Robert DRACEA,1,capitalized_phrase
+Satoru TAKAHASHI,1,capitalized_phrase
+Sen UENO,1,capitalized_phrase
+Shoichi NAKATA,1,capitalized_phrase
+Takanori NAKANOWATARI,1,capitalized_phrase
+Takanori ANDO,1,capitalized_phrase
+Tomohiro SANAE,1,capitalized_phrase
+YongSeok Kang,1,capitalized_phrase
+Park Changryum,1,capitalized_phrase
+Johnny Cho,1,capitalized_phrase
+Shin Sangwon,1,capitalized_phrase
+Youngha Kim,1,capitalized_phrase
+Sangyoung Park,1,capitalized_phrase
+MinWook Lee,1,capitalized_phrase
+JUNG CHOAH,1,capitalized_phrase
+CHO KWANG,1,capitalized_phrase
+Handong Choi,1,capitalized_phrase
+Anabela Nogueira,1,capitalized_phrase
+Ricardo Mourato,1,capitalized_phrase
+Rui Silva,1,capitalized_phrase
+Tiago Reis,1,capitalized_phrase
+Magano. Russian,1,capitalized_phrase
+Oleksii Skachkov,1,capitalized_phrase
+Ivan Kochurkin,1,capitalized_phrase
+Taras Ivashchenko,1,capitalized_phrase
+Cristian Borghello,1,capitalized_phrase
+Release Candidate,1,capitalized_phrase
+Translation Teams,1,capitalized_phrase
+Rashad Aliyev,1,capitalized_phrase
+Chinese RC2,1,capitalized_phrase
+OWASP Top10,1,capitalized_phrase
+Mohannad Shahat,1,capitalized_phrase
+Abdulellah Alsaheel,1,capitalized_phrase
+Khalifa Alshamsi,1,capitalized_phrase
+KING SABRI,1,capitalized_phrase
+Mohammed Aldossary,1,capitalized_phrase
+Petr Zavodsky,1,capitalized_phrase
+Vaclav Klimes,1,capitalized_phrase
+Zuzana Duracinska,1,capitalized_phrase
+Michal Prokop,1,capitalized_phrase
+Edvard Rejthar,1,capitalized_phrase
+Pavel Basta,1,capitalized_phrase
+Erwan Abgrall,1,capitalized_phrase
+Benjamin Avet,1,capitalized_phrase
+Jocelyn Aubert,1,capitalized_phrase
+Damien Azambour,1,capitalized_phrase
+Aline Barthelemy,1,capitalized_phrase
+Moulay Abdsamad,1,capitalized_phrase
+Gregory Blanc,1,capitalized_phrase
+Etienne Capgras,1,capitalized_phrase
+Julien Cayssol,1,capitalized_phrase
+Antonio Fontes,1,capitalized_phrase
+Antoine Laureau,1,capitalized_phrase
+Gilles Morain,1,capitalized_phrase
+Christophe Pekar,1,capitalized_phrase
+Olivier Perret,1,capitalized_phrase
+Michel Prunet,1,capitalized_phrase
+Olivier Revollat,1,capitalized_phrase
+Aymeric Tabourin,1,capitalized_phrase
+Thomas Herzog,1,capitalized_phrase
+Oran Yitzhak,1,capitalized_phrase
+Dan Peled,1,capitalized_phrase
+Shay Sivan,1,capitalized_phrase
+Michele Saporito,1,capitalized_phrase
+Matteo Meucci,1,capitalized_phrase
+Sara Gallo,1,capitalized_phrase
+Alessandro Guido,1,capitalized_phrase
+Mirko Guido,1,capitalized_phrase
+Giuseppe Di,1,capitalized_phrase
+Gianluca Grasso,1,capitalized_phrase
+Alessio D,1,capitalized_phrase
+Alessio Petracca,1,capitalized_phrase
+Giuseppe Trotta,1,capitalized_phrase
+Francesco Cossu,1,capitalized_phrase
+Marco Lancini,1,capitalized_phrase
+Stefano Zanero,1,capitalized_phrase
+Giovanni Schmid,1,capitalized_phrase
+Igor Falcomata,1,capitalized_phrase
+Chia-Lung Hsieh,1,capitalized_phrase
+Hiroshi Tokumaru,1,capitalized_phrase
+Takanori Nakanowatari,1,capitalized_phrase
+Marcio Machry,1,capitalized_phrase
+Carlo Marcelo,1,capitalized_phrase
+Luiz Vieira,1,capitalized_phrase
+Suely Ramalho,1,capitalized_phrase
+Mauro Risonho,1,capitalized_phrase
+Marcelo Lopes,1,capitalized_phrase
+Caio Dias,1,capitalized_phrase
+Rodrigo Gularte,1,capitalized_phrase
+Alberto Hill,1,capitalized_phrase
+Johnatan Stanley,1,capitalized_phrase
+Maximiliano Alonzo,1,capitalized_phrase
+Mateo Martinez,1,capitalized_phrase
+David Montero,1,capitalized_phrase
+Rodrigo Martinez,1,capitalized_phrase
+Guillermo Skrilec,1,capitalized_phrase
+Felipe Zipitria,1,capitalized_phrase
+Rafael Gil,1,capitalized_phrase
+Christian Lopez,1,capitalized_phrase
+Paola Rodriguez,1,capitalized_phrase
+Hector Aguirre,1,capitalized_phrase
+Roger Carhuatocto,1,capitalized_phrase
+Marc Rivero,1,capitalized_phrase
+Carlos Allendes,1,capitalized_phrase
+Marco Miranda,1,capitalized_phrase
+Mauricio D,1,capitalized_phrase
+Papaleo Mayada,1,capitalized_phrase
+Felipe Sanchez,1,capitalized_phrase
+Juan Manuel,1,capitalized_phrase
+Ramiro Pulgar,1,capitalized_phrase
+German Alonso,1,capitalized_phrase
+Edgar Salazar,1,capitalized_phrase
+Kateryna Ovechenko,1,capitalized_phrase
+Yuriy Fedko,1,capitalized_phrase
+Gleb Paharenko,1,capitalized_phrase
+Yevgeniya Maskayeva,1,capitalized_phrase
+Sergiy Shabashkevich,1,capitalized_phrase
+Bohdan Serednytsky,1,capitalized_phrase
+Daniel Cabezas,1,capitalized_phrase
+Edgar Sanchez,1,capitalized_phrase
+Jose Antonio,1,capitalized_phrase
+Paulo Coronado,1,capitalized_phrase
+Rodrigo Marcos,1,capitalized_phrase
+Vicente Aguilera,1,capitalized_phrase
+Tedi Heriyanto,1,capitalized_phrase
+Lathifah Arief,1,capitalized_phrase
+Zaki Akhmad,1,capitalized_phrase
+Massimo Biagiotti,1,capitalized_phrase
+Edoardo Viscosi,1,capitalized_phrase
+Salvatore Fiorillo,1,capitalized_phrase
+Roberto Battistoni,1,capitalized_phrase
+Michele Nesta,1,capitalized_phrase
+Lucilla Mancini,1,capitalized_phrase
+Gerardo Di,1,capitalized_phrase
+Valentino Squilloni,1,capitalized_phrase
+Dr. Masayuki,1,capitalized_phrase
+Yoshimasa Kawamoto,1,capitalized_phrase
+Ryusuke Sakamoto,1,capitalized_phrase
+Keisuke Seki,1,capitalized_phrase
+Shin Umemoto,1,capitalized_phrase
+Takashi Arima,1,capitalized_phrase
+Rip Torn,1,capitalized_phrase
+Cecil Su,1,capitalized_phrase
+Translation Team,1,capitalized_phrase
+Dang Hoang,1,capitalized_phrase
+Nguyen Ba,1,capitalized_phrase
+Nguyen Tang,1,capitalized_phrase
+Luong Dieu,1,capitalized_phrase
+Huynh Thien,1,capitalized_phrase
+Tam Hebrew,1,capitalized_phrase
+Hebrew Project,1,capitalized_phrase
+Secure Code,1,capitalized_phrase
+OWASP NoVA,1,capitalized_phrase
+Aspect Security,1,capitalized_phrase
+Data Analysis,1,capitalized_phrase
+Plan Goals,1,capitalized_phrase
+Humans. Analysis,1,capitalized_phrase
+Infrastructure Plan,1,capitalized_phrase
+OWASP Azure,1,capitalized_phrase
+Cloud Infrastructure,1,capitalized_phrase
+Verified Data,1,capitalized_phrase
+Unverified Data,1,capitalized_phrase
+Contribution Process,1,capitalized_phrase
+OWASPTop10Data Template,1,capitalized_phrase
+Data Contribution,1,capitalized_phrase
+Data Structure,1,capitalized_phrase
+Metadata Contributor,1,capitalized_phrase
+Contributor Contact,1,capitalized_phrase
+Email Time,1,capitalized_phrase
+Primary Language,1,capitalized_phrase
+Geographic Region,1,capitalized_phrase
+Primary Industry,1,capitalized_phrase
+CWE Data,1,capitalized_phrase
+Survey Similarly,1,capitalized_phrase
+Watch Star,1,capitalized_phrase
+Project Information,1,capitalized_phrase
+Flagship Project,1,capitalized_phrase
+Documentation Builder,1,capitalized_phrase
+Social Links,1,capitalized_phrase
+Social Twitter,1,capitalized_phrase
+Code Repository,1,capitalized_phrase
+Leaders Andrew,1,capitalized_phrase
+Stock Brian,1,capitalized_phrase
+Glas Neil,1,capitalized_phrase
+Smithline Tanya,1,capitalized_phrase
+Janca Torsten,1,capitalized_phrase
+Gigler Upcoming,1,capitalized_phrase
+OWASP Global,1,capitalized_phrase
+Events OWASP,1,capitalized_phrase
+Splunk SAST,1,capitalized_phrase
+Methods Learn,1,capitalized_phrase
+Shanika Wickramasinghe,1,capitalized_phrase
+Since SAST,1,capitalized_phrase
+Secure DevOps,1,capitalized_phrase
+Unlike SAST,1,capitalized_phrase
+Common SAST,1,capitalized_phrase
+SAST. Pattern,1,capitalized_phrase
+C. Detect,1,capitalized_phrase
+APIs. Machine,1,capitalized_phrase
+Advanced SAST,1,capitalized_phrase
+Scanning. Scan,1,capitalized_phrase
+Reporting. Generate,1,capitalized_phrase
+Modern DAST,1,capitalized_phrase
+Schedule DAST,1,capitalized_phrase
+IPs. Implement,1,capitalized_phrase
+DAST. Criteria,1,capitalized_phrase
+SAST DAST,1,capitalized_phrase
+SDLC Performed,1,capitalized_phrase
+DAST Pros,1,capitalized_phrase
+SAST Identifies,1,capitalized_phrase
+SAST Often,1,capitalized_phrase
+DAST Identifies,1,capitalized_phrase
+SAST. Works,1,capitalized_phrase
+DAST Focus,1,capitalized_phrase
+SDLC. Understanding,1,capitalized_phrase
+SAST During,1,capitalized_phrase
+DAST Pre-production,1,capitalized_phrase
+DAST Runtime,1,capitalized_phrase
+Application Self-Protection,1,capitalized_phrase
+DAST. Unlike,1,capitalized_phrase
+Combining SAST,1,capitalized_phrase
+Title Related,1,capitalized_phrase
+Articles Filter,1,capitalized_phrase
+Category Blog,1,capitalized_phrase
+Sort Category,1,capitalized_phrase
+Shuffle Order,1,capitalized_phrase
+Related Articles,1,capitalized_phrase
+Reinforcement Learning,1,capitalized_phrase
+Data Observability,1,capitalized_phrase
+Cursor Cloud,1,capitalized_phrase
+Graphite. Create,1,capitalized_phrase
+PR. Read,1,capitalized_phrase
+Index Series,1,capitalized_phrase
+AI CI-CD,1,capitalized_phrase
+Greg Foster,1,capitalized_phrase
+Try Graphite,1,capitalized_phrase
+Right Tool,1,capitalized_phrase
+Several AI,1,capitalized_phrase
+AI Suggestion,1,capitalized_phrase
+Evaluation Action,1,capitalized_phrase
+TypeScript Decline,1,capitalized_phrase
+Verify AI,1,capitalized_phrase
+Authentication Database,1,capitalized_phrase
+Graphite Graphite,1,capitalized_phrase
+Agent Graphite,1,capitalized_phrase
+Automatic PR,1,capitalized_phrase
+Graphite Agent-comment.png,1,capitalized_phrase
+SonarQube AI,1,capitalized_phrase
+Challenge Solution,1,capitalized_phrase
+Conclusion AI,1,capitalized_phrase
+Supplement AI,1,capitalized_phrase
+Share Git,1,capitalized_phrase
+Keeping Team,1,capitalized_phrase
+Members Together,1,capitalized_phrase
+Good Pull,1,capitalized_phrase
+Bad Example,1,capitalized_phrase
+Giving Constructive,1,capitalized_phrase
+Style Points,1,capitalized_phrase
+Principal Software,1,capitalized_phrase
+Sprout Social,1,capitalized_phrase
+Code Reviews,1,capitalized_phrase
+Humanizing Peer,1,capitalized_phrase
+Karl Wiegers,1,capitalized_phrase
+Code Complete,1,capitalized_phrase
+Insurance Company,1,capitalized_phrase
+Jet Propulsion,1,capitalized_phrase
+Peer Reviews,1,capitalized_phrase
+Civilized Discourse,1,capitalized_phrase
+Construction Kit,1,capitalized_phrase
+Stop Sucking,1,capitalized_phrase
+Endless Sea,1,capitalized_phrase
+Recent Posts,1,capitalized_phrase
+Rural Guaranteed,1,capitalized_phrase
+Minimum Income,1,capitalized_phrase
+Guaranteed Minimum,1,capitalized_phrase
+Americans. Let,1,capitalized_phrase
+Stay Gold,1,capitalized_phrase
+See All,1,capitalized_phrase
+Blog Sarah,1,capitalized_phrase
+PagerDuty API,1,capitalized_phrase
+Software Engineer,1,capitalized_phrase
+Paul Smith,1,capitalized_phrase
+Wrap-up Code,1,capitalized_phrase
+Architect Mickey,1,capitalized_phrase
+Architect Joshua,1,capitalized_phrase
+Staff Software,1,capitalized_phrase
+Melissa Pastore,1,capitalized_phrase
+Elle Shwer,1,capitalized_phrase
+Security. AI,1,capitalized_phrase
+ML Building,1,capitalized_phrase
+React Native,1,capitalized_phrase
+GitHub. Learn,1,capitalized_phrase
+Subscribe Yes,1,capitalized_phrase
+Eliminating Alert,1,capitalized_phrase
+Maintaining Dynamic,1,capitalized_phrase
+Comprehensive Investigations,1,capitalized_phrase
+Seamless Collaboration,1,capitalized_phrase
+Evidence Agentic,1,capitalized_phrase
+Proactive Incident,1,capitalized_phrase
+AI Works,1,capitalized_phrase
+AI Approach,1,capitalized_phrase
+Key Takeaways,1,capitalized_phrase
+Blog Product,1,capitalized_phrase
+Troubleshooting Kubernetes,1,capitalized_phrase
+While Kubernetes,1,capitalized_phrase
+Noisy Alerts,1,capitalized_phrase
+Wolf Kubernetes,1,capitalized_phrase
+Ephemeral Pods,1,capitalized_phrase
+Lost Context,1,capitalized_phrase
+Data Maze,1,capitalized_phrase
+Troubleshooting Now,1,capitalized_phrase
+Always-On Expertise,1,capitalized_phrase
+Knowledge Graphs,1,capitalized_phrase
+Noise-Free Analysis,1,capitalized_phrase
+Across All,1,capitalized_phrase
+Telemetry Resolve,1,capitalized_phrase
+Action Picture,1,capitalized_phrase
+Event Timeline,1,capitalized_phrase
+Correlates Issues,1,capitalized_phrase
+Runs Automated,1,capitalized_phrase
+Investigations Agentic,1,capitalized_phrase
+Provides Resolutions,1,capitalized_phrase
+Download Content,1,capitalized_phrase
+Troubleshooting Agentic,1,capitalized_phrase
+Download Related,1,capitalized_phrase
+Post Fireside,1,capitalized_phrase
+Coding Production,1,capitalized_phrase
+Check Datadog,1,capitalized_phrase
+AI-Native Engineering,1,capitalized_phrase
+Natural Language,1,capitalized_phrase
+AI System,1,capitalized_phrase
+Tools AI,1,capitalized_phrase
+Single Agent,1,capitalized_phrase
+Multi-Agent Through,1,capitalized_phrase
+Tool-augmented LLMs,1,capitalized_phrase
+Google DeepResearch,1,capitalized_phrase
+Gemini Agents,1,capitalized_phrase
+AI Resolve,1,capitalized_phrase
+Know Learn,1,capitalized_phrase
+Understanding Traces,1,capitalized_phrase
+Core Concepts,1,capitalized_phrase
+API Gateway,1,capitalized_phrase
+Auth Service,1,capitalized_phrase
+User Service,1,capitalized_phrase
+Database Query,1,capitalized_phrase
+Response Formatting,1,capitalized_phrase
+DevOps Professionals,1,capitalized_phrase
+Technical Implementation,1,capitalized_phrase
+Spans Let,1,capitalized_phrase
+Trace Context,1,capitalized_phrase
+Span Attributes,1,capitalized_phrase
+Events Spans,1,capitalized_phrase
+Sampling Strategies,1,capitalized_phrase
+Tracing Implementation,1,capitalized_phrase
+Frameworks Ready,1,capitalized_phrase
+Standard OpenTelemetry,1,capitalized_phrase
+SDK Automatic,1,capitalized_phrase
+Toolbox Several,1,capitalized_phrase
+Tool Type,1,capitalized_phrase
+Last9 All-in-one,1,capitalized_phrase
+Jaeger Open-source,1,capitalized_phrase
+Zipkin Open-source,1,capitalized_phrase
+Grafana Tempo,1,capitalized_phrase
+OpenTelemetry Collector,1,capitalized_phrase
+Implementing Tracing,1,capitalized_phrase
+OpenTelemetry SDK,1,capitalized_phrase
+Traditional APM,1,capitalized_phrase
+Advanced Tracing,1,capitalized_phrase
+Techniques Once,1,capitalized_phrase
+Distributed Context,1,capitalized_phrase
+W3C Trace,1,capitalized_phrase
+Correlation Between,1,capitalized_phrase
+Trace IDs,1,capitalized_phrase
+Error Handling,1,capitalized_phrase
+Exception Tracking,1,capitalized_phrase
+Proactive Monitoring,1,capitalized_phrase
+Real-World Tracing,1,capitalized_phrase
+Anti-Patterns Effective,1,capitalized_phrase
+Tracing Patterns,1,capitalized_phrase
+Tracing Anti-Patterns,1,capitalized_phrase
+Avoid Over-instrumentation,1,capitalized_phrase
+LLM Observability,1,capitalized_phrase
+Business Value,1,capitalized_phrase
+Beyond Technical,1,capitalized_phrase
+Benefits Traces,1,capitalized_phrase
+Set SLOs,1,capitalized_phrase
+Conclusion Traces,1,capitalized_phrase
+Discord Community,1,capitalized_phrase
+Topics Observability,1,capitalized_phrase
+OPEN STANDARDS,1,capitalized_phrase
+G2 Reviews,1,capitalized_phrase
+Gartner Cool,1,capitalized_phrase
+High Performer,1,capitalized_phrase
+Best Usability,1,capitalized_phrase
+Highest User,1,capitalized_phrase
+"Adoption 
+ Google",1,capitalized_phrase
+Automate Operations,1,capitalized_phrase
+Introduction Table,1,capitalized_phrase
+Contents Foreword,1,capitalized_phrase
+Preface Part,1,capitalized_phrase
+SRE Part,1,capitalized_phrase
+Embracing Risk,1,capitalized_phrase
+Eliminating Toil,1,capitalized_phrase
+Monitoring Distributed,1,capitalized_phrase
+Release Engineering,1,capitalized_phrase
+Simplicity Part,1,capitalized_phrase
+Practical Alerting,1,capitalized_phrase
+Effective Troubleshooting,1,capitalized_phrase
+Managing Incidents,1,capitalized_phrase
+Postmortem Culture,1,capitalized_phrase
+Tracking Outages,1,capitalized_phrase
+Software Engineering,1,capitalized_phrase
+Handling Overload,1,capitalized_phrase
+Addressing Cascading,1,capitalized_phrase
+Managing Critical,1,capitalized_phrase
+Distributed Consensus,1,capitalized_phrase
+Distributed Periodic,1,capitalized_phrase
+Data Processing,1,capitalized_phrase
+Data Integrity,1,capitalized_phrase
+Reliable Product,1,capitalized_phrase
+Scale Part,1,capitalized_phrase
+Accelerating SREs,1,capitalized_phrase
+Operational Overload,1,capitalized_phrase
+SRE Engagement,1,capitalized_phrase
+Model Part,1,capitalized_phrase
+Lessons Learned,1,capitalized_phrase
+Conclusion Appendix,1,capitalized_phrase
+A. Availability,1,capitalized_phrase
+Table Appendix,1,capitalized_phrase
+Best Practices,1,capitalized_phrase
+Production Services,1,capitalized_phrase
+Appendix C,1,capitalized_phrase
+Example Incident,1,capitalized_phrase
+State Document,1,capitalized_phrase
+Appendix D,1,capitalized_phrase
+Example Postmortem,1,capitalized_phrase
+Appendix E,1,capitalized_phrase
+Launch Coordination,1,capitalized_phrase
+Checklist Appendix,1,capitalized_phrase
+F. Example,1,capitalized_phrase
+Production Meeting,1,capitalized_phrase
+Minutes Bibliography,1,capitalized_phrase
+Introduction Written,1,capitalized_phrase
+Benjamin Treynor,1,capitalized_phrase
+Betsy Beyer,1,capitalized_phrase
+Traditional SRE,1,capitalized_phrase
+Engineering Conflict,1,capitalized_phrase
+Production Team,1,capitalized_phrase
+Within SRE,1,capitalized_phrase
+Because SREs,1,capitalized_phrase
+SRE While,1,capitalized_phrase
+Durable Focus,1,capitalized_phrase
+Pursuing Maximum,1,capitalized_phrase
+Change Velocity,1,capitalized_phrase
+Without Violating,1,capitalized_phrase
+SLO Product,1,capitalized_phrase
+Monitoring Monitoring,1,capitalized_phrase
+Alerts Signify,1,capitalized_phrase
+Tickets Signify,1,capitalized_phrase
+MTTR. Humans,1,capitalized_phrase
+Change Management,1,capitalized_phrase
+Demand Forecasting,1,capitalized_phrase
+Capacity Planning,1,capitalized_phrase
+Provisioning Provisioning,1,capitalized_phrase
+Performance Efficient,1,capitalized_phrase
+Because SRE,1,capitalized_phrase
+Beginning Site,1,capitalized_phrase
+Reliability Engineering,1,capitalized_phrase
+SRE Way,1,capitalized_phrase
+Vice President,1,capitalized_phrase
+Google Engineering,1,capitalized_phrase
+See Disaster,1,capitalized_phrase
+Role Playing,1,capitalized_phrase
+Production Meetings,1,capitalized_phrase
+Previous Part,1,capitalized_phrase
+Introduction Next,1,capitalized_phrase
+SRE Copyright,1,capitalized_phrase
+Inc. Published,1,capitalized_phrase
+Reilly Media,1,capitalized_phrase
+Inc. Licensed,1,capitalized_phrase
+CC BY-NC-ND,1,capitalized_phrase
+Prompt Engineering Guide,1,capitalized_phrase
+Prompt Engineering Introduction,1,capitalized_phrase
+LLM Settings Basics,1,capitalized_phrase
+Prompting Prompt Elements,1,capitalized_phrase
+Designing Prompts Examples,1,capitalized_phrase
+Prompts Prompting Techniques,1,capitalized_phrase
+Zero-shot Prompting Few-shot,1,capitalized_phrase
+Prompting Chain-of-Thought Prompting,1,capitalized_phrase
+Meta Prompting Self-Consistency,1,capitalized_phrase
+Generate Knowledge Prompting,1,capitalized_phrase
+Prompt Chaining Tree,1,capitalized_phrase
+Thoughts Retrieval Augmented,1,capitalized_phrase
+Generation Automatic Reasoning,1,capitalized_phrase
+Tool-use Automatic Prompt,1,capitalized_phrase
+Engineer Active-Prompt Directional,1,capitalized_phrase
+Stimulus Prompting Program-Aided,1,capitalized_phrase
+Language Models ReAct,1,capitalized_phrase
+Reflexion Multimodal CoT,1,capitalized_phrase
+Graph Prompting AI,1,capitalized_phrase
+Agents Agent Components,1,capitalized_phrase
+Engineering Deep Dive,1,capitalized_phrase
+Function Calling Deep,1,capitalized_phrase
+Agents Guides Optimizing,1,capitalized_phrase
+Prompts OpenAI Deep,1,capitalized_phrase
+Research Reasoning LLMs,1,capitalized_phrase
+Image Generation Context,1,capitalized_phrase
+Engineering Guide Applications,1,capitalized_phrase
+Fine-tuning GPT-4o Function,1,capitalized_phrase
+Calling Context Caching,1,capitalized_phrase
+LLMs Generating Data,1,capitalized_phrase
+Generating Synthetic Dataset,1,capitalized_phrase
+RAG Tackling Generated,1,capitalized_phrase
+Datasets Diversity Generating,1,capitalized_phrase
+Code Graduate Job,1,capitalized_phrase
+Classification Case Study,1,capitalized_phrase
+Prompt Function Prompt,1,capitalized_phrase
+Hub Classification Sentiment,1,capitalized_phrase
+Classification Few-Shot Sentiment,1,capitalized_phrase
+Classification Coding Generate,1,capitalized_phrase
+Code Snippet Generate,1,capitalized_phrase
+MySQL Query Draw,1,capitalized_phrase
+TiKZ Diagram Creativity,1,capitalized_phrase
+Rhymes Infinite Primes,1,capitalized_phrase
+Words Evaluation Evaluate,1,capitalized_phrase
+Dialogue Information Extraction,1,capitalized_phrase
+Extract Model Names,1,capitalized_phrase
+Image Generation Draw,1,capitalized_phrase
+Mathematics Evaluating Composite,1,capitalized_phrase
+Functions Adding Odd,1,capitalized_phrase
+Numbers Question Answering,1,capitalized_phrase
+Closed Domain Question,1,capitalized_phrase
+Answering Open Domain,1,capitalized_phrase
+Question Answering Science,1,capitalized_phrase
+Question Answering Reasoning,1,capitalized_phrase
+Indirect Reasoning Physical,1,capitalized_phrase
+Reasoning Text Summarization,1,capitalized_phrase
+Truthfulness Hallucination Identification,1,capitalized_phrase
+Adversarial Prompting Prompt,1,capitalized_phrase
+Injection Prompt Leaking,1,capitalized_phrase
+Jailbreaking Models ChatGPT,1,capitalized_phrase
+Code Llama Flan,1,capitalized_phrase
+Gemini Gemini Advanced,1,capitalized_phrase
+Pro Gemma GPT-4,1,capitalized_phrase
+Grok-1 Kimi K2.5,1,capitalized_phrase
+Mistral Large Mixtral,1,capitalized_phrase
+OLMo Phi-2 Sora,1,capitalized_phrase
+LLM Collection Risks,1,capitalized_phrase
+Misuses Adversarial Prompting,1,capitalized_phrase
+Factuality Biases LLM,1,capitalized_phrase
+Research Findings LLM,1,capitalized_phrase
+LLMs LLM Reasoning,1,capitalized_phrase
+RAG Faithfulness LLM,1,capitalized_phrase
+In-Context Recall RAG,1,capitalized_phrase
+Reduces Hallucination Synthetic,1,capitalized_phrase
+Data ThoughtSculpt Infini-Attention,1,capitalized_phrase
+LM-Guided CoT Trustworthiness,1,capitalized_phrase
+LLMs LLM Tokenization,1,capitalized_phrase
+Papers Tools Notebooks,1,capitalized_phrase
+Datasets Additional Readings,1,capitalized_phrase
+Services English Light,1,capitalized_phrase
+Prompting Techniques Copy,1,capitalized_phrase
+Prompting Techniques Prompt,1,capitalized_phrase
+Prompts Zero-shot Prompting,1,capitalized_phrase
+Google Cloud Prompt,1,capitalized_phrase
+Google Cloud. Ready,1,capitalized_phrase
+Thought Prompts CoT,1,capitalized_phrase
+Zero-shot CoT Prompts,1,capitalized_phrase
+Text Generation Scenario,1,capitalized_phrase
+Creative Writing Craft,1,capitalized_phrase
+Prompt Creative Writing,1,capitalized_phrase
+Question Answering Scenario,1,capitalized_phrase
+Open-Ended Questions Formulate,1,capitalized_phrase
+Prompt Open-Ended Questions,1,capitalized_phrase
+Code Generation Scenario,1,capitalized_phrase
+Code Completion Provide,1,capitalized_phrase
+Prompt Code Completion,1,capitalized_phrase
+Image Generation Scenario,1,capitalized_phrase
+Photorealistic Images Craft,1,capitalized_phrase
+Prompt Photorealistic Images,1,capitalized_phrase
+Set Clear Goals,1,capitalized_phrase
+Google Cloud. Benefits,1,capitalized_phrase
+Related Google Cloud,1,capitalized_phrase
+Vertex AI Platform,1,capitalized_phrase
+Vertex AI Rapidly,1,capitalized_phrase
+LLMs. AI APIs,1,capitalized_phrase
+APIs. Solution Model,1,capitalized_phrase
+Vertex AI Jumpstart,1,capitalized_phrase
+Affordability Tool Calls,1,capitalized_phrase
+Reed McGinley-Stempel Executive,1,capitalized_phrase
+Rapid Tool Integration,1,capitalized_phrase
+Example JSON-RPC Request,1,capitalized_phrase
+MCP Custom Integrations,1,capitalized_phrase
+ChatGPT Plugins LangChain,1,capitalized_phrase
+Frameworks Integration Speed,1,capitalized_phrase
+Interaction Type Interaction,1,capitalized_phrase
+Open Standard Open,1,capitalized_phrase
+API Key Management,1,capitalized_phrase
+LLM Tool Frameworks,1,capitalized_phrase
+Discover Available Tools,1,capitalized_phrase
+Automatic Endpoint Discovery,1,capitalized_phrase
+Secure Multi-User Support,1,capitalized_phrase
+Conclusion Model Context,1,capitalized_phrase
+LinkedIn X Facebook,1,capitalized_phrase
+Related Articles Product,1,capitalized_phrase
+Stytch Connected Apps,1,capitalized_phrase
+Admin Portal Connected,1,capitalized_phrase
+Risk Prevention Fingerprinting,1,capitalized_phrase
+Careers Contact Resources,1,capitalized_phrase
+Pricing Docs Changelog,1,capitalized_phrase
+Blog Community Slack,1,capitalized_phrase
+"Privacy Policy 
+ Introducing",1,capitalized_phrase
+MCP Registry. Every,1,capitalized_phrase
+Registry Maintainer Tadas,1,capitalized_phrase
+Registry Maintainer Toby,1,capitalized_phrase
+Requires Durable Objects,1,capitalized_phrase
+McpAgent Yes Yes,1,capitalized_phrase
+Select List Tools,1,capitalized_phrase
+Restart Claude Desktop,1,capitalized_phrase
+MCP Server. Once,1,capitalized_phrase
+Remote MCP Server,1,capitalized_phrase
+Cloudflare Access OAuth,1,capitalized_phrase
+Cloudflare Access. Cloudflare,1,capitalized_phrase
+Quick OAuth Flow,1,capitalized_phrase
+MCP Tools Add,1,capitalized_phrase
+Delegating Larger Tickets,1,capitalized_phrase
+Domain Drafting Refining,1,capitalized_phrase
+Automating Workflows Agents,1,capitalized_phrase
+Intelligent Code Review,1,capitalized_phrase
+Improving Performance Environment,1,capitalized_phrase
+Build Custom CLI,1,capitalized_phrase
+AI. Practical Considerations,1,capitalized_phrase
+Autonomous Agents Limited,1,capitalized_phrase
+Knowledge Cutoffs Whenever,1,capitalized_phrase
+Practical Considerations Managing,1,capitalized_phrase
+Practical Considerations Security,1,capitalized_phrase
+Practical Considerations Big,1,capitalized_phrase
+AGENTS LLM AI,1,capitalized_phrase
+PROMPTING CONTEXT MANAGEMENT,1,capitalized_phrase
+Context Fails Context,1,capitalized_phrase
+Context Poisoning Context,1,capitalized_phrase
+Context Distraction Context,1,capitalized_phrase
+Context Confusion Context,1,capitalized_phrase
+Context Clash Context,1,capitalized_phrase
+Product Subscribe Sign,1,capitalized_phrase
+Danny Martinez Jul,1,capitalized_phrase
+Product Review. Product,1,capitalized_phrase
+Product Competency Toolkit,1,capitalized_phrase
+Product Quality. Flawless,1,capitalized_phrase
+VS Code Extension,1,capitalized_phrase
+Comments Restacks Mar,1,capitalized_phrase
+Ravi Mehta Thank,1,capitalized_phrase
+Ravi Mehta Harsh,1,capitalized_phrase
+Ravi Mehta Agree,1,capitalized_phrase
+Top Latest Discussions,1,capitalized_phrase
+Customer Sarah Chen,1,capitalized_phrase
+Claude Code. Claude,1,capitalized_phrase
+"Anthropic 
+ Claude Code",1,capitalized_phrase
+K Ask AI,1,capitalized_phrase
+Search... Navigation Getting,1,capitalized_phrase
+Claude Code Deployment,1,capitalized_phrase
+Administration Configuration Reference,1,capitalized_phrase
+Overview Quickstart Changelog,1,capitalized_phrase
+Extend Claude Code,1,capitalized_phrase
+Overview Remote Control,1,capitalized_phrase
+Visual Studio Code,1,capitalized_phrase
+JetBrains IDEs Code,1,capitalized_phrase
+CD Claude Code,1,capitalized_phrase
+Terminal VS Code,1,capitalized_phrase
+VS Code Install,1,capitalized_phrase
+Run Claude Code,1,capitalized_phrase
+CLI Claude Code,1,capitalized_phrase
+Remote Control Message,1,capitalized_phrase
+Remote Control Push,1,capitalized_phrase
+Claude Code Settings,1,capitalized_phrase
+StockApp Engineering Enter,1,capitalized_phrase
+Command Palette Terminal,1,capitalized_phrase
+Git Worktrees Feature,1,capitalized_phrase
+Team Admin Panel,1,capitalized_phrase
+Agentic Development Environment,1,capitalized_phrase
+Oz Cloud Agents,1,capitalized_phrase
+Zero Data Retention,1,capitalized_phrase
+Local Agents Overview,1,capitalized_phrase
+Warp Cloud Agents,1,capitalized_phrase
+Threats. Threat Research,1,capitalized_phrase
+Center Threat Research,1,capitalized_phrase
+Malware Malware AI,1,capitalized_phrase
+Related Products Prisma,1,capitalized_phrase
+SASE Secure Access,1,capitalized_phrase
+Jay Chen Royce,1,capitalized_phrase
+Malware Threat Research,1,capitalized_phrase
+Agentic AI AI,1,capitalized_phrase
+BOLA GenAI Prompt,1,capitalized_phrase
+Share Executive Summary,1,capitalized_phrase
+Key Findings Prompt,1,capitalized_phrase
+Software Composition Analysis,1,capitalized_phrase
+APIs. Security Risks,1,capitalized_phrase
+OWASP Agentic AI,1,capitalized_phrase
+Attack Scenario Description,1,capitalized_phrase
+Threats Mitigations Identifying,1,capitalized_phrase
+Identifying Participant Agents,1,capitalized_phrase
+Extracting Agent Instructions,1,capitalized_phrase
+Extracting Agent Tool,1,capitalized_phrase
+Internal Network Objective,1,capitalized_phrase
+Sensitive Data Exfiltration,1,capitalized_phrase
+Mounted Volume Objective,1,capitalized_phrase
+Service Account Access,1,capitalized_phrase
+Metadata Service Objective,1,capitalized_phrase
+Google Compute Engine,1,capitalized_phrase
+Application Database Exploiting,1,capitalized_phrase
+Exfiltrate Database Table,1,capitalized_phrase
+Access Unauthorized User,1,capitalized_phrase
+Indirect Prompt Injection,1,capitalized_phrase
+Conversation History Exfiltration,1,capitalized_phrase
+CrewAI AutoGen Malicious,1,capitalized_phrase
+Content Filtering Content,1,capitalized_phrase
+Tool Input Sanitization,1,capitalized_phrase
+Tool Vulnerability Scanning,1,capitalized_phrase
+Code Executor Sandboxing,1,capitalized_phrase
+Additional Resources Stock,1,capitalized_phrase
+CrewAI Documentation CrewAI,1,capitalized_phrase
+CrewAI Documentation AutoGen,1,capitalized_phrase
+AutoGen Documentation AutoGen,1,capitalized_phrase
+Google Cloud Documentation,1,capitalized_phrase
+OWASP OWASP Agentic,1,capitalized_phrase
+Tags Agentic AI,1,capitalized_phrase
+AI BOLA GenAI,1,capitalized_phrase
+Threat Research Center,1,capitalized_phrase
+Underground Forum Table,1,capitalized_phrase
+Contents Related Articles,1,capitalized_phrase
+Agentic AI Related,1,capitalized_phrase
+Malware Resources High,1,capitalized_phrase
+Profile Threats April,1,capitalized_phrase
+Axios Supply Chain,1,capitalized_phrase
+Multi-Stage Supply Chain,1,capitalized_phrase
+Security Infrastructure CVE-2025-55182,1,capitalized_phrase
+Agentic AI Data,1,capitalized_phrase
+Threat Actor Groups,1,capitalized_phrase
+Threat Clusters Targeting,1,capitalized_phrase
+Southeast Asian Government,1,capitalized_phrase
+CL-STA-1048 CL-STA-1049 Stately,1,capitalized_phrase
+Recruiting Scheme Impersonating,1,capitalized_phrase
+Talent Acquisition Team,1,capitalized_phrase
+Lure Phishing Read,1,capitalized_phrase
+Prompt Fuzzing Finds,1,capitalized_phrase
+LLMs Still Fragile,1,capitalized_phrase
+Closed Models Evasion,1,capitalized_phrase
+GenAI LLM Read,1,capitalized_phrase
+Suspected China-Based Espionage,1,capitalized_phrase
+Operation Against Military,1,capitalized_phrase
+Southeast Asia Advanced,1,capitalized_phrase
+Persistent Threat AppleChris,1,capitalized_phrase
+Bypass Security Controls,1,capitalized_phrase
+AI Fuzzing LLM,1,capitalized_phrase
+Google Privacy Policy,1,capitalized_phrase
+Services AI-Powered Network,1,capitalized_phrase
+Security Platform Secure,1,capitalized_phrase
+Design Prisma AIRS,1,capitalized_phrase
+Cloud Delivered Security,1,capitalized_phrase
+Services Advanced Threat,1,capitalized_phrase
+Prevention Advanced URL,1,capitalized_phrase
+Filtering Advanced WildFire,1,capitalized_phrase
+Advanced DNS Security,1,capitalized_phrase
+Enterprise Data Loss,1,capitalized_phrase
+Prevention Enterprise IoT,1,capitalized_phrase
+Security Medical IoT,1,capitalized_phrase
+Security Industrial OT,1,capitalized_phrase
+Security SaaS Security,1,capitalized_phrase
+Next-Generation Firewalls Hardware,1,capitalized_phrase
+Firewalls Software Firewalls,1,capitalized_phrase
+Strata Cloud Manager,1,capitalized_phrase
+NGFW PAN-OS Panorama,1,capitalized_phrase
+Secure Access Service,1,capitalized_phrase
+Edge Prisma SASE,1,capitalized_phrase
+Application Acceleration Autonomous,1,capitalized_phrase
+Digital Experience Management,1,capitalized_phrase
+Enterprise DLP Prisma,1,capitalized_phrase
+Access Prisma Browser,1,capitalized_phrase
+Prisma SD-WAN Remote,1,capitalized_phrase
+Browser Isolation SaaS,1,capitalized_phrase
+Security AI-Driven Security,1,capitalized_phrase
+Operations Platform Cloud,1,capitalized_phrase
+Security Cortex Cloud,1,capitalized_phrase
+Application Security Cloud,1,capitalized_phrase
+Posture Security Cloud,1,capitalized_phrase
+Runtime Security Prisma,1,capitalized_phrase
+Cloud AI-Driven SOC,1,capitalized_phrase
+Cortex XSIAM Cortex,1,capitalized_phrase
+XDR Cortex XSOAR,1,capitalized_phrase
+Cortex Xpanse Unit,1,capitalized_phrase
+Response Managed XSIAM,1,capitalized_phrase
+Incident Response Services,1,capitalized_phrase
+Proactive Assessments Incident,1,capitalized_phrase
+Security Strategy Discover,1,capitalized_phrase
+Threat Intelligence Company,1,capitalized_phrase
+Contact Us Corporate,1,capitalized_phrase
+Responsibility Customers Investor,1,capitalized_phrase
+Relations Location Newsroom,1,capitalized_phrase
+Popular Links Blog,1,capitalized_phrase
+Communities Content Library,1,capitalized_phrase
+Cyberpedia Event Center,1,capitalized_phrase
+Manage Email Preferences,1,capitalized_phrase
+Products A-Z Product,1,capitalized_phrase
+Vulnerability Sitemap Tech,1,capitalized_phrase
+Default Heading Read,1,capitalized_phrase
+"Seekbar Volume 
+ Context",1,capitalized_phrase
+Chroma Products Sync,1,capitalized_phrase
+Database Agent Docs,1,capitalized_phrase
+Enterprise Pricing Research,1,capitalized_phrase
+Resources Changelog Updates,1,capitalized_phrase
+Repeated Words Task,1,capitalized_phrase
+Lexical Matching NoLiMa,1,capitalized_phrase
+Irrelevant Context Distractors,1,capitalized_phrase
+Paul Graham Essay,1,capitalized_phrase
+High Needle-Question Similarity,1,capitalized_phrase
+Experimental Setup Results,1,capitalized_phrase
+Needle-Haystack Similarity Results,1,capitalized_phrase
+Sample Experimental Setup,1,capitalized_phrase
+Averaged Performance Across,1,capitalized_phrase
+GPT Family LongMemEval,1,capitalized_phrase
+Gemini Family LongMemEval,1,capitalized_phrase
+Sample Prompt Containing,1,capitalized_phrase
+Claude Family Additionally,1,capitalized_phrase
+GPT-4 Turbo Position,1,capitalized_phrase
+Francisco Corresponding Portion,1,capitalized_phrase
+San Francisco Repeated,1,capitalized_phrase
+Gemini Family Generally,1,capitalized_phrase
+Pro Sample Outputs,1,capitalized_phrase
+Pressure Testing LLMs,1,capitalized_phrase
+Benchmarking Chat Assistants,1,capitalized_phrase
+Long-Term Interactive Memory,1,capitalized_phrase
+Long-Context Evaluation Beyond,1,capitalized_phrase
+Long Context Evaluations,1,capitalized_phrase
+Latent Structure Queries,1,capitalized_phrase
+Efficient Context Window,1,capitalized_phrase
+Uniform Manifold Approximation,1,capitalized_phrase
+R. J. G,1,capitalized_phrase
+Density-Based Clustering Based,1,capitalized_phrase
+Hierarchical Density Estimates,1,capitalized_phrase
+Heidelberg. Link Appendix,1,capitalized_phrase
+GPT-4o GPT-4 Turbo,1,capitalized_phrase
+GPT-3.5 Turbo Google,1,capitalized_phrase
+Qwen3-235B-A22B Qwen3-32B Qwen3-8B,1,capitalized_phrase
+MiniLM-L6-v2 Needle-Question Similarity,1,capitalized_phrase
+Qwen Family Repeated,1,capitalized_phrase
+Product Database Sync,1,capitalized_phrase
+Enterprise Package Search,1,capitalized_phrase
+MCP Docs Status,1,capitalized_phrase
+X YouTube Company,1,capitalized_phrase
+Legal Privacy Terms,1,capitalized_phrase
+Linux. Exploit Chain,1,capitalized_phrase
+Video Walkthrough Short,1,capitalized_phrase
+August Patch Tuesday,1,capitalized_phrase
+Cheers. References Month,1,capitalized_phrase
+Arbitrary Command Execution,1,capitalized_phrase
+Prompt Injection Fixed,1,capitalized_phrase
+Copilot Settings CVE-2025-53773,1,capitalized_phrase
+Visual Studio Remote,1,capitalized_phrase
+Code Execution Vulnerability,1,capitalized_phrase
+Persistent Security Write-Up,1,capitalized_phrase
+Persistent Security Newer,1,capitalized_phrase
+Products Semgrep Code,1,capitalized_phrase
+Semgrep Supply Chain,1,capitalized_phrase
+Semgrep Secrets Find,1,capitalized_phrase
+AI Semgrep AppSec,1,capitalized_phrase
+Semgrep Workflows Build,1,capitalized_phrase
+Product Updates Stay,1,capitalized_phrase
+Solutions Secure Vibe,1,capitalized_phrase
+Open-Source Malware Protection,1,capitalized_phrase
+Secure Guardrails Protect,1,capitalized_phrase
+Secure Guardrails Fintech,1,capitalized_phrase
+Resources Docs Want,1,capitalized_phrase
+Semgrep ROI Calculator,1,capitalized_phrase
+Community Slack Join,1,capitalized_phrase
+Case Studies See,1,capitalized_phrase
+Semgrep Video Library,1,capitalized_phrase
+Community Edition Company,1,capitalized_phrase
+Security Research Finding,1,capitalized_phrase
+Romain Gaucher Vasilii,1,capitalized_phrase
+Ermilov Clint Gibler,1,capitalized_phrase
+Find Real Vulnerabilities,1,capitalized_phrase
+AI Grasps Context,1,capitalized_phrase
+Insecure Direct Object,1,capitalized_phrase
+XSS. OpenAI Codex,1,capitalized_phrase
+Open Research Questions,1,capitalized_phrase
+AI-based Vulnerability Hunting,1,capitalized_phrase
+Usual SAST Benchmarks,1,capitalized_phrase
+CVE Memorization Bias,1,capitalized_phrase
+App ID Commits,1,capitalized_phrase
+Real-World Apps Code,1,capitalized_phrase
+Found Both Claude,1,capitalized_phrase
+JSON. Claude Code,1,capitalized_phrase
+Different Bugs Every,1,capitalized_phrase
+Privacy Policy Semgrep,1,capitalized_phrase
+Application Security March,1,capitalized_phrase
+Isaac Evans March,1,capitalized_phrase
+Introducing Semgrep Custom,1,capitalized_phrase
+Workflows Vivek Khimani,1,capitalized_phrase
+Braden Riggs March,1,capitalized_phrase
+Semgrep Autofix Nabeel,1,capitalized_phrase
+Saeed Katie Kent,1,capitalized_phrase
+Web Application Security,1,capitalized_phrase
+OWASP Foundation OWASP,1,capitalized_phrase
+Application Security Risks,1,capitalized_phrase
+Translation Efforts Efforts,1,capitalized_phrase
+Dr. Frank Gut,1,capitalized_phrase
+Dr. Thomas Herzog,1,capitalized_phrase
+Dr. Markus Koegel,1,capitalized_phrase
+Michael Schaefer Hebrew,1,capitalized_phrase
+Omer Levi Hevroni,1,capitalized_phrase
+Tomohiro SANAE. Korean,1,capitalized_phrase
+CHO KWANG YULL,1,capitalized_phrase
+Kembolle A. Oliveira,1,capitalized_phrase
+Paulo A. Silva,1,capitalized_phrase
+Taras Ivashchenko Spanish,1,capitalized_phrase
+Release Candidate Translation,1,capitalized_phrase
+Pavel Basta French,1,capitalized_phrase
+Moulay Abdsamad Belghiti,1,capitalized_phrase
+Shay Sivan. Italian,1,capitalized_phrase
+Mirko Guido Spezie,1,capitalized_phrase
+Giuseppe Di Cesare,1,capitalized_phrase
+Takanori Nakanowatari Korean,1,capitalized_phrase
+Carlo Marcelo Revoredo,1,capitalized_phrase
+Rodrigo Gularte Spanish,1,capitalized_phrase
+Mauricio D. Papaleo,1,capitalized_phrase
+Juan Manuel Bahamonde,1,capitalized_phrase
+Jose A. Guasch,1,capitalized_phrase
+Jose Antonio Guasch,1,capitalized_phrase
+Vicente Aguilera French,1,capitalized_phrase
+Zaki Akhmad Italian,1,capitalized_phrase
+Gerardo Di Giacomo,1,capitalized_phrase
+Valentino Squilloni Japanese,1,capitalized_phrase
+Dr. Masayuki Hisada,1,capitalized_phrase
+Takashi Arima Chinese,1,capitalized_phrase
+Dang Hoang Vu,1,capitalized_phrase
+Nguyen Ba Tien,1,capitalized_phrase
+Nguyen Tang Hung,1,capitalized_phrase
+Luong Dieu Phuong,1,capitalized_phrase
+Huynh Thien Tam,1,capitalized_phrase
+Secure Code Warrior,1,capitalized_phrase
+OWASP NoVA Chapter,1,capitalized_phrase
+Project Sponsors Thanks,1,capitalized_phrase
+Data Analysis Plan,1,capitalized_phrase
+Humans. Analysis Infrastructure,1,capitalized_phrase
+OWASP Azure Cloud,1,capitalized_phrase
+Verified Data Contribution,1,capitalized_phrase
+Unverified Data Contribution,1,capitalized_phrase
+Data Contribution Period,1,capitalized_phrase
+Metadata Contributor Name,1,capitalized_phrase
+Contributor Contact Email,1,capitalized_phrase
+Flagship Project Documentation,1,capitalized_phrase
+Social Twitter Code,1,capitalized_phrase
+Stock Brian Glas,1,capitalized_phrase
+Neil Smithline Tanya,1,capitalized_phrase
+Janca Torsten Gigler,1,capitalized_phrase
+Upcoming OWASP Global,1,capitalized_phrase
+Events OWASP News,1,capitalized_phrase
+Testing Methods Learn,1,capitalized_phrase
+Shanika Wickramasinghe Global,1,capitalized_phrase
+DAST. Criteria SAST,1,capitalized_phrase
+DAST Runtime Application,1,capitalized_phrase
+DAST. Unlike SAST,1,capitalized_phrase
+Title Related Articles,1,capitalized_phrase
+Filter Category Blog,1,capitalized_phrase
+Sort Category Shuffle,1,capitalized_phrase
+Related Articles Learn,1,capitalized_phrase
+Minute Read Introduction,1,capitalized_phrase
+Reinforcement Learning Reinforcement,1,capitalized_phrase
+Minute Read Data,1,capitalized_phrase
+Cursor Cloud Agents,1,capitalized_phrase
+Index Series Merge,1,capitalized_phrase
+Greg Foster Graphite,1,capitalized_phrase
+Right Tool Several,1,capitalized_phrase
+AI Suggestion Evaluation,1,capitalized_phrase
+Graphite Graphite Agent,1,capitalized_phrase
+Challenge Solution False,1,capitalized_phrase
+Blake Smith Blake,1,capitalized_phrase
+Keeping Team Members,1,capitalized_phrase
+Good Pull Request,1,capitalized_phrase
+Pull Request Ok,1,capitalized_phrase
+Giving Constructive Feedback,1,capitalized_phrase
+Style Points Brace,1,capitalized_phrase
+Principal Software Engineer,1,capitalized_phrase
+Jet Propulsion Laboratories,1,capitalized_phrase
+Civilized Discourse Construction,1,capitalized_phrase
+Stack Exchange. Pay,1,capitalized_phrase
+Recent Posts Launching,1,capitalized_phrase
+Minimum Income Initiative,1,capitalized_phrase
+Guaranteed Minimum Income,1,capitalized_phrase
+See All Posts,1,capitalized_phrase
+Engineer Paul Smith,1,capitalized_phrase
+Staff Software Engineer,1,capitalized_phrase
+Melissa Pastore Code,1,capitalized_phrase
+Elle Shwer Related,1,capitalized_phrase
+ML Building AI-powered,1,capitalized_phrase
+Copilot SDK Learn,1,capitalized_phrase
+Resolve AI Blog,1,capitalized_phrase
+Eliminating Alert Fatigue,1,capitalized_phrase
+Maintaining Dynamic Knowledge,1,capitalized_phrase
+Comprehensive Investigations Human,1,capitalized_phrase
+Seamless Collaboration Supported,1,capitalized_phrase
+Evidence Agentic AI,1,capitalized_phrase
+Proactive Incident Resolution,1,capitalized_phrase
+Approach Resolve AI,1,capitalized_phrase
+On-call Engineering Lies,1,capitalized_phrase
+Agentic AI Agentic,1,capitalized_phrase
+Key Takeaways Agentic,1,capitalized_phrase
+Related Post Fireside,1,capitalized_phrase
+Blog Product Kubernetes,1,capitalized_phrase
+Resolve AI Since,1,capitalized_phrase
+Struggle While Kubernetes,1,capitalized_phrase
+Cry Wolf Kubernetes,1,capitalized_phrase
+Changes Troubleshooting Now,1,capitalized_phrase
+Always-On Expertise Agentic,1,capitalized_phrase
+Noise-Free Analysis Across,1,capitalized_phrase
+All Telemetry Resolve,1,capitalized_phrase
+Correlates Issues Across,1,capitalized_phrase
+Runs Automated Investigations,1,capitalized_phrase
+Kubernetes Troubleshooting Struggle,1,capitalized_phrase
+Changes Troubleshooting Agentic,1,capitalized_phrase
+Download Related Post,1,capitalized_phrase
+Natural Language Request,1,capitalized_phrase
+Single Agent AI,1,capitalized_phrase
+IIT Bombay. Content,1,capitalized_phrase
+IIT Bombay. Related,1,capitalized_phrase
+Post Fireside Chat,1,capitalized_phrase
+Anjali Udasi Contents,1,capitalized_phrase
+Core Concepts Traces,1,capitalized_phrase
+Sampling Strategies Tracing,1,capitalized_phrase
+Tracing Implementation Guide,1,capitalized_phrase
+Tool Type Best,1,capitalized_phrase
+Grafana Tempo Tracing,1,capitalized_phrase
+OpenTelemetry Collector Data,1,capitalized_phrase
+Traditional APM Tools,1,capitalized_phrase
+Advanced Tracing Techniques,1,capitalized_phrase
+Distributed Context Management,1,capitalized_phrase
+Correlation Between Traces,1,capitalized_phrase
+Real-World Tracing Patterns,1,capitalized_phrase
+Anti-Patterns Effective Tracing,1,capitalized_phrase
+Beyond Technical Benefits,1,capitalized_phrase
+Topics Observability Monitoring,1,capitalized_phrase
+Anjali Udasi Helping,1,capitalized_phrase
+G2 Reviews Gartner,1,capitalized_phrase
+High Performer Best,1,capitalized_phrase
+Usability Highest User,1,capitalized_phrase
+"Adoption 
+ Google SRE",1,capitalized_phrase
+Automate Operations Chapter,1,capitalized_phrase
+Contents Foreword Preface,1,capitalized_phrase
+SRE Part II,1,capitalized_phrase
+Monitoring Distributed Systems,1,capitalized_phrase
+Simplicity Part III,1,capitalized_phrase
+Addressing Cascading Failures,1,capitalized_phrase
+Managing Critical State,1,capitalized_phrase
+Distributed Periodic Scheduling,1,capitalized_phrase
+Data Processing Pipelines,1,capitalized_phrase
+Reliable Product Launches,1,capitalized_phrase
+Scale Part IV,1,capitalized_phrase
+Engagement Model Part,1,capitalized_phrase
+Availability Table Appendix,1,capitalized_phrase
+Production Services Appendix,1,capitalized_phrase
+C. Example Incident,1,capitalized_phrase
+State Document Appendix,1,capitalized_phrase
+D. Example Postmortem,1,capitalized_phrase
+Appendix E. Launch,1,capitalized_phrase
+Coordination Checklist Appendix,1,capitalized_phrase
+F. Example Production,1,capitalized_phrase
+Meeting Minutes Bibliography,1,capitalized_phrase
+Benjamin Treynor Sloss,1,capitalized_phrase
+Betsy Beyer Hope,1,capitalized_phrase
+Service Management Historically,1,capitalized_phrase
+Google Software Engineering,1,capitalized_phrase
+Google SRE. Ensuring,1,capitalized_phrase
+Pursuing Maximum Change,1,capitalized_phrase
+Velocity Without Violating,1,capitalized_phrase
+Emergency Response Reliability,1,capitalized_phrase
+Change Management SRE,1,capitalized_phrase
+Capacity Planning Demand,1,capitalized_phrase
+Beginning Site Reliability,1,capitalized_phrase
+See Disaster Role,1,capitalized_phrase
+Introduction Next Chapter,1,capitalized_phrase
+Prompt Engineering Introduction LLM,1,capitalized_phrase
+Prompting Prompt Elements General,1,capitalized_phrase
+Prompts Prompting Techniques Zero-shot,1,capitalized_phrase
+Prompting Few-shot Prompting Chain-of-Thought,1,capitalized_phrase
+Prompting Meta Prompting Self-Consistency,1,capitalized_phrase
+Generate Knowledge Prompting Prompt,1,capitalized_phrase
+Thoughts Retrieval Augmented Generation,1,capitalized_phrase
+Tool-use Automatic Prompt Engineer,1,capitalized_phrase
+Active-Prompt Directional Stimulus Prompting,1,capitalized_phrase
+Program-Aided Language Models ReAct,1,capitalized_phrase
+Reflexion Multimodal CoT Graph,1,capitalized_phrase
+Prompting AI Agents Introduction,1,capitalized_phrase
+Agents Agent Components AI,1,capitalized_phrase
+Deep Dive Function Calling,1,capitalized_phrase
+Deep Agents Guides Optimizing,1,capitalized_phrase
+Prompts OpenAI Deep Research,1,capitalized_phrase
+Image Generation Context Engineering,1,capitalized_phrase
+Guide Applications Fine-tuning GPT-4o,1,capitalized_phrase
+Function Calling Context Caching,1,capitalized_phrase
+LLMs Generating Data Generating,1,capitalized_phrase
+RAG Tackling Generated Datasets,1,capitalized_phrase
+Diversity Generating Code Graduate,1,capitalized_phrase
+Job Classification Case Study,1,capitalized_phrase
+Prompt Function Prompt Hub,1,capitalized_phrase
+Classification Sentiment Classification Few-Shot,1,capitalized_phrase
+Sentiment Classification Coding Generate,1,capitalized_phrase
+Code Snippet Generate MySQL,1,capitalized_phrase
+Query Draw TiKZ Diagram,1,capitalized_phrase
+Creativity Rhymes Infinite Primes,1,capitalized_phrase
+Dialogue Information Extraction Extract,1,capitalized_phrase
+Model Names Image Generation,1,capitalized_phrase
+Evaluating Composite Functions Adding,1,capitalized_phrase
+Odd Numbers Question Answering,1,capitalized_phrase
+Closed Domain Question Answering,1,capitalized_phrase
+Open Domain Question Answering,1,capitalized_phrase
+Science Question Answering Reasoning,1,capitalized_phrase
+Indirect Reasoning Physical Reasoning,1,capitalized_phrase
+Concept Truthfulness Hallucination Identification,1,capitalized_phrase
+Adversarial Prompting Prompt Injection,1,capitalized_phrase
+Prompt Leaking Jailbreaking Models,1,capitalized_phrase
+Code Llama Flan Gemini,1,capitalized_phrase
+Pro Gemma GPT-4 Grok-1,1,capitalized_phrase
+Kimi K2.5 LLaMA Llama,1,capitalized_phrase
+Mistral Large Mixtral Mixtral,1,capitalized_phrase
+OLMo Phi-2 Sora LLM,1,capitalized_phrase
+Misuses Adversarial Prompting Factuality,1,capitalized_phrase
+Biases LLM Research Findings,1,capitalized_phrase
+LLMs LLM Reasoning RAG,1,capitalized_phrase
+Faithfulness LLM In-Context Recall,1,capitalized_phrase
+RAG Reduces Hallucination Synthetic,1,capitalized_phrase
+Data ThoughtSculpt Infini-Attention LM-Guided,1,capitalized_phrase
+Papers Tools Notebooks Datasets,1,capitalized_phrase
+Additional Readings Services English,1,capitalized_phrase
+Light Prompting Techniques Copy,1,capitalized_phrase
+Prompting Techniques Prompt Engineering,1,capitalized_phrase
+"Prompts Zero-shot Prompting 
+ Prompt",1,capitalized_phrase
+Zero-shot CoT Prompts Combines,1,capitalized_phrase
+Text Generation Scenario Instructions,1,capitalized_phrase
+Example Prompt Creative Writing,1,capitalized_phrase
+Question Answering Scenario Instructions,1,capitalized_phrase
+Example Prompt Open-Ended Questions,1,capitalized_phrase
+Code Generation Scenario Instructions,1,capitalized_phrase
+Example Prompt Code Completion,1,capitalized_phrase
+Image Generation Scenario Instructions,1,capitalized_phrase
+Example Prompt Photorealistic Images,1,capitalized_phrase
+LLMs. AI APIs Easily,1,capitalized_phrase
+APIs. Solution Model Garden,1,capitalized_phrase
+Model Context Protocol MCP,1,capitalized_phrase
+MCP Custom Integrations ChatGPT,1,capitalized_phrase
+Frameworks Integration Speed Integration,1,capitalized_phrase
+Interaction Type Interaction Type,1,capitalized_phrase
+Open Standard Open Standard,1,capitalized_phrase
+Conclusion Model Context Protocol,1,capitalized_phrase
+LinkedIn X Facebook Related,1,capitalized_phrase
+Admin Portal Connected Apps,1,capitalized_phrase
+Risk Prevention Fingerprinting Active,1,capitalized_phrase
+Careers Contact Resources Pricing,1,capitalized_phrase
+Model Context Protocol Blog,1,capitalized_phrase
+MCP Registry. Every MCP,1,capitalized_phrase
+Registry Maintainer Tadas Antanavicius,1,capitalized_phrase
+Registry Maintainer Toby Padilla,1,capitalized_phrase
+McpAgent Yes Yes Stateful,1,capitalized_phrase
+Cloudflare Access. Cloudflare Access,1,capitalized_phrase
+Domain Drafting Refining Journalism,1,capitalized_phrase
+Improving Performance Environment Setup,1,capitalized_phrase
+Build Custom CLI Tools,1,capitalized_phrase
+AI. Practical Considerations Limitations,1,capitalized_phrase
+Practical Considerations Managing Time,1,capitalized_phrase
+Practical Considerations Big Changes,1,capitalized_phrase
+AGENTS LLM AI PROMPTING,1,capitalized_phrase
+Context Fails Context Poisoning,1,capitalized_phrase
+Context Poisoning Context Poisoning,1,capitalized_phrase
+Context Distraction Context Distraction,1,capitalized_phrase
+Context Confusion Context Confusion,1,capitalized_phrase
+Context Clash Context Clash,1,capitalized_phrase
+Comments Restacks Mar Jul,1,capitalized_phrase
+Ravi Mehta Harsh Chaudhary,1,capitalized_phrase
+Claude Code Docs Skip,1,capitalized_phrase
+K Ask AI Search,1,capitalized_phrase
+Claude Code Deployment Administration,1,capitalized_phrase
+Configuration Reference Resources Getting,1,capitalized_phrase
+Overview Quickstart Changelog Core,1,capitalized_phrase
+Extend Claude Code Explore,1,capitalized_phrase
+Overview Remote Control Claude,1,capitalized_phrase
+Visual Studio Code JetBrains,1,capitalized_phrase
+Terminal VS Code Desktop,1,capitalized_phrase
+Remote Control Message Dispatch,1,capitalized_phrase
+Team Admin Panel Session,1,capitalized_phrase
+Warp Cloud Agents Overview,1,capitalized_phrase
+Threats. Threat Research Center,1,capitalized_phrase
+Threat Research Malware Malware,1,capitalized_phrase
+Related Products Prisma SASE,1,capitalized_phrase
+Secure Access Service Edge,1,capitalized_phrase
+AI Security Assessment Unit,1,capitalized_phrase
+Jay Chen Royce Lu,1,capitalized_phrase
+Malware Threat Research Tags,1,capitalized_phrase
+Agentic AI AI BOLA,1,capitalized_phrase
+Share Executive Summary Agentic,1,capitalized_phrase
+OWASP Agentic AI Threats,1,capitalized_phrase
+Palo Alto Networks Show,1,capitalized_phrase
+Palo Alto Networks Display,1,capitalized_phrase
+Attack Scenario Description Threats,1,capitalized_phrase
+Identifying Participant Agents Objective,1,capitalized_phrase
+Attack Payload Explanation CrewAI,1,capitalized_phrase
+Extracting Agent Instructions Objective,1,capitalized_phrase
+Extracting Agent Tool Schemas,1,capitalized_phrase
+Attack Payload Explanation Similar,1,capitalized_phrase
+AutoGen Attacker Input Please,1,capitalized_phrase
+Service Account Access Token,1,capitalized_phrase
+Application Database Exploiting SQL,1,capitalized_phrase
+Exfiltrate Database Table Objective,1,capitalized_phrase
+Access Unauthorized User Data,1,capitalized_phrase
+AutoGen Attacker Input Show,1,capitalized_phrase
+Conversation History Exfiltration Objective,1,capitalized_phrase
+Palo Alto Networks AI,1,capitalized_phrase
+Tool Input Sanitization Tools,1,capitalized_phrase
+Tool Vulnerability Scanning All,1,capitalized_phrase
+Code Executor Sandboxing Code,1,capitalized_phrase
+Palo Alto Networks Prisma,1,capitalized_phrase
+Additional Resources Stock Advisory,1,capitalized_phrase
+Google Cloud Documentation OWASP,1,capitalized_phrase
+OWASP OWASP Agentic AI,1,capitalized_phrase
+Tags Agentic AI AI,1,capitalized_phrase
+Threat Research Center Next,1,capitalized_phrase
+Contents Related Articles Double,1,capitalized_phrase
+GCP Vertex AI Threat,1,capitalized_phrase
+Agentic AI Related Malware,1,capitalized_phrase
+Resources High Profile Threats,1,capitalized_phrase
+Axios Supply Chain Attack,1,capitalized_phrase
+Multi-Stage Supply Chain Attack,1,capitalized_phrase
+GCP Vertex AI Agentic,1,capitalized_phrase
+Threat Actor Groups March,1,capitalized_phrase
+Southeast Asian Government CL-STA-1048,1,capitalized_phrase
+CL-STA-1049 Stately Taurus Read,1,capitalized_phrase
+Recruiting Scheme Impersonating Palo,1,capitalized_phrase
+Alto Networks Talent Acquisition,1,capitalized_phrase
+Prompt Fuzzing Finds LLMs,1,capitalized_phrase
+Still Fragile Across Open,1,capitalized_phrase
+Closed Models Evasion GenAI,1,capitalized_phrase
+Suspected China-Based Espionage Operation,1,capitalized_phrase
+Southeast Asia Advanced Persistent,1,capitalized_phrase
+Threat AppleChris Backdoor Read,1,capitalized_phrase
+Bypass Security Controls AI,1,capitalized_phrase
+Palo Alto Networks Privacy,1,capitalized_phrase
+Services AI-Powered Network Security,1,capitalized_phrase
+Design Prisma AIRS AI,1,capitalized_phrase
+Access Security Cloud Delivered,1,capitalized_phrase
+Security Services Advanced Threat,1,capitalized_phrase
+Prevention Advanced URL Filtering,1,capitalized_phrase
+Advanced WildFire Advanced DNS,1,capitalized_phrase
+Security Enterprise Data Loss,1,capitalized_phrase
+Prevention Enterprise IoT Security,1,capitalized_phrase
+Medical IoT Security Industrial,1,capitalized_phrase
+OT Security SaaS Security,1,capitalized_phrase
+Next-Generation Firewalls Hardware Firewalls,1,capitalized_phrase
+Software Firewalls Strata Cloud,1,capitalized_phrase
+NGFW PAN-OS Panorama Secure,1,capitalized_phrase
+Access Service Edge Prisma,1,capitalized_phrase
+SASE Application Acceleration Autonomous,1,capitalized_phrase
+Digital Experience Management Enterprise,1,capitalized_phrase
+DLP Prisma Access Prisma,1,capitalized_phrase
+Browser Prisma SD-WAN Remote,1,capitalized_phrase
+Browser Isolation SaaS Security,1,capitalized_phrase
+AI-Driven Security Operations Platform,1,capitalized_phrase
+Cloud Security Cortex Cloud,1,capitalized_phrase
+Application Security Cloud Posture,1,capitalized_phrase
+Security Cloud Runtime Security,1,capitalized_phrase
+Prisma Cloud AI-Driven SOC,1,capitalized_phrase
+Cortex XSIAM Cortex XDR,1,capitalized_phrase
+Cortex XSOAR Cortex Xpanse,1,capitalized_phrase
+Response Managed XSIAM Threat,1,capitalized_phrase
+Incident Response Services Proactive,1,capitalized_phrase
+Assessments Incident Response Transform,1,capitalized_phrase
+Us Careers Contact Us,1,capitalized_phrase
+Corporate Responsibility Customers Investor,1,capitalized_phrase
+Relations Location Newsroom Popular,1,capitalized_phrase
+Links Blog Communities Content,1,capitalized_phrase
+Library Cyberpedia Event Center,1,capitalized_phrase
+Manage Email Preferences Products,1,capitalized_phrase
+A-Z Product Certifications Report,1,capitalized_phrase
+Vulnerability Sitemap Tech Docs,1,capitalized_phrase
+"Seekbar Volume 
+ Context Rot",1,capitalized_phrase
+Chroma Products Sync Database,1,capitalized_phrase
+Agent Docs Enterprise Pricing,1,capitalized_phrase
+Research Resources Changelog Updates,1,capitalized_phrase
+Repeated Words Task Recent,1,capitalized_phrase
+Paul Graham Essay Topic,1,capitalized_phrase
+High Needle-Question Similarity Instead,1,capitalized_phrase
+Needle-Haystack Similarity Results Testing,1,capitalized_phrase
+Sample Experimental Setup Results,1,capitalized_phrase
+GPT Family LongMemEval Results,1,capitalized_phrase
+Gemini Family LongMemEval Results,1,capitalized_phrase
+San Francisco Repeated Words,1,capitalized_phrase
+Pro Sample Outputs Repeated,1,capitalized_phrase
+Long-Context Evaluation Beyond Literal,1,capitalized_phrase
+Long Context Evaluations Beyond,1,capitalized_phrase
+Efficient Context Window Extension,1,capitalized_phrase
+R. J. G. B,1,capitalized_phrase
+GPT-4o GPT-4 Turbo GPT-3.5,1,capitalized_phrase
+Qwen3-235B-A22B Qwen3-32B Qwen3-8B Embedding,1,capitalized_phrase
+Qwen Family Repeated Words,1,capitalized_phrase
+Product Database Sync Enterprise,1,capitalized_phrase
+Package Search MCP Docs,1,capitalized_phrase
+Changelog Careers Legal Privacy,1,capitalized_phrase
+Linux. Exploit Chain Explained,1,capitalized_phrase
+Video Walkthrough Short Demos,1,capitalized_phrase
+Prompt Injection Fixed Copilot,1,capitalized_phrase
+Visual Studio Remote Code,1,capitalized_phrase
+Execution Vulnerability Persistent Security,1,capitalized_phrase
+Write-Up Persistent Security Newer,1,capitalized_phrase
+Products Semgrep Code Find,1,capitalized_phrase
+Semgrep Supply Chain Find,1,capitalized_phrase
+AI Semgrep AppSec Platform,1,capitalized_phrase
+Solutions Secure Vibe Coding,1,capitalized_phrase
+Open-Source Malware Protection Protect,1,capitalized_phrase
+Secure Guardrails Fintech Mitigate,1,capitalized_phrase
+Semgrep ROI Calculator See,1,capitalized_phrase
+Semgrep Video Library View,1,capitalized_phrase
+Romain Gaucher Vasilii Ermilov,1,capitalized_phrase
+AI Coding Agents Find,1,capitalized_phrase
+Insecure Direct Object Reference,1,capitalized_phrase
+Found Both Claude Code,1,capitalized_phrase
+Different Bugs Every Time,1,capitalized_phrase
+Introducing Semgrep Custom Workflows,1,capitalized_phrase
+Vivek Khimani Braden Riggs,1,capitalized_phrase
+Semgrep Autofix Nabeel Saeed,1,capitalized_phrase
+OWASP Foundation OWASP Top,1,capitalized_phrase
+Release Candidate Translation Teams,1,capitalized_phrase
+Mauricio D. Papaleo Mayada,1,capitalized_phrase
+Huynh Thien Tam Hebrew,1,capitalized_phrase
+Data Analysis Plan Goals,1,capitalized_phrase
+Humans. Analysis Infrastructure Plan,1,capitalized_phrase
+OWASP Azure Cloud Infrastructure,1,capitalized_phrase
+Verified Data Contribution Scenario,1,capitalized_phrase
+Unverified Data Contribution Scenario,1,capitalized_phrase
+Contributor Contact Email Time,1,capitalized_phrase
+Flagship Project Documentation Builder,1,capitalized_phrase
+Social Twitter Code Repository,1,capitalized_phrase
+Stock Brian Glas Neil,1,capitalized_phrase
+Smithline Tanya Janca Torsten,1,capitalized_phrase
+Gigler Upcoming OWASP Global,1,capitalized_phrase
+DAST. Criteria SAST DAST,1,capitalized_phrase
+DAST Runtime Application Self-Protection,1,capitalized_phrase
+Title Related Articles Filter,1,capitalized_phrase
+Sort Category Shuffle Order,1,capitalized_phrase
+Minute Read Data Observability,1,capitalized_phrase
+Right Tool Several AI,1,capitalized_phrase
+AI Suggestion Evaluation Action,1,capitalized_phrase
+Graphite Graphite Agent Graphite,1,capitalized_phrase
+Blake Smith Blake Smith,1,capitalized_phrase
+Keeping Team Members Together,1,capitalized_phrase
+Civilized Discourse Construction Kit,1,capitalized_phrase
+Rural Guaranteed Minimum Income,1,capitalized_phrase
+Staff DevOps Architect Mickey,1,capitalized_phrase
+Staff DevOps Architect Joshua,1,capitalized_phrase
+Agentic AI Agentic AI,1,capitalized_phrase
+Key Takeaways Agentic AI,1,capitalized_phrase
+Related Post Fireside Chat,1,capitalized_phrase
+Blog Product Kubernetes Troubleshooting,1,capitalized_phrase
+Always-On Expertise Agentic AI,1,capitalized_phrase
+Noise-Free Analysis Across All,1,capitalized_phrase
+Runs Automated Investigations Agentic,1,capitalized_phrase
+AI Changes Troubleshooting Agentic,1,capitalized_phrase
+Download Related Post Fireside,1,capitalized_phrase
+IIT Bombay. Content AI,1,capitalized_phrase
+IIT Bombay. Related Post,1,capitalized_phrase
+Advanced Tracing Techniques Once,1,capitalized_phrase
+Anti-Patterns Effective Tracing Patterns,1,capitalized_phrase
+Beyond Technical Benefits Traces,1,capitalized_phrase
+G2 Reviews Gartner Cool,1,capitalized_phrase
+High Performer Best Usability,1,capitalized_phrase
+"Highest User Adoption 
+ Google",1,capitalized_phrase
+Contents Foreword Preface Part,1,capitalized_phrase
+Conclusion Appendix A. Availability,1,capitalized_phrase
+Production Services Appendix C,1,capitalized_phrase
+Example Incident State Document,1,capitalized_phrase
+Appendix D. Example Postmortem,1,capitalized_phrase
+Appendix E. Launch Coordination,1,capitalized_phrase
+Checklist Appendix F. Example,1,capitalized_phrase
+Production Meeting Minutes Bibliography,1,capitalized_phrase
+Site Reliability Engineering Conflict,1,capitalized_phrase
+Pursuing Maximum Change Velocity,1,capitalized_phrase
+Beginning Site Reliability Engineering,1,capitalized_phrase
+See Disaster Role Playing,1,capitalized_phrase
+agent,271,tech_collocation
+agents,264,tech_collocation
+agentic,134,tech_collocation
+code review,96,tech_collocation
+workflows,49,tech_collocation
+prompt injection,46,tech_collocation
+terminal,35,tech_collocation
+spans,33,tech_collocation
+tracing,29,tech_collocation
+observability,27,tech_collocation
+code reviews,26,tech_collocation
+span,26,tech_collocation
+incident,25,tech_collocation
+prompt engineering,24,tech_collocation
+on-call,21,tech_collocation
+deploy,20,tech_collocation
+deployment,16,tech_collocation
+workflow,14,tech_collocation
+context window,12,tech_collocation
+deployed,11,tech_collocation
+deploying,9,tech_collocation
+context engineering,8,tech_collocation
+function calling,7,tech_collocation
+latency,7,tech_collocation
+deployments,7,tech_collocation
+zero-shot,6,tech_collocation
+hallucination,6,tech_collocation
+telemetry,6,tech_collocation
+context rot,5,tech_collocation
+artifact,5,tech_collocation
+ide,5,tech_collocation
+guardrails,4,tech_collocation
+system prompt,4,tech_collocation
+postmortem,4,tech_collocation
+tool use,3,tech_collocation
+chain of thought,3,tech_collocation
+few-shot,3,tech_collocation
+fine-tuning,3,tech_collocation
+fine-tune,3,tech_collocation
+hallucinations,3,tech_collocation
+refactor,3,tech_collocation
+refactoring,3,tech_collocation
+code reviewer,2,tech_collocation
+security review,2,tech_collocation
+scaffolding,2,tech_collocation
+hallucinate,2,tech_collocation
+vibe coding,1,tech_collocation
+code reviewers,1,tech_collocation
+retrieval augmented generation,1,tech_collocation
+guardrail,1,tech_collocation
+hallucinated,1,tech_collocation
+slo,1,tech_collocation
+artifacts,1,tech_collocation
+refactors,1,tech_collocation
+refactored,1,tech_collocation
