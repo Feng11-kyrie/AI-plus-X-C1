@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+._*
+
+# 重复归档包：source/ 已是 CS146S_offline.zip 的解压内容，不再重复入库
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# 管线中间产物（可复跑再生，不入库）
+pipeline/work/
+*.tmp
+
+# 编辑器
+.vscode/
+.idea/
