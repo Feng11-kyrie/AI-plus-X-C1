@@ -1,0 +1,171 @@
+id,term_en,term_zh,category,policy,forbidden_zh,notes,freq_in_corpus
+1,Large Language Model (LLM),大语言模型（LLM）,core-llm,acronym,大型语言模型|大模型语言,缩写 LLM 保留；首次出现给全称,59
+2,Prompt,提示词,core-llm,translate,提示语|提示词条|promt,统一起见一律"提示词"，不用"提示语",0
+3,Prompt Engineering,提示词工程,core-llm,translate,提示工程|提示词工程学|指令工程,课程 Week 1 主题,0
+4,System Prompt,系统提示词,core-llm,translate,系统提示|系统指令|系统 prompt,0
+5,Context,上下文,core-llm,translate,语境|情境|脉络,术语一致性的关键锚点,58
+6,Context Window,上下文窗口,core-llm,translate,上下文长度|语境窗口|上下文视窗,0
+7,Context Engineering,上下文工程,core-llm,translate,情境工程|语境工程|上下文工程学,挑战验收点名要求统一的术语,0
+8,Context Rot,上下文腐化,core-llm,translate,上下文腐烂|上下文衰减|上下文退化,Chroma 研究提出的术语,0
+9,Vibe Coding,氛围编程,core-llm,keep_en_first,感觉编程|氛围编码|Vibe 编码|直觉编程,挑战验收点名要求统一的术语；建议首次写"氛围编程（Vibe Coding）",0
+10,Scaffolding,脚手架,core-llm,translate,支架|框架|骨架代码,挑战验收点名要求统一的术语,0
+11,Hallucination,幻觉,core-llm,translate,臆造|胡编|虚构输出,0
+12,Fine-tuning,微调,core-llm,translate,精调|微调训练,0
+13,Few-shot,少样本,core-llm,translate,少量样本|少次示例|few shot,0
+14,Zero-shot,零样本,core-llm,translate,无样本|零次示例,0
+15,Chain of Thought,思维链,core-llm,translate,思考链|推理链|思维链条,0
+16,Retrieval-Augmented Generation (RAG),检索增强生成（RAG）,core-llm,acronym,检索增强|增强检索生成,7
+17,Token,Token,core-llm,keep_en,词元|令牌|标记,不译；中文写作中直接写 Token,0
+18,Temperature,温度,core-llm,translate,温度值|随机度,采样参数,0
+19,Embedding,嵌入,core-llm,translate,向量化|嵌入向量,0
+20,Vector Database,向量数据库,core-llm,translate,矢量数据库|向量库,0
+21,Inference,推理,core-llm,translate,推断|推演,注意与 reasoning 区分,0
+22,Reasoning,推理能力,core-llm,translate,推理|思考能力,与 Inference 区分：reasoning 指模型思考,0
+23,Training,训练,core-llm,translate,培训|训练过程,0
+24,Benchmark,基准测试,core-llm,translate,基准|测评|跑分,0
+25,Model Card,模型卡,core-llm,translate,模型卡片|模型说明卡,0
+26,Evaluation,评估,core-llm,translate,评测|评价|测试评估,0
+27,Guardrails,护栏,agent,translate,防护栏|护栏机制|安全围栏,0
+28,Agent,智能体,agent,translate,代理|智能代理|代理人|Agent 体,AI 语境一律"智能体"，绝不用"代理",45
+29,Agentic,智能体化的,agent,translate,代理式|自治式|Agent 化,形容词；Agentic AI → 智能体 AI,31
+30,Sub-agent,子智能体,agent,translate,子代理|次级智能体,0
+31,Multi-agent,多智能体,agent,translate,多代理|多 Agent|多智能系统,0
+32,Coding Agent,编码智能体,agent,translate,编程代理|代码智能体|编码代理,课程核心概念,0
+33,Tool Use,工具调用,agent,translate,工具使用|调用工具|工具运用,0
+34,Function Calling,函数调用,agent,translate,功能调用|函数呼叫,0
+35,Model Context Protocol (MCP),模型上下文协议（MCP）,agent,acronym,模型情境协议|上下文协议|MCP 协议,全课程最高频术语（325 次）,325
+36,MCP Server,MCP 服务器,agent,keep_en_first,模型上下文协议服务器|MCP 服务端,MCP 保留英文,0
+37,Orchestration,编排,agent,translate,协调|编排调度|组织,0
+38,Workflow,工作流,agent,translate,流程|工作流程|作业流,0
+39,Human-in-the-loop,人在回路,agent,translate,人在环中|人工介入|人类在环,0
+40,Autonomy,自主性,agent,translate,自治性|自动化程度,0
+41,Agent Loop,智能体循环,agent,translate,代理循环|智能体回路,0
+42,Codebase,代码库,swe,translate,代码基底|代码基础|代码仓,0
+43,Repository,仓库,swe,translate,版本库|存储库|代码仓库,0
+44,Commit,提交,swe,translate,递交|确认提交,动词名词同形,0
+45,Branch,分支,swe,translate,枝干|代码分支,0
+46,Pull Request (PR),拉取请求（PR）,swe,acronym,合并请求|拉取申请|PR 请求,缩写 PR 可直接用,12
+47,Merge,合并,swe,translate,归并|融合,0
+48,Code Review,代码评审,swe,translate,代码审查|代码复查|代码审核,统一起见一律"代码评审",0
+49,Refactor,重构,swe,translate,重写|重新构建|翻新,0
+50,Technical Debt,技术债,swe,translate,技术债务|技术欠账,0
+51,Legacy Code,遗留代码,swe,translate,历史代码|旧代码|遗产代码,0
+52,Boilerplate,样板代码,swe,translate,模板代码|重复代码|锅炉板,0
+53,Linter,代码检查工具,swe,translate,检查器|语法检查器|Lint 器,0
+54,Continuous Integration (CI),持续集成（CI）,swe,acronym,连续集成|持续整合,25
+55,Continuous Delivery (CD),持续交付（CD）,swe,acronym,持续部署|连续交付,15
+56,Unit Test,单元测试,swe,translate,单位测试|模块测试,0
+57,Integration Test,集成测试,swe,translate,整合测试|联合测试,0
+58,Test Coverage,测试覆盖率,swe,translate,覆盖度|测试覆盖,0
+59,Regression,回归,swe,translate,退化|回退,0
+60,Deployment,部署,swe,translate,发布上线|布署|部署上线,0
+61,Rollback,回滚,swe,translate,回退|撤回|回滚操作,0
+62,Artifact,制品,swe,translate,工件|产物|构建物,0
+63,Integrated Development Environment (IDE),集成开发环境（IDE）,swe,acronym,整合开发环境|开发集成环境,5
+64,Terminal,终端,swe,translate,命令行窗口|控制台,22
+65,Command-Line Interface (CLI),命令行界面（CLI）,swe,acronym,命令行接口|命令界面,19
+66,Software Development Kit (SDK),软件开发工具包（SDK）,swe,acronym,软件开发套件|开发包,13
+67,Application Programming Interface (API),应用程序接口（API）,swe,acronym,应用编程界面|接口 API,57
+68,Runtime,运行时,swe,translate,运行环境|运行时期,0
+69,Dependency,依赖,swe,translate,依赖性|依存项,0
+70,Sandbox,沙箱,swe,translate,沙盒|隔离环境,0
+71,Rate Limit,速率限制,swe,translate,频率限制|限流|速率上限,0
+72,Latency,延迟,swe,translate,时延|延时|迟滞,0
+73,Throughput,吞吐量,swe,translate,吞吐率|处理量,0
+74,Diff,差异,swe,translate,差分|变更差异|补丁,0
+75,Codebase Understanding,代码库理解,swe,translate,代码理解|仓库理解,Week 3 主题,0
+76,Spec-Driven Development,规格驱动开发,swe,translate,规范驱动开发|文档驱动开发,对应 specs-are-the-new-source-code,0
+77,Specification (Spec),规格说明,swe,translate,规范|规格书|需求规格,0
+78,Software Development Life Cycle (SDLC),软件开发生命周期（SDLC）,process,acronym,软件开发生命圈|开发周期,7
+79,Product Requirements Document (PRD),产品需求文档（PRD）,process,acronym,产品需求书|需求文档 PRD,7
+80,Design Doc,设计文档,process,translate,设计稿|设计方案文档,0
+81,Stakeholder,干系人,process,translate,利益相关者|相关方|干系方,0
+82,Scope Creep,范围蔓延,process,translate,范围蠕变|需求蔓延,0
+83,Acceptance Criteria,验收标准,process,translate,接受标准|验收条件,0
+84,User Story,用户故事,process,translate,用户需求故事|使用者故事,0
+85,Deliverable,交付物,process,translate,交付成果|可交付物|产出物,挑战自身的核心词汇,0
+86,Backlog,待办列表,process,translate,积压工作|待办事项|需求池,0
+87,Milestone,里程碑,process,translate,里程点|阶段节点,0
+88,Retrospective,回顾会议,process,translate,复盘会|回顾|反思会,0
+89,After Action Review (AAR),行动后复盘（AAR）,process,acronym,事后审查|行动回顾|AAR 复盘会,挑战交付物自身要求的格式,0
+90,Dogfooding,自产自用,process,translate,吃狗粮|内部试用|自用测试,0
+91,Minimum Viable Product (MVP),最小可行产品（MVP）,process,acronym,最简可行产品|最小可用产品,0
+92,Prompt Injection,提示词注入,security,translate,提示注入|prompt 注入|指令注入,Week 6 主题,0
+93,Static Application Security Testing (SAST),静态应用安全测试（SAST）,security,acronym,静态安全测试|静态代码安全检测,72
+94,Dynamic Application Security Testing (DAST),动态应用安全测试（DAST）,security,acronym,动态安全测试|动态安全检测,56
+95,Runtime Application Self-Protection (RASP),运行时应用自保护（RASP）,security,acronym,运行时自保护|运行期自防护,24
+96,Software Composition Analysis (SCA),软件成分分析（SCA）,security,acronym,软件组成分析|依赖成分分析,4
+97,Vulnerability,漏洞,security,translate,脆弱性|缺陷|弱点,0
+98,Exploit,漏洞利用,security,translate,利用程序|攻击利用|漏洞开发,0
+99,Common Vulnerabilities and Exposures (CVE),通用漏洞披露（CVE）,security,acronym,公共漏洞库|漏洞编号 CVE,0
+100,Common Weakness Enumeration (CWE),通用缺陷枚举（CWE）,security,acronym,通用弱点枚举|缺陷列表 CWE,8
+101,OWASP Top 10,OWASP Top 10（OWASP 十大安全风险）,security,keep_en_first,OWASP 前十|OWASP 十大漏洞|OWASP 排行榜,64
+102,Cross-Site Scripting (XSS),跨站脚本攻击（XSS）,security,acronym,跨站点脚本|XSS 脚本攻击,11
+103,Server-Side Request Forgery (SSRF),服务端请求伪造（SSRF）,security,acronym,服务器端请求伪造|SSRF 攻击,5
+104,Insecure Direct Object Reference (IDOR),不安全的直接对象引用（IDOR）,security,acronym,越权访问|直接对象引用漏洞,13
+105,Broken Object Level Authorization (BOLA),对象级授权失效（BOLA）,security,acronym,对象级权限绕过|BOLA 漏洞,8
+106,Remote Code Execution (RCE),远程代码执行（RCE）,security,acronym,远程命令执行|远端代码执行,5
+107,SQL Injection,SQL 注入,security,translate,SQL 注入攻击|SQL 植入,0
+108,Attack Surface,攻击面,security,translate,攻击表面|受攻击面,0
+109,Threat Model,威胁模型,security,translate,威胁建模|风险模型,0
+110,False Positive,误报,security,translate,假阳性|错误告警,0
+111,False Negative,漏报,security,translate,假阴性|漏检,0
+112,False Positive Rate (FPR),假阳性率（FPR）,security,acronym,误报率 FPR|假报率,6
+113,True Positive Rate (TPR),真阳性率（TPR）,security,acronym,正确检出率|真报率,11
+114,Triage,分级处置,security,translate,分诊|分类处理|优先级排序,0
+115,Least Privilege,最小权限,security,translate,最小特权|最低权限,0
+116,Supply Chain Attack,供应链攻击,security,translate,供应链入侵|链条攻击,0
+117,Credential,凭据,security,translate,凭证|证书凭据|登录信息,0
+118,Data Exfiltration,数据外泄,security,translate,数据渗出|数据窃取|数据泄露,0
+119,Blast Radius,影响半径,security,translate,爆炸半径|波及范围|影响范围,0
+120,Sandbox Escape,沙箱逃逸,security,translate,沙盒逃逸|突破沙箱,0
+121,Red Team,红队,security,translate,红色团队|攻击方,0
+122,Needle in a Haystack (NIAH),大海捞针测试（NIAH）,security,acronym,针尖测试|捞针测试,19
+123,Site Reliability Engineering (SRE),站点可靠性工程（SRE）,sre,acronym,网站可靠性工程|可靠性工程 SRE,69
+124,Observability,可观测性,sre,translate,可观察性|监控能力,0
+125,Telemetry,遥测,sre,translate,远程测量|遥测数据,0
+126,Tracing,链路追踪,sre,translate,跟踪|追踪链路|链路跟踪,0
+127,Trace,追踪链路,sre,translate,轨迹|跟踪记录,0
+128,Span,Span,sre,keep_en,跨度|片段|区段,分布式追踪中保留英文,0
+129,Metric,指标,sre,translate,度量|度量值|监控指标,0
+130,Log,日志,sre,translate,记录|日志文件|Log 记录,0
+131,Dashboard,仪表盘,sre,translate,仪表板|看板|监控面板,0
+132,Alert,告警,sre,translate,警报|报警|提醒,0
+133,Alert Fatigue,告警疲劳,sre,translate,警报疲劳|告警过载,0
+134,Incident,故障事件,sre,translate,事故|事件|故障,0
+135,On-call,值班,sre,translate,随时待命|值守|在线值班,0
+136,Postmortem,事后复盘,sre,translate,尸检报告|事后分析|事故报告,0
+137,Runbook,运维手册,sre,translate,操作手册|运行手册|预案,0
+138,Service Level Objective (SLO),服务等级目标（SLO）,sre,acronym,服务水平目标|服务级别目标,0
+139,Service Level Indicator (SLI),服务等级指标（SLI）,sre,acronym,服务水平指标|服务级别指标,0
+140,Service Level Agreement (SLA),服务等级协议（SLA）,sre,acronym,服务水平协议|服务级别协议,0
+141,Mean Time To Recovery (MTTR),平均恢复时间（MTTR）,sre,acronym,平均修复时间|平均恢复时长,5
+142,Root Cause Analysis (RCA),根因分析（RCA）,sre,acronym,根本原因分析|根因定位,0
+143,Toil,琐务,sre,translate,苦工|重复性劳动|杂务,0
+144,Blameless,无指责的,sre,translate,免责的|非责难的|无责备,0
+145,Chaos Engineering,混沌工程,sre,translate,混乱工程|混沌测试,0
+146,Capacity Planning,容量规划,sre,translate,产能规划|容量计划,0
+147,Autoremediation,自动修复,sre,translate,自动补救|自动处置,0
+148,Grounding,溯源锚定,core-llm,translate,接地|落地|基础事实,0
+149,Distractor,干扰项,core-llm,translate,干扰词|混淆项|分散项,28
+150,Claude Code,Claude Code,tool,keep_en,,Anthropic 官方编码智能体；不译,62
+151,Claude,Claude,tool,keep_en,,Anthropic 模型名,143
+152,Anthropic,Anthropic,tool,keep_en,,公司名,19
+153,OpenAI,OpenAI,tool,keep_en,,公司名,22
+154,Codex,Codex,tool,keep_en,,OpenAI 编码智能体,0
+155,GitHub Copilot,GitHub Copilot,tool,keep_en,,产品名,22
+156,Cursor,Cursor,tool,keep_en,,AI 编辑器产品名,0
+157,Warp,Warp,tool,keep_en,,AI 终端产品名；Week 5 主题,0
+158,Devin,Devin,tool,keep_en,,Cognition 的编码智能体,0
+159,Cognition,Cognition,tool,keep_en,,公司名,0
+160,Gemini,Gemini,tool,keep_en,,Google 模型名,30
+161,Kubernetes,Kubernetes,tool,keep_en,,容器编排系统,19
+162,Docker,Docker,tool,keep_en,,容器产品,0
+163,Semgrep,Semgrep,tool,keep_en,,静态分析工具,21
+164,GitHub,GitHub,tool,keep_en,,平台名,0
+165,Git,Git,tool,keep_en,,版本控制系统,0
+166,VS Code,VS Code,tool,keep_en,,编辑器,0
+167,Vercel,Vercel,tool,keep_en,,部署平台,0
+168,Figma,Figma,tool,keep_en,,设计工具,0
+169,Notion,Notion,tool,keep_en,,文档工具,0
+170,SARIF,SARIF,tool,keep_en,,静态分析结果交换格式,5
