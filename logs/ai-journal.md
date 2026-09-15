@@ -13,12 +13,12 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 121 |
-| 翻译块次 | 72 |
-| 其中通过校验 | 58 |
-| **其中未通过 / 失败** | **14** |
-| 完成条目 | 15 |
-| 出现过校验问题的块 | 14 |
+| 记录事件总数 | 165 |
+| 翻译块次 | 109 |
+| 其中通过校验 | 91 |
+| **其中未通过 / 失败** | **18** |
+| 完成条目 | 16 |
+| 出现过校验问题的块 | 18 |
 
 ## 逐块记录
 
@@ -96,6 +96,43 @@
 | 16:10:02 | `how-long-contexts-fail` | 3 | queue | `04eead01bbc7` | 2146/1080 | — | ✅ |
 | 16:10:02 | `how-long-contexts-fail` | 4 | queue | `96707ee14964` | 3012/1181 | — | ✅ |
 | 16:10:02 | `how-long-contexts-fail` | 5 | queue | `f887aee3514a` | 755/424 | — | ✅ |
+| 16:14:01 | `observability-basics` | 0 | queue | `3fb1524e2704` | 1356/640 | — | ✅ |
+| 16:14:01 | `observability-basics` | 1 | queue | `434d7f3f6756` | 1107/465 | — | ✅ |
+| 16:14:01 | `observability-basics` | 2 | queue | `e193e2c0af90` | 806/381 | — | ✅ |
+| 16:14:01 | `observability-basics` | 3 | queue | `595453e49b48` | 1155/538 | — | ❌ 出现禁用变体「遥测数据」（应为「遥测」） |
+| 16:14:01 | `observability-basics` | 4 | queue | `33c6928326c6` | 1379/1275 | — | ✅ |
+| 16:14:42 | `observability-basics` | 3 | queue | `595453e49b48` | 1155/536 | — | ✅ |
+| 16:14:42 | `observability-basics` | 5 | queue | `ed66b37728b0` | 1092/508 | — | ❌ 出现禁用变体「规范」（应为「规格说明」） |
+| 16:14:42 | `observability-basics` | 6 | queue | `87b3ccd63016` | 973/408 | — | ✅ |
+| 16:14:42 | `observability-basics` | 7 | queue | `23c544cc1b46` | 908/330 | — | ❌ 出现禁用变体「跟踪」（应为「链路追踪」）；出现禁用变体「度量」（应为「指标」） |
+| 16:14:42 | `observability-basics` | 8 | queue | `488992ddccff` | 826/326 | — | ✅ |
+| 16:14:42 | `observability-basics` | 9 | queue | `f7dc9eb02d5b` | 383/165 | — | ❌ 出现禁用变体「轨迹」（应为「追踪记录」） |
+| 16:14:52 | `mcp-food-for-thought` | 2 | queue | `efaad093036a` | 921/588 | — | ✅ |
+| 16:14:52 | `mcp-registry-preview` | 0 | queue | `341955498869` | 1194/591 | — | ✅ |
+| 16:14:52 | `how-long-contexts-fail` | 0 | queue | `022ef81a4a31` | 976/406 | — | ✅ |
+| 16:14:52 | `how-long-contexts-fail` | 1 | queue | `2682f26a2dfd` | 1119/529 | — | ✅ |
+| 16:14:52 | `how-long-contexts-fail` | 3 | queue | `c935c9db53cc` | 2146/1080 | — | ✅ |
+| 16:14:52 | `how-long-contexts-fail` | 5 | queue | `8b75e4d8c0b9` | 755/424 | — | ✅ |
+| 16:14:52 | `claude-code-best-practices` | 1 | queue | `9639363b7ac3` | 3022/1557 | — | ✅ |
+| 16:14:52 | `copilot-prompt-injection-r` | 1 | queue | `29b264164940` | 1744/926 | — | ✅ |
+| 16:14:52 | `code-reviews-just-do-it` | 0 | queue | `b167bfad385e` | 3139/1354 | — | ✅ |
+| 16:14:52 | `benefits-agentic-ai-oncall` | 0 | queue | `6963c2987d47` | 3413/1184 | — | ✅ |
+| 16:14:52 | `kubernetes-troubleshooting` | 1 | queue | `68da9c335e5c` | 1471/729 | — | ✅ |
+| 16:14:52 | `kubernetes-troubleshooting` | 2 | queue | `1183a00ce75e` | 2570/1219 | — | ✅ |
+| 16:14:52 | `multi-agent-systems-ai-nat` | 0 | queue | `a76f745d4141` | 1714/836 | — | ✅ |
+| 16:14:52 | `multi-agent-systems-ai-nat` | 1 | queue | `6a37a7423c1f` | 1890/681 | — | ✅ |
+| 16:14:52 | `multi-agent-systems-ai-nat` | 2 | queue | `b51a04d7cccc` | 2852/993 | — | ✅ |
+| 16:14:52 | `multi-agent-systems-ai-nat` | 3 | queue | `b3c374d5873f` | 2414/955 | — | ✅ |
+| 16:14:52 | `observability-basics` | 0 | queue | `9a3b6d3d5242` | 1356/640 | — | ✅ |
+| 16:14:52 | `observability-basics` | 1 | queue | `8df156edc871` | 1107/465 | — | ✅ |
+| 16:14:52 | `observability-basics` | 2 | queue | `3293ad41a76d` | 806/381 | — | ✅ |
+| 16:14:52 | `observability-basics` | 3 | queue | `9bc9f7d59cb2` | 1155/536 | — | ✅ |
+| 16:14:52 | `observability-basics` | 4 | queue | `b017628a6e91` | 1379/1275 | — | ✅ |
+| 16:14:52 | `observability-basics` | 5 | queue | `4210237af8b0` | 1092/508 | — | ✅ |
+| 16:14:52 | `observability-basics` | 6 | queue | `3fe869fc5997` | 973/408 | — | ✅ |
+| 16:14:52 | `observability-basics` | 7 | queue | `080ad5069416` | 908/330 | — | ✅ |
+| 16:14:52 | `observability-basics` | 8 | queue | `4d2e53807c86` | 826/326 | — | ✅ |
+| 16:14:52 | `observability-basics` | 9 | queue | `d2e877ecf5bf` | 383/165 | — | ✅ |
 
 ## 失败与返工记录
 
@@ -177,6 +214,27 @@
 - 时间：2026-09-15T16:04:11+0800　后端：queue　prompt 哈希：`e8e42959808a`
 - 问题：出现禁用变体「协调」（应为「编排」）
 
+### `observability-basics` 第 3 块
+
+- 时间：2026-09-15T16:14:01+0800　后端：queue　prompt 哈希：`595453e49b48`
+- 问题：出现禁用变体「遥测数据」（应为「遥测」）
+
+### `observability-basics` 第 5 块
+
+- 时间：2026-09-15T16:14:42+0800　后端：queue　prompt 哈希：`ed66b37728b0`
+- 问题：出现禁用变体「规范」（应为「规格说明」）
+
+### `observability-basics` 第 7 块
+
+- 时间：2026-09-15T16:14:42+0800　后端：queue　prompt 哈希：`23c544cc1b46`
+- 问题：出现禁用变体「跟踪」（应为「链路追踪」）
+- 问题：出现禁用变体「度量」（应为「指标」）
+
+### `observability-basics` 第 9 块
+
+- 时间：2026-09-15T16:14:42+0800　后端：queue　prompt 哈希：`f7dc9eb02d5b`
+- 问题：出现禁用变体「轨迹」（应为「追踪记录」）
+
 ## 条目汇总
 
 | 条目 | 周 | 块数 | 中文字符 | 完成时间 |
@@ -196,4 +254,5 @@
 | `multi-agent-systems-ai-native` | W9 | 5 | 3,839 | 2026-09-15T16:04:22 |
 | `claude-code-best-practices` | W4 | 4 | 4,512 | 2026-09-15T16:04:53 |
 | `how-long-contexts-fail` | W3 | 6 | 4,269 | 2026-09-15T16:10:02 |
+| `observability-basics` | W9 | 10 | 5,109 | 2026-09-15T16:14:52 |
 
