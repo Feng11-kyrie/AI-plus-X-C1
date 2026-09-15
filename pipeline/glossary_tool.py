@@ -55,15 +55,16 @@ def validate(rows):
         if v > 1:
             errs.append(f"R2 term_en 重复: {k} × {v}")
 
-    # R3 禁用变体 vs 正式译法冲突
+    # R3 禁用变体 vs 正式译法冲突（硬性与提示级都要查）
     approved = defaultdict(list)
     for r in rows:
         if r["term_zh"]:
             approved[r["term_zh"].strip()].append(r["term_en"])
     forbidden_map = defaultdict(list)
     for r in rows:
-        for fb in filter(None, (x.strip() for x in r["forbidden_zh"].split("|"))):
-            forbidden_map[fb].append(r["term_en"])
+        for col in ("forbidden_zh", "forbidden_soft"):
+            for fb in filter(None, (x.strip() for x in (r.get(col) or "").split("|"))):
+                forbidden_map[fb].append(r["term_en"])
     for fb, owners in forbidden_map.items():
         if fb in approved:
             errs.append(f"R3 冲突: 禁用变体「{fb}」（{owners}）同时是 "
@@ -76,10 +77,23 @@ def validate(rows):
             errs.append(f"R5 缺译法: {r['id']} {r['term_en']}")
         if r["category"] not in CATEGORIES:
             warns.append(f"未知分类: {r['term_en']} = {r['category']}")
-        fbs = [x.strip() for x in r["forbidden_zh"].split("|") if x.strip()]
-        for k, v in Counter(fbs).items():
+
+        def varis(col):
+            return [x.strip() for x in (r.get(col) or "").split("|") if x.strip()]
+
+        # R6：硬性与提示级变体内部及彼此之间都不得重复
+        for k, v in Counter(varis("forbidden_zh") + varis("forbidden_soft")).items():
             if v > 1:
                 errs.append(f"R6 禁用变体重复: {r['term_en']} -> {k}")
+        # R7：同一变体不应既是硬性又是提示级
+        for k in set(varis("forbidden_zh")) & set(varis("forbidden_soft")):
+            errs.append(f"R7 变体同时标为硬性与提示级: {r['term_en']} -> {k}")
+        # R8：提示级变体若是正式译法的子串则毫无意义——包含关系判定会先跳过它
+        approved_zh = (r["term_zh"] or "").strip()
+        for fb in varis("forbidden_soft"):
+            if approved_zh and fb in approved_zh:
+                warns.append(f"R8 提示级变体「{fb}」是「{approved_zh}」的子串，"
+                             f"会被包含关系判定跳过，标记无意义")
 
     return errs, warns
 
@@ -100,9 +114,25 @@ def render(rows):
     L.append("| `keep_en_first` | 首次出现写「中文（English）」，之后用中文 |")
     L.append("| `keep_en` | 专有名词/产品名，保留英文不译 |")
     L.append("")
-    L.append(f"**术语总数：{len(rows)} 条**" +
-             f"（其中禁用变体 {sum(len([x for x in r['forbidden_zh'].split('|') if x.strip()]) for r in rows)} 条，"
-             "由 `pipeline/qc_terminology.py` 全文扫描强制校验）")
+    L.append("## 禁用变体的两个等级")
+    L.append("")
+    L.append("| 列 | 等级 | 校验行为 |")
+    L.append("|---|---|---|")
+    L.append("| `forbidden_zh` | **硬性** | 译文中出现即判该块不通过，必须返工 |")
+    L.append("| `forbidden_soft` | 提示级 | 只记录不拦截——用于「记录」「流程」这类"
+             "在中文里本身就常用、单用也说得通的词 |")
+    L.append("")
+    L.append("另有两条中文特有的判定规则（见 `pipeline/translate.py` 的 `variant_hits`）：")
+    L.append("")
+    L.append("1. **被正式译法包含的变体一律跳过**——「上下文协议」是"
+             "「模型上下文协议（MCP）」的子串，子串匹配会把正确译文判成违规。")
+    L.append("2. 宁可漏报也不误报：一个天天误报的校验器最终会被忽略。")
+    L.append("")
+    n_hard = sum(len([x for x in (r.get("forbidden_zh") or "").split("|") if x.strip()]) for r in rows)
+    n_soft = sum(len([x for x in (r.get("forbidden_soft") or "").split("|") if x.strip()]) for r in rows)
+    L.append(f"**术语总数：{len(rows)} 条**"
+             f"（硬性禁用变体 {n_hard} 条 + 提示级 {n_soft} 条，"
+             "由 `pipeline/translate.py` 逐块强制校验）")
     L.append("")
 
     by_cat = defaultdict(list)
@@ -115,13 +145,14 @@ def render(rows):
             continue
         L.append(f"## {label}（{len(items)} 条）")
         L.append("")
-        L.append("| 英文 | 中文 | policy | 禁用变体 | 语料频次 |")
-        L.append("|---|---|---|---|---|")
+        L.append("| 英文 | 中文 | policy | 禁用变体（硬性） | 提示级 | 语料频次 |")
+        L.append("|---|---|---|---|---|---|")
         for r in sorted(items, key=lambda x: -int(x["freq_in_corpus"] or 0)):
             fb = r["forbidden_zh"].replace("|", "、") or "—"
+            fs = r.get("forbidden_soft", "").replace("|", "、") or "—"
             f = r["freq_in_corpus"]
             freq = f if f and f != "0" else "—"
-            L.append(f"| {r['term_en']} | {r['term_zh']} | `{r['policy']}` | {fb} | {freq} |")
+            L.append(f"| {r['term_en']} | {r['term_zh']} | `{r['policy']}` | {fb} | {fs} | {freq} |")
         L.append("")
 
     return "\n".join(L) + "\n"
@@ -140,10 +171,12 @@ def main():
     print(f"✓ 术语表校验通过：{len(rows)} 条")
     terms = [r for r in rows if r["policy"] != "keep_en"]
     keepe = [r for r in rows if r["policy"] == "keep_en"]
-    fbs = sum(len([x for x in r["forbidden_zh"].split("|") if x.strip()]) for r in rows)
+    fbs = sum(len([x for x in (r.get("forbidden_zh") or "").split("|") if x.strip()]) for r in rows)
+    soft = sum(len([x for x in (r.get("forbidden_soft") or "").split("|") if x.strip()]) for r in rows)
     print(f"   需翻译      : {len(terms)}")
     print(f"   保留英文    : {len(keepe)}")
-    print(f"   禁用变体    : {fbs}（覆盖率检查的比对清单）")
+    print(f"   硬性禁用变体: {fbs}")
+    print(f"   提示级变体  : {soft}")
     print(f"   分类        : {len({r['category'] for r in rows})}")
     for w in warns:
         print(f"   ! {w}")

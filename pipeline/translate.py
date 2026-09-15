@@ -155,9 +155,37 @@ def build_prompt(chunk: dict, terms: list) -> str:
 
 # ---------------------------------------------------------------- 校验
 
+def variant_hits(zh: str, term: dict) -> tuple:
+    """找出译文中违反术语表的写法，返回 (硬性违规, 提示级)。
+
+    两条中文特有的判定规则——都是被真实误报逼出来的：
+
+    1. **被正式译法包含的变体，一律跳过。**
+       例：MCP 的正式译法是「模型上下文协议（MCP）」，而其禁用变体是「上下文协议」，
+       显然后者是前者的子串。用子串匹配会把正确的译文判成违规。
+       同理「故障事件」包含「事件」和「故障」、「检索增强生成（RAG）」包含「检索增强」。
+       代价是这类变体单用时也检不出来——可接受，因为宁可漏报也不误报，
+       一个天天误报的校验器最终会被忽略，那才是真正的失效。
+
+    2. **区分硬性与提示。**
+       像「记录」「流程」这种词在中文里本身就常用（"记录每一步"、"排障流程"），
+       把它们一律判为违规会逼着人写出不自然的译文。
+       术语表里用 forbidden_soft 列单独声明，只提示不拦截。
+    """
+    approved = (term.get("term_zh") or "").strip()
+    hard, soft = [], []
+    for key, bucket in (("forbidden_zh", hard), ("forbidden_soft", soft)):
+        for fb in filter(None, (x.strip() for x in (term.get(key) or "").split("|"))):
+            if approved and fb in approved:
+                continue                      # 规则 1：是正式译法的组成部分
+            if fb in zh:
+                bucket.append(f"出现禁用变体「{fb}」（应为「{approved}」）")
+    return hard, soft
+
+
 def validate(src: str, zh: str, terms: list) -> dict:
     """对单块译文做机械校验，返回 (通过与否, 问题列表, 指标)。"""
-    issues = []
+    hard_issues, soft_issues = [], []
     zh = (zh or "").strip()
     if not zh:
         return False, ["译文为空"], {}
@@ -172,27 +200,26 @@ def validate(src: str, zh: str, terms: list) -> dict:
     sl, zl = links(src), links(zh)
 
     if sf != zf:
-        issues.append(f"代码围栏数不符：原文 {sf}，译文 {zf}")
+        hard_issues.append(f"代码围栏数不符：原文 {sf}，译文 {zf}")
     if sl != zl:
-        issues.append(f"链接数不符：原文 {sl}，译文 {zl}")
+        hard_issues.append(f"链接数不符：原文 {sl}，译文 {zl}")
 
-    # 禁用变体扫描（术语一致性的第一道闸）
     for r in terms:
-        for fb in filter(None, (x.strip() for x in r["forbidden_zh"].split("|"))):
-            if fb and fb in zh:
-                issues.append(f"出现禁用变体「{fb}」（应为「{r['term_zh']}」）")
+        h, s = variant_hits(zh, r)
+        hard_issues.extend(h)
+        soft_issues.extend(s)
 
     src_len = len(re.sub(r"\s+", "", src))
     zh_len = len(re.sub(r"\s+", "", zh))
     ratio = zh_len / src_len if src_len else 0
     if ratio < 0.25:
-        issues.append(f"译文过短：中英字符比 {ratio:.2f}（疑漏译）")
+        hard_issues.append(f"译文过短：中英字符比 {ratio:.2f}（疑漏译）")
     elif ratio > 2.0:
-        issues.append(f"译文过长：中英字符比 {ratio:.2f}（疑添加内容）")
+        hard_issues.append(f"译文过长：中英字符比 {ratio:.2f}（疑添加内容）")
 
     metrics = {"src_chars": src_len, "zh_chars": zh_len, "ratio": round(ratio, 3),
-               "fences": zf, "links": zl}
-    return (not issues), issues, metrics
+               "fences": zf, "links": zl, "soft_issues": soft_issues}
+    return (not hard_issues), hard_issues, metrics
 
 
 # ---------------------------------------------------------------- 日志
