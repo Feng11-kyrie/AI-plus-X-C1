@@ -48,3 +48,14 @@
 {"event": "chunk", "unit_id": "benefits-agentic-ai-oncall", "index": 2, "week": 9, "backend": "queue", "prompt_hash": "b113cf9eff8f", "ok": true, "issues": [], "seconds": null, "src_chars": 99, "zh_chars": 65, "ratio": 0.657, "fences": 0, "links": 1, "soft_issues": [], "ts": "2026-09-15T15:32:24+0800"}
 {"event": "unit", "unit_id": "mcp-food-for-thought", "week": 2, "n_chunks": 4, "zh_chars": 2743, "ts": "2026-09-15T15:32:24+0800"}
 {"event": "run_end", "backend": "queue", "processed": 11, "ok": 11, "failed": 0, "seconds": 0.01, "ts": "2026-09-15T15:32:24+0800"}
+{"event": "run_start", "backend": "queue", "pending": 261, "prompt_version": "v1", "ts": "2026-09-15T15:59:34+0800"}
+{"event": "chunk", "unit_id": "mcp-registry-preview", "index": 0, "week": 2, "backend": "queue", "prompt_hash": "e08ef5e79c3e", "ok": true, "issues": [], "seconds": null, "src_chars": 1194, "zh_chars": 591, "ratio": 0.495, "fences": 0, "links": 2, "soft_issues": [], "ts": "2026-09-15T15:59:34+0800"}
+{"event": "chunk", "unit_id": "mcp-registry-preview", "index": 1, "week": 2, "backend": "queue", "prompt_hash": "54b5e6e978f4", "ok": true, "issues": [], "seconds": null, "src_chars": 1203, "zh_chars": 494, "ratio": 0.411, "fences": 0, "links": 1, "soft_issues": [], "ts": "2026-09-15T15:59:34+0800"}
+{"event": "chunk", "unit_id": "mcp-registry-preview", "index": 2, "week": 2, "backend": "queue", "prompt_hash": "d5a25e005e7e", "ok": true, "issues": [], "seconds": null, "src_chars": 3459, "zh_chars": 2148, "ratio": 0.621, "fences": 0, "links": 30, "soft_issues": [], "ts": "2026-09-15T15:59:34+0800"}
+{"event": "chunk", "unit_id": "code-reviews-just-do-it", "index": 0, "week": 7, "backend": "queue", "prompt_hash": "94627e072ac7", "ok": false, "issues": ["出现禁用变体「代码审查」（应为「代码评审」）"], "seconds": null, "src_chars": 3139, "zh_chars": 1354, "ratio": 0.431, "fences": 0, "links": 4, "soft_issues": [], "ts": "2026-09-15T15:59:34+0800"}
+{"event": "unit", "unit_id": "mcp-registry-preview", "week": 2, "n_chunks": 3, "zh_chars": 3307, "ts": "2026-09-15T15:59:34+0800"}
+{"event": "run_end", "backend": "queue", "processed": 4, "ok": 3, "failed": 1, "seconds": 0.01, "ts": "2026-09-15T15:59:34+0800"}
+{"event": "run_start", "backend": "queue", "pending": 258, "prompt_version": "v1", "ts": "2026-09-15T15:59:42+0800"}
+{"event": "chunk", "unit_id": "code-reviews-just-do-it", "index": 0, "week": 7, "backend": "queue", "prompt_hash": "94627e072ac7", "ok": true, "issues": [], "seconds": null, "src_chars": 3139, "zh_chars": 1354, "ratio": 0.431, "fences": 0, "links": 4, "soft_issues": [], "ts": "2026-09-15T15:59:42+0800"}
+{"event": "unit", "unit_id": "code-reviews-just-do-it", "week": 7, "n_chunks": 1, "zh_chars": 1431, "ts": "2026-09-15T15:59:42+0800"}
+{"event": "run_end", "backend": "queue", "processed": 1, "ok": 1, "failed": 0, "seconds": 0.0, "ts": "2026-09-15T15:59:42+0800"}

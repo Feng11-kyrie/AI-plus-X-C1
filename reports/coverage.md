@@ -12,9 +12,9 @@
 
 | 指标 | 数值 |
 |---|---|
-| 已完成条目 | **3** / 29 |
-| 覆盖率（分母 34） | **8.8%** |
-| 是否达标 | ⬜ 未达标（还差 24 条） |
+| 已完成条目 | **5** / 29 |
+| 覆盖率（分母 34） | **14.7%** |
+| 是否达标 | ⬜ 未达标（还差 22 条） |
 
 ## 逐条状态
 
@@ -24,7 +24,7 @@
 | `how-openai-uses-codex` | W1 | pdf | 4 | 0 | ⬜ 未开始 |
 | `mcp-food-for-thought` | W2 | html | 4 | 4 | ✅ 完成 |
 | `mcp-introduction` | W2 | html | 17 | 0 | ⬜ 未开始 |
-| `mcp-registry-preview` | W2 | html | 3 | 0 | ⬜ 未开始 |
+| `mcp-registry-preview` | W2 | html | 3 | 3 | ✅ 完成 |
 | `mcp-server-authentication` | W2 | html | 8 | 0 | ⬜ 未开始 |
 | `devin-coding-agents-101` | W3 | html | 17 | 0 | ⬜ 未开始 |
 | `how-long-contexts-fail` | W3 | html | 6 | 0 | ⬜ 未开始 |
@@ -41,7 +41,7 @@
 | `sast-vs-dast` | W6 | html | 16 | 0 | ⬜ 未开始 |
 | `ai-code-review-best-practices` | W7 | html | 8 | 0 | ⬜ 未开始 |
 | `code-review-essentials` | W7 | html | 5 | 0 | ⬜ 未开始 |
-| `code-reviews-just-do-it` | W7 | html | 5 | 0 | ⬜ 未开始 |
+| `code-reviews-just-do-it` | W7 | html | 1 | 1 | ✅ 完成 |
 | `how-to-review-code-effectively` | W7 | html | 13 | 0 | ⬜ 未开始 |
 | `ai-assisted-code-review-assessment` | W7 | pdf | 9 | 0 | ⬜ 未开始 |
 | `benefits-agentic-ai-oncall` | W9 | html | 3 | 3 | ✅ 完成 |
