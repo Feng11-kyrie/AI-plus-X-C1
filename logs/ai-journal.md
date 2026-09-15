@@ -13,12 +13,12 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 74 |
-| 翻译块次 | 43 |
-| 其中通过校验 | 34 |
-| **其中未通过 / 失败** | **9** |
-| 完成条目 | 11 |
-| 出现过校验问题的块 | 9 |
+| 记录事件总数 | 88 |
+| 翻译块次 | 52 |
+| 其中通过校验 | 42 |
+| **其中未通过 / 失败** | **10** |
+| 完成条目 | 12 |
+| 出现过校验问题的块 | 10 |
 
 ## 逐块记录
 
@@ -67,6 +67,15 @@
 | 16:00:31 | `kubernetes-troubleshooting` | 5 | queue | `e0568b989965` | 99/65 | — | ✅ |
 | 16:00:37 | `kubernetes-troubleshooting` | 1 | queue | `6cccae495d52` | 1471/729 | — | ✅ |
 | 16:00:37 | `kubernetes-troubleshooting` | 2 | queue | `2d8a1f00389b` | 2570/1219 | — | ✅ |
+| 16:01:27 | `copilot-prompt-injection-r` | 0 | queue | `8bec118ea877` | 1254/752 | — | ✅ |
+| 16:01:27 | `copilot-prompt-injection-r` | 1 | queue | `a9659c22b157` | 1744/926 | — | ✅ |
+| 16:01:27 | `copilot-prompt-injection-r` | 2 | queue | `ff363c3026c4` | 953/495 | — | ✅ |
+| 16:01:27 | `copilot-prompt-injection-r` | 3 | queue | `1b82048988f2` | 1088/393 | — | ✅ |
+| 16:01:27 | `copilot-prompt-injection-r` | 4 | queue | `479a946ac43c` | 1469/758 | — | ✅ |
+| 16:01:27 | `copilot-prompt-injection-r` | 5 | queue | `9cbfe0431a4c` | 548/357 | — | ❌ 出现禁用变体「缺陷」（应为「漏洞」）；出现禁用变体「威胁建模」（应为「威胁模型」） |
+| 16:01:35 | `copilot-prompt-injection-r` | 0 | queue | `d1a1baa329f0` | 1254/752 | — | ✅ |
+| 16:01:35 | `copilot-prompt-injection-r` | 4 | queue | `f97bca176f05` | 1469/758 | — | ✅ |
+| 16:01:35 | `copilot-prompt-injection-r` | 5 | queue | `89a210c83113` | 548/357 | — | ✅ |
 
 ## 失败与返工记录
 
@@ -121,6 +130,12 @@
 - 时间：2026-09-15T16:00:31+0800　后端：queue　prompt 哈希：`2d8a1f00389b`
 - 问题：出现禁用变体「遥测数据」（应为「遥测」）
 
+### `copilot-prompt-injection-rce` 第 5 块
+
+- 时间：2026-09-15T16:01:27+0800　后端：queue　prompt 哈希：`9cbfe0431a4c`
+- 问题：出现禁用变体「缺陷」（应为「漏洞」）
+- 问题：出现禁用变体「威胁建模」（应为「威胁模型」）
+
 ## 条目汇总
 
 | 条目 | 周 | 块数 | 中文字符 | 完成时间 |
@@ -136,4 +151,5 @@
 | `mcp-registry-preview` | W2 | 3 | 3,307 | 2026-09-15T15:59:34 |
 | `code-reviews-just-do-it` | W7 | 1 | 1,431 | 2026-09-15T15:59:42 |
 | `kubernetes-troubleshooting-ai` | W9 | 6 | 3,978 | 2026-09-15T16:00:37 |
+| `copilot-prompt-injection-rce` | W6 | 6 | 3,763 | 2026-09-15T16:01:35 |
 

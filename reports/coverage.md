@@ -12,9 +12,9 @@
 
 | 指标 | 数值 |
 |---|---|
-| 已完成条目 | **6** / 29 |
-| 覆盖率（分母 34） | **17.6%** |
-| 是否达标 | ⬜ 未达标（还差 21 条） |
+| 已完成条目 | **7** / 29 |
+| 覆盖率（分母 34） | **20.6%** |
+| 是否达标 | ⬜ 未达标（还差 20 条） |
 
 ## 逐条状态
 
@@ -35,7 +35,7 @@
 | `warp-vs-claude-code` | W5 | html | 4 | 4 | ✅ 完成 |
 | `agentic-ai-threats` | W6 | html | 24 | 0 | ⬜ 未开始 |
 | `context-rot` | W6 | html | 24 | 0 | ⬜ 未开始 |
-| `copilot-prompt-injection-rce` | W6 | html | 6 | 0 | ⬜ 未开始 |
+| `copilot-prompt-injection-rce` | W6 | html | 6 | 6 | ✅ 完成 |
 | `finding-vulnerabilities-claude-codex` | W6 | html | 12 | 0 | ⬜ 未开始 |
 | `owasp-top-ten` | W6 | html | 10 | 0 | ⬜ 未开始 |
 | `sast-vs-dast` | W6 | html | 16 | 0 | ⬜ 未开始 |
