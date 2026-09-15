@@ -69,6 +69,16 @@ BOILERPLATE_LINES = {
     "enter access code", "site owner login", "enroll now →",
     "all rights reserved", "powered by ghost", "site owner login",
 }
+
+# 章节级样板：这些标题下的**整段内容**都是站外导航，不是文章正文。
+# 注意不包含 "table of contents"——文章自带的目录属于正式内容，
+# 删掉会损失文档结构。判断依据是「是不是文章的一部分」，
+# 而不是「看起来像不像导航」。
+BOILERPLATE_SECTIONS = {
+    "related posts", "related articles", "recent posts", "you might also like",
+    "more from", "recommended for you", "read next", "popular posts",
+    "in this series", "tags", "categories", "share this",
+}
 # HTMLParser 中无需闭合的标签
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input",
         "link", "meta", "param", "source", "track", "wbr"}
@@ -392,6 +402,38 @@ def _table(node: Node, lines: list) -> None:
         lines.append("")
 
 
+def drop_boilerplate_sections(md: str) -> tuple:
+    """删除整节的站外导航内容，返回 (文本, 删除行数)。
+
+    与行级样板（drop_boilerplate_lines）的区别：行级只删单行，
+    这里连同标题下的全部内容一起删，直到遇到同级或更高级的标题。
+
+    起因：code-reviews-just-do-it 共 5 个分块，其中 4 个是博客模板的
+    「Related posts / Recent Posts」区块——3,427 字符、占该篇 47%。
+    它们会被原样送去翻译，既浪费产出又污染成品。
+    """
+    lines = md.split("\n")
+    out, i, dropped, removed = [], 0, 0, []
+    while i < len(lines):
+        m = re.match(r"^[ \t]*(#{1,6})[ \t]+(.+?)\s*$", lines[i])
+        if m and m.group(2).strip().strip("*_` ").lower() in BOILERPLATE_SECTIONS:
+            level = len(m.group(1))
+            j = i + 1
+            while j < len(lines):
+                m2 = re.match(r"^[ \t]*(#{1,6})[ \t]+", lines[j])
+                if m2 and len(m2.group(1)) <= level:
+                    break
+                j += 1
+            dropped += j - i
+            removed.extend(lines[i:j])
+            i = j
+            continue
+        out.append(lines[i])
+        i += 1
+    text = re.sub(r"\n{3,}", "\n\n", "\n".join(out))
+    return text, dropped, "\n".join(removed)
+
+
 def tidy(md: str) -> str:
     md = re.sub(r"\n{3,}", "\n\n", md)
     md = re.sub(r"[ \t]+\n", "\n", md)
@@ -535,17 +577,21 @@ def verify(c_raw: dict, c_main: dict, c_md: dict, text_main: int, text_md: int) 
 
 
 def drop_boilerplate_lines(md: str) -> tuple:
-    """整行匹配剔除残留 UI 文字，返回 (文本, 剔除行数)。"""
-    out, dropped = [], 0
+    """整行匹配剔除残留 UI 文字，返回 (文本, 剔除行数, 剔除字符数)。
+
+    第三个返回值用于完整性校验：被有意删掉的文字不该算作「内容丢失」。
+    """
+    out, dropped, removed = [], 0, []
     for line in md.split("\n"):
         key = line.strip().strip("*_` ").lower()
         if key and key in BOILERPLATE_LINES:
             dropped += 1
+            removed.append(line)
             continue
         out.append(line)
     text = "\n".join(out)
     text = re.sub(r"\n{3,}", "\n\n", text)
-    return text, dropped
+    return text, dropped, "\n".join(removed)
 
 
 def extract(raw: str) -> tuple:
@@ -569,15 +615,23 @@ def extract(raw: str) -> tuple:
     c_main = count_node(main_node)
 
     md = tidy("\n".join(render(main_node)))
-    md, bp_dropped = drop_boilerplate_lines(md)
+    md, bp_sections, bp_section_text = drop_boilerplate_sections(md)
+    md, bp_dropped, bp_line_text = drop_boilerplate_lines(md)
     c_md = count_md(md)
 
-    verdict = verify(c_raw, c_main, c_md,
-                     text_main=len(re.sub(r"\s+", "", main_node.text())),
-                     text_md=md_plain_len(md))
+    # 留存率的分母要扣掉「有意删除的样板」——否则删得越干净、
+    # 校验器反而报得越凶，这类假告警会让校验器失去可信度。
+    #
+    # 被删文本必须用与分子相同的度量（md_plain_len）来算：
+    # 早先直接数原始字符，把图片 URL 也算了进去，而分子的口径不含 URL，
+    # 于是留存率冒出 173% 这种数字。分子分母不同源，任何比率都不可信。
+    text_main = len(re.sub(r"\s+", "", main_node.text()))
+    text_expect = max(text_main - md_plain_len(bp_section_text + "\n" + bp_line_text), 1)
+    verdict = verify(c_raw, c_main, c_md, text_main=text_expect, text_md=md_plain_len(md))
     stats = {
         "mojibake_fixed": moji_fixed,
         "boilerplate_lines_dropped": bp_dropped,
+        "boilerplate_sections_dropped": bp_sections,
         "counts_raw": c_raw,
         "counts_main": c_main,
         "counts_md": c_md,

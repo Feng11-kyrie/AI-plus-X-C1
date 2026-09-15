@@ -18,11 +18,11 @@
 | 可入管线 | **29**（HTML 26 + PDF 3） |
 | 失效 | 5 |
 | 原始体积 | 20.82 MB |
-| 清洗后 Markdown | 0.55 MB |
-| **有效条目压缩率** | **2.6%**（降至 1/37.9） |
-| 可翻译正文词数 | 83,327 |
-| 翻译分块数 | 276（合并小块前为 398 块——合并见「合并过小相邻块」的设计说明） |
-| 平均块大小 | 2,055 字符（合并前中位数仅 795） |
+| 清洗后 Markdown | 0.54 MB |
+| **有效条目压缩率** | **2.6%**（降至 1/38.2） |
+| 可翻译正文词数 | 82,879 |
+| 翻译分块数 | 272（合并小块前为 398 块——合并见「合并过小相邻块」的设计说明） |
+| 平均块大小 | 2,073 字符（合并前中位数仅 795） |
 
 ## 逐篇明细
 
@@ -46,13 +46,13 @@
 | W9 | `multi-agent-systems-ai-native` | html | 166 KB | 10.6 KB | **6.4%** | **100.0%** | — | 1,439 | 5 | OK | — |
 | W7 | `ai-code-review-best-practices` | html | 178 KB | 13.3 KB | **7.5%** | **98.8%** | — | 1,901 | 8 | OK | — |
 | W2 | `mcp-server-authentication` | html | 186 KB | 14.3 KB | **7.7%** | **100.0%** | 22乱/0样 | 1,909 | 8 | OK | — |
+| W7 | `code-reviews-just-do-it` | html | 47 KB | 3.7 KB | **7.7%** | **99.8%** | — | 562 | 1 | OK | — |
 | W2 | `mcp-introduction` | html | 369 KB | 30.7 KB | **8.3%** | **100.0%** | — | 4,721 | 17 | OK | — |
 | W9 | `observability-basics` | html | 130 KB | 11.7 KB | **9.0%** | **100.0%** | — | 1,699 | 10 | OK | — |
 | W2 | `mcp-food-for-thought` | html | 54 KB | 5.2 KB | **9.7%** | **100.0%** | — | 728 | 4 | OK | — |
 | W7 | `how-to-review-code-effectively` | html | 193 KB | 21.7 KB | **11.2%** | **100.0%** | — | 3,278 | 13 | OK | — |
 | W3 | `writing-effective-tools-for-agents` | html | 199 KB | 22.6 KB | **11.4%** | **100.0%** | — | 3,254 | 12 | OK | — |
 | W6 | `agentic-ai-threats` | html | 383 KB | 54.4 KB | **14.2%** | **100.0%** | — | 7,901 | 24 | OK | — |
-| W7 | `code-reviews-just-do-it` | html | 47 KB | 7.1 KB | **14.9%** | **99.8%** | — | 1,010 | 5 | OK | — |
 | W6 | `context-rot` | html | 265 KB | 50.2 KB | **18.9%** | **99.9%** | — | 7,602 | 24 | OK | — |
 | W6 | `finding-vulnerabilities-claude-codex` | html | 112 KB | 24.9 KB | **22.2%** | **100.0%** | — | 3,789 | 12 | OK | — |
 | W6 | `owasp-top-ten` | html | 70 KB | 16.8 KB | **24.1%** | **100.0%** | — | 2,311 | 10 | OK | — |
@@ -63,10 +63,10 @@
 | W9 | `sre-introduction` | html | 43 KB | 24.4 KB | **56.1%** | **100.0%** | 34乱/0样 | 3,824 | 10 | OK | — |
 | W3 | `how-long-contexts-fail` | html | 19 KB | 10.8 KB | **57.9%** | **100.0%** | — | 1,579 | 6 | OK | — |
 | W7 | `code-review-essentials` | html | 15 KB | 11.7 KB | **80.1%** | **100.0%** | — | 2,040 | 5 | OK | — |
-| W7 | `lessons-from-ai-code-reviews` | html | 0 KB | 0.0 KB | **0.0%** | **100.0%** | — | 0 | 0 | **失效** | 文件 0 字节，抓取完全失败 |
+| W7 | `lessons-from-ai-code-reviews` | html | 0 KB | 0.0 KB | **0.0%** | **0.0%** | — | 0 | 0 | **失效** | 文件 0 字节，抓取完全失败 |
 | W5 | `how-warp-uses-warp` | html | 15 KB | 0.0 KB | **0.0%** | **100.0%** | — | 1 | 0 | **失效** | Notion JS 渲染页：正文需 JavaScript 才能生成，静态抓取只能拿到外壳 |
-| W4 | `good-context-good-code` | html | 9 KB | 0.0 KB | **0.3%** | **29.7%** | 0乱/3样 | 4 | 0 | **失效** | 访问码 / 付费墙拦截：抓到的只是登录门页 |
-| W1 | `prompt-engineering-guide` | html | 125 KB | 0.5 KB | **0.4%** | **97.6%** | 0乱/1样 | 79 | 0 | **失效** | SPA 导航壳：__NEXT_DATA__ 载荷为空，真实正文在未被抓取的子页面中 |
+| W4 | `good-context-good-code` | html | 9 KB | 0.0 KB | **0.3%** | **90.5%** | 0乱/3样 | 4 | 0 | **失效** | 访问码 / 付费墙拦截：抓到的只是登录门页 |
+| W1 | `prompt-engineering-guide` | html | 125 KB | 0.5 KB | **0.4%** | **99.8%** | 0乱/1样 | 79 | 0 | **失效** | SPA 导航壳：__NEXT_DATA__ 载荷为空，真实正文在未被抓取的子页面中 |
 | W4 | `peeking-under-the-hood-of-claude-code` | html | 1 KB | 0.4 KB | **77.8%** | **100.0%** | — | 44 | 0 | **失效** | 体积过小，抓到的是占位页 |
 
 ## 一、有效性检查
@@ -104,4 +104,4 @@
 | 产物 | 位置 | 是否入库 |
 |---|---|---|
 | 清洗后英文底稿 | `clean/<unit>.md`（29 条） | ✅ 入库，可人工抽检 |
-| 翻译分块 | `pipeline/work/chunks.json`（276 块） | ⬜ 中间产物，可复跑再生 |
+| 翻译分块 | `pipeline/work/chunks.json`（272 块） | ⬜ 中间产物，可复跑再生 |
