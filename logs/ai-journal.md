@@ -13,11 +13,11 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 165 |
-| 翻译块次 | 109 |
-| 其中通过校验 | 91 |
+| 记录事件总数 | 176 |
+| 翻译块次 | 117 |
+| 其中通过校验 | 99 |
 | **其中未通过 / 失败** | **18** |
-| 完成条目 | 16 |
+| 完成条目 | 17 |
 | 出现过校验问题的块 | 18 |
 
 ## 逐块记录
@@ -133,6 +133,14 @@
 | 16:14:52 | `observability-basics` | 7 | queue | `080ad5069416` | 908/330 | — | ✅ |
 | 16:14:52 | `observability-basics` | 8 | queue | `4d2e53807c86` | 826/326 | — | ✅ |
 | 16:14:52 | `observability-basics` | 9 | queue | `d2e877ecf5bf` | 383/165 | — | ✅ |
+| 16:16:08 | `ai-code-review-best-practi` | 0 | queue | `db1ab4b695a1` | 1186/431 | — | ✅ |
+| 16:16:08 | `ai-code-review-best-practi` | 1 | queue | `d280ea697f48` | 778/291 | — | ✅ |
+| 16:16:08 | `ai-code-review-best-practi` | 2 | queue | `224d24e0cb98` | 1483/664 | — | ✅ |
+| 16:16:08 | `ai-code-review-best-practi` | 3 | queue | `4178b016d47d` | 1755/667 | — | ✅ |
+| 16:16:08 | `ai-code-review-best-practi` | 4 | queue | `98b0abbae211` | 1292/592 | — | ✅ |
+| 16:16:08 | `ai-code-review-best-practi` | 5 | queue | `3cb309da71cd` | 1404/620 | — | ✅ |
+| 16:16:08 | `ai-code-review-best-practi` | 6 | queue | `5d996ee199fc` | 649/260 | — | ✅ |
+| 16:16:08 | `ai-code-review-best-practi` | 7 | queue | `28de270646e8` | 3047/1092 | — | ✅ |
 
 ## 失败与返工记录
 
@@ -255,4 +263,5 @@
 | `claude-code-best-practices` | W4 | 4 | 4,512 | 2026-09-15T16:04:53 |
 | `how-long-contexts-fail` | W3 | 6 | 4,269 | 2026-09-15T16:10:02 |
 | `observability-basics` | W9 | 10 | 5,109 | 2026-09-15T16:14:52 |
+| `ai-code-review-best-practices` | W7 | 8 | 4,700 | 2026-09-15T16:16:08 |
 
