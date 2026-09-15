@@ -20,10 +20,12 @@
 | ④ 清洗管线（HTML/PDF→Markdown） | ✅ 完成 | `pipeline/clean.py`：20.8MB → 0.55MB，**29 条正文底稿 + 零内容丢失告警** |
 | ⑤ 翻译管线 | ⬜ 未开始 | 计划 `pipeline/translate.py` |
 | ⑥ 术语一致性自动校验 | ⬜ 未开始 | 计划 `pipeline/qc_terminology.py` + CI |
-| ⑦ 中文译稿产出 | ⬜ 未开始 | 目标 ≥80% 覆盖度（≥27 条） |
-| ⑧ 发布与复盘 | ⬜ 未开始 | 含 AAR、拿来说明 |
+| ⑦ 中文译稿产出 | 🚧 9/29 条 | 目标 ≥80% 覆盖度（≥27 条） |
+| ⑧ 发布与复盘 | 🚧 进行中 | AAR、AI 日志、3 个拿来说明已完成 |
 
-**已交付**：`source/INVENTORY.md`、`glossary/glossary.csv`、`reports/clean-comparison.md`、`clean/`（29 条英文底稿）、`pipeline/` 六支可跑脚本
+**已交付**：四项必交交付物（`README.md` / `logs/ai-journal.md` / `AAR.md` / `notes/拿来说明/` ×3）
+均已齐全；另有 `source/INVENTORY.md`、`glossary/glossary.csv`、`clean/`（29 条英文底稿）、
+`zh/`（9 条中文译稿）、`reports/`、`pipeline/` 六支可跑脚本
 
 ---
 
@@ -185,10 +187,10 @@ python3 pipeline/glossary_tool.py --check
 | 术语表 ≥50 条 | `glossary/glossary.csv`（170 条） | ✅ |
 | 可复跑的翻译管线 | `pipeline/`（6 支脚本，已跑通「获取→清点→清洗」） | 🚧 进行中 |
 | 清洗后英文底稿 | `clean/`（29 条）+ `reports/clean-comparison.md` | ✅ |
-| 完整中文资料包 | `zh/` | ⬜ |
-| `*AI日志*` | `logs/ai-journal.md` | ⬜ |
-| `*AAR*`（七维复盘） | `AAR.md` | ⬜ |
-| `*拿来说明*` ≥3 个 | `notes/拿来说明/` | ⬜ |
+| 完整中文资料包 | `zh/`（9/29 条，管线已跑通） | 🚧 |
+| `*AI日志*` | `logs/ai-journal.md`（自动生成） | ✅ |
+| `*AAR*`（七维复盘） | `AAR.md` | ✅ |
+| `*拿来说明*` ≥3 个 | `notes/拿来说明/`（3 篇） | ✅ |
 
 ---
 
