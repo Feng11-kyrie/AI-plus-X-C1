@@ -13,11 +13,11 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 36 |
-| 翻译块次 | 19 |
-| 其中通过校验 | 13 |
+| 记录事件总数 | 50 |
+| 翻译块次 | 30 |
+| 其中通过校验 | 24 |
 | **其中未通过 / 失败** | **6** |
-| 完成条目 | 7 |
+| 完成条目 | 8 |
 | 出现过校验问题的块 | 6 |
 
 ## 逐块记录
@@ -43,6 +43,17 @@
 | 15:27:27 | `benefits-agentic-ai-oncall` | 0 | queue | `ac1505d0fb17` | 3413/1182 | — | ❌ 出现禁用变体「情境」（应为「上下文」） |
 | 15:27:27 | `benefits-agentic-ai-oncall` | 1 | queue | `60662066e28a` | 1235/424 | — | ✅ |
 | 15:27:41 | `benefits-agentic-ai-oncall` | 0 | queue | `ac1505d0fb17` | 3413/1184 | — | ✅ |
+| 15:32:24 | `mcp-food-for-thought` | 0 | queue | `f451eab73f14` | 1408/870 | — | ✅ |
+| 15:32:24 | `mcp-food-for-thought` | 1 | queue | `dabe62f1d2e8` | 1475/875 | — | ✅ |
+| 15:32:24 | `mcp-food-for-thought` | 2 | queue | `170f9700389e` | 921/588 | — | ✅ |
+| 15:32:24 | `mcp-food-for-thought` | 3 | queue | `634866ac8007` | 735/336 | — | ✅ |
+| 15:32:24 | `warp-vs-claude-code` | 0 | queue | `7322f8c82247` | 1545/973 | — | ✅ |
+| 15:32:24 | `warp-vs-claude-code` | 1 | queue | `a8f76a910161` | 1325/642 | — | ✅ |
+| 15:32:24 | `warp-vs-claude-code` | 2 | queue | `522bc6c276f6` | 909/519 | — | ✅ |
+| 15:32:24 | `warp-vs-claude-code` | 3 | queue | `d95a38af44a6` | 721/471 | — | ✅ |
+| 15:32:24 | `benefits-agentic-ai-oncall` | 0 | queue | `ac1505d0fb17` | 3413/1184 | — | ✅ |
+| 15:32:24 | `benefits-agentic-ai-oncall` | 1 | queue | `60662066e28a` | 1235/424 | — | ✅ |
+| 15:32:24 | `benefits-agentic-ai-oncall` | 2 | queue | `b113cf9eff8f` | 99/65 | — | ✅ |
 
 ## 失败与返工记录
 
@@ -93,4 +104,5 @@
 | `mcp-food-for-thought` | W2 | 4 | 2,781 | 2026-09-15T15:27:41 |
 | `warp-vs-claude-code` | W5 | 4 | 2,714 | 2026-09-15T15:27:41 |
 | `benefits-agentic-ai-oncall` | W9 | 3 | 1,789 | 2026-09-15T15:27:41 |
+| `mcp-food-for-thought` | W2 | 4 | 2,743 | 2026-09-15T15:32:24 |
 

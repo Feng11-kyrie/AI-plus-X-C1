@@ -77,6 +77,20 @@ def sha(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()[:12]
 
 
+def skey(c: dict) -> str:
+    """状态键。"""
+    return f"{c['unit_id']}__{c['index']}"
+
+
+def dfile(c: dict) -> Path:
+    """队列中该块的译文文件路径。
+
+    状态键与文件名必须由同一处派生：早期状态键写 __0、文件名写 __000（补零），
+    导致「检查 done/ 是否被人工修改」时找错文件、校对改动被静默忽略。
+    """
+    return DONE_DIR / f"{c['unit_id']}__{c['index']:03d}.md"
+
+
 def load_json(path: Path, default):
     if not path.exists():
         return default
@@ -323,7 +337,7 @@ def backend_queue_ingest(pending: list, glossary: list, backend: str) -> list:
     """从 done/ 收回译文，逐块校验并记账。"""
     results = []
     for c in pending:
-        done = DONE_DIR / f"{c['unit_id']}__{c['index']:03d}.md"
+        done = dfile(c)
         if not done.exists():
             continue
         zh = done.read_text(encoding="utf-8").strip()
@@ -452,14 +466,25 @@ def main() -> None:
         return 0
 
     def key(c):
-        return f"{c['unit_id']}__{c['index']}"
+        return skey(c)
 
     pending = []
     for c in chunks:
         terms = relevant_terms(c["text"], glossary)
         h = sha(build_prompt(c, terms))
-        if state.get(key(c), {}).get("ok") and state[key(c)].get("prompt_hash") == h:
-            continue          # 已完成且 prompt 未变 —— 跳过
+        st = state.get(key(c), {})
+        if st.get("ok") and st.get("prompt_hash") == h:
+            # 队列后端还要多看一步：done/ 里的译文是否被人工改过。
+            # 「机器翻译 + 人工校对」中的校对就是直接改 done/ 文件，
+            # 若只比对 prompt 哈希，人工改动会被静默忽略——
+            # 那等于把流程里最关键的校对环节废掉了。
+            if backend == "queue":
+                f = dfile(c)
+                cur = sha(f.read_text(encoding="utf-8").strip()) if f.exists() else None
+                if cur and cur != st.get("out_hash"):
+                    pending.append(c)
+                    continue
+            continue
         pending.append(c)
 
     # ---- 状态概览 ----
@@ -486,8 +511,7 @@ def main() -> None:
     # 队列后端下，done/ 里可能还没有任何译文。此时直接返回，不写
     # run_start / run_end——否则反复执行 --ingest 会往日志里灌入大量
     # 「什么都没做」的事件，把真正的记录淹没。
-    if backend != "api" and not any(
-            (DONE_DIR / f"{c['unit_id']}__{c['index']:03d}.md").exists() for c in pending):
+    if backend != "api" and not any(dfile(c).exists() for c in pending):
         print(f"done/ 中暂无新译文（待处理 {len(pending)} 块）。")
         print(f"把译文写到 {DONE_DIR.relative_to(ROOT)}/<unit>__<idx>.md 后再运行 --ingest。")
         render_journal()
@@ -541,8 +565,8 @@ def main() -> None:
             translations[key(c)] = zh
             n_ok += 1
         state[key(c)] = {
-            "ok": ok, "prompt_hash": ph, "issues": issues,
-            "backend": backend, "ts": now_iso(), **metrics,
+            "ok": ok, "prompt_hash": ph, "out_hash": sha(zh.strip()) if zh else None,
+            "issues": issues, "backend": backend, "ts": now_iso(), **metrics,
         }
         journal({"event": "chunk", "unit_id": c["unit_id"], "index": c["index"],
                  "week": c["week"], "backend": backend, "prompt_hash": ph, "ok": ok,
