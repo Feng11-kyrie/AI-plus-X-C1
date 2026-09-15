@@ -24,7 +24,7 @@
 1. **被正式译法包含的变体一律跳过**——「上下文协议」是「模型上下文协议（MCP）」的子串，子串匹配会把正确译文判成违规。
 2. 宁可漏报也不误报：一个天天误报的校验器最终会被忽略。
 
-**术语总数：171 条**（硬性禁用变体 362 条 + 提示级 5 条，由 `pipeline/translate.py` 逐块强制校验）
+**术语总数：171 条**（硬性禁用变体 358 条 + 提示级 9 条，由 `pipeline/translate.py` 逐块强制校验）
 
 ## 核心 LLM 与提示词（28 条）
 
@@ -118,7 +118,7 @@
 | Diff | 差异 | `translate` | 差分、变更差异、补丁 | — | — |
 | Codebase Understanding | 代码库理解 | `translate` | 代码理解、仓库理解 | — | — |
 | Spec-Driven Development | 规格驱动开发 | `translate` | 规范驱动开发、文档驱动开发 | — | — |
-| Specification (Spec) | 规格说明 | `translate` | 规范、规格书、需求规格 | — | — |
+| Specification (Spec) | 规格说明 | `translate` | 规格书、需求规格 | 规范 | — |
 
 ## 安全（32 条）
 
@@ -164,10 +164,10 @@
 | Site Reliability Engineering (SRE) | 站点可靠性工程（SRE） | `acronym` | 网站可靠性工程、可靠性工程 SRE | — | — |
 | Observability | 可观测性 | `translate` | 可观察性、监控能力 | — | — |
 | Telemetry | 遥测 | `translate` | 远程测量、遥测数据 | — | — |
-| Tracing | 链路追踪 | `translate` | 跟踪、链路跟踪、追踪体系 | — | — |
-| Trace | 追踪记录 | `translate` | 轨迹、调用链快照 | — | — |
+| Tracing | 链路追踪 | `translate` | 链路跟踪、追踪体系 | 跟踪 | — |
+| Trace | 追踪记录 | `translate` | 调用链快照 | 轨迹 | — |
 | Span | Span | `keep_en` | 跨度、片段、区段 | — | — |
-| Metric | 指标 | `translate` | 度量、度量值、监控指标 | — | — |
+| Metric | 指标 | `translate` | 度量值、监控指标 | 度量 | — |
 | Log | 日志 | `translate` | 日志文件、Log 记录 | 记录 | — |
 | Dashboard | 仪表盘 | `translate` | 仪表板、看板、监控面板 | — | — |
 | Alert | 告警 | `translate` | 警报、报警、提醒 | — | — |

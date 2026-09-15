@@ -75,7 +75,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 74,Diff,差异,swe,translate,差分|变更差异|补丁,,0,
 75,Codebase Understanding,代码库理解,swe,translate,代码理解|仓库理解,,Week 3 主题,0
 76,Spec-Driven Development,规格驱动开发,swe,translate,规范驱动开发|文档驱动开发,,对应 specs-are-the-new-source-code,0
-77,Specification (Spec),规格说明,swe,translate,规范|规格书|需求规格,,0,
+77,Specification (Spec),规格说明,swe,translate,规格书|需求规格,规范,0,
 78,Software Development Life Cycle (SDLC),软件开发生命周期（SDLC）,process,acronym,软件开发生命圈|开发周期,,7,
 79,Product Requirements Document (PRD),产品需求文档（PRD）,process,acronym,产品需求书|需求文档 PRD,,7,
 80,Design Doc,设计文档,process,translate,设计稿|设计方案文档,,0,
@@ -124,10 +124,10 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 123,Site Reliability Engineering (SRE),站点可靠性工程（SRE）,sre,acronym,网站可靠性工程|可靠性工程 SRE,,69,
 124,Observability,可观测性,sre,translate,可观察性|监控能力,,0,
 125,Telemetry,遥测,sre,translate,远程测量|遥测数据,,0,
-126,Tracing,链路追踪,sre,translate,跟踪|链路跟踪|追踪体系,,0,
-127,Trace,追踪记录,sre,translate,轨迹|调用链快照,,分布式追踪中的单条 Trace,0
+126,Tracing,链路追踪,sre,translate,链路跟踪|追踪体系,跟踪,0,
+127,Trace,追踪记录,sre,translate,调用链快照,轨迹,分布式追踪中的单条 Trace,0
 128,Span,Span,sre,keep_en,跨度|片段|区段,,分布式追踪中保留英文,0
-129,Metric,指标,sre,translate,度量|度量值|监控指标,,0,
+129,Metric,指标,sre,translate,度量值|监控指标,度量,0,
 130,Log,日志,sre,translate,日志文件|Log 记录,记录,0,
 131,Dashboard,仪表盘,sre,translate,仪表板|看板|监控面板,,0,
 132,Alert,告警,sre,translate,警报|报警|提醒,,0,
