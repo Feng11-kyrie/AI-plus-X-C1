@@ -12,9 +12,9 @@
 
 | 指标 | 数值 |
 |---|---|
-| 已完成条目 | **7** / 29 |
-| 覆盖率（分母 34） | **20.6%** |
-| 是否达标 | ⬜ 未达标（还差 20 条） |
+| 已完成条目 | **9** / 29 |
+| 覆盖率（分母 34） | **26.5%** |
+| 是否达标 | ⬜ 未达标（还差 18 条） |
 
 ## 逐条状态
 
@@ -30,7 +30,7 @@
 | `how-long-contexts-fail` | W3 | html | 6 | 0 | ⬜ 未开始 |
 | `specs-are-the-new-source-code` | W3 | html | 6 | 0 | ⬜ 未开始 |
 | `writing-effective-tools-for-agents` | W3 | html | 12 | 0 | ⬜ 未开始 |
-| `claude-code-best-practices` | W4 | html | 4 | 0 | ⬜ 未开始 |
+| `claude-code-best-practices` | W4 | html | 4 | 4 | ✅ 完成 |
 | `how-anthropic-uses-claude-code` | W4 | pdf | 11 | 0 | ⬜ 未开始 |
 | `warp-vs-claude-code` | W5 | html | 4 | 4 | ✅ 完成 |
 | `agentic-ai-threats` | W6 | html | 24 | 0 | ⬜ 未开始 |
@@ -46,7 +46,7 @@
 | `ai-assisted-code-review-assessment` | W7 | pdf | 9 | 0 | ⬜ 未开始 |
 | `benefits-agentic-ai-oncall` | W9 | html | 3 | 3 | ✅ 完成 |
 | `kubernetes-troubleshooting-ai` | W9 | html | 6 | 6 | ✅ 完成 |
-| `multi-agent-systems-ai-native` | W9 | html | 5 | 0 | ⬜ 未开始 |
+| `multi-agent-systems-ai-native` | W9 | html | 5 | 5 | ✅ 完成 |
 | `observability-basics` | W9 | html | 10 | 0 | ⬜ 未开始 |
 | `sre-introduction` | W9 | html | 10 | 0 | ⬜ 未开始 |
 

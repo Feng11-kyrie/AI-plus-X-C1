@@ -13,12 +13,12 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 88 |
-| 翻译块次 | 52 |
-| 其中通过校验 | 42 |
-| **其中未通过 / 失败** | **10** |
-| 完成条目 | 12 |
-| 出现过校验问题的块 | 10 |
+| 记录事件总数 | 112 |
+| 翻译块次 | 66 |
+| 其中通过校验 | 52 |
+| **其中未通过 / 失败** | **14** |
+| 完成条目 | 14 |
+| 出现过校验问题的块 | 14 |
 
 ## 逐块记录
 
@@ -76,6 +76,20 @@
 | 16:01:35 | `copilot-prompt-injection-r` | 0 | queue | `d1a1baa329f0` | 1254/752 | — | ✅ |
 | 16:01:35 | `copilot-prompt-injection-r` | 4 | queue | `f97bca176f05` | 1469/758 | — | ✅ |
 | 16:01:35 | `copilot-prompt-injection-r` | 5 | queue | `89a210c83113` | 548/357 | — | ✅ |
+| 16:04:03 | `multi-agent-systems-ai-nat` | 0 | queue | `27958289d9d6` | 1714/836 | — | ✅ |
+| 16:04:03 | `multi-agent-systems-ai-nat` | 1 | queue | `a726af335fe7` | 1890/681 | — | ✅ |
+| 16:04:03 | `multi-agent-systems-ai-nat` | 2 | queue | `c946a43bc904` | 2852/990 | — | ❌ 出现禁用变体「语境」（应为「上下文」）；出现禁用变体「协调」（应为「编排」） |
+| 16:04:03 | `multi-agent-systems-ai-nat` | 3 | queue | `e8e42959808a` | 2414/955 | — | ❌ 出现禁用变体「协调」（应为「编排」） |
+| 16:04:03 | `multi-agent-systems-ai-nat` | 4 | queue | `1f981bd8ff61` | 448/291 | — | ✅ |
+| 16:04:11 | `multi-agent-systems-ai-nat` | 1 | queue | `a726af335fe7` | 1890/681 | — | ✅ |
+| 16:04:11 | `multi-agent-systems-ai-nat` | 2 | queue | `c946a43bc904` | 2852/993 | — | ❌ 出现禁用变体「协调」（应为「编排」） |
+| 16:04:11 | `multi-agent-systems-ai-nat` | 3 | queue | `e8e42959808a` | 2414/955 | — | ❌ 出现禁用变体「协调」（应为「编排」） |
+| 16:04:22 | `multi-agent-systems-ai-nat` | 2 | queue | `c946a43bc904` | 2852/993 | — | ✅ |
+| 16:04:22 | `multi-agent-systems-ai-nat` | 3 | queue | `e8e42959808a` | 2414/955 | — | ✅ |
+| 16:04:53 | `claude-code-best-practices` | 0 | queue | `7bee3ade6a89` | 2903/1635 | — | ✅ |
+| 16:04:53 | `claude-code-best-practices` | 1 | queue | `89c1e5954cae` | 3022/1557 | — | ✅ |
+| 16:04:53 | `claude-code-best-practices` | 2 | queue | `645ebeac27f5` | 1578/1042 | — | ✅ |
+| 16:04:53 | `claude-code-best-practices` | 3 | queue | `0191769d9488` | 447/198 | — | ✅ |
 
 ## 失败与返工记录
 
@@ -136,6 +150,27 @@
 - 问题：出现禁用变体「缺陷」（应为「漏洞」）
 - 问题：出现禁用变体「威胁建模」（应为「威胁模型」）
 
+### `multi-agent-systems-ai-native` 第 2 块
+
+- 时间：2026-09-15T16:04:03+0800　后端：queue　prompt 哈希：`c946a43bc904`
+- 问题：出现禁用变体「语境」（应为「上下文」）
+- 问题：出现禁用变体「协调」（应为「编排」）
+
+### `multi-agent-systems-ai-native` 第 3 块
+
+- 时间：2026-09-15T16:04:03+0800　后端：queue　prompt 哈希：`e8e42959808a`
+- 问题：出现禁用变体「协调」（应为「编排」）
+
+### `multi-agent-systems-ai-native` 第 2 块
+
+- 时间：2026-09-15T16:04:11+0800　后端：queue　prompt 哈希：`c946a43bc904`
+- 问题：出现禁用变体「协调」（应为「编排」）
+
+### `multi-agent-systems-ai-native` 第 3 块
+
+- 时间：2026-09-15T16:04:11+0800　后端：queue　prompt 哈希：`e8e42959808a`
+- 问题：出现禁用变体「协调」（应为「编排」）
+
 ## 条目汇总
 
 | 条目 | 周 | 块数 | 中文字符 | 完成时间 |
@@ -152,4 +187,6 @@
 | `code-reviews-just-do-it` | W7 | 1 | 1,431 | 2026-09-15T15:59:42 |
 | `kubernetes-troubleshooting-ai` | W9 | 6 | 3,978 | 2026-09-15T16:00:37 |
 | `copilot-prompt-injection-rce` | W6 | 6 | 3,763 | 2026-09-15T16:01:35 |
+| `multi-agent-systems-ai-native` | W9 | 5 | 3,839 | 2026-09-15T16:04:22 |
+| `claude-code-best-practices` | W4 | 4 | 4,512 | 2026-09-15T16:04:53 |
 
