@@ -1,0 +1,10 @@
+{"event": "run_start", "backend": "queue", "pending": 276, "prompt_version": "v1", "ts": "2026-09-15T15:25:48+0800"}
+{"event": "chunk", "unit_id": "warp-vs-claude-code", "index": 0, "week": 5, "backend": "queue", "prompt_hash": "01d516df5f56", "ok": true, "issues": [], "seconds": null, "src_chars": 1545, "zh_chars": 973, "ratio": 0.63, "fences": 0, "links": 5, "ts": "2026-09-15T15:25:48+0800"}
+{"event": "chunk", "unit_id": "warp-vs-claude-code", "index": 1, "week": 5, "backend": "queue", "prompt_hash": "3c1156174b50", "ok": false, "issues": ["出现禁用变体「协调」（应为「编排」）"], "seconds": null, "src_chars": 1325, "zh_chars": 642, "ratio": 0.485, "fences": 0, "links": 2, "ts": "2026-09-15T15:25:48+0800"}
+{"event": "chunk", "unit_id": "warp-vs-claude-code", "index": 2, "week": 5, "backend": "queue", "prompt_hash": "522bc6c276f6", "ok": true, "issues": [], "seconds": null, "src_chars": 909, "zh_chars": 519, "ratio": 0.571, "fences": 0, "links": 4, "ts": "2026-09-15T15:25:48+0800"}
+{"event": "chunk", "unit_id": "warp-vs-claude-code", "index": 3, "week": 5, "backend": "queue", "prompt_hash": "d95a38af44a6", "ok": true, "issues": [], "seconds": null, "src_chars": 721, "zh_chars": 471, "ratio": 0.653, "fences": 0, "links": 5, "ts": "2026-09-15T15:25:48+0800"}
+{"event": "run_end", "backend": "queue", "processed": 4, "ok": 3, "failed": 1, "seconds": 0.0, "ts": "2026-09-15T15:25:48+0800"}
+{"event": "run_start", "backend": "queue", "pending": 273, "prompt_version": "v1", "ts": "2026-09-15T15:25:59+0800"}
+{"event": "chunk", "unit_id": "warp-vs-claude-code", "index": 1, "week": 5, "backend": "queue", "prompt_hash": "3c1156174b50", "ok": true, "issues": [], "seconds": null, "src_chars": 1325, "zh_chars": 642, "ratio": 0.485, "fences": 0, "links": 2, "ts": "2026-09-15T15:25:59+0800"}
+{"event": "unit", "unit_id": "warp-vs-claude-code", "week": 5, "n_chunks": 4, "zh_chars": 2714, "ts": "2026-09-15T15:25:59+0800"}
+{"event": "run_end", "backend": "queue", "processed": 1, "ok": 1, "failed": 0, "seconds": 0.0, "ts": "2026-09-15T15:25:59+0800"}

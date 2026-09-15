@@ -6,7 +6,6 @@
   "instructor": "Mihail Eric",
   "source_url": "https://themodernsoftware.dev/",
   "cached_on": "2026-04-02",
-
   "paths": {
     "raw_dir": "source",
     "index_html": "source/index.html",
@@ -16,17 +15,26 @@
     "units_json": "source/units.json",
     "glossary": "glossary/glossary.csv",
     "clean_dir": "pipeline/work/clean",
-    "zh_dir": "zh"
+    "zh_dir": "zh",
+    "journal_jsonl": "logs/journal.jsonl"
   },
-
   "translation": {
     "source_lang": "en",
     "target_lang": "zh-Hans",
     "chunk_by": "heading",
     "max_chunk_chars": 4000,
-    "preserve": ["code", "headings", "links", "lists", "tables"]
+    "preserve": [
+      "code",
+      "headings",
+      "links",
+      "lists",
+      "tables"
+    ],
+    "backend": "queue",
+    "api_model": "deepseek-chat",
+    "api_base": "https://api.deepseek.com/v1",
+    "api_key_env": "DEEPSEEK_API_KEY"
   },
-
   "coverage": {
     "scope": "pages + pdfs",
     "target_ratio": 0.8

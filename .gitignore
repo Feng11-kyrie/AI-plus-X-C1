@@ -19,3 +19,9 @@ pipeline/work/
 # 编辑器
 .vscode/
 .idea/
+
+# 翻译中间产物（可复跑再生；逐块译文与状态）
+pipeline/work/zh/
+pipeline/work/todo/
+pipeline/work/done/
+pipeline/work/state.json
