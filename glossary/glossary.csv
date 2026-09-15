@@ -95,7 +95,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 94,Dynamic Application Security Testing (DAST),动态应用安全测试（DAST）,security,acronym,动态安全测试|动态安全检测,,56,
 95,Runtime Application Self-Protection (RASP),运行时应用自保护（RASP）,security,acronym,运行时自保护|运行期自防护,,24,
 96,Software Composition Analysis (SCA),软件成分分析（SCA）,security,acronym,软件组成分析|依赖成分分析,,4,
-97,Vulnerability,漏洞,security,translate,脆弱性|缺陷|弱点,,0,
+97,Vulnerability,漏洞,security,translate,脆弱性|弱点,缺陷,0,
 98,Exploit,漏洞利用,security,translate,利用程序|攻击利用|漏洞开发,,0,
 99,Common Vulnerabilities and Exposures (CVE),通用漏洞披露（CVE）,security,acronym,公共漏洞库|漏洞编号 CVE,,0,
 100,Common Weakness Enumeration (CWE),通用缺陷枚举（CWE）,security,acronym,通用弱点枚举|缺陷列表 CWE,,8,
@@ -107,7 +107,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 106,Remote Code Execution (RCE),远程代码执行（RCE）,security,acronym,远程命令执行|远端代码执行,,5,
 107,SQL Injection,SQL 注入,security,translate,SQL 注入攻击|SQL 植入,,0,
 108,Attack Surface,攻击面,security,translate,攻击表面|受攻击面,,0,
-109,Threat Model,威胁模型,security,translate,威胁建模|风险模型,,0,
+109,Threat Model,威胁模型,security,translate,风险模型,,名词；活动形式见 Threat Modeling,
 110,False Positive,误报,security,translate,假阳性|错误告警,,0,
 111,False Negative,漏报,security,translate,假阴性|漏检,,0,
 112,False Positive Rate (FPR),假阳性率（FPR）,security,acronym,假报率,误报率 FPR,6,
@@ -169,3 +169,4 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 168,Figma,Figma,tool,keep_en,,,设计工具,0
 169,Notion,Notion,tool,keep_en,,,文档工具,0
 170,SARIF,SARIF,tool,keep_en,,,静态分析结果交换格式,5
+171,Threat Modeling,威胁建模,security,translate,,,活动/过程；名词形式 Threat Model 见对应条目,0

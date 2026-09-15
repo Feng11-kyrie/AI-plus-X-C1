@@ -24,7 +24,7 @@
 1. **被正式译法包含的变体一律跳过**——「上下文协议」是「模型上下文协议（MCP）」的子串，子串匹配会把正确译文判成违规。
 2. 宁可漏报也不误报：一个天天误报的校验器最终会被忽略。
 
-**术语总数：170 条**（硬性禁用变体 364 条 + 提示级 4 条，由 `pipeline/translate.py` 逐块强制校验）
+**术语总数：171 条**（硬性禁用变体 362 条 + 提示级 5 条，由 `pipeline/translate.py` 逐块强制校验）
 
 ## 核心 LLM 与提示词（28 条）
 
@@ -120,7 +120,7 @@
 | Spec-Driven Development | 规格驱动开发 | `translate` | 规范驱动开发、文档驱动开发 | — | — |
 | Specification (Spec) | 规格说明 | `translate` | 规范、规格书、需求规格 | — | — |
 
-## 安全（31 条）
+## 安全（32 条）
 
 | 英文 | 中文 | policy | 禁用变体（硬性） | 提示级 | 语料频次 |
 |---|---|---|---|---|---|
@@ -129,7 +129,7 @@
 | Dynamic Application Security Testing (DAST) | 动态应用安全测试（DAST） | `acronym` | 动态安全测试、动态安全检测 | — | — |
 | Runtime Application Self-Protection (RASP) | 运行时应用自保护（RASP） | `acronym` | 运行时自保护、运行期自防护 | — | — |
 | Software Composition Analysis (SCA) | 软件成分分析（SCA） | `acronym` | 软件组成分析、依赖成分分析 | — | — |
-| Vulnerability | 漏洞 | `translate` | 脆弱性、缺陷、弱点 | — | — |
+| Vulnerability | 漏洞 | `translate` | 脆弱性、弱点 | 缺陷 | — |
 | Exploit | 漏洞利用 | `translate` | 利用程序、攻击利用、漏洞开发 | — | — |
 | Common Vulnerabilities and Exposures (CVE) | 通用漏洞披露（CVE） | `acronym` | 公共漏洞库、漏洞编号 CVE | — | — |
 | Common Weakness Enumeration (CWE) | 通用缺陷枚举（CWE） | `acronym` | 通用弱点枚举、缺陷列表 CWE | — | — |
@@ -141,7 +141,7 @@
 | Remote Code Execution (RCE) | 远程代码执行（RCE） | `acronym` | 远程命令执行、远端代码执行 | — | — |
 | SQL Injection | SQL 注入 | `translate` | SQL 注入攻击、SQL 植入 | — | — |
 | Attack Surface | 攻击面 | `translate` | 攻击表面、受攻击面 | — | — |
-| Threat Model | 威胁模型 | `translate` | 威胁建模、风险模型 | — | — |
+| Threat Model | 威胁模型 | `translate` | 风险模型 | — | — |
 | False Positive | 误报 | `translate` | 假阳性、错误告警 | — | — |
 | False Negative | 漏报 | `translate` | 假阴性、漏检 | — | — |
 | False Positive Rate (FPR) | 假阳性率（FPR） | `acronym` | 假报率 | 误报率 FPR | — |
@@ -155,6 +155,7 @@
 | Sandbox Escape | 沙箱逃逸 | `translate` | 沙盒逃逸、突破沙箱 | — | — |
 | Red Team | 红队 | `translate` | 红色团队、攻击方 | — | — |
 | Needle in a Haystack (NIAH) | 大海捞针测试（NIAH） | `acronym` | 针尖测试、捞针测试 | — | — |
+| Threat Modeling | 威胁建模 | `translate` | — | — | — |
 
 ## SRE 与可观测性（25 条）
 
