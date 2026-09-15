@@ -303,7 +303,9 @@ def main() -> None:
     print(f"  本地可用   : {len(usable)}  (words ≈ {words:,})")
     print(f"  本地损坏   : {len(broken)}  -> {[u['local_path'].split('/')[-1] for u in broken]}")
     print(f"  外部链接   : {len(external)}")
-    print(f"覆盖度分母   : {len(local)}   80% 需 >= {-(-int(len(local)*0.8))} 条")
+    # 复用上面算好的 need，而不是在这里重新算一遍——
+    # 同一个数在三处各算一次，正是刚才 off-by-one 漏改第三处的原因。
+    print(f"覆盖度分母   : {len(local)}   {int(CFG['coverage']['target_ratio']*100)}% 需 >= {need} 条")
     print(f"已写出       : source/units.json, source/INVENTORY.md")
 
 
