@@ -363,9 +363,11 @@ def assemble_unit(unit_id: str, chunks: list, translations: dict) -> str:
     parts = [translations[c["index"]] for c in sorted(chunks, key=lambda x: x["index"])
              if c["index"] in translations]
     first = sorted(chunks, key=lambda x: x["index"])[0]
+    # 头部刻意不含时间戳：含了的话每次重跑都会产生假 diff，
+    # 而「复跑后 git status 干净」正是本项目用来证明可复跑的手段。
+    # 翻译时间在 logs/journal.jsonl 里有精确记录，不必在两个地方各记一份。
     header = (f"<!-- source: {first.get('source_ref','')} -->\n"
-              f"<!-- week: {first.get('week','')} | translated: {now_iso()} "
-              f"| chunks: {len(parts)} -->\n\n")
+              f"<!-- week: {first.get('week','')} | chunks: {len(parts)} -->\n\n")
     return header + "\n\n".join(parts) + "\n"
 
 
@@ -481,13 +483,34 @@ def main() -> None:
         write_coverage(state, by_unit)
         return 0
 
+    # 队列后端下，done/ 里可能还没有任何译文。此时直接返回，不写
+    # run_start / run_end——否则反复执行 --ingest 会往日志里灌入大量
+    # 「什么都没做」的事件，把真正的记录淹没。
+    if backend != "api" and not any(
+            (DONE_DIR / f"{c['unit_id']}__{c['index']:03d}.md").exists() for c in pending):
+        print(f"done/ 中暂无新译文（待处理 {len(pending)} 块）。")
+        print(f"把译文写到 {DONE_DIR.relative_to(ROOT)}/<unit>__<idx>.md 后再运行 --ingest。")
+        render_journal()
+        write_coverage(state, by_unit)
+        return 0
+
     t0 = time.time()
     journal({"event": "run_start", "backend": backend, "pending": len(pending),
              "prompt_version": PROMPT_VERSION})
 
     if backend == "api":
+        # 预检：配置错误必须在动手之前中止。
+        # 否则会为每一块写一条失败记录——把 265 条配置噪声灌进日志，
+        # 而日志的「失败与返工记录」本该只保留真实的翻译问题。
+        if not os.environ.get(API_KEY_ENV):
+            print(f"中止：后端 api 需要环境变量 {API_KEY_ENV}，当前未设置。\n"
+                  f"  1) 导出密钥：export {API_KEY_ENV}=<your-key>\n"
+                  f"  2) 或改用队列后端：python3 pipeline/translate.py --emit",
+                  file=sys.stderr)
+            return 2
         results = []
-        for c in pending:
+        limit = int(args[args.index("--limit") + 1]) if "--limit" in args else len(pending)
+        for c in pending[:limit]:
             terms = relevant_terms(c["text"], glossary)
             prompt = build_prompt(c, terms)
             st = time.time()

@@ -1,5 +1,5 @@
 <!-- source: source/pages/benefits-agentic-ai-oncall.html -->
-<!-- week: 9 | translated: 2026-09-15T15:27:41+0800 | chunks: 3 -->
+<!-- week: 9 | chunks: 3 -->
 
 随着生产系统日益复杂，工程团队在维持可靠性、应对不断增长的告警与故障事件方面面临越来越大的挑战。智能体 AI 作为下一代自动化方法，正在彻底改变团队处理值班职责与故障处置的方式。以下是智能体 AI 重塑故障响应的五大方式。
 

@@ -1,5 +1,5 @@
 <!-- source: source/pages/mcp-food-for-thought.html -->
-<!-- week: 2 | translated: 2026-09-15T15:27:41+0800 | chunks: 4 -->
+<!-- week: 2 | chunks: 4 -->
 
 [模型上下文协议](https://modelcontextprotocol.io/overview)（MCP）如今是件大事。它已成为让 LLM 访问他人所写工具的事实标准，而这自然就把它们变成了[智能体](https://simonwillison.net/2025/May/22/tools-in-a-loop/)。但为新的 MCP 服务器编写工具并不容易，于是人们常常提议[把现有 API 自动转换成 MCP 工具](https://blog.christianposta.com/semantics-matter-exposing-openapi-as-mcp-tools/)，通常借助 OpenAPI 元数据（[1](https://jedisct1.github.io/openapi-mcp/)、[2](https://www.gravitee.io/blog/turn-any-rest-api-into-mcp-server-inside-gravitee)）。
 
