@@ -26,7 +26,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 25,Model Card,模型卡,core-llm,translate,模型卡片|模型说明卡,,0,
 26,Evaluation,评估,core-llm,translate,评测|评价|测试评估,,0,
 27,Guardrails,护栏,agent,translate,防护栏|护栏机制|安全围栏,,0,
-28,Agent,智能体,agent,translate,代理|智能代理|代理人|Agent 体,,"AI 语境一律""智能体""，绝不用""代理""",45
+28,Agent,智能体,agent,translate,智能代理|AI 代理|代理人|Agent 体,代理,AI 语境一律「智能体」。短语形式（智能代理/AI 代理/代理人）是无歧义错译，硬性禁用；单独的「代理」降为提示级——因为 proxy 的标准译法就是「代理」，如「本地代理」,45
 29,Agentic,智能体化的,agent,translate,代理式|自治式|Agent 化,,形容词；Agentic AI → 智能体 AI,31
 30,Sub-agent,子智能体,agent,translate,子代理|次级智能体,,0,
 31,Multi-agent,多智能体,agent,translate,多代理|多 Agent|多智能系统,,0,
