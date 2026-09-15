@@ -13,12 +13,12 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 176 |
-| 翻译块次 | 117 |
-| 其中通过校验 | 99 |
-| **其中未通过 / 失败** | **18** |
-| 完成条目 | 17 |
-| 出现过校验问题的块 | 18 |
+| 记录事件总数 | 228 |
+| 翻译块次 | 162 |
+| 其中通过校验 | 143 |
+| **其中未通过 / 失败** | **19** |
+| 完成条目 | 18 |
+| 出现过校验问题的块 | 19 |
 
 ## 逐块记录
 
@@ -141,6 +141,51 @@
 | 16:16:08 | `ai-code-review-best-practi` | 5 | queue | `3cb309da71cd` | 1404/620 | — | ✅ |
 | 16:16:08 | `ai-code-review-best-practi` | 6 | queue | `5d996ee199fc` | 649/260 | — | ✅ |
 | 16:16:08 | `ai-code-review-best-practi` | 7 | queue | `28de270646e8` | 3047/1092 | — | ✅ |
+| 16:16:55 | `mcp-server-authentication` | 0 | queue | `8904f93eccdb` | 1265/780 | — | ✅ |
+| 16:16:55 | `mcp-server-authentication` | 1 | queue | `4d14ef86781c` | 1499/1059 | — | ✅ |
+| 16:16:55 | `mcp-server-authentication` | 2 | queue | `af52330bbf94` | 2654/1839 | — | ✅ |
+| 16:16:55 | `mcp-server-authentication` | 3 | queue | `440f6ef61b89` | 988/617 | — | ❌ 出现禁用变体「代理」（应为「智能体」） |
+| 16:17:11 | `mcp-food-for-thought` | 0 | queue | `b3c037500500` | 1408/870 | — | ✅ |
+| 16:17:11 | `mcp-food-for-thought` | 1 | queue | `ab39eaa9c16a` | 1475/875 | — | ✅ |
+| 16:17:11 | `mcp-food-for-thought` | 2 | queue | `1e8ac5c0fb40` | 921/588 | — | ✅ |
+| 16:17:11 | `mcp-food-for-thought` | 3 | queue | `e5213a9eb537` | 735/336 | — | ✅ |
+| 16:17:11 | `mcp-server-authentication` | 0 | queue | `3551eb4d525b` | 1265/780 | — | ✅ |
+| 16:17:11 | `mcp-server-authentication` | 1 | queue | `a32bc8aeec15` | 1499/1059 | — | ✅ |
+| 16:17:11 | `mcp-server-authentication` | 2 | queue | `483da7217d61` | 2654/1839 | — | ✅ |
+| 16:17:11 | `mcp-server-authentication` | 3 | queue | `05ab1ad9e51f` | 988/617 | — | ✅ |
+| 16:17:11 | `how-long-contexts-fail` | 0 | queue | `148cf6237a2b` | 976/406 | — | ✅ |
+| 16:17:11 | `how-long-contexts-fail` | 1 | queue | `88e76d142d25` | 1119/529 | — | ✅ |
+| 16:17:11 | `how-long-contexts-fail` | 2 | queue | `f223be0da89f` | 1346/573 | — | ✅ |
+| 16:17:11 | `how-long-contexts-fail` | 3 | queue | `85c4c3e1698d` | 2146/1080 | — | ✅ |
+| 16:17:11 | `how-long-contexts-fail` | 4 | queue | `42d6a3eabfff` | 3012/1181 | — | ✅ |
+| 16:17:11 | `claude-code-best-practices` | 1 | queue | `9308cc3c25ce` | 3022/1557 | — | ✅ |
+| 16:17:11 | `claude-code-best-practices` | 2 | queue | `ae636e09876e` | 1578/1042 | — | ✅ |
+| 16:17:11 | `warp-vs-claude-code` | 0 | queue | `b10f019f393e` | 1545/973 | — | ✅ |
+| 16:17:11 | `warp-vs-claude-code` | 1 | queue | `c7608ef58321` | 1325/642 | — | ✅ |
+| 16:17:11 | `warp-vs-claude-code` | 2 | queue | `d90afcc57cd3` | 909/519 | — | ✅ |
+| 16:17:11 | `warp-vs-claude-code` | 3 | queue | `da04a6bd39b5` | 721/471 | — | ✅ |
+| 16:17:11 | `copilot-prompt-injection-r` | 0 | queue | `733c483757ef` | 1254/752 | — | ✅ |
+| 16:17:11 | `copilot-prompt-injection-r` | 2 | queue | `8a7d3c698617` | 953/495 | — | ✅ |
+| 16:17:11 | `copilot-prompt-injection-r` | 4 | queue | `835c99de52b7` | 1469/758 | — | ✅ |
+| 16:17:11 | `copilot-prompt-injection-r` | 5 | queue | `72a4d87ca771` | 548/357 | — | ✅ |
+| 16:17:11 | `ai-code-review-best-practi` | 0 | queue | `146522bfd76b` | 1186/431 | — | ✅ |
+| 16:17:11 | `ai-code-review-best-practi` | 2 | queue | `4138ea8c2925` | 1483/664 | — | ✅ |
+| 16:17:11 | `ai-code-review-best-practi` | 4 | queue | `5cbf054d0dfe` | 1292/592 | — | ✅ |
+| 16:17:11 | `ai-code-review-best-practi` | 5 | queue | `2cda2ed579a7` | 1404/620 | — | ✅ |
+| 16:17:11 | `ai-code-review-best-practi` | 6 | queue | `e3bd1b9d16c9` | 649/260 | — | ✅ |
+| 16:17:11 | `benefits-agentic-ai-oncall` | 0 | queue | `d612f6529aa2` | 3413/1184 | — | ✅ |
+| 16:17:11 | `benefits-agentic-ai-oncall` | 1 | queue | `c522b4b49c7c` | 1235/424 | — | ✅ |
+| 16:17:11 | `kubernetes-troubleshooting` | 0 | queue | `d05ef4fcfcd3` | 1666/937 | — | ✅ |
+| 16:17:11 | `kubernetes-troubleshooting` | 2 | queue | `b3e512f63842` | 2570/1219 | — | ✅ |
+| 16:17:11 | `kubernetes-troubleshooting` | 3 | queue | `910202f4522f` | 1324/579 | — | ✅ |
+| 16:17:11 | `multi-agent-systems-ai-nat` | 0 | queue | `4af7d1a7a136` | 1714/836 | — | ✅ |
+| 16:17:11 | `multi-agent-systems-ai-nat` | 1 | queue | `e494f5465899` | 1890/681 | — | ✅ |
+| 16:17:11 | `multi-agent-systems-ai-nat` | 2 | queue | `c53c7cc406f5` | 2852/993 | — | ✅ |
+| 16:17:11 | `multi-agent-systems-ai-nat` | 3 | queue | `889a2a4d8da5` | 2414/955 | — | ✅ |
+| 16:17:35 | `mcp-server-authentication` | 4 | queue | `5c0665716f99` | 1122/592 | — | ✅ |
+| 16:17:35 | `mcp-server-authentication` | 5 | queue | `9301564f8b5a` | 3394/2479 | — | ✅ |
+| 16:17:35 | `mcp-server-authentication` | 6 | queue | `8ebe3f481fc9` | 1312/1016 | — | ✅ |
+| 16:17:35 | `mcp-server-authentication` | 7 | queue | `6e4809938b14` | 96/59 | — | ✅ |
 
 ## 失败与返工记录
 
@@ -243,6 +288,11 @@
 - 时间：2026-09-15T16:14:42+0800　后端：queue　prompt 哈希：`f7dc9eb02d5b`
 - 问题：出现禁用变体「轨迹」（应为「追踪记录」）
 
+### `mcp-server-authentication` 第 3 块
+
+- 时间：2026-09-15T16:16:55+0800　后端：queue　prompt 哈希：`440f6ef61b89`
+- 问题：出现禁用变体「代理」（应为「智能体」）
+
 ## 条目汇总
 
 | 条目 | 周 | 块数 | 中文字符 | 完成时间 |
@@ -264,4 +314,5 @@
 | `how-long-contexts-fail` | W3 | 6 | 4,269 | 2026-09-15T16:10:02 |
 | `observability-basics` | W9 | 10 | 5,109 | 2026-09-15T16:14:52 |
 | `ai-code-review-best-practices` | W7 | 8 | 4,700 | 2026-09-15T16:16:08 |
+| `mcp-server-authentication` | W2 | 8 | 8,520 | 2026-09-15T16:17:35 |
 
