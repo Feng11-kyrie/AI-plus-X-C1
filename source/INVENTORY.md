@@ -15,7 +15,7 @@
 - **分母 = 大纲中指向本地文件的 readings = 34 条**（即 `pages/` 与 `pdfs/` 中有实体文件的条目）
 - **其中可用 = 29 条**（HTML 26 + PDF 3），**确认无效 = 5 条**
 - **分子 = 已产出中文译稿的可用条目数**（随管线推进更新）
-- 目标：分子 / 分母 ≥ **80%**，即 ≥ 27 条
+- 目标：分子 / 分母 ≥ **80%**，即 ≥ 28 条
 
 > **为什么不把外链算进分母**：大纲另有 10 条指向外部站点（YouTube / GitHub / X / 第三方博客），它们不受本地缓存控制，其可获得性取决于对方站点与账号权限，属于**扩展范围**，计入分母会让覆盖率失去可比性。详见第四节。
 
@@ -26,10 +26,10 @@
 | 分母（本地 readings） | 34 | HTML 31 + PDF 3 |
 | **可用条目** | **29** | HTML 26 + PDF 3，内容完整可翻译 |
 | **确认无效条目** | **5** | 全部为 HTML，详见第二节 |
-| 达到 80% 所需最少条目 | 27 | ceil(34 × 0.8) |
-| 可用英文正文字数（估） | ≈ 67,127 | 仅 HTML 可用条目（按清洗后正文计），PDF 未计 |
+| 达到 80% 所需最少条目 | 28 | ceil(34 × 0.8) |
+| 可用英文正文字数（估） | ≈ 66,679 | 仅 HTML 可用条目（按清洗后正文计），PDF 未计 |
 
-> ✅ **可行性**：可用条目 29 条 ≥ 目标 27 条。全部译完可达 85.3%。
+> ✅ **可行性**：可用条目 29 条 ≥ 目标 28 条。全部译完可达 85.3%。
 
 > ⚠️ **注意**：PDF 条目 **必须纳入翻译范围** 才能达标记。若只翻译 HTML 部分，覆盖率为 26/34 = 76.5%，**低于目标**。
 
@@ -182,7 +182,7 @@ Topics：Code review best practices、AI-assisted code review、Automated review
 |---|---|---|---|---|
 | OK | local/html | AI Code Review Implementation Best Practices | `source/pages/ai-code-review-best-practices.html` | 1,901 |
 | OK | local/html | Code Review Essentials for Software Teams | `source/pages/code-review-essentials.html` | 2,040 |
-| OK | local/html | Code Reviews: Just Do It | `source/pages/code-reviews-just-do-it.html` | 1,010 |
+| OK | local/html | Code Reviews: Just Do It | `source/pages/code-reviews-just-do-it.html` | 562 |
 | OK | local/html | How to Review Code Effectively | `source/pages/how-to-review-code-effectively.html` | 3,278 |
 | **EMPTY** | local/html | Lessons from Millions of AI Code Reviews | `source/pages/lessons-from-ai-code-reviews.html` | — |
 | OK | local/pdf | AI-Assisted Assessment of Coding Practices i | `source/pdfs/ai-assisted-code-review-assessment.pdf` | — |

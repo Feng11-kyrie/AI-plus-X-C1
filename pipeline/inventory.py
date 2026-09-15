@@ -13,6 +13,7 @@
 用法：python3 pipeline/inventory.py
 """
 import json
+import math
 import re
 import html
 import sys
@@ -160,7 +161,7 @@ def main() -> None:
     n_pdf = len([u for u in local if u["format"] == "pdf"])
     usable_html = len([u for u in usable if u["format"] == "html"])
     usable_pdf = len([u for u in usable if u["format"] == "pdf"])
-    need = -(-int(len(local) * CFG["coverage"]["target_ratio"]))
+    need = math.ceil(len(local) * CFG["coverage"]["target_ratio"])
 
     # ---- 生成 INVENTORY.md ----
     L = []

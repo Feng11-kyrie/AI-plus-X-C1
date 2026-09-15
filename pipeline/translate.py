@@ -38,6 +38,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import math
 import os
 import re
 import sys
@@ -391,7 +392,7 @@ def write_coverage(state: dict, chunks_by_unit: dict) -> None:
     local = [u for u in units if u["kind"] == "local"]
     usable = [u for u in local if u["status"] == "ok"]
     target = CFG["coverage"]["target_ratio"]
-    need = -(-int(len(local) * target))
+    need = math.ceil(len(local) * target)
 
     def unit_done(u) -> bool:
         cs = chunks_by_unit.get(Path(u["local_path"]).stem, [])
