@@ -1,0 +1,76 @@
+name: pipeline-checks
+
+# 每次 push / PR 自动在 GitHub 的机器上跑一遍管线检查。
+# README 顶部的徽章就是这个工作流的状态——**它是第三方见证**，
+# 不依赖作者自称"我测过了"。
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # ---------- 检查 1：术语表自洽性 ----------
+      # 171 条术语不得自相矛盾：id/英文名唯一、禁用变体不得与别的术语的
+      # 正式译法冲突、非 keep_en 术语必须有译法、变体不得重复标级。
+      - name: 术语表自洽性（R1–R8）
+        run: python3 pipeline/glossary_tool.py --check
+
+      # ---------- 检查 2：全量术语一致率 ----------
+      # 338 个硬性禁用变体在全部译稿中必须零出现。
+      # 有违规则返回非零退出码，徽章变红。
+      - name: 术语一致率审计
+        run: python3 pipeline/qc_terminology.py --check
+
+      # ---------- 检查 3：管线可复跑（确定性）----------
+      #
+      # 这里刻意**不比对 git**，而是**连跑两遍比对彼此**。
+      # 原因：CI 跑在 Ubuntu 上，而 PDF 提取依赖 macOS 原生 PDFKit，
+      # 所以 CI 产出的 clean/ 与仓库里提交的那份必然不同——
+      # 直接 git diff 会因为平台差异而失败，那是假告警。
+      #
+      # 跑两遍比对彼此，测的是「同样的输入是否得到同样的输出」，
+      # 与平台无关。这才是「可复跑」的真正含义。
+      - name: 管线可复跑（确定性）
+        run: |
+          set -e
+          snapshot() {
+            find source clean reports -type f \( -name '*.json' -o -name '*.md' \) \
+              -not -path 'source/pages/*' -not -path 'source/pdfs/*' -not -path 'source/site/*' \
+              | sort | xargs shasum -a 256 | shasum -a 256
+          }
+          python3 pipeline/parse_syllabus.py
+          python3 pipeline/inventory.py  > /dev/null
+          python3 pipeline/clean.py      > /dev/null
+          first=$(snapshot)
+          python3 pipeline/parse_syllabus.py
+          python3 pipeline/inventory.py  > /dev/null
+          python3 pipeline/clean.py      > /dev/null
+          second=$(snapshot)
+          if [ "$first" != "$second" ]; then
+            echo "::error::管线不可复跑——同样的输入产出了不同的结果"
+            exit 1
+          fi
+          echo "✅ 两次运行产出完全一致（含 HTML 清洗、分块、清点报告）"
+
+      # ---------- 检查 4：覆盖率（信息性，不作门禁）----------
+      - name: 覆盖度概览
+        run: |
+          python3 pipeline/translate.py --status
+          echo "### 覆盖度" >> $GITHUB_STEP_SUMMARY
+          sed -n '/## 当前进度/,/## 逐条状态/p' reports/coverage.md >> $GITHUB_STEP_SUMMARY
+
+      - name: 术语一致率摘要
+        run: |
+          echo "### 术语一致率" >> $GITHUB_STEP_SUMMARY
+          sed -n '/## 一致率/,/## 一、/p' reports/terminology-consistency.md >> $GITHUB_STEP_SUMMARY

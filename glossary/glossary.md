@@ -24,7 +24,7 @@
 1. **被正式译法包含的变体一律跳过**——「上下文协议」是「模型上下文协议（MCP）」的子串，子串匹配会把正确译文判成违规。
 2. 宁可漏报也不误报：一个天天误报的校验器最终会被忽略。
 
-**术语总数：171 条**（硬性禁用变体 358 条 + 提示级 10 条，由 `pipeline/translate.py` 逐块强制校验）
+**术语总数：171 条**（硬性禁用变体 338 条 + 提示级 27 条，由 `pipeline/translate.py` 逐块强制校验）
 
 ## 核心 LLM 与提示词（28 条）
 
@@ -34,46 +34,46 @@
 | Context | 上下文 | `translate` | 语境、情境、脉络 | — | 58 |
 | Prompt | 提示词 | `translate` | 提示语、提示词条、promt | — | — |
 | Prompt Engineering | 提示词工程 | `translate` | 提示工程、提示词工程学、指令工程 | — | — |
-| System Prompt | 系统提示词 | `translate` | 系统提示、系统指令、系统 prompt | — | — |
+| System Prompt | 系统提示词 | `translate` | 系统指令、系统 prompt | — | — |
 | Context Window | 上下文窗口 | `translate` | 上下文长度、语境窗口、上下文视窗 | — | — |
 | Context Engineering | 上下文工程 | `translate` | 情境工程、语境工程、上下文工程学 | — | — |
 | Context Rot | 上下文腐化 | `translate` | 上下文腐烂、上下文衰减、上下文退化 | — | — |
 | Vibe Coding | 氛围编程 | `keep_en_first` | 感觉编程、氛围编码、Vibe 编码、直觉编程 | — | — |
-| Scaffolding | 脚手架 | `translate` | 支架、框架、骨架代码 | — | — |
-| Hallucination | 幻觉 | `translate` | 臆造、胡编、虚构输出 | — | — |
+| Scaffolding | 脚手架 | `translate` | 支架、骨架代码 | 框架 | — |
+| Hallucination | 幻觉 | `translate` | 臆造、胡编、虚构输出 | 框架 | — |
 | Fine-tuning | 微调 | `translate` | 精调、微调训练 | — | — |
 | Few-shot | 少样本 | `translate` | 少量样本、少次示例、few shot | — | — |
 | Zero-shot | 零样本 | `translate` | 无样本、零次示例 | — | — |
 | Chain of Thought | 思维链 | `translate` | 思考链、推理链、思维链条 | — | — |
-| Retrieval-Augmented Generation (RAG) | 检索增强生成（RAG） | `acronym` | 检索增强、增强检索生成 | — | — |
-| Token | Token | `keep_en` | 词元、令牌、标记 | — | — |
+| Retrieval-Augmented Generation (RAG) | 检索增强生成（RAG） | `acronym` | 增强检索生成 | 落地 | — |
+| Token | Token | `keep_en` | 词元、令牌 | 标记 | — |
 | Temperature | 温度 | `translate` | 温度值、随机度 | — | — |
 | Embedding | 嵌入 | `translate` | 向量化、嵌入向量 | — | — |
 | Vector Database | 向量数据库 | `translate` | 矢量数据库、向量库 | — | — |
-| Inference | 推理 | `translate` | 推断、推演、模型推导 | — | — |
+| Inference | 推理 | `translate` | 推演、模型推导 | 推断 | — |
 | Reasoning | 推理能力 | `translate` | 思考链、推论、思维过程 | — | — |
-| Training | 训练 | `translate` | 培训、训练过程 | — | — |
-| Benchmark | 基准测试 | `translate` | 基准、测评、跑分 | — | — |
+| Training | 训练 | `translate` | 训练过程 | 培训 | — |
+| Benchmark | 基准测试 | `translate` | 测评、跑分 | — | — |
 | Model Card | 模型卡 | `translate` | 模型卡片、模型说明卡 | — | — |
 | Evaluation | 评估 | `translate` | 评测、评价、测试评估 | — | — |
-| Grounding | 溯源锚定 | `translate` | 接地、落地、基础事实 | — | — |
+| Grounding | 溯源锚定 | `translate` | 接地、基础事实 | 落地 | — |
 | Distractor | 干扰项 | `translate` | 干扰词、混淆项、分散项 | — | — |
 
 ## 智能体与工具调用（15 条）
 
 | 英文 | 中文 | policy | 禁用变体（硬性） | 提示级 | 语料频次 |
 |---|---|---|---|---|---|
-| Model Context Protocol (MCP) | 模型上下文协议（MCP） | `acronym` | 模型情境协议、上下文协议、MCP 协议 | — | 325 |
+| Model Context Protocol (MCP) | 模型上下文协议（MCP） | `acronym` | 模型情境协议、MCP 协议 | 组织、协调 | 325 |
 | Agent | 智能体 | `translate` | 智能代理、AI 代理、代理人、Agent 体 | 代理 | 45 |
 | Agentic | 智能体化的 | `translate` | 代理式、自治式、Agent 化 | — | 31 |
 | Guardrails | 护栏 | `translate` | 防护栏、护栏机制、安全围栏 | — | — |
 | Sub-agent | 子智能体 | `translate` | 子代理、次级智能体 | — | — |
 | Multi-agent | 多智能体 | `translate` | 多代理、多 Agent、多智能系统 | — | — |
 | Coding Agent | 编码智能体 | `translate` | 编程代理、代码智能体、编码代理 | — | — |
-| Tool Use | 工具调用 | `translate` | 工具使用、调用工具、工具运用 | — | — |
+| Tool Use | 工具调用 | `translate` | 工具运用 | 工具使用、调用工具 | — |
 | Function Calling | 函数调用 | `translate` | 功能调用、函数呼叫 | — | — |
 | MCP Server | MCP 服务器 | `keep_en_first` | 模型上下文协议服务器、MCP 服务端 | — | — |
-| Orchestration | 编排 | `translate` | 协调、编排调度、组织 | — | — |
+| Orchestration | 编排 | `translate` | 编排调度 | 组织、协调 | — |
 | Workflow | 工作流 | `translate` | 工作流程、作业流 | 流程 | — |
 | Human-in-the-loop | 人在回路 | `translate` | 人在环中、人工介入、人类在环 | — | — |
 | Autonomy | 自主性 | `translate` | 自治性、自动化程度 | — | — |
@@ -99,24 +99,24 @@
 | Continuous Delivery (CD) | 持续交付（CD） | `acronym` | 持续部署、连续交付 | — | — |
 | Unit Test | 单元测试 | `translate` | 单位测试、模块测试 | — | — |
 | Integration Test | 集成测试 | `translate` | 整合测试、联合测试 | — | — |
-| Test Coverage | 测试覆盖率 | `translate` | 覆盖度、测试覆盖 | — | — |
+| Test Coverage | 测试覆盖率 | `translate` | 覆盖度 | — | — |
 | Regression | 回归 | `translate` | 退化、回退 | — | — |
 | Deployment | 部署 | `translate` | 发布上线、布署、部署上线 | — | — |
 | Rollback | 回滚 | `translate` | 回退、撤回、回滚操作 | — | — |
 | Artifact | 制品 | `translate` | 工件、产物、构建物 | — | — |
 | Integrated Development Environment (IDE) | 集成开发环境（IDE） | `acronym` | 整合开发环境、开发集成环境 | — | — |
-| Terminal | 终端 | `translate` | 命令行窗口、控制台 | — | — |
+| Terminal | 终端 | `translate` | 命令行窗口 | 控制台 | — |
 | Command-Line Interface (CLI) | 命令行界面（CLI） | `acronym` | 命令行接口、命令界面 | — | — |
 | Software Development Kit (SDK) | 软件开发工具包（SDK） | `acronym` | 软件开发套件、开发包 | — | — |
 | Application Programming Interface (API) | 应用程序接口（API） | `acronym` | 应用编程界面、接口 API | — | — |
 | Runtime | 运行时 | `translate` | 运行环境、运行时期 | — | — |
 | Dependency | 依赖 | `translate` | 依赖性、依存项 | — | — |
 | Sandbox | 沙箱 | `translate` | 沙盒、隔离环境 | — | — |
-| Rate Limit | 速率限制 | `translate` | 频率限制、限流、速率上限 | — | — |
+| Rate Limit | 速率限制 | `translate` | 频率限制、速率上限 | 限流 | — |
 | Latency | 延迟 | `translate` | 时延、延时、迟滞 | — | — |
 | Throughput | 吞吐量 | `translate` | 吞吐率、处理量 | — | — |
 | Diff | 差异 | `translate` | 差分、变更差异、补丁 | — | — |
-| Codebase Understanding | 代码库理解 | `translate` | 代码理解、仓库理解 | — | — |
+| Codebase Understanding | 代码库理解 | `translate` | 仓库理解 | 代码理解 | — |
 | Spec-Driven Development | 规格驱动开发 | `translate` | 规范驱动开发、文档驱动开发 | — | — |
 | Specification (Spec) | 规格说明 | `translate` | 规格书、需求规格 | 规范 | — |
 
@@ -151,10 +151,10 @@
 | Supply Chain Attack | 供应链攻击 | `translate` | 供应链入侵、链条攻击 | — | — |
 | Credential | 凭据 | `translate` | 凭证、证书凭据、登录信息 | — | — |
 | Data Exfiltration | 数据外泄 | `translate` | 数据渗出、数据窃取、数据泄露 | — | — |
-| Blast Radius | 影响半径 | `translate` | 爆炸半径、波及范围、影响范围 | — | — |
+| Blast Radius | 影响半径 | `translate` | 爆炸半径、波及范围 | 影响范围 | — |
 | Sandbox Escape | 沙箱逃逸 | `translate` | 沙盒逃逸、突破沙箱 | — | — |
 | Red Team | 红队 | `translate` | 红色团队、攻击方 | — | — |
-| Needle in a Haystack (NIAH) | 大海捞针测试（NIAH） | `acronym` | 针尖测试、捞针测试 | — | — |
+| Needle in a Haystack (NIAH) | 大海捞针测试（NIAH） | `acronym` | 针尖测试 | — | — |
 | Threat Modeling | 威胁建模 | `translate` | — | — | — |
 
 ## SRE 与可观测性（25 条）
@@ -201,7 +201,7 @@
 | Deliverable | 交付物 | `translate` | 交付成果、可交付物、产出物 | — | — |
 | Backlog | 待办列表 | `translate` | 积压工作、待办事项、需求池 | — | — |
 | Milestone | 里程碑 | `translate` | 里程点、阶段节点 | — | — |
-| Retrospective | 回顾会议 | `translate` | 复盘会、回顾、反思会 | — | — |
+| Retrospective | 回顾会议 | `translate` | 复盘会、反思会 | — | — |
 | After Action Review (AAR) | 行动后复盘（AAR） | `acronym` | 事后审查、行动回顾、AAR 复盘会 | — | — |
 | Dogfooding | 自产自用 | `translate` | 吃狗粮、内部试用、自用测试 | — | — |
 | Minimum Viable Product (MVP) | 最小可行产品（MVP） | `acronym` | 最简可行产品、最小可用产品 | — | — |

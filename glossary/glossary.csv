@@ -2,27 +2,27 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 1,Large Language Model (LLM),大语言模型（LLM）,core-llm,acronym,大型语言模型|大模型语言,,缩写 LLM 保留；首次出现给全称,59
 2,Prompt,提示词,core-llm,translate,提示语|提示词条|promt,,"统一起见一律""提示词""，不用""提示语""",0
 3,Prompt Engineering,提示词工程,core-llm,translate,提示工程|提示词工程学|指令工程,,课程 Week 1 主题,0
-4,System Prompt,系统提示词,core-llm,translate,系统提示|系统指令|系统 prompt,,0,
+4,System Prompt,系统提示词,core-llm,translate,系统指令|系统 prompt,,0,
 5,Context,上下文,core-llm,translate,语境|情境|脉络,,术语一致性的关键锚点,58
 6,Context Window,上下文窗口,core-llm,translate,上下文长度|语境窗口|上下文视窗,,0,
 7,Context Engineering,上下文工程,core-llm,translate,情境工程|语境工程|上下文工程学,,挑战验收点名要求统一的术语,0
 8,Context Rot,上下文腐化,core-llm,translate,上下文腐烂|上下文衰减|上下文退化,,Chroma 研究提出的术语,0
 9,Vibe Coding,氛围编程,core-llm,keep_en_first,感觉编程|氛围编码|Vibe 编码|直觉编程,,"挑战验收点名要求统一的术语；建议首次写""氛围编程（Vibe Coding）""",0
-10,Scaffolding,脚手架,core-llm,translate,支架|框架|骨架代码,,挑战验收点名要求统一的术语,0
-11,Hallucination,幻觉,core-llm,translate,臆造|胡编|虚构输出,,0,
+10,Scaffolding,脚手架,core-llm,translate,支架|骨架代码,框架,挑战验收点名要求统一的术语；「框架」降为提示级：framework,0
+11,Hallucination,幻觉,core-llm,translate,臆造|胡编|虚构输出,框架,0；「框架」降为提示级：framework,
 12,Fine-tuning,微调,core-llm,translate,精调|微调训练,,0,
 13,Few-shot,少样本,core-llm,translate,少量样本|少次示例|few shot,,0,
 14,Zero-shot,零样本,core-llm,translate,无样本|零次示例,,0,
 15,Chain of Thought,思维链,core-llm,translate,思考链|推理链|思维链条,,0,
-16,Retrieval-Augmented Generation (RAG),检索增强生成（RAG）,core-llm,acronym,检索增强|增强检索生成,,7,
-17,Token,Token,core-llm,keep_en,词元|令牌|标记,,不译；中文写作中直接写 Token,0
+16,Retrieval-Augmented Generation (RAG),检索增强生成（RAG）,core-llm,acronym,增强检索生成,落地,7；「落地」降为提示级：landing/implementation,
+17,Token,Token,core-llm,keep_en,词元|令牌,标记,不译；中文写作中直接写 Token；「标记」降为提示级：mark/tag,0
 18,Temperature,温度,core-llm,translate,温度值|随机度,,采样参数,0
 19,Embedding,嵌入,core-llm,translate,向量化|嵌入向量,,0,
 20,Vector Database,向量数据库,core-llm,translate,矢量数据库|向量库,,0,
-21,Inference,推理,core-llm,translate,推断|推演|模型推导,,模型前向计算/服务；与 Reasoning（推理能力）区分,0
+21,Inference,推理,core-llm,translate,推演|模型推导,推断,模型前向计算/服务；与 Reasoning（推理能力）区分；「推断」降为提示级：infer,0
 22,Reasoning,推理能力,core-llm,translate,思考链|推论|思维过程,,模型内部思考过程；与 Inference（推理）区分,0
-23,Training,训练,core-llm,translate,培训|训练过程,,0,
-24,Benchmark,基准测试,core-llm,translate,基准|测评|跑分,,0,
+23,Training,训练,core-llm,translate,训练过程,培训,0；「培训」降为提示级：staff training,
+24,Benchmark,基准测试,core-llm,translate,测评|跑分,,0,
 25,Model Card,模型卡,core-llm,translate,模型卡片|模型说明卡,,0,
 26,Evaluation,评估,core-llm,translate,评测|评价|测试评估,,0,
 27,Guardrails,护栏,agent,translate,防护栏|护栏机制|安全围栏,,0,
@@ -31,11 +31,11 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 30,Sub-agent,子智能体,agent,translate,子代理|次级智能体,,0,
 31,Multi-agent,多智能体,agent,translate,多代理|多 Agent|多智能系统,,0,
 32,Coding Agent,编码智能体,agent,translate,编程代理|代码智能体|编码代理,,课程核心概念,0
-33,Tool Use,工具调用,agent,translate,工具使用|调用工具|工具运用,,0,
+33,Tool Use,工具调用,agent,translate,工具运用,工具使用|调用工具,0；「工具使用」降为提示级：tool use（字面）；「调用工具」降为提示级：invoke tools（动词短语）,
 34,Function Calling,函数调用,agent,translate,功能调用|函数呼叫,,0,
-35,Model Context Protocol (MCP),模型上下文协议（MCP）,agent,acronym,模型情境协议|上下文协议|MCP 协议,,全课程最高频术语（325 次）,325
+35,Model Context Protocol (MCP),模型上下文协议（MCP）,agent,acronym,模型情境协议|MCP 协议,组织|协调,全课程最高频术语（325 次）；「组织」降为提示级：organization；「协调」降为提示级：coordinate,325
 36,MCP Server,MCP 服务器,agent,keep_en_first,模型上下文协议服务器|MCP 服务端,,MCP 保留英文,0
-37,Orchestration,编排,agent,translate,协调|编排调度|组织,,0,
+37,Orchestration,编排,agent,translate,编排调度,组织|协调,0；「组织」降为提示级：organization；「协调」降为提示级：coordinate,
 38,Workflow,工作流,agent,translate,工作流程|作业流,流程,0,
 39,Human-in-the-loop,人在回路,agent,translate,人在环中|人工介入|人类在环,,0,
 40,Autonomy,自主性,agent,translate,自治性|自动化程度,,0,
@@ -56,24 +56,24 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 55,Continuous Delivery (CD),持续交付（CD）,swe,acronym,持续部署|连续交付,,15,
 56,Unit Test,单元测试,swe,translate,单位测试|模块测试,,0,
 57,Integration Test,集成测试,swe,translate,整合测试|联合测试,,0,
-58,Test Coverage,测试覆盖率,swe,translate,覆盖度|测试覆盖,,0,
+58,Test Coverage,测试覆盖率,swe,translate,覆盖度,,0,
 59,Regression,回归,swe,translate,退化|回退,,0,
 60,Deployment,部署,swe,translate,发布上线|布署|部署上线,,0,
 61,Rollback,回滚,swe,translate,回退|撤回|回滚操作,,0,
 62,Artifact,制品,swe,translate,工件|产物|构建物,,0,
 63,Integrated Development Environment (IDE),集成开发环境（IDE）,swe,acronym,整合开发环境|开发集成环境,,5,
-64,Terminal,终端,swe,translate,命令行窗口|控制台,,22,
+64,Terminal,终端,swe,translate,命令行窗口,控制台,22；「控制台」降为提示级：dashboard / console 的标准译法,
 65,Command-Line Interface (CLI),命令行界面（CLI）,swe,acronym,命令行接口|命令界面,,19,
 66,Software Development Kit (SDK),软件开发工具包（SDK）,swe,acronym,软件开发套件|开发包,,13,
 67,Application Programming Interface (API),应用程序接口（API）,swe,acronym,应用编程界面|接口 API,,57,
 68,Runtime,运行时,swe,translate,运行环境|运行时期,,0,
 69,Dependency,依赖,swe,translate,依赖性|依存项,,0,
 70,Sandbox,沙箱,swe,translate,沙盒|隔离环境,,0,
-71,Rate Limit,速率限制,swe,translate,频率限制|限流|速率上限,,0,
+71,Rate Limit,速率限制,swe,translate,频率限制|速率上限,限流,0；「限流」降为提示级：throttling，不是 rate limit,
 72,Latency,延迟,swe,translate,时延|延时|迟滞,,0,
 73,Throughput,吞吐量,swe,translate,吞吐率|处理量,,0,
 74,Diff,差异,swe,translate,差分|变更差异|补丁,,0,
-75,Codebase Understanding,代码库理解,swe,translate,代码理解|仓库理解,,Week 3 主题,0
+75,Codebase Understanding,代码库理解,swe,translate,仓库理解,代码理解,Week 3 主题；「代码理解」降为提示级：code understanding（是 code 不是 codebase）,0
 76,Spec-Driven Development,规格驱动开发,swe,translate,规范驱动开发|文档驱动开发,,对应 specs-are-the-new-source-code,0
 77,Specification (Spec),规格说明,swe,translate,规格书|需求规格,规范,0,
 78,Software Development Life Cycle (SDLC),软件开发生命周期（SDLC）,process,acronym,软件开发生命圈|开发周期,,7,
@@ -86,7 +86,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 85,Deliverable,交付物,process,translate,交付成果|可交付物|产出物,,挑战自身的核心词汇,0
 86,Backlog,待办列表,process,translate,积压工作|待办事项|需求池,,0,
 87,Milestone,里程碑,process,translate,里程点|阶段节点,,0,
-88,Retrospective,回顾会议,process,translate,复盘会|回顾|反思会,,0,
+88,Retrospective,回顾会议,process,translate,复盘会|反思会,,0,
 89,After Action Review (AAR),行动后复盘（AAR）,process,acronym,事后审查|行动回顾|AAR 复盘会,,挑战交付物自身要求的格式,0
 90,Dogfooding,自产自用,process,translate,吃狗粮|内部试用|自用测试,,0,
 91,Minimum Viable Product (MVP),最小可行产品（MVP）,process,acronym,最简可行产品|最小可用产品,,0,
@@ -117,10 +117,10 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 116,Supply Chain Attack,供应链攻击,security,translate,供应链入侵|链条攻击,,0,
 117,Credential,凭据,security,translate,凭证|证书凭据|登录信息,,0,
 118,Data Exfiltration,数据外泄,security,translate,数据渗出|数据窃取|数据泄露,,0,
-119,Blast Radius,影响半径,security,translate,爆炸半径|波及范围|影响范围,,0,
+119,Blast Radius,影响半径,security,translate,爆炸半径|波及范围,影响范围,0；「影响范围」降为提示级：普通中文短语，原文此处并无 blast radius,
 120,Sandbox Escape,沙箱逃逸,security,translate,沙盒逃逸|突破沙箱,,0,
 121,Red Team,红队,security,translate,红色团队|攻击方,,0,
-122,Needle in a Haystack (NIAH),大海捞针测试（NIAH）,security,acronym,针尖测试|捞针测试,,19,
+122,Needle in a Haystack (NIAH),大海捞针测试（NIAH）,security,acronym,针尖测试,,19,
 123,Site Reliability Engineering (SRE),站点可靠性工程（SRE）,sre,acronym,网站可靠性工程|可靠性工程 SRE,,69,
 124,Observability,可观测性,sre,translate,可观察性|监控能力,,0,
 125,Telemetry,遥测,sre,translate,远程测量|遥测数据,,0,
@@ -146,7 +146,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 145,Chaos Engineering,混沌工程,sre,translate,混乱工程|混沌测试,,0,
 146,Capacity Planning,容量规划,sre,translate,产能规划|容量计划,,0,
 147,Autoremediation,自动修复,sre,translate,自动补救|自动处置,,0,
-148,Grounding,溯源锚定,core-llm,translate,接地|落地|基础事实,,0,
+148,Grounding,溯源锚定,core-llm,translate,接地|基础事实,落地,0；「落地」降为提示级：landing / 落地实施,
 149,Distractor,干扰项,core-llm,translate,干扰词|混淆项|分散项,,28,
 150,Claude Code,Claude Code,tool,keep_en,,,Anthropic 官方编码智能体；不译,62
 151,Claude,Claude,tool,keep_en,,,Anthropic 模型名,143

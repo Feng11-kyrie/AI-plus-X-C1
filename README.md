@@ -1,10 +1,19 @@
 # AI➕X C1｜CS146S 课程资料获取与翻译
 
+[![pipeline-checks](https://github.com/Feng11-kyrie/AI-plus-X-C1/actions/workflows/checks.yml/badge.svg)](https://github.com/Feng11-kyrie/AI-plus-X-C1/actions/workflows/checks.yml)
+
 > 把 Stanford **CS146S: The Modern Software Developer**（Fall 2025）的公开课程资料，
 > 通过一条**可复跑的信息获取与翻译管线**，产出完整中文资料包，让下一批同学零成本复用。
 
 本仓库是 **AI➕X 挑战 C1「课程资料获取与翻译」** 的交付物。
 挑战编号：`ch-20260717031336-pxzwy0` ｜ 截止：2026-12-31 23:59
+
+> 🔍 **这个徽章不是装饰。** 点进去是 GitHub Actions 的真实运行日志——
+> 每次 push 都会在 GitHub 的机器上重跑一遍管线、审计全量术语，通不过就变红。
+> 它把「我声称可复跑」变成「任何人都能点开看它跑没跑通」。
+>
+> 这里**只有一个徽章**，刻意没加「覆盖率 XX%」之类的静态徽章——
+> 那种徽章要手动更新，一旦忘记就变成过期的自我表扬。覆盖率请看下方状态表。
 
 ---
 
@@ -133,6 +142,35 @@ AI-plus-X-C1/
 ├── logs/ai-journal.md         AI 协作日志（待产出）
 └── notes/拿来说明/            至少 3 个"拿来说明"（待产出）
 ```
+
+---
+
+## ✅ 自动化检查（CI）
+
+每次 push 都会在 GitHub 的机器上自动跑四步（`.github/workflows/checks.yml`）：
+
+| # | 检查 | 命令 | 失败会怎样 |
+|---|---|---|---|
+| 1 | 术语表自洽性（R1–R8） | `glossary_tool.py --check` | 徽章变红 |
+| 2 | 全量术语一致率 | `qc_terminology.py --check` | 徽章变红 |
+| 3 | **管线可复跑（确定性）** | 连跑两遍比对彼此 | 徽章变红 |
+| 4 | 覆盖度概览 | `translate.py --status` | 信息性，不作门禁 |
+
+### 第 3 项为什么这么设计
+
+CI 跑在 **Ubuntu** 上，而 PDF 提取依赖 **macOS 原生 PDFKit**——所以 CI 产出的
+`clean/` 与仓库里提交的那份必然不同，直接 `git diff` 会因为平台差异而失败，
+那是**假告警**。
+
+改为**连跑两遍比对彼此**：测的是「同样的输入是否得到同样的输出」，与平台无关。
+这才是「可复跑」的真正含义。
+
+### 已知的 CI 覆盖缺口（如实声明）
+
+- ❌ **PDF 提取未纳入 CI**：平台依赖所致。3 份 PDF 的确定性只在 macOS 上验证过。
+- ✅ **HTML 清洗、分块、清点报告**：完整覆盖。
+
+宁可把缺口写清楚，也不假装全覆盖。
 
 ---
 

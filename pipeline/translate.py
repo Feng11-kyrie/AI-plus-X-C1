@@ -47,6 +47,9 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from termcheck import find_hits, approved_forms, count_forms  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 CFG = json.loads((ROOT / "pipeline/config/cs146s.json").read_text(encoding="utf-8"))
 P = CFG["paths"]
@@ -170,34 +173,6 @@ def build_prompt(chunk: dict, terms: list) -> str:
 
 # ---------------------------------------------------------------- 校验
 
-def variant_hits(zh: str, term: dict) -> tuple:
-    """找出译文中违反术语表的写法，返回 (硬性违规, 提示级)。
-
-    两条中文特有的判定规则——都是被真实误报逼出来的：
-
-    1. **被正式译法包含的变体，一律跳过。**
-       例：MCP 的正式译法是「模型上下文协议（MCP）」，而其禁用变体是「上下文协议」，
-       显然后者是前者的子串。用子串匹配会把正确的译文判成违规。
-       同理「故障事件」包含「事件」和「故障」、「检索增强生成（RAG）」包含「检索增强」。
-       代价是这类变体单用时也检不出来——可接受，因为宁可漏报也不误报，
-       一个天天误报的校验器最终会被忽略，那才是真正的失效。
-
-    2. **区分硬性与提示。**
-       像「记录」「流程」这种词在中文里本身就常用（"记录每一步"、"排障流程"），
-       把它们一律判为违规会逼着人写出不自然的译文。
-       术语表里用 forbidden_soft 列单独声明，只提示不拦截。
-    """
-    approved = (term.get("term_zh") or "").strip()
-    hard, soft = [], []
-    for key, bucket in (("forbidden_zh", hard), ("forbidden_soft", soft)):
-        for fb in filter(None, (x.strip() for x in (term.get(key) or "").split("|"))):
-            if approved and fb in approved:
-                continue                      # 规则 1：是正式译法的组成部分
-            if fb in zh:
-                bucket.append(f"出现禁用变体「{fb}」（应为「{approved}」）")
-    return hard, soft
-
-
 def validate(src: str, zh: str, terms: list) -> dict:
     """对单块译文做机械校验，返回 (通过与否, 问题列表, 指标)。"""
     hard_issues, soft_issues = [], []
@@ -220,9 +195,12 @@ def validate(src: str, zh: str, terms: list) -> dict:
         hard_issues.append(f"链接数不符：原文 {sl}，译文 {zl}")
 
     for r in terms:
-        h, s = variant_hits(zh, r)
-        hard_issues.extend(h)
-        soft_issues.extend(s)
+        h, s = find_hits(zh, r)
+        # 术语匹配的唯一判定来源见 pipeline/termcheck.py
+        hard_issues.extend(f"出现禁用变体「{v}」（应为「{r['term_zh']}」）×{c}"
+                           for v, c in h)
+        soft_issues.extend(f"提示级变体「{v}」（{r['term_zh']} 的禁用形式）×{c}"
+                           for v, c in s)
 
     src_len = len(re.sub(r"\s+", "", src))
     zh_len = len(re.sub(r"\s+", "", zh))

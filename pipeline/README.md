@@ -20,6 +20,8 @@
 | `pdfkit_dump.js` | PDF 文件 | Markdown 文本 | 经 `osascript` 调用 macOS 原生 PDFKit 提取 PDF 文本（由 `clean.py` 调用） |
 | `mine_terms.py` | `clean/*.md` | 控制台 / `reports/term-candidates.csv` | 从清洗产物挖掘术语候选（频率证据） |
 | `glossary_tool.py` | `glossary/glossary.csv` | `glossary/glossary.md` | 校验术语表自身无矛盾 + 渲染人读版 |
+| `qc_terminology.py` | `zh/*.md` + 术语表 | `reports/terminology-consistency.md` | **全量**术语一致率审计（可作 CI 门禁） |
+| `termcheck.py` | — | — | **术语匹配的唯一判定来源**（被 translate.py 与 qc_terminology.py 共用） |
 
 ## 执行顺序
 
@@ -29,6 +31,7 @@ python3 pipeline/inventory.py         # 2. 清点 → units.json + INVENTORY.md
 python3 pipeline/clean.py             # 3. 清洗 + 校验 + 分块（消费 units.json）
 python3 pipeline/mine_terms.py        # 4. 挖掘术语候选（改术语表前跑）
 python3 pipeline/glossary_tool.py     # 5. 校验 + 渲染术语表
+python3 pipeline/qc_terminology.py    # 6. 全量术语一致率审计（译稿完成后跑）
 ```
 
 顺序有依赖：`clean.py` 消费 `inventory.py` 产出的 `units.json`；
@@ -44,6 +47,12 @@ python3 pipeline/glossary_tool.py     # 5. 校验 + 渲染术语表
 
 同理，`mine_terms.py` 早期自带第三份 `visible_text()` 直接读原始 HTML，
 导致术语频次被导航文字污染，也违反了同一条原则。现已改为消费 `clean/*.md`。
+
+**第三次违反，也是最典型的一次**：术语匹配逻辑被写了两份——
+`translate.py` 的逐块校验与 `qc_terminology.py` 的全量审计各有一套。
+前者已经消除了子串误报，后者没有，于是全量审计报出 52 次违规，
+其中绝大多数是早已解决过的假阳性。现已抽出 `termcheck.py` 作为唯一来源，
+两个校验器都从它导入。
 
 ## 完整性校验（防静默丢内容）
 
