@@ -13,12 +13,12 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 61 |
-| 翻译块次 | 35 |
-| 其中通过校验 | 28 |
-| **其中未通过 / 失败** | **7** |
-| 完成条目 | 10 |
-| 出现过校验问题的块 | 7 |
+| 记录事件总数 | 74 |
+| 翻译块次 | 43 |
+| 其中通过校验 | 34 |
+| **其中未通过 / 失败** | **9** |
+| 完成条目 | 11 |
+| 出现过校验问题的块 | 9 |
 
 ## 逐块记录
 
@@ -59,6 +59,14 @@
 | 15:59:34 | `mcp-registry-preview` | 2 | queue | `d5a25e005e7e` | 3459/2148 | — | ✅ |
 | 15:59:34 | `code-reviews-just-do-it` | 0 | queue | `94627e072ac7` | 3139/1354 | — | ❌ 出现禁用变体「代码审查」（应为「代码评审」） |
 | 15:59:42 | `code-reviews-just-do-it` | 0 | queue | `94627e072ac7` | 3139/1354 | — | ✅ |
+| 16:00:31 | `kubernetes-troubleshooting` | 0 | queue | `244109653a2c` | 1666/937 | — | ✅ |
+| 16:00:31 | `kubernetes-troubleshooting` | 1 | queue | `6cccae495d52` | 1471/731 | — | ❌ 出现禁用变体「遥测数据」（应为「遥测」） |
+| 16:00:31 | `kubernetes-troubleshooting` | 2 | queue | `2d8a1f00389b` | 2570/1221 | — | ❌ 出现禁用变体「遥测数据」（应为「遥测」） |
+| 16:00:31 | `kubernetes-troubleshooting` | 3 | queue | `3cc86f27ae83` | 1324/579 | — | ✅ |
+| 16:00:31 | `kubernetes-troubleshooting` | 4 | queue | `a375f8f61914` | 826/366 | — | ✅ |
+| 16:00:31 | `kubernetes-troubleshooting` | 5 | queue | `e0568b989965` | 99/65 | — | ✅ |
+| 16:00:37 | `kubernetes-troubleshooting` | 1 | queue | `6cccae495d52` | 1471/729 | — | ✅ |
+| 16:00:37 | `kubernetes-troubleshooting` | 2 | queue | `2d8a1f00389b` | 2570/1219 | — | ✅ |
 
 ## 失败与返工记录
 
@@ -103,6 +111,16 @@
 - 时间：2026-09-15T15:59:34+0800　后端：queue　prompt 哈希：`94627e072ac7`
 - 问题：出现禁用变体「代码审查」（应为「代码评审」）
 
+### `kubernetes-troubleshooting-ai` 第 1 块
+
+- 时间：2026-09-15T16:00:31+0800　后端：queue　prompt 哈希：`6cccae495d52`
+- 问题：出现禁用变体「遥测数据」（应为「遥测」）
+
+### `kubernetes-troubleshooting-ai` 第 2 块
+
+- 时间：2026-09-15T16:00:31+0800　后端：queue　prompt 哈希：`2d8a1f00389b`
+- 问题：出现禁用变体「遥测数据」（应为「遥测」）
+
 ## 条目汇总
 
 | 条目 | 周 | 块数 | 中文字符 | 完成时间 |
@@ -117,4 +135,5 @@
 | `mcp-food-for-thought` | W2 | 4 | 2,743 | 2026-09-15T15:32:24 |
 | `mcp-registry-preview` | W2 | 3 | 3,307 | 2026-09-15T15:59:34 |
 | `code-reviews-just-do-it` | W7 | 1 | 1,431 | 2026-09-15T15:59:42 |
+| `kubernetes-troubleshooting-ai` | W9 | 6 | 3,978 | 2026-09-15T16:00:37 |
 
