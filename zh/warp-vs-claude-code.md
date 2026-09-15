@@ -1,5 +1,5 @@
 <!-- source: source/pages/warp-vs-claude-code.html -->
-<!-- week: 5 | translated: 2026-09-15T15:25:59+0800 | chunks: 4 -->
+<!-- week: 5 | translated: 2026-09-15T15:27:41+0800 | chunks: 4 -->
 
 Warp 是一个**智能体化的开发环境**，把现代终端与强大的智能体结合起来，帮助你构建、测试、部署和调试代码。Warp 的 AI 由 **Oz** 驱动——这是面向云端智能体的编排平台。
 

@@ -12,9 +12,9 @@
 
 | 指标 | 数值 |
 |---|---|
-| 已完成条目 | **1** / 29 |
-| 覆盖率（分母 34） | **2.9%** |
-| 是否达标 | ⬜ 未达标（还差 26 条） |
+| 已完成条目 | **3** / 29 |
+| 覆盖率（分母 34） | **8.8%** |
+| 是否达标 | ⬜ 未达标（还差 24 条） |
 
 ## 逐条状态
 
@@ -22,7 +22,7 @@
 |---|---|---|---|---|---|
 | `prompt-engineering-overview` | W1 | html | 14 | 0 | ⬜ 未开始 |
 | `how-openai-uses-codex` | W1 | pdf | 4 | 0 | ⬜ 未开始 |
-| `mcp-food-for-thought` | W2 | html | 4 | 0 | ⬜ 未开始 |
+| `mcp-food-for-thought` | W2 | html | 4 | 4 | ✅ 完成 |
 | `mcp-introduction` | W2 | html | 17 | 0 | ⬜ 未开始 |
 | `mcp-registry-preview` | W2 | html | 3 | 0 | ⬜ 未开始 |
 | `mcp-server-authentication` | W2 | html | 8 | 0 | ⬜ 未开始 |
@@ -44,7 +44,7 @@
 | `code-reviews-just-do-it` | W7 | html | 5 | 0 | ⬜ 未开始 |
 | `how-to-review-code-effectively` | W7 | html | 13 | 0 | ⬜ 未开始 |
 | `ai-assisted-code-review-assessment` | W7 | pdf | 9 | 0 | ⬜ 未开始 |
-| `benefits-agentic-ai-oncall` | W9 | html | 3 | 0 | ⬜ 未开始 |
+| `benefits-agentic-ai-oncall` | W9 | html | 3 | 3 | ✅ 完成 |
 | `kubernetes-troubleshooting-ai` | W9 | html | 6 | 0 | ⬜ 未开始 |
 | `multi-agent-systems-ai-native` | W9 | html | 5 | 0 | ⬜ 未开始 |
 | `observability-basics` | W9 | html | 10 | 0 | ⬜ 未开始 |
