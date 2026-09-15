@@ -13,11 +13,11 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 112 |
-| 翻译块次 | 66 |
-| 其中通过校验 | 52 |
+| 记录事件总数 | 121 |
+| 翻译块次 | 72 |
+| 其中通过校验 | 58 |
 | **其中未通过 / 失败** | **14** |
-| 完成条目 | 14 |
+| 完成条目 | 15 |
 | 出现过校验问题的块 | 14 |
 
 ## 逐块记录
@@ -90,6 +90,12 @@
 | 16:04:53 | `claude-code-best-practices` | 1 | queue | `89c1e5954cae` | 3022/1557 | — | ✅ |
 | 16:04:53 | `claude-code-best-practices` | 2 | queue | `645ebeac27f5` | 1578/1042 | — | ✅ |
 | 16:04:53 | `claude-code-best-practices` | 3 | queue | `0191769d9488` | 447/198 | — | ✅ |
+| 16:10:02 | `how-long-contexts-fail` | 0 | queue | `7a4952eeb8c0` | 976/406 | — | ✅ |
+| 16:10:02 | `how-long-contexts-fail` | 1 | queue | `9f4d3b9a9fbb` | 1119/529 | — | ✅ |
+| 16:10:02 | `how-long-contexts-fail` | 2 | queue | `676c0ab14170` | 1346/573 | — | ✅ |
+| 16:10:02 | `how-long-contexts-fail` | 3 | queue | `04eead01bbc7` | 2146/1080 | — | ✅ |
+| 16:10:02 | `how-long-contexts-fail` | 4 | queue | `96707ee14964` | 3012/1181 | — | ✅ |
+| 16:10:02 | `how-long-contexts-fail` | 5 | queue | `f887aee3514a` | 755/424 | — | ✅ |
 
 ## 失败与返工记录
 
@@ -189,4 +195,5 @@
 | `copilot-prompt-injection-rce` | W6 | 6 | 3,763 | 2026-09-15T16:01:35 |
 | `multi-agent-systems-ai-native` | W9 | 5 | 3,839 | 2026-09-15T16:04:22 |
 | `claude-code-best-practices` | W4 | 4 | 4,512 | 2026-09-15T16:04:53 |
+| `how-long-contexts-fail` | W3 | 6 | 4,269 | 2026-09-15T16:10:02 |
 

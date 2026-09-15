@@ -12,9 +12,9 @@
 
 | 指标 | 数值 |
 |---|---|
-| 已完成条目 | **9** / 29 |
-| 覆盖率（分母 34） | **26.5%** |
-| 是否达标 | ⬜ 未达标（还差 18 条） |
+| 已完成条目 | **10** / 29 |
+| 覆盖率（分母 34） | **29.4%** |
+| 是否达标 | ⬜ 未达标（还差 17 条） |
 
 ## 逐条状态
 
@@ -27,7 +27,7 @@
 | `mcp-registry-preview` | W2 | html | 3 | 3 | ✅ 完成 |
 | `mcp-server-authentication` | W2 | html | 8 | 0 | ⬜ 未开始 |
 | `devin-coding-agents-101` | W3 | html | 17 | 0 | ⬜ 未开始 |
-| `how-long-contexts-fail` | W3 | html | 6 | 0 | ⬜ 未开始 |
+| `how-long-contexts-fail` | W3 | html | 6 | 6 | ✅ 完成 |
 | `specs-are-the-new-source-code` | W3 | html | 6 | 0 | ⬜ 未开始 |
 | `writing-effective-tools-for-agents` | W3 | html | 12 | 0 | ⬜ 未开始 |
 | `claude-code-best-practices` | W4 | html | 4 | 4 | ✅ 完成 |
