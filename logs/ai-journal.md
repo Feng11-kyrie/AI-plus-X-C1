@@ -13,12 +13,12 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 228 |
-| 翻译块次 | 162 |
-| 其中通过校验 | 143 |
-| **其中未通过 / 失败** | **19** |
-| 完成条目 | 18 |
-| 出现过校验问题的块 | 19 |
+| 记录事件总数 | 282 |
+| 翻译块次 | 211 |
+| 其中通过校验 | 190 |
+| **其中未通过 / 失败** | **21** |
+| 完成条目 | 19 |
+| 出现过校验问题的块 | 21 |
 
 ## 逐块记录
 
@@ -186,6 +186,55 @@
 | 16:17:35 | `mcp-server-authentication` | 5 | queue | `9301564f8b5a` | 3394/2479 | — | ✅ |
 | 16:17:35 | `mcp-server-authentication` | 6 | queue | `8ebe3f481fc9` | 1312/1016 | — | ✅ |
 | 16:17:35 | `mcp-server-authentication` | 7 | queue | `6e4809938b14` | 96/59 | — | ✅ |
+| 13:33:42 | `mcp-food-for-thought` | 0 | queue | `8f128e47868a` | 1408/870 | — | ✅ |
+| 13:33:42 | `mcp-food-for-thought` | 2 | queue | `df1a31b9d822` | 921/588 | — | ✅ |
+| 13:33:42 | `mcp-food-for-thought` | 3 | queue | `4a93aeb031e6` | 735/336 | — | ✅ |
+| 13:33:42 | `mcp-registry-preview` | 0 | queue | `ec7412eb772f` | 1194/591 | — | ✅ |
+| 13:33:42 | `mcp-registry-preview` | 1 | queue | `b81e58387a9a` | 1203/494 | — | ✅ |
+| 13:33:42 | `mcp-registry-preview` | 2 | queue | `b46be7a19fd8` | 3459/2148 | — | ✅ |
+| 13:33:42 | `mcp-server-authentication` | 0 | queue | `f8f92351b7e4` | 1265/780 | — | ✅ |
+| 13:33:42 | `mcp-server-authentication` | 1 | queue | `74bc369193b5` | 1499/1059 | — | ✅ |
+| 13:33:42 | `mcp-server-authentication` | 2 | queue | `12028126f2be` | 2654/1839 | — | ✅ |
+| 13:33:42 | `mcp-server-authentication` | 3 | queue | `bdb0c1c982ac` | 988/617 | — | ✅ |
+| 13:33:42 | `mcp-server-authentication` | 4 | queue | `3186f1afb43a` | 1122/592 | — | ✅ |
+| 13:33:42 | `mcp-server-authentication` | 5 | queue | `9891f0da9d31` | 3394/2479 | — | ✅ |
+| 13:33:42 | `mcp-server-authentication` | 6 | queue | `0f8ae8ae8d9e` | 1312/1016 | — | ✅ |
+| 13:33:42 | `mcp-server-authentication` | 7 | queue | `43f5358f16ff` | 96/59 | — | ✅ |
+| 13:33:42 | `how-long-contexts-fail` | 0 | queue | `b47b46a63b2e` | 976/406 | — | ✅ |
+| 13:33:42 | `how-long-contexts-fail` | 1 | queue | `ec9c90110eef` | 1119/529 | — | ✅ |
+| 13:33:42 | `how-long-contexts-fail` | 2 | queue | `801c1c1bc109` | 1346/573 | — | ✅ |
+| 13:33:42 | `how-long-contexts-fail` | 3 | queue | `e645993fd103` | 2146/1080 | — | ✅ |
+| 13:33:42 | `how-long-contexts-fail` | 4 | queue | `404a1ceaf94f` | 3012/1181 | — | ✅ |
+| 13:33:42 | `how-long-contexts-fail` | 5 | queue | `cf3924f6f4e7` | 755/424 | — | ✅ |
+| 13:33:42 | `specs-are-the-new-source-c` | 0 | queue | `5d2ffaa000ed` | 1211/547 | — | ✅ |
+| 13:33:42 | `specs-are-the-new-source-c` | 1 | queue | `3f609b38e780` | 2939/1291 | — | ❌ 出现禁用变体「产物」（应为「制品」）×3 |
+| 13:33:42 | `specs-are-the-new-source-c` | 2 | queue | `2d772cba3502` | 1220/514 | — | ✅ |
+| 13:33:42 | `specs-are-the-new-source-c` | 3 | queue | `7e7bed4b4235` | 3055/1763 | — | ✅ |
+| 13:33:42 | `specs-are-the-new-source-c` | 4 | queue | `c2d1a82245f4` | 1688/837 | — | ✅ |
+| 13:33:42 | `specs-are-the-new-source-c` | 5 | queue | `f0ba7c32849f` | 932/375 | — | ❌ 出现禁用变体「产物」（应为「制品」）×1 |
+| 13:33:42 | `claude-code-best-practices` | 0 | queue | `237e05d3abd4` | 2903/1635 | — | ✅ |
+| 13:33:42 | `claude-code-best-practices` | 1 | queue | `bcb669851203` | 3022/1557 | — | ✅ |
+| 13:33:42 | `claude-code-best-practices` | 2 | queue | `749ccc4e7ed3` | 1578/1042 | — | ✅ |
+| 13:33:42 | `warp-vs-claude-code` | 0 | queue | `8d2b41d50519` | 1545/973 | — | ✅ |
+| 13:33:42 | `warp-vs-claude-code` | 1 | queue | `bf09898c190b` | 1325/642 | — | ✅ |
+| 13:33:42 | `warp-vs-claude-code` | 2 | queue | `37ac00d4b836` | 909/519 | — | ✅ |
+| 13:33:42 | `warp-vs-claude-code` | 3 | queue | `1099e7d41db3` | 721/471 | — | ✅ |
+| 13:33:42 | `copilot-prompt-injection-r` | 1 | queue | `66efe6fbead6` | 1744/926 | — | ✅ |
+| 13:33:42 | `copilot-prompt-injection-r` | 3 | queue | `238da6d82a77` | 1088/393 | — | ✅ |
+| 13:33:42 | `copilot-prompt-injection-r` | 4 | queue | `028f59649afc` | 1469/758 | — | ✅ |
+| 13:33:42 | `ai-code-review-best-practi` | 0 | queue | `9b23504cff94` | 1186/431 | — | ✅ |
+| 13:33:42 | `ai-code-review-best-practi` | 3 | queue | `881cbb1f5643` | 1755/667 | — | ✅ |
+| 13:33:42 | `ai-code-review-best-practi` | 5 | queue | `39ed5bd2a66f` | 1404/620 | — | ✅ |
+| 13:33:42 | `code-reviews-just-do-it` | 0 | queue | `02247ff7d753` | 3139/1354 | — | ✅ |
+| 13:33:42 | `benefits-agentic-ai-oncall` | 0 | queue | `a3e7554e44cc` | 3413/1184 | — | ✅ |
+| 13:33:42 | `benefits-agentic-ai-oncall` | 1 | queue | `86cecf3316d1` | 1235/424 | — | ✅ |
+| 13:33:42 | `kubernetes-troubleshooting` | 0 | queue | `78d0e72c04d1` | 1666/937 | — | ✅ |
+| 13:33:42 | `kubernetes-troubleshooting` | 4 | queue | `0c3e32a49ff7` | 826/366 | — | ✅ |
+| 13:33:42 | `multi-agent-systems-ai-nat` | 0 | queue | `cca7da95ef5e` | 1714/836 | — | ✅ |
+| 13:33:42 | `multi-agent-systems-ai-nat` | 2 | queue | `b4b22548cf36` | 2852/993 | — | ✅ |
+| 13:33:42 | `multi-agent-systems-ai-nat` | 3 | queue | `9ce30925f533` | 2414/955 | — | ✅ |
+| 13:33:52 | `specs-are-the-new-source-c` | 1 | queue | `2ea552e19675` | 2939/1291 | — | ✅ |
+| 13:33:52 | `specs-are-the-new-source-c` | 5 | queue | `910d2556bb35` | 932/375 | — | ✅ |
 
 ## 失败与返工记录
 
@@ -293,6 +342,16 @@
 - 时间：2026-09-15T16:16:55+0800　后端：queue　prompt 哈希：`440f6ef61b89`
 - 问题：出现禁用变体「代理」（应为「智能体」）
 
+### `specs-are-the-new-source-code` 第 1 块
+
+- 时间：2026-09-16T13:33:42+0800　后端：queue　prompt 哈希：`3f609b38e780`
+- 问题：出现禁用变体「产物」（应为「制品」）×3
+
+### `specs-are-the-new-source-code` 第 5 块
+
+- 时间：2026-09-16T13:33:42+0800　后端：queue　prompt 哈希：`f0ba7c32849f`
+- 问题：出现禁用变体「产物」（应为「制品」）×1
+
 ## 条目汇总
 
 | 条目 | 周 | 块数 | 中文字符 | 完成时间 |
@@ -315,4 +374,5 @@
 | `observability-basics` | W9 | 10 | 5,109 | 2026-09-15T16:14:52 |
 | `ai-code-review-best-practices` | W7 | 8 | 4,700 | 2026-09-15T16:16:08 |
 | `mcp-server-authentication` | W2 | 8 | 8,520 | 2026-09-15T16:17:35 |
+| `specs-are-the-new-source-code` | W3 | 6 | 5,410 | 2026-09-16T13:33:52 |
 

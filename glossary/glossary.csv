@@ -60,7 +60,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 59,Regression,回归,swe,translate,退化|回退,,0,
 60,Deployment,部署,swe,translate,发布上线|布署|部署上线,,0,
 61,Rollback,回滚,swe,translate,回退|撤回|回滚操作,,0,
-62,Artifact,制品,swe,translate,工件|产物|构建物,,0,
+62,Artifact,制品,swe,translate,工件|构建物,产物,构建/交付语境；「产物」降为提示级——它是 artifact 通用义的自然译法,
 63,Integrated Development Environment (IDE),集成开发环境（IDE）,swe,acronym,整合开发环境|开发集成环境,,5,
 64,Terminal,终端,swe,translate,命令行窗口,控制台,22；「控制台」降为提示级：dashboard / console 的标准译法,
 65,Command-Line Interface (CLI),命令行界面（CLI）,swe,acronym,命令行接口|命令界面,,19,

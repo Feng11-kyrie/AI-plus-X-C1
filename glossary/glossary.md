@@ -24,7 +24,7 @@
 1. **被正式译法包含的变体一律跳过**——「上下文协议」是「模型上下文协议（MCP）」的子串，子串匹配会把正确译文判成违规。
 2. 宁可漏报也不误报：一个天天误报的校验器最终会被忽略。
 
-**术语总数：171 条**（硬性禁用变体 338 条 + 提示级 27 条，由 `pipeline/translate.py` 逐块强制校验）
+**术语总数：171 条**（硬性禁用变体 337 条 + 提示级 28 条，由 `pipeline/translate.py` 逐块强制校验）
 
 ## 核心 LLM 与提示词（28 条）
 
@@ -103,7 +103,7 @@
 | Regression | 回归 | `translate` | 退化、回退 | — | — |
 | Deployment | 部署 | `translate` | 发布上线、布署、部署上线 | — | — |
 | Rollback | 回滚 | `translate` | 回退、撤回、回滚操作 | — | — |
-| Artifact | 制品 | `translate` | 工件、产物、构建物 | — | — |
+| Artifact | 制品 | `translate` | 工件、构建物 | 产物 | — |
 | Integrated Development Environment (IDE) | 集成开发环境（IDE） | `acronym` | 整合开发环境、开发集成环境 | — | — |
 | Terminal | 终端 | `translate` | 命令行窗口 | 控制台 | — |
 | Command-Line Interface (CLI) | 命令行界面（CLI） | `acronym` | 命令行接口、命令界面 | — | — |
