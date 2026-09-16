@@ -13,11 +13,11 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 383 |
-| 翻译块次 | 289 |
-| 其中通过校验 | 263 |
+| 记录事件总数 | 399 |
+| 翻译块次 | 302 |
+| 其中通过校验 | 276 |
 | **其中未通过 / 失败** | **26** |
-| 完成条目 | 24 |
+| 完成条目 | 25 |
 | 出现过校验问题的块 | 26 |
 
 ## 逐块记录
@@ -313,6 +313,19 @@
 | 13:47:11 | `sast-vs-dast` | 12 | queue | `80a7a4607efd` | 1221/469 | — | ✅ |
 | 13:47:11 | `observability-basics` | 7 | queue | `0bb4031de0cf` | 908/330 | — | ✅ |
 | 13:47:20 | `writing-effective-tools-fo` | 11 | queue | `90bd23ce2f2a` | 1346/671 | — | ✅ |
+| 13:52:54 | `how-to-review-code-effecti` | 0 | queue | `2721003fc17a` | 1025/445 | — | ✅ |
+| 13:52:54 | `how-to-review-code-effecti` | 1 | queue | `3749fb70aa57` | 3031/2041 | — | ✅ |
+| 13:52:54 | `how-to-review-code-effecti` | 2 | queue | `47282e3eaf8c` | 1612/851 | — | ✅ |
+| 13:52:54 | `how-to-review-code-effecti` | 3 | queue | `e9e03490efa1` | 1434/718 | — | ✅ |
+| 13:52:54 | `how-to-review-code-effecti` | 4 | queue | `58ae8cb6e282` | 2669/1052 | — | ✅ |
+| 13:52:54 | `how-to-review-code-effecti` | 5 | queue | `a062e5a8ef12` | 1155/437 | — | ✅ |
+| 13:52:54 | `how-to-review-code-effecti` | 6 | queue | `c78d0018e3a2` | 1577/592 | — | ✅ |
+| 13:52:54 | `how-to-review-code-effecti` | 7 | queue | `e5d9bd4d9687` | 1551/672 | — | ✅ |
+| 13:52:54 | `how-to-review-code-effecti` | 8 | queue | `e11240fa1cf8` | 1277/589 | — | ✅ |
+| 13:52:54 | `how-to-review-code-effecti` | 9 | queue | `9c00170f569b` | 942/443 | — | ✅ |
+| 13:52:54 | `how-to-review-code-effecti` | 10 | queue | `4c87723b3e2e` | 1114/412 | — | ✅ |
+| 13:52:54 | `how-to-review-code-effecti` | 11 | queue | `6ff86bf0be12` | 1022/581 | — | ✅ |
+| 13:52:54 | `how-to-review-code-effecti` | 12 | queue | `c9a208ba5e26` | 129/100 | — | ✅ |
 
 ## 失败与返工记录
 
@@ -483,4 +496,5 @@
 | `owasp-top-ten` | W6 | 10 | 8,648 | 2026-09-16T13:41:18 |
 | `sast-vs-dast` | W6 | 16 | 8,022 | 2026-09-16T13:44:32 |
 | `writing-effective-tools-for-agents` | W3 | 12 | 8,634 | 2026-09-16T13:47:20 |
+| `how-to-review-code-effectively` | W7 | 13 | 9,018 | 2026-09-16T13:52:54 |
 

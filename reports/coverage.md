@@ -12,9 +12,9 @@
 
 | 指标 | 数值 |
 |---|---|
-| 已完成条目 | **19** / 29 |
-| 覆盖率（分母 34） | **55.9%** |
-| 是否达标 | ⬜ 未达标（还差 9 条） |
+| 已完成条目 | **20** / 29 |
+| 覆盖率（分母 34） | **58.8%** |
+| 是否达标 | ⬜ 未达标（还差 8 条） |
 
 ## 逐条状态
 
@@ -42,7 +42,7 @@
 | `ai-code-review-best-practices` | W7 | html | 8 | 8 | ✅ 完成 |
 | `code-review-essentials` | W7 | html | 5 | 5 | ✅ 完成 |
 | `code-reviews-just-do-it` | W7 | html | 1 | 1 | ✅ 完成 |
-| `how-to-review-code-effectively` | W7 | html | 13 | 0 | ⬜ 未开始 |
+| `how-to-review-code-effectively` | W7 | html | 13 | 13 | ✅ 完成 |
 | `ai-assisted-code-review-assessment` | W7 | pdf | 9 | 0 | ⬜ 未开始 |
 | `benefits-agentic-ai-oncall` | W9 | html | 3 | 3 | ✅ 完成 |
 | `kubernetes-troubleshooting-ai` | W9 | html | 6 | 6 | ✅ 完成 |
