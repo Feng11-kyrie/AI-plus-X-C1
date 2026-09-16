@@ -21,13 +21,7 @@ CI 的确定性检查是「连跑两遍比对彼此」，它**发现不了提交
 
 | 产物 | 结论 | 说明 |
 |---|---|---|
-| `source/units.json` | 1 处不同 | 比对 41 个非 PDF 条目 |
+| `source/units.json` | 一致 | 比对 41 个非 PDF 条目 |
 
-### 过期条目明细
-
-| 产物 | 条目 | 提交值 | 现在的值 |
-|---|---|---|---|
-| `source/units.json` | `pages/prompt-engineering-overview.html` | {'words_est': 3678, 'content_chars': 24901, 'status': 'ok', 'bytes': 2005200} | {'words_est': 2486, 'content_chars': 16861, 'status': 'ok', 'bytes': 2005200} |
-
-> 处理方式：重跑管线并提交新产物（**不要**改回旧数字——代码是判据，产物是结果）。
+✅ 提交的产物与现在跑出来的完全一致。
 
