@@ -12,9 +12,9 @@
 
 | 指标 | 数值 |
 |---|---|
-| 已完成条目 | **23** / 29 |
-| 覆盖率（分母 34） | **67.6%** |
-| 是否达标 | ⬜ 未达标（还差 5 条） |
+| 已完成条目 | **24** / 29 |
+| 覆盖率（分母 34） | **70.6%** |
+| 是否达标 | ⬜ 未达标（还差 4 条） |
 
 ## 逐条状态
 
@@ -48,6 +48,6 @@
 | `kubernetes-troubleshooting-ai` | W9 | html | 6 | 6 | ✅ 完成 |
 | `multi-agent-systems-ai-native` | W9 | html | 5 | 5 | ✅ 完成 |
 | `observability-basics` | W9 | html | 10 | 10 | ✅ 完成 |
-| `sre-introduction` | W9 | html | 10 | 0 | ⬜ 未开始 |
+| `sre-introduction` | W9 | html | 10 | 10 | ✅ 完成 |
 
 > 覆盖度按**整条**计：一条条目只有全部分块译完才算完成。

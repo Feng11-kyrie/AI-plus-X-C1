@@ -24,7 +24,7 @@
 1. **被正式译法包含的变体一律跳过**——「上下文协议」是「模型上下文协议（MCP）」的子串，子串匹配会把正确译文判成违规。
 2. 宁可漏报也不误报：一个天天误报的校验器最终会被忽略。
 
-**术语总数：171 条**（硬性禁用变体 322 条 + 提示级 44 条，由 `pipeline/translate.py` 逐块强制校验）
+**术语总数：171 条**（硬性禁用变体 321 条 + 提示级 45 条，由 `pipeline/translate.py` 逐块强制校验）
 
 ## 核心 LLM 与提示词（28 条）
 
@@ -179,7 +179,7 @@
 | Service Level Objective (SLO) | 服务等级目标（SLO） | `acronym` | 服务水平目标、服务级别目标 | — | — |
 | Service Level Indicator (SLI) | 服务等级指标（SLI） | `acronym` | 服务水平指标、服务级别指标 | — | — |
 | Service Level Agreement (SLA) | 服务等级协议（SLA） | `acronym` | 服务水平协议、服务级别协议 | — | — |
-| Mean Time To Recovery (MTTR) | 平均恢复时间（MTTR） | `acronym` | 平均修复时间、平均恢复时长 | — | — |
+| Mean Time To Recovery (MTTR) | 平均恢复时间（MTTR） | `acronym` | 平均恢复时长 | 平均修复时间 | — |
 | Root Cause Analysis (RCA) | 根因分析（RCA） | `acronym` | 根本原因分析、根因定位 | — | — |
 | Toil | 琐务 | `translate` | 苦工、重复性劳动、杂务 | — | — |
 | Blameless | 无指责的 | `translate` | 免责的、非责难的、无责备 | — | — |

@@ -13,12 +13,12 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 489 |
-| 翻译块次 | 375 |
-| 其中通过校验 | 340 |
-| **其中未通过 / 失败** | **35** |
-| 完成条目 | 28 |
-| 出现过校验问题的块 | 35 |
+| 记录事件总数 | 507 |
+| 翻译块次 | 388 |
+| 其中通过校验 | 352 |
+| **其中未通过 / 失败** | **36** |
+| 完成条目 | 29 |
+| 出现过校验问题的块 | 36 |
 
 ## 逐块记录
 
@@ -399,6 +399,19 @@
 | 14:15:16 | `ai-code-review-best-practi` | 3 | queue | `8c758af05b38` | 1755/667 | — | ✅ |
 | 14:15:16 | `ai-code-review-best-practi` | 5 | queue | `0834a0575a42` | 1404/620 | — | ✅ |
 | 14:15:16 | `ai-code-review-best-practi` | 7 | queue | `087067d27204` | 3047/1092 | — | ✅ |
+| 14:17:00 | `sre-introduction` | 0 | queue | `d2f5ac3af228` | 2826/1012 | — | ✅ |
+| 14:17:00 | `sre-introduction` | 1 | queue | `97905ad50283` | 2740/1132 | — | ✅ |
+| 14:17:00 | `sre-introduction` | 2 | queue | `cdc3f2c30728` | 3009/1130 | — | ✅ |
+| 14:17:00 | `sre-introduction` | 3 | queue | `b317f7f22634` | 1654/696 | — | ✅ |
+| 14:17:00 | `sre-introduction` | 4 | queue | `bc9f7f6f4bc4` | 1921/702 | — | ✅ |
+| 14:17:00 | `sre-introduction` | 5 | queue | `8fa8a042abd5` | 2612/991 | — | ✅ |
+| 14:17:00 | `sre-introduction` | 6 | queue | `7d8cd144b38d` | 1152/398 | — | ✅ |
+| 14:17:00 | `sre-introduction` | 7 | queue | `ae951e83837a` | 1146/506 | — | ❌ 出现禁用变体「平均修复时间」（应为「平均恢复时间（MTTR）」）×1 |
+| 14:17:00 | `sre-introduction` | 8 | queue | `3d0bca53dd39` | 1577/509 | — | ✅ |
+| 14:17:00 | `sre-introduction` | 9 | queue | `5f64fa757200` | 2341/884 | — | ✅ |
+| 14:17:09 | `kubernetes-troubleshooting` | 0 | queue | `f43586f80a21` | 1666/937 | — | ✅ |
+| 14:17:09 | `observability-basics` | 1 | queue | `d763d377472a` | 1107/465 | — | ✅ |
+| 14:17:09 | `sre-introduction` | 7 | queue | `843aad7c6e83` | 1146/506 | — | ✅ |
 
 ## 失败与返工记录
 
@@ -588,6 +601,11 @@
 - 问题：出现禁用变体「假阳性」（应为「误报」）×2
 - 问题：出现禁用变体「假阴性」（应为「漏报」）×3
 
+### `sre-introduction` 第 7 块
+
+- 时间：2026-09-16T14:17:00+0800　后端：queue　prompt 哈希：`ae951e83837a`
+- 问题：出现禁用变体「平均修复时间」（应为「平均恢复时间（MTTR）」）×1
+
 ## 条目汇总
 
 | 条目 | 周 | 块数 | 中文字符 | 完成时间 |
@@ -620,4 +638,5 @@
 | `devin-coding-agents-101` | W3 | 17 | 7,302 | 2026-09-16T13:55:46 |
 | `prompt-engineering-overview` | W1 | 13 | 6,129 | 2026-09-16T14:13:00 |
 | `finding-vulnerabilities-claude-codex` | W6 | 12 | 11,069 | 2026-09-16T14:15:16 |
+| `sre-introduction` | W9 | 10 | 8,031 | 2026-09-16T14:17:09 |
 

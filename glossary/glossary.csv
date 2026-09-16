@@ -139,7 +139,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 138,Service Level Objective (SLO),服务等级目标（SLO）,sre,acronym,服务水平目标|服务级别目标,,0,
 139,Service Level Indicator (SLI),服务等级指标（SLI）,sre,acronym,服务水平指标|服务级别指标,,0,
 140,Service Level Agreement (SLA),服务等级协议（SLA）,sre,acronym,服务水平协议|服务级别协议,,0,
-141,Mean Time To Recovery (MTTR),平均恢复时间（MTTR）,sre,acronym,平均修复时间|平均恢复时长,,5,
+141,Mean Time To Recovery (MTTR),平均恢复时间（MTTR）,sre,acronym,平均恢复时长,平均修复时间,MTTR 本身有 repair / recovery 两种展开；「平均修复时间」降为提示级——原文若写 mean time to repair，它就是字面正确译法,
 142,Root Cause Analysis (RCA),根因分析（RCA）,sre,acronym,根本原因分析|根因定位,,0,
 143,Toil,琐务,sre,translate,苦工|重复性劳动|杂务,,0,
 144,Blameless,无指责的,sre,translate,免责的|非责难的|无责备,,0,
