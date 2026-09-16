@@ -59,8 +59,16 @@
 **⚠️ 一个关键的可行性约束**：29/34 = **85.3%** 是上限，而达标线是 28 条。也就是说**只有 1 条的容错**。
 如果**只翻译 HTML 部分**，覆盖率仅 26/34 = **76.5%，低于目标**——因此 3 份 PDF 必须纳入翻译范围。
 
-**当前进度 28/29 条 = 82.4%**（262/271 个分块）。剩下 1 条是原始缓存就失效的
-`lessons-from-ai-code-reviews`（0 字节）。逐条状态见 **[`reports/coverage.md`](reports/coverage.md)**。
+**当前进度 28/29 条 = 82.4%**（262/271 个分块）。
+
+> ⚠️ **更正一处早先的说法**：剩下那 1 条**可用但未译**的条目不是 0 字节的
+> `lessons-from-ai-code-reviews`（那条属于"确认失效"，本就不在可用集里），
+> 而是 W7 的论文 **`ai-assisted-code-review-assessment`**（9 块 / 约 5.3 万字符）。
+> 我把"可用的 29 条里还差 1 条"错记成了失效条目。真实状态：
+> **28 条已译 / 34 条分母 = 82.4%**，可用集里还有 1 条没译。
+
+📖 **按周索引、每篇的直达链接 → [`zh/README.md`](zh/README.md)**
+逐条状态见 **[`reports/coverage.md`](reports/coverage.md)**。
 
 ### 分母的一个边界情形（不据此改口径，但如实标注）
 
@@ -191,11 +199,12 @@ AI-plus-X-C1/
 │   ├── check_deliverables.py  ★ 交付物通配符真匹配（CI 门禁）
 │   ├── check_workflow.py      ★ 工作流自检（CI 门禁 + 本地提交前用）
 │   ├── check_staleness.py     提交产物 vs 现在跑出来的产物（信息性）
+│   ├── make_index.py          ★ 生成 zh/README.md 索引（CI 校验其是否过期）
 │   └── check_chunks.py        分块对照清单（人工核「有没有把两块并成一块」）
 │
 ├── demo/                      ★ 第二源烟测（换源可复用证据，见 demo/README.md）
 ├── clean/                     清洗后的英文 Markdown 底稿（29 条，可人工抽检）
-├── zh/                        中文译稿（28 条，82.4%）
+├── zh/                        中文译稿（28 条，82.4%）＋ README.md 索引
 ├── reports/                   6 份自动生成报告：清洗对比、覆盖度、术语一致率、
 │                              表格完整性、交付物检查、术语候选
 ├── AI日志.md                  ★ AI 协作日志（600+ 条事件，自动生成，按天汇总）
@@ -248,10 +257,14 @@ CI 跑在 **Ubuntu** 上，而 PDF 提取依赖 **macOS 原生 PDFKit**——所
 ### 只是想读中文资料的同学
 
 译稿在 `zh/` 下，**28 篇（29 篇可用资料中的 28 篇）**，文件名与英文底稿一一对应。
-还没译的那篇是原始缓存就已失效的 `lessons-from-ai-code-reviews`（0 字节），原因见下方已知缺口。
+### 👉 从哪里开始读：**[`zh/README.md`](zh/README.md)**（中文资料包索引）
 
-入口建议按学习顺序读：先 `zh/prompt-engineering-overview.md`、`zh/mcp-introduction.md`
-建立概念，再按周推进。原文对照看 `clean/` 下同名英文底稿。
+那份索引按周列出全部 28 篇译稿的**中文标题 + 直达链接 + 中文字数**，
+并单独列出还没译的部分与原因。直接点链接就能读，不用在目录里找文件名。
+
+入口建议按学习顺序：先 [`zh/prompt-engineering-overview.md`](zh/prompt-engineering-overview.md)、
+[`zh/mcp-introduction.md`](zh/mcp-introduction.md) 建立概念，再按周推进。
+原文对照看 `clean/` 下同名英文底稿（译稿与底稿同名，只是目录不同）。
 
 英文原始资料仍可直接打开 `source/index.html`——一份完整的离线课程主页，无需联网。
 
