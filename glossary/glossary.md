@@ -24,7 +24,7 @@
 1. **被正式译法包含的变体一律跳过**——「上下文协议」是「模型上下文协议（MCP）」的子串，子串匹配会把正确译文判成违规。
 2. 宁可漏报也不误报：一个天天误报的校验器最终会被忽略。
 
-**术语总数：171 条**（硬性禁用变体 325 条 + 提示级 41 条，由 `pipeline/translate.py` 逐块强制校验）
+**术语总数：171 条**（硬性禁用变体 324 条 + 提示级 42 条，由 `pipeline/translate.py` 逐块强制校验）
 
 ## 核心 LLM 与提示词（28 条）
 
@@ -193,7 +193,7 @@
 |---|---|---|---|---|---|
 | Software Development Life Cycle (SDLC) | 软件开发生命周期（SDLC） | `acronym` | 软件开发生命圈 | 开发周期 | — |
 | Product Requirements Document (PRD) | 产品需求文档（PRD） | `acronym` | 产品需求书、需求文档 PRD | — | — |
-| Design Doc | 设计文档 | `translate` | 设计稿、设计方案文档 | — | — |
+| Design Doc | 设计文档 | `translate` | 设计方案文档 | 设计稿 | — |
 | Stakeholder | 干系人 | `translate` | 利益相关者、干系方 | 相关方 | — |
 | Scope Creep | 范围蔓延 | `translate` | 范围蠕变、需求蔓延 | — | — |
 | Acceptance Criteria | 验收标准 | `translate` | 接受标准、验收条件 | — | — |

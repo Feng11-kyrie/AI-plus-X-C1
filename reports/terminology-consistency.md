@@ -8,8 +8,8 @@
 |---|---|
 | 术语表条目 | 171 条（其中需翻译 148 条） |
 | 审计译稿 | 21 条 |
-| 硬性禁用变体 | 325 个 |
-| 提示级变体 | 41 个（只统计不判违规） |
+| 硬性禁用变体 | 324 个 |
+| 提示级变体 | 42 个（只统计不判违规） |
 
 ## 一致率
 
@@ -18,21 +18,19 @@
 | 指标 | 数值 |
 |---|---|
 | 正式译法出现次数 | 2,130 |
-| **硬性违规次数** | **1** |
-| **术语一致率（硬性口径）** | **99.95%** |
-| 提示级命中次数 | 260（**不计入一致率**，见第三节） |
+| **硬性违规次数** | **0** |
+| **术语一致率（硬性口径）** | **100.00%** |
+| 提示级命中次数 | 261（**不计入一致率**，见第三节） |
 | 实际用到的术语 | 105 条 |
-| 其中零违规 | 104 条 |
+| 其中零违规 | 105 条 |
 
 > ⚠️ **这个百分比只统计硬性禁用变体。** 术语表另有一批提示级变体，它们是中文常用词或**其它英文词**的合法译法（如 proxy → 代理、dashboard → 控制台），一律判违规会逼出错误的译文。读数时请把两者一起看——**单看 100% 会高估实际的一致性**。
 
-❌ 发现 1 处违规，详见下方。
+✅ **全部硬性禁用变体零出现。**
 
 ## 一、违规明细（硬性）
 
-| 术语 | 应为 | 出现的违规写法 | 篇目 | 次数 | 上下文 |
-|---|---|---|---|---|---|
-| Design Doc | 设计文档 | **设计稿** | `devin-coding-agents-101` | 1 | …。 ### 细粒度视觉推理能力差 总体而言，当今的模型在**匹配设计稿截图或 Figma 原型所需的细节层级**上，视觉推理能力并不好。它… |
+无。
 
 ## 二、覆盖率缺口（参考项，不作门禁）
 
@@ -189,6 +187,7 @@
 | Specification (Spec) | 规范 | `observability-basics` | 1 |
 | Specification (Spec) | 规范 | `owasp-top-ten` | 4 |
 | Software Development Life Cycle (SDLC) | 开发周期 | `how-openai-uses-codex` | 1 |
+| Design Doc | 设计稿 | `devin-coding-agents-101` | 1 |
 | Stakeholder | 相关方 | `code-review-essentials` | 1 |
 | Deliverable | 产出物 | `specs-are-the-new-source-code` | 1 |
 | Vulnerability | 缺陷 | `ai-code-review-best-practices` | 1 |
@@ -322,7 +321,7 @@
 | Human-in-the-loop | 人在回路 | `translate` | 1 | 1 | ✅ |
 | Agent Loop | 智能体循环 | `translate` | 1 | 0 | ✅ |
 | Boilerplate | 样板代码 | `translate` | 1 | 2 | ✅ |
-| Design Doc | 设计文档 | `translate` | 1 | 0 | ❌ 1 |
+| Design Doc | 设计文档 | `translate` | 1 | 0 | ✅ |
 | Stakeholder | 干系人 | `translate` | 1 | 0 | ✅ |
 | Acceptance Criteria | 验收标准 | `translate` | 1 | 1 | ✅ |
 | Attack Surface | 攻击面 | `translate` | 1 | 0 | ✅ |

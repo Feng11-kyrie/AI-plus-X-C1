@@ -78,7 +78,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 77,Specification (Spec),规格说明,swe,translate,规格书|需求规格,规范,0,
 78,Software Development Life Cycle (SDLC),软件开发生命周期（SDLC）,process,acronym,软件开发生命圈,开发周期,7；「开发周期」降为提示级：development cycle，不是 SDLC,
 79,Product Requirements Document (PRD),产品需求文档（PRD）,process,acronym,产品需求书|需求文档 PRD,,7,
-80,Design Doc,设计文档,process,translate,设计稿|设计方案文档,,0,
+80,Design Doc,设计文档,process,translate,设计方案文档,设计稿,「设计稿」降为提示级：指视觉设计稿（design mockup），不是设计文档,
 81,Stakeholder,干系人,process,translate,利益相关者|干系方,相关方,0；「相关方」降为提示级：party/parties，不是 stakeholder,
 82,Scope Creep,范围蔓延,process,translate,范围蠕变|需求蔓延,,0,
 83,Acceptance Criteria,验收标准,process,translate,接受标准|验收条件,,0,
