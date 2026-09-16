@@ -24,7 +24,7 @@
 1. **被正式译法包含的变体一律跳过**——「上下文协议」是「模型上下文协议（MCP）」的子串，子串匹配会把正确译文判成违规。
 2. 宁可漏报也不误报：一个天天误报的校验器最终会被忽略。
 
-**术语总数：171 条**（硬性禁用变体 337 条 + 提示级 28 条，由 `pipeline/translate.py` 逐块强制校验）
+**术语总数：171 条**（硬性禁用变体 334 条 + 提示级 31 条，由 `pipeline/translate.py` 逐块强制校验）
 
 ## 核心 LLM 与提示词（28 条）
 
@@ -55,7 +55,7 @@
 | Training | 训练 | `translate` | 训练过程 | 培训 | — |
 | Benchmark | 基准测试 | `translate` | 测评、跑分 | — | — |
 | Model Card | 模型卡 | `translate` | 模型卡片、模型说明卡 | — | — |
-| Evaluation | 评估 | `translate` | 评测、评价、测试评估 | — | — |
+| Evaluation | 评估 | `translate` | 评测、测试评估 | 评价 | — |
 | Grounding | 溯源锚定 | `translate` | 接地、基础事实 | 落地 | — |
 | Distractor | 干扰项 | `translate` | 干扰词、混淆项、分散项 | — | — |
 
@@ -90,7 +90,7 @@
 | Branch | 分支 | `translate` | 枝干、代码分支 | — | — |
 | Merge | 合并 | `translate` | 归并、融合 | — | — |
 | Code Review | 代码评审 | `translate` | 代码审查、代码复查、代码审核 | — | — |
-| Refactor | 重构 | `translate` | 重写、重新构建、翻新 | — | — |
+| Refactor | 重构 | `translate` | 重新构建、翻新 | 重写 | — |
 | Technical Debt | 技术债 | `translate` | 技术债务、技术欠账 | — | — |
 | Legacy Code | 遗留代码 | `translate` | 历史代码、旧代码、遗产代码 | — | — |
 | Boilerplate | 样板代码 | `translate` | 模板代码、重复代码、锅炉板 | — | — |
@@ -198,7 +198,7 @@
 | Scope Creep | 范围蔓延 | `translate` | 范围蠕变、需求蔓延 | — | — |
 | Acceptance Criteria | 验收标准 | `translate` | 接受标准、验收条件 | — | — |
 | User Story | 用户故事 | `translate` | 用户需求故事、使用者故事 | — | — |
-| Deliverable | 交付物 | `translate` | 交付成果、可交付物、产出物 | — | — |
+| Deliverable | 交付物 | `translate` | 交付成果、可交付物 | 产出物 | — |
 | Backlog | 待办列表 | `translate` | 积压工作、待办事项、需求池 | — | — |
 | Milestone | 里程碑 | `translate` | 里程点、阶段节点 | — | — |
 | Retrospective | 回顾会议 | `translate` | 复盘会、反思会 | — | — |

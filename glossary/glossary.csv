@@ -24,7 +24,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 23,Training,训练,core-llm,translate,训练过程,培训,0；「培训」降为提示级：staff training,
 24,Benchmark,基准测试,core-llm,translate,测评|跑分,,0,
 25,Model Card,模型卡,core-llm,translate,模型卡片|模型说明卡,,0,
-26,Evaluation,评估,core-llm,translate,评测|评价|测试评估,,0,
+26,Evaluation,评估,core-llm,translate,评测|测试评估,评价,0,
 27,Guardrails,护栏,agent,translate,防护栏|护栏机制|安全围栏,,0,
 28,Agent,智能体,agent,translate,智能代理|AI 代理|代理人|Agent 体,代理,AI 语境一律「智能体」。短语形式（智能代理/AI 代理/代理人）是无歧义错译，硬性禁用；单独的「代理」降为提示级——因为 proxy 的标准译法就是「代理」，如「本地代理」,45
 29,Agentic,智能体化的,agent,translate,代理式|自治式|Agent 化,,形容词；Agentic AI → 智能体 AI,31
@@ -47,7 +47,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 46,Pull Request (PR),拉取请求（PR）,swe,acronym,合并请求|拉取申请|PR 请求,,缩写 PR 可直接用,12
 47,Merge,合并,swe,translate,归并|融合,,0,
 48,Code Review,代码评审,swe,translate,代码审查|代码复查|代码审核,,"统一起见一律""代码评审""",0
-49,Refactor,重构,swe,translate,重写|重新构建|翻新,,0,
+49,Refactor,重构,swe,translate,重新构建|翻新,重写,0,
 50,Technical Debt,技术债,swe,translate,技术债务|技术欠账,,0,
 51,Legacy Code,遗留代码,swe,translate,历史代码|旧代码|遗产代码,,0,
 52,Boilerplate,样板代码,swe,translate,模板代码|重复代码|锅炉板,,0,
@@ -83,7 +83,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 82,Scope Creep,范围蔓延,process,translate,范围蠕变|需求蔓延,,0,
 83,Acceptance Criteria,验收标准,process,translate,接受标准|验收条件,,0,
 84,User Story,用户故事,process,translate,用户需求故事|使用者故事,,0,
-85,Deliverable,交付物,process,translate,交付成果|可交付物|产出物,,挑战自身的核心词汇,0
+85,Deliverable,交付物,process,translate,交付成果|可交付物,产出物,挑战自身的核心词汇,0
 86,Backlog,待办列表,process,translate,积压工作|待办事项|需求池,,0,
 87,Milestone,里程碑,process,translate,里程点|阶段节点,,0,
 88,Retrospective,回顾会议,process,translate,复盘会|反思会,,0,

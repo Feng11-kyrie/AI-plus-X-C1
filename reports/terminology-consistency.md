@@ -8,8 +8,8 @@
 |---|---|
 | 术语表条目 | 171 条（其中需翻译 148 条） |
 | 审计译稿 | 14 条 |
-| 硬性禁用变体 | 337 个 |
-| 提示级变体 | 28 个（只统计不判违规） |
+| 硬性禁用变体 | 334 个 |
+| 提示级变体 | 31 个（只统计不判违规） |
 
 ## 一致率
 
@@ -18,21 +18,19 @@
 | 指标 | 数值 |
 |---|---|
 | 正式译法出现次数 | 1,160 |
-| **硬性违规次数** | **1** |
-| **术语一致率（硬性口径）** | **99.91%** |
-| 提示级命中次数 | 148（**不计入一致率**，见第三节） |
+| **硬性违规次数** | **0** |
+| **术语一致率（硬性口径）** | **100.00%** |
+| 提示级命中次数 | 149（**不计入一致率**，见第三节） |
 | 实际用到的术语 | 88 条 |
-| 其中零违规 | 87 条 |
+| 其中零违规 | 88 条 |
 
 > ⚠️ **这个百分比只统计硬性禁用变体。** 术语表另有一批提示级变体，它们是中文常用词或**其它英文词**的合法译法（如 proxy → 代理、dashboard → 控制台），一律判违规会逼出错误的译文。读数时请把两者一起看——**单看 100% 会高估实际的一致性**。
 
-❌ 发现 1 处违规，详见下方。
+✅ **全部硬性禁用变体零出现。**
 
 ## 一、违规明细（硬性）
 
-| 术语 | 应为 | 出现的违规写法 | 篇目 | 次数 | 上下文 |
-|---|---|---|---|---|---|
-| Deliverable | 交付物 | **产出物** | `specs-are-the-new-source-code` | 1 | …求、打磨正确的功能、验证影响。 而所有这些压力，最终都会汇聚到一份产出物上——规格文档。 ## 规格——新的源代码 在传统软件开发中，程… |
+无。
 
 ## 二、覆盖率缺口（参考项，不作门禁）
 
@@ -117,6 +115,7 @@
 | Specification (Spec) | 规范 | `ai-code-review-best-practices` | 3 |
 | Specification (Spec) | 规范 | `claude-code-best-practices` | 1 |
 | Specification (Spec) | 规范 | `observability-basics` | 1 |
+| Deliverable | 产出物 | `specs-are-the-new-source-code` | 1 |
 | Vulnerability | 缺陷 | `ai-code-review-best-practices` | 1 |
 | Vulnerability | 缺陷 | `code-reviews-just-do-it` | 4 |
 | Vulnerability | 缺陷 | `copilot-prompt-injection-rce` | 2 |
@@ -203,7 +202,7 @@
 | Refactor | 重构 | `translate` | 2 | 1 | ✅ |
 | Latency | 延迟 | `translate` | 2 | 1 | ✅ |
 | Spec-Driven Development | 规格驱动开发 | `translate` | 2 | 1 | ✅ |
-| Deliverable | 交付物 | `translate` | 2 | 1 | ❌ 1 |
+| Deliverable | 交付物 | `translate` | 2 | 1 | ✅ |
 | Common Vulnerabilities and Exposures (CVE) | 通用漏洞披露（CVE） | `acronym` | 2 | 0 | ✅ |
 | Remote Code Execution (RCE) | 远程代码执行（RCE） | `acronym` | 2 | 1 | ✅ |
 | Root Cause Analysis (RCA) | 根因分析（RCA） | `acronym` | 2 | 2 | ✅ |
