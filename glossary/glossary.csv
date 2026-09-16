@@ -51,7 +51,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 50,Technical Debt,技术债,swe,translate,技术债务|技术欠账,,0,
 51,Legacy Code,遗留代码,swe,translate,历史代码|旧代码|遗产代码,,0,
 52,Boilerplate,样板代码,swe,translate,模板代码|重复代码|锅炉板,,0,
-53,Linter,代码检查工具,swe,translate,检查器|语法检查器|Lint 器,,0,
+53,Linter,代码检查工具,swe,translate,语法检查器|Lint 器,检查器,「检查器」降为提示级：type checker（类型检查器）是另一回事,
 54,Continuous Integration (CI),持续集成（CI）,swe,acronym,连续集成|持续整合,,25,
 55,Continuous Delivery (CD),持续交付（CD）,swe,acronym,持续部署|连续交付,,15,
 56,Unit Test,单元测试,swe,translate,单位测试|模块测试,,0,

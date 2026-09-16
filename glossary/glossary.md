@@ -24,7 +24,7 @@
 1. **被正式译法包含的变体一律跳过**——「上下文协议」是「模型上下文协议（MCP）」的子串，子串匹配会把正确译文判成违规。
 2. 宁可漏报也不误报：一个天天误报的校验器最终会被忽略。
 
-**术语总数：171 条**（硬性禁用变体 326 条 + 提示级 40 条，由 `pipeline/translate.py` 逐块强制校验）
+**术语总数：171 条**（硬性禁用变体 325 条 + 提示级 41 条，由 `pipeline/translate.py` 逐块强制校验）
 
 ## 核心 LLM 与提示词（28 条）
 
@@ -94,7 +94,7 @@
 | Technical Debt | 技术债 | `translate` | 技术债务、技术欠账 | — | — |
 | Legacy Code | 遗留代码 | `translate` | 历史代码、旧代码、遗产代码 | — | — |
 | Boilerplate | 样板代码 | `translate` | 模板代码、重复代码、锅炉板 | — | — |
-| Linter | 代码检查工具 | `translate` | 检查器、语法检查器、Lint 器 | — | — |
+| Linter | 代码检查工具 | `translate` | 语法检查器、Lint 器 | 检查器 | — |
 | Continuous Integration (CI) | 持续集成（CI） | `acronym` | 连续集成、持续整合 | — | — |
 | Continuous Delivery (CD) | 持续交付（CD） | `acronym` | 持续部署、连续交付 | — | — |
 | Unit Test | 单元测试 | `translate` | 单位测试、模块测试 | — | — |

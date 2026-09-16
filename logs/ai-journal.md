@@ -13,12 +13,12 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 399 |
-| 翻译块次 | 302 |
-| 其中通过校验 | 276 |
-| **其中未通过 / 失败** | **26** |
-| 完成条目 | 25 |
-| 出现过校验问题的块 | 26 |
+| 记录事件总数 | 436 |
+| 翻译块次 | 334 |
+| 其中通过校验 | 307 |
+| **其中未通过 / 失败** | **27** |
+| 完成条目 | 26 |
+| 出现过校验问题的块 | 27 |
 
 ## 逐块记录
 
@@ -326,6 +326,38 @@
 | 13:52:54 | `how-to-review-code-effecti` | 10 | queue | `4c87723b3e2e` | 1114/412 | — | ✅ |
 | 13:52:54 | `how-to-review-code-effecti` | 11 | queue | `6ff86bf0be12` | 1022/581 | — | ✅ |
 | 13:52:54 | `how-to-review-code-effecti` | 12 | queue | `c9a208ba5e26` | 129/100 | — | ✅ |
+| 13:55:39 | `mcp-food-for-thought` | 0 | queue | `645bb959d3b5` | 1408/870 | — | ✅ |
+| 13:55:39 | `mcp-food-for-thought` | 1 | queue | `2d15df002305` | 1475/875 | — | ✅ |
+| 13:55:39 | `mcp-server-authentication` | 1 | queue | `3f81b7cd9c61` | 1499/1059 | — | ✅ |
+| 13:55:39 | `devin-coding-agents-101` | 0 | queue | `c0159b1c23bd` | 2072/826 | — | ✅ |
+| 13:55:39 | `devin-coding-agents-101` | 1 | queue | `593eaafcd8f6` | 1089/417 | — | ✅ |
+| 13:55:39 | `devin-coding-agents-101` | 2 | queue | `37f333225df6` | 973/417 | — | ❌ 出现禁用变体「检查器」（应为「代码检查工具」）×1 |
+| 13:55:39 | `devin-coding-agents-101` | 3 | queue | `075f030c4281` | 1087/438 | — | ✅ |
+| 13:55:39 | `devin-coding-agents-101` | 4 | queue | `9c921f9a5bae` | 1121/461 | — | ✅ |
+| 13:55:39 | `devin-coding-agents-101` | 5 | queue | `a51b6208bbe1` | 835/368 | — | ✅ |
+| 13:55:39 | `devin-coding-agents-101` | 6 | queue | `127c7ae3319c` | 1173/403 | — | ✅ |
+| 13:55:39 | `devin-coding-agents-101` | 7 | queue | `2032d628a350` | 1620/617 | — | ✅ |
+| 13:55:39 | `devin-coding-agents-101` | 8 | queue | `de6e90cfceb9` | 871/335 | — | ✅ |
+| 13:55:39 | `devin-coding-agents-101` | 9 | queue | `3f64ef890e53` | 1240/535 | — | ✅ |
+| 13:55:39 | `devin-coding-agents-101` | 10 | queue | `d0c2f71814e1` | 1128/412 | — | ✅ |
+| 13:55:39 | `devin-coding-agents-101` | 11 | queue | `9b80e8c1e35e` | 771/310 | — | ✅ |
+| 13:55:39 | `devin-coding-agents-101` | 12 | queue | `5cdc40f9dac2` | 1180/439 | — | ✅ |
+| 13:55:39 | `devin-coding-agents-101` | 13 | queue | `7864f8a09893` | 981/376 | — | ✅ |
+| 13:55:39 | `devin-coding-agents-101` | 14 | queue | `5ea011370ba5` | 764/256 | — | ✅ |
+| 13:55:39 | `devin-coding-agents-101` | 15 | queue | `12c8d9833275` | 807/313 | — | ✅ |
+| 13:55:39 | `devin-coding-agents-101` | 16 | queue | `fee4882ea032` | 815/301 | — | ✅ |
+| 13:55:39 | `how-long-contexts-fail` | 0 | queue | `4dfe4b9fd9b5` | 976/406 | — | ✅ |
+| 13:55:39 | `how-long-contexts-fail` | 2 | queue | `796430b7d838` | 1346/573 | — | ✅ |
+| 13:55:39 | `how-long-contexts-fail` | 3 | queue | `8096c4d1e241` | 2146/1080 | — | ✅ |
+| 13:55:39 | `how-long-contexts-fail` | 4 | queue | `7d57a6d7fd58` | 3012/1181 | — | ✅ |
+| 13:55:39 | `how-long-contexts-fail` | 5 | queue | `71482b4cf21a` | 755/424 | — | ✅ |
+| 13:55:39 | `sast-vs-dast` | 8 | queue | `e7259b57d71d` | 787/248 | — | ✅ |
+| 13:55:39 | `benefits-agentic-ai-oncall` | 0 | queue | `eb874c0c0d83` | 3413/1184 | — | ✅ |
+| 13:55:39 | `kubernetes-troubleshooting` | 1 | queue | `2309d42fcc7c` | 1471/729 | — | ✅ |
+| 13:55:39 | `kubernetes-troubleshooting` | 2 | queue | `99cb4460a2f6` | 2570/1219 | — | ✅ |
+| 13:55:39 | `multi-agent-systems-ai-nat` | 2 | queue | `6a35be79ff1e` | 2852/993 | — | ✅ |
+| 13:55:39 | `observability-basics` | 3 | queue | `ecb59e12ea37` | 1155/536 | — | ✅ |
+| 13:55:46 | `devin-coding-agents-101` | 2 | queue | `cacfce756af2` | 973/417 | — | ✅ |
 
 ## 失败与返工记录
 
@@ -468,6 +500,11 @@
 - 时间：2026-09-16T13:47:11+0800　后端：queue　prompt 哈希：`90bd23ce2f2a`
 - 问题：出现禁用变体「MCP 协议」（应为「模型上下文协议（MCP）」）×1
 
+### `devin-coding-agents-101` 第 2 块
+
+- 时间：2026-09-16T13:55:39+0800　后端：queue　prompt 哈希：`37f333225df6`
+- 问题：出现禁用变体「检查器」（应为「代码检查工具」）×1
+
 ## 条目汇总
 
 | 条目 | 周 | 块数 | 中文字符 | 完成时间 |
@@ -497,4 +534,5 @@
 | `sast-vs-dast` | W6 | 16 | 8,022 | 2026-09-16T13:44:32 |
 | `writing-effective-tools-for-agents` | W3 | 12 | 8,634 | 2026-09-16T13:47:20 |
 | `how-to-review-code-effectively` | W7 | 13 | 9,018 | 2026-09-16T13:52:54 |
+| `devin-coding-agents-101` | W3 | 17 | 7,302 | 2026-09-16T13:55:46 |
 
