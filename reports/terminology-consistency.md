@@ -7,7 +7,7 @@
 | 项 | 值 |
 |---|---|
 | 术语表条目 | 171 条（其中需翻译 148 条） |
-| 审计译稿 | 24 条 |
+| 审计译稿 | 25 条 |
 | 硬性禁用变体 | 319 个 |
 | 提示级变体 | 47 个（只统计不判违规） |
 
@@ -17,12 +17,12 @@
 
 | 指标 | 数值 |
 |---|---|
-| 正式译法出现次数 | 2,630 |
+| 正式译法出现次数 | 2,972 |
 | **硬性违规次数** | **0** |
 | **术语一致率（硬性口径）** | **100.00%** |
-| 提示级命中次数 | 325（**不计入一致率**，见第三节） |
-| 实际用到的术语 | 118 条 |
-| 其中零违规 | 118 条 |
+| 提示级命中次数 | 363（**不计入一致率**，见第三节） |
+| 实际用到的术语 | 119 条 |
+| 其中零违规 | 119 条 |
 
 > ⚠️ **这个百分比只统计硬性禁用变体。** 术语表另有一批提示级变体，它们是中文常用词或**其它英文词**的合法译法（如 proxy → 代理、dashboard → 控制台），一律判违规会逼出错误的译文。读数时请把两者一起看——**单看 100% 会高估实际的一致性**。
 
@@ -61,6 +61,7 @@
 | Agentic | 智能体化的 | `finding-vulnerabilities-claude-codex` |
 | Agentic | 智能体化的 | `how-long-contexts-fail` |
 | Agentic | 智能体化的 | `kubernetes-troubleshooting-ai` |
+| Agentic | 智能体化的 | `mcp-introduction` |
 | Agentic | 智能体化的 | `multi-agent-systems-ai-native` |
 | Agentic | 智能体化的 | `writing-effective-tools-for-agents` |
 | Boilerplate | 样板代码 | `how-openai-uses-codex` |
@@ -119,6 +120,7 @@
 | Scaffolding | 框架 | `devin-coding-agents-101` | 1 |
 | Scaffolding | 框架 | `finding-vulnerabilities-claude-codex` | 5 |
 | Scaffolding | 框架 | `how-to-review-code-effectively` | 1 |
+| Scaffolding | 框架 | `mcp-introduction` | 11 |
 | Scaffolding | 框架 | `multi-agent-systems-ai-native` | 2 |
 | Scaffolding | 框架 | `observability-basics` | 5 |
 | Scaffolding | 框架 | `sast-vs-dast` | 3 |
@@ -127,11 +129,13 @@
 | Hallucination | 框架 | `devin-coding-agents-101` | 1 |
 | Hallucination | 框架 | `finding-vulnerabilities-claude-codex` | 5 |
 | Hallucination | 框架 | `how-to-review-code-effectively` | 1 |
+| Hallucination | 框架 | `mcp-introduction` | 11 |
 | Hallucination | 框架 | `multi-agent-systems-ai-native` | 2 |
 | Hallucination | 框架 | `observability-basics` | 5 |
 | Hallucination | 框架 | `sast-vs-dast` | 3 |
 | Hallucination | 框架 | `sre-introduction` | 1 |
 | Retrieval-Augmented Generation (RAG) | 落地 | `ai-code-review-best-practices` | 10 |
+| Retrieval-Augmented Generation (RAG) | 落地 | `mcp-introduction` | 1 |
 | Retrieval-Augmented Generation (RAG) | 落地 | `mcp-registry-preview` | 2 |
 | Retrieval-Augmented Generation (RAG) | 落地 | `observability-basics` | 2 |
 | Retrieval-Augmented Generation (RAG) | 落地 | `sast-vs-dast` | 1 |
@@ -145,6 +149,7 @@
 | Agent | 代理 | `mcp-server-authentication` | 2 |
 | Tool Use | 工具使用 | `how-long-contexts-fail` | 1 |
 | Tool Use | 调用工具 | `mcp-food-for-thought` | 1 |
+| Tool Use | 调用工具 | `mcp-introduction` | 2 |
 | Tool Use | 调用工具 | `mcp-server-authentication` | 3 |
 | Tool Use | 工具使用 | `writing-effective-tools-for-agents` | 2 |
 | Tool Use | 调用工具 | `writing-effective-tools-for-agents` | 1 |
@@ -157,6 +162,7 @@
 | Model Context Protocol (MCP) | 组织 | `how-openai-uses-codex` | 2 |
 | Model Context Protocol (MCP) | 组织 | `how-to-review-code-effectively` | 2 |
 | Model Context Protocol (MCP) | 协调 | `kubernetes-troubleshooting-ai` | 1 |
+| Model Context Protocol (MCP) | 组织 | `mcp-introduction` | 2 |
 | Model Context Protocol (MCP) | 组织 | `mcp-registry-preview` | 2 |
 | Model Context Protocol (MCP) | 组织 | `owasp-top-ten` | 3 |
 | Model Context Protocol (MCP) | 协调 | `owasp-top-ten` | 1 |
@@ -171,6 +177,7 @@
 | Orchestration | 组织 | `how-openai-uses-codex` | 2 |
 | Orchestration | 组织 | `how-to-review-code-effectively` | 2 |
 | Orchestration | 协调 | `kubernetes-troubleshooting-ai` | 1 |
+| Orchestration | 组织 | `mcp-introduction` | 2 |
 | Orchestration | 组织 | `mcp-registry-preview` | 2 |
 | Orchestration | 组织 | `owasp-top-ten` | 3 |
 | Orchestration | 协调 | `owasp-top-ten` | 1 |
@@ -182,6 +189,7 @@
 | Workflow | 流程 | `finding-vulnerabilities-claude-codex` | 4 |
 | Workflow | 流程 | `how-openai-uses-codex` | 3 |
 | Workflow | 流程 | `how-to-review-code-effectively` | 4 |
+| Workflow | 流程 | `mcp-introduction` | 8 |
 | Workflow | 流程 | `mcp-server-authentication` | 1 |
 | Workflow | 流程 | `multi-agent-systems-ai-native` | 1 |
 | Workflow | 流程 | `observability-basics` | 1 |
@@ -250,6 +258,7 @@
 | Runbook | 操作手册 | `sre-introduction` | 4 |
 | Mean Time To Recovery (MTTR) | 平均修复时间 | `sre-introduction` | 1 |
 | Grounding | 落地 | `ai-code-review-best-practices` | 10 |
+| Grounding | 落地 | `mcp-introduction` | 1 |
 | Grounding | 落地 | `mcp-registry-preview` | 2 |
 | Grounding | 落地 | `observability-basics` | 2 |
 | Grounding | 落地 | `sast-vs-dast` | 1 |
@@ -260,40 +269,40 @@
 
 | 术语 | 正式译法 | policy | 出现次数 | 源文篇数 | 违规 |
 |---|---|---|---|---|---|
-| Agent | 智能体 | `translate` | 325 | 14 | ✅ |
-| Context | 上下文 | `translate` | 174 | 18 | ✅ |
-| Model Context Protocol (MCP) | 模型上下文协议（MCP） | `acronym` | 152 | 4 | ✅ |
-| Prompt | 提示词 | `translate` | 138 | 10 | ✅ |
+| Agent | 智能体 | `translate` | 347 | 15 | ✅ |
+| Model Context Protocol (MCP) | 模型上下文协议（MCP） | `acronym` | 317 | 5 | ✅ |
+| Context | 上下文 | `translate` | 190 | 19 | ✅ |
+| Prompt | 提示词 | `translate` | 146 | 11 | ✅ |
 | Pull Request (PR) | 拉取请求（PR） | `acronym` | 119 | 6 | ✅ |
 | Vulnerability | 漏洞 | `translate` | 114 | 4 | ✅ |
+| MCP Server | MCP 服务器 | `keep_en_first` | 102 | 7 | ✅ |
 | Code Review | 代码评审 | `translate` | 97 | 8 | ✅ |
+| Application Programming Interface (API) | 应用程序接口（API） | `acronym` | 94 | 0 | ✅ |
 | Site Reliability Engineering (SRE) | 站点可靠性工程（SRE） | `acronym` | 71 | 1 | ✅ |
-| MCP Server | MCP 服务器 | `keep_en_first` | 67 | 6 | ✅ |
 | Static Application Security Testing (SAST) | 静态应用安全测试（SAST） | `acronym` | 67 | 1 | ✅ |
-| Application Programming Interface (API) | 应用程序接口（API） | `acronym` | 64 | 0 | ✅ |
+| Large Language Model (LLM) | 大语言模型（LLM） | `acronym` | 64 | 0 | ✅ |
+| Workflow | 工作流 | `translate` | 56 | 6 | ✅ |
+| Deployment | 部署 | `translate` | 56 | 9 | ✅ |
 | Evaluation | 评估 | `translate` | 54 | 3 | ✅ |
 | Dynamic Application Security Testing (DAST) | 动态应用安全测试（DAST） | `acronym` | 54 | 1 | ✅ |
-| Workflow | 工作流 | `translate` | 50 | 6 | ✅ |
-| Deployment | 部署 | `translate` | 48 | 8 | ✅ |
-| Codebase | 代码库 | `translate` | 45 | 9 | ✅ |
-| Large Language Model (LLM) | 大语言模型（LLM） | `acronym` | 44 | 0 | ✅ |
-| Dependency | 依赖 | `translate` | 38 | 7 | ✅ |
-| Terminal | 终端 | `translate` | 35 | 4 | ✅ |
-| Log | 日志 | `translate` | 33 | 7 | ✅ |
+| Codebase | 代码库 | `translate` | 46 | 10 | ✅ |
+| Dependency | 依赖 | `translate` | 39 | 7 | ✅ |
+| Terminal | 终端 | `translate` | 36 | 4 | ✅ |
+| Log | 日志 | `translate` | 34 | 8 | ✅ |
 | Trace | 追踪记录 | `translate` | 30 | 3 | ✅ |
 | Inference | 推理 | `translate` | 29 | 0 | ✅ |
+| Tool Use | 工具调用 | `translate` | 27 | 1 | ✅ |
 | Commit | 提交 | `translate` | 27 | 4 | ✅ |
 | Metric | 指标 | `translate` | 27 | 2 | ✅ |
+| Prompt Engineering | 提示词工程 | `translate` | 26 | 4 | ✅ |
 | Merge | 合并 | `translate` | 26 | 4 | ✅ |
-| Prompt Engineering | 提示词工程 | `translate` | 25 | 3 | ✅ |
 | Alert | 告警 | `translate` | 25 | 4 | ✅ |
-| Tool Use | 工具调用 | `translate` | 24 | 0 | ✅ |
+| Repository | 仓库 | `translate` | 24 | 6 | ✅ |
 | Continuous Integration (CI) | 持续集成（CI） | `acronym` | 24 | 2 | ✅ |
-| Repository | 仓库 | `translate` | 23 | 6 | ✅ |
 | Runtime Application Self-Protection (RASP) | 运行时应用自保护（RASP） | `acronym` | 22 | 1 | ✅ |
 | Tracing | 链路追踪 | `translate` | 22 | 4 | ✅ |
+| Runtime | 运行时 | `translate` | 21 | 4 | ✅ |
 | On-call | 值班 | `translate` | 21 | 4 | ✅ |
-| Runtime | 运行时 | `translate` | 20 | 3 | ✅ |
 | Observability | 可观测性 | `translate` | 19 | 6 | ✅ |
 | Training | 训练 | `translate` | 18 | 6 | ✅ |
 | Coding Agent | 编码智能体 | `translate` | 16 | 2 | ✅ |
@@ -302,42 +311,43 @@
 | Command-Line Interface (CLI) | 命令行界面（CLI） | `acronym` | 15 | 0 | ✅ |
 | Common Weakness Enumeration (CWE) | 通用缺陷枚举（CWE） | `acronym` | 15 | 0 | ✅ |
 | Continuous Delivery (CD) | 持续交付（CD） | `acronym` | 14 | 0 | ✅ |
+| Software Development Kit (SDK) | 软件开发工具包（SDK） | `acronym` | 14 | 0 | ✅ |
 | True Positive Rate (TPR) | 真阳性率（TPR） | `acronym` | 14 | 1 | ✅ |
 | Branch | 分支 | `translate` | 13 | 4 | ✅ |
 | Diff | 差异 | `translate` | 13 | 3 | ✅ |
 | Insecure Direct Object Reference (IDOR) | 不安全的直接对象引用（IDOR） | `acronym` | 13 | 1 | ✅ |
 | SQL Injection | SQL 注入 | `translate` | 13 | 2 | ✅ |
 | False Positive | 误报 | `translate` | 13 | 2 | ✅ |
+| Multi-agent | 多智能体 | `translate` | 12 | 2 | ✅ |
+| Function Calling | 函数调用 | `translate` | 12 | 1 | ✅ |
 | Orchestration | 编排 | `translate` | 12 | 4 | ✅ |
-| Software Development Kit (SDK) | 软件开发工具包（SDK） | `acronym` | 12 | 0 | ✅ |
 | Software Development Life Cycle (SDLC) | 软件开发生命周期（SDLC） | `acronym` | 12 | 1 | ✅ |
 | Incident | 故障事件 | `translate` | 12 | 5 | ✅ |
 | Context Window | 上下文窗口 | `translate` | 11 | 2 | ✅ |
-| Multi-agent | 多智能体 | `translate` | 11 | 2 | ✅ |
 | Cross-Site Scripting (XSS) | 跨站脚本攻击（XSS） | `acronym` | 11 | 1 | ✅ |
 | False Positive Rate (FPR) | 假阳性率（FPR） | `acronym` | 10 | 1 | ✅ |
 | Benchmark | 基准测试 | `translate` | 9 | 2 | ✅ |
 | Unit Test | 单元测试 | `translate` | 9 | 0 | ✅ |
+| Integrated Development Environment (IDE) | 集成开发环境（IDE） | `acronym` | 9 | 0 | ✅ |
 | Prompt Injection | 提示词注入 | `translate` | 8 | 1 | ✅ |
 | Triage | 分级处置 | `translate` | 8 | 5 | ✅ |
 | Telemetry | 遥测 | `translate` | 8 | 3 | ✅ |
-| Integrated Development Environment (IDE) | 集成开发环境（IDE） | `acronym` | 7 | 0 | ✅ |
 | Capacity Planning | 容量规划 | `translate` | 7 | 1 | ✅ |
 | Hallucination | 幻觉 | `translate` | 6 | 1 | ✅ |
 | Chain of Thought | 思维链 | `translate` | 6 | 1 | ✅ |
+| Embedding | 嵌入 | `translate` | 6 | 0 | ✅ |
+| Credential | 凭据 | `translate` | 6 | 0 | ✅ |
 | Alert Fatigue | 告警疲劳 | `translate` | 6 | 2 | ✅ |
 | Mean Time To Recovery (MTTR) | 平均恢复时间（MTTR） | `acronym` | 6 | 1 | ✅ |
 | Fine-tuning | 微调 | `translate` | 5 | 1 | ✅ |
 | Test Coverage | 测试覆盖率 | `translate` | 5 | 2 | ✅ |
 | Dashboard | 仪表盘 | `translate` | 5 | 1 | ✅ |
+| System Prompt | 系统提示词 | `translate` | 4 | 3 | ✅ |
 | Zero-shot | 零样本 | `translate` | 4 | 1 | ✅ |
-| Embedding | 嵌入 | `translate` | 4 | 0 | ✅ |
-| Function Calling | 函数调用 | `translate` | 4 | 0 | ✅ |
 | Latency | 延迟 | `translate` | 4 | 2 | ✅ |
 | Common Vulnerabilities and Exposures (CVE) | 通用漏洞披露（CVE） | `acronym` | 4 | 0 | ✅ |
 | Server-Side Request Forgery (SSRF) | 服务端请求伪造（SSRF） | `acronym` | 4 | 0 | ✅ |
 | Postmortem | 事后复盘 | `translate` | 4 | 1 | ✅ |
-| System Prompt | 系统提示词 | `translate` | 3 | 2 | ✅ |
 | Context Rot | 上下文腐化 | `translate` | 3 | 1 | ✅ |
 | Retrieval-Augmented Generation (RAG) | 检索增强生成（RAG） | `acronym` | 3 | 0 | ✅ |
 | Minimum Viable Product (MVP) | 最小可行产品（MVP） | `acronym` | 3 | 0 | ✅ |
@@ -350,7 +360,7 @@
 | Few-shot | 少样本 | `translate` | 2 | 1 | ✅ |
 | Reasoning | 推理能力 | `translate` | 2 | 7 | ✅ |
 | Guardrails | 护栏 | `translate` | 2 | 1 | ✅ |
-| Agentic | 智能体化的 | `translate` | 2 | 8 | ✅ |
+| Agentic | 智能体化的 | `translate` | 2 | 9 | ✅ |
 | Technical Debt | 技术债 | `translate` | 2 | 1 | ✅ |
 | Linter | 代码检查工具 | `translate` | 2 | 0 | ✅ |
 | Integration Test | 集成测试 | `translate` | 2 | 0 | ✅ |
@@ -365,13 +375,13 @@
 | Service Level Objective (SLO) | 服务等级目标（SLO） | `acronym` | 2 | 0 | ✅ |
 | Root Cause Analysis (RCA) | 根因分析（RCA） | `acronym` | 2 | 2 | ✅ |
 | Human-in-the-loop | 人在回路 | `translate` | 1 | 1 | ✅ |
+| Autonomy | 自主性 | `translate` | 1 | 0 | ✅ |
 | Agent Loop | 智能体循环 | `translate` | 1 | 0 | ✅ |
 | Boilerplate | 样板代码 | `translate` | 1 | 2 | ✅ |
 | Rollback | 回滚 | `translate` | 1 | 0 | ✅ |
 | Design Doc | 设计文档 | `translate` | 1 | 0 | ✅ |
 | Stakeholder | 干系人 | `translate` | 1 | 0 | ✅ |
 | Acceptance Criteria | 验收标准 | `translate` | 1 | 1 | ✅ |
-| Credential | 凭据 | `translate` | 1 | 0 | ✅ |
 | Red Team | 红队 | `translate` | 1 | 0 | ✅ |
 | Service Level Agreement (SLA) | 服务等级协议（SLA） | `acronym` | 1 | 0 | ✅ |
 | Toil | 琐务 | `translate` | 1 | 1 | ✅ |

@@ -12,9 +12,9 @@
 
 | 指标 | 数值 |
 |---|---|
-| 已完成条目 | **24** / 29 |
-| 覆盖率（分母 34） | **70.6%** |
-| 是否达标 | ⬜ 未达标（还差 4 条） |
+| 已完成条目 | **25** / 29 |
+| 覆盖率（分母 34） | **73.5%** |
+| 是否达标 | ⬜ 未达标（还差 3 条） |
 
 ## 逐条状态
 
@@ -23,7 +23,7 @@
 | `prompt-engineering-overview` | W1 | html | 13 | 13 | ✅ 完成 |
 | `how-openai-uses-codex` | W1 | pdf | 4 | 4 | ✅ 完成 |
 | `mcp-food-for-thought` | W2 | html | 4 | 4 | ✅ 完成 |
-| `mcp-introduction` | W2 | html | 17 | 0 | ⬜ 未开始 |
+| `mcp-introduction` | W2 | html | 17 | 17 | ✅ 完成 |
 | `mcp-registry-preview` | W2 | html | 3 | 3 | ✅ 完成 |
 | `mcp-server-authentication` | W2 | html | 8 | 8 | ✅ 完成 |
 | `devin-coding-agents-101` | W3 | html | 17 | 17 | ✅ 完成 |

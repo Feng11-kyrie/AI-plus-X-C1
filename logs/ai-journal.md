@@ -13,12 +13,12 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 507 |
-| 翻译块次 | 388 |
-| 其中通过校验 | 352 |
-| **其中未通过 / 失败** | **36** |
-| 完成条目 | 29 |
-| 出现过校验问题的块 | 36 |
+| 记录事件总数 | 534 |
+| 翻译块次 | 410 |
+| 其中通过校验 | 372 |
+| **其中未通过 / 失败** | **38** |
+| 完成条目 | 30 |
+| 出现过校验问题的块 | 38 |
 
 ## 逐块记录
 
@@ -412,6 +412,28 @@
 | 14:17:09 | `kubernetes-troubleshooting` | 0 | queue | `f43586f80a21` | 1666/937 | — | ✅ |
 | 14:17:09 | `observability-basics` | 1 | queue | `d763d377472a` | 1107/465 | — | ✅ |
 | 14:17:09 | `sre-introduction` | 7 | queue | `843aad7c6e83` | 1146/506 | — | ✅ |
+| 14:22:40 | `mcp-introduction` | 0 | queue | `1dbd6acdc16e` | 771/314 | — | ✅ |
+| 14:22:40 | `mcp-introduction` | 1 | queue | `63bdcd000f77` | 1514/853 | — | ❌ 出现禁用变体「MCP 协议」（应为「模型上下文协议（MCP）」）×1 |
+| 14:22:40 | `mcp-introduction` | 2 | queue | `311a5d7e6cc8` | 3031/1267 | — | ✅ |
+| 14:22:40 | `mcp-introduction` | 3 | queue | `e1c376e0f614` | 1779/870 | — | ✅ |
+| 14:22:40 | `mcp-introduction` | 4 | queue | `ea79121e6c9e` | 1457/501 | — | ✅ |
+| 14:22:40 | `mcp-introduction` | 5 | queue | `f5d36ed85d11` | 1241/444 | — | ✅ |
+| 14:22:40 | `mcp-introduction` | 6 | queue | `bead8ae9a916` | 594/250 | — | ✅ |
+| 14:22:40 | `mcp-introduction` | 7 | queue | `4b12c0cbceb3` | 3372/1432 | — | ❌ 出现禁用变体「MCP 协议」（应为「模型上下文协议（MCP）」）×1 |
+| 14:22:40 | `mcp-introduction` | 8 | queue | `f76acc422219` | 472/196 | — | ✅ |
+| 14:22:40 | `mcp-introduction` | 9 | queue | `e2780a3c5230` | 2998/1574 | — | ✅ |
+| 14:22:40 | `mcp-introduction` | 10 | queue | `c83eccdb7d67` | 1371/952 | — | ✅ |
+| 14:22:40 | `mcp-introduction` | 11 | queue | `1252e28fe425` | 1909/801 | — | ✅ |
+| 14:22:40 | `mcp-introduction` | 12 | queue | `6b5e612e43d0` | 1400/511 | — | ✅ |
+| 14:22:40 | `mcp-introduction` | 13 | queue | `dde88a259bfd` | 1074/358 | — | ✅ |
+| 14:22:40 | `mcp-introduction` | 14 | queue | `475cdd50a97d` | 1591/547 | — | ✅ |
+| 14:22:40 | `mcp-introduction` | 15 | queue | `694b57bb170d` | 1667/684 | — | ✅ |
+| 14:22:40 | `mcp-introduction` | 16 | queue | `7046f9217a24` | 88/54 | — | ✅ |
+| 14:22:40 | `ai-code-review-best-practi` | 3 | queue | `9fd819d6682e` | 1755/667 | — | ✅ |
+| 14:22:40 | `benefits-agentic-ai-oncall` | 0 | queue | `b0d250117ddd` | 3413/1184 | — | ✅ |
+| 14:22:40 | `kubernetes-troubleshooting` | 3 | queue | `a7ff4ba6a387` | 1324/579 | — | ✅ |
+| 14:22:49 | `mcp-introduction` | 1 | queue | `63bdcd000f77` | 1514/851 | — | ✅ |
+| 14:22:49 | `mcp-introduction` | 7 | queue | `4b12c0cbceb3` | 3372/1433 | — | ✅ |
 
 ## 失败与返工记录
 
@@ -606,6 +628,16 @@
 - 时间：2026-09-16T14:17:00+0800　后端：queue　prompt 哈希：`ae951e83837a`
 - 问题：出现禁用变体「平均修复时间」（应为「平均恢复时间（MTTR）」）×1
 
+### `mcp-introduction` 第 1 块
+
+- 时间：2026-09-16T14:22:40+0800　后端：queue　prompt 哈希：`63bdcd000f77`
+- 问题：出现禁用变体「MCP 协议」（应为「模型上下文协议（MCP）」）×1
+
+### `mcp-introduction` 第 7 块
+
+- 时间：2026-09-16T14:22:40+0800　后端：queue　prompt 哈希：`4b12c0cbceb3`
+- 问题：出现禁用变体「MCP 协议」（应为「模型上下文协议（MCP）」）×1
+
 ## 条目汇总
 
 | 条目 | 周 | 块数 | 中文字符 | 完成时间 |
@@ -639,4 +671,5 @@
 | `prompt-engineering-overview` | W1 | 13 | 6,129 | 2026-09-16T14:13:00 |
 | `finding-vulnerabilities-claude-codex` | W6 | 12 | 11,069 | 2026-09-16T14:15:16 |
 | `sre-introduction` | W9 | 10 | 8,031 | 2026-09-16T14:17:09 |
+| `mcp-introduction` | W2 | 17 | 11,678 | 2026-09-16T14:22:49 |
 
