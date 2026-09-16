@@ -95,6 +95,19 @@ def validate(rows):
                 warns.append(f"R8 提示级变体「{fb}」是「{approved_zh}」的子串，"
                              f"会被包含关系判定跳过，标记无意义")
 
+    # R9：硬性禁用变体不得是**其它术语正式译法**的组成部分。
+    # 起因：False Positive -> 误报 把「假阳性」列为硬性禁用，
+    # 而 False Positive Rate -> 假阳性率（FPR）——速率形式恰恰用了那个词。
+    # R1–R8 都查不出这类「同一份表里两条规则互相冲突」。
+    approved_terms = [(r["term_zh"].strip(), r["term_en"]) for r in rows if r["term_zh"].strip()]
+    for r in rows:
+        for col in ("forbidden_zh", "forbidden_soft"):
+            for fb in filter(None, (x.strip() for x in (r.get(col) or "").split("|"))):
+                for azh, aen in approved_terms:
+                    if fb != azh and fb in azh:
+                        warns.append(
+                            f"R9 潜在冲突: 「{fb}」是 {r['term_en']} 的禁用变体，"
+                            f"但它是 {aen} 的正式译法「{azh}」的组成部分")
     return errs, warns
 
 
