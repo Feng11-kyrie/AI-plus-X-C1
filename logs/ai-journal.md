@@ -13,12 +13,12 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 459 |
-| 翻译块次 | 350 |
-| 其中通过校验 | 321 |
-| **其中未通过 / 失败** | **29** |
-| 完成条目 | 27 |
-| 出现过校验问题的块 | 29 |
+| 记录事件总数 | 489 |
+| 翻译块次 | 375 |
+| 其中通过校验 | 340 |
+| **其中未通过 / 失败** | **35** |
+| 完成条目 | 28 |
+| 出现过校验问题的块 | 35 |
 
 ## 逐块记录
 
@@ -374,6 +374,31 @@
 | 14:12:52 | `prompt-engineering-overvie` | 12 | queue | `5ae47664f9f7` | 1467/904 | — | ✅ |
 | 14:13:00 | `prompt-engineering-overvie` | 1 | queue | `e3df116dee11` | 1071/452 | — | ✅ |
 | 14:13:00 | `prompt-engineering-overvie` | 4 | queue | `9c05cb4f8602` | 1191/410 | — | ✅ |
+| 14:15:07 | `finding-vulnerabilities-cl` | 0 | queue | `c9cfb242bd7b` | 2265/1057 | — | ❌ 出现禁用变体「假阳性」（应为「误报」）×2 |
+| 14:15:07 | `finding-vulnerabilities-cl` | 1 | queue | `81aa00c3c6bd` | 806/478 | — | ✅ |
+| 14:15:07 | `finding-vulnerabilities-cl` | 2 | queue | `01d5b791d0f0` | 842/299 | — | ❌ 出现禁用变体「假阳性」（应为「误报」）×2；出现禁用变体「假阴性」（应为「漏报」）×2 |
+| 14:15:07 | `finding-vulnerabilities-cl` | 3 | queue | `0c164e54ffd4` | 3430/1963 | — | ✅ |
+| 14:15:07 | `finding-vulnerabilities-cl` | 4 | queue | `38d004b7fb03` | 2374/1364 | — | ✅ |
+| 14:15:07 | `finding-vulnerabilities-cl` | 5 | queue | `44d353b058ca` | 1175/886 | — | ❌ 出现禁用变体「假阳性」（应为「误报」）×2 |
+| 14:15:07 | `finding-vulnerabilities-cl` | 6 | queue | `e76700c056f8` | 2093/885 | — | ❌ 出现禁用变体「假阳性」（应为「误报」）×3 |
+| 14:15:07 | `finding-vulnerabilities-cl` | 7 | queue | `cfe78517cb3f` | 3034/1189 | — | ❌ 出现禁用变体「语境」（应为「上下文」）×1 |
+| 14:15:07 | `finding-vulnerabilities-cl` | 8 | queue | `bd953e916160` | 777/280 | — | ✅ |
+| 14:15:07 | `finding-vulnerabilities-cl` | 9 | queue | `50652094349d` | 851/520 | — | ✅ |
+| 14:15:07 | `finding-vulnerabilities-cl` | 10 | queue | `0e5b2da8bde1` | 2352/1127 | — | ❌ 出现禁用变体「假阳性」（应为「误报」）×2；出现禁用变体「假阴性」（应为「漏报」）×3 |
+| 14:15:07 | `finding-vulnerabilities-cl` | 11 | queue | `fedbbb8eeec4` | 1518/932 | — | ✅ |
+| 14:15:16 | `finding-vulnerabilities-cl` | 0 | queue | `4c175ba8a188` | 2265/1057 | — | ✅ |
+| 14:15:16 | `finding-vulnerabilities-cl` | 2 | queue | `fa9b98cd490b` | 842/299 | — | ✅ |
+| 14:15:16 | `finding-vulnerabilities-cl` | 5 | queue | `a66438c2ed97` | 1175/886 | — | ✅ |
+| 14:15:16 | `finding-vulnerabilities-cl` | 6 | queue | `ca71a7fc8b45` | 2093/885 | — | ✅ |
+| 14:15:16 | `finding-vulnerabilities-cl` | 7 | queue | `cfe78517cb3f` | 3034/1187 | — | ✅ |
+| 14:15:16 | `finding-vulnerabilities-cl` | 10 | queue | `796426e1882f` | 2352/1127 | — | ✅ |
+| 14:15:16 | `sast-vs-dast` | 5 | queue | `b0d67217878e` | 1564/677 | — | ✅ |
+| 14:15:16 | `sast-vs-dast` | 7 | queue | `b8cc755a2437` | 1723/619 | — | ✅ |
+| 14:15:16 | `sast-vs-dast` | 8 | queue | `682a7828f085` | 787/248 | — | ✅ |
+| 14:15:16 | `sast-vs-dast` | 14 | queue | `fab7025ce7bd` | 868/342 | — | ✅ |
+| 14:15:16 | `ai-code-review-best-practi` | 3 | queue | `8c758af05b38` | 1755/667 | — | ✅ |
+| 14:15:16 | `ai-code-review-best-practi` | 5 | queue | `0834a0575a42` | 1404/620 | — | ✅ |
+| 14:15:16 | `ai-code-review-best-practi` | 7 | queue | `087067d27204` | 3047/1092 | — | ✅ |
 
 ## 失败与返工记录
 
@@ -531,6 +556,38 @@
 - 时间：2026-09-16T14:12:52+0800　后端：queue　prompt 哈希：`9c05cb4f8602`
 - 问题：出现禁用变体「情境」（应为「上下文」）×1
 
+### `finding-vulnerabilities-claude-codex` 第 0 块
+
+- 时间：2026-09-16T14:15:07+0800　后端：queue　prompt 哈希：`c9cfb242bd7b`
+- 问题：出现禁用变体「假阳性」（应为「误报」）×2
+
+### `finding-vulnerabilities-claude-codex` 第 2 块
+
+- 时间：2026-09-16T14:15:07+0800　后端：queue　prompt 哈希：`01d5b791d0f0`
+- 问题：出现禁用变体「假阳性」（应为「误报」）×2
+- 问题：出现禁用变体「假阴性」（应为「漏报」）×2
+
+### `finding-vulnerabilities-claude-codex` 第 5 块
+
+- 时间：2026-09-16T14:15:07+0800　后端：queue　prompt 哈希：`44d353b058ca`
+- 问题：出现禁用变体「假阳性」（应为「误报」）×2
+
+### `finding-vulnerabilities-claude-codex` 第 6 块
+
+- 时间：2026-09-16T14:15:07+0800　后端：queue　prompt 哈希：`e76700c056f8`
+- 问题：出现禁用变体「假阳性」（应为「误报」）×3
+
+### `finding-vulnerabilities-claude-codex` 第 7 块
+
+- 时间：2026-09-16T14:15:07+0800　后端：queue　prompt 哈希：`cfe78517cb3f`
+- 问题：出现禁用变体「语境」（应为「上下文」）×1
+
+### `finding-vulnerabilities-claude-codex` 第 10 块
+
+- 时间：2026-09-16T14:15:07+0800　后端：queue　prompt 哈希：`0e5b2da8bde1`
+- 问题：出现禁用变体「假阳性」（应为「误报」）×2
+- 问题：出现禁用变体「假阴性」（应为「漏报」）×3
+
 ## 条目汇总
 
 | 条目 | 周 | 块数 | 中文字符 | 完成时间 |
@@ -562,4 +619,5 @@
 | `how-to-review-code-effectively` | W7 | 13 | 9,018 | 2026-09-16T13:52:54 |
 | `devin-coding-agents-101` | W3 | 17 | 7,302 | 2026-09-16T13:55:46 |
 | `prompt-engineering-overview` | W1 | 13 | 6,129 | 2026-09-16T14:13:00 |
+| `finding-vulnerabilities-claude-codex` | W6 | 12 | 11,069 | 2026-09-16T14:15:16 |
 

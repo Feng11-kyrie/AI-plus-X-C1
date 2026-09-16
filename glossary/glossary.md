@@ -24,7 +24,7 @@
 1. **被正式译法包含的变体一律跳过**——「上下文协议」是「模型上下文协议（MCP）」的子串，子串匹配会把正确译文判成违规。
 2. 宁可漏报也不误报：一个天天误报的校验器最终会被忽略。
 
-**术语总数：171 条**（硬性禁用变体 324 条 + 提示级 42 条，由 `pipeline/translate.py` 逐块强制校验）
+**术语总数：171 条**（硬性禁用变体 322 条 + 提示级 44 条，由 `pipeline/translate.py` 逐块强制校验）
 
 ## 核心 LLM 与提示词（28 条）
 
@@ -142,8 +142,8 @@
 | SQL Injection | SQL 注入 | `translate` | SQL 注入攻击、SQL 植入 | — | — |
 | Attack Surface | 攻击面 | `translate` | 攻击表面、受攻击面 | — | — |
 | Threat Model | 威胁模型 | `translate` | 风险模型 | — | — |
-| False Positive | 误报 | `translate` | 假阳性、错误告警 | — | — |
-| False Negative | 漏报 | `translate` | 假阴性、漏检 | — | — |
+| False Positive | 误报 | `translate` | 错误告警 | 假阳性 | — |
+| False Negative | 漏报 | `translate` | 漏检 | 假阴性 | — |
 | False Positive Rate (FPR) | 假阳性率（FPR） | `acronym` | 假报率 | 误报率 FPR | — |
 | True Positive Rate (TPR) | 真阳性率（TPR） | `acronym` | 正确检出率 | 真报率 | — |
 | Triage | 分级处置 | `translate` | 分诊、分类处理、优先级排序 | — | — |
