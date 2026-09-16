@@ -434,6 +434,50 @@ def drop_boilerplate_sections(md: str) -> tuple:
     return text, dropped, "\n".join(removed)
 
 
+def drop_table_duplicates(md: str) -> tuple:
+    """删除 Markdown 表格之后的「拍平副本」，返回 (文本, 删除块数, 被删文本)。
+
+    成因：部分站点（如 Google Cloud）为响应式布局与无障碍访问，
+    会把同一张表渲染两次——一次是真正的 table，一次是 div 列表。
+    清洗后会得到「Markdown 表格 + 同内容的逐行纯文本」两份重复。
+
+    实测影响：prompt-engineering-overview 有 6 张这样的表，
+    若不去重，约 40% 的篇幅是重复内容，翻译产出会被白白翻倍。
+
+    判定方式：表格之后的连续段落，若其内容都能在该表格的单元格集合里
+    找到，就认定为副本。保守起见要求至少连续 3 段才算——宁可少删，
+    不能误删正文（正文段落几乎不可能恰好等于某几个单元格）。
+    """
+    blocks = md.split("\n\n")
+    out, removed_blocks, removed_text = [], 0, []
+    i = 0
+    while i < len(blocks):
+        b = blocks[i]
+        out.append(b)
+        if "|" in b and re.search(r"^[ \t]*\|[\s:-]*\|", b, re.M):
+            cells = set()
+            for row in b.split("\n"):
+                for c in row.strip().strip("|").split("|"):
+                    norm = re.sub(r"\s+", " ", c).strip().strip("*` ")
+                    if norm:
+                        cells.add(norm)
+            j = i + 1
+            dup = []
+            # 两侧必须用同一套归一化：表格单元格已去掉 ** 与多余空白，
+            # 待判定的段落也要同样处理，否则 "**Scenario**" 匹配不上 "Scenario"。
+            while j < len(blocks) and (
+                    re.sub(r"\s+", " ", blocks[j]).strip().strip("*` ") in cells):
+                dup.append(j)
+                j += 1
+            if len(dup) >= 3:
+                removed_blocks += len(dup)
+                removed_text.extend(blocks[k] for k in dup)
+                i = j
+                continue
+        i += 1
+    return "\n\n".join(out), removed_blocks, "\n\n".join(removed_text)
+
+
 def tidy(md: str) -> str:
     md = re.sub(r"\n{3,}", "\n\n", md)
     md = re.sub(r"[ \t]+\n", "\n", md)
@@ -616,6 +660,7 @@ def extract(raw: str) -> tuple:
 
     md = tidy("\n".join(render(main_node)))
     md, bp_sections, bp_section_text = drop_boilerplate_sections(md)
+    md, bp_tables, bp_table_text = drop_table_duplicates(md)
     md, bp_dropped, bp_line_text = drop_boilerplate_lines(md)
     c_md = count_md(md)
 
@@ -626,12 +671,14 @@ def extract(raw: str) -> tuple:
     # 早先直接数原始字符，把图片 URL 也算了进去，而分子的口径不含 URL，
     # 于是留存率冒出 173% 这种数字。分子分母不同源，任何比率都不可信。
     text_main = len(re.sub(r"\s+", "", main_node.text()))
-    text_expect = max(text_main - md_plain_len(bp_section_text + "\n" + bp_line_text), 1)
+    text_expect = max(text_main - md_plain_len(
+        bp_section_text + "\n" + bp_line_text + "\n" + bp_table_text), 1)
     verdict = verify(c_raw, c_main, c_md, text_main=text_expect, text_md=md_plain_len(md))
     stats = {
         "mojibake_fixed": moji_fixed,
         "boilerplate_lines_dropped": bp_dropped,
         "boilerplate_sections_dropped": bp_sections,
+        "table_duplicates_dropped": bp_tables,
         "counts_raw": c_raw,
         "counts_main": c_main,
         "counts_md": c_md,

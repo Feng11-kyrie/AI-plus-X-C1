@@ -20,7 +20,7 @@
 
 | 条目 | 周 | 格式 | 块数 | 已完成块 | 状态 |
 |---|---|---|---|---|---|
-| `prompt-engineering-overview` | W1 | html | 14 | 0 | ⬜ 未开始 |
+| `prompt-engineering-overview` | W1 | html | 13 | 0 | ⬜ 未开始 |
 | `how-openai-uses-codex` | W1 | pdf | 4 | 4 | ✅ 完成 |
 | `mcp-food-for-thought` | W2 | html | 4 | 4 | ✅ 完成 |
 | `mcp-introduction` | W2 | html | 17 | 0 | ⬜ 未开始 |
