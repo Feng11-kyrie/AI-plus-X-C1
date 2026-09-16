@@ -24,7 +24,7 @@
 1. **被正式译法包含的变体一律跳过**——「上下文协议」是「模型上下文协议（MCP）」的子串，子串匹配会把正确译文判成违规。
 2. 宁可漏报也不误报：一个天天误报的校验器最终会被忽略。
 
-**术语总数：171 条**（硬性禁用变体 321 条 + 提示级 45 条，由 `pipeline/translate.py` 逐块强制校验）
+**术语总数：171 条**（硬性禁用变体 319 条 + 提示级 47 条，由 `pipeline/translate.py` 逐块强制校验）
 
 ## 核心 LLM 与提示词（28 条）
 
@@ -75,7 +75,7 @@
 | MCP Server | MCP 服务器 | `keep_en_first` | 模型上下文协议服务器、MCP 服务端 | — | — |
 | Orchestration | 编排 | `translate` | 编排调度 | 组织、协调 | — |
 | Workflow | 工作流 | `translate` | 工作流程、作业流 | 流程 | — |
-| Human-in-the-loop | 人在回路 | `translate` | 人在环中、人工介入、人类在环 | — | — |
+| Human-in-the-loop | 人在回路 | `translate` | 人在环中、人类在环 | 人工介入 | — |
 | Autonomy | 自主性 | `translate` | 自治性、自动化程度 | — | — |
 | Agent Loop | 智能体循环 | `translate` | 代理循环、智能体回路 | — | — |
 
@@ -175,7 +175,7 @@
 | Incident | 故障事件 | `translate` | 事故 | — | — |
 | On-call | 值班 | `translate` | 随时待命、值守、在线值班 | — | — |
 | Postmortem | 事后复盘 | `translate` | 尸检报告、事后分析、事故报告 | — | — |
-| Runbook | 运维手册 | `translate` | 操作手册、运行手册、预案 | — | — |
+| Runbook | 运维手册 | `translate` | 运行手册、预案 | 操作手册 | — |
 | Service Level Objective (SLO) | 服务等级目标（SLO） | `acronym` | 服务水平目标、服务级别目标 | — | — |
 | Service Level Indicator (SLI) | 服务等级指标（SLI） | `acronym` | 服务水平指标、服务级别指标 | — | — |
 | Service Level Agreement (SLA) | 服务等级协议（SLA） | `acronym` | 服务水平协议、服务级别协议 | — | — |

@@ -37,7 +37,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 36,MCP Server,MCP 服务器,agent,keep_en_first,模型上下文协议服务器|MCP 服务端,,MCP 保留英文,0
 37,Orchestration,编排,agent,translate,编排调度,组织|协调,0；「组织」降为提示级：organization；「协调」降为提示级：coordinate,
 38,Workflow,工作流,agent,translate,工作流程|作业流,流程,0,
-39,Human-in-the-loop,人在回路,agent,translate,人在环中|人工介入|人类在环,,0,
+39,Human-in-the-loop,人在回路,agent,translate,人在环中|人类在环,人工介入,0；「人工介入」降为提示级：human intervention，与 human-in-the-loop 不同,
 40,Autonomy,自主性,agent,translate,自治性|自动化程度,,0,
 41,Agent Loop,智能体循环,agent,translate,代理循环|智能体回路,,0,
 42,Codebase,代码库,swe,translate,代码基底|代码基础|代码仓,,0,
@@ -135,7 +135,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 134,Incident,故障事件,sre,translate,事故,,0,
 135,On-call,值班,sre,translate,随时待命|值守|在线值班,,0,
 136,Postmortem,事后复盘,sre,translate,尸检报告|事后分析|事故报告,,0,
-137,Runbook,运维手册,sre,translate,操作手册|运行手册|预案,,0,
+137,Runbook,运维手册,sre,translate,运行手册|预案,操作手册,0；「操作手册」降为提示级：playbook（原文用词），与 runbook 未必同指,
 138,Service Level Objective (SLO),服务等级目标（SLO）,sre,acronym,服务水平目标|服务级别目标,,0,
 139,Service Level Indicator (SLI),服务等级指标（SLI）,sre,acronym,服务水平指标|服务级别指标,,0,
 140,Service Level Agreement (SLA),服务等级协议（SLA）,sre,acronym,服务水平协议|服务级别协议,,0,

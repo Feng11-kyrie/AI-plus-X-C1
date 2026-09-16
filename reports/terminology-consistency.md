@@ -8,8 +8,8 @@
 |---|---|
 | 术语表条目 | 171 条（其中需翻译 148 条） |
 | 审计译稿 | 24 条 |
-| 硬性禁用变体 | 321 个 |
-| 提示级变体 | 45 个（只统计不判违规） |
+| 硬性禁用变体 | 319 个 |
+| 提示级变体 | 47 个（只统计不判违规） |
 
 ## 一致率
 
@@ -18,22 +18,19 @@
 | 指标 | 数值 |
 |---|---|
 | 正式译法出现次数 | 2,630 |
-| **硬性违规次数** | **5** |
-| **术语一致率（硬性口径）** | **99.81%** |
-| 提示级命中次数 | 320（**不计入一致率**，见第三节） |
+| **硬性违规次数** | **0** |
+| **术语一致率（硬性口径）** | **100.00%** |
+| 提示级命中次数 | 325（**不计入一致率**，见第三节） |
 | 实际用到的术语 | 118 条 |
-| 其中零违规 | 116 条 |
+| 其中零违规 | 118 条 |
 
 > ⚠️ **这个百分比只统计硬性禁用变体。** 术语表另有一批提示级变体，它们是中文常用词或**其它英文词**的合法译法（如 proxy → 代理、dashboard → 控制台），一律判违规会逼出错误的译文。读数时请把两者一起看——**单看 100% 会高估实际的一致性**。
 
-❌ 发现 5 处违规，详见下方。
+✅ **全部硬性禁用变体零出现。**
 
 ## 一、违规明细（硬性）
 
-| 术语 | 应为 | 出现的违规写法 | 篇目 | 次数 | 上下文 |
-|---|---|---|---|---|---|
-| Human-in-the-loop | 人在回路 | **人工介入** | `sre-introduction` | 1 | …人会引入延迟。** 即便某个系统经历更多*实际*故障，一个能避免需要人工介入的紧急情况的系统，可用性也会高于必须动手干预的系统。当人确实必要时，… |
-| Runbook | 运维手册 | **操作手册** | `sre-introduction` | 4 | …干预的系统。当人确实必要时，我们发现，提前把最佳实践想清楚并记录成「操作手册（playbook）」，相比「临场发挥」，能把 MTTR 改善大约… |
+无。
 
 ## 二、覆盖率缺口（参考项，不作门禁）
 
@@ -193,6 +190,7 @@
 | Workflow | 流程 | `specs-are-the-new-source-code` | 5 |
 | Workflow | 流程 | `sre-introduction` | 1 |
 | Workflow | 流程 | `writing-effective-tools-for-agents` | 1 |
+| Human-in-the-loop | 人工介入 | `sre-introduction` | 1 |
 | Refactor | 重写 | `code-review-essentials` | 2 |
 | Refactor | 重写 | `how-openai-uses-codex` | 1 |
 | Refactor | 重写 | `prompt-engineering-overview` | 1 |
@@ -249,6 +247,7 @@
 | Log | 记录 | `sre-introduction` | 2 |
 | Log | 记录 | `writing-effective-tools-for-agents` | 4 |
 | Dashboard | 看板 | `how-to-review-code-effectively` | 1 |
+| Runbook | 操作手册 | `sre-introduction` | 4 |
 | Mean Time To Recovery (MTTR) | 平均修复时间 | `sre-introduction` | 1 |
 | Grounding | 落地 | `ai-code-review-best-practices` | 10 |
 | Grounding | 落地 | `mcp-registry-preview` | 2 |
@@ -344,7 +343,7 @@
 | Minimum Viable Product (MVP) | 最小可行产品（MVP） | `acronym` | 3 | 0 | ✅ |
 | Exploit | 漏洞利用 | `translate` | 3 | 3 | ✅ |
 | False Negative | 漏报 | `translate` | 3 | 1 | ✅ |
-| Runbook | 运维手册 | `translate` | 3 | 0 | ❌ 4 |
+| Runbook | 运维手册 | `translate` | 3 | 0 | ✅ |
 | Context Engineering | 上下文工程 | `translate` | 2 | 1 | ✅ |
 | Vibe Coding | 氛围编程 | `keep_en_first` | 2 | 0 | ✅ |
 | Scaffolding | 脚手架 | `translate` | 2 | 1 | ✅ |
@@ -365,7 +364,7 @@
 | Attack Surface | 攻击面 | `translate` | 2 | 0 | ✅ |
 | Service Level Objective (SLO) | 服务等级目标（SLO） | `acronym` | 2 | 0 | ✅ |
 | Root Cause Analysis (RCA) | 根因分析（RCA） | `acronym` | 2 | 2 | ✅ |
-| Human-in-the-loop | 人在回路 | `translate` | 1 | 1 | ❌ 1 |
+| Human-in-the-loop | 人在回路 | `translate` | 1 | 1 | ✅ |
 | Agent Loop | 智能体循环 | `translate` | 1 | 0 | ✅ |
 | Boilerplate | 样板代码 | `translate` | 1 | 2 | ✅ |
 | Rollback | 回滚 | `translate` | 1 | 0 | ✅ |
