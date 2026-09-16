@@ -24,7 +24,7 @@
 1. **被正式译法包含的变体一律跳过**——「上下文协议」是「模型上下文协议（MCP）」的子串，子串匹配会把正确译文判成违规。
 2. 宁可漏报也不误报：一个天天误报的校验器最终会被忽略。
 
-**术语总数：171 条**（硬性禁用变体 334 条 + 提示级 31 条，由 `pipeline/translate.py` 逐块强制校验）
+**术语总数：171 条**（硬性禁用变体 332 条 + 提示级 34 条，由 `pipeline/translate.py` 逐块强制校验）
 
 ## 核心 LLM 与提示词（28 条）
 
@@ -109,7 +109,7 @@
 | Command-Line Interface (CLI) | 命令行界面（CLI） | `acronym` | 命令行接口、命令界面 | — | — |
 | Software Development Kit (SDK) | 软件开发工具包（SDK） | `acronym` | 软件开发套件、开发包 | — | — |
 | Application Programming Interface (API) | 应用程序接口（API） | `acronym` | 应用编程界面、接口 API | — | — |
-| Runtime | 运行时 | `translate` | 运行环境、运行时期 | — | — |
+| Runtime | 运行时 | `translate` | 运行时期 | 运行环境 | — |
 | Dependency | 依赖 | `translate` | 依赖性、依存项 | — | — |
 | Sandbox | 沙箱 | `translate` | 沙盒、隔离环境 | — | — |
 | Rate Limit | 速率限制 | `translate` | 频率限制、速率上限 | 限流 | — |
@@ -129,7 +129,7 @@
 | Dynamic Application Security Testing (DAST) | 动态应用安全测试（DAST） | `acronym` | 动态安全测试、动态安全检测 | — | — |
 | Runtime Application Self-Protection (RASP) | 运行时应用自保护（RASP） | `acronym` | 运行时自保护、运行期自防护 | — | — |
 | Software Composition Analysis (SCA) | 软件成分分析（SCA） | `acronym` | 软件组成分析、依赖成分分析 | — | — |
-| Vulnerability | 漏洞 | `translate` | 脆弱性、弱点 | 缺陷 | — |
+| Vulnerability | 漏洞 | `translate` | 脆弱性 | 缺陷、弱点 | — |
 | Exploit | 漏洞利用 | `translate` | 利用程序、攻击利用、漏洞开发 | — | — |
 | Common Vulnerabilities and Exposures (CVE) | 通用漏洞披露（CVE） | `acronym` | 公共漏洞库、漏洞编号 CVE | — | — |
 | Common Weakness Enumeration (CWE) | 通用缺陷枚举（CWE） | `acronym` | 通用弱点枚举、缺陷列表 CWE | — | — |
@@ -162,7 +162,7 @@
 | 英文 | 中文 | policy | 禁用变体（硬性） | 提示级 | 语料频次 |
 |---|---|---|---|---|---|
 | Site Reliability Engineering (SRE) | 站点可靠性工程（SRE） | `acronym` | 网站可靠性工程、可靠性工程 SRE | — | — |
-| Observability | 可观测性 | `translate` | 可观察性、监控能力 | — | — |
+| Observability | 可观测性 | `translate` | 可观察性、监控能力 | 运行环境 | — |
 | Telemetry | 遥测 | `translate` | 远程测量、遥测数据 | — | — |
 | Tracing | 链路追踪 | `translate` | 链路跟踪、追踪体系 | 跟踪 | — |
 | Trace | 追踪记录 | `translate` | 调用链快照 | 轨迹 | — |

@@ -12,9 +12,9 @@
 
 | 指标 | 数值 |
 |---|---|
-| 已完成条目 | **17** / 29 |
-| 覆盖率（分母 34） | **50.0%** |
-| 是否达标 | ⬜ 未达标（还差 11 条） |
+| 已完成条目 | **18** / 29 |
+| 覆盖率（分母 34） | **52.9%** |
+| 是否达标 | ⬜ 未达标（还差 10 条） |
 
 ## 逐条状态
 
@@ -38,7 +38,7 @@
 | `copilot-prompt-injection-rce` | W6 | html | 6 | 6 | ✅ 完成 |
 | `finding-vulnerabilities-claude-codex` | W6 | html | 12 | 0 | ⬜ 未开始 |
 | `owasp-top-ten` | W6 | html | 10 | 10 | ✅ 完成 |
-| `sast-vs-dast` | W6 | html | 16 | 0 | ⬜ 未开始 |
+| `sast-vs-dast` | W6 | html | 16 | 16 | ✅ 完成 |
 | `ai-code-review-best-practices` | W7 | html | 8 | 8 | ✅ 完成 |
 | `code-review-essentials` | W7 | html | 5 | 5 | ✅ 完成 |
 | `code-reviews-just-do-it` | W7 | html | 1 | 1 | ✅ 完成 |
