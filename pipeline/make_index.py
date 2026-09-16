@@ -61,20 +61,8 @@ def zh_title(path: Path) -> str:
     return "—"
 
 
-def chunks_per_unit() -> dict:
-    f = ROOT / P["chunks_json"]
-    if not f.exists():
-        return {}
-    out = {}
-    for c in json.loads(f.read_text(encoding="utf-8"))["chunks"]:
-        out.setdefault(c["unit_id"], 0)
-        out[c["unit_id"]] += 1
-    return out
-
-
 def build() -> str:
     units = json.loads((ROOT / P["units_json"]).read_text(encoding="utf-8"))["units"]
-    chunk_n = chunks_per_unit()
     zh_files = {p.stem: p for p in ZH_DIR.glob("*.md") if p.name != "README.md"}
 
     done = [u for u in units if u["kind"] == "local"
@@ -93,6 +81,9 @@ def build() -> str:
          "| 中文译稿 | `zh/<单元名>.md`（下表已直接给出链接） |",
          "| 清洗后的英文底稿 | `clean/<单元名>.md` |",
          "| 原始网页归档 | `source/pages/<单元名>.html` |", "",
+         "> 分词块数、覆盖度明细等运行期统计不写进本文件：它们来自 `pipeline/work/` 下的",
+         "> **中间产物**（未入库），而 CI 是在全新 checkout 上跑门禁的——索引不能建立在",
+         "> 中间产物上，否则门禁会在别人机器上无故变红。逐条状态见 `reports/coverage.md`。", "",
          "> 译稿与底稿**同名**，只是目录不同——想把中英对照阅读时，"
          "两边的章节结构、代码块、表格都是逐块对齐的。", "",
          "---", ""]
@@ -100,8 +91,8 @@ def build() -> str:
     for week in sorted({u["week"] for u in done + pending}):
         L.append(f"## 第 {week} 周：{WEEK_ZH.get(week, '')}")
         L.append("")
-        L.append("| 中文标题 | 原文标题 | 译稿 | 中文字数 | 分块 |")
-        L.append("|---|---|---|---|---|")
+        L.append("| 中文标题 | 原文标题 | 译稿 | 中文字数 |")
+        L.append("|---|---|---|---|")
         for u in [x for x in done + pending if x["week"] == week]:
             stem = Path(u["local_path"]).stem
             # 中文标题优先取配置里人工审定的译名（单一来源），
@@ -111,12 +102,10 @@ def build() -> str:
             if stem in zh_files:
                 link = f"[`{stem}.md`]({stem}.md)"
                 chars = f"{plain_len(zh_files[stem]):,}"
-                blocks = str(chunk_n.get(stem, "—"))
             else:
                 link = "**未译**（见下方缺口说明）"
                 chars = "—"
-                blocks = "—"
-            L.append(f"| {title_zh or '—'} | {u['reading_title']} | {link} | {chars} | {blocks} |")
+            L.append(f"| {title_zh or '—'} | {u['reading_title']} | {link} | {chars} |")
         L.append("")
 
     L += ["---", "", "## 还没译的部分（如实列出）", ""]
