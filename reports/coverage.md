@@ -12,16 +12,16 @@
 
 | 指标 | 数值 |
 |---|---|
-| 已完成条目 | **15** / 29 |
-| 覆盖率（分母 34） | **44.1%** |
-| 是否达标 | ⬜ 未达标（还差 13 条） |
+| 已完成条目 | **16** / 29 |
+| 覆盖率（分母 34） | **47.1%** |
+| 是否达标 | ⬜ 未达标（还差 12 条） |
 
 ## 逐条状态
 
 | 条目 | 周 | 格式 | 块数 | 已完成块 | 状态 |
 |---|---|---|---|---|---|
 | `prompt-engineering-overview` | W1 | html | 14 | 0 | ⬜ 未开始 |
-| `how-openai-uses-codex` | W1 | pdf | 4 | 0 | ⬜ 未开始 |
+| `how-openai-uses-codex` | W1 | pdf | 4 | 4 | ✅ 完成 |
 | `mcp-food-for-thought` | W2 | html | 4 | 4 | ✅ 完成 |
 | `mcp-introduction` | W2 | html | 17 | 0 | ⬜ 未开始 |
 | `mcp-registry-preview` | W2 | html | 3 | 3 | ✅ 完成 |

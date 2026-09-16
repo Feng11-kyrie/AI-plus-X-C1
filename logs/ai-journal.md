@@ -13,11 +13,11 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 295 |
-| 翻译块次 | 219 |
-| 其中通过校验 | 198 |
+| 记录事件总数 | 302 |
+| 翻译块次 | 223 |
+| 其中通过校验 | 202 |
 | **其中未通过 / 失败** | **21** |
-| 完成条目 | 20 |
+| 完成条目 | 21 |
 | 出现过校验问题的块 | 21 |
 
 ## 逐块记录
@@ -243,6 +243,10 @@
 | 13:35:24 | `code-review-essentials` | 2 | queue | `1fbe3eb5230b` | 3213/1612 | — | ✅ |
 | 13:35:24 | `code-review-essentials` | 3 | queue | `9493ca05b60f` | 2442/905 | — | ✅ |
 | 13:35:24 | `code-review-essentials` | 4 | queue | `3b101a97d4c3` | 806/297 | — | ✅ |
+| 13:39:56 | `how-openai-uses-codex` | 0 | queue | `d4941288e992` | 3136/1312 | — | ✅ |
+| 13:39:56 | `how-openai-uses-codex` | 1 | queue | `93a4bd57f2cc` | 3324/1416 | — | ✅ |
+| 13:39:56 | `how-openai-uses-codex` | 2 | queue | `9d6119fcb9e9` | 3279/1451 | — | ✅ |
+| 13:39:56 | `how-openai-uses-codex` | 3 | queue | `90f11d03be83` | 1010/438 | — | ✅ |
 
 ## 失败与返工记录
 
@@ -384,4 +388,5 @@
 | `mcp-server-authentication` | W2 | 8 | 8,520 | 2026-09-15T16:17:35 |
 | `specs-are-the-new-source-code` | W3 | 6 | 5,410 | 2026-09-16T13:33:52 |
 | `code-review-essentials` | W7 | 5 | 4,107 | 2026-09-16T13:35:24 |
+| `how-openai-uses-codex` | W1 | 4 | 4,690 | 2026-09-16T13:39:56 |
 
