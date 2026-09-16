@@ -9,14 +9,17 @@
 这是 C1「信息获取与处理管线」的第一步：把非结构化的一手资料变成机器可读的清单。
 """
 import json
+import os
 import re
 import html
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-CONFIG = json.loads((ROOT / "pipeline/config/cs146s.json").read_text(encoding="utf-8"))
+# 配置路径可由环境变量覆盖（换源跑第二份配置时不改代码）
+CONFIG_PATH = Path(os.environ.get("PIPELINE_CONFIG", "pipeline/config/cs146s.json"))
+CONFIG = json.loads((ROOT / CONFIG_PATH).read_text(encoding="utf-8"))
 INDEX = ROOT / CONFIG["paths"]["index_html"]
-OUT = ROOT / "source/syllabus.json"
+OUT = ROOT / CONFIG["paths"]["syllabus_json"]
 
 
 def strip_tags(s: str) -> str:

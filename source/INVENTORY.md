@@ -27,7 +27,7 @@
 | **可用条目** | **29** | HTML 26 + PDF 3，内容完整可翻译 |
 | **确认无效条目** | **5** | 全部为 HTML，详见第二节 |
 | 达到 80% 所需最少条目 | 28 | ceil(34 × 0.8) |
-| 可用英文正文字数（估） | ≈ 66,679 | 仅 HTML 可用条目（按清洗后正文计），PDF 未计 |
+| 可用英文正文字数（估） | ≈ 65,487 | 仅 HTML 可用条目（按清洗后正文计），PDF 未计 |
 
 > ✅ **可行性**：可用条目 29 条 ≥ 目标 28 条。全部译完可达 85.3%。
 
@@ -108,7 +108,7 @@ Topics：Course logistics、What is an LLM actually、How to prompt effectively
 | EXTERNAL | external/link | Deep Dive into LLMs | `https://www.youtube.com/watch?v=7xTGNNLPyMI` | — |
 | EXTERNAL | external/link | AI Prompt Engineering: A Deep Dive | `https://www.youtube.com/watch?v=T9aRN5JkmL8` | — |
 | **LOW** | local/html | Prompt Engineering Guide | `source/pages/prompt-engineering-guide.html` | 79 |
-| OK | local/html | Prompt Engineering Overview | `source/pages/prompt-engineering-overview.html` | 3,678 |
+| OK | local/html | Prompt Engineering Overview | `source/pages/prompt-engineering-overview.html` | 2,486 |
 | OK | local/pdf | How OpenAI Uses Codex | `source/pdfs/how-openai-uses-codex.pdf` | — |
 
 ### Week 2：The Anatomy of Coding Agents ／ 编码智能体的解剖学

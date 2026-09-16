@@ -14,9 +14,15 @@
     "page_map": "source/page_map.json",
     "units_json": "source/units.json",
     "glossary": "glossary/glossary.csv",
-    "clean_dir": "pipeline/work/clean",
+    "clean_dir": "clean",
     "zh_dir": "zh",
-    "journal_jsonl": "logs/journal.jsonl"
+    "journal_jsonl": "logs/journal.jsonl",
+    "syllabus_json": "source/syllabus.json",
+    "inventory_md": "source/INVENTORY.md",
+    "work_dir": "pipeline/work",
+    "reports_dir": "reports",
+    "chunks_json": "pipeline/work/chunks.json",
+    "journal_md": "AI日志.md"
   },
   "translation": {
     "source_lang": "en",

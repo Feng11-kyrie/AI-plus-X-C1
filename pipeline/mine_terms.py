@@ -15,13 +15,17 @@
 """
 import csv
 import json
+import os
 import re
 import sys
 from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-CFG = json.loads((ROOT / "pipeline/config/cs146s.json").read_text(encoding="utf-8"))
+# 配置路径可由环境变量覆盖：换源跑第二份配置时不改代码——
+#   PIPELINE_CONFIG=pipeline/config/demo-second-source.json python3 pipeline/inventory.py
+CONFIG_PATH = Path(os.environ.get("PIPELINE_CONFIG", "pipeline/config/cs146s.json"))
+CFG = json.loads((ROOT / CONFIG_PATH).read_text(encoding="utf-8"))
 
 # 噪音表：HTML/网页样板中高频但无翻译价值的词
 STOP = set("""
@@ -41,7 +45,7 @@ ACRO_STOP = {"HTML", "HTTP", "URL", "CSS", "JS", "OK", "US", "AI", "ID", "UI", "
 
 
 def main() -> None:
-    units = json.loads((ROOT / "source/units.json").read_text(encoding="utf-8"))["units"]
+    units = json.loads((ROOT / CFG["paths"]["units_json"]).read_text(encoding="utf-8"))["units"]
 
     # 语料取 clean/ 下的清洗产物，而**不是**原始 HTML。
     # 早期版本自己写了一套 visible_text() 直接读 HTML，于是：
@@ -53,7 +57,7 @@ def main() -> None:
     for u in units:
         if u["kind"] != "local" or u.get("status") != "ok":
             continue
-        f = ROOT / "clean" / (Path(u["local_path"]).stem + ".md")
+        f = ROOT / CFG["paths"]["clean_dir"] / (Path(u["local_path"]).stem + ".md")
         if f.exists():
             corpus_parts.append(f.read_text(encoding="utf-8"))
             used += 1
@@ -110,7 +114,7 @@ def main() -> None:
     show("技术搭配（候选）", l_items, 45)
 
     if "--csv" in sys.argv:
-        out = ROOT / "reports/term-candidates.csv"
+        out = ROOT / CFG["paths"]["reports_dir"] / "term-candidates.csv"
         out.parent.mkdir(parents=True, exist_ok=True)
         with out.open("w", newline="", encoding="utf-8") as f:
             w = csv.writer(f)

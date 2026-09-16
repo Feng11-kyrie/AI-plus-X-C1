@@ -80,7 +80,22 @@ jobs:
       - name: 交付物命名（通配符真匹配）
         run: python3 pipeline/check_deliverables.py --check
 
-      # ---------- 检查 6：覆盖率（信息性，不作门禁）----------
+      # ---------- 检查 6：提交产物新鲜度（信息性，不作门禁）----------
+      #
+      # 确定性检查是「连跑两遍比对彼此」，**发现不了提交产物过期**——
+      # 两遍都自洽，只是都与仓库里提交的那份不一致。实测撞上过：
+      # units.json 的字数统计停留在一次代码改动之前。
+      //
+      # 这里只比 **非 PDF** 条目，且刻意**不作门禁**：PDF 度量在 Linux 上必然
+      # 不同，而 Python 3.9（本地）与 3.11（CI）之间的解析差异也不该刷红徽章。
+      # 它把差异写进 step summary，让人看见，而不是让假告警制度化。
+      - name: 提交产物新鲜度（信息性）
+        run: |
+          python3 pipeline/check_staleness.py || true
+          echo "### 产物新鲜度" >> $GITHUB_STEP_SUMMARY
+          sed -n '/## 结果/,/## /p' reports/artifact-freshness.md >> $GITHUB_STEP_SUMMARY
+
+      # ---------- 检查 7：覆盖率（信息性，不作门禁）----------
       - name: 覆盖度概览
         run: |
           python3 pipeline/translate.py --status

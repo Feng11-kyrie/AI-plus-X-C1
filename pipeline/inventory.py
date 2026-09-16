@@ -13,6 +13,7 @@
 用法：python3 pipeline/inventory.py
 """
 import json
+import os
 import math
 import re
 import html
@@ -25,10 +26,13 @@ sys.path.insert(0, str(ROOT / "pipeline"))
 # 否则覆盖率数字与 clean/ 里的实际内容会自相矛盾。
 from clean import extract_markdown, MIN_CONTENT_CHARS  # noqa: E402
 
-CFG = json.loads((ROOT / "pipeline/config/cs146s.json").read_text(encoding="utf-8"))
+# 配置路径可由环境变量覆盖：换源跑第二份配置时不改代码——
+#   PIPELINE_CONFIG=pipeline/config/demo-second-source.json python3 pipeline/inventory.py
+CONFIG_PATH = Path(os.environ.get("PIPELINE_CONFIG", "pipeline/config/cs146s.json"))
+CFG = json.loads((ROOT / CONFIG_PATH).read_text(encoding="utf-8"))
 P = CFG["paths"]
 
-SYLLABUS = json.loads((ROOT / "source/syllabus.json").read_text(encoding="utf-8"))
+SYLLABUS = json.loads((ROOT / P["syllabus_json"]).read_text(encoding="utf-8"))
 PAGES_DIR = ROOT / P["pages_dir"]
 PDFS_DIR = ROOT / P["pdfs_dir"]
 
@@ -105,7 +109,7 @@ def main() -> None:
 
             if kind == "local":
                 f = ROOT / "source" / path
-                u["local_path"] = f"source/{path}"
+                u["local_path"] = f"{P['raw_dir']}/{path}"
                 if f.exists():
                     size = f.stat().st_size
                     u["bytes"] = size
@@ -148,7 +152,7 @@ def main() -> None:
             units.append(u)
 
     units.sort(key=lambda x: (x["week"], x["source_ref"]))
-    (ROOT / "source/units.json").write_text(
+    (ROOT / P["units_json"]).write_text(
         json.dumps({"units": units}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     # ---- 统计 ----
@@ -296,7 +300,7 @@ def main() -> None:
             A("_（本周无 readings）_")
             A("")
 
-    (ROOT / "source/INVENTORY.md").write_text("\n".join(L) + "\n", encoding="utf-8")
+    (ROOT / P["inventory_md"]).write_text("\n".join(L) + "\n", encoding="utf-8")
 
     # ---- 控制台摘要 ----
     print(f"工作单元总数 : {len(units)}")

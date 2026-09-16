@@ -25,6 +25,7 @@
 """
 from __future__ import annotations
 
+import os
 import html
 import json
 import re
@@ -33,11 +34,14 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-CFG = json.loads((ROOT / "pipeline/config/cs146s.json").read_text(encoding="utf-8"))
+# 配置路径可由环境变量覆盖：换源跑第二份配置时不改代码——
+#   PIPELINE_CONFIG=pipeline/config/demo-second-source.json python3 pipeline/inventory.py
+CONFIG_PATH = Path(os.environ.get("PIPELINE_CONFIG", "pipeline/config/cs146s.json"))
+CFG = json.loads((ROOT / CONFIG_PATH).read_text(encoding="utf-8"))
 P = CFG["paths"]
-CLEAN_DIR = ROOT / "clean"
-CHUNKS_PATH = ROOT / "pipeline/work/chunks.json"
-REPORT_PATH = ROOT / "reports/clean-comparison.md"
+CLEAN_DIR = ROOT / P["clean_dir"]
+CHUNKS_PATH = ROOT / P["chunks_json"]
+REPORT_PATH = ROOT / P["reports_dir"] / "clean-comparison.md"
 MAX_CHUNK_CHARS = CFG["translation"]["max_chunk_chars"]
 # 合并小块的目标下限：低于此长度的块会与后续块合并（上限仍受 MAX_CHUNK_CHARS 约束）
 MIN_CHUNK_TARGET = 900
@@ -810,7 +814,7 @@ def split_chunks(unit_id: str, title: str, md: str) -> list:
 # ---------------------------------------------------------------- 主流程
 
 def main() -> None:
-    units = json.loads((ROOT / "source/units.json").read_text(encoding="utf-8"))["units"]
+    units = json.loads((ROOT / P["units_json"]).read_text(encoding="utf-8"))["units"]
     # 处理**所有**本地条目（HTML 与 PDF，含已知失效的），而不是只处理 status==ok 的：
     # 清洗报告必须完整记账——把失败篇目排除在外会让报告谎报"一切正常"。
     todo = [u for u in units

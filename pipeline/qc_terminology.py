@@ -33,6 +33,8 @@
 """
 from __future__ import annotations
 
+import os
+
 import csv
 import json
 import re
@@ -43,11 +45,14 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from termcheck import (find_hits, approved_forms, count_forms, variants,  # noqa: E402
                        select_terms)
-CFG = json.loads((ROOT / "pipeline/config/cs146s.json").read_text(encoding="utf-8"))
+# 配置路径可由环境变量覆盖：换源跑第二份配置时不改代码——
+#   PIPELINE_CONFIG=pipeline/config/demo-second-source.json python3 pipeline/inventory.py
+CONFIG_PATH = Path(os.environ.get("PIPELINE_CONFIG", "pipeline/config/cs146s.json"))
+CFG = json.loads((ROOT / CONFIG_PATH).read_text(encoding="utf-8"))
 GLOSSARY = ROOT / CFG["paths"]["glossary"]
 ZH_DIR = ROOT / CFG["paths"].get("zh_dir", "zh")
-CLEAN_DIR = ROOT / "clean"
-REPORT = ROOT / "reports/terminology-consistency.md"
+CLEAN_DIR = ROOT / CFG["paths"]["clean_dir"]
+REPORT = ROOT / CFG["paths"]["reports_dir"] / "terminology-consistency.md"
 
 CODE_FENCE = re.compile(r"^[ \t]*```.*?^[ \t]*```", re.S | re.M)
 INLINE_CODE = re.compile(r"`[^`\n]*`")

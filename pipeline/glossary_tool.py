@@ -16,14 +16,18 @@
 """
 import csv
 import json
+import os
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-CFG = json.loads((ROOT / "pipeline/config/cs146s.json").read_text(encoding="utf-8"))
+# 配置路径可由环境变量覆盖：换源跑第二份配置时不改代码——
+#   PIPELINE_CONFIG=pipeline/config/demo-second-source.json python3 pipeline/inventory.py
+CONFIG_PATH = Path(os.environ.get("PIPELINE_CONFIG", "pipeline/config/cs146s.json"))
+CFG = json.loads((ROOT / CONFIG_PATH).read_text(encoding="utf-8"))
 CSV_PATH = ROOT / CFG["paths"]["glossary"]
-MD_PATH = ROOT / "glossary/glossary.md"
+MD_PATH = (ROOT / CFG["paths"]["glossary"]).with_suffix(".md")
 
 POLICIES = {"translate", "keep_en", "keep_en_first", "acronym"}
 CATEGORIES = {

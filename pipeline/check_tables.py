@@ -37,16 +37,20 @@
 """
 from __future__ import annotations
 
+import os
 import json
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-CFG = json.loads((ROOT / "pipeline/config/cs146s.json").read_text(encoding="utf-8"))
+# 配置路径可由环境变量覆盖：换源跑第二份配置时不改代码——
+#   PIPELINE_CONFIG=pipeline/config/demo-second-source.json python3 pipeline/inventory.py
+CONFIG_PATH = Path(os.environ.get("PIPELINE_CONFIG", "pipeline/config/cs146s.json"))
+CFG = json.loads((ROOT / CONFIG_PATH).read_text(encoding="utf-8"))
 ZH_DIR = ROOT / CFG["paths"].get("zh_dir", "zh")
-CLEAN_DIR = ROOT / "clean"
+CLEAN_DIR = ROOT / CFG["paths"]["clean_dir"]
 EXC_FILE = ROOT / "pipeline/config/table-exceptions.json"
-REPORT = ROOT / "reports/table-integrity.md"
+REPORT = ROOT / CFG["paths"]["reports_dir"] / "table-integrity.md"
 
 
 def table_rows(text: str) -> int:

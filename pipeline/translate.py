@@ -51,23 +51,26 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from termcheck import find_hits, approved_forms, count_forms, select_terms  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-CFG = json.loads((ROOT / "pipeline/config/cs146s.json").read_text(encoding="utf-8"))
+# 配置路径可由环境变量覆盖：换源跑第二份配置时不改代码——
+#   PIPELINE_CONFIG=pipeline/config/demo-second-source.json python3 pipeline/inventory.py
+CONFIG_PATH = Path(os.environ.get("PIPELINE_CONFIG", "pipeline/config/cs146s.json"))
+CFG = json.loads((ROOT / CONFIG_PATH).read_text(encoding="utf-8"))
 P = CFG["paths"]
 T = CFG.get("translation", {})
 
-CHUNKS_PATH = ROOT / "pipeline/work/chunks.json"
-STATE_PATH = ROOT / "pipeline/work/state.json"
-TODO_DIR = ROOT / "pipeline/work/todo"
-DONE_DIR = ROOT / "pipeline/work/done"
+CHUNKS_PATH = ROOT / P["chunks_json"]
+STATE_PATH = ROOT / P["work_dir"] / "state.json"
+TODO_DIR = ROOT / P["work_dir"] / "todo"
+DONE_DIR = ROOT / P["work_dir"] / "done"
 ZH_DIR = ROOT / P.get("zh_dir", "zh")
-JOURNAL_JSONL = ROOT / "logs/journal.jsonl"
+JOURNAL_JSONL = ROOT / P["journal_jsonl"]
 # 渲染产物刻意放在**仓库根目录**并命名为 AI日志.md：
 # 挑战的 required_deliverables 里写着 `*AI日志*` 这个通配符，
 # 而原先的 `AI日志.md` 路径里根本没有「AI日志」四个字——
 # 用 `glob("*AI日志*")` 一测就是 0 项。名字对不上，交付物在检查器眼里等于不存在。
 # 放在根目录能同时满足 `*AI日志*`（顶层）与 `**/*AI日志*`（递归）两种写法。
-JOURNAL_MD = ROOT / "AI日志.md"
-COVERAGE_MD = ROOT / "reports/coverage.md"
+JOURNAL_MD = ROOT / P["journal_md"]
+COVERAGE_MD = ROOT / P["reports_dir"] / "coverage.md"
 
 PROMPT_VERSION = "v1"
 DEFAULT_BACKEND = T.get("backend", "queue")
@@ -562,7 +565,7 @@ def main() -> None:
     translations = {}
     for c in chunks:
         if state.get(key(c), {}).get("ok"):
-            t = ROOT / "pipeline/work/zh" / f"{key(c)}.md"
+            t = ROOT / P["work_dir"] / "zh" / f"{key(c)}.md"
             if t.exists():
                 translations[key(c)] = t.read_text(encoding="utf-8").strip()
 
@@ -570,7 +573,7 @@ def main() -> None:
     for item in results:
         c, zh, ok, issues, metrics, secs, ph = item
         if ok:
-            d = ROOT / "pipeline/work/zh"
+            d = ROOT / P["work_dir"] / "zh"
             d.mkdir(parents=True, exist_ok=True)
             (d / f"{key(c)}.md").write_text(zh + "\n", encoding="utf-8")
             translations[key(c)] = zh
