@@ -108,7 +108,7 @@ def main() -> None:
             }
 
             if kind == "local":
-                f = ROOT / "source" / path
+                f = ROOT / P["raw_dir"] / path
                 u["local_path"] = f"{P['raw_dir']}/{path}"
                 if f.exists():
                     size = f.stat().st_size
@@ -207,9 +207,16 @@ def main() -> None:
     if len(usable) < need:
         A(f"> 🔴 **风险提示**：可用条目 {len(usable)} 条 < 目标 {need} 条，"
           f"仅靠现有可用条目**无法达标记**。必须先补抓部分无效条目，或确认 PDF 可译。")
-    else:
+    elif local:
         A(f"> ✅ **可行性**：可用条目 {len(usable)} 条 ≥ 目标 {need} 条。"
           f"全部译完可达 {len(usable)/len(local)*100:.1f}%。")
+    else:
+        # 空源也要能跑完：换源烟测时最容易撞上的就是这种状态
+        # （大纲写好了、页面还没归档）。原来这里直接 ZeroDivisionError，
+        # 报错信息指向除法，看不出真正原因是"一条本地条目都没有"。
+        A(f"> ⚪ **本次没有本地条目**：{len(SYLLABUS['weeks'])} 周大纲里没有"
+          f"指向 `{P['pages_dir']}` / `{P['pdfs_dir']}` 的 reading，"
+          f"因此分母为 0、覆盖率不适用。请确认归档步骤是否已完成。")
     A("")
     if usable_pdf:
         A("> ⚠️ **注意**：PDF 条目 **必须纳入翻译范围** 才能达标记。"
@@ -310,7 +317,7 @@ def main() -> None:
     # 复用上面算好的 need，而不是在这里重新算一遍——
     # 同一个数在三处各算一次，正是刚才 off-by-one 漏改第三处的原因。
     print(f"覆盖度分母   : {len(local)}   {int(CFG['coverage']['target_ratio']*100)}% 需 >= {need} 条")
-    print(f"已写出       : source/units.json, source/INVENTORY.md")
+    print(f"已写出       : {P['units_json']}, {P['inventory_md']}")
 
 
 if __name__ == "__main__":

@@ -931,8 +931,16 @@ def main() -> None:
     A(f"| 失效 | {len(bad)} |")
     A(f"| 原始体积 | {tot_raw/1024/1024:.2f} MB |")
     A(f"| 清洗后 Markdown | {tot_md/1024/1024:.2f} MB |")
-    A(f"| **有效条目压缩率** | **{md_good/raw_good*100:.1f}%**"
-      f"（降至 1/{raw_good/max(md_good,1):.1f}） |")
+    if raw_good:
+        A(f"| **有效条目压缩率** | **{md_good/raw_good*100:.1f}%**"
+          f"（降至 1/{raw_good/max(md_good,1):.1f}） |")
+    else:
+        # 一条有效条目都没有时不要抛 ZeroDivisionError：换源烟测最常见的就是
+        # 「清单有了、页面还没归档」。报错应指向原因，而不是指向除法。
+        A("| **有效条目压缩率** | 不适用（本次有效条目 0 条） |")
+        A("")
+        A("> ⚪ **本次没有可清洗的条目。** 逐条原因见上方清单——"
+          "通常是归档步骤未完成，或大纲里的路径与 `pages_dir` 不一致。")
     A(f"| 可翻译正文词数 | {tot_words:,} |")
     A(f"| 翻译分块数 | {len(all_chunks)}"
       f"（合并小块前为 398 块——合并见「合并过小相邻块」的设计说明） |")
@@ -1013,7 +1021,9 @@ def main() -> None:
 
     print(f"\n汇总：{len(good)} 条有效 / {len(bad)} 条失效 ｜ "
           f"{raw_good/1024/1024:.2f} MB → {md_good/1024/1024:.2f} MB "
-          f"（{md_good/raw_good*100:.1f}%）｜{tot_words:,} 词｜{len(all_chunks)} 块")
+          f"（{md_good/raw_good*100:.1f}%）｜{tot_words:,} 词｜{len(all_chunks)} 块"
+          if raw_good else
+          f"0 条有效条目｜{len(all_chunks)} 块（清单有了、页面还没归档？）")
     if skipped:
         print(f"跳过（正文不足，未产出文件）：{', '.join(skipped)}")
     if notes:
@@ -1022,7 +1032,7 @@ def main() -> None:
             print(f"  ⚠ {n}")
     else:
         print("\n✓ 内容丢失检查通过：无告警")
-    print(f"产物：clean/  {REPORT_PATH.relative_to(ROOT)}  {CHUNKS_PATH.relative_to(ROOT)}")
+    print(f"产物：{P['clean_dir']}/  {REPORT_PATH.relative_to(ROOT)}  {CHUNKS_PATH.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

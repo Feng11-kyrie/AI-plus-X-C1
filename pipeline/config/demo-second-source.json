@@ -1,0 +1,49 @@
+{
+  "source_id": "second-source-demo",
+  "title": "第二源烟测：Python 3 文档",
+  "institution": "Python Software Foundation",
+  "term": "3.x docs",
+  "instructor": "—",
+  "source_url": "https://docs.python.org/3/",
+  "cached_on": "2026-09-16",
+  "note": "这份配置只用于证明「换源可复用」：不改任何脚本代码，只换配置与输入目录。",
+  "paths": {
+    "raw_dir": "demo/second-source",
+    "index_html": "demo/second-source/syllabus.json",
+    "pages_dir": "demo/second-source/pages",
+    "pdfs_dir": "demo/second-source/pdfs",
+    "page_map": "demo/second-source/page_map.json",
+    "syllabus_json": "demo/second-source/syllabus.json",
+    "units_json": "demo/second-source/units.json",
+    "inventory_md": "demo/second-source/INVENTORY.md",
+    "clean_dir": "demo/second-source/clean",
+    "zh_dir": "demo/second-source/zh",
+    "work_dir": "demo/second-source/work",
+    "chunks_json": "demo/second-source/work/chunks.json",
+    "reports_dir": "demo/second-source/reports",
+    "glossary": "glossary/glossary.csv",
+    "journal_jsonl": "logs/journal.jsonl",
+    "journal_md": "AI日志.md"
+  },
+  "translation": {
+    "source_lang": "en",
+    "target_lang": "zh-Hans",
+    "chunk_by": "heading",
+    "max_chunk_chars": 4000,
+    "preserve": [
+      "code",
+      "headings",
+      "links",
+      "lists",
+      "tables"
+    ],
+    "backend": "queue",
+    "api_model": "deepseek-chat",
+    "api_base": "https://api.deepseek.com/v1",
+    "api_key_env": "DEEPSEEK_API_KEY"
+  },
+  "coverage": {
+    "scope": "pages + pdfs",
+    "target_ratio": 0.8
+  }
+}

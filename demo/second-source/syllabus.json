@@ -1,0 +1,35 @@
+{
+  "course": "Python 3 标准库与指南（第二源烟测）",
+  "institution": "Python Software Foundation",
+  "term": "3.x docs",
+  "instructor": "—",
+  "source_url": "https://docs.python.org/3/",
+  "source_html": "demo/second-source/pages/（3 页，2026-09-16 抓取）",
+  "weeks": [
+    {
+      "week": 1,
+      "title": "标准库文档（第二源烟测）",
+      "topics": [
+        "HTML → Markdown 清洗",
+        "表格与代码块保留",
+        "分块"
+      ],
+      "readings": [
+        {
+          "text": "argparse — 命令行选项解析",
+          "url": "pages/library-argparse.html"
+        },
+        {
+          "text": "json — JSON 编解码",
+          "url": "pages/library-json.html"
+        },
+        {
+          "text": "如何使用 argparse（HOWTO）",
+          "url": "pages/howto-argparse.html"
+        }
+      ],
+      "lectures": [],
+      "assignments": []
+    }
+  ]
+}

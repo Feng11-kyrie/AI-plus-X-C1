@@ -1,4 +1,6 @@
 {
+  "source_id": "cs146s",
+  "note": "例外只在 source_id 匹配时生效：换源跑第二份配置时，本表的登记与本源无关，不应报「过期」。",
   "sast-vs-dast": {
     "src_rows": 0,
     "zh_rows": 12,

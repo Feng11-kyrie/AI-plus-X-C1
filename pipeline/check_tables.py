@@ -59,7 +59,11 @@ def table_rows(text: str) -> int:
 
 
 def main() -> int:
-    exceptions = json.loads(EXC_FILE.read_text(encoding="utf-8")) if EXC_FILE.exists() else {}
+    raw = json.loads(EXC_FILE.read_text(encoding="utf-8")) if EXC_FILE.exists() else {}
+    # 例外登记属于**某一门课**的产物：换源跑第二份配置时，本表的登记与
+    # 该源毫无关系，不该被报成「过期登记」。用 source_id 划清边界。
+    same_source = raw.get("source_id", CFG["source_id"]) == CFG["source_id"]
+    exceptions = {k: v for k, v in raw.items() if isinstance(v, dict)} if same_source else {}
 
     rows, unexplained, stale = [], [], []
     for zh_file in sorted(ZH_DIR.glob("*.md")):
@@ -80,9 +84,10 @@ def main() -> int:
             unexplained.append(unit)
 
     # 例外的数字若已经不再匹配当前代码状态，也算过期，必须重新复核
-    for unit, exc in exceptions.items():
-        if unit not in {r[0] for r in rows}:
-            stale.append(unit)
+    if same_source:
+        for unit, exc in exceptions.items():
+            if unit not in {r[0] for r in rows}:
+                stale.append(unit)
 
     L = ["# 表格完整性报告（TABLE INTEGRITY）", "",
          "> 由 `pipeline/check_tables.py` 自动生成，**请勿手工编辑**。", "",
@@ -130,6 +135,9 @@ def main() -> int:
     REPORT.parent.mkdir(parents=True, exist_ok=True)
     REPORT.write_text("\n".join(L) + "\n", encoding="utf-8")
 
+    if not same_source:
+        print(f"（源为 {CFG['source_id']}，与例外登记所属的 "
+              f"{raw.get('source_id')} 不同，本次跳过例外与过期判定）")
     print(f"审计译稿 {n_units} 篇｜表行数差异 {len(rows)} 篇"
           f"（已登记例外 {len(rows) - len(unexplained)}，未登记 {len(unexplained)}）")
     for unit, s, z, kind, state, _e in rows:

@@ -1,0 +1,973 @@
+{
+  "source_id": "second-source-demo",
+  "chunks": [
+    {
+      "heading_path": "如何使用 argparse（HOWTO）",
+      "text": "# Argparse Tutorial¶\n\nauthor\n:\n\nTshepang Mbambo\n\nThis tutorial is intended to be a gentle introduction to [`argparse`](../library/argparse.html#module-argparse), the\nrecommended command-line parsing module in the Python standard library.\n\nNote\n\nThe standard library includes two other libraries directly related\nto command-line parameter processing: the lower level [`optparse`](../library/optparse.html#module-optparse)\nmodule (which may require more code to configure for a given application,\nbut also allows an application to request behaviors that `argparse`\ndoesn’t support), and the very low level [`getopt`](../library/getopt.html#module-getopt) (which specifically\nserves as an equivalent to the `getopt()` family of functions\navailable to C programmers).\nWhile neither of those modules is covered directly in this guide, many of\nthe core concepts in `argparse` first originated in `optparse`, so\nsome aspects of this tutorial will also be relevant to `optparse` users.",
+      "headings": [
+        "如何使用 argparse（HOWTO）"
+      ],
+      "index": 0,
+      "unit_id": "howto-argparse",
+      "chars": 977,
+      "week": 1,
+      "reading_title": "如何使用 argparse（HOWTO）",
+      "source_ref": "demo/second-source/pages/howto-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Concepts¶",
+      "text": "## Concepts¶\n\nLet’s show the sort of functionality that we are going to explore in this\nintroductory tutorial by making use of the **ls** command:\n\n```\n$ ls\ncpython  devguide  prog.py  pypy  rm-unused-function.patch\n$ ls pypy\nctypes_configure  demo  dotviewer  include  lib_pypy  lib-python ...\n$ ls -l\ntotal 20\ndrwxr-xr-x 19 wena wena 4096 Feb 18 18:51 cpython\ndrwxr-xr-x  4 wena wena 4096 Feb  8 12:04 devguide\n-rwxr-xr-x  1 wena wena  535 Feb 19 00:05 prog.py\ndrwxr-xr-x 14 wena wena 4096 Feb  7 00:59 pypy\n-rw-r--r--  1 wena wena  741 Feb 18 01:01 rm-unused-function.patch\n$ ls --help\nUsage: ls [OPTION]... [FILE]...\nList information about the FILEs (the current directory by default).\nSort entries alphabetically if none of -cftuvSUX nor --sort is specified.\n...\n```\n\nA few concepts we can learn from the four commands:\n\n- The **ls** command is useful when run without any options at all. It defaults to displaying the contents of the current directory.\n- If we want beyond what it provides by default, we tell it a bit more. In this case, we want it to display a different directory, `pypy`. What we did is specify what is known as a positional argument. It’s named so because the program should know what to do with the value, solely based on where it appears on the command line. This concept is more relevant to a command like **cp**, whose most basic usage is `cp SRC DEST`. The first position is *what you want copied,* and the second position is *where you want it copied to*.\n- Now, say we want to change behaviour of the program. In our example, we display more info for each file instead of just showing the file names. The `-l` in that case is known as an optional argument.\n- That’s a snippet of the help text. It’s very useful in that you can come across a program you have never used before, and can figure out how it works simply by reading its help text.",
+      "headings": [
+        "Concepts¶"
+      ],
+      "index": 1,
+      "unit_id": "howto-argparse",
+      "chars": 1875,
+      "week": 1,
+      "reading_title": "如何使用 argparse（HOWTO）",
+      "source_ref": "demo/second-source/pages/howto-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "The basics¶",
+      "text": "## The basics¶\n\nLet us start with a very simple example which does (almost) nothing:\n\n```\nimport argparse\nparser = argparse.ArgumentParser()\nparser.parse_args()\n```\n\nFollowing is a result of running the code:\n\n```\n$ python prog.py\n$ python prog.py --help\nusage: prog.py [-h]\n\noptions:\n  -h, --help  show this help message and exit\n$ python prog.py --verbose\nusage: prog.py [-h]\nprog.py: error: unrecognized arguments: --verbose\n$ python prog.py foo\nusage: prog.py [-h]\nprog.py: error: unrecognized arguments: foo\n```\n\nHere is what is happening:\n\n- Running the script without any options results in nothing displayed to stdout. Not so useful.\n- The second one starts to display the usefulness of the [`argparse`](../library/argparse.html#module-argparse) module. We have done almost nothing, but already we get a nice help message.\n- The `--help` option, which can also be shortened to `-h`, is the only option we get for free (i.e. no need to specify it). Specifying anything else results in an error. But even then, we do get a useful usage message, also for free.",
+      "headings": [
+        "The basics¶"
+      ],
+      "index": 2,
+      "unit_id": "howto-argparse",
+      "chars": 1065,
+      "week": 1,
+      "reading_title": "如何使用 argparse（HOWTO）",
+      "source_ref": "demo/second-source/pages/howto-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Introducing Positional arguments¶",
+      "text": "## Introducing Positional arguments¶\n\nAn example:\n\n```\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"echo\")\nargs = parser.parse_args()\nprint(args.echo)\n```\n\nAnd running the code:\n\n```\n$ python prog.py\nusage: prog.py [-h] echo\nprog.py: error: the following arguments are required: echo\n$ python prog.py --help\nusage: prog.py [-h] echo\n\npositional arguments:\n  echo\n\noptions:\n  -h, --help  show this help message and exit\n$ python prog.py foo\nfoo\n```\n\nHere is what’s happening:\n\n- We’ve added the [`add_argument()`](../library/argparse.html#argparse.ArgumentParser.add_argument) method, which is what we use to specify which command-line options the program is willing to accept. In this case, I’ve named it `echo` so that it’s in line with its function.\n- Calling our program now requires us to specify an option.\n- The [`parse_args()`](../library/argparse.html#argparse.ArgumentParser.parse_args) method actually returns some data from the options specified, in this case, `echo`.\n- The variable is some form of ‘magic’ that [`argparse`](../library/argparse.html#module-argparse) performs for free (i.e. no need to specify which variable that value is stored in). You will also notice that its name matches the string argument given to the method, `echo`.\n\nNote however that, although the help display looks nice and all, it currently\nis not as helpful as it can be. For example we see that we got `echo` as a\npositional argument, but we don’t know what it does, other than by guessing or\nby reading the source code. So, let’s make it a bit more useful:\n\n```\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"echo\", help=\"echo the string you use here\")\nargs = parser.parse_args()\nprint(args.echo)\n```\n\nAnd we get:\n\n```\n$ python prog.py -h\nusage: prog.py [-h] echo\n\npositional arguments:\n  echo        echo the string you use here\n\noptions:\n  -h, --help  show this help message and exit\n```\n\nNow, how about doing something even more useful:\n\n```\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"square\", help=\"display a square of a given number\")\nargs = parser.parse_args()\nprint(args.square**2)\n```\n\nFollowing is a result of running the code:\n\n```\n$ python prog.py 4\nTraceback (most recent call last):\n  File \"prog.py\", line 5, in <module>\n    print(args.square**2)\nTypeError: unsupported operand type(s) for ** or pow(): 'str' and 'int'\n```\n\nThat didn’t go so well. That’s because [`argparse`](../library/argparse.html#module-argparse) treats the options we\ngive it as strings, unless we tell it otherwise. So, let’s tell\n`argparse` to treat that input as an integer:\n\n```\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"square\", help=\"display a square of a given number\",\n                    type=int)\nargs = parser.parse_args()\nprint(args.square**2)\n```\n\nFollowing is a result of running the code:\n\n```\n$ python prog.py 4\n16\n$ python prog.py four\nusage: prog.py [-h] square\nprog.py: error: argument square: invalid int value: 'four'\n```\n\nThat went well. The program now even helpfully quits on bad illegal input\nbefore proceeding.",
+      "headings": [
+        "Introducing Positional arguments¶"
+      ],
+      "index": 3,
+      "unit_id": "howto-argparse",
+      "chars": 3128,
+      "week": 1,
+      "reading_title": "如何使用 argparse（HOWTO）",
+      "source_ref": "demo/second-source/pages/howto-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Introducing Optional arguments¶",
+      "text": "## Introducing Optional arguments¶\n\nSo far we have been playing with positional arguments. Let us\nhave a look on how to add optional ones:\n\n```\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"--verbosity\", help=\"increase output verbosity\")\nargs = parser.parse_args()\nif args.verbosity:\n    print(\"verbosity turned on\")\n```\n\nAnd the output:\n\n```\n$ python prog.py --verbosity 1\nverbosity turned on\n$ python prog.py\n$ python prog.py --help\nusage: prog.py [-h] [--verbosity VERBOSITY]\n\noptions:\n  -h, --help            show this help message and exit\n  --verbosity VERBOSITY\n                        increase output verbosity\n$ python prog.py --verbosity\nusage: prog.py [-h] [--verbosity VERBOSITY]\nprog.py: error: argument --verbosity: expected one argument\n```\n\nHere is what is happening:\n\n- The program is written so as to display something when `--verbosity` is specified and display nothing when not.\n- To show that the option is actually optional, there is no error when running the program without it. Note that by default, if an optional argument isn’t used, the relevant variable, in this case `args.verbosity`, is given `None` as a value, which is the reason it fails the truth test of the [`if`](../reference/compound_stmts.html#if) statement.\n- The help message is a bit different.\n- When using the `--verbosity` option, one must also specify some value, any value.\n\nThe above example accepts arbitrary integer values for `--verbosity`, but for\nour simple program, only two values are actually useful, `True` or `False`.\nLet’s modify the code accordingly:\n\n```\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"--verbose\", help=\"increase output verbosity\",\n                    action=\"store_true\")\nargs = parser.parse_args()\nif args.verbose:\n    print(\"verbosity turned on\")\n```\n\nAnd the output:\n\n```\n$ python prog.py --verbose\nverbosity turned on\n$ python prog.py --verbose 1\nusage: prog.py [-h] [--verbose]\nprog.py: error: unrecognized arguments: 1\n$ python prog.py --help\nusage: prog.py [-h] [--verbose]\n\noptions:\n  -h, --help  show this help message and exit\n  --verbose   increase output verbosity\n```\n\nHere is what is happening:\n\n- The option is now more of a flag than something that requires a value. We even changed the name of the option to match that idea. Note that we now specify a new keyword, `action`, and give it the value `\"store_true\"`. This means that, if the option is specified, assign the value `True` to `args.verbose`. Not specifying it implies `False`.\n- It complains when you specify a value, in true spirit of what flags actually are.\n- Notice the different help text.",
+      "headings": [
+        "Introducing Optional arguments¶"
+      ],
+      "index": 4,
+      "unit_id": "howto-argparse",
+      "chars": 2649,
+      "week": 1,
+      "reading_title": "如何使用 argparse（HOWTO）",
+      "source_ref": "demo/second-source/pages/howto-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Short options¶",
+      "text": "### Short options¶\n\nIf you are familiar with command line usage,\nyou will notice that I haven’t yet touched on the topic of short\nversions of the options. It’s quite simple:\n\n```\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-v\", \"--verbose\", help=\"increase output verbosity\",\n                    action=\"store_true\")\nargs = parser.parse_args()\nif args.verbose:\n    print(\"verbosity turned on\")\n```\n\nAnd here goes:\n\n```\n$ python prog.py -v\nverbosity turned on\n$ python prog.py --help\nusage: prog.py [-h] [-v]\n\noptions:\n  -h, --help     show this help message and exit\n  -v, --verbose  increase output verbosity\n```\n\nNote that the new ability is also reflected in the help text.",
+      "headings": [
+        "Short options¶"
+      ],
+      "index": 5,
+      "unit_id": "howto-argparse",
+      "chars": 703,
+      "week": 1,
+      "reading_title": "如何使用 argparse（HOWTO）",
+      "source_ref": "demo/second-source/pages/howto-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Combining Positional and Optional arguments¶",
+      "text": "## Combining Positional and Optional arguments¶\n\nOur program keeps growing in complexity:\n\n```\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"square\", type=int,\n                    help=\"display a square of a given number\")\nparser.add_argument(\"-v\", \"--verbose\", action=\"store_true\",\n                    help=\"increase output verbosity\")\nargs = parser.parse_args()\nanswer = args.square**2\nif args.verbose:\n    print(f\"the square of {args.square} equals {answer}\")\nelse:\n    print(answer)\n```\n\nAnd now the output:\n\n```\n$ python prog.py\nusage: prog.py [-h] [-v] square\nprog.py: error: the following arguments are required: square\n$ python prog.py 4\n16\n$ python prog.py 4 --verbose\nthe square of 4 equals 16\n$ python prog.py --verbose 4\nthe square of 4 equals 16\n```\n\n- We’ve brought back a positional argument, hence the complaint.\n- Note that the order does not matter.\n\nHow about we give this program of ours back the ability to have\nmultiple verbosity values, and actually get to use them:\n\n```\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"square\", type=int,\n                    help=\"display a square of a given number\")\nparser.add_argument(\"-v\", \"--verbosity\", type=int,\n                    help=\"increase output verbosity\")\nargs = parser.parse_args()\nanswer = args.square**2\nif args.verbosity == 2:\n    print(f\"the square of {args.square} equals {answer}\")\nelif args.verbosity == 1:\n    print(f\"{args.square}^2 == {answer}\")\nelse:\n    print(answer)\n```\n\nAnd the output:\n\n```\n$ python prog.py 4\n16\n$ python prog.py 4 -v\nusage: prog.py [-h] [-v VERBOSITY] square\nprog.py: error: argument -v/--verbosity: expected one argument\n$ python prog.py 4 -v 1\n4^2 == 16\n$ python prog.py 4 -v 2\nthe square of 4 equals 16\n$ python prog.py 4 -v 3\n16\n```\n\nThese all look good except the last one, which exposes a bug in our program.\nLet’s fix it by restricting the values the `--verbosity` option can accept:\n\n```\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"square\", type=int,\n                    help=\"display a square of a given number\")\nparser.add_argument(\"-v\", \"--verbosity\", type=int, choices=[0, 1, 2],\n                    help=\"increase output verbosity\")\nargs = parser.parse_args()\nanswer = args.square**2\nif args.verbosity == 2:\n    print(f\"the square of {args.square} equals {answer}\")\nelif args.verbosity == 1:\n    print(f\"{args.square}^2 == {answer}\")\nelse:\n    print(answer)\n```\n\nAnd the output:\n\n```\n$ python prog.py 4 -v 3\nusage: prog.py [-h] [-v {0,1,2}] square\nprog.py: error: argument -v/--verbosity: invalid choice: 3 (choose from 0, 1, 2)\n$ python prog.py 4 -h\nusage: prog.py [-h] [-v {0,1,2}] square\n\npositional arguments:\n  square                display a square of a given number\n\noptions:\n  -h, --help            show this help message and exit\n  -v, --verbosity {0,1,2}\n                        increase output verbosity\n```\n\nNote that the change also reflects both in the error message as well as the\nhelp string.\n\nNow, let’s use a different approach of playing with verbosity, which is pretty\ncommon. It also matches the way the CPython executable handles its own\nverbosity argument (check the output of `python --help`):\n\n```\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"square\", type=int,\n                    help=\"display the square of a given number\")\nparser.add_argument(\"-v\", \"--verbosity\", action=\"count\",\n                    help=\"increase output verbosity\")\nargs = parser.parse_args()\nanswer = args.square**2\nif args.verbosity == 2:\n    print(f\"the square of {args.square} equals {answer}\")\nelif args.verbosity == 1:\n    print(f\"{args.square}^2 == {answer}\")\nelse:\n    print(answer)\n```\n\nWe have introduced another action, “count”,\nto count the number of occurrences of specific options.",
+      "headings": [
+        "Combining Positional and Optional arguments¶"
+      ],
+      "index": 6,
+      "unit_id": "howto-argparse",
+      "chars": 3818,
+      "week": 1,
+      "reading_title": "如何使用 argparse（HOWTO）",
+      "source_ref": "demo/second-source/pages/howto-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Combining Positional and Optional arguments¶",
+      "text": "```\n$ python prog.py 4\n16\n$ python prog.py 4 -v\n4^2 == 16\n$ python prog.py 4 -vv\nthe square of 4 equals 16\n$ python prog.py 4 --verbosity --verbosity\nthe square of 4 equals 16\n$ python prog.py 4 -v 1\nusage: prog.py [-h] [-v] square\nprog.py: error: unrecognized arguments: 1\n$ python prog.py 4 -h\nusage: prog.py [-h] [-v] square\n\npositional arguments:\n  square           display a square of a given number\n\noptions:\n  -h, --help       show this help message and exit\n  -v, --verbosity  increase output verbosity\n$ python prog.py 4 -vvv\n16\n```\n\n- Yes, it’s now more of a flag (similar to `action=\"store_true\"`) in the previous version of our script. That should explain the complaint.\n- It also behaves similar to “store_true” action.\n- Now here’s a demonstration of what the “count” action gives. You’ve probably seen this sort of usage before.\n- And if you don’t specify the `-v` flag, that flag is considered to have `None` value.\n- As should be expected, specifying the long form of the flag, we should get the same output.\n- Sadly, our help output isn’t very informative on the new ability our script has acquired, but that can always be fixed by improving the documentation for our script (e.g. via the `help` keyword argument).\n- That last output exposes a bug in our program.\n\nLet’s fix:\n\n```\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"square\", type=int,\n                    help=\"display a square of a given number\")\nparser.add_argument(\"-v\", \"--verbosity\", action=\"count\",\n                    help=\"increase output verbosity\")\nargs = parser.parse_args()\nanswer = args.square**2\n\n# bugfix: replace == with >=\nif args.verbosity >= 2:\n    print(f\"the square of {args.square} equals {answer}\")\nelif args.verbosity >= 1:\n    print(f\"{args.square}^2 == {answer}\")\nelse:\n    print(answer)\n```\n\nAnd this is what it gives:\n\n```\n$ python prog.py 4 -vvv\nthe square of 4 equals 16\n$ python prog.py 4 -vvvv\nthe square of 4 equals 16\n$ python prog.py 4\nTraceback (most recent call last):\n  File \"prog.py\", line 11, in <module>\n    if args.verbosity >= 2:\nTypeError: '>=' not supported between instances of 'NoneType' and 'int'\n```\n\n- First output went well, and fixes the bug we had before. That is, we want any value >= 2 to be as verbose as possible.\n- Third output not so good.\n\nLet’s fix that bug:\n\n```\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"square\", type=int,\n                    help=\"display a square of a given number\")\nparser.add_argument(\"-v\", \"--verbosity\", action=\"count\", default=0,\n                    help=\"increase output verbosity\")\nargs = parser.parse_args()\nanswer = args.square**2\nif args.verbosity >= 2:\n    print(f\"the square of {args.square} equals {answer}\")\nelif args.verbosity >= 1:\n    print(f\"{args.square}^2 == {answer}\")\nelse:\n    print(answer)\n```\n\nWe’ve just introduced yet another keyword, `default`.\nWe’ve set it to `0` in order to make it comparable to the other int values.\nRemember that by default,\nif an optional argument isn’t specified,\nit gets the `None` value, and that cannot be compared to an int value\n(hence the [`TypeError`](../builtins/exceptions.html#TypeError) exception).\n\nAnd:\n\n```\n$ python prog.py 4\n16\n```\n\nYou can go quite far just with what we’ve learned so far,\nand we have only scratched the surface.\nThe [`argparse`](../library/argparse.html#module-argparse) module is very powerful,\nand we’ll explore a bit more of it before we end this tutorial.",
+      "headings": [
+        "Combining Positional and Optional arguments¶"
+      ],
+      "index": 7,
+      "unit_id": "howto-argparse",
+      "chars": 3462,
+      "week": 1,
+      "reading_title": "如何使用 argparse（HOWTO）",
+      "source_ref": "demo/second-source/pages/howto-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Getting a little more advanced¶",
+      "text": "## Getting a little more advanced¶\n\nWhat if we wanted to expand our tiny program to perform other powers,\nnot just squares:\n\n```\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"x\", type=int, help=\"the base\")\nparser.add_argument(\"y\", type=int, help=\"the exponent\")\nparser.add_argument(\"-v\", \"--verbosity\", action=\"count\", default=0)\nargs = parser.parse_args()\nanswer = args.x**args.y\nif args.verbosity >= 2:\n    print(f\"{args.x} to the power {args.y} equals {answer}\")\nelif args.verbosity >= 1:\n    print(f\"{args.x}^{args.y} == {answer}\")\nelse:\n    print(answer)\n```\n\nOutput:\n\n```\n$ python prog.py\nusage: prog.py [-h] [-v] x y\nprog.py: error: the following arguments are required: x, y\n$ python prog.py -h\nusage: prog.py [-h] [-v] x y\n\npositional arguments:\n  x                the base\n  y                the exponent\n\noptions:\n  -h, --help       show this help message and exit\n  -v, --verbosity\n$ python prog.py 4 2 -v\n4^2 == 16\n```\n\nNotice that so far we’ve been using verbosity level to *change* the text\nthat gets displayed. The following example instead uses verbosity level\nto display *more* text instead:\n\n```\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"x\", type=int, help=\"the base\")\nparser.add_argument(\"y\", type=int, help=\"the exponent\")\nparser.add_argument(\"-v\", \"--verbosity\", action=\"count\", default=0)\nargs = parser.parse_args()\nanswer = args.x**args.y\nif args.verbosity >= 2:\n    print(f\"Running '{__file__}'\")\nif args.verbosity >= 1:\n    print(f\"{args.x}^{args.y} == \", end=\"\")\nprint(answer)\n```\n\nOutput:\n\n```\n$ python prog.py 4 2\n16\n$ python prog.py 4 2 -v\n4^2 == 16\n$ python prog.py 4 2 -vv\nRunning 'prog.py'\n4^2 == 16\n```",
+      "headings": [
+        "Getting a little more advanced¶"
+      ],
+      "index": 8,
+      "unit_id": "howto-argparse",
+      "chars": 1692,
+      "week": 1,
+      "reading_title": "如何使用 argparse（HOWTO）",
+      "source_ref": "demo/second-source/pages/howto-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Specifying ambiguous arguments¶",
+      "text": "### Specifying ambiguous arguments¶\n\nWhen there is ambiguity in deciding whether an argument is positional or for an\nargument, `--` can be used to tell [`parse_args()`](../library/argparse.html#argparse.ArgumentParser.parse_args) that\neverything after that is a positional argument:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG')\n>>> parser.add_argument('-n', nargs='+')\n>>> parser.add_argument('args', nargs='*')\n\n>>> # ambiguous, so parse_args assumes it's an option\n>>> parser.parse_args(['-f'])\nusage: PROG [-h] [-n N [N ...]] [args ...]\nPROG: error: unrecognized arguments: -f\n\n>>> parser.parse_args(['--', '-f'])\nNamespace(args=['-f'], n=None)\n\n>>> # ambiguous, so the -n option greedily accepts arguments\n>>> parser.parse_args(['-n', '1', '2', '3'])\nNamespace(args=[], n=['1', '2', '3'])\n\n>>> parser.parse_args(['-n', '1', '--', '2', '3'])\nNamespace(args=['2', '3'], n=['1'])\n```\n\n### Conflicting options¶\n\nSo far, we have been working with two methods of an\n[`argparse.ArgumentParser`](../library/argparse.html#argparse.ArgumentParser) instance. Let’s introduce a third one,\n[`add_mutually_exclusive_group()`](../library/argparse.html#argparse.ArgumentParser.add_mutually_exclusive_group). It allows for us to specify options that\nconflict with each other. Let’s also change the rest of the program so that\nthe new functionality makes more sense:\nwe’ll introduce the `--quiet` option,\nwhich will be the opposite of the `--verbose` one:\n\n```\nimport argparse\n\nparser = argparse.ArgumentParser()\ngroup = parser.add_mutually_exclusive_group()\ngroup.add_argument(\"-v\", \"--verbose\", action=\"store_true\")\ngroup.add_argument(\"-q\", \"--quiet\", action=\"store_true\")\nparser.add_argument(\"x\", type=int, help=\"the base\")\nparser.add_argument(\"y\", type=int, help=\"the exponent\")\nargs = parser.parse_args()\nanswer = args.x**args.y\n\nif args.quiet:\n    print(answer)\nelif args.verbose:\n    print(f\"{args.x} to the power {args.y} equals {answer}\")\nelse:\n    print(f\"{args.x}^{args.y} == {answer}\")\n```\n\nOur program is now simpler, and we’ve lost some functionality for the sake of\ndemonstration. Anyways, here’s the output:\n\n```\n$ python prog.py 4 2\n4^2 == 16\n$ python prog.py 4 2 -q\n16\n$ python prog.py 4 2 -v\n4 to the power 2 equals 16\n$ python prog.py 4 2 -vq\nusage: prog.py [-h] [-v | -q] x y\nprog.py: error: argument -q/--quiet: not allowed with argument -v/--verbose\n$ python prog.py 4 2 -v --quiet\nusage: prog.py [-h] [-v | -q] x y\nprog.py: error: argument -q/--quiet: not allowed with argument -v/--verbose\n```\n\nThat should be easy to follow. I’ve added that last output so you can see the\nsort of flexibility you get, i.e. mixing long form options with short form\nones.\n\nBefore we conclude, you probably want to tell your users the main purpose of\nyour program, just in case they don’t know:\n\n```\nimport argparse\n\nparser = argparse.ArgumentParser(description=\"calculate X to the power of Y\")\ngroup = parser.add_mutually_exclusive_group()\ngroup.add_argument(\"-v\", \"--verbose\", action=\"store_true\")\ngroup.add_argument(\"-q\", \"--quiet\", action=\"store_true\")\nparser.add_argument(\"x\", type=int, help=\"the base\")\nparser.add_argument(\"y\", type=int, help=\"the exponent\")\nargs = parser.parse_args()\nanswer = args.x**args.y\n\nif args.quiet:\n    print(answer)\nelif args.verbose:\n    print(f\"{args.x} to the power {args.y} equals {answer}\")\nelse:\n    print(f\"{args.x}^{args.y} == {answer}\")\n```\n\nNote that slight difference in the usage text. Note the `[-v | -q]`,\nwhich tells us that we can either use `-v` or `-q`,\nbut not both at the same time:\n\n```\n$ python prog.py --help\nusage: prog.py [-h] [-v | -q] x y\n\ncalculate X to the power of Y\n\npositional arguments:\n  x              the base\n  y              the exponent\n\noptions:\n  -h, --help     show this help message and exit\n  -v, --verbose\n  -q, --quiet\n```",
+      "headings": [
+        "Specifying ambiguous arguments¶",
+        "Conflicting options¶"
+      ],
+      "index": 9,
+      "unit_id": "howto-argparse",
+      "chars": 3804,
+      "week": 1,
+      "reading_title": "如何使用 argparse（HOWTO）",
+      "source_ref": "demo/second-source/pages/howto-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "How to translate the argparse output¶",
+      "text": "## How to translate the argparse output¶\n\nThe output of the [`argparse`](../library/argparse.html#module-argparse) module such as its help text and error\nmessages are all made translatable using the [`gettext`](../library/gettext.html#module-gettext) module. This\nallows applications to easily localize messages produced by\n`argparse`. See also [Internationalizing your programs and modules](../library/gettext.html#i18n-howto).\n\nFor instance, in this [`argparse`](../library/argparse.html#module-argparse) output:\n\n```\n$ python prog.py --help\nusage: prog.py [-h] [-v | -q] x y\n\ncalculate X to the power of Y\n\npositional arguments:\n  x              the base\n  y              the exponent\n\noptions:\n  -h, --help     show this help message and exit\n  -v, --verbose\n  -q, --quiet\n```\n\nThe strings `usage:`, `positional arguments:`, `options:` and\n`show this help message and exit` are all translatable.\n\nIn order to translate these strings, they must first be extracted\ninto a `.po` file. For example, using [Babel](https://babel.pocoo.org/),\nrun this command:\n\n```\n$ pybabel extract -o messages.po /usr/lib/python3.12/argparse.py\n```\n\nThis command will extract all translatable strings from the [`argparse`](../library/argparse.html#module-argparse)\nmodule and output them into a file named `messages.po`. This command assumes\nthat your Python installation is in `/usr/lib`.\n\nYou can find out the location of the [`argparse`](../library/argparse.html#module-argparse) module on your system\nusing this script:\n\n```\nimport argparse\nprint(argparse.__file__)\n```\n\nOnce the messages in the `.po` file are translated and the translations are\ninstalled using [`gettext`](../library/gettext.html#module-gettext), [`argparse`](../library/argparse.html#module-argparse) will be able to display the\ntranslated messages.\n\nTo translate your own strings in the [`argparse`](../library/argparse.html#module-argparse) output, use [`gettext`](../library/gettext.html#module-gettext).",
+      "headings": [
+        "How to translate the argparse output¶"
+      ],
+      "index": 10,
+      "unit_id": "howto-argparse",
+      "chars": 1964,
+      "week": 1,
+      "reading_title": "如何使用 argparse（HOWTO）",
+      "source_ref": "demo/second-source/pages/howto-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Custom type converters¶",
+      "text": "## Custom type converters¶\n\nThe [`argparse`](../library/argparse.html#module-argparse) module allows you to specify custom type converters for\nyour command-line arguments. This allows you to modify user input before it’s\nstored in the [`argparse.Namespace`](../library/argparse.html#argparse.Namespace). This can be useful when you need to\npre-process the input before it is used in your program.\n\nWhen using a custom type converter, you can use any callable that takes a\nsingle string argument (the argument value) and returns the converted value.\nHowever, if you need to handle more complex scenarios, you can use a custom\naction class with the **action** parameter instead.\n\nFor example, let’s say you want to handle arguments with different prefixes and\nprocess them accordingly:\n\n```\nimport argparse\n\nparser = argparse.ArgumentParser(prefix_chars='-+')\n\nparser.add_argument('-a', metavar='<value>', action='append',\n                    type=lambda x: ('-', x))\nparser.add_argument('+a', metavar='<value>', action='append',\n                    type=lambda x: ('+', x))\n\nargs = parser.parse_args()\nprint(args)\n```\n\nOutput:\n\n```\n$ python prog.py -a value1 +a value2\nNamespace(a=[('-', 'value1'), ('+', 'value2')])\n```\n\nIn this example, we:\n\n- Created a parser with custom prefix characters using the `prefix_chars` parameter.\n- Defined two arguments, `-a` and `+a`, which used the `type` parameter to create custom type converters to store the value in a tuple with the prefix.\n\nWithout the custom type converters, the arguments would have treated the `-a`\nand `+a` as the same argument, which would have been undesirable. By using custom\ntype converters, we were able to differentiate between the two arguments.",
+      "headings": [
+        "Custom type converters¶"
+      ],
+      "index": 11,
+      "unit_id": "howto-argparse",
+      "chars": 1714,
+      "week": 1,
+      "reading_title": "如何使用 argparse（HOWTO）",
+      "source_ref": "demo/second-source/pages/howto-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Conclusion¶",
+      "text": "## Conclusion¶\n\nThe [`argparse`](../library/argparse.html#module-argparse) module offers a lot more than shown here.\nIts docs are quite detailed and thorough, and full of examples.\nHaving gone through this tutorial, you should easily digest them\nwithout feeling overwhelmed.",
+      "headings": [
+        "Conclusion¶"
+      ],
+      "index": 12,
+      "unit_id": "howto-argparse",
+      "chars": 274,
+      "week": 1,
+      "reading_title": "如何使用 argparse（HOWTO）",
+      "source_ref": "demo/second-source/pages/howto-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "argparse — 命令行选项解析",
+      "text": "# `argparse` — Parser for command-line options, arguments and subcommands¶\n\nAdded in version 3.2.\n\n**Source code:** [Lib/argparse.py](https://github.com/python/cpython/tree/3.14/Lib/argparse.py)\n\nNote\n\nWhile `argparse` is the default recommended standard library module\nfor implementing basic command line applications, authors with more\nexacting requirements for exactly how their command line applications\nbehave may find it doesn’t provide the necessary level of control.\nRefer to [Choosing an argument parsing library](optparse.html#choosing-an-argument-parser) for alternatives to\nconsider when `argparse` doesn’t support behaviors that the application\nrequires (such as entirely disabling support for interspersed options and\npositional arguments, or accepting option parameter values that start\nwith `-` even when they correspond to another defined option).\n\nThe `argparse` module makes it easy to write user-friendly command-line\ninterfaces. The program defines what arguments it requires, and `argparse`\nwill figure out how to parse those out of [`sys.argv`](sys.html#sys.argv). The `argparse`\nmodule also automatically generates help and usage messages. The module\nwill also issue errors when users give the program invalid arguments.\n\nThe `argparse` module’s support for command-line interfaces is built\naround an instance of `argparse.ArgumentParser`. It is a container for\nargument specifications and has options that apply to the parser as whole:\n\n```\nparser = argparse.ArgumentParser(\n                    prog='ProgramName',\n                    description='What the program does',\n                    epilog='Text at the bottom of help')\n```\n\nThe `ArgumentParser.add_argument()` method attaches individual argument\nspecifications to the parser. It supports positional arguments, options that\naccept values, and on/off flags:\n\n```\nparser.add_argument('filename')           # positional argument\nparser.add_argument('-c', '--count')      # option that takes a value\nparser.add_argument('-v', '--verbose',\n                    action='store_true')  # on/off flag\n```\n\nThe `ArgumentParser.parse_args()` method runs the parser and places\nthe extracted data in a `argparse.Namespace` object:\n\n```\nargs = parser.parse_args()\nprint(args.filename, args.count, args.verbose)\n```\n\nNote\n\nIf you’re looking for a guide about how to upgrade [`optparse`](optparse.html#module-optparse) code\nto `argparse`, see [Upgrading Optparse Code](../howto/argparse-optparse.html#upgrading-optparse-code).",
+      "headings": [
+        "argparse — 命令行选项解析"
+      ],
+      "index": 0,
+      "unit_id": "library-argparse",
+      "chars": 2493,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "ArgumentParser objects¶",
+      "text": "## ArgumentParser objects¶\n\nclass\nargparse.\nArgumentParser\n(\nprog=None\n,\nusage=None\n,\ndescription=None\n,\nepilog=None\n,\nparents=[]\n,\nformatter_class=argparse.HelpFormatter\n,\nprefix_chars='-'\n,\nfromfile_prefix_chars=None\n,\nargument_default=None\n,\nconflict_handler='error'\n,\nadd_help=True\n,\nallow_abbrev=True\n,\nexit_on_error=True\n,\n*\n,\nsuggest_on_error=False\n,\ncolor=True\n)\n¶\n\nCreate a new `ArgumentParser` object. All parameters should be passed\nas keyword arguments. Each parameter has its own more detailed description\nbelow, but in short they are:\n\n- prog - The name of the program (default: generated from the `__main__` module attributes and `sys.argv[0]`)\n- usage - The string describing the program usage (default: generated from arguments added to parser)\n- description - Text to display before the argument help (by default, no text)\n- epilog - Text to display after the argument help (by default, no text)\n- parents - A list of `ArgumentParser` objects whose arguments should also be included\n- formatter_class - A class for customizing the help output\n- prefix_chars - The set of characters that prefix optional arguments (default: ‘-‘)\n- fromfile_prefix_chars - The set of characters that prefix files from which additional arguments should be read (default: `None`)\n- argument_default - The global default value for arguments (default: `None`)\n- conflict_handler - The strategy for resolving conflicting optionals (usually unnecessary)\n- add_help - Add a `-h/--help` option to the parser (default: `True`)\n- allow_abbrev - Allows long options to be abbreviated if the abbreviation is unambiguous (default: `True`)\n- exit_on_error - Determines whether or not `ArgumentParser` exits with error info when an error occurs. (default: `True`)\n- suggest_on_error - Enables suggestions for mistyped argument choices and subparser names (default: `False`)\n- color - Allow color output (default: `True`)\n\nChanged in version 3.5: *allow_abbrev* parameter was added.\n\nChanged in version 3.8: In previous versions, *allow_abbrev* also disabled grouping of short\nflags such as `-vv` to mean `-v -v`.\n\nChanged in version 3.9: *exit_on_error* parameter was added.\n\nChanged in version 3.14: *suggest_on_error* and *color* parameters were added.\n\nThe following sections describe how each of these are used.",
+      "headings": [
+        "ArgumentParser objects¶"
+      ],
+      "index": 1,
+      "unit_id": "library-argparse",
+      "chars": 2299,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "prog¶",
+      "text": "### prog¶\n\nBy default, `ArgumentParser` calculates the name of the program\nto display in help messages depending on the way the Python interpreter was run:\n\n- The [`base name`](os.path.html#os.path.basename) of `sys.argv[0]` if a file was passed as argument.\n- The Python interpreter name followed by `sys.argv[0]` if a directory or a zipfile was passed as argument.\n- The Python interpreter name followed by `-m` followed by the module or package name if the [`-m`](../using/cmdline.html#cmdoption-m) option was used.\n\nThis default is almost always desirable because it will make the help messages\nmatch the string that was used to invoke the program on the command line.\nHowever, to change this default behavior, another value can be supplied using\nthe `prog=` argument to `ArgumentParser`:\n\n```\n>>> parser = argparse.ArgumentParser(prog='myprogram')\n>>> parser.print_help()\nusage: myprogram [-h]\n\noptions:\n -h, --help  show this help message and exit\n```\n\nNote that the program name, whether determined from `sys.argv[0]`,\nfrom the `__main__` module attributes or from the\n`prog=` argument, is available to help messages using the `%(prog)s` format\nspecifier.\n\n```\n>>> parser = argparse.ArgumentParser(prog='myprogram')\n>>> parser.add_argument('--foo', help='foo of the %(prog)s program')\n>>> parser.print_help()\nusage: myprogram [-h] [--foo FOO]\n\noptions:\n -h, --help  show this help message and exit\n --foo FOO   foo of the myprogram program\n```\n\nChanged in version 3.14: The default `prog` value now reflects how `__main__` was actually executed,\nrather than always being `os.path.basename(sys.argv[0])`.",
+      "headings": [
+        "prog¶"
+      ],
+      "index": 2,
+      "unit_id": "library-argparse",
+      "chars": 1610,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "usage¶",
+      "text": "### usage¶\n\nBy default, `ArgumentParser` calculates the usage message from the\narguments it contains. The default message can be overridden with the\n`usage=` keyword argument:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG', usage='%(prog)s [options]')\n>>> parser.add_argument('--foo', nargs='?', help='foo help')\n>>> parser.add_argument('bar', nargs='+', help='bar help')\n>>> parser.print_help()\nusage: PROG [options]\n\npositional arguments:\n bar          bar help\n\noptions:\n -h, --help   show this help message and exit\n --foo [FOO]  foo help\n```\n\nThe `%(prog)s` format specifier is available to fill in the program name in\nyour usage messages.\n\nWhen a custom usage message is specified for the main parser, you may also want to\nconsider passing the `prog` argument to `add_subparsers()`\nor the `prog` and the `usage` arguments to\n`add_parser()`, to ensure consistent command prefixes and\nusage information across subparsers.",
+      "headings": [
+        "usage¶"
+      ],
+      "index": 3,
+      "unit_id": "library-argparse",
+      "chars": 932,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "description¶",
+      "text": "### description¶\n\nMost calls to the `ArgumentParser` constructor will use the\n`description=` keyword argument. This argument gives a brief description of\nwhat the program does and how it works. In help messages, the description is\ndisplayed between the command-line usage string and the help messages for the\nvarious arguments.\n\nBy default, the description will be line-wrapped so that it fits within the\ngiven space. To change this behavior, see the formatter_class argument.\n\n### epilog¶\n\nSome programs like to display additional description of the program after the\ndescription of the arguments. Such text can be specified using the `epilog=`\nargument to `ArgumentParser`:\n\n```\n>>> parser = argparse.ArgumentParser(\n...     description='A foo that bars',\n...     epilog=\"And that's how you'd foo a bar\")\n>>> parser.print_help()\nusage: argparse.py [-h]\n\nA foo that bars\n\noptions:\n -h, --help  show this help message and exit\n\nAnd that's how you'd foo a bar\n```\n\nAs with the description argument, the `epilog=` text is by default\nline-wrapped, but this behavior can be adjusted with the formatter_class\nargument to `ArgumentParser`.",
+      "headings": [
+        "description¶",
+        "epilog¶"
+      ],
+      "index": 4,
+      "unit_id": "library-argparse",
+      "chars": 1133,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "parents¶",
+      "text": "### parents¶\n\nSometimes, several parsers share a common set of arguments. Rather than\nrepeating the definitions of these arguments, a single parser with all the\nshared arguments and passed to `parents=` argument to `ArgumentParser`\ncan be used. The `parents=` argument takes a list of `ArgumentParser`\nobjects, collects all the positional and optional actions from them, and adds\nthese actions to the `ArgumentParser` object being constructed:\n\n```\n>>> parent_parser = argparse.ArgumentParser(add_help=False)\n>>> parent_parser.add_argument('--parent', type=int)\n\n>>> foo_parser = argparse.ArgumentParser(parents=[parent_parser])\n>>> foo_parser.add_argument('foo')\n>>> foo_parser.parse_args(['--parent', '2', 'XXX'])\nNamespace(foo='XXX', parent=2)\n\n>>> bar_parser = argparse.ArgumentParser(parents=[parent_parser])\n>>> bar_parser.add_argument('--bar')\n>>> bar_parser.parse_args(['--bar', 'YYY'])\nNamespace(bar='YYY', parent=None)\n```\n\nNote that most parent parsers will specify `add_help=False`. Otherwise, the\n`ArgumentParser` will see two `-h/--help` options (one in the parent\nand one in the child) and raise an error.\n\nNote\n\nYou must fully initialize the parsers before passing them via `parents=`.\nIf you change the parent parsers after the child parser, those changes will\nnot be reflected in the child.",
+      "headings": [
+        "parents¶"
+      ],
+      "index": 5,
+      "unit_id": "library-argparse",
+      "chars": 1308,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "formatter_class¶",
+      "text": "### formatter_class¶\n\n`ArgumentParser` objects allow the help formatting to be customized by\nspecifying an alternate formatting class. Currently, there are four such\nclasses:\n\nclass\nargparse.\nRawDescriptionHelpFormatter\n¶\nclass\nargparse.\nRawTextHelpFormatter\n¶\nclass\nargparse.\nArgumentDefaultsHelpFormatter\n¶\nclass\nargparse.\nMetavarTypeHelpFormatter\n¶\n\n`RawDescriptionHelpFormatter` and `RawTextHelpFormatter` give\nmore control over how textual descriptions are displayed.\nBy default, `ArgumentParser` objects line-wrap the description and\nepilog texts in command-line help messages:\n\n```\n>>> parser = argparse.ArgumentParser(\n...     prog='PROG',\n...     description='''this description\n...         was indented weird\n...             but that is okay''',\n...     epilog='''\n...             likewise for this epilog whose whitespace will\n...         be cleaned up and whose words will be wrapped\n...         across a couple lines''')\n>>> parser.print_help()\nusage: PROG [-h]\n\nthis description was indented weird but that is okay\n\noptions:\n -h, --help  show this help message and exit\n\nlikewise for this epilog whose whitespace will be cleaned up and whose words\nwill be wrapped across a couple lines\n```\n\nPassing `RawDescriptionHelpFormatter` as `formatter_class=`\nindicates that description and epilog are already correctly formatted and\nshould not be line-wrapped:\n\n```\n>>> parser = argparse.ArgumentParser(\n...     prog='PROG',\n...     formatter_class=argparse.RawDescriptionHelpFormatter,\n...     description=textwrap.dedent('''\\\n...         Please do not mess up this text!\n...         --------------------------------\n...             I have indented it\n...             exactly the way\n...             I want it\n...         '''))\n>>> parser.print_help()\nusage: PROG [-h]\n\nPlease do not mess up this text!\n--------------------------------\n   I have indented it\n   exactly the way\n   I want it\n\noptions:\n -h, --help  show this help message and exit\n```\n\n`RawTextHelpFormatter` maintains whitespace for all sorts of help text,\nincluding argument descriptions. However, multiple newlines are replaced with\none. If you wish to preserve multiple blank lines, add spaces between the\nnewlines.\n\n`ArgumentDefaultsHelpFormatter` automatically adds information about\ndefault values to each of the argument help messages:\n\n```\n>>> parser = argparse.ArgumentParser(\n...     prog='PROG',\n...     formatter_class=argparse.ArgumentDefaultsHelpFormatter)\n>>> parser.add_argument('--foo', type=int, default=42, help='FOO!')\n>>> parser.add_argument('bar', nargs='*', default=[1, 2, 3], help='BAR!')\n>>> parser.print_help()\nusage: PROG [-h] [--foo FOO] [bar ...]\n\npositional arguments:\n bar         BAR! (default: [1, 2, 3])\n\noptions:\n -h, --help  show this help message and exit\n --foo FOO   FOO! (default: 42)\n```\n\n`MetavarTypeHelpFormatter` uses the name of the type argument for each\nargument as the display name for its values (rather than using the dest\nas the regular formatter does):\n\n```\n>>> parser = argparse.ArgumentParser(\n...     prog='PROG',\n...     formatter_class=argparse.MetavarTypeHelpFormatter)\n>>> parser.add_argument('--foo', type=int)\n>>> parser.add_argument('bar', type=float)\n>>> parser.print_help()\nusage: PROG [-h] [--foo int] float\n\npositional arguments:\n  float\n\noptions:\n  -h, --help  show this help message and exit\n  --foo int\n```",
+      "headings": [
+        "formatter_class¶"
+      ],
+      "index": 6,
+      "unit_id": "library-argparse",
+      "chars": 3347,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "prefix_chars¶",
+      "text": "### prefix_chars¶\n\nMost command-line options will use `-` as the prefix, e.g. `-f/--foo`.\nParsers that need to support different or additional prefix\ncharacters, e.g. for options\nlike `+f` or `/foo`, may specify them using the `prefix_chars=` argument\nto the `ArgumentParser` constructor:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG', prefix_chars='-+')\n>>> parser.add_argument('+f')\n>>> parser.add_argument('++bar')\n>>> parser.parse_args('+f X ++bar Y'.split())\nNamespace(bar='Y', f='X')\n```\n\nThe `prefix_chars=` argument defaults to `'-'`. Supplying a set of\ncharacters that does not include `-` will cause `-f/--foo` options to be\ndisallowed.\n\n### fromfile_prefix_chars¶\n\nSometimes, when dealing with a particularly long argument list, it\nmay make sense to keep the list of arguments in a file rather than typing it out\nat the command line. If the `fromfile_prefix_chars=` argument is given to the\n`ArgumentParser` constructor, then arguments that start with any of the\nspecified characters will be treated as files, and will be replaced by the\narguments they contain. For example:\n\n```\n>>> with open('args.txt', 'w', encoding=sys.getfilesystemencoding()) as fp:\n...     fp.write('-f\\nbar')\n...\n>>> parser = argparse.ArgumentParser(fromfile_prefix_chars='@')\n>>> parser.add_argument('-f')\n>>> parser.parse_args(['-f', 'foo', '@args.txt'])\nNamespace(f='bar')\n```\n\nArguments read from a file must be one per line by default (but see also\n`convert_arg_line_to_args()`) and are treated as if they\nwere in the same place as the original file referencing argument on the command\nline. So in the example above, the expression `['-f', 'foo', '@args.txt']`\nis considered equivalent to the expression `['-f', 'foo', '-f', 'bar']`.\n\nNote\n\nEach line is treated as a single argument, so an empty line is read as an\nempty string (`''`).\n\n`ArgumentParser` uses [filesystem encoding and error handler](../glossary.html#term-filesystem-encoding-and-error-handler)\nto read the file containing arguments.\n\nThe `fromfile_prefix_chars=` argument defaults to `None`, meaning that\narguments will never be treated as file references.\n\nChanged in version 3.12: `ArgumentParser` changed encoding and errors to read arguments files\nfrom default (e.g. [`locale.getpreferredencoding(False)`](locale.html#locale.getpreferredencoding)\nand `\"strict\"`) to the [filesystem encoding and error handler](../glossary.html#term-filesystem-encoding-and-error-handler).\nArguments file should be encoded in UTF-8 instead of ANSI Codepage on Windows.",
+      "headings": [
+        "prefix_chars¶",
+        "fromfile_prefix_chars¶"
+      ],
+      "index": 7,
+      "unit_id": "library-argparse",
+      "chars": 2519,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "argument_default¶",
+      "text": "### argument_default¶\n\nGenerally, argument defaults are specified either by passing a default to\n`add_argument()` or by calling the\n`set_defaults()` methods with a specific set of name-value\npairs. Sometimes however, it may be useful to specify a single parser-wide\ndefault for arguments. This can be accomplished by passing the\n`argument_default=` keyword argument to `ArgumentParser`. For example,\nto globally suppress attribute creation on `parse_args()`\ncalls, we supply `argument_default=SUPPRESS`:\n\n```\n>>> parser = argparse.ArgumentParser(argument_default=argparse.SUPPRESS)\n>>> parser.add_argument('--foo')\n>>> parser.add_argument('bar', nargs='?')\n>>> parser.parse_args(['--foo', '1', 'BAR'])\nNamespace(bar='BAR', foo='1')\n>>> parser.parse_args([])\nNamespace()\n```\n\n### allow_abbrev¶\n\nNormally, when you pass an argument list to the\n`parse_args()` method of an `ArgumentParser`,\nit recognizes abbreviations of long options.\n\nThis feature can be disabled by setting `allow_abbrev` to `False`:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG', allow_abbrev=False)\n>>> parser.add_argument('--foobar', action='store_true')\n>>> parser.add_argument('--foonley', action='store_false')\n>>> parser.parse_args(['--foon'])\nusage: PROG [-h] [--foobar] [--foonley]\nPROG: error: unrecognized arguments: --foon\n```\n\nAdded in version 3.5.",
+      "headings": [
+        "argument_default¶",
+        "allow_abbrev¶"
+      ],
+      "index": 8,
+      "unit_id": "library-argparse",
+      "chars": 1336,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "conflict_handler¶",
+      "text": "### conflict_handler¶\n\n`ArgumentParser` objects do not allow two actions with the same option\nstring. By default, `ArgumentParser` objects raise an exception if an\nattempt is made to create an argument with an option string that is already in\nuse:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG')\n>>> parser.add_argument('-f', '--foo', help='old foo help')\n>>> parser.add_argument('--foo', help='new foo help')\nTraceback (most recent call last):\n ..\nArgumentError: argument --foo: conflicting option string(s): --foo\n```\n\nSometimes (e.g. when using parents) it may be useful to simply override any\nolder arguments with the same option string. To get this behavior, the value\n`'resolve'` can be supplied to the `conflict_handler=` argument of\n`ArgumentParser`:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG', conflict_handler='resolve')\n>>> parser.add_argument('-f', '--foo', help='old foo help')\n>>> parser.add_argument('--foo', help='new foo help')\n>>> parser.print_help()\nusage: PROG [-h] [-f FOO] [--foo FOO]\n\noptions:\n -h, --help  show this help message and exit\n -f FOO      old foo help\n --foo FOO   new foo help\n```\n\nNote that `ArgumentParser` objects only remove an action if all of its\noption strings are overridden. So, in the example above, the old `-f/--foo`\naction is retained as the `-f` action, because only the `--foo` option\nstring was overridden.",
+      "headings": [
+        "conflict_handler¶"
+      ],
+      "index": 9,
+      "unit_id": "library-argparse",
+      "chars": 1377,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "add_help¶",
+      "text": "### add_help¶\n\nBy default, `ArgumentParser` objects add an option which simply displays\nthe parser’s help message. If `-h` or `--help` is supplied at the command\nline, the `ArgumentParser` help will be printed.\n\nOccasionally, it may be useful to disable the addition of this help option.\nThis can be achieved by passing `False` as the `add_help=` argument to\n`ArgumentParser`:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG', add_help=False)\n>>> parser.add_argument('--foo', help='foo help')\n>>> parser.print_help()\nusage: PROG [--foo FOO]\n\noptions:\n --foo FOO  foo help\n```\n\nThe help option is typically `-h/--help`. The exception to this is\nif the `prefix_chars=` is specified and does not include `-`, in\nwhich case `-h` and `--help` are not valid options. In\nthis case, the first character in `prefix_chars` is used to prefix\nthe help options:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG', prefix_chars='+/')\n>>> parser.print_help()\nusage: PROG [+h]\n\noptions:\n  +h, ++help  show this help message and exit\n```",
+      "headings": [
+        "add_help¶"
+      ],
+      "index": 10,
+      "unit_id": "library-argparse",
+      "chars": 1028,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "exit_on_error¶",
+      "text": "### exit_on_error¶\n\nNormally, when you pass an invalid argument list to the `parse_args()`\nmethod of an `ArgumentParser`, it will print a *message* to [`sys.stderr`](sys.html#sys.stderr) and exit with a status\ncode of 2.\n\nIf the user would like to catch errors manually, the feature can be enabled by setting\n`exit_on_error` to `False`:\n\n```\n>>> parser = argparse.ArgumentParser(exit_on_error=False)\n>>> parser.add_argument('--integers', type=int)\n_StoreAction(option_strings=['--integers'], dest='integers', nargs=None, const=None, default=None, type=<class 'int'>, choices=None, help=None, metavar=None)\n>>> try:\n...     parser.parse_args('--integers a'.split())\n... except argparse.ArgumentError:\n...     print('Catching an argumentError')\n...\nCatching an argumentError\n```\n\nAdded in version 3.9.\n\n### suggest_on_error¶\n\nBy default, when a user passes an invalid argument choice or subparser name,\n`ArgumentParser` will exit with error info and list the permissible\nargument choices (if specified) or subparser names as part of the error message.\n\nIf the user would like to enable suggestions for mistyped argument choices and\nsubparser names, the feature can be enabled by setting `suggest_on_error` to\n`True`. Note that this only applies for arguments when the choices specified\nare strings:\n\n```\n>>> parser = argparse.ArgumentParser(suggest_on_error=True)\n>>> parser.add_argument('--action', choices=['debug', 'dryrun'])\n>>> parser.parse_args(['--action', 'debugg'])\nusage: tester.py [-h] [--action {debug,dryrun}]\ntester.py: error: argument --action: invalid choice: 'debugg', maybe you meant 'debug'? (choose from debug, dryrun)\n```\n\nIf you’re writing code that needs to be compatible with older Python versions\nand want to opportunistically use `suggest_on_error` when it’s available, you\ncan set it as an attribute after initializing the parser instead of using the\nkeyword argument:\n\n```\n>>> parser = argparse.ArgumentParser(description='Process some integers.')\n>>> parser.suggest_on_error = True\n```\n\nAdded in version 3.14.",
+      "headings": [
+        "exit_on_error¶",
+        "suggest_on_error¶"
+      ],
+      "index": 11,
+      "unit_id": "library-argparse",
+      "chars": 2036,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "color¶",
+      "text": "### color¶\n\nBy default, the help message is printed in color using [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code).\nIf you want plain text help messages, you can disable this [in your local\nenvironment](../using/cmdline.html#using-on-controlling-color), or in the argument parser itself\nby setting `color` to `False`:\n\n```\n>>> parser = argparse.ArgumentParser(description='Process some integers.',\n...                                  color=False)\n>>> parser.add_argument('--action', choices=['sum', 'max'])\n>>> parser.add_argument('integers', metavar='N', type=int, nargs='+',\n...                     help='an integer for the accumulator')\n>>> parser.parse_args(['--help'])\n```\n\nNote that when `color=True`, colored output depends on both environment\nvariables and terminal capabilities. However, if `color=False`, colored\noutput is always disabled, even if environment variables like `FORCE_COLOR`\nare set.\n\nNote\n\nError messages will include color codes when redirecting stderr to a\nfile. To avoid this, set the [`NO_COLOR`](https://no-color.org/) or [`PYTHON_COLORS`](../using/cmdline.html#envvar-PYTHON_COLORS)\nenvironment variable (for example,\n`NO_COLOR=1 python script.py 2> errors.txt`).\n\nAdded in version 3.14.",
+      "headings": [
+        "color¶"
+      ],
+      "index": 12,
+      "unit_id": "library-argparse",
+      "chars": 1243,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "The add_argument() method¶",
+      "text": "## The add_argument() method¶\n\nArgumentParser.\nadd_argument\n(\nname or flags...\n,\n*\n[\n,\naction\n]\n[\n,\nnargs\n]\n[\n,\nconst\n]\n[\n,\ndefault\n]\n[\n,\ntype\n]\n[\n,\nchoices\n]\n[\n,\nrequired\n]\n[\n,\nhelp\n]\n[\n,\nmetavar\n]\n[\n,\ndest\n]\n[\n,\ndeprecated\n]\n)\n¶\n\nDefine how a single command-line argument should be parsed. Each parameter\nhas its own more detailed description below, but in short they are:\n\n- name or flags - Either a name or a list of option strings, e.g. `'foo'` or `'-f', '--foo'`.\n- action - The basic type of action to be taken when this argument is encountered at the command line.\n- nargs - The number of command-line arguments that should be consumed.\n- const - A constant value required by some action and nargs selections.\n- default - The value produced if the argument is absent from the command line and if it is absent from the namespace object.\n- type - The type to which the command-line argument should be converted.\n- choices - A sequence of the allowable values for the argument.\n- required - Whether or not the command-line option may be omitted (optionals only).\n- help - A brief description of what the argument does.\n- metavar - A name for the argument in usage messages.\n- dest - The name of the attribute to be added to the object returned by `parse_args()`.\n- deprecated - Whether or not use of the argument is deprecated.\n\nThe method returns an `Action` object representing the argument.\n\nThe following sections describe how each of these are used.",
+      "headings": [
+        "The add_argument() method¶"
+      ],
+      "index": 13,
+      "unit_id": "library-argparse",
+      "chars": 1459,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "name or flags¶",
+      "text": "### name or flags¶\n\nThe `add_argument()` method must know whether an optional\nargument, like `-f` or `--foo`, or a positional argument, like a list of\nfilenames, is expected. The first arguments passed to\n`add_argument()` must therefore be either a series of\nflags, or a simple argument name.\n\nFor example, an optional argument could be created like:\n\n```\n>>> parser.add_argument('-f', '--foo')\n```\n\nwhile a positional argument could be created like:\n\n```\n>>> parser.add_argument('bar')\n```\n\nWhen `parse_args()` is called, optional arguments will be\nidentified by the `-` prefix, and the remaining arguments will be assumed to\nbe positional:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG')\n>>> parser.add_argument('-f', '--foo')\n>>> parser.add_argument('bar')\n>>> parser.parse_args(['BAR'])\nNamespace(bar='BAR', foo=None)\n>>> parser.parse_args(['BAR', '--foo', 'FOO'])\nNamespace(bar='BAR', foo='FOO')\n>>> parser.parse_args(['--foo', 'FOO'])\nusage: PROG [-h] [-f FOO] bar\nPROG: error: the following arguments are required: bar\n```\n\nBy default, `argparse` automatically handles the internal naming and\ndisplay names of arguments, simplifying the process without requiring\nadditional configuration.\nAs such, you do not need to specify the dest and metavar parameters.\nFor optional arguments, the dest parameter defaults to the argument name, with\nunderscores `_` replacing hyphens `-`. The metavar parameter defaults to\nthe upper-cased name. For example:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG')\n>>> parser.add_argument('--foo-bar')\n>>> parser.parse_args(['--foo-bar', 'FOO-BAR'])\nNamespace(foo_bar='FOO-BAR')\n>>> parser.print_help()\nusage:  [-h] [--foo-bar FOO-BAR]\n\noptional arguments:\n -h, --help  show this help message and exit\n --foo-bar FOO-BAR\n```",
+      "headings": [
+        "name or flags¶"
+      ],
+      "index": 14,
+      "unit_id": "library-argparse",
+      "chars": 1773,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "action¶",
+      "text": "### action¶\n\n`ArgumentParser` objects associate command-line arguments with actions. These\nactions can do just about anything with the command-line arguments associated with\nthem, though most actions simply add an attribute to the object returned by\n`parse_args()`. The `action` keyword argument specifies\nhow the command-line arguments should be handled. The supplied actions are:\n\n- `'store'` - This just stores the argument’s value. This is the default action.\n- `'store_const'` - This stores the value specified by the const keyword argument; note that the const keyword argument defaults to `None`. The `'store_const'` action is most commonly used with optional arguments that specify some sort of flag. For example:\n\n   ```\n   >>> parser = argparse.ArgumentParser()\n   >>> parser.add_argument('--foo', action='store_const', const=42)\n   >>> parser.parse_args(['--foo'])\n   Namespace(foo=42)\n   ```\n\n- `'store_true'` and `'store_false'` - These are special cases of `'store_const'` that respectively store the values `True` and `False` with default values of `False` and `True`:\n\n   ```\n   >>> parser = argparse.ArgumentParser()\n   >>> parser.add_argument('--foo', action='store_true')\n   >>> parser.add_argument('--bar', action='store_false')\n   >>> parser.add_argument('--baz', action='store_false')\n   >>> parser.parse_args('--foo --bar'.split())\n   Namespace(foo=True, bar=False, baz=True)\n   ```\n\n- `'append'` - This appends each argument value to a list. It is useful for allowing an option to be specified multiple times. If the default value is a non-empty list, the parsed value will start with the default list’s elements and any values from the command line will be appended after those default values. Example usage:\n\n   ```\n   >>> parser = argparse.ArgumentParser()\n   >>> parser.add_argument('--foo', action='append', default=['0'])\n   >>> parser.parse_args('--foo 1 --foo 2'.split())\n   Namespace(foo=['0', '1', '2'])\n   ```\n\n- `'append_const'` - This appends the value specified by the const keyword argument to a list; note that the const keyword argument defaults to `None`. The `'append_const'` action is typically useful when multiple arguments need to store constants to the same list. For example:\n\n   ```\n   >>> parser = argparse.ArgumentParser()\n   >>> parser.add_argument('--str', dest='types', action='append_const', const=str)\n   >>> parser.add_argument('--int', dest='types', action='append_const', const=int)\n   >>> parser.parse_args('--str --int'.split())\n   Namespace(types=[<class 'str'>, <class 'int'>])\n   ```\n\n- `'extend'` - This appends each item from a multi-value argument to a list. The `'extend'` action is typically used with the nargs keyword argument value `'+'` or `'*'`. Note that when nargs is `None` (the default) or `'?'`, each character of the argument string will be appended to the list. Example usage:\n\n   ```\n   >>> parser = argparse.ArgumentParser()\n   >>> parser.add_argument(\"--foo\", action=\"extend\", nargs=\"+\", type=str)\n   >>> parser.parse_args([\"--foo\", \"f1\", \"--foo\", \"f2\", \"f3\", \"f4\"])\n   Namespace(foo=['f1', 'f2', 'f3', 'f4'])\n   ```\n\n   Added in version 3.8.\n\n- `'count'` - This counts the number of times an argument occurs. For example, this is useful for increasing verbosity levels: Unless explicitly set, the *default* will be `None`. If the default value is a non-zero number, the count starts from that number rather than from zero.\n\n   ```\n   >>> parser = argparse.ArgumentParser()\n   >>> parser.add_argument('--verbose', '-v', action='count', default=0)\n   >>> parser.parse_args(['-vvv'])\n   Namespace(verbose=3)\n   ```\n\n- `'help'` - This prints a complete help message for all the options in the current parser and then exits. By default a help action is automatically added to the parser. See `ArgumentParser` for details of how the output is created.\n- `'version'` - This expects a `version=` keyword argument in the `add_argument()` call, and prints version information and exits when invoked:",
+      "headings": [
+        "action¶"
+      ],
+      "index": 15,
+      "unit_id": "library-argparse",
+      "chars": 3975,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "action¶",
+      "text": "```\n   >>> import argparse\n   >>> parser = argparse.ArgumentParser(prog='PROG')\n   >>> parser.add_argument('--version', action='version', version='%(prog)s 2.0')\n   >>> parser.parse_args(['--version'])\n   PROG 2.0\n   ```\n\nYou may also specify an arbitrary action by passing an `Action` subclass\n(e.g. `BooleanOptionalAction`) or other object that implements the same\ninterface. Only actions that consume command-line arguments (e.g. `'store'`,\n`'append'`, `'extend'`, or custom actions with non-zero `nargs`) can be used\nwith positional arguments.\n\nThe recommended way to create a custom action is to extend `Action`,\noverriding the `__call__()` method and optionally the `__init__()` and\n`format_usage()` methods. You can also register custom actions using the\n`register()` method and reference them by their registered name.\n\nAn example of a custom action:\n\n```\n>>> class FooAction(argparse.Action):\n...     def __init__(self, option_strings, dest, nargs=None, **kwargs):\n...         if nargs is not None:\n...             raise ValueError(\"nargs not allowed\")\n...         super().__init__(option_strings, dest, **kwargs)\n...     def __call__(self, parser, namespace, values, option_string=None):\n...         print('%r %r %r' % (namespace, values, option_string))\n...         setattr(namespace, self.dest, values)\n...\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('--foo', action=FooAction)\n>>> parser.add_argument('bar', action=FooAction)\n>>> args = parser.parse_args('1 --foo 2'.split())\nNamespace(bar=None, foo=None) '1' None\nNamespace(bar='1', foo=None) '2' '--foo'\n>>> args\nNamespace(bar='1', foo='2')\n```\n\nFor more details, see `Action`.",
+      "headings": [
+        "action¶"
+      ],
+      "index": 16,
+      "unit_id": "library-argparse",
+      "chars": 1661,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "nargs¶",
+      "text": "### nargs¶\n\n`ArgumentParser` objects usually associate a single command-line argument with a\nsingle action to be taken. The `nargs` keyword argument associates a\ndifferent number of command-line arguments with a single action.\nSee also [Specifying ambiguous arguments](../howto/argparse.html#specifying-ambiguous-arguments). The supported values are:\n\n- `N` (an integer). `N` arguments from the command line will be gathered together into a list. For example: Note that `nargs=1` produces a list of one item. This is different from the default, in which the item is produced by itself.\n\n   ```\n   >>> parser = argparse.ArgumentParser()\n   >>> parser.add_argument('--foo', nargs=2)\n   >>> parser.add_argument('bar', nargs=1)\n   >>> parser.parse_args('c --foo a b'.split())\n   Namespace(bar=['c'], foo=['a', 'b'])\n   ```\n\n- `'?'`. One argument will be consumed from the command line if possible, and produced as a single item. If no command-line argument is present, the value from default will be produced. Note that for optional arguments, there is an additional case - the option string is present but not followed by a command-line argument. In this case the value from const will be produced. Some examples to illustrate this: One of the more common uses of `nargs='?'` is to allow optional input and output files:\n\n   ```\n   >>> parser = argparse.ArgumentParser()\n   >>> parser.add_argument('--foo', nargs='?', const='c', default='d')\n   >>> parser.add_argument('bar', nargs='?', default='d')\n   >>> parser.parse_args(['XX', '--foo', 'YY'])\n   Namespace(bar='XX', foo='YY')\n   >>> parser.parse_args(['XX', '--foo'])\n   Namespace(bar='XX', foo='c')\n   >>> parser.parse_args([])\n   Namespace(bar='d', foo='d')\n   ```\n\n   ```\n   >>> parser = argparse.ArgumentParser()\n   >>> parser.add_argument('infile', nargs='?')\n   >>> parser.add_argument('outfile', nargs='?')\n   >>> parser.parse_args(['input.txt', 'output.txt'])\n   Namespace(infile='input.txt', outfile='output.txt')\n   >>> parser.parse_args(['input.txt'])\n   Namespace(infile='input.txt', outfile=None)\n   >>> parser.parse_args([])\n   Namespace(infile=None, outfile=None)\n   ```\n\n- `'*'`. All command-line arguments present are gathered into a list. Note that it generally doesn’t make much sense to have more than one positional argument with `nargs='*'`, but multiple optional arguments with `nargs='*'` is possible. For example:\n\n   ```\n   >>> parser = argparse.ArgumentParser()\n   >>> parser.add_argument('--foo', nargs='*')\n   >>> parser.add_argument('--bar', nargs='*')\n   >>> parser.add_argument('baz', nargs='*')\n   >>> parser.parse_args('a b --foo x y --bar 1 2'.split())\n   Namespace(bar=['1', '2'], baz=['a', 'b'], foo=['x', 'y'])\n   ```\n\n- `'+'`. Just like `'*'`, all command-line arguments present are gathered into a list. Additionally, an error message will be generated if there wasn’t at least one command-line argument present. For example:\n\n   ```\n   >>> parser = argparse.ArgumentParser(prog='PROG')\n   >>> parser.add_argument('foo', nargs='+')\n   >>> parser.parse_args(['a', 'b'])\n   Namespace(foo=['a', 'b'])\n   >>> parser.parse_args([])\n   usage: PROG [-h] foo [foo ...]\n   PROG: error: the following arguments are required: foo\n   ```\n\nIf the `nargs` keyword argument is not provided, the number of arguments consumed\nis determined by the action. Generally this means a single command-line argument\nwill be consumed and a single item (not a list) will be produced.\nActions that do not consume command-line arguments (e.g.\n`'store_const'`) set `nargs=0`.",
+      "headings": [
+        "nargs¶"
+      ],
+      "index": 17,
+      "unit_id": "library-argparse",
+      "chars": 3536,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "const¶",
+      "text": "### const¶\n\nThe `const` argument of `add_argument()` is used to hold\nconstant values that are not read from the command line but are required for\nthe various `ArgumentParser` actions. The two most common uses of it are:\n\n- When `add_argument()` is called with `action='store_const'` or `action='append_const'`. These actions add the `const` value to one of the attributes of the object returned by `parse_args()`. See the action description for examples. If `const` is not provided to `add_argument()`, it will receive a default value of `None`.\n- When `add_argument()` is called with option strings (like `-f` or `--foo`) and `nargs='?'`. This creates an optional argument that can be followed by zero or one command-line arguments. When parsing the command line, if the option string is encountered with no command-line argument following it, the value from `const` will be used. See the nargs description for examples.\n\nChanged in version 3.11: `const=None` by default, including when `action='append_const'` or\n`action='store_const'`.",
+      "headings": [
+        "const¶"
+      ],
+      "index": 18,
+      "unit_id": "library-argparse",
+      "chars": 1038,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "default¶",
+      "text": "### default¶\n\nAll optional arguments and some positional arguments may be omitted at the\ncommand line. The `default` keyword argument of\n`add_argument()`, whose value defaults to `None`,\nspecifies what value should be used if the command-line argument is not present.\nFor optional arguments, the `default` value is used when the option string\nwas not present at the command line:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('--foo', default=42)\n>>> parser.parse_args(['--foo', '2'])\nNamespace(foo='2')\n>>> parser.parse_args([])\nNamespace(foo=42)\n```\n\nIf the target namespace already has an attribute set, the action *default*\nwill not overwrite it:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('--foo', default=42)\n>>> parser.parse_args([], namespace=argparse.Namespace(foo=101))\nNamespace(foo=101)\n```\n\nIf the `default` value is a string, the parser parses the value as if it\nwere a command-line argument. In particular, the parser applies any type\nconversion argument, if provided, before setting the attribute on the\n`Namespace` return value. Otherwise, the parser uses the value as is:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('--length', default='10', type=int)\n>>> parser.add_argument('--width', default=10.5, type=int)\n>>> parser.parse_args()\nNamespace(length=10, width=10.5)\n```\n\nFor positional arguments with nargs equal to `?` or `*`, the `default` value\nis used when no command-line argument was present:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('foo', nargs='?', default=42)\n>>> parser.parse_args(['a'])\nNamespace(foo='a')\n>>> parser.parse_args([])\nNamespace(foo=42)\n```\n\nBecause `nargs='*'` gathers any supplied values into a list, an absent\npositional argument yields an empty list (`[]`). Only a non-`None`\n*default* overrides this (so `default=None` still gives `[]`).\n\nFor required arguments, the `default` value is ignored. For example, this\napplies to positional arguments with nargs values other than `?` or `*`,\nor optional arguments marked as `required=True`.\n\nProviding `default=argparse.SUPPRESS` causes no attribute to be added if the\ncommand-line argument was not present:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('--foo', default=argparse.SUPPRESS)\n>>> parser.parse_args([])\nNamespace()\n>>> parser.parse_args(['--foo', '1'])\nNamespace(foo='1')\n```",
+      "headings": [
+        "default¶"
+      ],
+      "index": 19,
+      "unit_id": "library-argparse",
+      "chars": 2402,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "type¶",
+      "text": "### type¶\n\nBy default, the parser reads command-line arguments in as simple\nstrings. However, quite often the command-line string should instead be\ninterpreted as another type, such as a [`float`](../builtins/functions.html#float) or [`int`](../builtins/functions.html#int). The\n`type` keyword for `add_argument()` allows any\nnecessary type-checking and type conversions to be performed.\n\nIf the type keyword is used with the default keyword, the type converter\nis only applied if the default is a string.\n\nThe argument to `type` can be a callable that accepts a single string or\nthe name of a registered type (see `register()`)\nIf the function raises `ArgumentTypeError`, [`TypeError`](../builtins/exceptions.html#TypeError), or\n[`ValueError`](../builtins/exceptions.html#ValueError), the exception is caught and a nicely formatted error\nmessage is displayed. Other exception types are not handled.\n\nCommon built-in types and functions can be used as type converters:\n\n```\nimport argparse\nimport pathlib\n\nparser = argparse.ArgumentParser()\nparser.add_argument('count', type=int)\nparser.add_argument('distance', type=float)\nparser.add_argument('street', type=ascii)\nparser.add_argument('code_point', type=ord)\nparser.add_argument('datapath', type=pathlib.Path)\n```\n\nUser defined functions can be used as well:\n\n```\n>>> def hyphenated(string):\n...     return '-'.join([word[:4] for word in string.casefold().split()])\n...\n>>> parser = argparse.ArgumentParser()\n>>> _ = parser.add_argument('short_title', type=hyphenated)\n>>> parser.parse_args(['\"The Tale of Two Cities\"'])\nNamespace(short_title='\"the-tale-of-two-citi')\n```\n\nThe [`bool()`](../builtins/functions.html#bool) function is not recommended as a type converter. All it does\nis convert empty strings to `False` and non-empty strings to `True`.\nThis is usually not what is desired:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> _ = parser.add_argument('--verbose', type=bool)\n>>> parser.parse_args(['--verbose', 'False'])\nNamespace(verbose=True)\n```\n\nSee `BooleanOptionalAction` or `action='store_true'` for common\nalternatives.\n\nIn general, the `type` keyword is a convenience that should only be used for\nsimple conversions that can only raise one of the three supported exceptions.\nAnything with more interesting error-handling or resource management should be\ndone downstream after the arguments are parsed.\n\nFor example, JSON or YAML conversions have complex error cases that require\nbetter reporting than can be given by the `type` keyword. A\n[`JSONDecodeError`](json.html#json.JSONDecodeError) would not be well formatted and a\n[`FileNotFoundError`](../builtins/exceptions.html#FileNotFoundError) exception would not be handled at all.\n\nEven `FileType` has its limitations for use with the `type`\nkeyword. If one argument uses `FileType` and then a\nsubsequent argument fails, an error is reported but the file is not\nautomatically closed. In this case, it would be better to wait until after\nthe parser has run and then use the [`with`](../reference/compound_stmts.html#with)-statement to manage the\nfiles.\n\nFor type checkers that simply check against a fixed set of values, consider\nusing the choices keyword instead.",
+      "headings": [
+        "type¶"
+      ],
+      "index": 20,
+      "unit_id": "library-argparse",
+      "chars": 3184,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "choices¶",
+      "text": "### choices¶\n\nSome command-line arguments should be selected from a restricted set of values.\nThese can be handled by passing a sequence object as the *choices* keyword\nargument to `add_argument()`. When the command line is\nparsed, argument values will be checked, and an error message will be displayed\nif the argument was not one of the acceptable values:\n\n```\n>>> parser = argparse.ArgumentParser(prog='game.py')\n>>> parser.add_argument('move', choices=['rock', 'paper', 'scissors'])\n>>> parser.parse_args(['rock'])\nNamespace(move='rock')\n>>> parser.parse_args(['fire'])\nusage: game.py [-h] {rock,paper,scissors}\ngame.py: error: argument move: invalid choice: 'fire' (choose from 'rock',\n'paper', 'scissors')\n```\n\nAny sequence can be passed as the *choices* value, so [`list`](../builtins/stdtypes.html#list) objects,\n[`tuple`](../builtins/stdtypes.html#tuple) objects, and custom sequences are all supported.\n\nUse of [`enum.Enum`](enum.html#enum.Enum) is not recommended because it is difficult to\ncontrol its appearance in usage, help, and error messages.\n\nNote that *choices* are checked after any type\nconversions have been performed, so objects in *choices*\nshould match the type specified. This can make *choices*\nappear unfamiliar in usage, help, or error messages.\n\nTo keep *choices* user-friendly, consider a custom type wrapper that\nconverts and formats values, or omit type and handle conversion in\nyour application code.\n\nFormatted choices override the default *metavar* which is normally derived\nfrom *dest*. This is usually what you want because the user never sees the\n*dest* parameter. If this display isn’t desirable (perhaps because there are\nmany choices), just specify an explicit metavar.",
+      "headings": [
+        "choices¶"
+      ],
+      "index": 21,
+      "unit_id": "library-argparse",
+      "chars": 1712,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "required¶",
+      "text": "### required¶\n\nIn general, the `argparse` module assumes that flags like `-f` and `--bar`\nindicate *optional* arguments, which can always be omitted at the command line.\nTo make an option *required*, `True` can be specified for the `required=`\nkeyword argument to `add_argument()`:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('--foo', required=True)\n>>> parser.parse_args(['--foo', 'BAR'])\nNamespace(foo='BAR')\n>>> parser.parse_args([])\nusage: [-h] --foo FOO\n: error: the following arguments are required: --foo\n```\n\nAs the example shows, if an option is marked as `required`,\n`parse_args()` will report an error if that option is not\npresent at the command line.\n\nNote\n\nRequired options are generally considered bad form because users expect\n*options* to be *optional*, and thus they should be avoided when possible.\n\n### help¶\n\nThe `help` value is a string containing a brief description of the argument.\nWhen a user requests help (usually by using `-h` or `--help` at the\ncommand line), these `help` descriptions will be displayed with each\nargument.\n\nThe `help` strings can include various format specifiers to avoid repetition\nof things like the program name or the argument default. The available\nspecifiers include the program name, `%(prog)s` and most keyword arguments to\n`add_argument()`, e.g. `%(default)s`, `%(type)s`, etc.:\n\n```\n>>> parser = argparse.ArgumentParser(prog='frobble')\n>>> parser.add_argument('bar', nargs='?', type=int, default=42,\n...                     help='the bar to %(prog)s (default: %(default)s)')\n>>> parser.print_help()\nusage: frobble [-h] [bar]\n\npositional arguments:\n bar     the bar to frobble (default: 42)\n\noptions:\n -h, --help  show this help message and exit\n```\n\nAs the help string supports %-formatting, if you want a literal `%` to appear\nin the help string, you must escape it as `%%`.\n\n`argparse` supports silencing the help entry for certain options, by\nsetting the `help` value to `argparse.SUPPRESS`:\n\n```\n>>> parser = argparse.ArgumentParser(prog='frobble')\n>>> parser.add_argument('--foo', help=argparse.SUPPRESS)\n>>> parser.print_help()\nusage: frobble [-h]\n\noptions:\n  -h, --help  show this help message and exit\n```",
+      "headings": [
+        "required¶",
+        "help¶"
+      ],
+      "index": 22,
+      "unit_id": "library-argparse",
+      "chars": 2196,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "metavar¶",
+      "text": "### metavar¶\n\nWhen `ArgumentParser` generates help messages, it needs some way to refer\nto each expected argument. By default, `ArgumentParser` objects use the dest\nvalue as the “name” of each object. By default, for positional argument\nactions, the dest value is used directly, and for optional argument actions,\nthe dest value is uppercased. So, a single positional argument with\n`dest='bar'` will be referred to as `bar`. A single\noptional argument `--foo` that should be followed by a single command-line argument\nwill be referred to as `FOO`. An example:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('--foo')\n>>> parser.add_argument('bar')\n>>> parser.parse_args('X --foo Y'.split())\nNamespace(bar='X', foo='Y')\n>>> parser.print_help()\nusage:  [-h] [--foo FOO] bar\n\npositional arguments:\n bar\n\noptions:\n -h, --help  show this help message and exit\n --foo FOO\n```\n\nAn alternative name can be specified with `metavar`:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('--foo', metavar='YYY')\n>>> parser.add_argument('bar', metavar='XXX')\n>>> parser.parse_args('X --foo Y'.split())\nNamespace(bar='X', foo='Y')\n>>> parser.print_help()\nusage:  [-h] [--foo YYY] XXX\n\npositional arguments:\n XXX\n\noptions:\n -h, --help  show this help message and exit\n --foo YYY\n```\n\nNote that `metavar` only changes the *displayed* name - the name of the\nattribute on the `parse_args()` object is still determined\nby the dest value.\n\nDifferent values of `nargs` may cause the metavar to be used multiple times.\nProviding a tuple to `metavar` specifies a different display for each of the\narguments:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG')\n>>> parser.add_argument('-x', nargs=2)\n>>> parser.add_argument('--foo', nargs=2, metavar=('bar', 'baz'))\n>>> parser.print_help()\nusage: PROG [-h] [-x X X] [--foo bar baz]\n\noptions:\n -h, --help     show this help message and exit\n -x X X\n --foo bar baz\n```",
+      "headings": [
+        "metavar¶"
+      ],
+      "index": 23,
+      "unit_id": "library-argparse",
+      "chars": 1931,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "dest¶",
+      "text": "### dest¶\n\nMost `ArgumentParser` actions add some value as an attribute of the\nobject returned by `parse_args()`. The name of this\nattribute is determined by the `dest` keyword argument of\n`add_argument()`. For positional argument actions,\n`dest` is normally supplied as the first argument to\n`add_argument()`:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('bar')\n>>> parser.parse_args(['XXX'])\nNamespace(bar='XXX')\n```\n\nFor optional argument actions, the value of `dest` is normally inferred from\nthe option strings. `ArgumentParser` generates the value of `dest` by\ntaking the first long option string and stripping away the initial `--`\nstring. If no long option strings were supplied, `dest` will be derived from\nthe first short option string by stripping the initial `-` character. Any\ninternal `-` characters will be converted to `_` characters to make sure\nthe string is a valid attribute name. The examples below illustrate this\nbehavior:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('-f', '--foo-bar', '--foo')\n>>> parser.add_argument('-x', '-y')\n>>> parser.parse_args('-f 1 -x 2'.split())\nNamespace(foo_bar='1', x='2')\n>>> parser.parse_args('--foo 1 -y 2'.split())\nNamespace(foo_bar='1', x='2')\n```\n\n`dest` allows a custom attribute name to be provided:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('--foo', dest='bar')\n>>> parser.parse_args('--foo XXX'.split())\nNamespace(bar='XXX')\n```\n\nMultiple arguments may share the same `dest`. By default, the value from the\nlast such argument given on the command line wins. Use `action='append'` to\ncollect values from all of them into a list instead. For conflicting *option\nstrings* rather than `dest` names, see conflict_handler.",
+      "headings": [
+        "dest¶"
+      ],
+      "index": 24,
+      "unit_id": "library-argparse",
+      "chars": 1753,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "deprecated¶",
+      "text": "### deprecated¶\n\nDuring a project’s lifetime, some arguments may need to be removed from the\ncommand line. Before removing them, you should inform\nyour users that the arguments are deprecated and will be removed.\nThe `deprecated` keyword argument of\n`add_argument()`, which defaults to `False`,\nspecifies if the argument is deprecated and will be removed\nin the future.\nFor arguments, if `deprecated` is `True`, then a warning will be\nprinted to [`sys.stderr`](sys.html#sys.stderr) when the argument is used:\n\n```\n>>> import argparse\n>>> parser = argparse.ArgumentParser(prog='snake.py')\n>>> parser.add_argument('--legs', default=0, type=int, deprecated=True)\n>>> parser.parse_args([])\nNamespace(legs=0)\n>>> parser.parse_args(['--legs', '4'])\nsnake.py: warning: option '--legs' is deprecated\nNamespace(legs=4)\n```\n\nAdded in version 3.13.\n\n### Action classes¶\n\n`Action` classes implement the Action API, a callable which returns a callable\nwhich processes arguments from the command-line. Any object which follows\nthis API may be passed as the `action` parameter to\n`add_argument()`.\n\nclass\nargparse.\nAction\n(\noption_strings\n,\ndest\n,\nnargs=None\n,\nconst=None\n,\ndefault=None\n,\ntype=None\n,\nchoices=None\n,\nrequired=False\n,\nhelp=None\n,\nmetavar=None\n)\n¶\n\n`Action` objects are used by an `ArgumentParser` to represent the information\nneeded to parse a single argument from one or more strings from the\ncommand line. The `Action` class must accept the two positional arguments\nplus any keyword arguments passed to `ArgumentParser.add_argument()`\nexcept for the `action` itself.\n\nInstances of `Action` (or return value of any callable to the\n`action` parameter) should have attributes `dest`,\n`option_strings`, `default`, `type`, `required`,\n`help`, etc. defined. The easiest way to ensure these attributes\nare defined is to call `Action.__init__()`.\n\n__call__\n(\nparser\n,\nnamespace\n,\nvalues\n,\noption_string=None\n)\n¶\n\n`Action` instances should be callable, so subclasses must override the\n`__call__()` method, which should accept four parameters:\n\n- *parser* - The `ArgumentParser` object which contains this action.\n- *namespace* - The `Namespace` object that will be returned by `parse_args()`. Most actions add an attribute to this object using [`setattr()`](../builtins/functions.html#setattr).\n- *values* - The associated command-line arguments, with any type conversions applied. Type conversions are specified with the type keyword argument to `add_argument()`.\n- *option_string* - The option string that was used to invoke this action. The `option_string` argument is optional, and will be absent if the action is associated with a positional argument.\n\nThe `__call__()` method may perform arbitrary actions, but will typically set\nattributes on the `namespace` based on `dest` and `values`.\n\nformat_usage\n(\n)\n¶\n\n`Action` subclasses can define a `format_usage()` method that takes no argument\nand return a string which will be used when printing the usage of the program.\nIf such method is not provided, a sensible default will be used.\n\nclass\nargparse.\nBooleanOptionalAction\n¶\n\nA subclass of `Action` for handling boolean flags with positive\nand negative options. Adding a single argument such as `--foo` automatically\ncreates both `--foo` and `--no-foo` options, storing `True` and `False`\nrespectively:\n\n```\n>>> import argparse\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('--foo', action=argparse.BooleanOptionalAction)\n>>> parser.parse_args(['--no-foo'])\nNamespace(foo=False)\n```\n\nAdded in version 3.9.",
+      "headings": [
+        "deprecated¶",
+        "Action classes¶"
+      ],
+      "index": 25,
+      "unit_id": "library-argparse",
+      "chars": 3522,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "The parse_args() method¶",
+      "text": "## The parse_args() method¶\n\nArgumentParser.\nparse_args\n(\nargs=None\n,\nnamespace=None\n)\n¶\n\nConvert argument strings to objects and assign them as attributes of the\nnamespace. Return the populated namespace.\n\nPrevious calls to `add_argument()` determine exactly what objects are\ncreated and how they are assigned. See the documentation for\n`add_argument()` for details.\n\n- args - List of strings to parse. The default is taken from [`sys.argv`](sys.html#sys.argv).\n- namespace - An object to take the attributes. The default is a new empty `Namespace` object.\n\n### Option value syntax¶\n\nThe `parse_args()` method supports several ways of\nspecifying the value of an option (if it takes one). In the simplest case, the\noption and its value are passed as two separate arguments:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG')\n>>> parser.add_argument('-x')\n>>> parser.add_argument('--foo')\n>>> parser.parse_args(['-x', 'X'])\nNamespace(foo=None, x='X')\n>>> parser.parse_args(['--foo', 'FOO'])\nNamespace(foo='FOO', x=None)\n```\n\nFor long options (options with names longer than a single character), the option\nand value can also be passed as a single command-line argument, using `=` to\nseparate them:\n\n```\n>>> parser.parse_args(['--foo=FOO'])\nNamespace(foo='FOO', x=None)\n```\n\nFor short options (options only one character long), the option and its value\ncan be concatenated:\n\n```\n>>> parser.parse_args(['-xX'])\nNamespace(foo=None, x='X')\n```\n\nSeveral short options can be joined together, using only a single `-` prefix,\nas long as only the last option (or none of them) requires a value:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG')\n>>> parser.add_argument('-x', action='store_true')\n>>> parser.add_argument('-y', action='store_true')\n>>> parser.add_argument('-z')\n>>> parser.parse_args(['-xyzZ'])\nNamespace(x=True, y=True, z='Z')\n```",
+      "headings": [
+        "The parse_args() method¶",
+        "Option value syntax¶"
+      ],
+      "index": 26,
+      "unit_id": "library-argparse",
+      "chars": 1846,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Invalid arguments¶",
+      "text": "### Invalid arguments¶\n\nWhile parsing the command line, `parse_args()` checks for a\nvariety of errors, including ambiguous options, invalid types, invalid options,\nwrong number of positional arguments, etc. When it encounters such an error,\nit exits and prints the error along with a usage message:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG')\n>>> parser.add_argument('--foo', type=int)\n>>> parser.add_argument('bar', nargs='?')\n\n>>> # invalid type\n>>> parser.parse_args(['--foo', 'spam'])\nusage: PROG [-h] [--foo FOO] [bar]\nPROG: error: argument --foo: invalid int value: 'spam'\n\n>>> # invalid option\n>>> parser.parse_args(['--bar'])\nusage: PROG [-h] [--foo FOO] [bar]\nPROG: error: unrecognized arguments: --bar\n\n>>> # wrong number of arguments\n>>> parser.parse_args(['spam', 'badger'])\nusage: PROG [-h] [--foo FOO] [bar]\nPROG: error: unrecognized arguments: badger\n```\n\n### Arguments containing `-`¶\n\nThe `parse_args()` method attempts to give errors whenever\nthe user has clearly made a mistake, but some situations are inherently\nambiguous. For example, the command-line argument `-1` could either be an\nattempt to specify an option or an attempt to provide a positional argument.\nThe `parse_args()` method is cautious here: positional\narguments may only begin with `-` if they look like negative numbers and\nthere are no options in the parser that look like negative numbers:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG')\n>>> parser.add_argument('-x')\n>>> parser.add_argument('foo', nargs='?')\n\n>>> # no negative number options, so -1 is a positional argument\n>>> parser.parse_args(['-x', '-1'])\nNamespace(foo=None, x='-1')\n\n>>> # no negative number options, so -1 and -5 are positional arguments\n>>> parser.parse_args(['-x', '-1', '-5'])\nNamespace(foo='-5', x='-1')\n\n>>> parser = argparse.ArgumentParser(prog='PROG')\n>>> parser.add_argument('-1', dest='one')\n>>> parser.add_argument('foo', nargs='?')\n\n>>> # negative number options present, so -1 is an option\n>>> parser.parse_args(['-1', 'X'])\nNamespace(foo=None, one='X')\n\n>>> # negative number options present, so -2 is an option\n>>> parser.parse_args(['-2'])\nusage: PROG [-h] [-1 ONE] [foo]\nPROG: error: unrecognized arguments: -2\n\n>>> # negative number options present, so both -1s are options\n>>> parser.parse_args(['-1', '-1'])\nusage: PROG [-h] [-1 ONE] [foo]\nPROG: error: argument -1: expected one argument\n```\n\nIf you have positional arguments that must begin with `-` and don’t look\nlike negative numbers, you can insert the pseudo-argument `'--'` which tells\n`parse_args()` that everything after that is a positional\nargument:\n\n```\n>>> parser.parse_args(['--', '-f'])\nNamespace(foo='-f', one=None)\n```\n\nSee also [the argparse howto on ambiguous arguments](../howto/argparse.html#specifying-ambiguous-arguments)\nfor more details.\n\nChanged in version 3.14: Negative-number matching was expanded to include numbers in scientific\nnotation (`-2.5e-6`), numbers containing underscores (`-1_234.5`),\nand complex numbers (`-1.2e-3j`).",
+      "headings": [
+        "Invalid arguments¶",
+        "Arguments containing `-`¶"
+      ],
+      "index": 27,
+      "unit_id": "library-argparse",
+      "chars": 3012,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Argument abbreviations (prefix matching)¶",
+      "text": "### Argument abbreviations (prefix matching)¶\n\nThe `parse_args()` method by default\nallows long options to be abbreviated to a prefix, if the abbreviation is\nunambiguous (the prefix matches a unique option):\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG')\n>>> parser.add_argument('-bacon')\n>>> parser.add_argument('-badger')\n>>> parser.parse_args('-bac MMM'.split())\nNamespace(bacon='MMM', badger=None)\n>>> parser.parse_args('-bad WOOD'.split())\nNamespace(bacon=None, badger='WOOD')\n>>> parser.parse_args('-ba BA'.split())\nusage: PROG [-h] [-bacon BACON] [-badger BADGER]\nPROG: error: ambiguous option: -ba could match -badger, -bacon\n```\n\nAn error is produced for arguments that could produce more than one options.\nThis feature can be disabled by setting allow_abbrev to `False`.\n\n### Beyond `sys.argv`¶\n\nSometimes it may be useful to have an `ArgumentParser` parse arguments other than those\nof [`sys.argv`](sys.html#sys.argv). This can be accomplished by passing a list of strings to\n`parse_args()`. This is useful for testing at the\ninteractive prompt:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument(\n...     'integers', metavar='int', type=int, choices=range(10),\n...     nargs='+', help='an integer in the range 0..9')\n>>> parser.add_argument(\n...     '--sum', dest='accumulate', action='store_const', const=sum,\n...     default=max, help='sum the integers (default: find the max)')\n>>> parser.parse_args(['1', '2', '3', '4'])\nNamespace(accumulate=<built-in function max>, integers=[1, 2, 3, 4])\n>>> parser.parse_args(['1', '2', '3', '4', '--sum'])\nNamespace(accumulate=<built-in function sum>, integers=[1, 2, 3, 4])\n```",
+      "headings": [
+        "Argument abbreviations (prefix matching)¶",
+        "Beyond `sys.argv`¶"
+      ],
+      "index": 28,
+      "unit_id": "library-argparse",
+      "chars": 1656,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "The Namespace object¶",
+      "text": "### The Namespace object¶\n\nclass\nargparse.\nNamespace\n¶\n\nSimple class used by default by `parse_args()` to create\nan object holding attributes and return it.\n\nThis class is deliberately simple, just an [`object`](../builtins/functions.html#object) subclass with a\nreadable string representation. If you prefer to have dict-like view of the\nattributes, you can use the standard Python idiom, [`vars()`](../builtins/functions.html#vars):\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('--foo')\n>>> args = parser.parse_args(['--foo', 'BAR'])\n>>> vars(args)\n{'foo': 'BAR'}\n```\n\nIt may also be useful to have an `ArgumentParser` assign attributes to an\nalready existing object, rather than a new `Namespace` object. This can\nbe achieved by specifying the `namespace=` keyword argument:\n\n```\n>>> class C:\n...     pass\n...\n>>> c = C()\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('--foo')\n>>> parser.parse_args(args=['--foo', 'BAR'], namespace=c)\n>>> c.foo\n'BAR'\n```",
+      "headings": [
+        "The Namespace object¶"
+      ],
+      "index": 29,
+      "unit_id": "library-argparse",
+      "chars": 997,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Other utilities¶",
+      "text": "## Other utilities¶\n\n### Subcommands¶\n\nArgumentParser.\nadd_subparsers\n(\n*\n[\n,\ntitle\n]\n[\n,\ndescription\n]\n[\n,\nprog\n]\n[\n,\nparser_class\n]\n[\n,\naction\n]\n[\n,\ndest\n]\n[\n,\nrequired\n]\n[\n,\nhelp\n]\n[\n,\nmetavar\n]\n)\n¶\n\nMany programs split up their functionality into a number of subcommands,\nfor example, the `svn` program can invoke subcommands like `svn\ncheckout`, `svn update`, and `svn commit`. Splitting up functionality\nthis way can be a particularly good idea when a program performs several\ndifferent functions which require different kinds of command-line arguments.\n`ArgumentParser` supports the creation of such subcommands with the\n`add_subparsers()` method. The `add_subparsers()` method is normally\ncalled with no arguments and returns a special action object. This object\nhas a single method, `add_parser()`, which takes a\ncommand name and any `ArgumentParser` constructor arguments, and\nreturns an `ArgumentParser` object that can be modified as usual.\n\nDescription of parameters:\n\n- *title* - title for the sub-parser group in help output; by default “subcommands” if description is provided, otherwise uses title for positional arguments\n- *description* - description for the sub-parser group in help output, by default `None`\n- *prog* - usage information that will be displayed with subcommand help, by default the name of the program and any positional arguments before the subparser argument\n- *parser_class* - class which will be used to create sub-parser instances, by default the class of the current parser (e.g. `ArgumentParser`)\n- action - the basic type of action to be taken when this argument is encountered at the command line\n- dest - name of the attribute under which subcommand name will be stored; by default `None` and no value is stored\n- required - Whether or not a subcommand must be provided, by default `False` (added in 3.7)\n- help - help for sub-parser group in help output, by default `None`\n- metavar - string presenting available subcommands in help; by default it is `None` and presents subcommands in form {cmd1, cmd2, ..}\n\nSome example usage:\n\n```\n>>> # create the top-level parser\n>>> parser = argparse.ArgumentParser(prog='PROG')\n>>> parser.add_argument('--foo', action='store_true', help='foo help')\n>>> subparsers = parser.add_subparsers(help='subcommand help')\n>>>\n>>> # create the parser for the \"a\" command\n>>> parser_a = subparsers.add_parser('a', help='a help')\n>>> parser_a.add_argument('bar', type=int, help='bar help')\n>>>\n>>> # create the parser for the \"b\" command\n>>> parser_b = subparsers.add_parser('b', help='b help')\n>>> parser_b.add_argument('--baz', choices=('X', 'Y', 'Z'), help='baz help')\n>>>\n>>> # parse some argument lists\n>>> parser.parse_args(['a', '12'])\nNamespace(bar=12, foo=False)\n>>> parser.parse_args(['--foo', 'b', '--baz', 'Z'])\nNamespace(baz='Z', foo=True)\n```\n\nNote that the object returned by `parse_args()` will only contain\nattributes for the main parser and the subparser that was selected by the\ncommand line (and not any other subparsers). So in the example above, when\nthe `a` command is specified, only the `foo` and `bar` attributes are\npresent, and when the `b` command is specified, only the `foo` and\n`baz` attributes are present.\n\nIf a subparser defines an argument with the same `dest` as the parent\nparser, the two share a single namespace attribute, so the parent’s value\nwon’t be retained. Users should give them distinct `dest` values to\nkeep both.\n\nSimilarly, when a help message is requested from a subparser, only the help\nfor that particular parser will be printed. The help message will not\ninclude parent parser or sibling parser messages. (A help message for each\nsubparser command, however, can be given by supplying the `help=` argument\nto `add_parser()` as above.)\n\n```\n>>> parser.parse_args(['--help'])\nusage: PROG [-h] [--foo] {a,b} ...\n\npositional arguments:\n  {a,b}   subcommand help\n    a     a help\n    b     b help\n\noptions:\n  -h, --help  show this help message and exit\n  --foo   foo help",
+      "headings": [
+        "Other utilities¶",
+        "Subcommands¶"
+      ],
+      "index": 30,
+      "unit_id": "library-argparse",
+      "chars": 3995,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Subcommands¶",
+      "text": ">>> parser.parse_args(['a', '--help'])\nusage: PROG a [-h] bar\n\npositional arguments:\n  bar     bar help\n\noptions:\n  -h, --help  show this help message and exit\n\n>>> parser.parse_args(['b', '--help'])\nusage: PROG b [-h] [--baz {X,Y,Z}]\n\noptions:\n  -h, --help     show this help message and exit\n  --baz {X,Y,Z}  baz help\n```\n\nThe `add_subparsers()` method also supports `title` and `description`\nkeyword arguments. When either is present, the subparser’s commands will\nappear in their own group in the help output. For example:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> subparsers = parser.add_subparsers(title='subcommands',\n...                                    description='valid subcommands',\n...                                    help='additional help')\n>>> subparsers.add_parser('foo')\n>>> subparsers.add_parser('bar')\n>>> parser.parse_args(['-h'])\nusage:  [-h] {foo,bar} ...\n\noptions:\n  -h, --help  show this help message and exit\n\nsubcommands:\n  valid subcommands\n\n  {foo,bar}   additional help\n```\n\nFurthermore, `add_parser()` supports an additional\n*aliases* argument,\nwhich allows multiple strings to refer to the same subparser. This example,\nlike `svn`, aliases `co` as a shorthand for `checkout`:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> subparsers = parser.add_subparsers()\n>>> checkout = subparsers.add_parser('checkout', aliases=['co'])\n>>> checkout.add_argument('foo')\n>>> parser.parse_args(['co', 'bar'])\nNamespace(foo='bar')\n```\n\n`add_parser()` supports also an additional\n*deprecated* argument, which allows to deprecate the subparser.\n\n```\n>>> import argparse\n>>> parser = argparse.ArgumentParser(prog='chicken.py')\n>>> subparsers = parser.add_subparsers()\n>>> run = subparsers.add_parser('run')\n>>> fly = subparsers.add_parser('fly', deprecated=True)\n>>> parser.parse_args(['fly'])\nchicken.py: warning: command 'fly' is deprecated\nNamespace()\n```\n\nAdded in version 3.13.\n\nOne particularly effective way of handling subcommands is to combine the use\nof the `add_subparsers()` method with calls to `set_defaults()` so\nthat each subparser knows which Python function it should execute. For\nexample:\n\n```\n>>> # subcommand functions\n>>> def foo(args):\n...     print(args.x * args.y)\n...\n>>> def bar(args):\n...     print('((%s))' % args.z)\n...\n>>> # create the top-level parser\n>>> parser = argparse.ArgumentParser()\n>>> subparsers = parser.add_subparsers(required=True)\n>>>\n>>> # create the parser for the \"foo\" command\n>>> parser_foo = subparsers.add_parser('foo')\n>>> parser_foo.add_argument('-x', type=int, default=1)\n>>> parser_foo.add_argument('y', type=float)\n>>> parser_foo.set_defaults(func=foo)\n>>>\n>>> # create the parser for the \"bar\" command\n>>> parser_bar = subparsers.add_parser('bar')\n>>> parser_bar.add_argument('z')\n>>> parser_bar.set_defaults(func=bar)\n>>>\n>>> # parse the args and call whatever function was selected\n>>> args = parser.parse_args('foo 1 -x 2'.split())\n>>> args.func(args)\n2.0\n>>>\n>>> # parse the args and call whatever function was selected\n>>> args = parser.parse_args('bar XYZYX'.split())\n>>> args.func(args)\n((XYZYX))\n```\n\nThis way, you can let `parse_args()` do the job of calling the\nappropriate function after argument parsing is complete. Associating\nfunctions with actions like this is typically the easiest way to handle the\ndifferent actions for each of your subparsers. However, if it is necessary\nto check the name of the subparser that was invoked, the `dest` keyword\nargument to the `add_subparsers()` call will work:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> subparsers = parser.add_subparsers(dest='subparser_name')\n>>> subparser1 = subparsers.add_parser('1')\n>>> subparser1.add_argument('-x')\n>>> subparser2 = subparsers.add_parser('2')\n>>> subparser2.add_argument('y')\n>>> parser.parse_args(['2', 'frobble'])\nNamespace(subparser_name='2', y='frobble')\n```\n\nChanged in version 3.7: New *required* keyword-only parameter.",
+      "headings": [
+        "Subcommands¶"
+      ],
+      "index": 31,
+      "unit_id": "library-argparse",
+      "chars": 3910,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Subcommands¶",
+      "text": "Changed in version 3.14: Subparser’s *prog* is no longer affected by a custom usage message in\nthe main parser.\n\n### FileType objects¶\n\nclass\nargparse.\nFileType\n(\nmode='r'\n,\nbufsize=-1\n,\nencoding=None\n,\nerrors=None\n)\n¶\n\nThe `FileType` factory creates objects that can be passed to the type\nargument of `ArgumentParser.add_argument()`. Arguments that have\n`FileType` objects as their type will open command-line arguments as\nfiles with the requested modes, buffer sizes, encodings and error handling\n(see the [`open()`](../builtins/functions.html#open) function for more details):\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('--raw', type=argparse.FileType('wb', 0))\n>>> parser.add_argument('out', type=argparse.FileType('w', encoding='UTF-8'))\n>>> parser.parse_args(['--raw', 'raw.dat', 'file.txt'])\nNamespace(out=<_io.TextIOWrapper name='file.txt' mode='w' encoding='UTF-8'>, raw=<_io.FileIO name='raw.dat' mode='wb'>)\n```\n\nFileType objects understand the pseudo-argument `'-'` and automatically\nconvert this into [`sys.stdin`](sys.html#sys.stdin) for readable `FileType` objects and\n[`sys.stdout`](sys.html#sys.stdout) for writable `FileType` objects:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('infile', type=argparse.FileType('r'))\n>>> parser.parse_args(['-'])\nNamespace(infile=<_io.TextIOWrapper name='<stdin>' encoding='UTF-8'>)\n```\n\nNote\n\nIf one argument uses *FileType* and then a subsequent argument fails,\nan error is reported but the file is not automatically closed.\nThis can also clobber the output files.\nIn this case, it would be better to wait until after the parser has\nrun and then use the [`with`](../reference/compound_stmts.html#with)-statement to manage the files.\n\nChanged in version 3.4: Added the *encoding* and *errors* parameters.\n\nDeprecated since version 3.14.",
+      "headings": [
+        "Subcommands¶",
+        "FileType objects¶"
+      ],
+      "index": 32,
+      "unit_id": "library-argparse",
+      "chars": 1838,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Argument groups¶",
+      "text": "### Argument groups¶\n\nArgumentParser.\nadd_argument_group\n(\ntitle=None\n,\ndescription=None\n,\n*\n[\n,\nargument_default\n]\n[\n,\nconflict_handler\n]\n)\n¶\n\nBy default, `ArgumentParser` groups command-line arguments into\n“positional arguments” and “options” when displaying help\nmessages. When there is a better conceptual grouping of arguments than this\ndefault one, appropriate groups can be created using the\n`add_argument_group()` method:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG', add_help=False)\n>>> group = parser.add_argument_group('group')\n>>> group.add_argument('--foo', help='foo help')\n>>> group.add_argument('bar', help='bar help')\n>>> parser.print_help()\nusage: PROG [--foo FOO] bar\n\ngroup:\n  bar    bar help\n  --foo FOO  foo help\n```\n\nThe `add_argument_group()` method returns an argument group object which\nhas an `add_argument()` method just like a regular\n`ArgumentParser`. When an argument is added to the group, the parser\ntreats it just like a normal argument, but displays the argument in a\nseparate group for help messages. The `add_argument_group()` method\naccepts *title* and *description* arguments which can be used to\ncustomize this display:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG', add_help=False)\n>>> group1 = parser.add_argument_group('group1', 'group1 description')\n>>> group1.add_argument('foo', help='foo help')\n>>> group2 = parser.add_argument_group('group2', 'group2 description')\n>>> group2.add_argument('--bar', help='bar help')\n>>> parser.print_help()\nusage: PROG [--bar BAR] foo\n\ngroup1:\n  group1 description\n\n  foo    foo help\n\ngroup2:\n  group2 description\n\n  --bar BAR  bar help\n```\n\nThe optional, keyword-only parameters argument_default and conflict_handler\nallow for finer-grained control of the behavior of the argument group. These\nparameters have the same meaning as in the `ArgumentParser` constructor,\nbut apply specifically to the argument group rather than the entire parser.\n\nNote that any arguments not in your user-defined groups will end up back\nin the usual “positional arguments” and “optional arguments” sections.\n\nWithin each argument group, arguments are displayed in help output in the\norder in which they are added.\n\nDeprecated since version 3.11, removed in version 3.14: Calling `add_argument_group()` on an argument group now raises an\nexception. This nesting was never supported, often failed to work\ncorrectly, and was unintentionally exposed through inheritance.\n\nDeprecated since version 3.14: Passing prefix_chars to `add_argument_group()`\nis now deprecated.",
+      "headings": [
+        "Argument groups¶"
+      ],
+      "index": 33,
+      "unit_id": "library-argparse",
+      "chars": 2542,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Mutual exclusion¶",
+      "text": "### Mutual exclusion¶\n\nArgumentParser.\nadd_mutually_exclusive_group\n(\nrequired=False\n)\n¶\n\nCreate a mutually exclusive group. `argparse` will make sure that only\none of the arguments in the mutually exclusive group was present on the\ncommand line:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG')\n>>> group = parser.add_mutually_exclusive_group()\n>>> group.add_argument('--foo', action='store_true')\n>>> group.add_argument('--bar', action='store_false')\n>>> parser.parse_args(['--foo'])\nNamespace(bar=True, foo=True)\n>>> parser.parse_args(['--bar'])\nNamespace(bar=False, foo=False)\n>>> parser.parse_args(['--foo', '--bar'])\nusage: PROG [-h] [--foo | --bar]\nPROG: error: argument --bar: not allowed with argument --foo\n```\n\nThe `add_mutually_exclusive_group()` method also accepts a *required*\nargument, to indicate that at least one of the mutually exclusive arguments\nis required:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG')\n>>> group = parser.add_mutually_exclusive_group(required=True)\n>>> group.add_argument('--foo', action='store_true')\n>>> group.add_argument('--bar', action='store_false')\n>>> parser.parse_args([])\nusage: PROG [-h] (--foo | --bar)\nPROG: error: one of the arguments --foo --bar is required\n```\n\nNote that currently mutually exclusive argument groups do not support the\n*title* and *description* arguments of\n`add_argument_group()`. However, a mutually exclusive\ngroup can be added to an argument group that has a title and description.\nFor example:\n\n```\n>>> parser = argparse.ArgumentParser(prog='PROG')\n>>> group = parser.add_argument_group('Group title', 'Group description')\n>>> exclusive_group = group.add_mutually_exclusive_group(required=True)\n>>> exclusive_group.add_argument('--foo', help='foo help')\n>>> exclusive_group.add_argument('--bar', help='bar help')\n>>> parser.print_help()\nusage: PROG [-h] (--foo FOO | --bar BAR)\n\noptions:\n  -h, --help  show this help message and exit\n\nGroup title:\n  Group description\n\n  --foo FOO   foo help\n  --bar BAR   bar help\n```\n\nDeprecated since version 3.11, removed in version 3.14: Calling `add_argument_group()` or `add_mutually_exclusive_group()`\non a mutually exclusive group now raises an exception. This nesting was\nnever supported, often failed to work correctly, and was unintentionally\nexposed through inheritance.",
+      "headings": [
+        "Mutual exclusion¶"
+      ],
+      "index": 34,
+      "unit_id": "library-argparse",
+      "chars": 2310,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Parser defaults¶",
+      "text": "### Parser defaults¶\n\nArgumentParser.\nset_defaults\n(\n**kwargs\n)\n¶\n\nMost of the time, the attributes of the object returned by `parse_args()`\nwill be fully determined by inspecting the command-line arguments and the argument\nactions. `set_defaults()` allows some additional\nattributes that are determined without any inspection of the command line to\nbe added:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('foo', type=int)\n>>> parser.set_defaults(bar=42, baz='badger')\n>>> parser.parse_args(['736'])\nNamespace(bar=42, baz='badger', foo=736)\n```\n\nNote that defaults can be set at both the parser level using `set_defaults()`\nand at the argument level using `add_argument()`. If both are called for the\nsame argument, the last default set for an argument is used:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('--foo', default='bar')\n>>> parser.set_defaults(foo='spam')\n>>> parser.parse_args([])\nNamespace(foo='spam')\n```\n\nParser-level defaults can be particularly useful when working with multiple\nparsers. See the `add_subparsers()` method for an\nexample of this type.\n\nArgumentParser.\nget_default\n(\ndest\n)\n¶\n\nGet the default value for a namespace attribute, as set by either\n`add_argument()` or by\n`set_defaults()`:\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('--foo', default='badger')\n>>> parser.get_default('foo')\n'badger'\n```",
+      "headings": [
+        "Parser defaults¶"
+      ],
+      "index": 35,
+      "unit_id": "library-argparse",
+      "chars": 1398,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Printing help¶",
+      "text": "### Printing help¶\n\nIn most typical applications, `parse_args()` will take\ncare of formatting and printing any usage or error messages. However, several\nformatting methods are available:\n\nArgumentParser.\nprint_usage\n(\nfile=None\n)\n¶\n\nPrint a brief description of how the `ArgumentParser` should be\ninvoked on the command line. If *file* is `None`, [`sys.stdout`](sys.html#sys.stdout) is\nassumed.\n\nArgumentParser.\nprint_help\n(\nfile=None\n)\n¶\n\nPrint a help message, including the program usage and information about the\narguments registered with the `ArgumentParser`. If *file* is\n`None`, [`sys.stdout`](sys.html#sys.stdout) is assumed.\n\nThere are also variants of these methods that simply return a string instead of\nprinting it:\n\nArgumentParser.\nformat_usage\n(\n)\n¶\n\nReturn a string containing a brief description of how the\n`ArgumentParser` should be invoked on the command line.\n\nArgumentParser.\nformat_help\n(\n)\n¶\n\nReturn a string containing a help message, including the program usage and\ninformation about the arguments registered with the `ArgumentParser`.",
+      "headings": [
+        "Printing help¶"
+      ],
+      "index": 36,
+      "unit_id": "library-argparse",
+      "chars": 1058,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Partial parsing¶",
+      "text": "### Partial parsing¶\n\nArgumentParser.\nparse_known_args\n(\nargs=None\n,\nnamespace=None\n)\n¶\n\nSometimes a script only needs to handle a specific set of command-line\narguments, leaving any unrecognized arguments for another script or program.\nIn these cases, the `parse_known_args()` method can be\nuseful.\n\nThis method works similarly to `parse_args()`, but it does\nnot raise an error for extra, unrecognized arguments. Instead, it parses the\nknown arguments and returns a two item tuple that contains the populated\nnamespace and the list of any unrecognized arguments.\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('--foo', action='store_true')\n>>> parser.add_argument('bar')\n>>> parser.parse_known_args(['--foo', '--badger', 'BAR', 'spam'])\n(Namespace(bar='BAR', foo=True), ['--badger', 'spam'])\n```\n\nWarning\n\nPrefix matching rules apply to\n`parse_known_args()`. The parser may consume an option even if it’s just\na prefix of one of its known options, instead of leaving it in the remaining\narguments list.",
+      "headings": [
+        "Partial parsing¶"
+      ],
+      "index": 37,
+      "unit_id": "library-argparse",
+      "chars": 1024,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Customizing file parsing¶",
+      "text": "### Customizing file parsing¶\n\nArgumentParser.\nconvert_arg_line_to_args\n(\narg_line\n)\n¶\n\nArguments that are read from a file (see the *fromfile_prefix_chars*\nkeyword argument to the `ArgumentParser` constructor) are read one\nargument per line. `convert_arg_line_to_args()` can be overridden for\nfancier reading.\n\nThis method takes a single argument *arg_line* which is a string read from\nthe argument file. It returns a list of arguments parsed from this string.\nThe method is called once per line read from the argument file, in order.\n\nA useful override of this method is one that treats each space-separated word\nas an argument. The following example demonstrates how to do this:\n\n```\nclass MyArgumentParser(argparse.ArgumentParser):\n    def convert_arg_line_to_args(self, arg_line):\n        return arg_line.split()\n```\n\nNote that with this override an argument can no longer contain spaces, since\neach space-separated word becomes a separate argument.",
+      "headings": [
+        "Customizing file parsing¶"
+      ],
+      "index": 38,
+      "unit_id": "library-argparse",
+      "chars": 954,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Exiting methods¶",
+      "text": "### Exiting methods¶\n\nArgumentParser.\nexit\n(\nstatus=0\n,\nmessage=None\n)\n¶\n\nThis method terminates the program, exiting with the specified *status*\nand, if given, it prints a *message* to [`sys.stderr`](sys.html#sys.stderr) before that.\nThe user can override this method to handle these steps differently:\n\n```\nclass ErrorCatchingArgumentParser(argparse.ArgumentParser):\n    def exit(self, status=0, message=None):\n        if status:\n            raise Exception(f'Exiting because of an error: {message}')\n        exit(status)\n```\n\nArgumentParser.\nerror\n(\nmessage\n)\n¶\n\nThis method prints a usage message, including the *message*, to\n[`sys.stderr`](sys.html#sys.stderr) and terminates the program with a status code of 2.\n\n### Intermixed parsing¶\n\nArgumentParser.\nparse_intermixed_args\n(\nargs=None\n,\nnamespace=None\n)\n¶\nArgumentParser.\nparse_known_intermixed_args\n(\nargs=None\n,\nnamespace=None\n)\n¶\n\nA number of Unix commands allow the user to intermix optional arguments with\npositional arguments. The `parse_intermixed_args()`\nand `parse_known_intermixed_args()` methods\nsupport this parsing style.\n\nThese parsers do not support all the `argparse` features, and will raise\nexceptions if unsupported features are used. In particular, subparsers,\nand mutually exclusive groups that include both\noptionals and positionals are not supported.\n\nThe following example shows the difference between\n`parse_known_args()` and\n`parse_intermixed_args()`: the former returns `['2',\n'3']` as unparsed arguments, while the latter collects all the positionals\ninto `rest`.\n\n```\n>>> parser = argparse.ArgumentParser()\n>>> parser.add_argument('--foo')\n>>> parser.add_argument('cmd')\n>>> parser.add_argument('rest', nargs='*', type=int)\n>>> parser.parse_known_args('doit 1 --foo bar 2 3'.split())\n(Namespace(cmd='doit', foo='bar', rest=[1]), ['2', '3'])\n>>> parser.parse_intermixed_args('doit 1 --foo bar 2 3'.split())\nNamespace(cmd='doit', foo='bar', rest=[1, 2, 3])\n```\n\n`parse_known_intermixed_args()` returns a two item tuple\ncontaining the populated namespace and the list of remaining argument strings.\n`parse_intermixed_args()` raises an error if there are any\nremaining unparsed argument strings.\n\nAdded in version 3.7.",
+      "headings": [
+        "Exiting methods¶",
+        "Intermixed parsing¶"
+      ],
+      "index": 39,
+      "unit_id": "library-argparse",
+      "chars": 2202,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Registering custom types or actions¶",
+      "text": "### Registering custom types or actions¶\n\nArgumentParser.\nregister\n(\nregistry_name\n,\nvalue\n,\nobject\n)\n¶\n\nSometimes it’s desirable to use a custom string in error messages to provide\nmore user-friendly output. In these cases, `register()` can be used to\nregister custom actions or types with a parser and allow you to reference the\ntype by their registered name instead of their callable name.\n\nThe `register()` method accepts three arguments - a *registry_name*,\nspecifying the internal registry where the object will be stored (e.g.,\n`action`, `type`), *value*, which is the key under which the object will\nbe registered, and object, the callable to be registered.\n\nThe following example shows how to register a custom type with a parser:\n\n```\n>>> import argparse\n>>> parser = argparse.ArgumentParser()\n>>> parser.register('type', 'hexadecimal integer', lambda s: int(s, 16))\n>>> parser.add_argument('--foo', type='hexadecimal integer')\n_StoreAction(option_strings=['--foo'], dest='foo', nargs=None, const=None, default=None, type='hexadecimal integer', choices=None, required=False, help=None, metavar=None, deprecated=False)\n>>> parser.parse_args(['--foo', '0xFA'])\nNamespace(foo=250)\n>>> parser.parse_args(['--foo', '1.2'])\nusage: PROG [-h] [--foo FOO]\nPROG: error: argument --foo: invalid 'hexadecimal integer' value: '1.2'\n```",
+      "headings": [
+        "Registering custom types or actions¶"
+      ],
+      "index": 40,
+      "unit_id": "library-argparse",
+      "chars": 1332,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Exceptions¶",
+      "text": "## Exceptions¶\n\nexception\nargparse.\nArgumentError\n¶\n\nAn error from creating or using an argument (optional or positional).\n\nThe string value of this exception is the message, augmented with\ninformation about the argument that caused it.\n\nexception\nargparse.\nArgumentTypeError\n¶\n\nRaised when something goes wrong converting a command line string to a type.\n\nGuides and Tutorials\n\n- Argparse Tutorial\n- Migrating `optparse` code to `argparse`",
+      "headings": [
+        "Exceptions¶"
+      ],
+      "index": 41,
+      "unit_id": "library-argparse",
+      "chars": 440,
+      "week": 1,
+      "reading_title": "argparse — 命令行选项解析",
+      "source_ref": "demo/second-source/pages/library-argparse.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "json — JSON 编解码",
+      "text": "# `json` — JSON encoder and decoder¶\n\n**Source code:** [Lib/json/__init__.py](https://github.com/python/cpython/tree/3.14/Lib/json/__init__.py)\n\n[JSON (JavaScript Object Notation)](https://json.org), specified by\n[**RFC 7159**](https://datatracker.ietf.org/doc/html/rfc7159.html) (which obsoletes [**RFC 4627**](https://datatracker.ietf.org/doc/html/rfc4627.html)) and by\n[ECMA-404](https://ecma-international.org/publications-and-standards/standards/ecma-404/),\nis a lightweight data interchange format inspired by\n[JavaScript](https://en.wikipedia.org/wiki/JavaScript) object literal syntax\n(although it is not a strict subset of JavaScript [1] ).\n\nNote\n\nThe term “object” in the context of JSON processing in Python can be\nambiguous. All values in Python are objects. In JSON, an object refers to\nany data wrapped in curly braces, similar to a Python dictionary.\n\nWarning\n\nBe cautious when parsing JSON data from untrusted sources. A malicious\nJSON string may cause the decoder to consume considerable CPU and memory\nresources. Limiting the size of data to be parsed is recommended.\n\nThis module exposes an API familiar to users of the standard library\n[`marshal`](marshal.html#module-marshal) and [`pickle`](pickle.html#module-pickle) modules.\n\nEncoding basic Python object hierarchies:\n\n```\n>>> import json\n>>> json.dumps(['foo', {'bar': ('baz', None, 1.0, 2)}])\n'[\"foo\", {\"bar\": [\"baz\", null, 1.0, 2]}]'\n>>> print(json.dumps(\"\\\"foo\\bar\"))\n\"\\\"foo\\bar\"\n>>> print(json.dumps('\\u1234'))\n\"\\u1234\"\n>>> print(json.dumps('\\\\'))\n\"\\\\\"\n>>> print(json.dumps({\"c\": 0, \"b\": 0, \"a\": 0}, sort_keys=True))\n{\"a\": 0, \"b\": 0, \"c\": 0}\n>>> from io import StringIO\n>>> io = StringIO()\n>>> json.dump(['streaming API'], io)\n>>> io.getvalue()\n'[\"streaming API\"]'\n```\n\nCompact encoding:\n\n```\n>>> import json\n>>> json.dumps([1, 2, 3, {'4': 5, '6': 7}], separators=(',', ':'))\n'[1,2,3,{\"4\":5,\"6\":7}]'\n```\n\nPretty printing:\n\n```\n>>> import json\n>>> print(json.dumps({'6': 7, '4': 5}, sort_keys=True, indent=4))\n{\n    \"4\": 5,\n    \"6\": 7\n}\n```\n\nCustomizing JSON object encoding:\n\n```\n>>> import json\n>>> def custom_json(obj):\n...     if isinstance(obj, complex):\n...         return {'__complex__': True, 'real': obj.real, 'imag': obj.imag}\n...     raise TypeError(f'Cannot serialize object of {type(obj)}')\n...\n>>> json.dumps(1 + 2j, default=custom_json)\n'{\"__complex__\": true, \"real\": 1.0, \"imag\": 2.0}'\n```\n\nDecoding JSON:\n\n```\n>>> import json\n>>> json.loads('[\"foo\", {\"bar\":[\"baz\", null, 1.0, 2]}]')\n['foo', {'bar': ['baz', None, 1.0, 2]}]\n>>> json.loads('\"\\\\\"foo\\\\bar\"')\n'\"foo\\x08ar'\n>>> from io import StringIO\n>>> io = StringIO('[\"streaming API\"]')\n>>> json.load(io)\n['streaming API']\n```\n\nCustomizing JSON object decoding:\n\n```\n>>> import json\n>>> def as_complex(dct):\n...     if '__complex__' in dct:\n...         return complex(dct['real'], dct['imag'])\n...     return dct\n...\n>>> json.loads('{\"__complex__\": true, \"real\": 1, \"imag\": 2}',\n...     object_hook=as_complex)\n(1+2j)\n>>> import decimal\n>>> json.loads('1.1', parse_float=decimal.Decimal)\nDecimal('1.1')\n```\n\nExtending `JSONEncoder`:\n\n```\n>>> import json\n>>> class ComplexEncoder(json.JSONEncoder):\n...     def default(self, obj):\n...         if isinstance(obj, complex):\n...             return [obj.real, obj.imag]\n...         # Let the base class default method raise the TypeError\n...         return super().default(obj)\n...\n>>> json.dumps(2 + 1j, cls=ComplexEncoder)\n'[2.0, 1.0]'\n>>> ComplexEncoder().encode(2 + 1j)\n'[2.0, 1.0]'\n>>> list(ComplexEncoder().iterencode(2 + 1j))\n['[2.0', ', 1.0', ']']\n```\n\nUsing `json` from the shell to validate and pretty-print:\n\n```\n$ echo '{\"json\":\"obj\"}' | python -m json\n{\n    \"json\": \"obj\"\n}\n$ echo '{1.2:3.4}' | python -m json\nExpecting property name enclosed in double quotes: line 1 column 2 (char 1)\n```\n\nSee Command-line interface for detailed documentation.\n\nNote",
+      "headings": [
+        "json — JSON 编解码"
+      ],
+      "index": 0,
+      "unit_id": "library-json",
+      "chars": 3851,
+      "week": 1,
+      "reading_title": "json — JSON 编解码",
+      "source_ref": "demo/second-source/pages/library-json.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "json — JSON 编解码",
+      "text": "JSON is a subset of [YAML](https://yaml.org/) 1.2. The JSON produced by\nthis module’s default settings (in particular, the default *separators*\nvalue) is also a subset of YAML 1.0 and 1.1. This module can thus also be\nused as a YAML serializer.\n\nNote\n\nThis module’s encoders and decoders preserve input and output order by\ndefault. Order is only lost if the underlying containers are unordered.",
+      "headings": [
+        "json — JSON 编解码"
+      ],
+      "index": 1,
+      "unit_id": "library-json",
+      "chars": 394,
+      "week": 1,
+      "reading_title": "json — JSON 编解码",
+      "source_ref": "demo/second-source/pages/library-json.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Basic Usage¶",
+      "text": "## Basic Usage¶\n\njson.\ndump\n(\nobj\n,\nfp\n,\n*\n,\nskipkeys=False\n,\nensure_ascii=True\n,\ncheck_circular=True\n,\nallow_nan=True\n,\ncls=None\n,\nindent=None\n,\nseparators=None\n,\ndefault=None\n,\nsort_keys=False\n,\n**kw\n)\n¶\n\nSerialize *obj* as a JSON formatted stream to *fp* (a `.write()`-supporting\n[file-like object](../glossary.html#term-file-like-object)) using this Python-to-JSON conversion table.\n\nNote\n\nUnlike [`pickle`](pickle.html#module-pickle) and [`marshal`](marshal.html#module-marshal), JSON is not a framed protocol,\nso trying to serialize multiple objects with repeated calls to\n`dump()` using the same *fp* will result in an invalid JSON file.\n\nParameters\n:\n\n- **obj** ([*object*](../builtins/functions.html#object)) – The Python object to be serialized.\n- **fp** ([file-like object](../glossary.html#term-file-like-object)) – The file-like object *obj* will be serialized to. The `json` module always produces [`str`](../builtins/stdtypes.html#str) objects, not [`bytes`](../builtins/stdtypes.html#bytes) objects, therefore `fp.write()` must support `str` input.\n- **skipkeys** ([*bool*](../builtins/functions.html#bool)) – If `True`, keys that are not of a basic type ([`str`](../builtins/stdtypes.html#str), [`int`](../builtins/functions.html#int), [`float`](../builtins/functions.html#float), `bool`, `None`) will be skipped instead of raising a [`TypeError`](../builtins/exceptions.html#TypeError). Default `False`.\n- **ensure_ascii** ([*bool*](../builtins/functions.html#bool)) – If `True` (the default), the output is guaranteed to have all incoming non-ASCII and non-printable characters escaped. If `False`, all characters will be outputted as-is, except for the characters that must be escaped: quotation mark, reverse solidus, and the control characters U+0000 through U+001F.\n- **check_circular** ([*bool*](../builtins/functions.html#bool)) – If `False`, the circular reference check for container types is skipped and a circular reference will result in a [`RecursionError`](../builtins/exceptions.html#RecursionError) (or worse). Default `True`.\n- **allow_nan** ([*bool*](../builtins/functions.html#bool)) – If `False`, serialization of out-of-range [`float`](../builtins/functions.html#float) values (`nan`, `inf`, `-inf`) will result in a [`ValueError`](../builtins/exceptions.html#ValueError), in strict compliance with the JSON specification. If `True` (the default), their JavaScript equivalents (`NaN`, `Infinity`, `-Infinity`) are used.\n- **cls** (a `JSONEncoder` subclass) – If set, a custom JSON encoder with the `default()` method overridden, for serializing into custom datatypes. If `None` (the default), `JSONEncoder` is used.\n- **indent** ([*int*](../builtins/functions.html#int)*|*[*str*](../builtins/stdtypes.html#str)*|**None*) – If a positive integer or string, JSON array elements and object members will be pretty-printed with that indent level. A positive integer indents that many spaces per level; a string (such as `\"\\t\"`) is used to indent each level. If zero, negative, or `\"\"` (the empty string), only newlines are inserted. If `None` (the default), no newlines are inserted.\n- **separators** ([*tuple*](../builtins/stdtypes.html#tuple)*|**None*) – A two-tuple: `(item_separator, key_separator)`. If `None` (the default), *separators* defaults to `(', ', ': ')` if *indent* is `None`, and `(',', ': ')` otherwise. For the most compact JSON, specify `(',', ':')` to eliminate whitespace.\n- **default** ([callable](../glossary.html#term-callable) | None) – A function that is called for objects that can’t otherwise be serialized. It should return a JSON encodable version of the object or raise a [`TypeError`](../builtins/exceptions.html#TypeError). If `None` (the default), `TypeError` is raised.\n- **sort_keys** ([*bool*](../builtins/functions.html#bool)) – If `True`, dictionaries will be outputted sorted by key. Default `False`.\n\nChanged in version 3.2: Allow strings for *indent* in addition to integers.",
+      "headings": [
+        "Basic Usage¶"
+      ],
+      "index": 2,
+      "unit_id": "library-json",
+      "chars": 3952,
+      "week": 1,
+      "reading_title": "json — JSON 编解码",
+      "source_ref": "demo/second-source/pages/library-json.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Basic Usage¶",
+      "text": "Changed in version 3.4: Use `(',', ': ')` as default if *indent* is not `None`.\n\nChanged in version 3.6: All optional parameters are now [keyword-only](../glossary.html#keyword-only-parameter).\n\njson.\ndumps\n(\nobj\n,\n*\n,\nskipkeys=False\n,\nensure_ascii=True\n,\ncheck_circular=True\n,\nallow_nan=True\n,\ncls=None\n,\nindent=None\n,\nseparators=None\n,\ndefault=None\n,\nsort_keys=False\n,\n**kw\n)\n¶\n\nSerialize *obj* to a JSON formatted [`str`](../builtins/stdtypes.html#str) using this conversion\ntable. The arguments have the same meaning as in\n`dump()`.\n\nNote\n\nKeys in key/value pairs of JSON are always of the type [`str`](../builtins/stdtypes.html#str). When\na dictionary is converted into JSON, all the keys of the dictionary are\ncoerced to strings. As a result of this, if a dictionary is converted\ninto JSON and then back into a dictionary, the dictionary may not equal\nthe original one. That is, `loads(dumps(x)) != x` if x has non-string\nkeys.\n*sort_keys* sorts the keys before they are coerced to strings,\nso numeric keys are sorted by value, not by their string representation.\n\njson.\nload\n(\nfp\n,\n*\n,\ncls=None\n,\nobject_hook=None\n,\nparse_float=None\n,\nparse_int=None\n,\nparse_constant=None\n,\nobject_pairs_hook=None\n,\n**kw\n)\n¶\n\nDeserialize *fp* to a Python object\nusing the JSON-to-Python conversion table.\n\nParameters\n:\n\n- **fp** ([file-like object](../glossary.html#term-file-like-object)) – A `.read()`-supporting [text file](../glossary.html#term-text-file) or [binary file](../glossary.html#term-binary-file) containing the JSON document to be deserialized.\n- **cls** (a `JSONDecoder` subclass) – If set, a custom JSON decoder. Additional keyword arguments to `load()` will be passed to the constructor of *cls*. If `None` (the default), `JSONDecoder` is used.\n- **object_hook** ([callable](../glossary.html#term-callable) | None) – If set, a function that is called with the result of any JSON object literal decoded (a [`dict`](../builtins/stdtypes.html#dict)). The return value of this function will be used instead of the `dict`. This feature can be used to implement custom decoders, for example [JSON-RPC](https://www.jsonrpc.org) class hinting. Default `None`.\n- **object_pairs_hook** ([callable](../glossary.html#term-callable) | None) – If set, a function that is called with the result of any JSON object literal decoded with an ordered list of pairs. The return value of this function will be used instead of the [`dict`](../builtins/stdtypes.html#dict). This feature can be used to implement custom decoders. If *object_hook* is also set, *object_pairs_hook* takes priority. Default `None`.\n- **parse_float** ([callable](../glossary.html#term-callable) | None) – If set, a function that is called with the string of every JSON float to be decoded. If `None` (the default), it is equivalent to `float(num_str)`. This can be used to parse JSON floats into custom datatypes, for example [`decimal.Decimal`](decimal.html#decimal.Decimal).\n- **parse_int** ([callable](../glossary.html#term-callable) | None) – If set, a function that is called with the string of every JSON int to be decoded. If `None` (the default), it is equivalent to `int(num_str)`. This can be used to parse JSON integers into custom datatypes, for example [`float`](../builtins/functions.html#float).\n- **parse_constant** ([callable](../glossary.html#term-callable) | None) – If set, a function that is called with one of the following strings: `'-Infinity'`, `'Infinity'`, or `'NaN'`. This can be used to raise an exception if invalid JSON numbers are encountered. Default `None`.\n\nRaises\n:\n\n- **JSONDecodeError** – When the data being deserialized is not a valid JSON document.\n- [**UnicodeDecodeError**](../builtins/exceptions.html#UnicodeDecodeError) – When the data being deserialized does not contain UTF-8, UTF-16 or UTF-32 encoded data.\n\nChanged in version 3.1:\n\n- Added the optional *object_pairs_hook* parameter.\n- *parse_constant* doesn’t get called on ‘null’, ‘true’, ‘false’ anymore.\n\nChanged in version 3.6:",
+      "headings": [
+        "Basic Usage¶"
+      ],
+      "index": 3,
+      "unit_id": "library-json",
+      "chars": 3994,
+      "week": 1,
+      "reading_title": "json — JSON 编解码",
+      "source_ref": "demo/second-source/pages/library-json.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Basic Usage¶",
+      "text": "- All optional parameters are now [keyword-only](../glossary.html#keyword-only-parameter).\n- *fp* can now be a [binary file](../glossary.html#term-binary-file). The input encoding should be UTF-8, UTF-16 or UTF-32.\n\nChanged in version 3.11: The default *parse_int* of [`int()`](../builtins/functions.html#int) now limits the maximum length of\nthe integer string via the interpreter’s [integer string\nconversion length limitation](../builtins/stdtypes.html#int-max-str-digits) to help avoid denial\nof service attacks.\n\njson.\nloads\n(\ns\n,\n*\n,\ncls=None\n,\nobject_hook=None\n,\nparse_float=None\n,\nparse_int=None\n,\nparse_constant=None\n,\nobject_pairs_hook=None\n,\n**kw\n)\n¶\n\nIdentical to `load()`, but instead of a file-like object,\ndeserialize *s* (a [`str`](../builtins/stdtypes.html#str), [`bytes`](../builtins/stdtypes.html#bytes) or [`bytearray`](../builtins/stdtypes.html#bytearray)\ninstance containing a JSON document) to a Python object using this\nconversion table.\n\nChanged in version 3.6: *s* can now be of type [`bytes`](../builtins/stdtypes.html#bytes) or [`bytearray`](../builtins/stdtypes.html#bytearray). The\ninput encoding should be UTF-8, UTF-16 or UTF-32.\n\nChanged in version 3.9: The keyword argument *encoding* has been removed.",
+      "headings": [
+        "Basic Usage¶"
+      ],
+      "index": 4,
+      "unit_id": "library-json",
+      "chars": 1236,
+      "week": 1,
+      "reading_title": "json — JSON 编解码",
+      "source_ref": "demo/second-source/pages/library-json.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Encoders and Decoders¶",
+      "text": "## Encoders and Decoders¶\n\nclass\njson.\nJSONDecoder\n(\n*\n,\nobject_hook=None\n,\nparse_float=None\n,\nparse_int=None\n,\nparse_constant=None\n,\nstrict=True\n,\nobject_pairs_hook=None\n)\n¶\n\nSimple JSON decoder.\n\nPerforms the following translations in decoding by default:\n\n| JSON | Python |\n|---|---|\n| object | dict |\n| array | list |\n| string | str |\n| number (int) | int |\n| number (real) | float |\n| true | True |\n| false | False |\n| null | None |\n\nIt also understands `NaN`, `Infinity`, and `-Infinity` as their\ncorresponding `float` values, which is outside the JSON spec.\n\n*object_hook* is an optional function that will be called with the result of\nevery JSON object decoded and its return value will be used in place of the\ngiven [`dict`](../builtins/stdtypes.html#dict). This can be used to provide custom deserializations\n(e.g. to support [JSON-RPC](https://www.jsonrpc.org) class hinting).\n\n*object_pairs_hook* is an optional function that will be called with the\nresult of every JSON object decoded with an ordered list of pairs. The\nreturn value of *object_pairs_hook* will be used instead of the\n[`dict`](../builtins/stdtypes.html#dict). This feature can be used to implement custom decoders. If\n*object_hook* is also defined, the *object_pairs_hook* takes priority.\n\nChanged in version 3.1: Added support for *object_pairs_hook*.\n\n*parse_float* is an optional function that will be called with the string of\nevery JSON float to be decoded. By default, this is equivalent to\n`float(num_str)`. This can be used to use another datatype or parser for\nJSON floats (e.g. [`decimal.Decimal`](decimal.html#decimal.Decimal)).\n\n*parse_int* is an optional function that will be called with the string of\nevery JSON int to be decoded. By default, this is equivalent to\n`int(num_str)`. This can be used to use another datatype or parser for\nJSON integers (e.g. [`float`](../builtins/functions.html#float)).\n\n*parse_constant* is an optional function that will be called with one of the\nfollowing strings: `'-Infinity'`, `'Infinity'`, `'NaN'`. This can be\nused to raise an exception if invalid JSON numbers are encountered.\n\nIf *strict* is false (`True` is the default), then control characters\nwill be allowed inside strings. Control characters in this context are\nthose with character codes in the 0–31 range, including `'\\t'` (tab),\n`'\\n'`, `'\\r'` and `'\\0'`.\n\nIf the data being deserialized is not a valid JSON document, a\n`JSONDecodeError` will be raised.\n\nChanged in version 3.6: All parameters are now [keyword-only](../glossary.html#keyword-only-parameter).\n\ndecode\n(\ns\n)\n¶\n\nReturn the Python representation of *s* (a [`str`](../builtins/stdtypes.html#str) instance\ncontaining a JSON document).\n\n`JSONDecodeError` will be raised if the given JSON document is not\nvalid.\n\nraw_decode\n(\ns\n)\n¶\n\nDecode a JSON document from *s* (a [`str`](../builtins/stdtypes.html#str) beginning with a\nJSON document) and return a 2-tuple of the Python representation\nand the index in *s* where the document ended.\n\nThis can be used to decode a JSON document from a string that may have\nextraneous data at the end.\n\nclass\njson.\nJSONEncoder\n(\n*\n,\nskipkeys=False\n,\nensure_ascii=True\n,\ncheck_circular=True\n,\nallow_nan=True\n,\nsort_keys=False\n,\nindent=None\n,\nseparators=None\n,\ndefault=None\n)\n¶\n\nExtensible JSON encoder for Python data structures.\n\nSupports the following objects and types by default:\n\n| Python | JSON |\n|---|---|\n| dict | object |\n| list, tuple | array |\n| str | string |\n| int, float, int- & float-derived Enums | number |\n| True | true |\n| False | false |\n| None | null |\n\nChanged in version 3.4: Added support for int- and float-derived Enum classes.\n\nTo extend this to recognize other objects, subclass and implement a\n`default()` method with another method that returns a serializable object\nfor `o` if possible, otherwise it should call the superclass implementation\n(to raise [`TypeError`](../builtins/exceptions.html#TypeError)).",
+      "headings": [
+        "Encoders and Decoders¶"
+      ],
+      "index": 5,
+      "unit_id": "library-json",
+      "chars": 3923,
+      "week": 1,
+      "reading_title": "json — JSON 编解码",
+      "source_ref": "demo/second-source/pages/library-json.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Encoders and Decoders¶",
+      "text": "If *skipkeys* is false (the default), a [`TypeError`](../builtins/exceptions.html#TypeError) will be raised when\ntrying to encode keys that are not [`str`](../builtins/stdtypes.html#str), [`int`](../builtins/functions.html#int), [`float`](../builtins/functions.html#float),\n[`bool`](../builtins/functions.html#bool) or `None`. If *skipkeys* is true, such items are simply skipped.\n\nIf *ensure_ascii* is true (the default), the output is guaranteed to\nhave all incoming non-ASCII and non-printable characters escaped.\nIf *ensure_ascii* is false, all characters will be output as-is, except for\nthe characters that must be escaped: quotation mark, reverse solidus,\nand the control characters U+0000 through U+001F.\n\nIf *check_circular* is true (the default), then lists, dicts, and custom\nencoded objects will be checked for circular references during encoding to\nprevent an infinite recursion (which would cause a [`RecursionError`](../builtins/exceptions.html#RecursionError)).\nOtherwise, no such check takes place.\n\nIf *allow_nan* is true (the default), then `NaN`, `Infinity`, and\n`-Infinity` will be encoded as such. This behavior is not JSON\nspecification compliant, but is consistent with most JavaScript based\nencoders and decoders. Otherwise, it will be a [`ValueError`](../builtins/exceptions.html#ValueError) to encode\nsuch floats.\n\nIf *sort_keys* is true (default: `False`), then the output of dictionaries\nwill be sorted by key; this is useful for regression tests to ensure that\nJSON serializations can be compared on a day-to-day basis.\n\nIf *indent* is a non-negative integer or string, then JSON array elements and\nobject members will be pretty-printed with that indent level. An indent level\nof 0, negative, or `\"\"` will only insert newlines. `None` (the default)\nselects the most compact representation. Using a positive integer indent\nindents that many spaces per level. If *indent* is a string (such as `\"\\t\"`),\nthat string is used to indent each level.\n\nChanged in version 3.2: Allow strings for *indent* in addition to integers.\n\nIf specified, *separators* should be an `(item_separator, key_separator)`\ntuple. The default is `(', ', ': ')` if *indent* is `None` and\n`(',', ': ')` otherwise. To get the most compact JSON representation,\nyou should specify `(',', ':')` to eliminate whitespace.\n\nChanged in version 3.4: Use `(',', ': ')` as default if *indent* is not `None`.\n\nIf specified, *default* should be a function that gets called for objects that\ncan’t otherwise be serialized. It should return a JSON encodable version of\nthe object or raise a [`TypeError`](../builtins/exceptions.html#TypeError). If not specified, `TypeError`\nis raised.\n\nChanged in version 3.6: All parameters are now [keyword-only](../glossary.html#keyword-only-parameter).\n\ndefault\n(\no\n)\n¶\n\nImplement this method in a subclass such that it returns a serializable\nobject for *o*, or calls the base implementation (to raise a\n[`TypeError`](../builtins/exceptions.html#TypeError)).\n\nFor example, to support arbitrary iterators, you could implement\n`default()` like this:\n\n```\ndef default(self, o):\n   try:\n       iterable = iter(o)\n   except TypeError:\n       pass\n   else:\n       return list(iterable)\n   # Let the base class default method raise the TypeError\n   return super().default(o)\n```\n\nencode\n(\no\n)\n¶\n\nReturn a JSON string representation of a Python data structure, *o*. For\nexample:\n\n```\n>>> json.JSONEncoder().encode({\"foo\": [\"bar\", \"baz\"]})\n'{\"foo\": [\"bar\", \"baz\"]}'\n```\n\niterencode\n(\no\n)\n¶\n\nEncode the given object, *o*, and yield each string representation as\navailable. For example:\n\n```\nfor chunk in json.JSONEncoder().iterencode(bigobject):\n    mysocket.write(chunk)\n```",
+      "headings": [
+        "Encoders and Decoders¶"
+      ],
+      "index": 6,
+      "unit_id": "library-json",
+      "chars": 3685,
+      "week": 1,
+      "reading_title": "json — JSON 编解码",
+      "source_ref": "demo/second-source/pages/library-json.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Exceptions¶",
+      "text": "## Exceptions¶\n\nexception\njson.\nJSONDecodeError\n(\nmsg\n,\ndoc\n,\npos\n)\n¶\n\nSubclass of [`ValueError`](../builtins/exceptions.html#ValueError) with the following additional attributes:\n\nmsg\n¶\n\nThe unformatted error message.\n\ndoc\n¶\n\nThe JSON document being parsed.\n\npos\n¶\n\nThe start index of *doc* where parsing failed.\n\nlineno\n¶\n\nThe line corresponding to *pos*.\n\ncolno\n¶\n\nThe column corresponding to *pos*.\n\nAdded in version 3.5.\n\n## Standard Compliance and Interoperability¶\n\nThe JSON format is specified by [**RFC 7159**](https://datatracker.ietf.org/doc/html/rfc7159.html) and by\n[ECMA-404](https://ecma-international.org/publications-and-standards/standards/ecma-404/).\nThis section details this module’s level of compliance with the RFC.\nFor simplicity, `JSONEncoder` and `JSONDecoder` subclasses, and\nparameters other than those explicitly mentioned, are not considered.\n\nThis module does not comply with the RFC in a strict fashion, implementing some\nextensions that are valid JavaScript but not valid JSON. In particular:\n\n- Infinite and NaN number values are accepted and output;\n- Repeated names within an object are accepted, and only the value of the last name-value pair is used.\n\nSince the RFC permits RFC-compliant parsers to accept input texts that are not\nRFC-compliant, this module’s deserializer is technically RFC-compliant under\ndefault settings.",
+      "headings": [
+        "Exceptions¶",
+        "Standard Compliance and Interoperability¶"
+      ],
+      "index": 7,
+      "unit_id": "library-json",
+      "chars": 1363,
+      "week": 1,
+      "reading_title": "json — JSON 编解码",
+      "source_ref": "demo/second-source/pages/library-json.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Character Encodings¶",
+      "text": "### Character Encodings¶\n\nThe RFC requires that JSON be represented using either UTF-8, UTF-16, or\nUTF-32, with UTF-8 being the recommended default for maximum interoperability.\n\nAs permitted, though not required, by the RFC, this module’s serializer sets\n*ensure_ascii=True* by default, thus escaping the output so that the resulting\nstrings only contain printable ASCII characters.\n\nOther than the *ensure_ascii* parameter, this module is defined strictly in\nterms of conversion between Python objects and\n[`Unicode strings`](../builtins/stdtypes.html#str), and thus does not otherwise directly address\nthe issue of character encodings.\n\nThe RFC prohibits adding a byte order mark (BOM) to the start of a JSON text,\nand this module’s serializer does not add a BOM to its output.\nThe RFC permits, but does not require, JSON deserializers to ignore an initial\nBOM in their input. This module’s deserializer raises a [`ValueError`](../builtins/exceptions.html#ValueError)\nwhen an initial BOM is present.\n\nThe RFC does not explicitly forbid JSON strings which contain byte sequences\nthat don’t correspond to valid Unicode characters (e.g. unpaired UTF-16\nsurrogates), but it does note that they may cause interoperability problems.\nBy default, this module accepts and outputs (when present in the original\n[`str`](../builtins/stdtypes.html#str)) code points for such sequences.",
+      "headings": [
+        "Character Encodings¶"
+      ],
+      "index": 8,
+      "unit_id": "library-json",
+      "chars": 1375,
+      "week": 1,
+      "reading_title": "json — JSON 编解码",
+      "source_ref": "demo/second-source/pages/library-json.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Infinite and NaN Number Values¶",
+      "text": "### Infinite and NaN Number Values¶\n\nThe RFC does not permit the representation of infinite or NaN number values.\nDespite that, by default, this module accepts and outputs `Infinity`,\n`-Infinity`, and `NaN` as if they were valid JSON number literal values:\n\n```\n>>> # Neither of these calls raises an exception, but the results are not valid JSON\n>>> json.dumps(float('-inf'))\n'-Infinity'\n>>> json.dumps(float('nan'))\n'NaN'\n>>> # Same when deserializing\n>>> json.loads('-Infinity')\n-inf\n>>> json.loads('NaN')\nnan\n```\n\nIn the serializer, the *allow_nan* parameter can be used to alter this\nbehavior. In the deserializer, the *parse_constant* parameter can be used to\nalter this behavior.\n\n### Repeated Names Within an Object¶\n\nThe RFC specifies that the names within a JSON object should be unique, but\ndoes not mandate how repeated names in JSON objects should be handled. By\ndefault, this module does not raise an exception; instead, it ignores all but\nthe last name-value pair for a given name:\n\n```\n>>> weird_json = '{\"x\": 1, \"x\": 2, \"x\": 3}'\n>>> json.loads(weird_json)\n{'x': 3}\n```\n\nThe *object_pairs_hook* parameter can be used to alter this behavior.",
+      "headings": [
+        "Infinite and NaN Number Values¶",
+        "Repeated Names Within an Object¶"
+      ],
+      "index": 9,
+      "unit_id": "library-json",
+      "chars": 1156,
+      "week": 1,
+      "reading_title": "json — JSON 编解码",
+      "source_ref": "demo/second-source/pages/library-json.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Top-level Non-Object, Non-Array Values¶",
+      "text": "### Top-level Non-Object, Non-Array Values¶\n\nThe old version of JSON specified by the obsolete [**RFC 4627**](https://datatracker.ietf.org/doc/html/rfc4627.html) required that\nthe top-level value of a JSON text must be either a JSON object or array\n(Python [`dict`](../builtins/stdtypes.html#dict) or [`list`](../builtins/stdtypes.html#list)), and could not be a JSON null,\nboolean, number, or string value. [**RFC 7159**](https://datatracker.ietf.org/doc/html/rfc7159.html) removed that restriction, and\nthis module does not and has never implemented that restriction in either its\nserializer or its deserializer.\n\nRegardless, for maximum interoperability, you may wish to voluntarily adhere\nto the restriction yourself.\n\n### Implementation Limitations¶\n\nSome JSON deserializer implementations may set limits on:\n\n- the size of accepted JSON texts\n- the maximum level of nesting of JSON objects and arrays\n- the range and precision of JSON numbers\n- the content and maximum length of JSON strings\n\nThis module does not impose any such limits beyond those of the relevant\nPython datatypes themselves or the Python interpreter itself.\n\nWhen serializing to JSON, beware any such limitations in applications that may\nconsume your JSON. In particular, it is common for JSON numbers to be\ndeserialized into IEEE 754 double precision numbers and thus subject to that\nrepresentation’s range and precision limitations. This is especially relevant\nwhen serializing Python [`int`](../builtins/functions.html#int) values of extremely large magnitude, or\nwhen serializing instances of “exotic” numerical types such as\n[`decimal.Decimal`](decimal.html#decimal.Decimal).",
+      "headings": [
+        "Top-level Non-Object, Non-Array Values¶",
+        "Implementation Limitations¶"
+      ],
+      "index": 10,
+      "unit_id": "library-json",
+      "chars": 1656,
+      "week": 1,
+      "reading_title": "json — JSON 编解码",
+      "source_ref": "demo/second-source/pages/library-json.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Command-line interface¶",
+      "text": "## Command-line interface¶\n\n**Source code:** [Lib/json/tool.py](https://github.com/python/cpython/tree/3.14/Lib/json/tool.py)\n\nThe `json` module can be invoked as a script via `python -m json`\nto validate and pretty-print JSON objects. The `json.tool` submodule\nimplements this interface.\n\nIf the optional `infile` and `outfile` arguments are not\nspecified, [`sys.stdin`](sys.html#sys.stdin) and [`sys.stdout`](sys.html#sys.stdout) will be used respectively:\n\n```\n$ echo '{\"json\": \"obj\"}' | python -m json\n{\n    \"json\": \"obj\"\n}\n$ echo '{1.2:3.4}' | python -m json\nExpecting property name enclosed in double quotes: line 1 column 2 (char 1)\n```\n\nChanged in version 3.5: The output is now in the same order as the input. Use the\n`--sort-keys` option to sort the output of dictionaries\nalphabetically by key.\n\nChanged in version 3.14: The `json` module may now be directly executed as\n`python -m json`. For backwards compatibility, invoking\nthe CLI as `python -m json.tool` remains supported.",
+      "headings": [
+        "Command-line interface¶"
+      ],
+      "index": 11,
+      "unit_id": "library-json",
+      "chars": 989,
+      "week": 1,
+      "reading_title": "json — JSON 编解码",
+      "source_ref": "demo/second-source/pages/library-json.html",
+      "format": "html"
+    },
+    {
+      "heading_path": "Command-line options¶",
+      "text": "### Command-line options¶\n\ninfile\n¶\n\nThe JSON file to be validated or pretty-printed:\n\n```\n$ python -m json mp_films.json\n[\n    {\n        \"title\": \"And Now for Something Completely Different\",\n        \"year\": 1971\n    },\n    {\n        \"title\": \"Monty Python and the Holy Grail\",\n        \"year\": 1975\n    }\n]\n```\n\nIf *infile* is not specified, read from [`sys.stdin`](sys.html#sys.stdin).\n\noutfile\n¶\n\nWrite the output of the *infile* to the given *outfile*. Otherwise, write it\nto [`sys.stdout`](sys.html#sys.stdout).\n\n--sort-keys\n¶\n\nSort the output of dictionaries alphabetically by key.\n\nAdded in version 3.5.\n\n--no-ensure-ascii\n¶\n\nDisable escaping of non-ascii characters, see `json.dumps()` for more information.\n\nAdded in version 3.9.\n\n--json-lines\n¶\n\nParse every input line as separate JSON object.\n\nAdded in version 3.8.\n\n--indent\n,\n--tab\n,\n--no-indent\n,\n--compact\n¶\n\nMutually exclusive options for whitespace control.\n\nAdded in version 3.9.\n\n-h\n,\n--help\n¶\n\nShow the help message.\n\nFootnotes",
+      "headings": [
+        "Command-line options¶"
+      ],
+      "index": 12,
+      "unit_id": "library-json",
+      "chars": 997,
+      "week": 1,
+      "reading_title": "json — JSON 编解码",
+      "source_ref": "demo/second-source/pages/library-json.html",
+      "format": "html"
+    }
+  ]
+}

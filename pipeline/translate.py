@@ -401,7 +401,7 @@ def assemble_unit(unit_id: str, chunks: list, translations: dict) -> str:
 
 def write_coverage(state: dict, chunks_by_unit: dict) -> None:
     """产出覆盖度报告——分母自证，与 INVENTORY.md 口径一致。"""
-    units = load_json(ROOT / "source/units.json", {"units": []})["units"]
+    units = load_json(ROOT / P["units_json"], {"units": []})["units"]
     local = [u for u in units if u["kind"] == "local"]
     usable = [u for u in local if u["status"] == "ok"]
     target = CFG["coverage"]["target_ratio"]
