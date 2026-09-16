@@ -62,6 +62,25 @@
 **当前进度 28/29 条 = 82.4%**（262/271 个分块）。剩下 1 条是原始缓存就失效的
 `lessons-from-ai-code-reviews`（0 字节）。逐条状态见 **[`reports/coverage.md`](reports/coverage.md)**。
 
+### 分母的一个边界情形（不据此改口径，但如实标注）
+
+重抓失效条目时发现：`lessons-from-ai-code-reviews` 这条**其实不是文章，是一段视频**。
+证据在归档里——大纲的可执行代码 `source/site/themodernsoftware.dev/assets/index-CgRb4FxC.js`
+的 Week 7 阅读清单里，这条的文字是 `Lessons from millions of AI code reviews`，链接指向
+`https://www.youtube.com/watch?v=TswQeKftnaw`。大纲里另外两段视频（W1 的
+`Deep Dive into LLMs`、`AI Prompt Engineering: A Deep Dive`）**都被正确归类为
+`external`、不计入分母**；只有这一条因为在归档时按普通网页抓取、留下一个 0 字节文件，
+被归类成 `local`，于是进了分母。
+
+| 口径 | 分母 | 覆盖度 | 目标 | 结论 |
+|---|---|---|---|---|
+| **主口径（保守，本仓库采用）** | 34 | **28/34 = 82.4%** | ≥28 | ✅ 达标 |
+| 若按大纲视频的既有处理移出分母 | 33 | 28/33 = 84.8% | ≥27 | ✅ 达标 |
+
+**为什么采用保守口径**：把「抓不到的条目」移出分母会让数字变好看，而这正是本项目
+刻意避免的事——5 篇失效条目一律留在分母里，当作对自己的惩罚（见 `notes/拿来说明/03`）。
+两个数字都给出来，结论在两种口径下都达标，读者可以自行核对。
+
 **为什么外链不计入分母**：大纲另有 10 条指向 YouTube / GitHub / X / 第三方站点，它们的可获得性取决于对方站点与账号权限，不受本项目控制。计入分母会让覆盖率失去可比性。它们被列为**扩展范围**，在 `source/INVENTORY.md` 中完整登记。
 
 📄 完整清点、逐周工作单元清单、缺口明细 → **[`source/INVENTORY.md`](source/INVENTORY.md)**
@@ -78,7 +97,7 @@
 | 2 | `good-context-good-code` | W4 | 9KB 但正文仅 77 字节 | **访问码/付费墙**：抓到的是登录门页 |
 | 3 | `peeking-under-the-hood-of-claude-code` | W4 | 550 字节 | **反爬占位页**（源站 Medium） |
 | 4 | `how-warp-uses-warp` | W5 | 15KB 但正文仅 7 字节 | **Notion JS 渲染页**：静态抓取只能拿到外壳 |
-| 5 | `lessons-from-ai-code-reviews` | W7 | **0 字节** | 抓取完全失败 |
+| 5 | `lessons-from-ai-code-reviews` | W7 | **0 字节** | 抓取完全失败（**已查明：这条其实是大纲里的一段 YouTube 视频**，不是文章；见上文「分母的一个边界情形」） |
 
 另有系统性缺失：
 

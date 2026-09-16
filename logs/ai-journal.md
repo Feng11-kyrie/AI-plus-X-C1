@@ -13,7 +13,7 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 632 |
+| 记录事件总数 | 633 |
 | 翻译块次 | 479 |
 | 其中通过校验 | 437 |
 | **其中未通过 / 失败** | **42** |
@@ -511,6 +511,7 @@
 | 2026-09-16T14:46:38 | `qc_criterion_fix` | 全量术语审计改为源文驱动：与 translate.py 逐块校验共用 termcheck.select_terms() |
 | 2026-09-16T14:50:24 | `table_row_loss_found` | 逐块校验只看代码围栏数与链接数，不看表格行数，于是三处整行丢失一路通过校验；新增 pipeline/check_tables.py 作为门禁 |
 | 2026-09-16T14:50:44 | `term_decision` | 「每个智能体的系统指令」改为「系统提示词」——这一处改的是译文，不是规则 |
+| 2026-09-16T14:56:53 | `broken_unit_recheck` | 重抓 5 篇失效条目：2 篇能定位到原始 URL，其中 1 篇查明是视频而非文章；另 3 篇归档里没有留下 URL，拒绝猜测 |
 
 ### `qc_criterion_fix`　2026-09-16T14:46:38
 
@@ -531,6 +532,13 @@
 - **why**：术语表 System Prompt → 系统提示词，硬性禁用「系统指令」。命中处源文英文是 system instructions。同一篇的表 1 里 system prompt 已按正式译法译作「系统提示词」，同一篇内自相矛盾；且两处英文指代同一对象
 - **how**：回到源文与同一篇的其它译法比对，判定规则正确、译文不一致，因此改译文；不做「规则过宽就降级」的处理
 - **result**：硬性违规 1 → 0，一致率 100.00%，28 篇译稿内部一致
+
+### `broken_unit_recheck`　2026-09-16T14:56:53
+
+- **why**：覆盖度已达标，但「补抓失效条目」是本项目自己列的待办；不猜 URL 是因为猜错会把别家的文章当成课程阅读材料
+- **how**：1) 从 source/page_map.json 取原始 URL——只找到 3 条，不含这两篇；2) 从归档的课程站点资源 source/site/themodernsoftware.dev/assets/index-CgRb4FxC.js 里读出大纲的完整链接表，确认 Week 7 的这条阅读是 https://www.youtube.com/watch?v=TswQeKftnaw（文字 'Lessons from millions of AI code reviews'），Week 4 的 peeking 是 medium.com/@outsightai/...；3) 用浏览器 UA 重抓 Medium：HTTP 403（Cloudflare 拦截），与归档时的失效原因一致；4) 不采用镜像站替代
+- **result**：lessons-from-ai-code-reviews 的失效原因从「抓取完全失败」更正为「该条目是大纲里的视频」：同为大綱视频的另两条已按 external 处理不计入分母，仅此条因留下 0 字节文件被当成 local。保守口径 28/34 = 82.4%；若按 video 处理移出分母则 28/33 = 84.8%。主口径不变，两个数字都写进 README
+- **cost**：peeking-under-the-hood-of-claude-code 仍不可自动获取（403）；lessons 这条没有可翻译的正文（视频无字幕），因此 28 条就是当前可达的上限
 
 ## 失败与返工记录
 
