@@ -10,6 +10,7 @@
 | 课程大纲、站点结构、讲义链接 | Stanford University ／ 课程讲师 Mihail Eric |
 | `source/pages/` 下 31 篇文章 | 各自原始站点（Google Cloud、Anthropic、OWASP、Splunk、Semgrep、Coding Horror、GitHub Blog、Graphite、Google SRE、Chroma、Resolve AI、Warp、Devin 等） |
 | `source/pdfs/` 下 3 份 PDF | Anthropic ／ OpenAI ／ 相应出版方 |
+| `demo/second-source/pages/` 下 3 页 | **Python Software Foundation**（Python 3 官方文档，PSF License，允许带署名的再分发；仅用于"换源可复用"的流程烟测，**未纳入任何译稿或覆盖度统计**） |
 | 课程名称、讲师姓名、机构标识 | Stanford University |
 
 这些资料原本散落在公开互联网上。本仓库将其**归档**，目的是：
@@ -31,7 +32,7 @@
 
 - `pipeline/` — 全部脚本（大纲解析、资料清点、术语挖掘、术语表校验）
 - `glossary/` — 术语表（译法选择与禁用变体规则是本项目的整理成果）
-- `README.md`、`AAR.md`、`logs/`、`notes/`、`reports/` — 项目文档与过程记录
+- `README.md`、`AAR.md`、`AI日志.md`、`拿来说明/`、`logs/`、`reports/` — 项目文档与过程记录
 
 ## 四、免责与撤回承诺
 
