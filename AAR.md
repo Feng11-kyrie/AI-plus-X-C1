@@ -72,7 +72,7 @@
 | 自动生成报告 | 5 份 | `reports/` |
 | CI 门禁 | **4 项**（术语表自洽 / 术语一致率 / 管线确定性 / 表格完整性） | `.github/workflows/checks.yml` |
 
-**这 42 次失败尝试与 50 次拦截全部保留了原始记录**，没有事后清理。`logs/journal.jsonl` 是 append-only 的事件流，`logs/ai-journal.md` 由它自动渲染——**不是手写的**。
+**这 42 次失败尝试与 50 次拦截全部保留了原始记录**，没有事后清理。`logs/journal.jsonl` 是 append-only 的事件流，`AI日志.md` 由它自动渲染——**不是手写的**。
 
 ---
 
@@ -373,11 +373,11 @@
 
 | 内容 | 位置 |
 |---|---|
-| 完整失败与重试记录 | `logs/ai-journal.md`、`logs/journal.jsonl` |
+| 完整失败与重试记录 | `AI日志.md`、`logs/journal.jsonl` |
 | 表格行数差异与例外登记 | `reports/table-integrity.md`、`pipeline/config/table-exceptions.json` |
 | 术语被判违规 vs 被豁免 | `reports/terminology-consistency.md` 第一节及其「一·附」 |
 | 判定口径变更、丢行、术语裁决三件事 | `logs/journal.jsonl`：`qc_criterion_fix`、`table_row_loss_found`、`term_decision` |
-| 丢行与机制化的完整叙述 | `notes/拿来说明/04-三处丢行与手工发现的机制化.md` |
+| 丢行与机制化的完整叙述 | `拿来说明/04-三处丢行与手工发现的机制化.md` |
 | `figure` bug 的修复 | commit `6f35d22` |
 | 章节级样板剔除 | commit `c75ff9b` |
 | 术语表冲突的发现与修复 | commit `50469eb` → `5eb050a` |

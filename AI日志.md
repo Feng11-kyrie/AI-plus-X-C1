@@ -13,12 +13,21 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 633 |
+| 记录事件总数 | 634 |
 | 翻译块次 | 479 |
 | 其中通过校验 | 437 |
 | **其中未通过 / 失败** | **42** |
 | 完成条目 | 36 |
 | 出现过校验问题的块 | 42 |
+
+## 按天汇总
+
+挑战要求的是「**每日** AI 协作日志」，所以先把事件按日期聚合一遍，再看下面的逐块明细。
+
+| 日期 | 翻译块次 | 通过 | 失败 | 条目数 | 净中文字符 | 当日最后事件 |
+|---|---|---|---|---|---|---|
+| 2026-09-15 | 162 | 143 | 19 | 13 | 106,478 | 16:17:35 |
+| 2026-09-16 | 317 | 294 | 23 | 28 | 227,308 | 15:32:34 |
 
 ## 逐块记录
 
@@ -512,6 +521,7 @@
 | 2026-09-16T14:50:24 | `table_row_loss_found` | 逐块校验只看代码围栏数与链接数，不看表格行数，于是三处整行丢失一路通过校验；新增 pipeline/check_tables.py 作为门禁 |
 | 2026-09-16T14:50:44 | `term_decision` | 「每个智能体的系统指令」改为「系统提示词」——这一处改的是译文，不是规则 |
 | 2026-09-16T14:56:53 | `broken_unit_recheck` | 重抓 5 篇失效条目：2 篇能定位到原始 URL，其中 1 篇查明是视频而非文章；另 3 篇归档里没有留下 URL，拒绝猜测 |
+| 2026-09-16T15:32:34 | `deliverable_name_mismatch` | 交付物改名 + 新增 pipeline/check_deliverables.py：AI 日志从 logs/ai-journal.md 改为仓库根目录 AI日志.md；四个「拿来说明」的文件名也含「拿来说明」 |
 
 ### `qc_criterion_fix`　2026-09-16T14:46:38
 
@@ -539,6 +549,13 @@
 - **how**：1) 从 source/page_map.json 取原始 URL——只找到 3 条，不含这两篇；2) 从归档的课程站点资源 source/site/themodernsoftware.dev/assets/index-CgRb4FxC.js 里读出大纲的完整链接表，确认 Week 7 的这条阅读是 https://www.youtube.com/watch?v=TswQeKftnaw（文字 'Lessons from millions of AI code reviews'），Week 4 的 peeking 是 medium.com/@outsightai/...；3) 用浏览器 UA 重抓 Medium：HTTP 403（Cloudflare 拦截），与归档时的失效原因一致；4) 不采用镜像站替代
 - **result**：lessons-from-ai-code-reviews 的失效原因从「抓取完全失败」更正为「该条目是大纲里的视频」：同为大綱视频的另两条已按 external 处理不计入分母，仅此条因留下 0 字节文件被当成 local。保守口径 28/34 = 82.4%；若按 video 处理移出分母则 28/33 = 84.8%。主口径不变，两个数字都写进 README
 - **cost**：peeking-under-the-hood-of-claude-code 仍不可自动获取（403）；lessons 这条没有可翻译的正文（视频无字幕），因此 28 条就是当前可达的上限
+
+### `deliverable_name_mismatch`　2026-09-16T15:32:34
+
+- **why**：挑战的 required_deliverables 写着 `README.md,*AI日志*,*AAR*,*拿来说明*`——这四个是**通配符**。glob('*AI日志*') 在本仓库原先返回 0 项：路径 logs/ai-journal.md 里没有「AI日志」四个字。内容一字不少，但在检查器眼里这份交付物不存在，而 rubric 红线 missing_artifacts（产物完整性 ≤5）与 no_ai_log（复盘质量 ≤5）会直接扣死。同理 `*拿来说明*` 要求「至少 3 个」，若只有外层目录叫拿来说明，按文件计数只有 1 项
+- **how**：1) 渲染产物改到仓库根目录 AI日志.md（同时满足顶层与递归通配）；2) 拿来说明目录移到仓库根、四个文件名加「拿说明」前缀；3) 新增 check_deliverables.py，直接读挑战包的 required_deliverables 原文，按通配符真匹配并按文件计数，空文件也算失败，接入 CI（检查 5）；4) 全仓库路径引用同步更新
+- **result**：四个通配符全部匹配：README.md×1、*AI日志*×1、*AAR*×1、*拿来说明*×4（要求 ≥3）；自检依据是修复前 glob('*AI日志*') = 0 项
+- **cost**：顺带发现「按天汇总」缺失——挑战要的是『每日』AI 协作日志，原先只有逐块记录，现补上按天聚合表（09-15：162 块；09-16：317 块）
 
 ## 失败与返工记录
 

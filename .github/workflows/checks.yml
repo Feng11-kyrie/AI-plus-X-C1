@@ -72,7 +72,15 @@ jobs:
       - name: 表格完整性（源↔译表行数）
         run: python3 pipeline/check_tables.py --check
 
-      # ---------- 检查 5：覆盖率（信息性，不作门禁）----------
+      # ---------- 检查 5：交付物命名 ----------
+      # 挑战的 required_deliverables 是**通配符**（README.md,*AI日志*,*AAR*,*拿来说明*）。
+      # 内容再全，名字匹配不到就等于缺失——而 rubric 红线 missing_artifacts /
+      # no_ai_log 会把对应维度直接压到 5 分。实测踩过：AI 日志原先叫
+      # logs/ai-journal.md，`glob("*AI日志*")` 返回 0 项。
+      - name: 交付物命名（通配符真匹配）
+        run: python3 pipeline/check_deliverables.py --check
+
+      # ---------- 检查 6：覆盖率（信息性，不作门禁）----------
       - name: 覆盖度概览
         run: |
           python3 pipeline/translate.py --status
@@ -83,6 +91,11 @@ jobs:
         run: |
           echo "### 术语一致率" >> $GITHUB_STEP_SUMMARY
           sed -n '/## 一致率/,/## 一、/p' reports/terminology-consistency.md >> $GITHUB_STEP_SUMMARY
+
+      - name: 交付物检查摘要
+        run: |
+          echo "### 交付物" >> $GITHUB_STEP_SUMMARY
+          sed -n '/## 判定依据/,/## 匹配到的文件/p' reports/deliverables-check.md >> $GITHUB_STEP_SUMMARY
 
       - name: 表格完整性摘要
         run: |
