@@ -4,7 +4,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 3,Prompt Engineering,提示词工程,core-llm,translate,提示工程|提示词工程学|指令工程,,课程 Week 1 主题,0
 4,System Prompt,系统提示词,core-llm,translate,系统指令|系统 prompt,,0,
 5,Context,上下文,core-llm,translate,语境|情境|脉络,,术语一致性的关键锚点,58
-6,Context Window,上下文窗口,core-llm,translate,上下文长度|语境窗口|上下文视窗,,0,
+6,Context Window,上下文窗口,core-llm,translate,语境窗口|上下文视窗,上下文长度,0；「上下文长度」降为提示级：effective context length，与 context window 不同,
 7,Context Engineering,上下文工程,core-llm,translate,情境工程|语境工程|上下文工程学,,挑战验收点名要求统一的术语,0
 8,Context Rot,上下文腐化,core-llm,translate,上下文腐烂|上下文衰减|上下文退化,,Chroma 研究提出的术语,0
 9,Vibe Coding,氛围编程,core-llm,keep_en_first,感觉编程|氛围编码|Vibe 编码|直觉编程,,"挑战验收点名要求统一的术语；建议首次写""氛围编程（Vibe Coding）""",0
@@ -129,7 +129,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 128,Span,Span,sre,keep_en,跨度|片段|区段,,分布式追踪中保留英文,0
 129,Metric,指标,sre,translate,度量值|监控指标,度量,0,
 130,Log,日志,sre,translate,日志文件|Log 记录,记录,0,
-131,Dashboard,仪表盘,sre,translate,仪表板|看板|监控面板,,0,
+131,Dashboard,仪表盘,sre,translate,仪表板|监控面板,看板,0；「看板」降为提示级：project board（GitHub Projects 看板），不是 dashboard,
 132,Alert,告警,sre,translate,警报|报警|提醒,,0,
 133,Alert Fatigue,告警疲劳,sre,translate,警报疲劳|告警过载,,0,
 134,Incident,故障事件,sre,translate,事故,,0,

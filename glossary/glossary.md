@@ -24,7 +24,7 @@
 1. **被正式译法包含的变体一律跳过**——「上下文协议」是「模型上下文协议（MCP）」的子串，子串匹配会把正确译文判成违规。
 2. 宁可漏报也不误报：一个天天误报的校验器最终会被忽略。
 
-**术语总数：171 条**（硬性禁用变体 328 条 + 提示级 38 条，由 `pipeline/translate.py` 逐块强制校验）
+**术语总数：171 条**（硬性禁用变体 326 条 + 提示级 40 条，由 `pipeline/translate.py` 逐块强制校验）
 
 ## 核心 LLM 与提示词（28 条）
 
@@ -35,7 +35,7 @@
 | Prompt | 提示词 | `translate` | 提示语、提示词条、promt | — | — |
 | Prompt Engineering | 提示词工程 | `translate` | 提示工程、提示词工程学、指令工程 | — | — |
 | System Prompt | 系统提示词 | `translate` | 系统指令、系统 prompt | — | — |
-| Context Window | 上下文窗口 | `translate` | 上下文长度、语境窗口、上下文视窗 | — | — |
+| Context Window | 上下文窗口 | `translate` | 语境窗口、上下文视窗 | 上下文长度 | — |
 | Context Engineering | 上下文工程 | `translate` | 情境工程、语境工程、上下文工程学 | — | — |
 | Context Rot | 上下文腐化 | `translate` | 上下文腐烂、上下文衰减、上下文退化 | — | — |
 | Vibe Coding | 氛围编程 | `keep_en_first` | 感觉编程、氛围编码、Vibe 编码、直觉编程 | — | — |
@@ -169,7 +169,7 @@
 | Span | Span | `keep_en` | 跨度、片段、区段 | — | — |
 | Metric | 指标 | `translate` | 度量值、监控指标 | 度量 | — |
 | Log | 日志 | `translate` | 日志文件、Log 记录 | 记录 | — |
-| Dashboard | 仪表盘 | `translate` | 仪表板、看板、监控面板 | — | — |
+| Dashboard | 仪表盘 | `translate` | 仪表板、监控面板 | 看板 | — |
 | Alert | 告警 | `translate` | 警报、报警、提醒 | — | — |
 | Alert Fatigue | 告警疲劳 | `translate` | 警报疲劳、告警过载 | — | — |
 | Incident | 故障事件 | `translate` | 事故 | — | — |
