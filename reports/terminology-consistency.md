@@ -7,7 +7,7 @@
 | 项 | 值 |
 |---|---|
 | 术语表条目 | 171 条（其中需翻译 148 条） |
-| 审计译稿 | 21 条 |
+| 审计译稿 | 22 条 |
 | 硬性禁用变体 | 324 个 |
 | 提示级变体 | 42 个（只统计不判违规） |
 
@@ -17,12 +17,12 @@
 
 | 指标 | 数值 |
 |---|---|
-| 正式译法出现次数 | 2,130 |
+| 正式译法出现次数 | 2,267 |
 | **硬性违规次数** | **0** |
 | **术语一致率（硬性口径）** | **100.00%** |
-| 提示级命中次数 | 261（**不计入一致率**，见第三节） |
-| 实际用到的术语 | 105 条 |
-| 其中零违规 | 105 条 |
+| 提示级命中次数 | 263（**不计入一致率**，见第三节） |
+| 实际用到的术语 | 107 条 |
+| 其中零违规 | 107 条 |
 
 > ⚠️ **这个百分比只统计硬性禁用变体。** 术语表另有一批提示级变体，它们是中文常用词或**其它英文词**的合法译法（如 proxy → 代理、dashboard → 控制台），一律判违规会逼出错误的译文。读数时请把两者一起看——**单看 100% 会高估实际的一致性**。
 
@@ -52,6 +52,7 @@
 | Reasoning | 推理能力 | `ai-code-review-best-practices` |
 | Reasoning | 推理能力 | `how-long-contexts-fail` |
 | Reasoning | 推理能力 | `multi-agent-systems-ai-native` |
+| Reasoning | 推理能力 | `prompt-engineering-overview` |
 | Reasoning | 推理能力 | `writing-effective-tools-for-agents` |
 | Agent | 智能体 | `ai-code-review-best-practices` |
 | Agentic | 智能体化的 | `benefits-agentic-ai-oncall` |
@@ -129,6 +130,7 @@
 | Inference | 推断 | `how-openai-uses-codex` | 1 |
 | Inference | 推断 | `multi-agent-systems-ai-native` | 1 |
 | Training | 培训 | `ai-code-review-best-practices` | 1 |
+| Training | 培训 | `prompt-engineering-overview` | 1 |
 | Agent | 代理 | `mcp-server-authentication` | 2 |
 | Tool Use | 工具使用 | `how-long-contexts-fail` | 1 |
 | Tool Use | 调用工具 | `mcp-food-for-thought` | 1 |
@@ -175,6 +177,7 @@
 | Workflow | 流程 | `writing-effective-tools-for-agents` | 1 |
 | Refactor | 重写 | `code-review-essentials` | 2 |
 | Refactor | 重写 | `how-openai-uses-codex` | 1 |
+| Refactor | 重写 | `prompt-engineering-overview` | 1 |
 | Linter | 检查器 | `devin-coding-agents-101` | 1 |
 | Artifact | 产物 | `specs-are-the-new-source-code` | 4 |
 | Terminal | 控制台 | `mcp-server-authentication` | 1 |
@@ -229,27 +232,28 @@
 | 术语 | 正式译法 | policy | 出现次数 | 源文篇数 | 违规 |
 |---|---|---|---|---|---|
 | Agent | 智能体 | `translate` | 313 | 13 | ✅ |
+| Context | 上下文 | `translate` | 161 | 17 | ✅ |
 | Model Context Protocol (MCP) | 模型上下文协议（MCP） | `acronym` | 152 | 4 | ✅ |
-| Context | 上下文 | `translate` | 149 | 16 | ✅ |
+| Prompt | 提示词 | `translate` | 130 | 9 | ✅ |
 | Pull Request (PR) | 拉取请求（PR） | `acronym` | 103 | 5 | ✅ |
 | Code Review | 代码评审 | `translate` | 97 | 8 | ✅ |
 | MCP Server | MCP 服务器 | `keep_en_first` | 67 | 6 | ✅ |
+| Application Programming Interface (API) | 应用程序接口（API） | `acronym` | 62 | 0 | ✅ |
 | Static Application Security Testing (SAST) | 静态应用安全测试（SAST） | `acronym` | 61 | 1 | ✅ |
 | Vulnerability | 漏洞 | `translate` | 61 | 3 | ✅ |
-| Application Programming Interface (API) | 应用程序接口（API） | `acronym` | 60 | 0 | ✅ |
-| Prompt | 提示词 | `translate` | 55 | 8 | ✅ |
 | Dynamic Application Security Testing (DAST) | 动态应用安全测试（DAST） | `acronym` | 54 | 1 | ✅ |
 | Evaluation | 评估 | `translate` | 48 | 2 | ✅ |
 | Workflow | 工作流 | `translate` | 47 | 6 | ✅ |
-| Deployment | 部署 | `translate` | 44 | 8 | ✅ |
+| Deployment | 部署 | `translate` | 47 | 8 | ✅ |
 | Codebase | 代码库 | `translate` | 36 | 8 | ✅ |
 | Terminal | 终端 | `translate` | 35 | 4 | ✅ |
 | Dependency | 依赖 | `translate` | 32 | 7 | ✅ |
+| Large Language Model (LLM) | 大语言模型（LLM） | `acronym` | 31 | 0 | ✅ |
 | Log | 日志 | `translate` | 31 | 7 | ✅ |
 | Trace | 追踪记录 | `translate` | 30 | 2 | ✅ |
-| Large Language Model (LLM) | 大语言模型（LLM） | `acronym` | 26 | 0 | ✅ |
 | Merge | 合并 | `translate` | 26 | 4 | ✅ |
 | Metric | 指标 | `translate` | 26 | 1 | ✅ |
+| Prompt Engineering | 提示词工程 | `translate` | 25 | 3 | ✅ |
 | Commit | 提交 | `translate` | 25 | 4 | ✅ |
 | Tool Use | 工具调用 | `translate` | 24 | 0 | ✅ |
 | Continuous Integration (CI) | 持续集成（CI） | `acronym` | 24 | 2 | ✅ |
@@ -257,6 +261,7 @@
 | Tracing | 链路追踪 | `translate` | 22 | 4 | ✅ |
 | Repository | 仓库 | `translate` | 21 | 6 | ✅ |
 | Runtime | 运行时 | `translate` | 20 | 3 | ✅ |
+| Inference | 推理 | `translate` | 19 | 0 | ✅ |
 | Observability | 可观测性 | `translate` | 19 | 6 | ✅ |
 | Alert | 告警 | `translate` | 17 | 3 | ✅ |
 | Specification (Spec) | 规格说明 | `translate` | 16 | 6 | ✅ |
@@ -264,10 +269,9 @@
 | Command-Line Interface (CLI) | 命令行界面（CLI） | `acronym` | 15 | 0 | ✅ |
 | Common Weakness Enumeration (CWE) | 通用缺陷枚举（CWE） | `acronym` | 15 | 0 | ✅ |
 | Continuous Delivery (CD) | 持续交付（CD） | `acronym` | 14 | 0 | ✅ |
-| Inference | 推理 | `translate` | 13 | 0 | ✅ |
+| Training | 训练 | `translate` | 13 | 5 | ✅ |
 | Branch | 分支 | `translate` | 13 | 4 | ✅ |
 | False Positive | 误报 | `translate` | 13 | 1 | ✅ |
-| Training | 训练 | `translate` | 12 | 4 | ✅ |
 | Orchestration | 编排 | `translate` | 12 | 4 | ✅ |
 | Software Development Kit (SDK) | 软件开发工具包（SDK） | `acronym` | 12 | 0 | ✅ |
 | Software Development Life Cycle (SDLC) | 软件开发生命周期（SDLC） | `acronym` | 12 | 1 | ✅ |
@@ -281,13 +285,15 @@
 | Prompt Injection | 提示词注入 | `translate` | 8 | 1 | ✅ |
 | Telemetry | 遥测 | `translate` | 8 | 3 | ✅ |
 | Integrated Development Environment (IDE) | 集成开发环境（IDE） | `acronym` | 7 | 0 | ✅ |
-| Prompt Engineering | 提示词工程 | `translate` | 6 | 2 | ✅ |
 | Hallucination | 幻觉 | `translate` | 6 | 1 | ✅ |
+| Chain of Thought | 思维链 | `translate` | 6 | 1 | ✅ |
 | Diff | 差异 | `translate` | 6 | 3 | ✅ |
 | Triage | 分级处置 | `translate` | 6 | 4 | ✅ |
+| Fine-tuning | 微调 | `translate` | 5 | 1 | ✅ |
 | Test Coverage | 测试覆盖率 | `translate` | 5 | 2 | ✅ |
 | Dashboard | 仪表盘 | `translate` | 5 | 1 | ✅ |
 | Alert Fatigue | 告警疲劳 | `translate` | 5 | 2 | ✅ |
+| Zero-shot | 零样本 | `translate` | 4 | 1 | ✅ |
 | Embedding | 嵌入 | `translate` | 4 | 0 | ✅ |
 | Function Calling | 函数调用 | `translate` | 4 | 0 | ✅ |
 | SQL Injection | SQL 注入 | `translate` | 4 | 1 | ✅ |
@@ -300,8 +306,8 @@
 | Runbook | 运维手册 | `translate` | 3 | 0 | ✅ |
 | Mean Time To Recovery (MTTR) | 平均恢复时间（MTTR） | `acronym` | 3 | 1 | ✅ |
 | Vibe Coding | 氛围编程 | `keep_en_first` | 2 | 0 | ✅ |
-| Fine-tuning | 微调 | `translate` | 2 | 0 | ✅ |
-| Reasoning | 推理能力 | `translate` | 2 | 5 | ✅ |
+| Few-shot | 少样本 | `translate` | 2 | 1 | ✅ |
+| Reasoning | 推理能力 | `translate` | 2 | 6 | ✅ |
 | Agentic | 智能体化的 | `translate` | 2 | 7 | ✅ |
 | Technical Debt | 技术债 | `translate` | 2 | 1 | ✅ |
 | Linter | 代码检查工具 | `translate` | 2 | 0 | ✅ |
@@ -317,7 +323,6 @@
 | Cross-Site Scripting (XSS) | 跨站脚本攻击（XSS） | `acronym` | 2 | 1 | ✅ |
 | Remote Code Execution (RCE) | 远程代码执行（RCE） | `acronym` | 2 | 1 | ✅ |
 | Root Cause Analysis (RCA) | 根因分析（RCA） | `acronym` | 2 | 2 | ✅ |
-| Chain of Thought | 思维链 | `translate` | 1 | 0 | ✅ |
 | Human-in-the-loop | 人在回路 | `translate` | 1 | 1 | ✅ |
 | Agent Loop | 智能体循环 | `translate` | 1 | 0 | ✅ |
 | Boilerplate | 样板代码 | `translate` | 1 | 2 | ✅ |

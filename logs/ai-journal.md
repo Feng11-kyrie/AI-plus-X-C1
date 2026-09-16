@@ -13,12 +13,12 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 436 |
-| 翻译块次 | 334 |
-| 其中通过校验 | 307 |
-| **其中未通过 / 失败** | **27** |
-| 完成条目 | 26 |
-| 出现过校验问题的块 | 27 |
+| 记录事件总数 | 459 |
+| 翻译块次 | 350 |
+| 其中通过校验 | 321 |
+| **其中未通过 / 失败** | **29** |
+| 完成条目 | 27 |
+| 出现过校验问题的块 | 29 |
 
 ## 逐块记录
 
@@ -358,6 +358,22 @@
 | 13:55:39 | `multi-agent-systems-ai-nat` | 2 | queue | `6a35be79ff1e` | 2852/993 | — | ✅ |
 | 13:55:39 | `observability-basics` | 3 | queue | `ecb59e12ea37` | 1155/536 | — | ✅ |
 | 13:55:46 | `devin-coding-agents-101` | 2 | queue | `cacfce756af2` | 973/417 | — | ✅ |
+| 14:08:59 | `claude-code-best-practices` | 1 | queue | `0c995d88dd96` | 3022/1557 | — | ✅ |
+| 14:12:52 | `prompt-engineering-overvie` | 0 | queue | `386270c7859f` | 1571/781 | — | ✅ |
+| 14:12:52 | `prompt-engineering-overvie` | 1 | queue | `e3df116dee11` | 1071/454 | — | ❌ 出现禁用变体「语境」（应为「上下文」）×1 |
+| 14:12:52 | `prompt-engineering-overvie` | 2 | queue | `4911d6e243a5` | 1107/359 | — | ✅ |
+| 14:12:52 | `prompt-engineering-overvie` | 3 | queue | `c3a071e73dad` | 1580/610 | — | ✅ |
+| 14:12:52 | `prompt-engineering-overvie` | 4 | queue | `9c05cb4f8602` | 1191/409 | — | ❌ 出现禁用变体「情境」（应为「上下文」）×1 |
+| 14:12:52 | `prompt-engineering-overvie` | 5 | queue | `d46a1946d34d` | 859/359 | — | ✅ |
+| 14:12:52 | `prompt-engineering-overvie` | 6 | queue | `8ccfb1dd1de3` | 1068/372 | — | ✅ |
+| 14:12:52 | `prompt-engineering-overvie` | 7 | queue | `e24a0b916d0e` | 1076/386 | — | ✅ |
+| 14:12:52 | `prompt-engineering-overvie` | 8 | queue | `f0c4ca26c208` | 786/342 | — | ✅ |
+| 14:12:52 | `prompt-engineering-overvie` | 9 | queue | `5d1455509a11` | 861/343 | — | ✅ |
+| 14:12:52 | `prompt-engineering-overvie` | 10 | queue | `eb43084a486b` | 897/469 | — | ✅ |
+| 14:12:52 | `prompt-engineering-overvie` | 11 | queue | `3cc4588de474` | 767/260 | — | ✅ |
+| 14:12:52 | `prompt-engineering-overvie` | 12 | queue | `5ae47664f9f7` | 1467/904 | — | ✅ |
+| 14:13:00 | `prompt-engineering-overvie` | 1 | queue | `e3df116dee11` | 1071/452 | — | ✅ |
+| 14:13:00 | `prompt-engineering-overvie` | 4 | queue | `9c05cb4f8602` | 1191/410 | — | ✅ |
 
 ## 失败与返工记录
 
@@ -505,6 +521,16 @@
 - 时间：2026-09-16T13:55:39+0800　后端：queue　prompt 哈希：`37f333225df6`
 - 问题：出现禁用变体「检查器」（应为「代码检查工具」）×1
 
+### `prompt-engineering-overview` 第 1 块
+
+- 时间：2026-09-16T14:12:52+0800　后端：queue　prompt 哈希：`e3df116dee11`
+- 问题：出现禁用变体「语境」（应为「上下文」）×1
+
+### `prompt-engineering-overview` 第 4 块
+
+- 时间：2026-09-16T14:12:52+0800　后端：queue　prompt 哈希：`9c05cb4f8602`
+- 问题：出现禁用变体「情境」（应为「上下文」）×1
+
 ## 条目汇总
 
 | 条目 | 周 | 块数 | 中文字符 | 完成时间 |
@@ -535,4 +561,5 @@
 | `writing-effective-tools-for-agents` | W3 | 12 | 8,634 | 2026-09-16T13:47:20 |
 | `how-to-review-code-effectively` | W7 | 13 | 9,018 | 2026-09-16T13:52:54 |
 | `devin-coding-agents-101` | W3 | 17 | 7,302 | 2026-09-16T13:55:46 |
+| `prompt-engineering-overview` | W1 | 13 | 6,129 | 2026-09-16T14:13:00 |
 
