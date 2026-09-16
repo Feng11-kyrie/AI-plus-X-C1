@@ -13,12 +13,12 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 534 |
-| 翻译块次 | 410 |
-| 其中通过校验 | 372 |
-| **其中未通过 / 失败** | **38** |
-| 完成条目 | 30 |
-| 出现过校验问题的块 | 38 |
+| 记录事件总数 | 552 |
+| 翻译块次 | 423 |
+| 其中通过校验 | 384 |
+| **其中未通过 / 失败** | **39** |
+| 完成条目 | 31 |
+| 出现过校验问题的块 | 39 |
 
 ## 逐块记录
 
@@ -434,6 +434,19 @@
 | 14:22:40 | `kubernetes-troubleshooting` | 3 | queue | `a7ff4ba6a387` | 1324/579 | — | ✅ |
 | 14:22:49 | `mcp-introduction` | 1 | queue | `63bdcd000f77` | 1514/851 | — | ✅ |
 | 14:22:49 | `mcp-introduction` | 7 | queue | `4b12c0cbceb3` | 3372/1433 | — | ✅ |
+| 14:24:41 | `how-anthropic-uses-claude-` | 0 | queue | `85a90afd8adb` | 3341/1365 | — | ✅ |
+| 14:24:41 | `how-anthropic-uses-claude-` | 1 | queue | `17230c7fe3ea` | 3337/1363 | — | ✅ |
+| 14:24:41 | `how-anthropic-uses-claude-` | 2 | queue | `8132fd12905e` | 3240/1229 | — | ✅ |
+| 14:24:41 | `how-anthropic-uses-claude-` | 3 | queue | `ba7ddb8d9c3c` | 2968/1156 | — | ✅ |
+| 14:24:41 | `how-anthropic-uses-claude-` | 4 | queue | `429c62ebc0a1` | 3171/1279 | — | ✅ |
+| 14:24:41 | `how-anthropic-uses-claude-` | 5 | queue | `ba4dbb71e225` | 2931/1187 | — | ✅ |
+| 14:24:41 | `how-anthropic-uses-claude-` | 6 | queue | `3292ae3c2781` | 3306/1266 | — | ✅ |
+| 14:24:41 | `how-anthropic-uses-claude-` | 7 | queue | `895d98bc44f3` | 3323/1318 | — | ✅ |
+| 14:24:41 | `how-anthropic-uses-claude-` | 8 | queue | `5aee31a0f10c` | 3079/1205 | — | ✅ |
+| 14:24:41 | `how-anthropic-uses-claude-` | 9 | queue | `7dda9b591d99` | 2815/1140 | — | ❌ 出现禁用变体「回退」（应为「回滚」）×1 |
+| 14:24:41 | `how-anthropic-uses-claude-` | 10 | queue | `9ebcf67cdd8f` | 1669/684 | — | ✅ |
+| 14:24:49 | `how-anthropic-uses-claude-` | 8 | queue | `c2c93af9fe16` | 3079/1205 | — | ✅ |
+| 14:24:49 | `how-anthropic-uses-claude-` | 9 | queue | `0260bfd54a4b` | 2815/1140 | — | ✅ |
 
 ## 失败与返工记录
 
@@ -638,6 +651,11 @@
 - 时间：2026-09-16T14:22:40+0800　后端：queue　prompt 哈希：`4b12c0cbceb3`
 - 问题：出现禁用变体「MCP 协议」（应为「模型上下文协议（MCP）」）×1
 
+### `how-anthropic-uses-claude-code` 第 9 块
+
+- 时间：2026-09-16T14:24:41+0800　后端：queue　prompt 哈希：`7dda9b591d99`
+- 问题：出现禁用变体「回退」（应为「回滚」）×1
+
 ## 条目汇总
 
 | 条目 | 周 | 块数 | 中文字符 | 完成时间 |
@@ -672,4 +690,5 @@
 | `finding-vulnerabilities-claude-codex` | W6 | 12 | 11,069 | 2026-09-16T14:15:16 |
 | `sre-introduction` | W9 | 10 | 8,031 | 2026-09-16T14:17:09 |
 | `mcp-introduction` | W2 | 17 | 11,678 | 2026-09-16T14:22:49 |
+| `how-anthropic-uses-claude-code` | W4 | 11 | 13,275 | 2026-09-16T14:24:49 |
 
