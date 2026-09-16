@@ -7,7 +7,7 @@
 | 项 | 值 |
 |---|---|
 | 术语表条目 | 171 条（其中需翻译 148 条） |
-| 审计译稿 | 26 条 |
+| 审计译稿 | 27 条 |
 | 硬性禁用变体 | 317 个 |
 | 提示级变体 | 48 个（只统计不判违规） |
 
@@ -17,20 +17,22 @@
 
 | 指标 | 数值 |
 |---|---|
-| 正式译法出现次数 | 3,162 |
-| **硬性违规次数** | **0** |
-| **术语一致率（硬性口径）** | **100.00%** |
-| 提示级命中次数 | 399（**不计入一致率**，见第三节） |
-| 实际用到的术语 | 121 条 |
-| 其中零违规 | 121 条 |
+| 正式译法出现次数 | 3,409 |
+| **硬性违规次数** | **9** |
+| **术语一致率（硬性口径）** | **99.74%** |
+| 提示级命中次数 | 423（**不计入一致率**，见第三节） |
+| 实际用到的术语 | 125 条 |
+| 其中零违规 | 124 条 |
 
 > ⚠️ **这个百分比只统计硬性禁用变体。** 术语表另有一批提示级变体，它们是中文常用词或**其它英文词**的合法译法（如 proxy → 代理、dashboard → 控制台），一律判违规会逼出错误的译文。读数时请把两者一起看——**单看 100% 会高估实际的一致性**。
 
-✅ **全部硬性禁用变体零出现。**
+❌ 发现 9 处违规，详见下方。
 
 ## 一、违规明细（硬性）
 
-无。
+| 术语 | 应为 | 出现的违规写法 | 篇目 | 次数 | 上下文 |
+|---|---|---|---|---|---|
+| Regression | 回归 | **退化** | `context-rot` | 9 | …型能否识别出某段文本**不存在**），同样表现出随输入长度增长而性能退化。 此外，长上下文任务常常包含「在干扰项中消歧」这一环节。一个例子… |
 
 ## 二、覆盖率缺口（参考项，不作门禁）
 
@@ -49,6 +51,8 @@
 | Prompt | 提示词 | `claude-code-best-practices` |
 | Context | 上下文 | `mcp-server-authentication` |
 | Context | 上下文 | `specs-are-the-new-source-code` |
+| Context Rot | 上下文腐化 | `context-rot` |
+| Temperature | 温度 | `context-rot` |
 | Reasoning | 推理能力 | `ai-code-review-best-practices` |
 | Reasoning | 推理能力 | `finding-vulnerabilities-claude-codex` |
 | Reasoning | 推理能力 | `how-long-contexts-fail` |
@@ -65,6 +69,7 @@
 | Agentic | 智能体化的 | `mcp-introduction` |
 | Agentic | 智能体化的 | `multi-agent-systems-ai-native` |
 | Agentic | 智能体化的 | `writing-effective-tools-for-agents` |
+| Repository | 仓库 | `context-rot` |
 | Boilerplate | 样板代码 | `how-openai-uses-codex` |
 | Test Coverage | 测试覆盖率 | `how-anthropic-uses-claude-code` |
 | Deployment | 部署 | `copilot-prompt-injection-rce` |
@@ -119,6 +124,7 @@
 
 | 术语 | 变体 | 篇目 | 次数 |
 |---|---|---|---|
+| Context Window | 上下文长度 | `context-rot` | 8 |
 | Context Window | 上下文长度 | `writing-effective-tools-for-agents` | 1 |
 | Scaffolding | 框架 | `ai-code-review-best-practices` | 1 |
 | Scaffolding | 框架 | `devin-coding-agents-101` | 1 |
@@ -148,6 +154,7 @@
 | Retrieval-Augmented Generation (RAG) | 落地 | `specs-are-the-new-source-code` | 2 |
 | Retrieval-Augmented Generation (RAG) | 落地 | `sre-introduction` | 1 |
 | Inference | 推演 | `code-review-essentials` | 1 |
+| Inference | 推断 | `context-rot` | 2 |
 | Inference | 推演 | `how-anthropic-uses-claude-code` | 1 |
 | Inference | 推断 | `how-openai-uses-codex` | 1 |
 | Inference | 推断 | `multi-agent-systems-ai-native` | 1 |
@@ -164,6 +171,7 @@
 | Model Context Protocol (MCP) | 组织 | `benefits-agentic-ai-oncall` | 1 |
 | Model Context Protocol (MCP) | 组织 | `code-review-essentials` | 1 |
 | Model Context Protocol (MCP) | 组织 | `code-reviews-just-do-it` | 1 |
+| Model Context Protocol (MCP) | 组织 | `context-rot` | 1 |
 | Model Context Protocol (MCP) | 组织 | `devin-coding-agents-101` | 1 |
 | Model Context Protocol (MCP) | 组织 | `how-anthropic-uses-claude-code` | 4 |
 | Model Context Protocol (MCP) | 协调 | `how-anthropic-uses-claude-code` | 3 |
@@ -181,6 +189,7 @@
 | Orchestration | 组织 | `benefits-agentic-ai-oncall` | 1 |
 | Orchestration | 组织 | `code-review-essentials` | 1 |
 | Orchestration | 组织 | `code-reviews-just-do-it` | 1 |
+| Orchestration | 组织 | `context-rot` | 1 |
 | Orchestration | 组织 | `devin-coding-agents-101` | 1 |
 | Orchestration | 组织 | `how-anthropic-uses-claude-code` | 4 |
 | Orchestration | 协调 | `how-anthropic-uses-claude-code` | 3 |
@@ -196,6 +205,7 @@
 | Orchestration | 组织 | `sre-introduction` | 3 |
 | Workflow | 流程 | `ai-code-review-best-practices` | 2 |
 | Workflow | 流程 | `code-review-essentials` | 3 |
+| Workflow | 流程 | `context-rot` | 2 |
 | Workflow | 流程 | `devin-coding-agents-101` | 4 |
 | Workflow | 流程 | `finding-vulnerabilities-claude-codex` | 4 |
 | Workflow | 流程 | `how-anthropic-uses-claude-code` | 5 |
@@ -256,12 +266,14 @@
 | Tracing | 跟踪 | `sre-introduction` | 2 |
 | Tracing | 跟踪 | `writing-effective-tools-for-agents` | 1 |
 | Trace | 轨迹 | `observability-basics` | 1 |
+| Metric | 度量 | `context-rot` | 8 |
 | Metric | 度量 | `finding-vulnerabilities-claude-codex` | 4 |
 | Metric | 度量 | `observability-basics` | 1 |
 | Metric | 度量 | `sre-introduction` | 2 |
 | Metric | 度量 | `writing-effective-tools-for-agents` | 3 |
 | Log | 记录 | `ai-code-review-best-practices` | 1 |
 | Log | 记录 | `benefits-agentic-ai-oncall` | 1 |
+| Log | 记录 | `context-rot` | 2 |
 | Log | 记录 | `how-anthropic-uses-claude-code` | 3 |
 | Log | 记录 | `how-long-contexts-fail` | 1 |
 | Log | 记录 | `how-openai-uses-codex` | 2 |
@@ -287,25 +299,26 @@
 
 | 术语 | 正式译法 | policy | 出现次数 | 源文篇数 | 违规 |
 |---|---|---|---|---|---|
-| Agent | 智能体 | `translate` | 356 | 16 | ✅ |
+| Agent | 智能体 | `translate` | 358 | 17 | ✅ |
 | Model Context Protocol (MCP) | 模型上下文协议（MCP） | `acronym` | 323 | 5 | ✅ |
-| Context | 上下文 | `translate` | 206 | 20 | ✅ |
-| Prompt | 提示词 | `translate` | 156 | 12 | ✅ |
+| Context | 上下文 | `translate` | 262 | 21 | ✅ |
+| Prompt | 提示词 | `translate` | 174 | 13 | ✅ |
 | Pull Request (PR) | 拉取请求（PR） | `acronym` | 122 | 7 | ✅ |
 | Vulnerability | 漏洞 | `translate` | 114 | 4 | ✅ |
+| Application Programming Interface (API) | 应用程序接口（API） | `acronym` | 107 | 0 | ✅ |
 | MCP Server | MCP 服务器 | `keep_en_first` | 106 | 8 | ✅ |
-| Application Programming Interface (API) | 应用程序接口（API） | `acronym` | 106 | 0 | ✅ |
 | Code Review | 代码评审 | `translate` | 100 | 9 | ✅ |
 | Workflow | 工作流 | `translate` | 90 | 7 | ✅ |
+| Large Language Model (LLM) | 大语言模型（LLM） | `acronym` | 77 | 0 | ✅ |
+| Evaluation | 评估 | `translate` | 75 | 4 | ✅ |
 | Site Reliability Engineering (SRE) | 站点可靠性工程（SRE） | `acronym` | 71 | 1 | ✅ |
-| Codebase | 代码库 | `translate` | 67 | 11 | ✅ |
+| Codebase | 代码库 | `translate` | 68 | 12 | ✅ |
 | Static Application Security Testing (SAST) | 静态应用安全测试（SAST） | `acronym` | 67 | 1 | ✅ |
-| Large Language Model (LLM) | 大语言模型（LLM） | `acronym` | 64 | 0 | ✅ |
-| Evaluation | 评估 | `translate` | 58 | 3 | ✅ |
+| Distractor | 干扰项 | `translate` | 67 | 1 | ✅ |
 | Deployment | 部署 | `translate` | 58 | 10 | ✅ |
 | Dynamic Application Security Testing (DAST) | 动态应用安全测试（DAST） | `acronym` | 54 | 1 | ✅ |
-| Dependency | 依赖 | `translate` | 43 | 8 | ✅ |
-| Inference | 推理 | `translate` | 36 | 1 | ✅ |
+| Inference | 推理 | `translate` | 48 | 1 | ✅ |
+| Dependency | 依赖 | `translate` | 44 | 8 | ✅ |
 | Terminal | 终端 | `translate` | 36 | 4 | ✅ |
 | Log | 日志 | `translate` | 34 | 8 | ✅ |
 | Commit | 提交 | `translate` | 33 | 5 | ✅ |
@@ -313,18 +326,22 @@
 | Tool Use | 工具调用 | `translate` | 28 | 1 | ✅ |
 | Metric | 指标 | `translate` | 28 | 2 | ✅ |
 | Prompt Engineering | 提示词工程 | `translate` | 27 | 5 | ✅ |
-| Repository | 仓库 | `translate` | 27 | 7 | ✅ |
+| Repository | 仓库 | `translate` | 27 | 8 | ✅ |
 | Merge | 合并 | `translate` | 27 | 5 | ✅ |
 | Alert | 告警 | `translate` | 25 | 4 | ✅ |
 | Continuous Integration (CI) | 持续集成（CI） | `acronym` | 24 | 2 | ✅ |
+| Embedding | 嵌入 | `translate` | 22 | 1 | ✅ |
 | Training | 训练 | `translate` | 22 | 7 | ✅ |
 | Runtime Application Self-Protection (RASP) | 运行时应用自保护（RASP） | `acronym` | 22 | 1 | ✅ |
 | Tracing | 链路追踪 | `translate` | 22 | 4 | ✅ |
 | Runtime | 运行时 | `translate` | 21 | 4 | ✅ |
 | On-call | 值班 | `translate` | 21 | 4 | ✅ |
+| Needle in a Haystack (NIAH) | 大海捞针测试（NIAH） | `acronym` | 20 | 1 | ✅ |
 | Refactor | 重构 | `translate` | 19 | 5 | ✅ |
 | Observability | 可观测性 | `translate` | 19 | 6 | ✅ |
+| Context Window | 上下文窗口 | `translate` | 18 | 4 | ✅ |
 | Command-Line Interface (CLI) | 命令行界面（CLI） | `acronym` | 17 | 0 | ✅ |
+| Diff | 差异 | `translate` | 17 | 3 | ✅ |
 | Specification (Spec) | 规格说明 | `translate` | 17 | 6 | ✅ |
 | Coding Agent | 编码智能体 | `translate` | 16 | 2 | ✅ |
 | Common Weakness Enumeration (CWE) | 通用缺陷枚举（CWE） | `acronym` | 15 | 0 | ✅ |
@@ -334,51 +351,49 @@
 | True Positive Rate (TPR) | 真阳性率（TPR） | `acronym` | 14 | 1 | ✅ |
 | Branch | 分支 | `translate` | 13 | 4 | ✅ |
 | Unit Test | 单元测试 | `translate` | 13 | 1 | ✅ |
-| Diff | 差异 | `translate` | 13 | 3 | ✅ |
 | Software Development Life Cycle (SDLC) | 软件开发生命周期（SDLC） | `acronym` | 13 | 1 | ✅ |
 | Insecure Direct Object Reference (IDOR) | 不安全的直接对象引用（IDOR） | `acronym` | 13 | 1 | ✅ |
 | SQL Injection | SQL 注入 | `translate` | 13 | 2 | ✅ |
 | False Positive | 误报 | `translate` | 13 | 2 | ✅ |
 | Dashboard | 仪表盘 | `translate` | 13 | 2 | ✅ |
-| Context Window | 上下文窗口 | `translate` | 12 | 3 | ✅ |
 | Multi-agent | 多智能体 | `translate` | 12 | 2 | ✅ |
 | Function Calling | 函数调用 | `translate` | 12 | 1 | ✅ |
 | Orchestration | 编排 | `translate` | 12 | 4 | ✅ |
 | Cross-Site Scripting (XSS) | 跨站脚本攻击（XSS） | `acronym` | 11 | 1 | ✅ |
+| Hallucination | 幻觉 | `translate` | 10 | 2 | ✅ |
+| Benchmark | 基准测试 | `translate` | 10 | 3 | ✅ |
 | False Positive Rate (FPR) | 假阳性率（FPR） | `acronym` | 10 | 1 | ✅ |
-| Benchmark | 基准测试 | `translate` | 9 | 2 | ✅ |
 | Integrated Development Environment (IDE) | 集成开发环境（IDE） | `acronym` | 9 | 0 | ✅ |
 | Prompt Injection | 提示词注入 | `translate` | 8 | 1 | ✅ |
 | Triage | 分级处置 | `translate` | 8 | 5 | ✅ |
 | Telemetry | 遥测 | `translate` | 8 | 3 | ✅ |
 | Capacity Planning | 容量规划 | `translate` | 7 | 1 | ✅ |
-| Hallucination | 幻觉 | `translate` | 6 | 1 | ✅ |
 | Fine-tuning | 微调 | `translate` | 6 | 1 | ✅ |
 | Chain of Thought | 思维链 | `translate` | 6 | 1 | ✅ |
-| Embedding | 嵌入 | `translate` | 6 | 0 | ✅ |
 | Credential | 凭据 | `translate` | 6 | 0 | ✅ |
 | Alert Fatigue | 告警疲劳 | `translate` | 6 | 2 | ✅ |
 | Runbook | 运维手册 | `translate` | 6 | 0 | ✅ |
 | Mean Time To Recovery (MTTR) | 平均恢复时间（MTTR） | `acronym` | 6 | 1 | ✅ |
+| Context Engineering | 上下文工程 | `translate` | 5 | 2 | ✅ |
 | Test Coverage | 测试覆盖率 | `translate` | 5 | 3 | ✅ |
+| Latency | 延迟 | `translate` | 5 | 3 | ✅ |
 | System Prompt | 系统提示词 | `translate` | 4 | 3 | ✅ |
 | Zero-shot | 零样本 | `translate` | 4 | 1 | ✅ |
 | Rollback | 回滚 | `translate` | 4 | 1 | ✅ |
-| Latency | 延迟 | `translate` | 4 | 2 | ✅ |
 | Common Vulnerabilities and Exposures (CVE) | 通用漏洞披露（CVE） | `acronym` | 4 | 0 | ✅ |
 | Server-Side Request Forgery (SSRF) | 服务端请求伪造（SSRF） | `acronym` | 4 | 0 | ✅ |
 | Postmortem | 事后复盘 | `translate` | 4 | 1 | ✅ |
-| Context Rot | 上下文腐化 | `translate` | 3 | 1 | ✅ |
+| Context Rot | 上下文腐化 | `translate` | 3 | 2 | ✅ |
 | Retrieval-Augmented Generation (RAG) | 检索增强生成（RAG） | `acronym` | 3 | 0 | ✅ |
+| Reasoning | 推理能力 | `translate` | 3 | 8 | ✅ |
+| Regression | 回归 | `translate` | 3 | 0 | ❌ 9 |
 | Design Doc | 设计文档 | `translate` | 3 | 1 | ✅ |
 | Minimum Viable Product (MVP) | 最小可行产品（MVP） | `acronym` | 3 | 0 | ✅ |
 | Exploit | 漏洞利用 | `translate` | 3 | 3 | ✅ |
 | False Negative | 漏报 | `translate` | 3 | 1 | ✅ |
-| Context Engineering | 上下文工程 | `translate` | 2 | 1 | ✅ |
 | Vibe Coding | 氛围编程 | `keep_en_first` | 2 | 0 | ✅ |
 | Scaffolding | 脚手架 | `translate` | 2 | 1 | ✅ |
 | Few-shot | 少样本 | `translate` | 2 | 1 | ✅ |
-| Reasoning | 推理能力 | `translate` | 2 | 7 | ✅ |
 | Guardrails | 护栏 | `translate` | 2 | 1 | ✅ |
 | Agentic | 智能体化的 | `translate` | 2 | 10 | ✅ |
 | Sub-agent | 子智能体 | `translate` | 2 | 0 | ✅ |
@@ -387,7 +402,6 @@
 | Technical Debt | 技术债 | `translate` | 2 | 1 | ✅ |
 | Linter | 代码检查工具 | `translate` | 2 | 0 | ✅ |
 | Integration Test | 集成测试 | `translate` | 2 | 0 | ✅ |
-| Regression | 回归 | `translate` | 2 | 0 | ✅ |
 | Sandbox | 沙箱 | `translate` | 2 | 1 | ✅ |
 | Spec-Driven Development | 规格驱动开发 | `translate` | 2 | 1 | ✅ |
 | Product Requirements Document (PRD) | 产品需求文档（PRD） | `acronym` | 2 | 0 | ✅ |
@@ -397,17 +411,20 @@
 | Attack Surface | 攻击面 | `translate` | 2 | 0 | ✅ |
 | Service Level Objective (SLO) | 服务等级目标（SLO） | `acronym` | 2 | 0 | ✅ |
 | Root Cause Analysis (RCA) | 根因分析（RCA） | `acronym` | 2 | 2 | ✅ |
+| Vector Database | 向量数据库 | `translate` | 1 | 1 | ✅ |
 | Human-in-the-loop | 人在回路 | `translate` | 1 | 1 | ✅ |
 | Boilerplate | 样板代码 | `translate` | 1 | 2 | ✅ |
 | Stakeholder | 干系人 | `translate` | 1 | 0 | ✅ |
 | Acceptance Criteria | 验收标准 | `translate` | 1 | 1 | ✅ |
 | Dogfooding | 自产自用 | `translate` | 1 | 1 | ✅ |
+| Software Composition Analysis (SCA) | 软件成分分析（SCA） | `acronym` | 1 | 0 | ✅ |
 | Red Team | 红队 | `translate` | 1 | 0 | ✅ |
 | Service Level Agreement (SLA) | 服务等级协议（SLA） | `acronym` | 1 | 0 | ✅ |
 | Toil | 琐务 | `translate` | 1 | 1 | ✅ |
 | Blameless | 无指责的 | `translate` | 1 | 0 | ✅ |
 | Autoremediation | 自动修复 | `translate` | 1 | 0 | ✅ |
 | Threat Modeling | 威胁建模 | `translate` | 1 | 1 | ✅ |
+| Temperature | 温度 | `translate` | 0 | 1 | ✅ |
 | Artifact | 制品 | `translate` | 0 | 1 | ✅ |
 | OWASP Top 10 | OWASP Top 10（OWASP 十大安全风险） | `keep_en_first` | 0 | 1 | ✅ |
 
