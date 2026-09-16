@@ -12,8 +12,8 @@
 
 | 指标 | 数值 |
 |---|---|
-| 已完成条目 | **28** / 29 |
-| 覆盖率（分母 34） | **82.4%** |
+| 已完成条目 | **29** / 29 |
+| 覆盖率（分母 34） | **85.3%** |
 | 是否达标 | ✅ 达标 |
 
 ## 逐条状态
@@ -43,7 +43,7 @@
 | `code-review-essentials` | W7 | html | 5 | 5 | ✅ 完成 |
 | `code-reviews-just-do-it` | W7 | html | 1 | 1 | ✅ 完成 |
 | `how-to-review-code-effectively` | W7 | html | 13 | 13 | ✅ 完成 |
-| `ai-assisted-code-review-assessment` | W7 | pdf | 9 | 0 | ⬜ 未开始 |
+| `ai-assisted-code-review-assessment` | W7 | pdf | 9 | 9 | ✅ 完成 |
 | `benefits-agentic-ai-oncall` | W9 | html | 3 | 3 | ✅ 完成 |
 | `kubernetes-troubleshooting-ai` | W9 | html | 6 | 6 | ✅ 完成 |
 | `multi-agent-systems-ai-native` | W9 | html | 5 | 5 | ✅ 完成 |

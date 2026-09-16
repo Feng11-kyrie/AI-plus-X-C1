@@ -80,7 +80,20 @@ def main() -> int:
     with GLOSSARY.open(encoding="utf-8") as f:
         glossary = [r for r in csv.DictReader(f)]
 
-    zh_files = sorted(ZH_DIR.glob("*.md")) if ZH_DIR.exists() else []
+    # 审计范围 = **翻译单元**（units.json 里每个本地条目对应的译稿）。
+    # zh/README.md 是索引（不是任何单元的译文），把它算进来会污染一致率：
+    # 它写「覆盖度」会被判成 Test Coverage 的禁用变体、写「性能退化」会被判成
+    # Regression 的禁用变体——都是在拿翻译规则去审一份说明文档。
+    unit_stems = set()
+    units_json = ROOT / CFG["paths"]["units_json"]
+    if units_json.exists():
+        for u in json.loads(units_json.read_text(encoding="utf-8"))["units"]:
+            if u.get("local_path"):
+                unit_stems.add(Path(u["local_path"]).stem)
+    zh_files = sorted(p for p in ZH_DIR.glob("*.md")
+                      if p.stem in unit_stems) if ZH_DIR.exists() else []
+    skipped = sorted(p.name for p in ZH_DIR.glob("*.md")
+                     if p.stem not in unit_stems) if ZH_DIR.exists() else []
     if not zh_files:
         print("尚无译稿，跳过术语审计。")
         return 0
@@ -310,7 +323,8 @@ def main() -> int:
     REPORT.write_text("\n".join(L) + "\n", encoding="utf-8")
 
     # ---- 控制台 ----
-    print(f"审计译稿 {len(docs)} 条 ｜ 术语表 {len(glossary)} 条")
+    print(f"审计译稿 {len(docs)} 条 ｜ 术语表 {len(glossary)} 条"
+          + (f" ｜ 非译稿跳过 {len(skipped)} 个（{', '.join(skipped)}）" if skipped else ""))
     print(f"正式译法出现 {total_approved:,} 次 ｜ 硬性违规 {total_violations} 次")
     print(f"术语一致率 {rate:.2f}%")
     if violations:

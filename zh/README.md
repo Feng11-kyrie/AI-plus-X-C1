@@ -2,7 +2,7 @@
 
 > **本文件由 `pipeline/make_index.py` 自动生成，请勿手工编辑。**
 
-CS146S: The Modern Software Developer（Stanford University, Fall 2025）的公开课程资料中文译稿，**28 篇**，约 **204,185** 个中文字符。
+CS146S: The Modern Software Developer（Stanford University, Fall 2025）的公开课程资料中文译稿，**29 篇**，约 **227,275** 个中文字符。
 
 每一篇都同时提供三种对应关系，便于核对：
 
@@ -77,8 +77,8 @@ CS146S: The Modern Software Developer（Stanford University, Fall 2025）的公�
 | 软件团队的代码评审要点 | Code Review Essentials for Software Teams | [`code-review-essentials.md`](code-review-essentials.md) | 4,107 | 5 |
 | 代码评审：做就对了 | Code Reviews: Just Do It | [`code-reviews-just-do-it.md`](code-reviews-just-do-it.md) | 1,431 | 1 |
 | 如何高效地做代码评审 | How to Review Code Effectively | [`how-to-review-code-effectively.md`](how-to-review-code-effectively.md) | 9,018 | 13 |
+| 现代代码评审中的 AI 辅助评估 | AI-Assisted Assessment of Coding Practices in Modern Code Review | [`ai-assisted-code-review-assessment.md`](ai-assisted-code-review-assessment.md) | 23,090 | 9 |
 | 数百万次 AI 代码评审带来的经验 | Lessons from Millions of AI Code Reviews | **未译**（见下方缺口说明） | — | — |
-| 现代代码评审中的 AI 辅助评估 | AI-Assisted Assessment of Coding Practices in Modern Code Review | **未译**（见下方缺口说明） | — | — |
 
 ## 第 9 周：SRE、可观测性与智能体值班
 
@@ -101,14 +101,13 @@ CS146S: The Modern Software Developer（Stanford University, Fall 2025）的公�
 | Peeking Under the Hood of Claude Code | W4 | 抓到的是反爬占位页（源站 Medium，自动访问被 403 拦截） |
 | How Warp Uses Warp to Build Warp | W5 | 抓取到的是 SPA 导航壳 / 登录门页 / JS 外壳，没有正文可译 |
 | Lessons from Millions of AI Code Reviews | W7 | 原始缓存就是 0 字节（该条目实为大纲里的一段 YouTube 视频） |
-| AI-Assisted Assessment of Coding Practices in Modern Code Review | W7 | PDF 未逐页校验，按可用计 |
 
 另有**不进入本资料包**的部分（讲义 Slides、视频字幕），原因见根目录 [`README.md`](../README.md) 的「已知缺口」。
 
 ## 覆盖度口径
 
 覆盖率 = 已译条目 / 大纲中指向本地文件的 readings（分母 **34**）。
-当前 **28/34 = 82.4%**，目标 ≥ 80%（≥ 28 条）。
+当前 **29/34 = 85.3%**，目标 ≥ 80%（≥ 28 条）。
 逐条状态见 [`reports/coverage.md`](../reports/coverage.md)。
 
 ## 怎么用

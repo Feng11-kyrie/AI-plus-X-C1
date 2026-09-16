@@ -13,12 +13,12 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 636 |
-| 翻译块次 | 479 |
-| 其中通过校验 | 437 |
-| **其中未通过 / 失败** | **42** |
-| 完成条目 | 36 |
-| 出现过校验问题的块 | 42 |
+| 记录事件总数 | 659 |
+| 翻译块次 | 493 |
+| 其中通过校验 | 448 |
+| **其中未通过 / 失败** | **45** |
+| 完成条目 | 38 |
+| 出现过校验问题的块 | 45 |
 
 ## 按天汇总
 
@@ -27,7 +27,7 @@
 | 日期 | 翻译块次 | 通过 | 失败 | 条目数 | 净中文字符 | 当日最后事件 |
 |---|---|---|---|---|---|---|
 | 2026-09-15 | 162 | 143 | 19 | 13 | 106,478 | 16:17:35 |
-| 2026-09-16 | 317 | 294 | 23 | 28 | 227,308 | 15:40:35 |
+| 2026-09-16 | 331 | 305 | 26 | 29 | 254,204 | 16:01:46 |
 
 ## 逐块记录
 
@@ -512,6 +512,20 @@
 | 14:49:41 | `mcp-introduction` | 6 | queue | `bead8ae9a916` | 594/290 | — | ✅ |
 | 14:49:41 | `agentic-ai-threats` | 6 | queue | `b43b50d85a6c` | 1745/982 | — | ✅ |
 | 14:50:39 | `agentic-ai-threats` | 7 | queue | `5597c2223b2a` | 927/305 | — | ✅ |
+| 16:00:49 | `ai-assisted-code-review-as` | 0 | queue | `8ecd7f0590fe` | 3872/2501 | — | ❌ 出现禁用变体「语境」（应为「上下文」）×1 |
+| 16:00:49 | `ai-assisted-code-review-as` | 1 | queue | `734123512772` | 4963/1823 | — | ✅ |
+| 16:00:49 | `ai-assisted-code-review-as` | 2 | queue | `dae2ee3207f3` | 4435/1894 | — | ✅ |
+| 16:00:49 | `ai-assisted-code-review-as` | 3 | queue | `10159f563874` | 5760/2258 | — | ❌ 出现禁用变体「语境」（应为「上下文」）×1；出现禁用变体「训练过程」（应为「训练」）×1 |
+| 16:00:49 | `ai-assisted-code-review-as` | 4 | queue | `ffbd120d4ce1` | 4079/1632 | — | ✅ |
+| 16:00:49 | `ai-assisted-code-review-as` | 5 | queue | `54c8316e54a0` | 5855/2315 | — | ✅ |
+| 16:00:49 | `ai-assisted-code-review-as` | 6 | queue | `b3d435220add` | 4292/1836 | — | ✅ |
+| 16:00:49 | `ai-assisted-code-review-as` | 7 | queue | `3d5613215f9d` | 5640/2445 | — | ❌ 出现禁用变体「语境」（应为「上下文」）×1；出现禁用变体「训练过程」（应为「训练」）×1 |
+| 16:00:49 | `ai-assisted-code-review-as` | 8 | queue | `4278d5df95ba` | 6352/6300 | — | ✅ |
+| 16:01:08 | `ai-assisted-code-review-as` | 0 | queue | `8ecd7f0590fe` | 3872/2499 | — | ✅ |
+| 16:01:08 | `ai-assisted-code-review-as` | 3 | queue | `10159f563874` | 5760/2260 | — | ✅ |
+| 16:01:08 | `ai-assisted-code-review-as` | 7 | queue | `3d5613215f9d` | 5640/2445 | — | ✅ |
+| 16:01:46 | `ai-assisted-code-review-as` | 3 | queue | `10159f563874` | 5760/2260 | — | ✅ |
+| 16:01:46 | `ai-assisted-code-review-as` | 4 | queue | `ffbd120d4ce1` | 4079/1632 | — | ✅ |
 
 ## 管线级事件（非逐块）
 
@@ -524,6 +538,7 @@
 | 2026-09-16T15:32:34 | `deliverable_name_mismatch` | 交付物改名 + 新增 pipeline/check_deliverables.py：AI 日志从 logs/ai-journal.md 改为仓库根目录 AI日志.md；四个「拿来说明」的文件名也含「拿来说明」 |
 | 2026-09-16T15:37:35 | `ci_yaml_broken` | 我把 .github/workflows/checks.yml 的注释写成 `//`（JavaScript 风格），整个工作流解析失败；新增 pipeline/check_workflow.py 做本地自检 |
 | 2026-09-16T15:40:35 | `second_source_smoke_test` | 用 PIPELINE_CONFIG 换配置，把同一套脚本跑到第二源（Python 3 官方文档 3 页）上：清点→清洗→分块→术语挖掘全部跑通，不改一行代码 |
+| 2026-09-16T16:01:25 | `coverage_completed` | 补译 W7 论文（9 块 / 4.5 万字符）→ 覆盖度 28/34 (82.4%) → 29/34 (85.3%)，271/271 分块全部完成，可用资料 29 条全部有中文 |
 
 ### `qc_criterion_fix`　2026-09-16T14:46:38
 
@@ -572,6 +587,13 @@
 - **how**：新增 pipeline/config/demo-second-source.json（只换输入目录与产物目录）+ 一份同 schema 的第二源 syllabus.json 与 page_map.json；抓 3 页 docs.python.org，跑 inventory/clean/mine_terms/校验器
 - **result**：3 条有效 / 68 块 / 留存率 98.2–99.7% / 无内容丢失告警；无译稿时校验器优雅跳过而非报错
 - **cost**：抓取与大纲解析仍需每站各做一次（parse_syllabus.py 依赖 CS146S 站点的 DOM class），这一条如实写进 demo/README.md，没有说成零工作
+
+### `coverage_completed`　2026-09-16T16:01:25
+
+- **why**：交付前逐条核对时发现：我此前把「可用的 29 条里还差 1 条」错记成了失效条目（lessons-from-ai-code-reviews）。真正未译的是这篇论文。是 zh/ 索引脚本按文件逐条比对时暴露的，不是靠印象
+- **how**：逐块翻译 9 块；PDF 页标记 <!-- page N --> 与参考文献表按约定逐字保留英文；ACM 版权声明不译（避免改变法律文本含义）
+- **result**：首次 ingest 通过 6/9——校验器拦下 3 处我自己写的违规：「语境」（应为「上下文」）×3、「训练过程」（Training 的硬性禁用变体，出现在「训练过程中」里）×2。逐条回源文核对后改译文（改的是译文，不是规则），复投 3/3 通过
+- **cost**：这 3 处里 2 处属于「中文字面自然但违反术语表」；1 处是子串（训练过程中 ⊃ 训练过程）。判据仍是回源文看英文词，而不是凭手感改规则
 
 ## 失败与返工记录
 
@@ -796,6 +818,23 @@
 - 时间：2026-09-16T14:39:08+0800　后端：queue　prompt 哈希：`eacffc0cf59d`
 - 问题：出现禁用变体「嵌入向量」（应为「嵌入」）×1
 
+### `ai-assisted-code-review-assessment` 第 0 块
+
+- 时间：2026-09-16T16:00:49+0800　后端：queue　prompt 哈希：`8ecd7f0590fe`
+- 问题：出现禁用变体「语境」（应为「上下文」）×1
+
+### `ai-assisted-code-review-assessment` 第 3 块
+
+- 时间：2026-09-16T16:00:49+0800　后端：queue　prompt 哈希：`10159f563874`
+- 问题：出现禁用变体「语境」（应为「上下文」）×1
+- 问题：出现禁用变体「训练过程」（应为「训练」）×1
+
+### `ai-assisted-code-review-assessment` 第 7 块
+
+- 时间：2026-09-16T16:00:49+0800　后端：queue　prompt 哈希：`3d5613215f9d`
+- 问题：出现禁用变体「语境」（应为「上下文」）×1
+- 问题：出现禁用变体「训练过程」（应为「训练」）×1
+
 ## 条目汇总
 
 | 条目 | 周 | 块数 | 中文字符 | 完成时间 |
@@ -836,4 +875,6 @@
 | `mcp-introduction` | W2 | 17 | 11,718 | 2026-09-16T14:49:41 |
 | `agentic-ai-threats` | W6 | 24 | 27,733 | 2026-09-16T14:49:41 |
 | `agentic-ai-threats` | W6 | 24 | 27,734 | 2026-09-16T14:50:39 |
+| `ai-assisted-code-review-assessment` | W7 | 9 | 23,090 | 2026-09-16T16:01:08 |
+| `ai-assisted-code-review-assessment` | W7 | 9 | 23,090 | 2026-09-16T16:01:46 |
 
