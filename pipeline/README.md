@@ -22,6 +22,8 @@
 | `glossary_tool.py` | `glossary/glossary.csv` | `glossary/glossary.md` | 校验术语表自身无矛盾 + 渲染人读版 |
 | `qc_terminology.py` | `zh/*.md` + 术语表 | `reports/terminology-consistency.md` | **全量**术语一致率审计（可作 CI 门禁） |
 | `termcheck.py` | — | — | **术语匹配的唯一判定来源**（被 translate.py 与 qc_terminology.py 共用） |
+| `check_tables.py` | `clean/*.md` + `zh/*.md` | `reports/table-integrity.md` | 源↔译**表格行数**比对（抓整行丢失 / 清洗漏识别表格），可作 CI 门禁 |
+| `check_chunks.py` | `chunks.json` + `pipeline/work/done/` | 控制台 | 分块对照清单（人工核「有没有把两块并成一块」，只提示不拦截） |
 
 ## 执行顺序
 
@@ -32,6 +34,7 @@ python3 pipeline/clean.py             # 3. 清洗 + 校验 + 分块（消费 uni
 python3 pipeline/mine_terms.py        # 4. 挖掘术语候选（改术语表前跑）
 python3 pipeline/glossary_tool.py     # 5. 校验 + 渲染术语表
 python3 pipeline/qc_terminology.py    # 6. 全量术语一致率审计（译稿完成后跑）
+python3 pipeline/check_tables.py      # 7. 表格完整性（源↔译表行数）
 ```
 
 顺序有依赖：`clean.py` 消费 `inventory.py` 产出的 `units.json`；
@@ -53,6 +56,13 @@ python3 pipeline/qc_terminology.py    # 6. 全量术语一致率审计（译稿�
 前者已经消除了子串误报，后者没有，于是全量审计报出 52 次违规，
 其中绝大多数是早已解决过的假阳性。现已抽出 `termcheck.py` 作为唯一来源，
 两个校验器都从它导入。
+
+**第四次违反**：全量审计漏了「判定要看源文」这一步——
+`translate.py` 只对**该块源文里出现过**的术语检查禁用变体，
+`qc_terminology.py` 却无条件扫全部 317 个变体。后果是 `context-rot` 被判 9 处
+硬性违规（源文里根本没有 regression，英文用的是 degradation），CI 因此变红。
+现在术语的**适用性判定**也归 `termcheck.select_terms()` 一个来源，
+被豁免的命中逐条写进报告「一·附」，不隐藏。
 
 ## 完整性校验（防静默丢内容）
 
@@ -79,6 +89,27 @@ python3 pipeline/qc_terminology.py    # 6. 全量术语一致率审计（译稿�
 | 4 | 代码块藏在表格单元格里被压成纯文本 | 1 个代码块失效 | 代码块计数 |
 
 前 3 个在**体积指标下完全不可见**——文件大小正常、看着也正常，只能靠元素级校验发现。
+
+### 译稿侧有同一类盲区
+
+上面的元素计数全部发生在**清洗阶段**。翻译阶段的逐块校验只比两样东西：
+代码围栏数、链接数。**表格行数不在其中**，于是「整行被吃掉」能一路通过校验。
+实测发生过三次，全部是手工数行数才发现的：
+
+| # | 问题 | 症状 | 靠什么发现 |
+|---|---|---|---|
+| 1 | `agentic-ai-threats` 第 6 块 | 源表 12 行 → 译 10 行；两行重复载荷行、以及单元格里重复的载荷文本被当噪声删掉 | 拼装译稿时手工数行数 |
+| 2 | `mcp-introduction` 第 6 块 | 源表 10 行 → 译 6 行；4 行 colSpan 分节行被并进数据行 | 同上 |
+| 3 | `sast-vs-dast` | 源清洗稿 0 行表 → 译文 12 行 | 同上 |
+
+第 1、2 处已改回逐字保留源文行（重复行是原页面的引用角标行 / 分节行，
+属于原结构的一部分，不是噪声）。第 3 处方向相反，暴露的是**清洗管线的第五个盲区**：
+那张表在原页面里是 `<div class="table no-header">` 嵌套 div，不是 `<table>` 元素，
+`clean.py` 的表提取器匹配不到，只能把每个 div 输出成一行平文本。
+译稿按原页面结构把它重建成 Markdown 表，差异登记在 `table-exceptions.json`。
+
+于是新增 `check_tables.py`，把「手工数行数」变成每次 push 都跑的机制。
+**手工发现的问题必须变成机制，否则下次还会发生。**
 
 ## 平台限制（必须说明）
 

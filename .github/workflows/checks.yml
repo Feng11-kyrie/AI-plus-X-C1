@@ -65,7 +65,14 @@ jobs:
           fi
           echo "✅ 两次运行产出完全一致（含 HTML 清洗、分块、清点报告）"
 
-      # ---------- 检查 4：覆盖率（信息性，不作门禁）----------
+      # ---------- 检查 4：表格完整性 ----------
+      # 逐块校验只比代码围栏数与链接数，**不比表格行数**，于是「整行被吃掉」
+      # 能完全通过校验。实测有三处差异是这样手工发现的（两处是我自己的丢行）。
+      # 例外必须逐条登记在 pipeline/config/table-exceptions.json，含证据与处置决定。
+      - name: 表格完整性（源↔译表行数）
+        run: python3 pipeline/check_tables.py --check
+
+      # ---------- 检查 5：覆盖率（信息性，不作门禁）----------
       - name: 覆盖度概览
         run: |
           python3 pipeline/translate.py --status
@@ -76,3 +83,8 @@ jobs:
         run: |
           echo "### 术语一致率" >> $GITHUB_STEP_SUMMARY
           sed -n '/## 一致率/,/## 一、/p' reports/terminology-consistency.md >> $GITHUB_STEP_SUMMARY
+
+      - name: 表格完整性摘要
+        run: |
+          echo "### 表格完整性" >> $GITHUB_STEP_SUMMARY
+          sed -n '/## 结论/,/## 差异明细/p' reports/table-integrity.md >> $GITHUB_STEP_SUMMARY

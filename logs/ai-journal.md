@@ -13,11 +13,11 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 601 |
-| 翻译块次 | 460 |
-| 其中通过校验 | 418 |
+| 记录事件总数 | 632 |
+| 翻译块次 | 479 |
+| 其中通过校验 | 437 |
 | **其中未通过 / 失败** | **42** |
-| 完成条目 | 32 |
+| 完成条目 | 36 |
 | 出现过校验问题的块 | 42 |
 
 ## 逐块记录
@@ -484,12 +484,33 @@
 | 14:43:10 | `agentic-ai-threats` | 5 | queue | `15f063bab250` | 2288/802 | — | ✅ |
 | 14:43:10 | `agentic-ai-threats` | 6 | queue | `b43b50d85a6c` | 1745/672 | — | ✅ |
 | 14:43:10 | `agentic-ai-threats` | 7 | queue | `5597c2223b2a` | 927/304 | — | ✅ |
+| 14:48:09 | `agentic-ai-threats` | 8 | queue | `3f49588a15d9` | 3134/2874 | — | ✅ |
+| 14:48:09 | `agentic-ai-threats` | 9 | queue | `42360da74cc2` | 822/402 | — | ✅ |
+| 14:48:09 | `agentic-ai-threats` | 10 | queue | `53568d23e200` | 2691/2470 | — | ✅ |
+| 14:48:09 | `agentic-ai-threats` | 11 | queue | `7f9194988393` | 1765/1023 | — | ✅ |
+| 14:48:09 | `agentic-ai-threats` | 12 | queue | `9d8235359eba` | 1275/426 | — | ✅ |
+| 14:48:09 | `agentic-ai-threats` | 13 | queue | `706c4dacad1e` | 2485/2210 | — | ✅ |
+| 14:48:09 | `agentic-ai-threats` | 14 | queue | `5de019013d7c` | 3155/2154 | — | ✅ |
+| 14:48:09 | `agentic-ai-threats` | 15 | queue | `efa8dc5b88d5` | 3191/1892 | — | ✅ |
+| 14:48:09 | `agentic-ai-threats` | 16 | queue | `bf3cbb809532` | 2058/902 | — | ✅ |
+| 14:48:09 | `agentic-ai-threats` | 17 | queue | `65d7db46850a` | 3681/3446 | — | ✅ |
+| 14:48:09 | `agentic-ai-threats` | 18 | queue | `555fc21061e0` | 1589/698 | — | ✅ |
+| 14:48:09 | `agentic-ai-threats` | 19 | queue | `4cddf33a74a1` | 900/381 | — | ✅ |
+| 14:48:09 | `agentic-ai-threats` | 20 | queue | `635f20c1a460` | 787/282 | — | ✅ |
+| 14:48:09 | `agentic-ai-threats` | 21 | queue | `29493277fe87` | 942/384 | — | ✅ |
+| 14:48:09 | `agentic-ai-threats` | 22 | queue | `5d06603c5c8a` | 1825/926 | — | ✅ |
+| 14:48:09 | `agentic-ai-threats` | 23 | queue | `c7905b71bdda` | 489/451 | — | ✅ |
+| 14:49:41 | `mcp-introduction` | 6 | queue | `bead8ae9a916` | 594/290 | — | ✅ |
+| 14:49:41 | `agentic-ai-threats` | 6 | queue | `b43b50d85a6c` | 1745/982 | — | ✅ |
+| 14:50:39 | `agentic-ai-threats` | 7 | queue | `5597c2223b2a` | 927/305 | — | ✅ |
 
 ## 管线级事件（非逐块）
 
 | 时间 | 事件 | 说明 |
 |---|---|---|
 | 2026-09-16T14:46:38 | `qc_criterion_fix` | 全量术语审计改为源文驱动：与 translate.py 逐块校验共用 termcheck.select_terms() |
+| 2026-09-16T14:50:24 | `table_row_loss_found` | 逐块校验只看代码围栏数与链接数，不看表格行数，于是三处整行丢失一路通过校验；新增 pipeline/check_tables.py 作为门禁 |
+| 2026-09-16T14:50:44 | `term_decision` | 「每个智能体的系统指令」改为「系统提示词」——这一处改的是译文，不是规则 |
 
 ### `qc_criterion_fix`　2026-09-16T14:46:38
 
@@ -497,6 +518,19 @@
 - **how**：relevant_terms 的实现上移到 termcheck.py；qc_terminology.py 只为源文中出现过的术语检查禁用变体；被豁免的命中逐条写进报告「一·附」
 - **result**：硬性违规 9 → 0；一致率 100.00%；被豁免命中 9 处全部可见
 - **cost**：门禁在「源文用别的英文写法表达同一术语」时不再拦截，该局限已写进报告
+
+### `table_row_loss_found`　2026-09-16T14:50:24
+
+- **why**：agentic-ai-threats 第 6 块源表 12 行、译稿 10 行（两行重复载荷行与单元格内重复文本被当噪声删掉）；mcp-introduction 第 6 块源表 10 行、译稿 6 行（4 行 colSpan 分节行被并进数据行）；sast-vs-dast 源清洗稿 0 行表、译稿 12 行
+- **how**：1) 前两处按源文逐格重建，重复行与重复载荷文本逐字保留；2) 第三处查源 HTML，确认那张表是 div 嵌套而非 <table>，属清洗管线盲区，差异登记进 pipeline/config/table-exceptions.json；3) 新增 check_tables.py 并接入 CI（检查 4）
+- **result**：表行数差异 3 篇 → 1 篇（唯一一篇已登记例外、含证据与处置决定）；检查器自检：对修复前的 mcp-introduction 能报出 源 10 → 译 6
+- **cost**：check_tables.py 只比行数、不比单元格内容，单元格里的删改仍抓不到；比 contentAccuracy 要求的更粗
+
+### `term_decision`　2026-09-16T14:50:44
+
+- **why**：术语表 System Prompt → 系统提示词，硬性禁用「系统指令」。命中处源文英文是 system instructions。同一篇的表 1 里 system prompt 已按正式译法译作「系统提示词」，同一篇内自相矛盾；且两处英文指代同一对象
+- **how**：回到源文与同一篇的其它译法比对，判定规则正确、译文不一致，因此改译文；不做「规则过宽就降级」的处理
+- **result**：硬性违规 1 → 0，一致率 100.00%，28 篇译稿内部一致
 
 ## 失败与返工记录
 
@@ -757,4 +791,8 @@
 | `mcp-introduction` | W2 | 17 | 11,678 | 2026-09-16T14:22:49 |
 | `how-anthropic-uses-claude-code` | W4 | 11 | 13,275 | 2026-09-16T14:24:49 |
 | `context-rot` | W6 | 24 | 19,796 | 2026-09-16T14:41:44 |
+| `agentic-ai-threats` | W6 | 24 | 27,423 | 2026-09-16T14:48:09 |
+| `mcp-introduction` | W2 | 17 | 11,718 | 2026-09-16T14:49:41 |
+| `agentic-ai-threats` | W6 | 24 | 27,733 | 2026-09-16T14:49:41 |
+| `agentic-ai-threats` | W6 | 24 | 27,734 | 2026-09-16T14:50:39 |
 
