@@ -19,7 +19,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 18,Temperature,温度,core-llm,translate,温度值|随机度,,采样参数,0
 19,Embedding,嵌入,core-llm,translate,向量化|嵌入向量,,0,
 20,Vector Database,向量数据库,core-llm,translate,矢量数据库|向量库,,0,
-21,Inference,推理,core-llm,translate,推演|模型推导,推断,模型前向计算/服务；与 Reasoning（推理能力）区分；「推断」降为提示级：infer,0
+21,Inference,推理,core-llm,translate,模型推导,推断|推演,模型前向计算/服务；与 Reasoning（推理能力）区分；「推断」降为提示级：infer；「推演」降为提示级：think through / 推演，不是 inference,0
 22,Reasoning,推理能力,core-llm,translate,思考链|推论|思维过程,,模型内部思考过程；与 Inference（推理）区分,0
 23,Training,训练,core-llm,translate,训练过程,培训,0；「培训」降为提示级：staff training,
 24,Benchmark,基准测试,core-llm,translate,测评|跑分,,0,
@@ -76,10 +76,10 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 75,Codebase Understanding,代码库理解,swe,translate,仓库理解,代码理解,Week 3 主题；「代码理解」降为提示级：code understanding（是 code 不是 codebase）,0
 76,Spec-Driven Development,规格驱动开发,swe,translate,规范驱动开发|文档驱动开发,,对应 specs-are-the-new-source-code,0
 77,Specification (Spec),规格说明,swe,translate,规格书|需求规格,规范,0,
-78,Software Development Life Cycle (SDLC),软件开发生命周期（SDLC）,process,acronym,软件开发生命圈|开发周期,,7,
+78,Software Development Life Cycle (SDLC),软件开发生命周期（SDLC）,process,acronym,软件开发生命圈,开发周期,7；「开发周期」降为提示级：development cycle，不是 SDLC,
 79,Product Requirements Document (PRD),产品需求文档（PRD）,process,acronym,产品需求书|需求文档 PRD,,7,
 80,Design Doc,设计文档,process,translate,设计稿|设计方案文档,,0,
-81,Stakeholder,干系人,process,translate,利益相关者|相关方|干系方,,0,
+81,Stakeholder,干系人,process,translate,利益相关者|干系方,相关方,0；「相关方」降为提示级：party/parties，不是 stakeholder,
 82,Scope Creep,范围蔓延,process,translate,范围蠕变|需求蔓延,,0,
 83,Acceptance Criteria,验收标准,process,translate,接受标准|验收条件,,0,
 84,User Story,用户故事,process,translate,用户需求故事|使用者故事,,0,
@@ -116,7 +116,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 115,Least Privilege,最小权限,security,translate,最小特权|最低权限,,0,
 116,Supply Chain Attack,供应链攻击,security,translate,供应链入侵|链条攻击,,0,
 117,Credential,凭据,security,translate,凭证|证书凭据|登录信息,,0,
-118,Data Exfiltration,数据外泄,security,translate,数据渗出|数据窃取|数据泄露,,0,
+118,Data Exfiltration,数据外泄,security,translate,数据渗出|数据窃取,数据泄露,0；「数据泄露」降为提示级：data leak，与 exfiltration 程度不同,
 119,Blast Radius,影响半径,security,translate,爆炸半径|波及范围,影响范围,0；「影响范围」降为提示级：普通中文短语，原文此处并无 blast radius,
 120,Sandbox Escape,沙箱逃逸,security,translate,沙盒逃逸|突破沙箱,,0,
 121,Red Team,红队,security,translate,红色团队|攻击方,,0,

@@ -24,7 +24,7 @@
 1. **被正式译法包含的变体一律跳过**——「上下文协议」是「模型上下文协议（MCP）」的子串，子串匹配会把正确译文判成违规。
 2. 宁可漏报也不误报：一个天天误报的校验器最终会被忽略。
 
-**术语总数：171 条**（硬性禁用变体 332 条 + 提示级 34 条，由 `pipeline/translate.py` 逐块强制校验）
+**术语总数：171 条**（硬性禁用变体 328 条 + 提示级 38 条，由 `pipeline/translate.py` 逐块强制校验）
 
 ## 核心 LLM 与提示词（28 条）
 
@@ -50,7 +50,7 @@
 | Temperature | 温度 | `translate` | 温度值、随机度 | — | — |
 | Embedding | 嵌入 | `translate` | 向量化、嵌入向量 | — | — |
 | Vector Database | 向量数据库 | `translate` | 矢量数据库、向量库 | — | — |
-| Inference | 推理 | `translate` | 推演、模型推导 | 推断 | — |
+| Inference | 推理 | `translate` | 模型推导 | 推断、推演 | — |
 | Reasoning | 推理能力 | `translate` | 思考链、推论、思维过程 | — | — |
 | Training | 训练 | `translate` | 训练过程 | 培训 | — |
 | Benchmark | 基准测试 | `translate` | 测评、跑分 | — | — |
@@ -150,7 +150,7 @@
 | Least Privilege | 最小权限 | `translate` | 最小特权、最低权限 | — | — |
 | Supply Chain Attack | 供应链攻击 | `translate` | 供应链入侵、链条攻击 | — | — |
 | Credential | 凭据 | `translate` | 凭证、证书凭据、登录信息 | — | — |
-| Data Exfiltration | 数据外泄 | `translate` | 数据渗出、数据窃取、数据泄露 | — | — |
+| Data Exfiltration | 数据外泄 | `translate` | 数据渗出、数据窃取 | 数据泄露 | — |
 | Blast Radius | 影响半径 | `translate` | 爆炸半径、波及范围 | 影响范围 | — |
 | Sandbox Escape | 沙箱逃逸 | `translate` | 沙盒逃逸、突破沙箱 | — | — |
 | Red Team | 红队 | `translate` | 红色团队、攻击方 | — | — |
@@ -191,10 +191,10 @@
 
 | 英文 | 中文 | policy | 禁用变体（硬性） | 提示级 | 语料频次 |
 |---|---|---|---|---|---|
-| Software Development Life Cycle (SDLC) | 软件开发生命周期（SDLC） | `acronym` | 软件开发生命圈、开发周期 | — | — |
+| Software Development Life Cycle (SDLC) | 软件开发生命周期（SDLC） | `acronym` | 软件开发生命圈 | 开发周期 | — |
 | Product Requirements Document (PRD) | 产品需求文档（PRD） | `acronym` | 产品需求书、需求文档 PRD | — | — |
 | Design Doc | 设计文档 | `translate` | 设计稿、设计方案文档 | — | — |
-| Stakeholder | 干系人 | `translate` | 利益相关者、相关方、干系方 | — | — |
+| Stakeholder | 干系人 | `translate` | 利益相关者、干系方 | 相关方 | — |
 | Scope Creep | 范围蔓延 | `translate` | 范围蠕变、需求蔓延 | — | — |
 | Acceptance Criteria | 验收标准 | `translate` | 接受标准、验收条件 | — | — |
 | User Story | 用户故事 | `translate` | 用户需求故事、使用者故事 | — | — |

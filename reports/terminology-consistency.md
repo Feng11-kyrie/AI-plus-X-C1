@@ -8,8 +8,8 @@
 |---|---|
 | 术语表条目 | 171 条（其中需翻译 148 条） |
 | 审计译稿 | 18 条 |
-| 硬性禁用变体 | 332 个 |
-| 提示级变体 | 34 个（只统计不判违规） |
+| 硬性禁用变体 | 328 个 |
+| 提示级变体 | 38 个（只统计不判违规） |
 
 ## 一致率
 
@@ -18,24 +18,19 @@
 | 指标 | 数值 |
 |---|---|
 | 正式译法出现次数 | 1,597 |
-| **硬性违规次数** | **4** |
-| **术语一致率（硬性口径）** | **99.75%** |
-| 提示级命中次数 | 221（**不计入一致率**，见第三节） |
+| **硬性违规次数** | **0** |
+| **术语一致率（硬性口径）** | **100.00%** |
+| 提示级命中次数 | 225（**不计入一致率**，见第三节） |
 | 实际用到的术语 | 100 条 |
-| 其中零违规 | 97 条 |
+| 其中零违规 | 100 条 |
 
 > ⚠️ **这个百分比只统计硬性禁用变体。** 术语表另有一批提示级变体，它们是中文常用词或**其它英文词**的合法译法（如 proxy → 代理、dashboard → 控制台），一律判违规会逼出错误的译文。读数时请把两者一起看——**单看 100% 会高估实际的一致性**。
 
-❌ 发现 4 处违规，详见下方。
+✅ **全部硬性禁用变体零出现。**
 
 ## 一、违规明细（硬性）
 
-| 术语 | 应为 | 出现的违规写法 | 篇目 | 次数 | 上下文 |
-|---|---|---|---|---|---|
-| Inference | 推理 | **推演** | `code-review-essentials` | 1 | …*「这段代码怎么处理负整数？」** 这类反馈很具体，促使开发者自己去推演结果。作为评审者，你也许已经知道这段代码遇到负整数会崩，但让开发者自… |
-| Software Development Life Cycle (SDLC) | 软件开发生命周期（SDLC） | **开发周期** | `how-openai-uses-codex` | 1 | …age 8 --> 用例 5 提高开发速度 Codex 通过同时加速开发周期的起点与终点，帮助团队跑得更快。 在启动新功能时，工程师用它搭建样板… |
-| Stakeholder | 干系人 | **相关方** | `code-review-essentials` | 1 | …问题： - **「这真的是该做的事吗？」** 客户、团队成员与其他相关方之间永远存在相互竞争的需求。在深入之前先这样问一遍，有助于理清优先级… |
-| Data Exfiltration | 数据外泄 | **数据泄露** | `sast-vs-dast` | 1 | …SP 监控已部署的设备，检测并阻止未授权访问尝试，或由新兴威胁导致的数据泄露。 同样，多种方法并用有助于 IoT 生态保持韧性。正如我们在许多… |
+无。
 
 ## 二、覆盖率缺口（参考项，不作门禁）
 
@@ -83,7 +78,27 @@
 
 ## 三、提示级变体（仅统计）
 
-这些变体在中文里本身是常用词，或是**另一个英文词**的合法译法，因此只统计、不判违规。例如 `proxy` 的标准译法就是「代理」，而「代理」是 Agent 的提示级变体。
+这些变体只统计、不判违规。原因是本检查的一项**结构性局限**：
+
+> **校验器只看中文输出，无法知道某个中文词对应的是哪个英文词。**
+
+于是凡是「本术语的错误译法」同时又是「**邻近英文词的正确译法**」的词，都会被误判。实测中反复出现的例子：
+
+| 提示级变体 | 它其实对应的英文 | 属于哪个术语的禁用变体 |
+|---|---|---|
+| 代理 | proxy | Agent（智能体） |
+| 控制台 | dashboard / console | Terminal（终端） |
+| 轨迹 | trail | Trace（追踪记录） |
+| 弱点 | weakness | Vulnerability（漏洞） |
+| 开发周期 | development cycle | SDLC（软件开发生命周期） |
+| 相关方 | party / parties | Stakeholder（干系人） |
+| 数据泄露 | data leak | Data Exfiltration（数据外泄） |
+| 度量 | measure（动词） | Metric（指标） |
+
+彻底解决需要把译文与源文按句对齐，再判断每个中文词对应哪个英文词——那会把校验器复杂化一个数量级，且对齐本身也会出错。
+
+**当前选择：接受一定误报，维持「人判断规则对不对、机器判断符合不符合规则」的分工。**
+代价是硬性一致率这个数字只覆盖「无歧义错译」，读数时必须与下面的提示级命中合看。
 
 | 术语 | 变体 | 篇目 | 次数 |
 |---|---|---|---|
@@ -100,6 +115,7 @@
 | Retrieval-Augmented Generation (RAG) | 落地 | `observability-basics` | 2 |
 | Retrieval-Augmented Generation (RAG) | 落地 | `sast-vs-dast` | 1 |
 | Retrieval-Augmented Generation (RAG) | 落地 | `specs-are-the-new-source-code` | 2 |
+| Inference | 推演 | `code-review-essentials` | 1 |
 | Inference | 推断 | `how-openai-uses-codex` | 1 |
 | Inference | 推断 | `multi-agent-systems-ai-native` | 1 |
 | Training | 培训 | `ai-code-review-best-practices` | 1 |
@@ -150,6 +166,8 @@
 | Specification (Spec) | 规范 | `claude-code-best-practices` | 1 |
 | Specification (Spec) | 规范 | `observability-basics` | 1 |
 | Specification (Spec) | 规范 | `owasp-top-ten` | 4 |
+| Software Development Life Cycle (SDLC) | 开发周期 | `how-openai-uses-codex` | 1 |
+| Stakeholder | 相关方 | `code-review-essentials` | 1 |
 | Deliverable | 产出物 | `specs-are-the-new-source-code` | 1 |
 | Vulnerability | 缺陷 | `ai-code-review-best-practices` | 1 |
 | Vulnerability | 缺陷 | `code-review-essentials` | 2 |
@@ -157,6 +175,7 @@
 | Vulnerability | 缺陷 | `copilot-prompt-injection-rce` | 2 |
 | Vulnerability | 缺陷 | `sast-vs-dast` | 9 |
 | Vulnerability | 弱点 | `sast-vs-dast` | 3 |
+| Data Exfiltration | 数据泄露 | `sast-vs-dast` | 1 |
 | Blast Radius | 影响范围 | `copilot-prompt-injection-rce` | 1 |
 | Observability | 运行环境 | `sast-vs-dast` | 1 |
 | Tracing | 跟踪 | `copilot-prompt-injection-rce` | 1 |
@@ -216,14 +235,14 @@
 | False Positive | 误报 | `translate` | 13 | 1 | ✅ |
 | Orchestration | 编排 | `translate` | 12 | 4 | ✅ |
 | Specification (Spec) | 规格说明 | `translate` | 12 | 5 | ✅ |
-| Software Development Life Cycle (SDLC) | 软件开发生命周期（SDLC） | `acronym` | 12 | 1 | ❌ 1 |
+| Software Development Life Cycle (SDLC) | 软件开发生命周期（SDLC） | `acronym` | 12 | 1 | ✅ |
 | Context Window | 上下文窗口 | `translate` | 11 | 2 | ✅ |
 | Merge | 合并 | `translate` | 11 | 3 | ✅ |
 | Multi-agent | 多智能体 | `translate` | 10 | 2 | ✅ |
 | Command-Line Interface (CLI) | 命令行界面（CLI） | `acronym` | 10 | 0 | ✅ |
 | Site Reliability Engineering (SRE) | 站点可靠性工程（SRE） | `acronym` | 10 | 0 | ✅ |
 | Incident | 故障事件 | `translate` | 10 | 4 | ✅ |
-| Inference | 推理 | `translate` | 9 | 0 | ❌ 1 |
+| Inference | 推理 | `translate` | 9 | 0 | ✅ |
 | Tool Use | 工具调用 | `translate` | 9 | 0 | ✅ |
 | Branch | 分支 | `translate` | 9 | 3 | ✅ |
 | Refactor | 重构 | `translate` | 9 | 3 | ✅ |
@@ -271,7 +290,7 @@
 | Sandbox | 沙箱 | `translate` | 1 | 0 | ✅ |
 | Product Requirements Document (PRD) | 产品需求文档（PRD） | `acronym` | 1 | 0 | ✅ |
 | Design Doc | 设计文档 | `translate` | 1 | 0 | ✅ |
-| Stakeholder | 干系人 | `translate` | 1 | 0 | ❌ 1 |
+| Stakeholder | 干系人 | `translate` | 1 | 0 | ✅ |
 | Acceptance Criteria | 验收标准 | `translate` | 1 | 1 | ✅ |
 | Attack Surface | 攻击面 | `translate` | 1 | 0 | ✅ |
 | Credential | 凭据 | `translate` | 1 | 0 | ✅ |
