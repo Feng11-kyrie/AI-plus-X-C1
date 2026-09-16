@@ -170,6 +170,8 @@ AI-plus-X-C1/
 │   ├── qc_terminology.py      全量术语一致率审计（CI 门禁）
 │   ├── check_tables.py        源↔译表格行数比对（CI 门禁）
 │   ├── check_deliverables.py  ★ 交付物通配符真匹配（CI 门禁）
+│   ├── check_workflow.py      ★ 工作流自检（CI 门禁 + 本地提交前用）
+│   ├── check_staleness.py     提交产物 vs 现在跑出来的产物（信息性）
 │   └── check_chunks.py        分块对照清单（人工核「有没有把两块并成一块」）
 │
 ├── clean/                     清洗后的英文 Markdown 底稿（29 条，可人工抽检）
@@ -193,7 +195,9 @@ AI-plus-X-C1/
 | 3 | **管线可复跑（确定性）** | 连跑两遍比对彼此 | 徽章变红 |
 | 4 | **表格完整性（源↔译表行数）** | `check_tables.py --check` | 徽章变红 |
 | 5 | **交付物命名（通配符真匹配）** | `check_deliverables.py --check` | 徽章变红 |
-| 6 | 覆盖度概览 | `translate.py --status` | 信息性，不作门禁 |
+| 6 | **工作流自检（YAML 合法 + 门禁齐全）** | `check_workflow.py --check` | 徽章变红 |
+| 7 | 提交产物新鲜度 | `check_staleness.py` | 信息性，不作门禁 |
+| 8 | 覆盖度概览 | `translate.py --status` | 信息性，不作门禁 |
 
 > **第 4 项是补出来的。** 逐块校验只比代码围栏数与链接数，**不比表格行数**——
 > 于是三处整行丢失（两处是我自己删的）一路通过校验，全靠手工数行数才发现。
