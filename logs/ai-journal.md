@@ -13,12 +13,12 @@
 
 | 指标 | 数值 |
 |---|---|
-| 记录事件总数 | 358 |
-| 翻译块次 | 269 |
-| 其中通过校验 | 244 |
-| **其中未通过 / 失败** | **25** |
-| 完成条目 | 23 |
-| 出现过校验问题的块 | 25 |
+| 记录事件总数 | 383 |
+| 翻译块次 | 289 |
+| 其中通过校验 | 263 |
+| **其中未通过 / 失败** | **26** |
+| 完成条目 | 24 |
+| 出现过校验问题的块 | 26 |
 
 ## 逐块记录
 
@@ -293,6 +293,26 @@
 | 13:44:32 | `sast-vs-dast` | 13 | queue | `17ce8f73259f` | 1502/670 | — | ✅ |
 | 13:44:32 | `sast-vs-dast` | 14 | queue | `5b24418767f3` | 868/342 | — | ✅ |
 | 13:44:32 | `ai-code-review-best-practi` | 1 | queue | `67e55962da70` | 778/291 | — | ✅ |
+| 13:47:11 | `writing-effective-tools-fo` | 0 | queue | `88974e6dfdd6` | 982/381 | — | ✅ |
+| 13:47:11 | `writing-effective-tools-fo` | 1 | queue | `6d249a066e73` | 1216/480 | — | ✅ |
+| 13:47:11 | `writing-effective-tools-fo` | 2 | queue | `2c64f1809e7d` | 1717/915 | — | ✅ |
+| 13:47:11 | `writing-effective-tools-fo` | 3 | queue | `2bd4811b502f` | 3393/1405 | — | ✅ |
+| 13:47:11 | `writing-effective-tools-fo` | 4 | queue | `ca0208f50656` | 1276/556 | — | ✅ |
+| 13:47:11 | `writing-effective-tools-fo` | 5 | queue | `9853734583f6` | 931/325 | — | ✅ |
+| 13:47:11 | `writing-effective-tools-fo` | 6 | queue | `c2db93fe83dd` | 2512/1013 | — | ✅ |
+| 13:47:11 | `writing-effective-tools-fo` | 7 | queue | `848deff28a25` | 1140/455 | — | ✅ |
+| 13:47:11 | `writing-effective-tools-fo` | 8 | queue | `07e531ad5b52` | 2180/1019 | — | ✅ |
+| 13:47:11 | `writing-effective-tools-fo` | 9 | queue | `f7a50a17b266` | 1209/462 | — | ✅ |
+| 13:47:11 | `writing-effective-tools-fo` | 10 | queue | `955e8b3e9c35` | 1710/863 | — | ✅ |
+| 13:47:11 | `writing-effective-tools-fo` | 11 | queue | `90bd23ce2f2a` | 1346/664 | — | ❌ 出现禁用变体「MCP 协议」（应为「模型上下文协议（MCP）」）×1 |
+| 13:47:11 | `sast-vs-dast` | 1 | queue | `e71ad96ef101` | 1448/782 | — | ✅ |
+| 13:47:11 | `sast-vs-dast` | 7 | queue | `87c77bb4fa49` | 1723/619 | — | ✅ |
+| 13:47:11 | `sast-vs-dast` | 8 | queue | `a0d7aa7d2b41` | 787/248 | — | ✅ |
+| 13:47:11 | `sast-vs-dast` | 9 | queue | `a1c7cce794c4` | 995/348 | — | ✅ |
+| 13:47:11 | `sast-vs-dast` | 10 | queue | `be33207461e1` | 1091/417 | — | ✅ |
+| 13:47:11 | `sast-vs-dast` | 12 | queue | `80a7a4607efd` | 1221/469 | — | ✅ |
+| 13:47:11 | `observability-basics` | 7 | queue | `0bb4031de0cf` | 908/330 | — | ✅ |
+| 13:47:20 | `writing-effective-tools-fo` | 11 | queue | `90bd23ce2f2a` | 1346/671 | — | ✅ |
 
 ## 失败与返工记录
 
@@ -430,6 +450,11 @@
 - 时间：2026-09-16T13:44:11+0800　后端：queue　prompt 哈希：`5f4d59694fe5`
 - 问题：出现禁用变体「运行环境」（应为「运行时」）×1
 
+### `writing-effective-tools-for-agents` 第 11 块
+
+- 时间：2026-09-16T13:47:11+0800　后端：queue　prompt 哈希：`90bd23ce2f2a`
+- 问题：出现禁用变体「MCP 协议」（应为「模型上下文协议（MCP）」）×1
+
 ## 条目汇总
 
 | 条目 | 周 | 块数 | 中文字符 | 完成时间 |
@@ -457,4 +482,5 @@
 | `how-openai-uses-codex` | W1 | 4 | 4,690 | 2026-09-16T13:39:56 |
 | `owasp-top-ten` | W6 | 10 | 8,648 | 2026-09-16T13:41:18 |
 | `sast-vs-dast` | W6 | 16 | 8,022 | 2026-09-16T13:44:32 |
+| `writing-effective-tools-for-agents` | W3 | 12 | 8,634 | 2026-09-16T13:47:20 |
 
