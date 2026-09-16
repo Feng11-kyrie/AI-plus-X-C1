@@ -12,9 +12,9 @@
 
 | 指标 | 数值 |
 |---|---|
-| 已完成条目 | **14** / 29 |
-| 覆盖率（分母 34） | **41.2%** |
-| 是否达标 | ⬜ 未达标（还差 14 条） |
+| 已完成条目 | **15** / 29 |
+| 覆盖率（分母 34） | **44.1%** |
+| 是否达标 | ⬜ 未达标（还差 13 条） |
 
 ## 逐条状态
 
@@ -40,7 +40,7 @@
 | `owasp-top-ten` | W6 | html | 10 | 0 | ⬜ 未开始 |
 | `sast-vs-dast` | W6 | html | 16 | 0 | ⬜ 未开始 |
 | `ai-code-review-best-practices` | W7 | html | 8 | 8 | ✅ 完成 |
-| `code-review-essentials` | W7 | html | 5 | 0 | ⬜ 未开始 |
+| `code-review-essentials` | W7 | html | 5 | 5 | ✅ 完成 |
 | `code-reviews-just-do-it` | W7 | html | 1 | 1 | ✅ 完成 |
 | `how-to-review-code-effectively` | W7 | html | 13 | 0 | ⬜ 未开始 |
 | `ai-assisted-code-review-assessment` | W7 | pdf | 9 | 0 | ⬜ 未开始 |
