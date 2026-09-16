@@ -57,7 +57,7 @@ id,term_en,term_zh,category,policy,forbidden_zh,forbidden_soft,notes,freq_in_cor
 56,Unit Test,单元测试,swe,translate,单位测试|模块测试,,0,
 57,Integration Test,集成测试,swe,translate,整合测试|联合测试,,0,
 58,Test Coverage,测试覆盖率,swe,translate,覆盖度,,0,
-59,Regression,回归,swe,translate,退化|回退,,0,
+59,Regression,回归,swe,translate,退化,,「回退」已移除：它是 revert 的译法，不构成 regression 的误译,
 60,Deployment,部署,swe,translate,发布上线|布署|部署上线,,0,
 61,Rollback,回滚,swe,translate,撤回|回滚操作,回退,「回退」降为提示级：revert（git revert）应译「回退」，与 rollback 是不同操作,
 62,Artifact,制品,swe,translate,工件|构建物,产物,构建/交付语境；「产物」降为提示级——它是 artifact 通用义的自然译法,

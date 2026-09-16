@@ -24,7 +24,7 @@
 1. **被正式译法包含的变体一律跳过**——「上下文协议」是「模型上下文协议（MCP）」的子串，子串匹配会把正确译文判成违规。
 2. 宁可漏报也不误报：一个天天误报的校验器最终会被忽略。
 
-**术语总数：171 条**（硬性禁用变体 318 条 + 提示级 48 条，由 `pipeline/translate.py` 逐块强制校验）
+**术语总数：171 条**（硬性禁用变体 317 条 + 提示级 48 条，由 `pipeline/translate.py` 逐块强制校验）
 
 ## 核心 LLM 与提示词（28 条）
 
@@ -100,7 +100,7 @@
 | Unit Test | 单元测试 | `translate` | 单位测试、模块测试 | — | — |
 | Integration Test | 集成测试 | `translate` | 整合测试、联合测试 | — | — |
 | Test Coverage | 测试覆盖率 | `translate` | 覆盖度 | — | — |
-| Regression | 回归 | `translate` | 退化、回退 | — | — |
+| Regression | 回归 | `translate` | 退化 | — | — |
 | Deployment | 部署 | `translate` | 发布上线、布署、部署上线 | — | — |
 | Rollback | 回滚 | `translate` | 撤回、回滚操作 | 回退 | — |
 | Artifact | 制品 | `translate` | 工件、构建物 | 产物 | — |
