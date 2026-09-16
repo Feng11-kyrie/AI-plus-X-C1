@@ -33,7 +33,7 @@
 | `claude-code-best-practices` | W4 | html | 4 | 4 | ✅ 完成 |
 | `how-anthropic-uses-claude-code` | W4 | pdf | 11 | 11 | ✅ 完成 |
 | `warp-vs-claude-code` | W5 | html | 4 | 4 | ✅ 完成 |
-| `agentic-ai-threats` | W6 | html | 24 | 0 | ⬜ 未开始 |
+| `agentic-ai-threats` | W6 | html | 24 | 8 | 🚧 8/24 |
 | `context-rot` | W6 | html | 24 | 24 | ✅ 完成 |
 | `copilot-prompt-injection-rce` | W6 | html | 6 | 6 | ✅ 完成 |
 | `finding-vulnerabilities-claude-codex` | W6 | html | 12 | 12 | ✅ 完成 |
