@@ -76,3 +76,43 @@ def find_hits(text: str, term: dict) -> tuple:
             if c:
                 bucket.append((v, c))
     return hard, soft
+
+
+def term_is_present(term: dict, text: str) -> bool:
+    """源文里是否出现了这个术语的英文形式。
+
+    **为什么判定要看源文**：禁用变体是「某个中文词不能用来翻译某个英文词」。
+    如果源文里根本没有那个英文词，这条映射就不成立，禁用变体的出现
+    也就无从谈起——它多半是**另一个英文词**的合法译法。
+    实测例子：`Regression → 回归` 把「退化」列为硬性禁用，
+    而 `context-rot` 源文里的英文是 degradation（共 20 处），全文没有
+    regression ——旧版无条件判违规，一次报出 9 处假违规，把 CI 刷红。
+    """
+    if term.get("policy") == "keep_en":
+        return False
+    cands = [term.get("term_en") or ""]
+    m = re.search(r"\(([A-Za-z0-9/\- ]+)\)", term.get("term_en") or "")
+    if m:
+        cands.append(m.group(1))
+    cands.append(re.sub(r"\s*\(.*?\)\s*", "", term.get("term_en") or "").strip())
+    low = text.lower()
+    for c in cands:
+        c = c.strip()
+        if len(c) >= 3 and c.lower() in low:
+            return True
+    return False
+
+
+def select_terms(source_text: str, glossary: list) -> list:
+    """挑出**在该段源文里实际出现**的术语。
+
+    两处调用者必须共用这一个实现：
+
+      * translate.py  —— 逐块校验（决定往 prompt 里注入哪些术语）
+      * qc_terminology.py —— 全量审计（决定某篇译稿适用哪些术语规则）
+
+    历史上这两处各写了一份：一份看源文、一份不看，于是同一篇译稿
+    「逐块校验通过、全量审计报 9 处违规」。这是本项目第四次同类问题
+    （前三次：状态键与文件名、覆盖度目标、术语匹配）。
+    """
+    return [r for r in glossary if term_is_present(r, source_text)]

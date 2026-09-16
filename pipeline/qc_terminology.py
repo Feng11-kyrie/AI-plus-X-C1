@@ -8,8 +8,16 @@
 
 三项检查：
 
-  1. **一致性**：358 个硬性禁用变体在全部译稿中是否出现过。
+  1. **一致性**：某篇源文里出现的术语，它的硬性禁用变体是否出现在对应译稿里。
      出现过 → 判违规，给出文件名与上下文。这是主判据。
+
+     **判定是源文驱动的**：一条禁用变体的含义是「不能用某个中文词翻译某个
+     英文词」。源文里没有那个英文词，这条映射就不成立。早期版本无条件扫
+     全部 358 个变体，于是 `context-rot` 被判 9 处「退化」，而该篇源文里
+     的英文是 degradation（20 处）、全文没有 regression——9 处全是假违规，
+     并且把 CI 刷红。现在与 translate.py 逐块校验共用
+     `termcheck.select_terms()`，两处不再各写一份。
+     被这样豁免掉的命中不隐藏，逐条列在报告「一·附」里。
 
   2. **覆盖率**：源文中出现的术语，其正式译法是否在译文中出现。
      能抓到「漏译某个术语」或「整段丢失」——这类问题逐块校验看不见，
@@ -33,7 +41,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from termcheck import find_hits, approved_forms, count_forms, variants  # noqa: E402
+from termcheck import (find_hits, approved_forms, count_forms, variants,  # noqa: E402
+                       select_terms)
 CFG = json.loads((ROOT / "pipeline/config/cs146s.json").read_text(encoding="utf-8"))
 GLOSSARY = ROOT / CFG["paths"]["glossary"]
 ZH_DIR = ROOT / CFG["paths"].get("zh_dir", "zh")
@@ -76,15 +85,21 @@ def main() -> int:
     for f in zh_files:
         zh = f.read_text(encoding="utf-8")
         src = CLEAN_DIR / f.name
+        src_plain = strip_code(src.read_text(encoding="utf-8")) if src.exists() else ""
         docs.append({
             "unit": f.stem,
             "zh": zh,
             "zh_plain": strip_code(zh),
-            "src_plain": strip_code(src.read_text(encoding="utf-8")) if src.exists() else "",
+            "src_plain": src_plain,
             "has_src": src.exists(),
+            # 该篇适用的术语：源文里出现过的那些。
+            # 没有源文时退回「全部术语都适用」——严格取向；当前 0 篇走这条路。
+            "terms": ({t["term_en"] for t in select_terms(src_plain, glossary)}
+                      if src.exists() else {t["term_en"] for t in glossary}),
         })
 
     rows, violations, omissions, soft_hits = [], [], [], []
+    waived = []          # 旧口径会判违规、新口径判为「本篇不适用」的命中
     total_approved = total_violations = 0
 
     for term in glossary:
@@ -96,9 +111,16 @@ def main() -> int:
 
         used = 0
 
-        # --- 一致性：硬性禁用变体 ---
+        # --- 一致性：硬性禁用变体（只在该篇源文出现该术语时才判）---
         for d in docs:
-            h, _s = find_hits(d["zh_plain"], term)   # 共享判定：含包含关系过滤
+            h, s_ = find_hits(d["zh_plain"], term)   # 共享判定：含包含关系过滤
+            if term["term_en"] not in d["terms"]:
+                waived.extend({
+                    "term": term["term_en"], "approved": term["term_zh"],
+                    "variant": v, "unit": d["unit"], "count": c,
+                    "context": context_of(d["zh_plain"], v),
+                } for v, c in h)
+                continue
             for v, c in h:
                 total_violations += c
                 violations.append({
@@ -107,10 +129,8 @@ def main() -> int:
                     "context": context_of(d["zh_plain"], v),
                 })
 
-        # --- 提示级：只统计 ---
-        for d in docs:
-            _h, s = find_hits(d["zh_plain"], term)
-            for v, c in s:
+            # --- 提示级：只统计 ---
+            for v, c in s_:
                 soft_hits.append({"term": term["term_en"], "variant": v,
                                   "unit": d["unit"], "count": c})
 
@@ -194,6 +214,24 @@ def main() -> int:
     else:
         A("无。")
     A("")
+    A("### 一·附、被豁免的命中（源文不含该英文术语）")
+    A("")
+    A("判定是源文驱动的：**只有源文里出现过某术语的英文形式，才检查它的禁用变体。**")
+    A("下面是按旧口径（无条件扫全部变体）会判违规、按新口径判为「本篇不适用」的命中，"
+      "逐条列出以便人工复核——豁免不等于看不见。")
+    A("")
+    if waived:
+        A("| 术语 | 若判违规应为 | 命中写法 | 篇目 | 次数 | 源文里的英文 |")
+        A("|---|---|---|---|---|---|")
+        for w in waived:
+            A(f"| {w['term']} | {w['approved']} | {w['variant']} | `{w['unit']}` "
+              f"| {w['count']} | 该篇源文未出现 “{w['term']}” |")
+        A("")
+        A(f"合计 {sum(w['count'] for w in waived)} 处。复核方式：打开对应 `clean/<篇目>.md`，"
+          "搜该术语的英文主形；搜不到即证明禁用变体在此处对应的是**另一个英文词**。")
+    else:
+        A("无（当前口径与旧口径的判定结果一致）。")
+    A("")
     A("## 二、覆盖率缺口（参考项，不作门禁）")
     A("")
     A("源文中出现某术语，但译文中完全没有出现它的正式译法。")
@@ -274,6 +312,9 @@ def main() -> int:
         print(f"\n违规明细已写入 {REPORT.relative_to(ROOT)}")
         for v in violations[:10]:
             print(f"  ❌ {v['unit']}: 「{v['variant']}」应为「{v['approved']}」")
+    if waived:
+        print(f"被豁免的命中 {sum(w['count'] for w in waived)} 处"
+              f"（源文不含该英文术语，逐条列在报告「一·附」）")
     if omissions:
         print(f"\n覆盖率缺口 {len(omissions)} 处（详见报告）")
     print(f"报告：{REPORT.relative_to(ROOT)}")

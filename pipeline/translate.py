@@ -48,7 +48,7 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from termcheck import find_hits, approved_forms, count_forms  # noqa: E402
+from termcheck import find_hits, approved_forms, count_forms, select_terms  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 CFG = json.loads((ROOT / "pipeline/config/cs146s.json").read_text(encoding="utf-8"))
@@ -115,25 +115,13 @@ def load_glossary() -> list:
 
 
 def relevant_terms(text: str, glossary: list) -> list:
-    """只挑在该块里实际出现的术语，避免每个 prompt 都塞进 170 条。"""
-    low = text.lower()
-    out = []
-    for r in glossary:
-        if r["policy"] == "keep_en":
-            continue
-        # 术语的英文主形，以及括号里的缩写形式，任一出现即算命中
-        cands = [r["term_en"]]
-        m = re.search(r"\(([A-Za-z0-9/\- ]+)\)", r["term_en"])
-        if m:
-            cands.append(m.group(1))
-        base = re.sub(r"\s*\(.*?\)\s*", "", r["term_en"]).strip()
-        cands.append(base)
-        for c in cands:
-            c = c.strip()
-            if len(c) >= 3 and c.lower() in low:
-                out.append(r)
-                break
-    return out
+    """只挑在该块里实际出现的术语。
+
+    实现已上移到 pipeline/termcheck.py 的 select_terms()——那里是术语判定
+    的唯一来源。全量审计（qc_terminology.py）必须用同一个函数，否则会出现
+    「逐块通过、全量报错」的漂移。这里保留函数名，只是转发。
+    """
+    return select_terms(text, glossary)
 
 
 # ---------------------------------------------------------------- Prompt
@@ -234,6 +222,11 @@ def render_journal() -> None:
     ok = [e for e in chunks if e.get("ok")]
     bad = [e for e in chunks if not e.get("ok")]
     units = [e for e in events if e.get("event") == "unit"]
+    # 管线级事件：不是「翻了哪一块」，而是「管线本身做了什么决定 / 出了什么故障」。
+    # 早期只渲染 chunk/unit，于是「改判定口径」「回滚状态」这类事件在原始
+    # 事件流里存在、在人读日志里消失——日志反而比事实少。现在单列一节。
+    misc = [e for e in events
+            if e.get("event") not in ("chunk", "unit", "run_start", "run_end")]
 
     L, A = [], None
     L.append("# AI 协作日志")
@@ -272,6 +265,23 @@ def render_journal() -> None:
                  f"| {e.get('src_chars',0)}/{e.get('zh_chars',0)} "
                  f"| {secs_s} | {res} |")
     L.append("")
+    if misc:
+        L.append("## 管线级事件（非逐块）")
+        L.append("")
+        L.append("| 时间 | 事件 | 说明 |")
+        L.append("|---|---|---|")
+        for e in misc:
+            what = e.get("what") or e.get("note") or e.get("result") or ""
+            L.append(f"| {e['ts'][:19]} | `{e.get('event','')}` | {what} |")
+        L.append("")
+        for e in misc:
+            L.append(f"### `{e.get('event','')}`　{e['ts'][:19]}")
+            L.append("")
+            for k in ("why", "how", "result", "cost"):
+                if e.get(k):
+                    L.append(f"- **{k}**：{e[k]}")
+            L.append("")
+
     if bad:
         L.append("## 失败与返工记录")
         L.append("")

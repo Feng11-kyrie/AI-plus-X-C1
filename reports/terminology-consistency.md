@@ -18,21 +18,30 @@
 | 指标 | 数值 |
 |---|---|
 | 正式译法出现次数 | 3,409 |
-| **硬性违规次数** | **9** |
-| **术语一致率（硬性口径）** | **99.74%** |
-| 提示级命中次数 | 423（**不计入一致率**，见第三节） |
+| **硬性违规次数** | **0** |
+| **术语一致率（硬性口径）** | **100.00%** |
+| 提示级命中次数 | 206（**不计入一致率**，见第三节） |
 | 实际用到的术语 | 125 条 |
-| 其中零违规 | 124 条 |
+| 其中零违规 | 125 条 |
 
 > ⚠️ **这个百分比只统计硬性禁用变体。** 术语表另有一批提示级变体，它们是中文常用词或**其它英文词**的合法译法（如 proxy → 代理、dashboard → 控制台），一律判违规会逼出错误的译文。读数时请把两者一起看——**单看 100% 会高估实际的一致性**。
 
-❌ 发现 9 处违规，详见下方。
+✅ **全部硬性禁用变体零出现。**
 
 ## 一、违规明细（硬性）
 
-| 术语 | 应为 | 出现的违规写法 | 篇目 | 次数 | 上下文 |
+无。
+
+### 一·附、被豁免的命中（源文不含该英文术语）
+
+判定是源文驱动的：**只有源文里出现过某术语的英文形式，才检查它的禁用变体。**
+下面是按旧口径（无条件扫全部变体）会判违规、按新口径判为「本篇不适用」的命中，逐条列出以便人工复核——豁免不等于看不见。
+
+| 术语 | 若判违规应为 | 命中写法 | 篇目 | 次数 | 源文里的英文 |
 |---|---|---|---|---|---|
-| Regression | 回归 | **退化** | `context-rot` | 9 | …型能否识别出某段文本**不存在**），同样表现出随输入长度增长而性能退化。 此外，长上下文任务常常包含「在干扰项中消歧」这一环节。一个例子… |
+| Regression | 回归 | 退化 | `context-rot` | 9 | 该篇源文未出现 “Regression” |
+
+合计 9 处。复核方式：打开对应 `clean/<篇目>.md`，搜该术语的英文主形；搜不到即证明禁用变体在此处对应的是**另一个英文词**。
 
 ## 二、覆盖率缺口（参考项，不作门禁）
 
@@ -125,149 +134,56 @@
 | 术语 | 变体 | 篇目 | 次数 |
 |---|---|---|---|
 | Context Window | 上下文长度 | `context-rot` | 8 |
-| Context Window | 上下文长度 | `writing-effective-tools-for-agents` | 1 |
-| Scaffolding | 框架 | `ai-code-review-best-practices` | 1 |
-| Scaffolding | 框架 | `devin-coding-agents-101` | 1 |
 | Scaffolding | 框架 | `finding-vulnerabilities-claude-codex` | 5 |
-| Scaffolding | 框架 | `how-anthropic-uses-claude-code` | 2 |
-| Scaffolding | 框架 | `how-to-review-code-effectively` | 1 |
-| Scaffolding | 框架 | `mcp-introduction` | 11 |
-| Scaffolding | 框架 | `multi-agent-systems-ai-native` | 2 |
-| Scaffolding | 框架 | `observability-basics` | 5 |
-| Scaffolding | 框架 | `sast-vs-dast` | 3 |
-| Scaffolding | 框架 | `sre-introduction` | 1 |
-| Hallucination | 框架 | `ai-code-review-best-practices` | 1 |
-| Hallucination | 框架 | `devin-coding-agents-101` | 1 |
-| Hallucination | 框架 | `finding-vulnerabilities-claude-codex` | 5 |
-| Hallucination | 框架 | `how-anthropic-uses-claude-code` | 2 |
-| Hallucination | 框架 | `how-to-review-code-effectively` | 1 |
-| Hallucination | 框架 | `mcp-introduction` | 11 |
 | Hallucination | 框架 | `multi-agent-systems-ai-native` | 2 |
-| Hallucination | 框架 | `observability-basics` | 5 |
-| Hallucination | 框架 | `sast-vs-dast` | 3 |
-| Hallucination | 框架 | `sre-introduction` | 1 |
 | Retrieval-Augmented Generation (RAG) | 落地 | `ai-code-review-best-practices` | 10 |
 | Retrieval-Augmented Generation (RAG) | 落地 | `mcp-introduction` | 1 |
 | Retrieval-Augmented Generation (RAG) | 落地 | `mcp-registry-preview` | 2 |
-| Retrieval-Augmented Generation (RAG) | 落地 | `observability-basics` | 2 |
 | Retrieval-Augmented Generation (RAG) | 落地 | `sast-vs-dast` | 1 |
-| Retrieval-Augmented Generation (RAG) | 落地 | `specs-are-the-new-source-code` | 2 |
 | Retrieval-Augmented Generation (RAG) | 落地 | `sre-introduction` | 1 |
-| Inference | 推演 | `code-review-essentials` | 1 |
-| Inference | 推断 | `context-rot` | 2 |
 | Inference | 推演 | `how-anthropic-uses-claude-code` | 1 |
-| Inference | 推断 | `how-openai-uses-codex` | 1 |
-| Inference | 推断 | `multi-agent-systems-ai-native` | 1 |
-| Training | 培训 | `ai-code-review-best-practices` | 1 |
 | Training | 培训 | `prompt-engineering-overview` | 1 |
 | Agent | 代理 | `mcp-server-authentication` | 2 |
-| Tool Use | 工具使用 | `how-long-contexts-fail` | 1 |
-| Tool Use | 调用工具 | `mcp-food-for-thought` | 1 |
 | Tool Use | 调用工具 | `mcp-introduction` | 2 |
-| Tool Use | 调用工具 | `mcp-server-authentication` | 3 |
-| Tool Use | 工具使用 | `writing-effective-tools-for-agents` | 2 |
-| Tool Use | 调用工具 | `writing-effective-tools-for-agents` | 1 |
-| Model Context Protocol (MCP) | 组织 | `ai-code-review-best-practices` | 2 |
-| Model Context Protocol (MCP) | 组织 | `benefits-agentic-ai-oncall` | 1 |
-| Model Context Protocol (MCP) | 组织 | `code-review-essentials` | 1 |
-| Model Context Protocol (MCP) | 组织 | `code-reviews-just-do-it` | 1 |
-| Model Context Protocol (MCP) | 组织 | `context-rot` | 1 |
 | Model Context Protocol (MCP) | 组织 | `devin-coding-agents-101` | 1 |
 | Model Context Protocol (MCP) | 组织 | `how-anthropic-uses-claude-code` | 4 |
 | Model Context Protocol (MCP) | 协调 | `how-anthropic-uses-claude-code` | 3 |
 | Model Context Protocol (MCP) | 协调 | `how-long-contexts-fail` | 1 |
-| Model Context Protocol (MCP) | 组织 | `how-openai-uses-codex` | 2 |
-| Model Context Protocol (MCP) | 组织 | `how-to-review-code-effectively` | 2 |
-| Model Context Protocol (MCP) | 协调 | `kubernetes-troubleshooting-ai` | 1 |
 | Model Context Protocol (MCP) | 组织 | `mcp-introduction` | 2 |
 | Model Context Protocol (MCP) | 组织 | `mcp-registry-preview` | 2 |
-| Model Context Protocol (MCP) | 组织 | `owasp-top-ten` | 3 |
-| Model Context Protocol (MCP) | 协调 | `owasp-top-ten` | 1 |
-| Model Context Protocol (MCP) | 组织 | `sast-vs-dast` | 3 |
-| Model Context Protocol (MCP) | 组织 | `sre-introduction` | 3 |
-| Orchestration | 组织 | `ai-code-review-best-practices` | 2 |
-| Orchestration | 组织 | `benefits-agentic-ai-oncall` | 1 |
-| Orchestration | 组织 | `code-review-essentials` | 1 |
-| Orchestration | 组织 | `code-reviews-just-do-it` | 1 |
-| Orchestration | 组织 | `context-rot` | 1 |
-| Orchestration | 组织 | `devin-coding-agents-101` | 1 |
-| Orchestration | 组织 | `how-anthropic-uses-claude-code` | 4 |
-| Orchestration | 协调 | `how-anthropic-uses-claude-code` | 3 |
-| Orchestration | 协调 | `how-long-contexts-fail` | 1 |
-| Orchestration | 组织 | `how-openai-uses-codex` | 2 |
-| Orchestration | 组织 | `how-to-review-code-effectively` | 2 |
 | Orchestration | 协调 | `kubernetes-troubleshooting-ai` | 1 |
-| Orchestration | 组织 | `mcp-introduction` | 2 |
-| Orchestration | 组织 | `mcp-registry-preview` | 2 |
-| Orchestration | 组织 | `owasp-top-ten` | 3 |
-| Orchestration | 协调 | `owasp-top-ten` | 1 |
-| Orchestration | 组织 | `sast-vs-dast` | 3 |
-| Orchestration | 组织 | `sre-introduction` | 3 |
 | Workflow | 流程 | `ai-code-review-best-practices` | 2 |
-| Workflow | 流程 | `code-review-essentials` | 3 |
-| Workflow | 流程 | `context-rot` | 2 |
 | Workflow | 流程 | `devin-coding-agents-101` | 4 |
 | Workflow | 流程 | `finding-vulnerabilities-claude-codex` | 4 |
 | Workflow | 流程 | `how-anthropic-uses-claude-code` | 5 |
 | Workflow | 流程 | `how-openai-uses-codex` | 3 |
-| Workflow | 流程 | `how-to-review-code-effectively` | 4 |
 | Workflow | 流程 | `mcp-introduction` | 8 |
-| Workflow | 流程 | `mcp-server-authentication` | 1 |
 | Workflow | 流程 | `multi-agent-systems-ai-native` | 1 |
-| Workflow | 流程 | `observability-basics` | 1 |
-| Workflow | 流程 | `owasp-top-ten` | 2 |
-| Workflow | 流程 | `sast-vs-dast` | 3 |
 | Workflow | 流程 | `specs-are-the-new-source-code` | 5 |
 | Workflow | 流程 | `sre-introduction` | 1 |
 | Workflow | 流程 | `writing-effective-tools-for-agents` | 1 |
-| Human-in-the-loop | 人工介入 | `how-anthropic-uses-claude-code` | 1 |
-| Human-in-the-loop | 人工介入 | `sre-introduction` | 1 |
-| Refactor | 重写 | `code-review-essentials` | 2 |
 | Refactor | 重写 | `how-openai-uses-codex` | 1 |
-| Refactor | 重写 | `prompt-engineering-overview` | 1 |
 | Linter | 检查器 | `devin-coding-agents-101` | 1 |
 | Rollback | 回退 | `how-anthropic-uses-claude-code` | 2 |
 | Artifact | 产物 | `specs-are-the-new-source-code` | 4 |
-| Artifact | 产物 | `sre-introduction` | 1 |
 | Terminal | 控制台 | `mcp-server-authentication` | 1 |
 | Runtime | 运行环境 | `sast-vs-dast` | 1 |
-| Rate Limit | 限流 | `kubernetes-troubleshooting-ai` | 1 |
-| Codebase Understanding | 代码理解 | `ai-code-review-best-practices` | 1 |
-| Codebase Understanding | 代码理解 | `how-openai-uses-codex` | 3 |
 | Specification (Spec) | 规范 | `ai-code-review-best-practices` | 3 |
-| Specification (Spec) | 规范 | `claude-code-best-practices` | 1 |
 | Specification (Spec) | 规范 | `observability-basics` | 1 |
 | Specification (Spec) | 规范 | `owasp-top-ten` | 4 |
-| Software Development Life Cycle (SDLC) | 开发周期 | `how-anthropic-uses-claude-code` | 1 |
-| Software Development Life Cycle (SDLC) | 开发周期 | `how-openai-uses-codex` | 1 |
-| Design Doc | 设计稿 | `devin-coding-agents-101` | 1 |
 | Design Doc | 设计稿 | `how-anthropic-uses-claude-code` | 4 |
-| Stakeholder | 相关方 | `code-review-essentials` | 1 |
-| Deliverable | 产出物 | `specs-are-the-new-source-code` | 1 |
 | Vulnerability | 缺陷 | `ai-code-review-best-practices` | 1 |
-| Vulnerability | 缺陷 | `code-review-essentials` | 2 |
-| Vulnerability | 缺陷 | `code-reviews-just-do-it` | 4 |
 | Vulnerability | 缺陷 | `copilot-prompt-injection-rce` | 2 |
 | Vulnerability | 缺陷 | `finding-vulnerabilities-claude-codex` | 2 |
 | Vulnerability | 弱点 | `finding-vulnerabilities-claude-codex` | 1 |
 | Vulnerability | 缺陷 | `sast-vs-dast` | 9 |
 | Vulnerability | 弱点 | `sast-vs-dast` | 3 |
-| Vulnerability | 缺陷 | `sre-introduction` | 1 |
 | False Positive | 假阳性 | `finding-vulnerabilities-claude-codex` | 11 |
 | False Negative | 假阴性 | `finding-vulnerabilities-claude-codex` | 5 |
-| Data Exfiltration | 数据泄露 | `sast-vs-dast` | 1 |
-| Blast Radius | 影响范围 | `copilot-prompt-injection-rce` | 1 |
-| Observability | 运行环境 | `sast-vs-dast` | 1 |
-| Tracing | 跟踪 | `copilot-prompt-injection-rce` | 1 |
-| Tracing | 跟踪 | `how-anthropic-uses-claude-code` | 1 |
-| Tracing | 跟踪 | `how-to-review-code-effectively` | 1 |
 | Tracing | 跟踪 | `observability-basics` | 1 |
 | Tracing | 跟踪 | `sast-vs-dast` | 1 |
-| Tracing | 跟踪 | `sre-introduction` | 2 |
 | Tracing | 跟踪 | `writing-effective-tools-for-agents` | 1 |
 | Trace | 轨迹 | `observability-basics` | 1 |
-| Metric | 度量 | `context-rot` | 8 |
-| Metric | 度量 | `finding-vulnerabilities-claude-codex` | 4 |
 | Metric | 度量 | `observability-basics` | 1 |
 | Metric | 度量 | `sre-introduction` | 2 |
 | Metric | 度量 | `writing-effective-tools-for-agents` | 3 |
@@ -281,19 +197,9 @@
 | Log | 记录 | `mcp-food-for-thought` | 6 |
 | Log | 记录 | `multi-agent-systems-ai-native` | 1 |
 | Log | 记录 | `observability-basics` | 31 |
-| Log | 记录 | `owasp-top-ten` | 3 |
 | Log | 记录 | `sre-introduction` | 2 |
 | Log | 记录 | `writing-effective-tools-for-agents` | 4 |
-| Dashboard | 看板 | `how-to-review-code-effectively` | 1 |
-| Runbook | 操作手册 | `sre-introduction` | 4 |
 | Mean Time To Recovery (MTTR) | 平均修复时间 | `sre-introduction` | 1 |
-| Grounding | 落地 | `ai-code-review-best-practices` | 10 |
-| Grounding | 落地 | `mcp-introduction` | 1 |
-| Grounding | 落地 | `mcp-registry-preview` | 2 |
-| Grounding | 落地 | `observability-basics` | 2 |
-| Grounding | 落地 | `sast-vs-dast` | 1 |
-| Grounding | 落地 | `specs-are-the-new-source-code` | 2 |
-| Grounding | 落地 | `sre-introduction` | 1 |
 
 ## 四、逐术语统计
 
@@ -386,7 +292,7 @@
 | Context Rot | 上下文腐化 | `translate` | 3 | 2 | ✅ |
 | Retrieval-Augmented Generation (RAG) | 检索增强生成（RAG） | `acronym` | 3 | 0 | ✅ |
 | Reasoning | 推理能力 | `translate` | 3 | 8 | ✅ |
-| Regression | 回归 | `translate` | 3 | 0 | ❌ 9 |
+| Regression | 回归 | `translate` | 3 | 0 | ✅ |
 | Design Doc | 设计文档 | `translate` | 3 | 1 | ✅ |
 | Minimum Viable Product (MVP) | 最小可行产品（MVP） | `acronym` | 3 | 0 | ✅ |
 | Exploit | 漏洞利用 | `translate` | 3 | 3 | ✅ |
