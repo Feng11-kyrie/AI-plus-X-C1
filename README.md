@@ -183,6 +183,7 @@ AI-plus-X-C1/
 │   └── glossary.md            术语表（自动渲染，人读）
 │
 ├── pipeline/                  管线：每一步都可复跑
+│   ├── work/done/               ★ 271 个分块译文（zh/ 的真源，入库）
 │   ├── config/cs146s.json     ★ 源配置——换课程只改这个文件
 │   ├── config/table-exceptions.json  表格差异例外登记（含证据与复核日期）
 │   ├── parse_syllabus.py      解析 index.html → syllabus.json
@@ -293,6 +294,10 @@ python3 pipeline/translate.py --backend api
 > 没有 key 时脚本会**先检查再动手**（退出码 2），不会写出半截状态。
 > 默认的 `queue` 后端把每块的完整 prompt 写到 `pipeline/work/todo/`，
 > 再把译文从 `pipeline/work/done/` 收回——本项目的中译稿就是这样逐块产出并留痕的。
+>
+> **`pipeline/work/done/` 下的 271 个分块译文是入库的**（其余 `pipeline/work/` 产物不入库）。
+> 原因：`zh/` 是由这些分块**组装**出来的，分块才是译文的唯一真源——
+> 不把它们一起交付，别人 clone 下来既无法重跑 `--ingest`，也改不动任何一篇译文。
 
 > 注意执行顺序：`inventory.py` 产出 `units.json`，`clean.py` 消费它。
 > 全部脚本零依赖，只用 Python 3 标准库；复跑后 `git status` 应无差异（产物是确定性的）。

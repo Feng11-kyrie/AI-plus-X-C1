@@ -13,15 +13,17 @@ venv/
 .env
 
 # 管线中间产物（可复跑再生，不入库）
-pipeline/work/
+# 但 done/ 例外：它是**译文分块的唯一真源**——zh/ 是由它组装出来的，
+# 不把它入库，别人 clone 下来就无法重跑 --ingest，也改不了一篇译文。
+pipeline/work/*
+!pipeline/work/done/
 *.tmp
 
 # 编辑器
 .vscode/
 .idea/
 
-# 翻译中间产物（可复跑再生；逐块译文与状态）
+# 翻译中间产物（可复跑再生，不入库）
 pipeline/work/zh/
 pipeline/work/todo/
-pipeline/work/done/
 pipeline/work/state.json
